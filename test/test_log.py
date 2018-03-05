@@ -15,6 +15,12 @@ UPDATE LOG:
 Date        Programmer      Version     Update
 05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+05.03.18    J. Berendt      0.0.2       BUG01: "ResourceWarning: unclosed file <_io.TextIOWrapper \
+                                        name='nul' mode='w' encoding='cp1252'>" thrown on:
+                                        text = [line.strip() for line in open(log_path, 'r')
+                                                                             .readlines()]
+                                        FIX01: Replaced statement with 'with' statement, so the 
+                                        file is closed automatically on completion.
 ------------------------------------------------------------------------------------------------'''
 
 # BUILT-IN IMPORTS
@@ -50,7 +56,8 @@ class TestLog(unittest.TestCase):
         _log.write_blank_line()
 
         #READ IN LOG FILE
-        text = [line.strip() for line in open(log_path, 'r').readlines()]
+        with open(log_path, 'r') as f:
+            text = [line.strip() for line in f.readlines()]
 
         #TEST HEADER
         self.assertTrue(text[0] == header)

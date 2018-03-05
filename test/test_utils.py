@@ -1,12 +1,6 @@
-'''---------------------------------------------------------------------
+"""------------------------------------------------------------------------------------------------
 Program:    test_utils
 Purpose:    Unit testing module for the utils module.
-
-Dependents: os
-            sys
-            pandas
-            unittest
-            utils.utils
 
 Developer:  J. Berendt
 Email:      jeremy.berendt@rolls-royce.com
@@ -18,13 +12,16 @@ Comments:   Due to an unknown unit test issue, unidecode cannot be
 Use:        >>> python test_utils.py
             >>>
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for
-                                        Python 3 from the Python 2.7
+05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
----------------------------------------------------------------------'''
+05.03.18    J. Berendt      0.0.2       Updated testimport test to close the devnull device handle
+                                        automatically after writing to it.
+                                        Disabled the 'unclosed file' ResourceWarning for the
+                                        test_testimport_false() test; based on Py version.
+------------------------------------------------------------------------------------------------"""
 
 # BUILT-IN IMPORTS
 import os
@@ -33,6 +30,7 @@ import unittest
 
 # EXTERNAL IMPORTS
 import pandas as pd
+import six
 
 # SELF-DEPENDENT IMPORTS
 import utils3.utils as u
@@ -53,8 +51,10 @@ class TestUtils(unittest.TestCase):
     def setUp(self):
         pass
 
+
     def tearDown(self):
         pass
+
 
     #FUNCTION MUST RETURN A CLEANED DATAFRAME
     def test_clean_df(self):
@@ -131,13 +131,20 @@ class TestUtils(unittest.TestCase):
 
     #FUNCTION MUST RETURN A FALSE VALUE (LIBRARY NOT INSTALLED)
     def test_testimport_false(self):
+        # DISABLE THE UNCLOSED FILE RESOURCEWARNING
+        if six.PY3:
+            import warnings
+            warnings.simplefilter('ignore', ResourceWarning)
         #SUPPRESS STDOUT (PRINTING FROM FUNCTION)
-        save_stdout = sys.stdout
-        sys.stdout = open(os.devnull, 'w')
-        #TEST
-        self.assertFalse(u.testimport('some_other_library'))
-        #RESTORE STDOUT (RE-ENABLE PRINTING)
-        sys.stdout = save_stdout
+        with open(os.devnull, 'w') as devnull_:
+            save_stdout = sys.stdout
+            sys.stdout = devnull_
+            try:
+                #TEST
+                self.assertFalse(u.testimport('some_other_library'))
+            finally:
+                #RESTORE STDOUT (RE-ENABLE PRINTING)
+                sys.stdout = save_stdout
 
 
     #METHOD MUST CREATE A JSON FILE, TO BE READ BY json_read()
