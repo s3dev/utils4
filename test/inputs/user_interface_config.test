@@ -1,0 +1,7 @@
+{
+	"enviro"	: "OH NO! \n\tAn error occurred whilst the {} method in \n\t{} was interacting with the Environment. \n\tRecord this error code, make a note of the scenario \n\texecuted and then contact your Administrator.",
+	"intoor"	: "OH NO! \n\tAn integer went out of range when running the \n\t{} method in {}.",
+	"notimp"	: "OH NO! \n\tYou're trying to use functionality that's not currently supported \n\tby the {} method in {}.",
+	"unexpd"	: "OH NO! \n\tAn unexpected error has occurred whilst running the \n\t{} method in {}. \n\tRecord this error code, make a note of the scenario \n\texecuted and then contact your Administrator.",
+	"windws"	: "OH NO! \n\tAn error occurred whilst the {} method in \n\t{} was interacting with Windows. \n\tRecord this error code, make a note of the scenario \n\texecuted and then contact your Administrator."
+}

@@ -1,0 +1,7 @@
+#--------------------------------------
+# ADD MODULES FOR TEST TO THIS LIST
+#--------------------------------------
+test_utils.py
+test_log.py
+test_config.py
+test_get_datafiles.py
