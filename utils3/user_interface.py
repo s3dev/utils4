@@ -115,14 +115,6 @@ class UserInterface(object):
         self._back  = self._build_color_dict(class_=Back)
         self._style = self._build_color_dict(class_=Style)
 
-    def __del__(self):
-        """
-        PURPOSE:
-        Reverts the changes made by the win_unicode_console.enable()
-        call in the constructor. Note: It may be possible to remove use
-        of win_unicode_console when we move to Python 3.6.
-        """
-        win_unicode_console.disable()
 
     # ------------------------------------------------------------------
     def get_input(self, prompt, fore='white', back='black',
