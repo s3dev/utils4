@@ -1,91 +1,81 @@
 """------------------------------------------------------------------------------------------------
 Program:    config
-Purpose:    Small helper program designed to load a program's config file.
-
-Dependents: os
-            sys
-            json
+Purpose:    Small helper module designed to load a program's config file.
 
 Developer:  J. Berendt
 Email:      support@73rdstreetdevelopment.co.uk
 
-Use:        >>> import utils3.config as config
-            >>> global CFG
-            >>> CFG = config.loadconfig()
-            >>> my_param = CFG['my_param']
+Use:        > from utils3 import config
+            > cfg = config.loadconfig()
+            > my_param = cfg['my_param']
 
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+06.03.18    J. Berendt      1.1.0       GENERAL:
+                                        Removed devmode parameter from loadconfig() function.
+                                        Updated docstring for loadconfig().  pylint (10/10)
 ------------------------------------------------------------------------------------------------"""
 
-# BUILT-IN IMPORTS
 import os
 import sys
 import json
 
 
 # ----------------------------------------------------------------------
-def loadconfig(filename='config.json', devmode=False):
+def loadconfig(filename='config.json'):
     """
-    Setup for loading a JSON file, then read and return JSON config
-    file content as a dictionary.
+    Load a program's JSON config file and return as a dictionary.
 
     DESIGN:
-    The devmode parameter can be used if you are programming through an
-    IDE which defaults the sys.argv[0] value to the cwd of the IDE,
-    rather than from where the program is actually being run.
-    It just makes design and debugging easier.
+    By default, this function will search the program's directory for
+    a file named 'config.json'.  If the config file lives somewhere
+    else, or you're using an IDE to develop, the safest option is to
+    **explicitly define the path to the config file**.
+
+    If a path is found in the passed parameter, this path is used, and
+    the function does not have to try and work out where the config file
+    lives.
+
+    PARAMETERS:
+    - filename
+    File name or the **explicit full path** of the config (JSON) file
+    to be loaded.
 
     PREREQUESITES / ASSUMPTIONS:
     - The config file is a JSON file
     - The config file lives in the program directory
 
     USE:
-    > import utils3.config as config
-    > c = config.loadconfig()
-
-    > param_value = c['someparam_name']
+    > from utils3 import config
+    > cfg = config.loadconfig()
+    > my_param = cfg['my_param']
     """
 
-    # TEST IF FULL PATH OR ONLY FILENAME WAS PASSED
+    # TEST FOR FULLPATH OR FILENAME ONLY
     if os.path.dirname(filename) == '':
+        # USE THE PROGRAM'S DIRECTORY AS ROOT FOR THE CONFIG FILE
+        progdir = os.path.dirname(os.path.realpath(sys.argv[0]))
+        # IF THE PROGRAM DIR IS NOT AVAILABLE (NOT USED) USE CWD
+        curdir = os.getcwd()
 
-        # TEST PROGRAM MODE
-        if devmode:
+        # TEST PROGRAM DIR >> USE CWD IF NO PROGRAM DIR
+        path_base = progdir if sys.argv[0] != '' else curdir
 
-            # STORE PROGRAM DIRECTORY
-            path_base = os.getcwd()
-
-        else:
-
-            # ASSIGN DIRECTORIES
-            # USE THE PROGRAM'S DIRECTORY AS ROOT FOR THE CONFIG FILE
-            progdir = os.path.dirname(os.path.realpath(sys.argv[0]))
-            # IF THE PROGRAM DIR IS NOT AVAILABLE (NOT USED) USE CWD
-            curdir = os.getcwd()
-
-            # TEST PROGRAM DIR >> USE CWD IF NO PROGRAM DIR
-            path_base = progdir if sys.argv[0] != '' else curdir
-
-        # CONSOLIDATE PATH AND FILENAME
+        # BUILD FULL PATH TO CONFIG FILE
         fullpath = os.path.join(path_base, filename)
 
     else:
-
-        # ASSIGN PASSED PATH/FILENAME TO TESTED VARIABLE
+        # ASSIGN PASSED FULL PATH
         fullpath = filename
 
     # TEST IF THE FILE EXISTS
     if os.path.exists(fullpath):
-
         # LOAD CONFIG FILE
         return _fromjson(filepath=fullpath)
-
     else:
-
         # USER NOTIFICATION
         raise UserWarning('The config file (%s) could not be found.' % (fullpath))
 
