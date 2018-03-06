@@ -1,4 +1,4 @@
-'''------------------------------------------------------------------------------------------------
+"""------------------------------------------------------------------------------------------------
 Program:    test_log
 Purpose:    Unit test for utils.log
 
@@ -19,15 +19,14 @@ Date        Programmer      Version     Update
                                         name='nul' mode='w' encoding='cp1252'>" thrown on:
                                         text = [line.strip() for line in open(log_path, 'r')
                                                                              .readlines()]
-                                        FIX01: Replaced statement with 'with' statement, so the 
+                                        FIX01: Replaced statement with 'with' statement, so the
                                         file is closed automatically on completion.
-------------------------------------------------------------------------------------------------'''
+------------------------------------------------------------------------------------------------"""
 
-# BUILT-IN IMPORTS
 import os
+import re
 import unittest
 
-# SELF-DEPENDENT IMPORTS
 from utils3.log import Log
 
 
@@ -35,10 +34,7 @@ class TestLog(unittest.TestCase):
 
     def test_log(self):
 
-        # BUILT-IN IMPORTS
-        import re
-
-        #VARIABLES
+        # VARIABLES
         log_path       = 'c:/temp/utils_log_unittest.log'
         header         = 'datetime,host,user,text'
         entry          = 'this is a test'
@@ -47,38 +43,38 @@ class TestLog(unittest.TestCase):
                           '[0-9a-zA-Z].*,' + entry + ')'
         exp            = re.compile(pattern_entry)
 
-        #INSTANTIATE LOG CLASS
+        # INSTANTIATE LOG CLASS
         _log = Log(filepath=log_path, autofill=True, printheader=True,
                    headertext=header)
 
-        #WRITE LOG FILE
+        # WRITE LOG FILE
         _log.write(text=entry)
         _log.write_blank_line()
 
-        #READ IN LOG FILE
+        # READ IN LOG FILE
         with open(log_path, 'r') as f:
             text = [line.strip() for line in f.readlines()]
 
-        #TEST HEADER
+        # TEST HEADER
         self.assertTrue(text[0] == header)
 
-        #TEST LOG ENTRY AGAINST REGEX
+        # TEST LOG ENTRY AGAINST REGEX
         self.assertTrue(len(exp.findall(text[1])) == 1)
 
-        #TEST FOR BLANK LINE (WRITTEN BY write_blank_line() METHOD)
+        # TEST FOR BLANK LINE (WRITTEN BY write_blank_line() METHOD)
         self.assertTrue(text[2] == '')
 
-        #DELETE THE LOG FILE
+        # DELETE THE LOG FILE
         if os.path.exists(log_path): os.remove(log_path)
 
 
-#-----------------------------------------------------------------------
-#MAIN PROGRAM CONTROLLER
+# ----------------------------------------------------------------------
+# MAIN PROGRAM CONTROLLER
 def main():
 
-    #RUN UNIT TESTS
+    # RUN UNIT TESTS
     unittest.main()
 
 
-#RUN PROGRAM
+# RUN PROGRAM
 if __name__ == '__main__': main()
