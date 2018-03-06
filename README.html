@@ -11775,10 +11775,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="utils-v6.1.3">utils v6.1.3<a class="anchor-link" href="#utils-v6.1.3">&#194;&#182;</a></h1><hr>
-<p>The <strong>utils</strong> package is a centralised library of commonly used utilities.  These utilities include database connection classes, colourmaps, config file (JSON) loading, program event logging, error reporting, console user interface, etc.</p>
+<h1 id="utils3-v0.1.0">utils3 v0.1.0<a class="anchor-link" href="#utils3-v0.1.0">&#182;</a></h1><hr>
+<p>The <strong>utils3</strong> package is a continuation of <code>utils v6.1.5</code>, and has been updated to support Python 3.</p>
+<p>This package is a centralised library of commonly used utilities.  These utilities include database connection classes, colourmaps, config file (JSON) loading, program event logging, error reporting, console user interface, etc.</p>
 <p>Change log information is included in each module's header.</p>
-<h2 id="PACKAGE-CONFIGURATION">PACKAGE CONFIGURATION<a class="anchor-link" href="#PACKAGE-CONFIGURATION">&#194;&#182;</a></h2><hr>
+<h2 id="PACKAGE-CONFIGURATION">PACKAGE CONFIGURATION<a class="anchor-link" href="#PACKAGE-CONFIGURATION">&#182;</a></h2><hr>
 <p>Verion 6 of the utils package features the addition of the <code>database</code> class module, which includes intuitive database access wrappers for MySQL, Oracle, SQLite and SQL Server databases.</p>
 <p>Outlined below is the current package configuration, with classes listed in <strong>bold</strong>.</p>
 <ul>
@@ -11860,68 +11861,68 @@ div#notebook {
 </ul>
 </li>
 </ul>
-<h2 id="INSTALLATION">INSTALLATION<a class="anchor-link" href="#INSTALLATION">&#194;&#182;</a></h2><hr>
-<h3 id="LINUX">LINUX<a class="anchor-link" href="#LINUX">&#194;&#182;</a></h3><p>Any of the following options will get you there ...</p>
+<h2 id="INSTALLATION">INSTALLATION<a class="anchor-link" href="#INSTALLATION">&#182;</a></h2><hr>
+<h3 id="LINUX">LINUX<a class="anchor-link" href="#LINUX">&#182;</a></h3><p>Any of the following options will get you there ...</p>
 <ul>
 <li><p><strong>GitHub</strong></p>
-<div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils
+<div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils3
 </pre></div>
 </li>
 <li><p><strong>Local / Remote Git Repo</strong></p>
-<div class="highlight"><pre><span></span>sudo pip install git+file:///&lt;repo/location&gt;/utils
+<div class="highlight"><pre><span></span>sudo pip install git+file:///&lt;repo/location&gt;/utils3
 </pre></div>
 </li>
 <li><p><strong>Local Install</strong></p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;utils_project_directory&gt;
+<div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;utils3_project_directory&gt;
 sudo pip install .
 </pre></div>
 </li>
 </ul>
-<h3 id="WINDOWS">WINDOWS<a class="anchor-link" href="#WINDOWS">&#194;&#182;</a></h3><p>Any of the following options will get you there ...</p>
+<h3 id="WINDOWS">WINDOWS<a class="anchor-link" href="#WINDOWS">&#182;</a></h3><p>Any of the following options will get you there ...</p>
 <ul>
 <li><p><strong>GitHub</strong></p>
-<div class="highlight"><pre><span></span>pip install git+https://github.com/s3dev/utils
+<div class="highlight"><pre><span></span>pip install git+https://github.com/s3dev/utils3
 </pre></div>
 </li>
 <li><p><strong>Local / Remote Git Repo</strong></p>
-<div class="highlight"><pre><span></span>pip install git+file:///&lt;repo/location&gt;/utils
+<div class="highlight"><pre><span></span>pip install git+file:///&lt;repo/location&gt;/utils3
 </pre></div>
 </li>
 <li><p><strong>Local Install</strong></p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;utils_project_directory&gt;
+<div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;utils3_project_directory&gt;
 pip install .
 </pre></div>
 </li>
 </ul>
-<h3 id="UPGRADING-A-CURRENT-INSTALLATION">UPGRADING A CURRENT INSTALLATION<a class="anchor-link" href="#UPGRADING-A-CURRENT-INSTALLATION">&#194;&#182;</a></h3><p>To upgrade a current installation, use an install command as listed above, and append the <code>--upgrade</code> argument to the command.<br>
+<h3 id="UPGRADING-A-CURRENT-INSTALLATION">UPGRADING A CURRENT INSTALLATION<a class="anchor-link" href="#UPGRADING-A-CURRENT-INSTALLATION">&#182;</a></h3><p>To upgrade a current installation, use an install command as listed above, and append the <code>--upgrade</code> argument to the command.<br>
 For example:</p>
-<div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils --upgrade
+<div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils3 --upgrade
 </pre></div>
-<h2 id="PACKAGE-HELP">PACKAGE HELP<a class="anchor-link" href="#PACKAGE-HELP">&#194;&#182;</a></h2><hr>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils.utils</span> <span class="kn">as</span> <span class="nn">utils</span>
+<h2 id="PACKAGE-HELP">PACKAGE HELP<a class="anchor-link" href="#PACKAGE-HELP">&#182;</a></h2><hr>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="kn">as</span> <span class="nn">utils</span>
 <span class="n">help</span><span class="p">(</span><span class="n">utils</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils.config</span> <span class="kn">as</span> <span class="nn">config</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.config</span> <span class="kn">as</span> <span class="nn">config</span>
 <span class="n">help</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils.get_datafiles</span> <span class="kn">import</span> <span class="n">get_datafiles</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="kn">import</span> <span class="n">get_datafiles</span>
 <span class="n">help</span><span class="p">(</span><span class="n">get_datafiles</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils.log</span> <span class="kn">as</span> <span class="nn">log</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.log</span> <span class="kn">as</span> <span class="nn">log</span>
 <span class="n">help</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils.progressbar</span> <span class="kn">as</span> <span class="nn">progressbar</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.progressbar</span> <span class="kn">as</span> <span class="nn">progressbar</span>
 <span class="n">help</span><span class="p">(</span><span class="n">progressbar</span><span class="o">.</span><span class="n">ProgressBar</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils.reporterror</span> <span class="kn">as</span> <span class="nn">reporterror</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.reporterror</span> <span class="kn">as</span> <span class="nn">reporterror</span>
 <span class="n">help</span><span class="p">(</span><span class="n">reporterror</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils.user_interface</span> <span class="kn">as</span> <span class="nn">ui</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.user_interface</span> <span class="kn">as</span> <span class="nn">ui</span>
 <span class="n">help</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
 </pre></div>
-<h2 id="TROUBLESHOOTING">TROUBLESHOOTING<a class="anchor-link" href="#TROUBLESHOOTING">&#194;&#182;</a></h2><hr>
+<h2 id="TROUBLESHOOTING">TROUBLESHOOTING<a class="anchor-link" href="#TROUBLESHOOTING">&#182;</a></h2><hr>
 <p>If you are installing from a local repo and do not have internet access, or the Linux (or Windows) installation is giving you trouble with <strong>cx_Oracle</strong>, use the <code>--no-deps</code> argument for <strong>pip</strong>.  This argument will ignore the dependencies (and not try to access the internet), and allow you to install each dependency yourself, <em>if</em> you require it.</p>
-<div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils --no-deps
+<div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils3 --no-deps
 </pre></div>
 
 </div>
