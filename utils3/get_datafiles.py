@@ -2,28 +2,26 @@
 Program:    get_datafiles
 Platform:   Windows / Linux
 
-Purpose:    This module is designed to provide a list of data files to the calling setup.py file.
+Purpose:    This module is designed to provide a list of the required data files to the calling
+            setup.py file.
 
 Developer:  J. Berendt
-            With principal code concept adopted from matplotlib.get_datafiles()
+            With the principal code concept adopted from matplotlib.get_datafiles()
 Email:      support@73rdstreetdevelopment.co.uk
 
 Comments:
 
-Use:        > import utils3.get_datafiles as gdf
-            > data_files = gdf.get_datafiles(pkg_dir='myprog/package', exts=['.json', '.sql'])
+Use:        > from utils3.get_datafiles import get_datafiles
+            > data_files = get_datafiles(pkg_dir='myprog/package', exts=['.json', '.sql'])
 
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
 ------------------------------------------------------------------------------------------------"""
 
-# BUILT-IN IMPORTS
 import os
-
-# SELF-DEPENDENT IMPORTS
 import utils3.utils as utils
 
 # ALLOW A LIST AS DEFAULT METHOD PARAMETER
@@ -36,7 +34,6 @@ def get_datafiles(pkg_dir, exts=['.json', '.sql', '.txt'],
                   get_readme_files=True, readme_exts=['.html', '.md'],
                   get_license=True, license_name='LICENSE',
                   p2e=False):
-
     """
     PURPOSE:
     This function is designed to be called by another program's setup.py
