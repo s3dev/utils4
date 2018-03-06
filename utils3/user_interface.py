@@ -33,6 +33,8 @@ UPDATE LOG:
 Date        Programmer      Version     Update
 05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+06.03.18    M. Critchard    0.0.2       Added use of win_unicode_console to fix a problem between
+                                        the Python input() function and the Windows CLI.
 ------------------------------------------------------------------------------------------------"""
 
 # BUILT-IN IMPORTS
@@ -42,6 +44,7 @@ import platform
 import time
 
 # EXTERNAL IMPORTS
+import win_unicode_console
 from colorama import Fore, Back, Style
 from colorama import init as colourinit
 
@@ -77,6 +80,13 @@ class UserInterface(object):
         to print coloured text to the CLI. It also reads the config
         file, which is used throughout the class.
 
+        WIN_UNICODE_CONSOLE BACKGROUND:
+        win_unicode_console is used here to fix a problem between
+        the Python input() function and the Windows CLI. The problem
+        causes ANSI characters to be displayed in the CLI instead of
+        being used for setting colours. Note: It may be possible to
+        remove use of win_unicode_console when we move to Python 3.6.
+
         COLORAMA BACKGROUND:
         Colorama is initialised here to 'strip ANSI characters from
         stdout and convert them into the equivalent win32 calls'; per
@@ -87,6 +97,9 @@ class UserInterface(object):
         the escape sequence to the native Win CLI with the text does
         not work.  So we use Colorama for the low-level win32 work.
         """
+
+        # INSTALL FIX FOR PYTHON 3 WINDOWS CLI ISSUE
+        win_unicode_console.enable()
 
         # COLORAMA INITIALISATION
         colourinit()
@@ -102,6 +115,14 @@ class UserInterface(object):
         self._back  = self._build_color_dict(class_=Back)
         self._style = self._build_color_dict(class_=Style)
 
+    def __del__(self):
+        """
+        PURPOSE:
+        Reverts the changes made by the win_unicode_console.enable()
+        call in the constructor. Note: It may be possible to remove use
+        of win_unicode_console when we move to Python 3.6.
+        """
+        win_unicode_console.disable()
 
     # ------------------------------------------------------------------
     def get_input(self, prompt, fore='white', back='black',
