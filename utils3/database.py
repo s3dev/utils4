@@ -1,29 +1,28 @@
 """------------------------------------------------------------------------------------------------
 Program:    database
-Purpose:    This class module is a lightweight wrapper to help make database connection and
-            interfacing easier.
+Purpose:    This class module provides a lightweight wrapper around various database types, to
+            help make connecting to and interfacing with the databases easier.
 
 Developer:  J. Berendt
 Email:      support@73rdstreetdevelopment.co.uk
 
 Comments:
 
-Use:        >>> import utils3.database as db
-            >>> ora = db.Oracle(host='my_host', user='my_user', passowrd='my_pass')
-            >>> ora.connect()
-            >>> ora.connected
-            >>> True
+Use:        > from utils3 import database
+            > ora = database.Oracle(host='my_host', user='my_user', passowrd='my_pass')
+            > ora.connect()
+            > ora.connected
+            > True
 
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
 ------------------------------------------------------------------------------------------------"""
 
-# SELF-DEPENDENT IMPORTS
-import utils3.utils as utils
-import utils3.user_interface as ui
+from utils3 import utils
+from utils3 import user_interface as ui
 
 # ALLOW ANY NUMBER OF PUBLIC METHODS
 # pylint: disable=too-few-public-methods
@@ -32,7 +31,6 @@ import utils3.user_interface as ui
 
 # ----------------------------------------------------------------------
 class Database(object):
-
     """
     PURPOSE:
     The Database super-class is used to hold general properties or
@@ -116,7 +114,6 @@ class Database(object):
 
 # ----------------------------------------------------------------------
 class MySQL(Database):
-
     """
     PURPOSE:
     This class is a lightweight wrapper for mysql-connector, and used
