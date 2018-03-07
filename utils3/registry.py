@@ -1,22 +1,16 @@
 """------------------------------------------------------------------------------------------------
 Program:    registry.py
+Purpose:    This module provides a simple interface to the Windows registry. It contains a
+            Registry class that can be used to interact with the registry. The Registry class is
+            supported by a Key class and a Value class
 
-Security:   NONE
-
-Purpose:    This module provides a simple interface to the Windows
-            registry. It contains a Registry class that can be used
-            to interact with the registry. The Registry class is
-            supported by a Key class and a Value class. This module
-            also provides the following objects that can be used to
-            directly access the Registry methods for each root HKEY.
+            This module also provides the following objects that can be used to directly access
+            the Registry methods for each root HKEY.
                 - hkcr = HKEY_CLASSES_ROOT
                 - hkcu = HKEY_CURRENT_USER
                 - hklm = HKEY_LOCAL_MACHINE
                 - hkus = HKEY_USERS
                 - hkcc = HKEY_CURRENT_CONFIG
-
-Dependents: winreg
-            user_interface
 
 Developer:  M. Critchard
 
@@ -25,14 +19,12 @@ Email:      mark.critchard@rolls-royce.com
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+07.03.18    J. Berendt      1.0.1       Minor formatting changes and cleaning.  pylint (10/10)
 ------------------------------------------------------------------------------------------------"""
 
-# BUILT-IN IMPORTS
 import winreg as wr
-
-# SELF-DEPENDENT IMPORTS
 import utils3.user_interface as ui
 
 # IGNORE
@@ -125,7 +117,7 @@ class Registry(object):
     # INSTANTIATE THE UserInterface CLASS
     _ui = ui.UserInterface()
 
-    def __init__(self, computer_name, hkey):
+    def __init__(self, hkey):
         """
         PURPOSE:
         This constructor initialises a private self._hkey attribute
@@ -204,8 +196,8 @@ class Registry(object):
             return None
 
 
-hkcr = Registry(None, wr.HKEY_CLASSES_ROOT)
-hkcu = Registry(None, wr.HKEY_CURRENT_USER)
-hklm = Registry(None, wr.HKEY_LOCAL_MACHINE)
-hkus = Registry(None, wr.HKEY_USERS)
-hkcc = Registry(None, wr.HKEY_CURRENT_CONFIG)
+hkcr = Registry(wr.HKEY_CLASSES_ROOT)
+hkcu = Registry(wr.HKEY_CURRENT_USER)
+hklm = Registry(wr.HKEY_LOCAL_MACHINE)
+hkus = Registry(wr.HKEY_USERS)
+hkcc = Registry(wr.HKEY_CURRENT_CONFIG)
