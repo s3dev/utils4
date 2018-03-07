@@ -1,8 +1,5 @@
 """------------------------------------------------------------------------------------------------
 Program:    user_interface.py
-
-Security:   NONE
-
 Purpose:    This module provides an interface to the Win / Linux Command Line Interpreters (CLI).
             It contains a UserInterface class whose methods provide a standard way of getting data
             and reporting normal, alternative and abnormal behaviour. The following formats are
@@ -31,25 +28,25 @@ Email:      mark.critchard@rolls-royce.com
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+07.03.18    J. Berendt      1.0.1       Updated the PrintBanner class to use Py3's floor division
+                                        operator (//) when calculating the length of the ribbon.
+                                        Minor formatting updates.
 ------------------------------------------------------------------------------------------------"""
 
-# BUILT-IN IMPORTS
 import inspect
 import os
 import platform
 import time
 
-# EXTERNAL IMPORTS
 from colorama import Fore, Back, Style
 from colorama import init as colourinit
 
-# SELF-DEPENDENT IMPORTS
 import utils3.config as config
 import utils3.reporterror as reporterror
 
-# TEST OS BEFORE IMPORTING CTYPES
+# TEST OS BEFORE IMPORTING THESE:
 if 'win' in platform.system().lower():
     from ctypes import windll
 
@@ -161,7 +158,7 @@ class UserInterface(object):
 
 
     # ------------------------------------------------------------------
-    def print_(self, text, fore='white', back='black', style='normal',
+    def print_(self, text, fore='white', back='black', style='bright',
                h_pad=0, v_pad=0, sleep=0):
         """
         Print the statement passed from the caller, and format as
@@ -201,7 +198,7 @@ class UserInterface(object):
         The output text's colour, as a string.
         - back (default='black')
         The output text's background colour, as a string.
-        - style (default='normal')
+        - style (default='bright')
         The 'normal' style selects the 8 original foreground colours
         (SGR 30-37).
         The 'bright' style provides access to the 8 additional
@@ -569,7 +566,7 @@ class PrintBanner(object):
         self._desc      = desc
         self._info      = info
         self._chars     = chars
-        self._ribbon    = ribbon * (chars / len(ribbon))
+        self._ribbon    = ribbon * (chars // len(ribbon))
         self._fore      = fore
         self._back      = back
         self._style     = style
