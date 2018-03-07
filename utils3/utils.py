@@ -7,24 +7,24 @@ Email:      support@73rdstreetdevelopment.co.uk
 
 Comments:
 
-Use:        > import utils3.utils as u
+Use:        > from utils3 import utils as u
             > help(u)
 
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+07.03.18    J. Berendt      1.0.1       Minor code formatting updates.
 ------------------------------------------------------------------------------------------------"""
 
 # AS THIS IS A UTILITIES PACKAGE, NOT ALL IMPORTS ARE USED DURING
 # EXECUTION, SO MOST IMPORTS SIT WITH THE METHOD OR FUNCTION IN WHICH
 # THEY ARE USED.
 
-# SELF-DEPENDENT IMPORTS
-import utils3.config as config
-import utils3.reporterror as reporterror
-import utils3.user_interface as user_interface
+from utils3 import config
+from utils3 import reporterror
+from utils3 import user_interface
 
 # GLOBAL CONSTANTS / CLASS INSTANTIATIONS
 _UI = user_interface.UserInterface()
