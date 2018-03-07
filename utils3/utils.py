@@ -1,4 +1,3 @@
-
 """------------------------------------------------------------------------------------------------
 Program:    utils.py
 Purpose:    Central library for standard S3DEV utilities.
