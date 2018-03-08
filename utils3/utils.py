@@ -16,6 +16,7 @@ Date        Programmer      Version     Update
 05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
 07.03.18    J. Berendt      1.0.1       Minor code formatting updates.
+                                        Print statements changed to proper case.
 ------------------------------------------------------------------------------------------------"""
 
 # AS THIS IS A UTILITIES PACKAGE, NOT ALL IMPORTS ARE USED DURING
@@ -485,7 +486,7 @@ def fileexists(filepath):
         found = True
     else:
         # NOTIFY USER
-        print('the requested file cannot be found: (%s)\n' % filepath)
+        print('The requested file cannot be found: (%s).\n' % filepath)
         # SET FLAG
         found = False
 
