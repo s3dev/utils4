@@ -1,5 +1,5 @@
 
-# utils3 v0.1.0
+# utils3 v0.2.0
 ---
 The **utils3** package is a continuation of `utils v6.1.5`, and has been updated to support Python 3.
 
@@ -23,6 +23,8 @@ Outlined below is the current package configuration, with classes listed in **bo
          + **Oracle()**
          + **SQLite()**
          + **SQLServer()**
+   + dict2obj
+      + **Dict2Obj()**
    + log
       + **Log()**
          + write()
@@ -111,6 +113,15 @@ For example:
 
 ```bash
 sudo pip install git+https://github.com/s3dev/utils3 --upgrade
+```
+
+
+## VERSION CHECK
+---
+To see which version of `utils3` is installed, use the `__version__` attribute from the `utils` module.
+```python
+from utils3 import utils
+utils.__version__
 ```
 
 

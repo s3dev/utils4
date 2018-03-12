@@ -26,6 +26,7 @@ Date        Programmer      Version     Update
 from utils3 import config
 from utils3 import reporterror
 from utils3 import user_interface
+from _version import __version__
 
 # GLOBAL CONSTANTS / CLASS INSTANTIATIONS
 _UI = user_interface.UserInterface()

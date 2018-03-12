@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="utils3-v0.1.0">utils3 v0.1.0<a class="anchor-link" href="#utils3-v0.1.0">&#182;</a></h1><hr>
+<h1 id="utils3-v0.2.0">utils3 v0.2.0<a class="anchor-link" href="#utils3-v0.2.0">&#182;</a></h1><hr>
 <p>The <strong>utils3</strong> package is a continuation of <code>utils v6.1.5</code>, and has been updated to support Python 3.</p>
 <p>This package is a centralised library of commonly used utilities.  These utilities include database connection classes, colourmaps, config file (JSON) loading, program event logging, error reporting, console user interface, etc.</p>
 <p>Change log information is included in each module's header.</p>
@@ -11796,6 +11796,10 @@ div#notebook {
 <li><strong>SQLServer()</strong></li>
 </ul>
 </li>
+</ul>
+</li>
+<li>dict2obj<ul>
+<li><strong>Dict2Obj()</strong></li>
 </ul>
 </li>
 <li>log<ul>
@@ -11897,6 +11901,11 @@ pip install .
 <h3 id="UPGRADING-A-CURRENT-INSTALLATION">UPGRADING A CURRENT INSTALLATION<a class="anchor-link" href="#UPGRADING-A-CURRENT-INSTALLATION">&#182;</a></h3><p>To upgrade a current installation, use an install command as listed above, and append the <code>--upgrade</code> argument to the command.<br>
 For example:</p>
 <div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils3 --upgrade
+</pre></div>
+<h2 id="VERSION-CHECK">VERSION CHECK<a class="anchor-link" href="#VERSION-CHECK">&#182;</a></h2><hr>
+<p>To see which version of <code>utils3</code> is installed, use the <code>__version__</code> attribute from the <code>utils</code> module.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 <h2 id="PACKAGE-HELP">PACKAGE HELP<a class="anchor-link" href="#PACKAGE-HELP">&#182;</a></h2><hr>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="kn">as</span> <span class="nn">utils</span>
