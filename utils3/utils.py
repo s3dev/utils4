@@ -17,11 +17,15 @@ Date        Programmer      Version     Update
                                         utils module.
 07.03.18    J. Berendt      1.0.1       Minor code formatting updates.
                                         Print statements changed to proper case.
+13.03.18    J. Berendt      1.1.0       Updated the input() function to use six.moves.input() 
+                                        for Py2/Py3 compatibility.
 ------------------------------------------------------------------------------------------------"""
 
 # AS THIS IS A UTILITIES PACKAGE, NOT ALL IMPORTS ARE USED DURING
 # EXECUTION, SO MOST IMPORTS SIT WITH THE METHOD OR FUNCTION IN WHICH
 # THEY ARE USED.
+
+import six
 
 from utils3 import config
 from utils3 import reporterror
@@ -1213,7 +1217,7 @@ def _dbconn_fields(dbtype, fields, filename):
                 creds[key] = conf[key]
             else:
                 # PROMPT FOR VALUE >> ADD TO CREDENTIAL DICT
-                creds[key] = input('please enter the %s %s: ' % (dbtype, key))
+                creds[key] = six.moves.input('Please enter the %s %s: ' % (dbtype, key))
 
         # RETURN DICTIONARY OF CREDENTIALS
         return creds
@@ -1250,7 +1254,7 @@ def _dbconn_params(dbtype, **params):
             # TEST VALUE
             if params[key] is None:
                 # PROMPT USER FOR VALUE
-                params[key] = input('Please enter the %s for the %s connection: ' % (key, dbtype))
+                params[key] = six.moves.input('Please enter the %s for the %s connection: ' % (key, dbtype))
 
         # RETURN COMPLETED DICTIONARY
         return params
