@@ -21,6 +21,7 @@ Date        Programmer      Version     Update
                                         Updated to test value passed to the 'source' parameter.
                                         Updated to work with Py3.
                                         Minor docstring updates.
+13.03.18    J. Berendt      0.2.1       Updated JSON reading to also close file, for Py3 support.
 ------------------------------------------------------------------------------------------------"""
 
 import os
@@ -136,4 +137,6 @@ class Dict2Obj(object):
     @staticmethod
     def _read_json(filepath):
         "Read values from json and convert to dictionary."
-        return json.loads(open(filepath).read())
+        with open(filepath) as f:
+            data = json.loads(f.read())
+        return data
