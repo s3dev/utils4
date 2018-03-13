@@ -2,9 +2,6 @@
 Program:    setup.py
 Purpose:    Setup packager for utils.
 
-Dependents: distutils
-            setuptools
-
 Comments:
 
             Installation:
@@ -14,18 +11,15 @@ Comments:
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    0.0.1       Permanently branched for Python 3 from the Python 2.7
+05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+13.03.18    J. Berendt      1.1.0       Added win_unicode_console as a required package.
 ------------------------------------------------------------------------------------------------'''
 
-# BUILT-IN IMPORTS
 import os
-
-# EXTERNAL IMPORTS
 from setuptools import setup, find_packages
 
-# SELF-DEPENDENT IMPORTS
-from utils3.get_datafiles import get_datafiles
+from utils3 import get_datafiles
 from utils3._version import __version__
 
 
@@ -43,15 +37,16 @@ class Packager(object):
               url='https://github.com/s3dev/utils',
               license='MIT',
               packages=find_packages(),
-              install_requires=['numpy',
+              install_requires=['colorama',
                                 'cx_Oracle',
-                                'unidecode',
                                 'matplotlib',
+                                'mysql-connector==2.1.4',
+                                'numpy',
                                 'pyodbc',
                                 'plotly',
-                                'mysql-connector==2.1.4',
-                                'colorama'],
-              data_files=get_datafiles(pkg_dir=package))
+                                'unidecode',
+                                'win_unicode_console'],
+              data_files=get_datafiles.get_datafiles(pkg_dir=package))
 
 
 if __name__ == '__main__':
