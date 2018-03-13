@@ -30,7 +30,9 @@ UPDATE LOG:
 Date        Programmer      Version     Update
 05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
-07.03.18    J. Berendt      1.0.1       Updated the PrintBanner class to use Py3's floor division
+06.03.18    M. Critchard    1.1.0       Added use of win_unicode_console to fix a problem between
+                                        the Python input() function and the Windows CLI.
+07.03.18    J. Berendt      1.1.1       Updated the PrintBanner class to use Py3's floor division
                                         operator (//) when calculating the length of the ribbon.
                                         Minor formatting updates.
 ------------------------------------------------------------------------------------------------"""
@@ -40,6 +42,8 @@ import os
 import platform
 import time
 
+# EXTERNAL IMPORTS
+import win_unicode_console
 from colorama import Fore, Back, Style
 from colorama import init as colourinit
 
@@ -74,6 +78,13 @@ class UserInterface(object):
         to print coloured text to the CLI. It also reads the config
         file, which is used throughout the class.
 
+        WIN_UNICODE_CONSOLE BACKGROUND:
+        win_unicode_console is used here to fix a problem between
+        the Python input() function and the Windows CLI. The problem
+        causes ANSI characters to be displayed in the CLI instead of
+        being used for setting colours. Note: It may be possible to
+        remove use of win_unicode_console when we move to Python 3.6.
+
         COLORAMA BACKGROUND:
         Colorama is initialised here to 'strip ANSI characters from
         stdout and convert them into the equivalent win32 calls'; per
@@ -84,6 +95,9 @@ class UserInterface(object):
         the escape sequence to the native Win CLI with the text does
         not work.  So we use Colorama for the low-level win32 work.
         """
+
+        # INSTALL FIX FOR PYTHON 3 WINDOWS CLI ISSUE
+        win_unicode_console.enable()
 
         # COLORAMA INITIALISATION
         colourinit()
