@@ -34,7 +34,7 @@ class Packager(object):
               description='Bespoke general utilities package for Python 3.5.',
               author='J. Berendt',
               author_email='support@73rdstreetdevelopment.co.uk',
-              url='https://github.com/s3dev/utils',
+              url='https://github.com/s3dev/utils3',
               license='MIT',
               packages=find_packages(),
               install_requires=['colorama',
