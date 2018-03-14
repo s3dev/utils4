@@ -35,6 +35,15 @@ Date        Programmer      Version     Update
 07.03.18    J. Berendt      1.1.1       Updated the PrintBanner class to use Py3's floor division
                                         operator (//) when calculating the length of the ribbon.
                                         Minor formatting updates.
+14.03.18    J. Berendt      1.1.2       BUG01: "'dict_keys' object does not support indexing"
+                                        error thrown when determining the longest key in the
+                                        PrintBanner class.
+                                        FIX01: Explicitly convert each item to a list and index
+                                        the converted list.
+                                        BUG02: Pylint throws W0141 (used built-in function 'map')
+                                        when determining the longest key.
+                                        FIX02: Converted max(map(...)) to list comprehension.
+                                        pylint (10/10)
 ------------------------------------------------------------------------------------------------"""
 
 import inspect
@@ -42,7 +51,6 @@ import os
 import platform
 import time
 
-# EXTERNAL IMPORTS
 import win_unicode_console
 from colorama import Fore, Back, Style
 from colorama import init as colourinit
@@ -50,6 +58,8 @@ from colorama import init as colourinit
 import utils3.config as config
 import utils3.reporterror as reporterror
 
+# ALLOW OUR IMPORT ORDER
+# pylint: disable=wrong-import-order
 # TEST OS BEFORE IMPORTING THESE:
 if 'win' in platform.system().lower():
     from ctypes import windll
@@ -610,8 +620,9 @@ class PrintBanner(object):
     # ------------------------------------------------------------------
     def _get_longest_key(self):
         """Return the length of the longest key, as an integer."""
-        keys = [i.keys()[0] for i in self._info]
-        longest = max(map(len, keys))
+        keys = [list(i)[0] for i in self._info]
+#        longest = max(map(len, keys))
+        longest = max([len(i) for i in keys])
         return longest
 
     # ------------------------------------------------------------------
