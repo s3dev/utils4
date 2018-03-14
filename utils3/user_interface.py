@@ -621,7 +621,6 @@ class PrintBanner(object):
     def _get_longest_key(self):
         """Return the length of the longest key, as an integer."""
         keys = [list(i)[0] for i in self._info]
-#        longest = max(map(len, keys))
         longest = max([len(i) for i in keys])
         return longest
 
