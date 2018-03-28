@@ -44,6 +44,11 @@ Date        Programmer      Version     Update
                                         when determining the longest key.
                                         FIX02: Converted max(map(...)) to list comprehension.
                                         pylint (10/10)
+28.03.18    M. Critchard    1.2.0       Updated print_heading_.* methods to override bright style
+                                        to improve appearance in Windows CLI.
+                                        Removed exclusion of LIGHT.*_EX colours in the
+                                        _build_color_dict method to enable more combinations of
+                                        colour and style.
 ------------------------------------------------------------------------------------------------"""
 
 import inspect
@@ -369,22 +374,27 @@ class UserInterface(object):
     # ------------------------------------------------------------------
     def print_heading_cyan(self, text, padto=0):
         """Print black text on a cyan background."""
-        self.print_(text=text, fore='black', back='cyan', h_pad=padto)
+        self.print_(text=text, fore='black', back='cyan', style='normal', h_pad=padto)
 
     # ------------------------------------------------------------------
     def print_heading_green(self, text, padto=0):
         """Print black text on a green background."""
-        self.print_(text=text, fore='black', back='green', h_pad=padto)
+        self.print_(text=text, fore='black', back='green', style='normal', h_pad=padto)
+
+    # ------------------------------------------------------------------
+    def print_heading_red(self, text, padto=0):
+        """Print black text on a red background."""
+        self.print_(text=text, fore='black', back='lightred_ex', style='dim', h_pad=padto)
 
     # ------------------------------------------------------------------
     def print_heading_white(self, text, padto=0):
         """Print black text on a white background."""
-        self.print_(text=text, fore='black', back='white', h_pad=padto)
+        self.print_(text=text, fore='black', back='white', style='normal', h_pad=padto)
 
     # ------------------------------------------------------------------
     def print_heading_yellow(self, text, padto=0):
         """Print black text on a yellow background."""
-        self.print_(text=text, fore='black', back='yellow', h_pad=padto)
+        self.print_(text=text, fore='black', back='yellow', style='normal', h_pad=padto)
 
     # ------------------------------------------------------------------
     def print_alert(self, text):
@@ -451,13 +461,9 @@ class UserInterface(object):
             {'black': '\x1b[30m', 'blue': '\x1b[34m', ...,
              'white': '\x1b[37m', 'yellow': '\x1b[33m'}
 
-        DESIGN:
-        This function is built to specifically *remove* the LIGHT*_EX
-        colours from the output dictionary, as these colours are
-        accessed using print_()'s 'style' parameter.
         """
         # RETURN COMPILED DICTIONARY WITH LIGHT*_EX ITEMS REMOVED
-        return {k.lower():v for k, v in vars(class_).items() if not k.lower().startswith('light')}
+        return {k.lower():v for k, v in vars(class_).items()}
 
 
 class PrintBanner(object):
