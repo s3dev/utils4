@@ -17,7 +17,7 @@ Date        Programmer      Version     Update
                                         utils module.
 07.03.18    J. Berendt      1.0.1       Minor code formatting updates.
                                         Print statements changed to proper case.
-13.03.18    J. Berendt      1.1.0       Updated the input() function to use six.moves.input() 
+13.03.18    J. Berendt      1.1.0       Updated the input() function to use six.moves.input()
                                         for Py2/Py3 compatibility.
 ------------------------------------------------------------------------------------------------"""
 
@@ -30,7 +30,7 @@ import six
 from utils3 import config
 from utils3 import reporterror
 from utils3 import user_interface
-from _version import __version__
+from utils3._version import __version__
 
 # GLOBAL CONSTANTS / CLASS INSTANTIATIONS
 _UI = user_interface.UserInterface()
