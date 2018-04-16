@@ -1,5 +1,5 @@
 
-# utils3 v0.2.2
+# utils3 v0.3.1
 ---
 The **utils3** package is a continuation of `utils v6.1.5`, and has been updated to support Python 3.
 
