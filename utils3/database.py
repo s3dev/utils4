@@ -19,8 +19,12 @@ UPDATE LOG:
 Date        Programmer      Version     Update
 05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
                                         utils module.
+27.04.18    J. Berendt      1.1.0       Updated SQLite class to:
+                                        - Create the database file if it doesn't exist
+                                        - Added the .vacuum() function which deflates the database.
 ------------------------------------------------------------------------------------------------"""
 
+import os
 from utils3 import utils
 from utils3 import user_interface as ui
 
@@ -53,9 +57,42 @@ class Database(object):
         property to False.
         """
 
-        # CLOSE THE DATABASE CONNECTION
-        self.conn.close()
-        self.connected = False
+        # TEST FOR CONNECTION
+        if self._active_connection():
+            # CLOSE THE DATABASE CONNECTION
+            self.conn.close()
+            self.connected = False
+
+    # ------------------------------------------------------------------
+    def _active_connection(self):
+        """General database connection test.
+
+        This should be used before performing operations which require
+        an active connection.
+        """
+
+        success = False
+        if self.connected:
+            success = True
+        else:
+            self._ui.print_warning('\nThe database must be connected first.')
+        return success
+
+
+    # ------------------------------------------------------------------
+    def _table_exists(self, sql):
+        """
+        Run the passed sql statement to test if a table exists, and
+        return the result as a boolean value.
+        """
+
+        try:
+            # RUN QUERY >> CONVERT RESULT TO BOOLEAN
+            return bool(self.cur.execute(sql).fetchall()[0][0])
+
+        except Exception as err:
+            # USER NOTIFICATION
+            self._ui.print_error(err)
 
 
     # ------------------------------------------------------------------
@@ -94,22 +131,6 @@ class Database(object):
 
         # RETURN THE CLEANED LIST OF STATEMENTS
         return cmds
-
-
-    # ------------------------------------------------------------------
-    def _table_exists(self, sql):
-        """
-        Run the passed sql statement to test if a table exists, and
-        return the result as a boolean value.
-        """
-
-        try:
-            # RUN QUERY >> CONVERT RESULT TO BOOLEAN
-            return bool(self.cur.execute(sql).fetchall()[0][0])
-
-        except Exception as err:
-            # USER NOTIFICATION
-            self._ui.print_error(err)
 
 
 # ----------------------------------------------------------------------
@@ -551,10 +572,8 @@ class SQLite(Database):
     def connect(self):
         """Connect to the SQLite database file."""
 
-        # TEST IF THE DB FILE EXISTS
-        if utils.fileexists(self._db_file_path):
-            # CONNECT
-            self._connect()
+        # CONNECT
+        self._connect()
 
 
     # ------------------------------------------------------------------
@@ -587,6 +606,40 @@ class SQLite(Database):
 
 
     # ------------------------------------------------------------------
+    def vacuum(self):
+        """
+        Shrink the size of the database file.
+
+        Per Ref01:
+        "The VACUUM command rebuilds the database file, repacking it
+        into a minimal amount of disk space. There are several reasons
+        an application might do this:
+
+        1) Unless SQLite is running in "auto_vacuum=FULL" mode, when a
+           large amount of data is deleted from the database file it
+           leaves behind empty space, or "free" database pages. This
+           means the database file might be larger than strictly
+           necessary. Running VACUUM to rebuild the database reclaims
+           this space and reduces the size of the database file.
+
+        2) Frequent inserts, updates, and deletes can cause the
+           database file to become fragmented - where data for a single
+           table or index is scattered around the database file.
+           Running VACUUM ensures that each table and index is
+           largely stored contiguously within the database file. In
+           some cases, VACUUM may also reduce the number of partially
+           filled pages in the database, reducing the size of the
+           database file further.""
+
+        * Ref01: https://www.sqlite.org/lang_vacuum.html
+        """
+        # TEST FOR CONNECTION
+        if self._active_connection():
+            # RUN VACUUM
+            self.cur.execute('vacuum')
+
+
+    # ------------------------------------------------------------------
     def _connect(self):
         """
         Connect to the database file, update class properties
@@ -594,6 +647,9 @@ class SQLite(Database):
         """
 
         try:
+            # TEST IF FILE EXISTS >> CREATE IT
+            if not self._db_file_exists:
+                open(self._db_file_exists, 'a').close()
             # MAKE THE CONNECTION
             dbo = utils.dbconn_sqlite(db_path=self._db_file_path)
             # SET CLASS PROPERTIES
@@ -602,6 +658,12 @@ class SQLite(Database):
             self.connected  = True
         except Exception:
             self.connected = False
+
+
+    # ------------------------------------------------------------------
+    def _db_file_exists(self):
+        """Test is database file exists."""
+        return os.path.exists(self._db_file_path)
 
 
 # ----------------------------------------------------------------------
