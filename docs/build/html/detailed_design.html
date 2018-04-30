@@ -88,7 +88,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True of the file exists, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True of the file exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -256,7 +256,7 @@ character.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sql</strong> (<em>str</em>) &#8211; Database specific SQL command to check if a
 table exists.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -275,7 +275,7 @@ require an active connection.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there is an active connection, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there is an active connection, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -439,7 +439,7 @@ the mysql.connection library, are listed here:
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This function wraps the local <code class="docutils literal"><span class="pre">MySQL._table_exists()</span></code>
 function and provides the SQL statement to be run.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -531,7 +531,7 @@ specific connection.</td>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the script and [optional commit] are successful,
-False otherwise.</p>
+otherwise False.</p>
 </td>
 </tr>
 </tbody>
@@ -589,7 +589,7 @@ cx_Oracle&#8217;s <code class="docutils literal"><span class="pre">execute()</sp
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the script and [optional commit] are successful,
-False otherwise.</p>
+otherwise False.</p>
 </td>
 </tr>
 </tbody>
@@ -610,7 +610,7 @@ False otherwise.</p>
 <code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
 statement to be run.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True is the table exists, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True is the table exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -721,7 +721,7 @@ blank.</p>
 general <code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides
 the SQL statement to be run.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -789,7 +789,7 @@ created automatically.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the database file exists, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the database file exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -815,7 +815,7 @@ created automatically.</td>
 <code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
 statement to be run.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
 </tr>
 </tbody>
 </table>
@@ -856,6 +856,201 @@ of the database file further.&#8221;&#8220;</li>
 <li>Ref01: <a class="reference external" href="https://www.sqlite.org/lang_vacuum.html">https://www.sqlite.org/lang_vacuum.html</a></li>
 </ul>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-dict2obj">
+<span id="dict2obj-py"></span><h2><strong>dict2obj.py</strong><a class="headerlink" href="#module-dict2obj" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body">This class module is used to convert a dictionary (or JSON
+file) into a object - where the dictionary&#8217;s key/value
+pairs become object attributes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body">Linux/Windows | Python 3.5</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body">J Berendt</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body">Basic concept <a class="reference external" href="https://stackoverflow.com/a/1639197/6340496">attribution</a>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="dict2obj.Dict2Obj">
+<em class="property">class </em><code class="descclassname">dict2obj.</code><code class="descname">Dict2Obj</code><span class="sig-paren">(</span><em>dictionary=None</em>, <em>source='dict'</em>, <em>filepath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dict2obj.Dict2Obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Python object from a standard dictionary, or JSON file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dictionary</strong> (<em>dict</em>) &#8211; A standard Python dictionary where all
+key/value pairs will be converted into an object.</li>
+<li><strong>source</strong> (<em>str</em>) &#8211; <p>Source for the conversion.</p>
+<ul>
+<li>&#8216;dict&#8217;: a standard Python dictionary</li>
+<li>&#8216;json&#8217;: uses content from a JSON file</li>
+</ul>
+</li>
+<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file to be used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first last">A Python object is created from the passed dictionary (or JSON
+file), where each of the dictionary&#8217;s key/value pairs is turned
+into an object attribute/value pair.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>1) The dictionary or JSON file <strong>must be in a flat format</strong>.
+In other words, functionality <strong>does not support</strong> nested
+dictionaries and/or lists.</p>
+<p class="last">2) This can be useful when loading a JSON config file into
+memory, as you can then access it like an object, rather than a
+dictionary.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To convert a dictionary into an object:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.dict2obj</span> <span class="k">import</span> <span class="n">Dict2Obj</span>
+
+<span class="c1"># A SAMPLE DICTIONARY</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;This is a title.&#39;</span><span class="p">)</span>
+<span class="c1"># CONVERT IT</span>
+<span class="n">my_obj</span> <span class="o">=</span> <span class="n">Dict2Obj</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+<span class="c1"># TEST IT</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_obj</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">title</span><span class="o">.</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dict2obj.Dict2Obj.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>dictionary=None</em>, <em>source='dict'</em>, <em>filepath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dict2obj.Dict2Obj.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dict2obj.Dict2Obj._read_json">
+<em class="property">static </em><code class="descname">_read_json</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &rarr; dict<a class="headerlink" href="#dict2obj.Dict2Obj._read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read values from a JSON file into a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary containing the JSON data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dict2obj.Dict2Obj._validate">
+<code class="descname">_validate</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the following validation tests:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The &#8216;source&#8217; value is valid</li>
+<li>If &#8216;json&#8217; source, a file path is provided</li>
+<li>If &#8216;json&#8217; source, the provided file path exists</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
+(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</li>
+<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if <strong>all</strong> tests pass, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dict2obj.Dict2Obj._validate_fileexists">
+<em class="property">static </em><code class="descname">_validate_fileexists</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_fileexists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation test: If a &#8216;json&#8217; source, test the file path exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
+(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</li>
+<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the source is &#8216;dict&#8217;; or if source is &#8216;json&#8217; and
+the file exists, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dict2obj.Dict2Obj._validate_source">
+<em class="property">static </em><code class="descname">_validate_source</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation test: If a &#8216;json&#8217; source, test a file path is
+provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
+(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</li>
+<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the source is &#8216;dict&#8217;; or if source is &#8216;json&#8217; and a
+file path is provided, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="dict2obj.Dict2Obj._validate_source_value">
+<em class="property">static </em><code class="descname">_validate_source_value</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation test: The value of the <code class="docutils literal"><span class="pre">source</span></code> parameter is valid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
+(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if a valid source, otherwise False.</td>
 </tr>
 </tbody>
 </table>

@@ -69,7 +69,7 @@ class Database(object):
             require an active connection.
 
         Returns:
-            True if there is an active connection, False otherwise.
+            True if there is an active connection, otherwise False.
 
         """
         success = False
@@ -88,7 +88,7 @@ class Database(object):
                 table exists.
 
         Returns:
-            True if the table exists, False otherwise.
+            True if the table exists, otherwise False.
 
         """
         try:
@@ -261,7 +261,7 @@ class MySQL(Database):
             function and provides the SQL statement to be run.
 
         Returns:
-            True if the table exists, False otherwise.
+            True if the table exists, otherwise False.
 
         """
         # BUILD SQL STATEMENT
@@ -434,7 +434,7 @@ class Oracle(Database):
 
         Returns:
             True if the script and [optional commit] are successful,
-            False otherwise.
+            otherwise False.
 
         """
         try:
@@ -472,7 +472,7 @@ class Oracle(Database):
             statement to be run.
 
         Returns:
-            True is the table exists, False otherwise.
+            True is the table exists, otherwise False.
 
         """
         # BUILD THE SQL STATEMENT
@@ -500,7 +500,7 @@ class Oracle(Database):
 
         Returns:
             True if the script and [optional commit] are successful,
-            False otherwise.
+            otherwise False.
 
         """
         try:
@@ -589,7 +589,7 @@ class SQLite(Database):
             statement to be run.
 
         Returns:
-            True if the table exists, False otherwise.
+            True if the table exists, otherwise False.
 
         """
         # BUILD THE SQL STATEMENT
@@ -667,7 +667,7 @@ class SQLite(Database):
         """Test if the database file exists.
 
         Returns:
-            True if the database file exists, False otherwise.
+            True if the database file exists, otherwise False.
         """
         return os.path.exists(self._db_file_path)
 
@@ -780,7 +780,7 @@ class SQLServer(Database):
             the SQL statement to be run.
 
         Returns:
-            True if the table exists, False otherwise.
+            True if the table exists, otherwise False.
 
         """
         # BUILD SQL STATEMENT

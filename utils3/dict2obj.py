@@ -1,28 +1,17 @@
-"""------------------------------------------------------------------------------------------------
-Module:     dict2obj
-Platform:   Linux / Windows
-Py Ver:     2.7
-Purpose:    Class module used to convert a dictionary or JSON file into a class object.
+"""
+:Purpose:   This class module is used to convert a dictionary (or JSON
+            file) into a object - where the dictionary's key/value
+            pairs become object attributes.
 
-Developer:  J. Berendt
-Email:      jeremy.berendt@73rdstreetdevelopment.co.uk
+:Platform:  Linux/Windows | Python 3.5
+:Developer: J Berendt
+:Email:     support@73rdstreetdevelopment.co.uk
 
-Comments:   Basic concept attribution: https://stackoverflow.com/a/1639197/6340496
+:Comments:  Basic concept `attribution`_.
 
-Use:        > Refer to help(Dict2Obj)
-            >
+.. _attribution: https://stackoverflow.com/a/1639197/6340496
 
----------------------------------------------------------------------------------------------------
-UPDATE LOG:
-Date        Programmer      Version     Update
-07.02.18    J. Berendt      0.1.0       Written  pylint (10/10)
-08.03.18    J. Berendt      0.2.0       Incorporated into the utils3 package for use with the
-                                        config.loadconfig() function.
-                                        Updated to test value passed to the 'source' parameter.
-                                        Updated to work with Py3.
-                                        Minor docstring updates.
-13.03.18    J. Berendt      0.2.1       Updated JSON reading to also close file, for Py3 support.
-------------------------------------------------------------------------------------------------"""
+"""
 
 import os
 import json
@@ -30,47 +19,50 @@ import json
 # ALLOW SMALL CLASS
 # pylint: disable=too-few-public-methods
 
-
 class Dict2Obj(object):
     """
     Create a Python object from a standard dictionary, or JSON file.
 
-    A Python object is created from the passed dictionary or JSON file,
-    where each key/value pair is turned into an attribute/value pair
-    of the object.
+    Args:
+        dictionary (dict): A standard Python dictionary where all
+            key/value pairs will be converted into an object.
+        source (str): Source for the conversion.
 
-    This can be useful when loading a config file into memory, as you
-    can then access it like an object, rather than a dictionary.
+            * 'dict': a standard Python dictionary
+            * 'json': uses content from a JSON file
+
+        filepath (str): Full file path to the JSON file to be used.
+
+    :Design:
+        A Python object is created from the passed dictionary (or JSON
+        file), where each of the dictionary's key/value pairs is turned
+        into an object attribute/value pair.
+
+    Note:
+        1) The dictionary or JSON file **must be in a flat format**.
+        In other words, functionality **does not support** nested
+        dictionaries and/or lists.
+
+        2) This can be useful when loading a JSON config file into
+        memory, as you can then access it like an object, rather than a
+        dictionary.
+
+    :Example:
+        To convert a dictionary into an object::
+
+            from utils3.dict2obj import Dict2Obj
+
+            # A SAMPLE DICTIONARY
+            d = dict(a=1, b=2, title='This is a title.')
+            # CONVERT IT
+            my_obj = Dict2Obj(dictionary=d)
+            # TEST IT
+            print(my_obj.title)
+            > This is a title.
+
     """
-
     def __init__(self, dictionary=None, source='dict', filepath=None):
-        """
-        Transform a Python dictionary into object attributes.
-
-        The dictionary may be either passed in directly, or loaded from
-        a JSON file.
-
-        PARAMETERS:
-        - dictionary
-        A standard Python dictionary where all key/value pairs will be
-        converted into an object.
-        - source (default 'dict')
-        This is the source of the dictionary.  Valid strings are:
-            - 'dict'
-            - 'json'
-            Where 'dict' is a standard Python dictionary, and 'json' uses a
-            JSON file as the dictionary source.
-        - filepath
-        Path to the JSON file to be used.
-
-        USE:
-        > from dict2obj import Dict2Obj
-        > d = dict(a=1, b=2, title='This is a title.')
-        > my_obj = Dict2Obj(dictionary=d)
-        > print my_obj.title
-        > This is a title.
-        """
-
+        """Class initialiser."""
         self._dictionary = dictionary
         self._source = source
         self._filepath = filepath
@@ -89,18 +81,43 @@ class Dict2Obj(object):
             # LOOP THROUGH THE DICT AND SET CLASS ATTRIBUTES
             for k, v in dict_.items(): setattr(self, k, v)
 
+    def _validate(self, source, filepath) -> bool:
+        """
+        Run the following validation tests:
 
-    # ------------------------------------------------------------------
-    def _validate(self, source, filepath):
-        """Run all validation functions."""
+            * The 'source' value is valid
+            * If 'json' source, a file path is provided
+            * If 'json' source, the provided file path exists
+
+        Args:
+            source (str): Source for the conversion.
+                (i.e. 'dict' or 'json')
+            filepath (str): Full file path to the JSON file.
+
+        Returns:
+            True if **all** tests pass, otherwise False.
+
+        """
         success = self._validate_source_value(source=source)
         if success: success = self._validate_source(source=source, filepath=filepath)
         if success: success = self._validate_fileexists(source=source, filepath=filepath)
         return success
 
     @staticmethod
-    def _validate_fileexists(source, filepath):
-        """Test the file exists, if the source is JSON."""
+    def _validate_fileexists(source, filepath) -> bool:
+        """
+        Validation test: If a 'json' source, test the file path exists.
+
+        Args:
+            source (str): Source for the conversion.
+                (i.e. 'dict' or 'json')
+            filepath (str): Full file path to the JSON file.
+
+        Returns:
+            True if the source is 'dict'; or if source is 'json' and
+            the file exists, otherwise False.
+
+        """
         success = False
         # ONLY TEST IF SOURCE IS JSON
         if source.lower() == 'json':
@@ -113,8 +130,21 @@ class Dict2Obj(object):
         return success
 
     @staticmethod
-    def _validate_source(source, filepath):
-        """Test the source of the dictionary is valid."""
+    def _validate_source(source, filepath) -> bool:
+        """
+        Validation test: If a 'json' source, test a file path is
+        provided.
+
+        Args:
+            source (str): Source for the conversion.
+                (i.e. 'dict' or 'json')
+            filepath (str): Full file path to the JSON file.
+
+        Returns:
+            True if the source is 'dict'; or if source is 'json' and a
+            file path is provided, otherwise False.
+
+        """
         success = False
         if all([source.lower() == 'json', filepath is None]):
             print('A file path must be provided for the JSON file.')
@@ -123,8 +153,18 @@ class Dict2Obj(object):
         return success
 
     @staticmethod
-    def _validate_source_value(source):
-        """Validate the value passed to the source parameter."""
+    def _validate_source_value(source) -> bool:
+        """
+        Validation test: The value of the ``source`` parameter is valid.
+
+        Args:
+            source (str): Source for the conversion.
+                (i.e. 'dict' or 'json')
+
+        Returns:
+            True if a valid source, otherwise False.
+
+        """
         source_values = ['dict', 'json']
         success = False
         if source in ['dict', 'json']:
@@ -135,8 +175,17 @@ class Dict2Obj(object):
         return success
 
     @staticmethod
-    def _read_json(filepath):
-        "Read values from json and convert to dictionary."
+    def _read_json(filepath) -> dict:
+        """
+        Read values from a JSON file into a dictionary.
+
+        Args:
+            filepath (str): Full file path to the JSON file.
+
+        Returns:
+            A dictionary containing the JSON data.
+
+        """
         with open(filepath) as f:
             data = json.loads(f.read())
         return data

@@ -101,7 +101,7 @@ def _file_exists(fullpath) -> bool:
     """Test if the requested config file exists.
 
     Returns:
-        True of the file exists, False otherwise.
+        True of the file exists, otherwise False.
 
     """
     # TEST IF THE FILE EXISTS
