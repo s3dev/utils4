@@ -117,7 +117,16 @@ an object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">By default, this function will search the program&#8217;s directory
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>str</em>) &#8211; File name or (preferably) the <strong>explicit</strong> full
+path of the config (JSON) file to be loaded.</li>
+<li><strong>return_as_object</strong> (<em>bool</em>) &#8211; If True, the dictionary is converted
+into an object, where the dictionary key/values are object
+attribute/values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">By default, this function will search the program&#8217;s directory
 for a file named &#8216;config.json&#8217;.  If the config file lives
 somewhere else, or you&#8217;re using an IDE to develop, the safest
 option is to <strong>explicitly define the path to the config file</strong>.</p>
@@ -128,15 +137,6 @@ config file lives.</p>
 and return the JSON file into an object, rather than a
 dictionary. This enables you to access the values from object
 attributes, rather than from dictionary keys.  See use option 2.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filename</strong> (<em>str</em>) &#8211; File name or (preferably) the <strong>explicit</strong> full
-path of the config (JSON) file to be loaded.</li>
-<li><strong>return_as_object</strong> (<em>bool</em>) &#8211; If True, the dictionary is converted
-into an object, where the dictionary key/values are object
-attribute/values.</li>
-</ul>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Assumptions:</th><td class="field-body"><ul class="first simple">
@@ -163,6 +163,704 @@ attribute/values.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-database">
+<span id="database-py"></span><h2><strong>database.py</strong><a class="headerlink" href="#module-database" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This class module provides a lightweight wrapper around
+various database providers, to help make connecting to and
+interfacing with the databases easier.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example for how to connect to an Oracle database.  The other
+database connections follow similar logic:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">database</span>
+
+<span class="n">ora</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">Oracle</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;my_host&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;my_user&#39;</span><span class="p">,</span>
+                      <span class="n">passowrd</span><span class="o">=</span><span class="s1">&#39;my_pass&#39;</span><span class="p">)</span>
+<span class="n">ora</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">ora</span><span class="o">.</span><span class="n">connected</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="database.Database">
+<em class="property">class </em><code class="descclassname">database.</code><code class="descname">Database</code><a class="headerlink" href="#database.Database" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Database super-class is used to hold general properties or
+functions used by the more specific sub-classes.  In general, you
+shouldn&#8217;t need to call this super-class externally.</p>
+<dl class="method">
+<dt id="database.Database.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Database.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="database.Database._parse_script">
+<em class="property">static </em><code class="descname">_parse_script</code><span class="sig-paren">(</span><em>script_string</em><span class="sig-paren">)</span> &rarr; list<a class="headerlink" href="#database.Database._parse_script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the passed <code class="docutils literal"><span class="pre">script_string</span></code> and return a list of SQL
+statements to be executed individually.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>script_string</strong> (<em>str</em>) &#8211; The string value of the script to be
+parsed.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The design is very simple in that a list of statements is
+created and returned using a split() function on the &#8216;;&#8217;
+character.</p>
+<p>Additionally, parsed statements containing <em>only</em> the
+newline character (\n) are removed.  Also, the newline
+character is removed from a line starting with the newline
+character.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of SQL commands to be run individually.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Database._table_exists">
+<code class="descname">_table_exists</code><span class="sig-paren">(</span><em>sql</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Database._table_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a table exists, using the provided script.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sql</strong> (<em>str</em>) &#8211; Database specific SQL command to check if a
+table exists.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Database.connection_active">
+<code class="descname">connection_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Database.connection_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>General database connection test.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This should be used before performing operations which
+require an active connection.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there is an active connection, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Database.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Database.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect a database connection, and change the .connected
+property to False.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="database.MySQL">
+<em class="property">class </em><code class="descclassname">database.</code><code class="descname">MySQL</code><span class="sig-paren">(</span><em>host=None</em>, <em>database=None</em>, <em>user=None</em>, <em>password=None</em>, <em>port=3306</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">mysql-connector</span></code>, and
+used to handle database objects for MySQL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>host</strong> (<em>str</em>) &#8211; IP address or machine name of the host or database
+server.</li>
+<li><strong>database</strong> (<em>str</em>) &#8211; The name of the database to be connected.</li>
+<li><strong>user</strong> (<em>str</em>) &#8211; Login username</li>
+<li><strong>password</strong> (<em>str</em>) &#8211; Login password</li>
+<li><strong>port</strong> (<em>int</em>) &#8211; The TCP/IP port of the MySQL server; must be an
+integer.</li>
+<li><strong>from_file</strong> (<em>bool</em>) &#8211; Load the database credentials directly from a
+config file.
+(Valid keys: host, database, port, user, password)</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; Full path to the file holding the database
+credentials.  Required if <code class="docutils literal"><span class="pre">from_file</span></code> is True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first">
+<li><p class="first">mysql-connector (2.1.4)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Installation: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mysql-connector==2.1.4</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to a <strong>MySQL</strong> database:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">MySQL</span>
+
+<span class="c1"># LOAD CREDENTIALS</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="n">MySQL</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;my_host&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;my_db&#39;</span><span class="p">,</span>
+            <span class="n">user</span><span class="o">=</span><span class="s1">&#39;my_user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;my_pass&#39;</span><span class="p">)</span>
+
+<span class="c1"># CONNECT TO THE DB</span>
+<span class="n">sql</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="c1"># CHECK CONNECTION WAS SUCCESSFUL</span>
+<span class="n">sql</span><span class="o">.</span><span class="n">connected</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="database.MySQL.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>host=None</em>, <em>database=None</em>, <em>user=None</em>, <em>password=None</em>, <em>port=3306</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.MySQL._connect">
+<code class="descname">_connect</code><span class="sig-paren">(</span><em>creds</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL._connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the database using the passed credentials, update
+class properties accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>creds</strong> (<em>dict</em>) &#8211; A dictionary of login credentials.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The cursor is set with the buffered parameter set to True;
+allowing the cursor to fetch all rows, rather than being
+&#8216;lazily&#8217; loaded.</p>
+<p class="last"><a class="reference external" href="https://stackoverflow.com/a/33632767/6340496">Design source</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.MySQL._table_exists">
+<code class="descname">_table_exists</code><span class="sig-paren">(</span><em>sql</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL._table_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a table exists and return a boolean result.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">This function is used rather than the general
+<code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function as the MySQL
+<code class="docutils literal"><span class="pre">cur.execute()</span></code> object does not have a fetchall attribute,
+so the actions must be done in separate steps.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.MySQL.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a database connection and update class attributes
+accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to create a connection to a MySQL database
+using the provided login parameters, or directly from a
+config file. If a login detail is not provided, the user is
+prompted; which can be used as a security feature.</p>
+<p class="last">Several other functions, which can be found in the utils3
+module, are working in the background for the credential
+validation and handling the actual database connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To prompt the user for login details, leave the parameter(s)
+blank.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body">The connection argument keys for a MySQL connection using
+the mysql.connection library, are listed here:
+<a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html">dev.mysql</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.MySQL.table_exists">
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.MySQL.table_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a table exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This function wraps the local <code class="docutils literal"><span class="pre">MySQL._table_exists()</span></code>
+function and provides the SQL statement to be run.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="database.Oracle">
+<em class="property">class </em><code class="descclassname">database.</code><code class="descname">Oracle</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">cx_Oracle</span></code>, where
+commonly used functionality have been added as class methods and
+functions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>host</strong> (<em>str</em>) &#8211; Database name, or TNS host.</li>
+<li><strong>user</strong> (<em>str</em>) &#8211; Login username</li>
+<li><strong>password</strong> (<em>str</em>) &#8211; Login password</li>
+<li><strong>from_file</strong> (<em>bool</em>) &#8211; Load the database credentials directly from
+a config file.
+(Valid keys: host, user, password)</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; Full path to the file holding the database
+credentials.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to an <strong>Oracle</strong> database:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">Oracle</span>
+
+<span class="c1"># LOAD CREDENTIALS</span>
+ <span class="n">ora</span> <span class="o">=</span> <span class="n">Oracle</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;my_host&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;my_user&#39;</span><span class="p">,</span>
+              <span class="n">password</span><span class="o">=</span><span class="s1">&#39;my_pass&#39;</span><span class="p">)</span>
+
+<span class="c1"># CONNECT TO THE DB</span>
+<span class="n">ora</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="c1"># CHECK CONNECTION WAS SUCCESSFUL</span>
+<span class="n">ora</span><span class="o">.</span><span class="n">connected</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="database.Oracle.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Oracle._connect">
+<code class="descname">_connect</code><span class="sig-paren">(</span><em>creds</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle._connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a database connection and update class properties
+accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) &#8211; A dictionary of login credentials.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">In addition to setting the &#8216;typical&#8217; class properties, a
+connection string property has been added to this Oracle
+specific connection.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Oracle._execute_commit">
+<code class="descname">_execute_commit</code><span class="sig-paren">(</span><em>sql</em>, <em>commit</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Oracle._execute_commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute an SQL statement and commit if instructed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sql</strong> (<em>str</em>) &#8211; SQL script to be executed.</li>
+<li><strong>commit</strong> (<em>bool</em>) &#8211; Commit after script execute has finished?</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This is a simple execute / commit wrapper around cx_Oracle&#8217;s
+<code class="docutils literal"><span class="pre">execute()</span></code> method.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the script and [optional commit] are successful,
+False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Oracle.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a database connection and update class attributes
+accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to create a connection to an Oracle
+database using the provided login parameters, or directly
+from a config file. If a login detail is not provided, the
+user is prompted; which can be used as a security feature.</p>
+<p class="last">Several other functions, which can be found in the utils3
+module, are working in the background for the credential
+validation and handling the actual database connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To prompt the user for login details, leave the parameter(s)
+blank.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Oracle.execute_script">
+<code class="descname">execute_script</code><span class="sig-paren">(</span><em>sql_file</em>, <em>commit=False</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Oracle.execute_script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a full SQL script on the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sql_file</strong> (<em>str</em>) &#8211; The full file path to the script to be run.</li>
+<li><strong>commit</strong> (<em>bool</em>) &#8211; Commit after the script has finished?</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This method is a wrapper around cx_Oracle&#8217;s <code class="docutils literal"><span class="pre">execute()</span></code>
+method and is designed specifically to handle a full Oracle
+SQL script consisting of multiple SQL statements, as
+cx_Oracle cannot natively handle this.</p>
+<p>Once the script is parsed into individual statements using
+the &#8216;;&#8217; character, each individual statement is run using
+cx_Oracle&#8217;s <code class="docutils literal"><span class="pre">execute()</span></code> method.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the script and [optional commit] are successful,
+False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.Oracle.table_exists">
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Oracle.table_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a table exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This is an Oracle specific function which wraps the general
+<code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
+statement to be run.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True is the table exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="database.SQLServer">
+<em class="property">class </em><code class="descclassname">database.</code><code class="descname">SQLServer</code><span class="sig-paren">(</span><em>server=None</em>, <em>database=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">pyodbc</span></code>, and used to
+handle database objects for SQL Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> (<em>str</em>) &#8211; Name of the server where the SQL Server database
+lives.</li>
+<li><strong>database</strong> (<em>str</em>) &#8211; The name of the database to be connected.</li>
+<li><strong>user</strong> (<em>str</em>) &#8211; Login username</li>
+<li><strong>password</strong> (<em>str</em>) &#8211; Login password</li>
+<li><strong>from_file</strong> (<em>bool</em>) &#8211; Load the database credentials directly from a
+config file.
+(Valid keys: server, database, user, password)</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; Full path to the file holding the database
+credentials.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to an <strong>SQLServer</strong> database:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">SQLServer</span>
+
+<span class="c1"># LOAD CREDENTIALS</span>
+ <span class="n">sql</span> <span class="o">=</span> <span class="n">SQLServer</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="s1">&#39;my_server&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;my_db&#39;</span><span class="p">,</span>
+                 <span class="n">user</span><span class="o">=</span><span class="s1">&#39;my_user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;my_pass&#39;</span><span class="p">)</span>
+
+<span class="c1"># CONNECT TO THE DB</span>
+<span class="n">sql</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="c1"># CHECK CONNECTION WAS SUCCESSFUL</span>
+<span class="n">sql</span><span class="o">.</span><span class="n">connected</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="database.SQLServer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>server=None</em>, <em>database=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLServer._connect">
+<code class="descname">_connect</code><span class="sig-paren">(</span><em>creds</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer._connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the database using the passed credentials, update
+class properties accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) &#8211; A dictionary of login credentials.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLServer.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the database, and update class attributes
+accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to create a connection to a SQL Server
+database using the provided login parameters, or directly
+from a config file. If a login detail is not provided, the
+user is prompted; which can be used as a security feature.</p>
+<p class="last">Several other functions, which can be found in the utils3
+module, are working in the background for the credential
+validation and handling the actual database connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To prompt the user for login details, leave the parameter(s)
+blank.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLServer.table_exists">
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.SQLServer.table_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a table exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This is a SQL Server specific function which wraps the
+general <code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides
+the SQL statement to be run.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="database.SQLite">
+<em class="property">class </em><code class="descclassname">database.</code><code class="descname">SQLite</code><span class="sig-paren">(</span><em>db_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">sqlite3</span></code>, and used to
+handle database objects for SQLite.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>db_file_path</strong> (<em>str</em>) &#8211; Full file path to the SQLite database file.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to an <strong>SQLite</strong> database:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">SQLite</span>
+
+<span class="c1"># LOAD CREDENTIALS</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="n">SQLite</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="s1">&#39;path/to/data.db&#39;</span><span class="p">)</span>
+
+<span class="c1"># CONNECT TO THE DB</span>
+<span class="n">sql</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="c1"># CHECK CONNECTION WAS SUCCESSFUL</span>
+<span class="n">sql</span><span class="o">.</span><span class="n">connected</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="database.SQLite.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>db_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLite._connect">
+<code class="descname">_connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite._connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the database file, and update class attributes
+accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">Before connecting to the database file, this function tests
+if the file exists.  If the file does not exist, it is
+created automatically.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLite._db_file_exists">
+<code class="descname">_db_file_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.SQLite._db_file_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the database file exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the database file exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLite.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the SQLite database file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLite.table_exists">
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.SQLite.table_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a table exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This is a SQLite specific function which wraps the general
+<code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
+statement to be run.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="database.SQLite.vacuum">
+<code class="descname">vacuum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.vacuum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shrink the size of the database file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Per Ref01:
+&#8220;The VACUUM command rebuilds the database file, repacking it
+into a minimal amount of disk space. There are several
+reasons an application might do this:</p>
+<ol class="arabic simple">
+<li>Unless SQLite is running in &#8220;auto_vacuum=FULL&#8221; mode, when
+a large amount of data is deleted from the database file
+it leaves behind empty space, or &#8220;free&#8221; database pages.
+This means the database file might be larger than
+strictly necessary. Running VACUUM to rebuild the
+database reclaims this space and reduces the size of the
+database file.</li>
+<li>Frequent inserts, updates, and deletes can cause the
+database file to become fragmented - where data for a
+single table or index is scattered around the database
+file. Running VACUUM ensures that each table and index is
+largely stored contiguously within the database file. In
+some cases, VACUUM may also reduce the number of
+partially filled pages in the database, reducing the size
+of the database file further.&#8221;&#8220;</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">References:</th><td class="field-body"><ul class="first last simple">
+<li>Ref01: <a class="reference external" href="https://www.sqlite.org/lang_vacuum.html">https://www.sqlite.org/lang_vacuum.html</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>

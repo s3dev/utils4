@@ -27,6 +27,13 @@ def loadconfig(filename='config.json', return_as_obj=False):
     Load a program's JSON config file and return it as a dictionary or
     an object.
 
+    Args:
+        filename (str): File name or (preferably) the **explicit** full
+            path of the config (JSON) file to be loaded.
+        return_as_object (bool): If True, the dictionary is converted
+            into an object, where the dictionary key/values are object
+            attribute/values.
+
     :Design:
         By default, this function will search the program's directory
         for a file named 'config.json'.  If the config file lives
@@ -41,13 +48,6 @@ def loadconfig(filename='config.json', return_as_obj=False):
         and return the JSON file into an object, rather than a
         dictionary. This enables you to access the values from object
         attributes, rather than from dictionary keys.  See use option 2.
-
-    Args:
-        filename (str): File name or (preferably) the **explicit** full
-            path of the config (JSON) file to be loaded.
-        return_as_object (bool): If True, the dictionary is converted
-            into an object, where the dictionary key/values are object
-            attribute/values.
 
     :Assumptions:
         * The config file is a JSON file
