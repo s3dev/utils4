@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modules &#8212; utils3 - vx.x.x</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'x.x.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="utils3 - vx.x.x" href="index.html" />
+    <link rel="prev" title="The Docs" href="index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>utils3 - vx.x.x</span></a></h1>
+        <h2 class="heading"><span>Modules</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">The Docs</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-config">
+<span id="config-py"></span><h2><strong>config.py</strong><a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h2>
+<p>Developer:  J. Berendt
+Email:      <a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+<dl class="docutils">
+<dt>Use:        &gt; from utils3 import config</dt>
+<dd>&gt; cfg = config.loadconfig()
+&gt; my_param = cfg[&#8216;my_param&#8217;]</dd>
+</dl>
+<dl class="docutils">
+<dt>05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7</dt>
+<dd>utils module.</dd>
+<dt>06.03.18    J. Berendt      1.1.0       GENERAL:</dt>
+<dd>Removed devmode parameter from loadconfig() function.
+Updated docstring for loadconfig().  pylint (10/10)</dd>
+<dt>08.03.18    J. Berendt      1.2.0       Added the return_as_object parameter to the loadconfig()</dt>
+<dd>function; which is used to convert the key/value dictionary
+pairs to object attribute/value pairs.  pylint (10/10)</dd>
+</dl>
+<hr class="docutils" />
+<dl class="function">
+<dt id="config._file_exists">
+<code class="descclassname">config.</code><code class="descname">_file_exists</code><span class="sig-paren">(</span><em>fullpath</em><span class="sig-paren">)</span><a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a boolean value if the file exists.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="config._fromjson">
+<code class="descclassname">config.</code><code class="descname">_fromjson</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return JSON file content as a dictionary.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="config.loadconfig">
+<code class="descclassname">config.</code><code class="descname">loadconfig</code><span class="sig-paren">(</span><em>filename='config.json'</em>, <em>return_as_obj=False</em><span class="sig-paren">)</span><a class="headerlink" href="#config.loadconfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a program&#8217;s JSON config file and return it as a dictionary or
+an object.</p>
+<p>DESIGN:
+By default, this function will search the program&#8217;s directory for
+a file named &#8216;config.json&#8217;.  If the config file lives somewhere
+else, or you&#8217;re using an IDE to develop, the safest option is to
+<strong>explicitly define the path to the config file</strong>.</p>
+<p>If a path is found in the passed parameter, this path is used, and
+the function does not have to try and work out where the config file
+lives.</p>
+<p>The &#8216;return_as_obj&#8217; parameter tells the function to convert and
+return the JSON file into an object, rather than a dictionary.
+This enables you to access the values from object attributes,
+rather than from dictionary keys.  See USE OPTION 2.</p>
+<p>PARAMETERS:
+- filename
+File name or (preferably) the <strong>explicit full path</strong> of the
+config (JSON) file to be loaded.
+- return_as_object (default=False)
+If True, the dictionary is converted into an object, where the
+dictionary key/values are object attribute/values.</p>
+<p>PREREQUESITES / ASSUMPTIONS:
+- The config file is a JSON file
+- The config file lives in the program directory</p>
+<p>USE OPTION 1:
+&gt; from utils3 import config
+&gt; cfg = config.loadconfig()
+&gt; my_param = cfg[&#8216;my_param&#8217;]</p>
+<p>USE OPTION 2:
+&gt; from utils3 import config
+&gt; cfg = config.loadconfig(return_as_object=True)
+&gt; my_param = cfg.my_param</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">The Docs</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018 | S3DEV.
+    </div>
+  </body>
+</html>
