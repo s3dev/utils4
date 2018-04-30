@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="utils3 - vx.x.x" href="index.html" />
+    <link rel="next" title="Change Log" href="changelog.html" />
     <link rel="prev" title="The Docs" href="index.html" /> 
   </head>
   <body role="document">
@@ -37,6 +38,8 @@
         «&#160;&#160;<a href="index.html">The Docs</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="changelog.html">Change Log</a>&#160;&#160;»
         </p>
 
       </div>
@@ -47,34 +50,62 @@
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-config">
 <span id="config-py"></span><h2><strong>config.py</strong><a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h2>
-<p>Developer:  J. Berendt
-Email:      <a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
-<dl class="docutils">
-<dt>Use:        &gt; from utils3 import config</dt>
-<dd>&gt; cfg = config.loadconfig()
-&gt; my_param = cfg[&#8216;my_param&#8217;]</dd>
-</dl>
-<dl class="docutils">
-<dt>05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7</dt>
-<dd>utils module.</dd>
-<dt>06.03.18    J. Berendt      1.1.0       GENERAL:</dt>
-<dd>Removed devmode parameter from loadconfig() function.
-Updated docstring for loadconfig().  pylint (10/10)</dd>
-<dt>08.03.18    J. Berendt      1.2.0       Added the return_as_object parameter to the loadconfig()</dt>
-<dd>function; which is used to convert the key/value dictionary
-pairs to object attribute/value pairs.  pylint (10/10)</dd>
-</dl>
-<hr class="docutils" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">Small helper module designed to load a program&#8217;s config file.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To load a program&#8217;s config file:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">()</span>
+<span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;my_param&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="function">
 <dt id="config._file_exists">
-<code class="descclassname">config.</code><code class="descname">_file_exists</code><span class="sig-paren">(</span><em>fullpath</em><span class="sig-paren">)</span><a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a boolean value if the file exists.</p>
+<code class="descclassname">config.</code><code class="descname">_file_exists</code><span class="sig-paren">(</span><em>fullpath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the requested config file exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True of the file exists, False otherwise.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="config._fromjson">
-<code class="descclassname">config.</code><code class="descname">_fromjson</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return JSON file content as a dictionary.</p>
+<code class="descclassname">config.</code><code class="descname">_fromjson</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &rarr; dict<a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract values from the JSON file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">JSON file content as a dictionary.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -82,36 +113,56 @@ pairs to object attribute/value pairs.  pylint (10/10)</dd>
 <code class="descclassname">config.</code><code class="descname">loadconfig</code><span class="sig-paren">(</span><em>filename='config.json'</em>, <em>return_as_obj=False</em><span class="sig-paren">)</span><a class="headerlink" href="#config.loadconfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a program&#8217;s JSON config file and return it as a dictionary or
 an object.</p>
-<p>DESIGN:
-By default, this function will search the program&#8217;s directory for
-a file named &#8216;config.json&#8217;.  If the config file lives somewhere
-else, or you&#8217;re using an IDE to develop, the safest option is to
-<strong>explicitly define the path to the config file</strong>.</p>
-<p>If a path is found in the passed parameter, this path is used, and
-the function does not have to try and work out where the config file
-lives.</p>
-<p>The &#8216;return_as_obj&#8217; parameter tells the function to convert and
-return the JSON file into an object, rather than a dictionary.
-This enables you to access the values from object attributes,
-rather than from dictionary keys.  See USE OPTION 2.</p>
-<p>PARAMETERS:
-- filename
-File name or (preferably) the <strong>explicit full path</strong> of the
-config (JSON) file to be loaded.
-- return_as_object (default=False)
-If True, the dictionary is converted into an object, where the
-dictionary key/values are object attribute/values.</p>
-<p>PREREQUESITES / ASSUMPTIONS:
-- The config file is a JSON file
-- The config file lives in the program directory</p>
-<p>USE OPTION 1:
-&gt; from utils3 import config
-&gt; cfg = config.loadconfig()
-&gt; my_param = cfg[&#8216;my_param&#8217;]</p>
-<p>USE OPTION 2:
-&gt; from utils3 import config
-&gt; cfg = config.loadconfig(return_as_object=True)
-&gt; my_param = cfg.my_param</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">By default, this function will search the program&#8217;s directory
+for a file named &#8216;config.json&#8217;.  If the config file lives
+somewhere else, or you&#8217;re using an IDE to develop, the safest
+option is to <strong>explicitly define the path to the config file</strong>.</p>
+<p>If a path is found in the passed parameter, this path is used,
+and the function does not have to try and work out where the
+config file lives.</p>
+<p>The <code class="docutils literal"><span class="pre">return_as_obj</span></code> parameter tells the function to convert
+and return the JSON file into an object, rather than a
+dictionary. This enables you to access the values from object
+attributes, rather than from dictionary keys.  See use option 2.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>str</em>) &#8211; File name or (preferably) the <strong>explicit</strong> full
+path of the config (JSON) file to be loaded.</li>
+<li><strong>return_as_object</strong> (<em>bool</em>) &#8211; If True, the dictionary is converted
+into an object, where the dictionary key/values are object
+attribute/values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Assumptions:</th><td class="field-body"><ul class="first simple">
+<li>The config file is a JSON file</li>
+<li>The config file lives in the program directory</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Option 1: return the config file as a <strong>dictionary</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">()</span>
+<span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;my_param&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Option 2: return the config file as an <strong>object</strong>:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">(</span><span class="n">return_as_object</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">my_param</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -125,6 +176,8 @@ dictionary key/values are object attribute/values.</p>
         «&#160;&#160;<a href="index.html">The Docs</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="changelog.html">Change Log</a>&#160;&#160;»
         </p>
 
       </div>
