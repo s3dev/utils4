@@ -22,9 +22,22 @@ Date        Programmer      Version     Update
 27.04.18    J. Berendt      1.1.0       Updated SQLite class to:
                                         - Create the database file if it doesn't exist
                                         - Added the .vacuum() function which deflates the database.
+08.05.18    M. Critchard    1.2.0       Updated the Database class with:
+                                        - A destructor that ensures the object is correctly
+                                          destroyed when it is garbage collected.
+                                        - A generic run_query() method for running queries and
+                                          getting results as lists of rows.
+                                        Updated the SQLite class with:
+                                        - Automatic database connection on instantiation.
+                                        - A _create_database_functions() method that allows
+                                          user-defined functions to be added and used from
+                                          within SQL statements.
+                                        - A _match method that wraps the re.match() method as
+                                          a user-defined function.
 ------------------------------------------------------------------------------------------------"""
 
 import os
+import re
 from utils3 import utils
 from utils3 import user_interface as ui
 
@@ -49,6 +62,15 @@ class Database(object):
         self.cur        = None
         self.connected  = False
         self._ui        = ui.UserInterface()
+
+
+    # ------------------------------------------------------------------
+    def __del__(self):
+        """Destroys the object when it is garbage collected."""
+
+        # CLOSE THE CONNECTION
+        self.disconnect()
+
 
     # ------------------------------------------------------------------
     def disconnect(self):
@@ -77,6 +99,31 @@ class Database(object):
         else:
             self._ui.print_warning('\nThe database must be connected first.')
         return success
+
+
+    # ------------------------------------------------------------------
+    def run_query(self, query):
+        """Runs query and returns the results.
+
+        This method runs the query that is passed as a string
+        and it then returns the results as a list of rows.
+
+        """
+
+        try:
+            # RUN THE QUERY
+            self.cur.execute(query)
+            # RETURN THE RESULTS
+            return self.cur.fetchall()
+        except Exception as err:
+            # USER NOTIFICATION
+            self._ui.print_alert('\n'
+                                 'An error occurred whilst '
+                                 'running the following query:'
+                                 '\n\n{}'.format(query))
+            self._ui.print_error(err)
+            # RETURN AN EMPTY LIST
+            return []
 
 
     # ------------------------------------------------------------------
@@ -566,6 +613,8 @@ class SQLite(Database):
         super(SQLite, self).__init__()
         # INITIALISE
         self._db_file_path = db_file_path
+        self._connect()
+        self._create_database_functions()
 
 
     # ------------------------------------------------------------------
@@ -573,7 +622,8 @@ class SQLite(Database):
         """Connect to the SQLite database file."""
 
         # CONNECT
-        self._connect()
+        if not self.connected:
+            self._connect()
 
 
     # ------------------------------------------------------------------
@@ -664,6 +714,37 @@ class SQLite(Database):
     def _db_file_exists(self):
         """Test is database file exists."""
         return os.path.exists(self._db_file_path)
+
+
+    # ------------------------------------------------------------------
+    def _create_database_functions(self):
+        """Adds user-defined functions.
+
+        This method adds a selection of user-defined functions
+        that can be called from SQL code.
+
+        MATCH allows the re.match() method to be accessed
+        via SQL code. For example:
+            SELECT * FROM stuff WHERE MATCH('.*gold.*', thing)
+
+        """
+
+        self.conn.create_function('MATCH', 2, self._match)
+
+
+    # ------------------------------------------------------------------
+    def _match(self, pattern, string):
+        """Wraps re.match() as a user-defined function."""
+
+        try:
+            return re.match(pattern=pattern, string=string) is not None
+        except Exception as err:
+            # USER NOTIFICATION
+            self._ui.print_alert('\n'
+                                 'An error occurred whilst creating '
+                                 'the _match user-defined function.')
+            self._ui.print_error(err)
+            return False
 
 
 # ----------------------------------------------------------------------
