@@ -1555,6 +1555,81 @@ docstring.</td>
 </dd></dl>
 
 </div>
+<div class="section" id="module-reporterror">
+<span id="reporterror"></span><h2><strong>reporterror</strong><a class="headerlink" href="#module-reporterror" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body">This module is designed to report program errors to the
+console and/or a log file, using the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a>
+class.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body">Linux/Windows | Python 3.5</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body">J Berendt</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body">n/a</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="reporterror.reporterror">
+<code class="descclassname">reporterror.</code><code class="descname">reporterror</code><span class="sig-paren">(</span><em>error</em>, <em>logevent=False</em>, <em>logfilepath='c:/temp/reporterror.log'</em><span class="sig-paren">)</span><a class="headerlink" href="#reporterror.reporterror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report an error, derived from the built-in Exception object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>error</strong> (<em>Exception</em>) &#8211; Python Exception object from the built-in
+try/except error handler.  Refer to the use example below.</li>
+<li><strong>logevent</strong> (<em>bool</em>) &#8211; Send the error to a log file.</li>
+<li><strong>logfilename</strong> (<em>str</em>) &#8211; Full path to the log file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <code class="docutils literal"><span class="pre">logevent</span></code> parameter assumes the log file exists and the
+header is already written.</p>
+<p class="last">For general logging help, you can use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a>
+class which is built into <code class="docutils literal"><span class="pre">utils3</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Here is an example of how to use the error reporter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">reporterror</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># SOMETHING BAD HAPPENS HERE ...</span>
+    <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="c1"># SEND ERROR TO REPORTERROR METHOD</span>
+    <span class="n">reporterror</span><span class="o">.</span><span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And the output looks like this:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>ERROR:  division by zero
+TYPE:   &lt;class &#39;ZeroDivisionError&#39;&gt;
+FUNC:   &lt;module&gt;
+LINE:   2
+CMD:    1/0
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
