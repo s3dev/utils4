@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 :Purpose:   Small helper module designed to load a program's config file.
 

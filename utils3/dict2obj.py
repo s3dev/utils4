@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 :Purpose:   This class module is used to convert a dictionary (or JSON
             file) into a object - where the dictionary's key/value

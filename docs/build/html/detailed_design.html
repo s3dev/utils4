@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Modules &#8212; utils3 - vx.x.x</title>
+    <title>Detailed Module Design &#8212; utils3 - vx.x.x</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -30,7 +30,7 @@
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>utils3 - vx.x.x</span></a></h1>
-        <h2 class="heading"><span>Modules</span></h2>
+        <h2 class="heading"><span>Detailed Module Design</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
@@ -46,10 +46,10 @@
       <div class="content">
         
         
-  <div class="section" id="modules">
-<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="detailed-module-design">
+<h1>Detailed Module Design<a class="headerlink" href="#detailed-module-design" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-config">
-<span id="config-py"></span><h2><strong>config.py</strong><a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h2>
+<span id="config"></span><h2><strong>config</strong><a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -167,7 +167,7 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
 
 </div>
 <div class="section" id="module-database">
-<span id="database-py"></span><h2><strong>database.py</strong><a class="headerlink" href="#module-database" title="Permalink to this headline">¶</a></h2>
+<span id="database"></span><h2><strong>database</strong><a class="headerlink" href="#module-database" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -865,7 +865,7 @@ of the database file further.&#8221;&#8220;</li>
 
 </div>
 <div class="section" id="module-dict2obj">
-<span id="dict2obj-py"></span><h2><strong>dict2obj.py</strong><a class="headerlink" href="#module-dict2obj" title="Permalink to this headline">¶</a></h2>
+<span id="dict2obj"></span><h2><strong>dict2obj</strong><a class="headerlink" href="#module-dict2obj" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1056,6 +1056,212 @@ file path is provided, otherwise False.</p>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+</div>
+<div class="section" id="module-get_datafiles">
+<span id="get-datafiles"></span><h2><strong>get_datafiles</strong><a class="headerlink" href="#module-get_datafiles" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module is designed to provide a list of the required
+data files for project packaging to the calling
+<code class="docutils literal"><span class="pre">setup.py</span></code> file.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">The principal code concept was adopted from
+<code class="docutils literal"><span class="pre">matplotlib.get_py2exe_datafiles()</span></code>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To collect the data files for your project, use this in your
+<code class="docutils literal"><span class="pre">setup.py</span></code> file:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="k">import</span> <span class="n">get_datafiles</span>
+
+<span class="n">data_files</span> <span class="o">=</span> <span class="n">get_datafiles</span><span class="p">(</span><span class="n">pkg_dir</span><span class="o">=</span><span class="s1">&#39;myprog/package&#39;</span><span class="p">,</span>
+                           <span class="n">exts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;.sql&#39;</span><span class="p">],</span>
+                           <span class="n">p2e</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="get_datafiles._add_dot">
+<code class="descclassname">get_datafiles.</code><code class="descname">_add_dot</code><span class="sig-paren">(</span><em>ext_list</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._add_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a dot (.) to the beginning of each extension in a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ext_list</strong> (<em>list</em>) &#8211; A list of file extensions.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of extensions, with a dot prepended to each extension,
+if it doesn&#8217;t already exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="get_datafiles._get_license">
+<code class="descclassname">get_datafiles.</code><code class="descname">_get_license</code><span class="sig-paren">(</span><em>pkg_dir</em>, <em>license_name='LICENSE'</em>, <em>p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_license" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the LICENSE file.</p>
+<p>This private function is called by the main
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a> function and is used to add
+the LICENSE file to the returned list of data files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pkg_dir</strong> (<em>str</em>) &#8211; </li>
+<li><strong>license_name</strong> (<em>str</em>) &#8211; </li>
+<li><strong>p2e</strong> (<em>bool</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For argument descriptions</strong>, refer to the docstring for
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">This function starts the directory walk at the level <strong>above</strong>
+the provided package directory; as this is often where the
+README and LICENSE files live.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="get_datafiles._get_readmefiles">
+<code class="descclassname">get_datafiles.</code><code class="descname">_get_readmefiles</code><span class="sig-paren">(</span><em>pkg_dir, readme_exts=['.html', '.md'], p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_readmefiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the README files.</p>
+<p>This private function is called by the main
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a> function and is used to add
+the README file(s) to the returned list of data files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pkg_dir</strong> (<em>str</em>) &#8211; </li>
+<li><strong>readme_exts</strong> (<em>list</em>) &#8211; </li>
+<li><strong>p2e</strong> (<em>bool</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For argument descriptions</strong>, refer to the docstring for
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">This function starts the directory walk at the level <strong>above</strong>
+the provided package directory; as this is often where the
+README and LICENSE files live.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Although this function is designed to get the README files with
+a given extension, <strong>there is no validation on the file name</strong>,
+only on the extension.</p>
+<p class="last">In otherwords, if there is a file named <code class="docutils literal"><span class="pre">FOO.html</span></code>, it will be
+picked up if .html is in the <code class="docutils literal"><span class="pre">readme_exts</span></code> list.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="get_datafiles.get_datafiles">
+<code class="descclassname">get_datafiles.</code><code class="descname">get_datafiles</code><span class="sig-paren">(</span><em>pkg_dir, exts=['.json', '.sql', '.txt'], get_readme_files=True, readme_exts=['.html', '.md'], get_license=True, license_name='LICENSE', p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles.get_datafiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gather and return a list of project data files.</p>
+<p>This function is designed to be called by your project&#8217;s
+<code class="docutils literal"><span class="pre">setup.py</span></code> file and will return a list of data files used by
+that project.</p>
+<p>The concept and principal design were adopted from matplotlib&#8217;s
+<code class="docutils literal"><span class="pre">get_py2exe_datafiles()</span></code> function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pkg_dir</strong> (<em>str</em>) &#8211; <p>The project&#8217;s root directory to begin the search.
+Typically this your main package directory.</p>
+<ul>
+<li><strong>Tip</strong>: To get your package&#8217;s full path, you can use this
+in your <code class="docutils literal"><span class="pre">setup.py</span></code> file:<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pkg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span>
+                       <span class="o">&lt;</span><span class="n">pkg_dir_name</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><strong>exts</strong> (<em>list</em>) &#8211; A list of file extensions used as a filter when
+collecting data files.</li>
+<li><strong>get_readme_files</strong> (<em>bool</em>) &#8211; Include the package&#8217;s README file(s).</li>
+<li><strong>readme_exts</strong> (<em>list</em>) &#8211; A list of file extensions used as a filter
+when collecting README files.</li>
+<li><strong>get_license</strong> (<em>bool</em>) &#8211; Include the package&#8217;s LICENSE file.</li>
+<li><strong>license_name</strong> (<em>str</em>) &#8211; Name of the LICENSE file to be included.</li>
+<li><strong>p2e</strong> (<em>bool</em>) &#8211; <p>This package will be a py2exe installation.</p>
+<ul>
+<li><code class="docutils literal"><span class="pre">p2e=True</span></code> means the destination path is left as derived
+by the function</li>
+<li><code class="docutils literal"><span class="pre">p2e=False</span></code> means the environment&#8217;s <code class="docutils literal"><span class="pre">site-packages</span></code>
+directory will be prepended to the data files&#8217; destination
+path</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Your project&#8217;s <code class="docutils literal"><span class="pre">setup.py</span></code> file will pass its project&#8217;s
+root directory and a list of desired file extensions.  This
+function then performs a directory walk and picks out the full
+path to each desired file.  The results are returned as a list
+of tuples, which include the destination directory and the full
+path to each file.</p>
+<div class="line-block">
+<div class="line">The output format is shown here:</div>
+<div class="line"><code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">[('destination_dir',</span> <span class="pre">['/path/to/file.ext',</span> <span class="pre">'...'])]</span></code></div>
+</div>
+<p>If the <code class="docutils literal"><span class="pre">p2e</span></code> (py2exe) flag is <code class="docutils literal"><span class="pre">False</span></code>, the platform /
+environment&#8217;s site-packages directory is prepended to the
+destination path, so the data files are installed to the
+site-package directory.  Otherwise, the package directory
+structure is used, with the package root being root.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use this function in your <code class="docutils literal"><span class="pre">setup.py</span></code> file:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="k">import</span> <span class="n">get_datafiles</span>
+
+<span class="n">data_files</span> <span class="o">=</span> <span class="n">get_datafiles</span><span class="p">(</span><span class="n">pkg_dir</span><span class="o">=</span><span class="s1">&#39;myprog/package&#39;</span><span class="p">,</span>
+                           <span class="n">exts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;.sql&#39;</span><span class="p">],</span>
+                           <span class="n">p2e</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

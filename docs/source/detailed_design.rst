@@ -1,10 +1,10 @@
-#########
- Modules
-#########
+######################
+Detailed Module Design
+######################
 
-*****************
- **config.py**
-*****************
+**********
+**config**
+**********
 .. automodule:: config
     :members:
     :undoc-members:
@@ -12,10 +12,9 @@
     :special-members:
     :exclude-members: __dict__, __module__, __weakref__
     
-    
-******************
- **database.py**
-******************
+************
+**database**
+************
 .. automodule:: database
     :members:
     :undoc-members:
@@ -23,11 +22,20 @@
     :special-members:
     :exclude-members: __dict__, __module__, __weakref__
     
-    
-*****************
- **dict2obj.py**
-*****************
+************
+**dict2obj**
+************
 .. automodule:: dict2obj
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__
+
+*****************
+**get_datafiles**
+*****************
+.. automodule:: get_datafiles
     :members:
     :undoc-members:
     :private-members:
