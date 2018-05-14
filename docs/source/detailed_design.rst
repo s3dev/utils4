@@ -50,4 +50,14 @@ Detailed Module Design
     :undoc-members:
     :private-members:
     :special-members:
-    :exclude-members: __dict__, __module__, __weakref__     
+    :exclude-members: __dict__, __module__, __weakref__
+
+***************
+**progressbar**
+***************
+.. automodule:: progressbar
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__

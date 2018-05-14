@@ -1447,6 +1447,114 @@ log.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-progressbar">
+<span id="progressbar"></span><h2><strong>progressbar</strong><a class="headerlink" href="#module-progressbar" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body">This is a small class module which provides access to a
+simple console progress bar.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body">Linux/Windows | Python 3.5</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body">J Berendt</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body">n/a</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="progressbar.ProgressBar">
+<em class="property">class </em><code class="descclassname">progressbar.</code><code class="descname">ProgressBar</code><span class="sig-paren">(</span><em>total_values=25</em>, <em>bar_len=25</em>, <em>symbol='.'</em>, <em>color='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement a console progress bar into a processing loop.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This is a simple console progress bar which should be called
+<strong>inside</strong> a processing loop.</p>
+<p>On instantiation, you can pass in the bar colour, length and
+symbol parameters if you want to configure the appearance a
+little bit.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>total_values</strong> (<em>int</em>) &#8211; Total number of iterations.</li>
+<li><strong>bar_len</strong> (<em>int</em>) &#8211; Complete length of the progress bar, in chars.</li>
+<li><strong>symbol</strong> (<em>str</em>) &#8211; The symbol which is used to track progress.</li>
+<li><strong>color</strong> (<em>str</em>) &#8211; Colour of the progress bar; where only the first
+letter of the colour is required.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Colour Options:</th><td class="field-body"><p class="first">red, green, yellow, blue, magenta, cyan, white</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">You might implement the progress bar in a loop like this:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">utils3.progressbar</span> <span class="k">import</span> <span class="n">ProgressBar</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">total_values</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">bar_len</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># SOME PROCESS</span>
+<span class="k">for</span> <span class="n">i</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">):</span>
+    <span class="c1"># UPDATE PROGRESS</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">update_progress</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="c1"># OPTIONAL PAUSE TO SEE UPDATES</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="progressbar.ProgressBar.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>total_values=25</em>, <em>bar_len=25</em>, <em>symbol='.'</em>, <em>color='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progressbar.ProgressBar._getcolor">
+<code class="descname">_getcolor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str<a class="headerlink" href="#progressbar.ProgressBar._getcolor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create ANSI colour escape sequence to user&#8217;s colour.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ANSI escape sequence string for the user&#8217;s colour.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="progressbar.ProgressBar.update_progress">
+<code class="descname">update_progress</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.update_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Incrementally update the progress bar.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>current</strong> (<em>int</em>) &#8211; Index value for the current iteration.
+This value is compared against the initialised
+<code class="docutils literal"><span class="pre">total_values</span></code> parameter to determine the current
+position in the overall progress.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Refer to the <a class="reference internal" href="#progressbar.ProgressBar" title="progressbar.ProgressBar"><code class="xref py py-class docutils literal"><span class="pre">ProgressBar</span></code></a> class
+docstring.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
