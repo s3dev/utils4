@@ -41,3 +41,13 @@ Detailed Module Design
     :private-members:
     :special-members:
     :exclude-members: __dict__, __module__, __weakref__
+
+*******
+**log**
+*******
+.. automodule:: log
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__     

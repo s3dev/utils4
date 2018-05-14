@@ -1265,6 +1265,188 @@ structure is used, with the package root being root.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-log">
+<span id="log"></span><h2><strong>log</strong><a class="headerlink" href="#module-log" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This is a small class module designed as a central log file
+creator.</p>
+<p>The calling program is responsible for passing the proper
+arguments to create the log file header.
+(i.e.: printheader=True, headertext=&#8217;some,header,text,here&#8217;)</p>
+<p>It is suggested to initialise the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a> class
+at program startup, with the <code class="docutils literal"><span class="pre">printheader</span></code> parameter
+set to <code class="docutils literal"><span class="pre">True</span></code>.  This is safe because if the log file
+already exists, the header will not be re-created.  However,
+if the log file does not exist, it will be created with a
+header, using the value of the <code class="docutils literal"><span class="pre">headertext</span></code> parameter.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a> class in your project:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+
+<span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">printheader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headertext</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Most cows can jump over the moon,Fact,94.2,pct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="log.Log">
+<em class="property">class </em><code class="descclassname">log.</code><code class="descname">Log</code><span class="sig-paren">(</span><em>filepath</em>, <em>autofill=True</em>, <em>printheader=False</em>, <em>headertext=''</em>, <em>sep='</em>, <em>'</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a small and simple log file creator/writer class.</p>
+<p>The calling program is responsible for passing the proper arguments
+to create the log file header.
+(i.e.: printheader=True, headertext=&#8217;some,header,text,here&#8217;)</p>
+<p>On class instantiation, validation is performed to determine if the
+log file exists.  If the log file does not exist, a header is
+required before writing to the log file.  These parameters can be
+passed to the class on instantiation, and will be ignored if the
+log file already exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filepath</strong> (<em>str</em>) &#8211; Full path to the log file.</li>
+<li><strong>autofill</strong> (<em>bool</em>) &#8211; Automatically populate <code class="docutils literal"><span class="pre">datetime(now)</span></code>, host
+and username values, to each log entry.</li>
+<li><strong>printheader</strong> (<em>bool</em>) &#8211; Print a log file header using the text
+passed into the <code class="docutils literal"><span class="pre">headertext</span></code> parameter.
+<strong>Note: The header will only be written if the log file
+does not exist.</strong></li>
+<li><strong>headertext</strong> (<em>str</em>) &#8211; String of delimited column labels to be
+written as the header.</li>
+<li><strong>sep</strong> (<em>str</em>) &#8211; Separator to be used in the log file.  This separator
+is used when writing the autofill values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">File Validation:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">On class instantiation, tests are performed to ensure the log
+file is being populated in a logical way.</p>
+<blockquote>
+<div><ul class="simple">
+<li>If <code class="docutils literal"><span class="pre">printheader</span></code> is <code class="docutils literal"><span class="pre">False</span></code>, and the log file does not
+exist, the user is notified</li>
+<li>If <code class="docutils literal"><span class="pre">printheader</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, yet <code class="docutils literal"><span class="pre">headertext</span></code> is
+blank, the user is instructed to pass header text</li>
+<li>If <code class="docutils literal"><span class="pre">printheader</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, yet the log file already
+exists, the header will not be written</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a> class in your project:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+
+<span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">printheader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+             <span class="n">headertext</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Most cows can jump over the moon,Fact,94.2,pct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="log.Log.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>filepath</em>, <em>autofill=True</em>, <em>printheader=False</em>, <em>headertext=''</em>, <em>sep='</em>, <em>'</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write text to the log file defined at instantiation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text</strong> (<em>str</em>) &#8211; Delimited text string to be written to the log.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <code class="docutils literal"><span class="pre">autofill</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, the datetime, host and username
+values <strong>will be populated automatically</strong>, and <em>do not</em>
+need to be passed into the <code class="docutils literal"><span class="pre">text</span></code> argument.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">If the <code class="docutils literal"><span class="pre">autofill</span></code> argument is <code class="docutils literal"><span class="pre">True</span></code>, the current
+datetime, host and username values are written (in that
+order), ahead of the text string provided to the <code class="docutils literal"><span class="pre">text</span></code>
+argument.  The <code class="docutils literal"><span class="pre">sep</span></code> parameter (defined at instantiation),
+is used to separate these auto-populated fields.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To write to the log file:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Just adding some random text to my log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="log.Log.write_blank_line">
+<code class="descname">write_blank_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.write_blank_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a blank line to the log file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">autofill</span></code> information <strong>is not</strong> written.  This is a
+true blank line, created by writing a &#8216;\n&#8217; value to the
+log.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To write a blank line to the log file:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">write_blank_line</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
