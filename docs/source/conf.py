@@ -142,6 +142,7 @@ html_theme = 'haiku'
 # "<project> v<release> documentation" by default.
 #
 html_title = 'utils3 - v%s' % __version__
+html_logo = 'images/Triangle_black_sm.png'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
