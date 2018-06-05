@@ -1,33 +1,23 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Detailed Module Design &#8212; utils3 - vx.x.x</title>
-    
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'x.x.x',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="utils3 - vx.x.x" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Change Log" href="changelog.html" />
     <link rel="prev" title="The Docs" href="index.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/Triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
           <span>utils3 - vx.x.x</span></a></h1>
         <h2 class="heading"><span>Detailed Module Design</span></h2>
@@ -54,7 +44,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">Small helper module designed to load a program&#8217;s config file.</p>
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">Small helper module designed to load a program’s config file.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
@@ -69,8 +59,8 @@
 <tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To load a program&#8217;s config file:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To load a program’s config file:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">()</span>
 <span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;my_param&#39;</span><span class="p">]</span>
@@ -82,7 +72,7 @@
 </table>
 <dl class="function">
 <dt id="config._file_exists">
-<code class="descclassname">config.</code><code class="descname">_file_exists</code><span class="sig-paren">(</span><em>fullpath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">config.</code><code class="descname">_file_exists</code><span class="sig-paren">(</span><em>fullpath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if the requested config file exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -96,7 +86,7 @@
 
 <dl class="function">
 <dt id="config._fromjson">
-<code class="descclassname">config.</code><code class="descname">_fromjson</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &rarr; dict<a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">config.</code><code class="descname">_fromjson</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract values from the JSON file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -111,29 +101,29 @@
 <dl class="function">
 <dt id="config.loadconfig">
 <code class="descclassname">config.</code><code class="descname">loadconfig</code><span class="sig-paren">(</span><em>filename='config.json'</em>, <em>return_as_obj=False</em><span class="sig-paren">)</span><a class="headerlink" href="#config.loadconfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a program&#8217;s JSON config file and return it as a dictionary or
+<dd><p>Load a program’s JSON config file and return it as a dictionary or
 an object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filename</strong> (<em>str</em>) &#8211; File name or (preferably) the <strong>explicit</strong> full
+<li><strong>filename</strong> (<em>str</em>) – File name or (preferably) the <strong>explicit</strong> full
 path of the config (JSON) file to be loaded.</li>
-<li><strong>return_as_object</strong> (<em>bool</em>) &#8211; If True, the dictionary is converted
+<li><strong>return_as_object</strong> (<em>bool</em>) – If True, the dictionary is converted
 into an object, where the dictionary key/values are object
 attribute/values.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">By default, this function will search the program&#8217;s directory
-for a file named &#8216;config.json&#8217;.  If the config file lives
-somewhere else, or you&#8217;re using an IDE to develop, the safest
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">By default, this function will search the program’s directory
+for a file named ‘config.json’.  If the config file lives
+somewhere else, or you’re using an IDE to develop, the safest
 option is to <strong>explicitly define the path to the config file</strong>.</p>
 <p>If a path is found in the passed parameter, this path is used,
 and the function does not have to try and work out where the
 config file lives.</p>
-<p>The <code class="docutils literal"><span class="pre">return_as_obj</span></code> parameter tells the function to convert
+<p>The <code class="docutils literal notranslate"><span class="pre">return_as_obj</span></code> parameter tells the function to convert
 and return the JSON file into an object, rather than a
 dictionary. This enables you to access the values from object
 attributes, rather than from dictionary keys.  See use option 2.</p>
@@ -146,14 +136,14 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Option 1: return the config file as a <strong>dictionary</strong>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">()</span>
 <span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;my_param&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Option 2: return the config file as an <strong>object</strong>:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">config</span>
 
 <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">(</span><span class="n">return_as_object</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">my_param</span>
@@ -191,7 +181,7 @@ interfacing with the databases easier.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example for how to connect to an Oracle database.  The other
 database connections follow similar logic:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">database</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">database</span>
 
 <span class="n">ora</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">Oracle</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;my_host&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;my_user&#39;</span><span class="p">,</span>
                       <span class="n">passowrd</span><span class="o">=</span><span class="s1">&#39;my_pass&#39;</span><span class="p">)</span>
@@ -209,7 +199,7 @@ database connections follow similar logic:</p>
 <em class="property">class </em><code class="descclassname">database.</code><code class="descname">Database</code><a class="headerlink" href="#database.Database" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Database super-class is used to hold general properties or
 functions used by the more specific sub-classes.  In general, you
-shouldn&#8217;t need to call this super-class externally.</p>
+shouldn’t need to call this super-class externally.</p>
 <dl class="method">
 <dt id="database.Database.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Database.__init__" title="Permalink to this definition">¶</a></dt>
@@ -218,19 +208,19 @@ shouldn&#8217;t need to call this super-class externally.</p>
 
 <dl class="staticmethod">
 <dt id="database.Database._parse_script">
-<em class="property">static </em><code class="descname">_parse_script</code><span class="sig-paren">(</span><em>script_string</em><span class="sig-paren">)</span> &rarr; list<a class="headerlink" href="#database.Database._parse_script" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse the passed <code class="docutils literal"><span class="pre">script_string</span></code> and return a list of SQL
+<em class="property">static </em><code class="descname">_parse_script</code><span class="sig-paren">(</span><em>script_string</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#database.Database._parse_script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the passed <code class="docutils literal notranslate"><span class="pre">script_string</span></code> and return a list of SQL
 statements to be executed individually.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>script_string</strong> (<em>str</em>) &#8211; The string value of the script to be
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>script_string</strong> (<em>str</em>) – The string value of the script to be
 parsed.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The design is very simple in that a list of statements is
-created and returned using a split() function on the &#8216;;&#8217;
+created and returned using a split() function on the ‘;’
 character.</p>
 <p>Additionally, parsed statements containing <em>only</em> the
 newline character (\n) are removed.  Also, the newline
@@ -247,13 +237,13 @@ character.</p>
 
 <dl class="method">
 <dt id="database.Database._table_exists">
-<code class="descname">_table_exists</code><span class="sig-paren">(</span><em>sql</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Database._table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_table_exists</code><span class="sig-paren">(</span><em>sql</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Database._table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists, using the provided script.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sql</strong> (<em>str</em>) &#8211; Database specific SQL command to check if a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sql</strong> (<em>str</em>) – Database specific SQL command to check if a
 table exists.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
@@ -264,7 +254,7 @@ table exists.</td>
 
 <dl class="method">
 <dt id="database.Database.connection_active">
-<code class="descname">connection_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Database.connection_active" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connection_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Database.connection_active" title="Permalink to this definition">¶</a></dt>
 <dd><p>General database connection test.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -293,25 +283,25 @@ property to False.</p>
 <dl class="class">
 <dt id="database.MySQL">
 <em class="property">class </em><code class="descclassname">database.</code><code class="descname">MySQL</code><span class="sig-paren">(</span><em>host=None</em>, <em>database=None</em>, <em>user=None</em>, <em>password=None</em>, <em>port=3306</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">mysql-connector</span></code>, and
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">mysql-connector</span></code>, and
 used to handle database objects for MySQL.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>host</strong> (<em>str</em>) &#8211; IP address or machine name of the host or database
+<li><strong>host</strong> (<em>str</em>) – IP address or machine name of the host or database
 server.</li>
-<li><strong>database</strong> (<em>str</em>) &#8211; The name of the database to be connected.</li>
-<li><strong>user</strong> (<em>str</em>) &#8211; Login username</li>
-<li><strong>password</strong> (<em>str</em>) &#8211; Login password</li>
-<li><strong>port</strong> (<em>int</em>) &#8211; The TCP/IP port of the MySQL server; must be an
+<li><strong>database</strong> (<em>str</em>) – The name of the database to be connected.</li>
+<li><strong>user</strong> (<em>str</em>) – Login username</li>
+<li><strong>password</strong> (<em>str</em>) – Login password</li>
+<li><strong>port</strong> (<em>int</em>) – The TCP/IP port of the MySQL server; must be an
 integer.</li>
-<li><strong>from_file</strong> (<em>bool</em>) &#8211; Load the database credentials directly from a
+<li><strong>from_file</strong> (<em>bool</em>) – Load the database credentials directly from a
 config file.
 (Valid keys: host, database, port, user, password)</li>
-<li><strong>filename</strong> (<em>str</em>) &#8211; Full path to the file holding the database
-credentials.  Required if <code class="docutils literal"><span class="pre">from_file</span></code> is True.</li>
+<li><strong>filename</strong> (<em>str</em>) – Full path to the file holding the database
+credentials.  Required if <code class="docutils literal notranslate"><span class="pre">from_file</span></code> is True.</li>
 </ul>
 </td>
 </tr>
@@ -319,7 +309,7 @@ credentials.  Required if <code class="docutils literal"><span class="pre">from_
 <li><p class="first">mysql-connector (2.1.4)</p>
 <blockquote>
 <div><ul class="simple">
-<li>Installation: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mysql-connector==2.1.4</span></code></li>
+<li>Installation: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mysql-connector==2.1.4</span></code></li>
 </ul>
 </div></blockquote>
 </li>
@@ -327,7 +317,7 @@ credentials.  Required if <code class="docutils literal"><span class="pre">from_
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to a <strong>MySQL</strong> database:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">MySQL</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">MySQL</span>
 
 <span class="c1"># LOAD CREDENTIALS</span>
 <span class="n">sql</span> <span class="o">=</span> <span class="n">MySQL</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;my_host&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;my_db&#39;</span><span class="p">,</span>
@@ -359,12 +349,12 @@ class properties accordingly.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>creds</strong> (<em>dict</em>) &#8211; A dictionary of login credentials.</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>creds</strong> (<em>dict</em>) – A dictionary of login credentials.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The cursor is set with the buffered parameter set to True;
 allowing the cursor to fetch all rows, rather than being
-&#8216;lazily&#8217; loaded.</p>
+‘lazily’ loaded.</p>
 <p class="last"><a class="reference external" href="https://stackoverflow.com/a/33632767/6340496">Design source</a></p>
 </td>
 </tr>
@@ -381,8 +371,8 @@ allowing the cursor to fetch all rows, rather than being
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">This function is used rather than the general
-<code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function as the MySQL
-<code class="docutils literal"><span class="pre">cur.execute()</span></code> object does not have a fetchall attribute,
+<code class="docutils literal notranslate"><span class="pre">Database._table_exists()</span></code> function as the MySQL
+<code class="docutils literal notranslate"><span class="pre">cur.execute()</span></code> object does not have a fetchall attribute,
 so the actions must be done in separate steps.</td>
 </tr>
 </tbody>
@@ -428,15 +418,15 @@ the mysql.connection library, are listed here:
 
 <dl class="method">
 <dt id="database.MySQL.table_exists">
-<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.MySQL.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.MySQL.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) – The name of the table to be tested.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This function wraps the local <code class="docutils literal"><span class="pre">MySQL._table_exists()</span></code>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This function wraps the local <code class="docutils literal notranslate"><span class="pre">MySQL._table_exists()</span></code>
 function and provides the SQL statement to be run.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
@@ -450,7 +440,7 @@ function and provides the SQL statement to be run.</td>
 <dl class="class">
 <dt id="database.Oracle">
 <em class="property">class </em><code class="descclassname">database.</code><code class="descname">Oracle</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">cx_Oracle</span></code>, where
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">cx_Oracle</span></code>, where
 commonly used functionality have been added as class methods and
 functions.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -458,19 +448,19 @@ functions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>host</strong> (<em>str</em>) &#8211; Database name, or TNS host.</li>
-<li><strong>user</strong> (<em>str</em>) &#8211; Login username</li>
-<li><strong>password</strong> (<em>str</em>) &#8211; Login password</li>
-<li><strong>from_file</strong> (<em>bool</em>) &#8211; Load the database credentials directly from
+<li><strong>host</strong> (<em>str</em>) – Database name, or TNS host.</li>
+<li><strong>user</strong> (<em>str</em>) – Login username</li>
+<li><strong>password</strong> (<em>str</em>) – Login password</li>
+<li><strong>from_file</strong> (<em>bool</em>) – Load the database credentials directly from
 a config file.
 (Valid keys: host, user, password)</li>
-<li><strong>filename</strong> (<em>str</em>) &#8211; Full path to the file holding the database
+<li><strong>filename</strong> (<em>str</em>) – Full path to the file holding the database
 credentials.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to an <strong>Oracle</strong> database:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">Oracle</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">Oracle</span>
 
 <span class="c1"># LOAD CREDENTIALS</span>
  <span class="n">ora</span> <span class="o">=</span> <span class="n">Oracle</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;my_host&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;my_user&#39;</span><span class="p">,</span>
@@ -502,9 +492,9 @@ accordingly.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) &#8211; A dictionary of login credentials.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) – A dictionary of login credentials.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">In addition to setting the &#8216;typical&#8217; class properties, a
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">In addition to setting the ‘typical’ class properties, a
 connection string property has been added to this Oracle
 specific connection.</td>
 </tr>
@@ -514,20 +504,20 @@ specific connection.</td>
 
 <dl class="method">
 <dt id="database.Oracle._execute_commit">
-<code class="descname">_execute_commit</code><span class="sig-paren">(</span><em>sql</em>, <em>commit</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Oracle._execute_commit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_execute_commit</code><span class="sig-paren">(</span><em>sql</em>, <em>commit</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle._execute_commit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute an SQL statement and commit if instructed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sql</strong> (<em>str</em>) &#8211; SQL script to be executed.</li>
-<li><strong>commit</strong> (<em>bool</em>) &#8211; Commit after script execute has finished?</li>
+<li><strong>sql</strong> (<em>str</em>) – SQL script to be executed.</li>
+<li><strong>commit</strong> (<em>bool</em>) – Commit after script execute has finished?</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This is a simple execute / commit wrapper around cx_Oracle&#8217;s
-<code class="docutils literal"><span class="pre">execute()</span></code> method.</p>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This is a simple execute / commit wrapper around cx_Oracle’s
+<code class="docutils literal notranslate"><span class="pre">execute()</span></code> method.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the script and [optional commit] are successful,
@@ -567,25 +557,25 @@ blank.</p>
 
 <dl class="method">
 <dt id="database.Oracle.execute_script">
-<code class="descname">execute_script</code><span class="sig-paren">(</span><em>sql_file</em>, <em>commit=False</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Oracle.execute_script" title="Permalink to this definition">¶</a></dt>
+<code class="descname">execute_script</code><span class="sig-paren">(</span><em>sql_file</em>, <em>commit=False</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle.execute_script" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a full SQL script on the database.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sql_file</strong> (<em>str</em>) &#8211; The full file path to the script to be run.</li>
-<li><strong>commit</strong> (<em>bool</em>) &#8211; Commit after the script has finished?</li>
+<li><strong>sql_file</strong> (<em>str</em>) – The full file path to the script to be run.</li>
+<li><strong>commit</strong> (<em>bool</em>) – Commit after the script has finished?</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This method is a wrapper around cx_Oracle&#8217;s <code class="docutils literal"><span class="pre">execute()</span></code>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This method is a wrapper around cx_Oracle’s <code class="docutils literal notranslate"><span class="pre">execute()</span></code>
 method and is designed specifically to handle a full Oracle
 SQL script consisting of multiple SQL statements, as
 cx_Oracle cannot natively handle this.</p>
 <p>Once the script is parsed into individual statements using
-the &#8216;;&#8217; character, each individual statement is run using
-cx_Oracle&#8217;s <code class="docutils literal"><span class="pre">execute()</span></code> method.</p>
+the ‘;’ character, each individual statement is run using
+cx_Oracle’s <code class="docutils literal notranslate"><span class="pre">execute()</span></code> method.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the script and [optional commit] are successful,
@@ -598,16 +588,16 @@ otherwise False.</p>
 
 <dl class="method">
 <dt id="database.Oracle.table_exists">
-<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.Oracle.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) – The name of the table to be tested.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This is an Oracle specific function which wraps the general
-<code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
+<code class="docutils literal notranslate"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
 statement to be run.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True is the table exists, otherwise False.</td>
@@ -621,28 +611,28 @@ statement to be run.</td>
 <dl class="class">
 <dt id="database.SQLServer">
 <em class="property">class </em><code class="descclassname">database.</code><code class="descname">SQLServer</code><span class="sig-paren">(</span><em>server=None</em>, <em>database=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">pyodbc</span></code>, and used to
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code>, and used to
 handle database objects for SQL Server.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>server</strong> (<em>str</em>) &#8211; Name of the server where the SQL Server database
+<li><strong>server</strong> (<em>str</em>) – Name of the server where the SQL Server database
 lives.</li>
-<li><strong>database</strong> (<em>str</em>) &#8211; The name of the database to be connected.</li>
-<li><strong>user</strong> (<em>str</em>) &#8211; Login username</li>
-<li><strong>password</strong> (<em>str</em>) &#8211; Login password</li>
-<li><strong>from_file</strong> (<em>bool</em>) &#8211; Load the database credentials directly from a
+<li><strong>database</strong> (<em>str</em>) – The name of the database to be connected.</li>
+<li><strong>user</strong> (<em>str</em>) – Login username</li>
+<li><strong>password</strong> (<em>str</em>) – Login password</li>
+<li><strong>from_file</strong> (<em>bool</em>) – Load the database credentials directly from a
 config file.
 (Valid keys: server, database, user, password)</li>
-<li><strong>filename</strong> (<em>str</em>) &#8211; Full path to the file holding the database
+<li><strong>filename</strong> (<em>str</em>) – Full path to the file holding the database
 credentials.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to an <strong>SQLServer</strong> database:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">SQLServer</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">SQLServer</span>
 
 <span class="c1"># LOAD CREDENTIALS</span>
  <span class="n">sql</span> <span class="o">=</span> <span class="n">SQLServer</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="s1">&#39;my_server&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;my_db&#39;</span><span class="p">,</span>
@@ -674,7 +664,7 @@ class properties accordingly.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) &#8211; A dictionary of login credentials.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) – A dictionary of login credentials.</td>
 </tr>
 </tbody>
 </table>
@@ -709,16 +699,16 @@ blank.</p>
 
 <dl class="method">
 <dt id="database.SQLServer.table_exists">
-<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.SQLServer.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLServer.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) – The name of the table to be tested.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This is a SQL Server specific function which wraps the
-general <code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides
+general <code class="docutils literal notranslate"><span class="pre">Database._table_exists()</span></code> function and provides
 the SQL statement to be run.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
@@ -732,17 +722,17 @@ the SQL statement to be run.</td>
 <dl class="class">
 <dt id="database.SQLite">
 <em class="property">class </em><code class="descclassname">database.</code><code class="descname">SQLite</code><span class="sig-paren">(</span><em>db_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class is a lightweight wrapper for <code class="docutils literal"><span class="pre">sqlite3</span></code>, and used to
+<dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>, and used to
 handle database objects for SQLite.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>db_file_path</strong> (<em>str</em>) &#8211; Full file path to the SQLite database file.</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>db_file_path</strong> (<em>str</em>) – Full file path to the SQLite database file.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect to an <strong>SQLite</strong> database:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">SQLite</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.database</span> <span class="k">import</span> <span class="n">SQLite</span>
 
 <span class="c1"># LOAD CREDENTIALS</span>
 <span class="n">sql</span> <span class="o">=</span> <span class="n">SQLite</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="s1">&#39;path/to/data.db&#39;</span><span class="p">)</span>
@@ -783,7 +773,7 @@ created automatically.</td>
 
 <dl class="method">
 <dt id="database.SQLite._db_file_exists">
-<code class="descname">_db_file_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.SQLite._db_file_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_db_file_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLite._db_file_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if the database file exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -803,16 +793,16 @@ created automatically.</td>
 
 <dl class="method">
 <dt id="database.SQLite.table_exists">
-<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#database.SQLite.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">table_exists</code><span class="sig-paren">(</span><em>table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLite.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) &#8211; The name of the table to be tested.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table_name</strong> (<em>str</em>) – The name of the table to be tested.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">This is a SQLite specific function which wraps the general
-<code class="docutils literal"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
+<code class="docutils literal notranslate"><span class="pre">Database._table_exists()</span></code> function and provides the SQL
 statement to be run.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table exists, otherwise False.</td>
@@ -830,13 +820,13 @@ statement to be run.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Per Ref01:
-&#8220;The VACUUM command rebuilds the database file, repacking it
+“The VACUUM command rebuilds the database file, repacking it
 into a minimal amount of disk space. There are several
 reasons an application might do this:</p>
 <ol class="arabic simple">
-<li>Unless SQLite is running in &#8220;auto_vacuum=FULL&#8221; mode, when
+<li>Unless SQLite is running in “auto_vacuum=FULL” mode, when
 a large amount of data is deleted from the database file
-it leaves behind empty space, or &#8220;free&#8221; database pages.
+it leaves behind empty space, or “free” database pages.
 This means the database file might be larger than
 strictly necessary. Running VACUUM to rebuild the
 database reclaims this space and reduces the size of the
@@ -848,7 +838,7 @@ file. Running VACUUM ensures that each table and index is
 largely stored contiguously within the database file. In
 some cases, VACUUM may also reduce the number of
 partially filled pages in the database, reducing the size
-of the database file further.&#8221;&#8220;</li>
+of the database file further.”“</li>
 </ol>
 </td>
 </tr>
@@ -871,7 +861,7 @@ of the database file further.&#8221;&#8220;</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body">This class module is used to convert a dictionary (or JSON
-file) into a object - where the dictionary&#8217;s key/value
+file) into a object - where the dictionary’s key/value
 pairs become object attributes.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body">Linux/Windows | Python 3.5</td>
@@ -893,20 +883,20 @@ pairs become object attributes.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dictionary</strong> (<em>dict</em>) &#8211; A standard Python dictionary where all
+<li><strong>dictionary</strong> (<em>dict</em>) – A standard Python dictionary where all
 key/value pairs will be converted into an object.</li>
-<li><strong>source</strong> (<em>str</em>) &#8211; <p>Source for the conversion.</p>
+<li><strong>source</strong> (<em>str</em>) – <p>Source for the conversion.</p>
 <ul>
-<li>&#8216;dict&#8217;: a standard Python dictionary</li>
-<li>&#8216;json&#8217;: uses content from a JSON file</li>
+<li>’dict’: a standard Python dictionary</li>
+<li>’json’: uses content from a JSON file</li>
 </ul>
 </li>
-<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file to be used.</li>
+<li><strong>filepath</strong> (<em>str</em>) – Full file path to the JSON file to be used.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first last">A Python object is created from the passed dictionary (or JSON
-file), where each of the dictionary&#8217;s key/value pairs is turned
+file), where each of the dictionary’s key/value pairs is turned
 into an object attribute/value pair.</p>
 </td>
 </tr>
@@ -926,7 +916,7 @@ dictionary.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To convert a dictionary into an object:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.dict2obj</span> <span class="k">import</span> <span class="n">Dict2Obj</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.dict2obj</span> <span class="k">import</span> <span class="n">Dict2Obj</span>
 
 <span class="c1"># A SAMPLE DICTIONARY</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;This is a title.&#39;</span><span class="p">)</span>
@@ -949,13 +939,13 @@ dictionary.</p>
 
 <dl class="staticmethod">
 <dt id="dict2obj.Dict2Obj._read_json">
-<em class="property">static </em><code class="descname">_read_json</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &rarr; dict<a class="headerlink" href="#dict2obj.Dict2Obj._read_json" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">_read_json</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#dict2obj.Dict2Obj._read_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read values from a JSON file into a dictionary.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filepath</strong> (<em>str</em>) – Full file path to the JSON file.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary containing the JSON data.</td>
 </tr>
@@ -965,13 +955,13 @@ dictionary.</p>
 
 <dl class="method">
 <dt id="dict2obj.Dict2Obj._validate">
-<code class="descname">_validate</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_validate</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the following validation tests:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The &#8216;source&#8217; value is valid</li>
-<li>If &#8216;json&#8217; source, a file path is provided</li>
-<li>If &#8216;json&#8217; source, the provided file path exists</li>
+<li>The ‘source’ value is valid</li>
+<li>If ‘json’ source, a file path is provided</li>
+<li>If ‘json’ source, the provided file path exists</li>
 </ul>
 </div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
@@ -979,9 +969,9 @@ dictionary.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
-(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</li>
-<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</li>
+<li><strong>source</strong> (<em>str</em>) – Source for the conversion.
+(i.e. ‘dict’ or ‘json’)</li>
+<li><strong>filepath</strong> (<em>str</em>) – Full file path to the JSON file.</li>
 </ul>
 </td>
 </tr>
@@ -994,20 +984,20 @@ dictionary.</p>
 
 <dl class="staticmethod">
 <dt id="dict2obj.Dict2Obj._validate_fileexists">
-<em class="property">static </em><code class="descname">_validate_fileexists</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_fileexists" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validation test: If a &#8216;json&#8217; source, test the file path exists.</p>
+<em class="property">static </em><code class="descname">_validate_fileexists</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_fileexists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation test: If a ‘json’ source, test the file path exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
-(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</li>
-<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</li>
+<li><strong>source</strong> (<em>str</em>) – Source for the conversion.
+(i.e. ‘dict’ or ‘json’)</li>
+<li><strong>filepath</strong> (<em>str</em>) – Full file path to the JSON file.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the source is &#8216;dict&#8217;; or if source is &#8216;json&#8217; and
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the source is ‘dict’; or if source is ‘json’ and
 the file exists, otherwise False.</p>
 </td>
 </tr>
@@ -1017,21 +1007,21 @@ the file exists, otherwise False.</p>
 
 <dl class="staticmethod">
 <dt id="dict2obj.Dict2Obj._validate_source">
-<em class="property">static </em><code class="descname">_validate_source</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validation test: If a &#8216;json&#8217; source, test a file path is
+<em class="property">static </em><code class="descname">_validate_source</code><span class="sig-paren">(</span><em>source</em>, <em>filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation test: If a ‘json’ source, test a file path is
 provided.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
-(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</li>
-<li><strong>filepath</strong> (<em>str</em>) &#8211; Full file path to the JSON file.</li>
+<li><strong>source</strong> (<em>str</em>) – Source for the conversion.
+(i.e. ‘dict’ or ‘json’)</li>
+<li><strong>filepath</strong> (<em>str</em>) – Full file path to the JSON file.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the source is &#8216;dict&#8217;; or if source is &#8216;json&#8217; and a
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the source is ‘dict’; or if source is ‘json’ and a
 file path is provided, otherwise False.</p>
 </td>
 </tr>
@@ -1041,14 +1031,14 @@ file path is provided, otherwise False.</p>
 
 <dl class="staticmethod">
 <dt id="dict2obj.Dict2Obj._validate_source_value">
-<em class="property">static </em><code class="descname">_validate_source_value</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span> &rarr; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validation test: The value of the <code class="docutils literal"><span class="pre">source</span></code> parameter is valid.</p>
+<em class="property">static </em><code class="descname">_validate_source_value</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation test: The value of the <code class="docutils literal notranslate"><span class="pre">source</span></code> parameter is valid.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> (<em>str</em>) &#8211; Source for the conversion.
-(i.e. &#8216;dict&#8217; or &#8216;json&#8217;)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> (<em>str</em>) – Source for the conversion.
+(i.e. ‘dict’ or ‘json’)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if a valid source, otherwise False.</td>
 </tr>
@@ -1067,7 +1057,7 @@ file path is provided, otherwise False.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module is designed to provide a list of the required
 data files for project packaging to the calling
-<code class="docutils literal"><span class="pre">setup.py</span></code> file.</p>
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
@@ -1080,12 +1070,12 @@ data files for project packaging to the calling
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">The principal code concept was adopted from
-<code class="docutils literal"><span class="pre">matplotlib.get_py2exe_datafiles()</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">matplotlib.get_py2exe_datafiles()</span></code>.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To collect the data files for your project, use this in your
-<code class="docutils literal"><span class="pre">setup.py</span></code> file:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="k">import</span> <span class="n">get_datafiles</span>
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="k">import</span> <span class="n">get_datafiles</span>
 
 <span class="n">data_files</span> <span class="o">=</span> <span class="n">get_datafiles</span><span class="p">(</span><span class="n">pkg_dir</span><span class="o">=</span><span class="s1">&#39;myprog/package&#39;</span><span class="p">,</span>
                            <span class="n">exts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;.sql&#39;</span><span class="p">],</span>
@@ -1104,10 +1094,10 @@ data files for project packaging to the calling
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ext_list</strong> (<em>list</em>) &#8211; A list of file extensions.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ext_list</strong> (<em>list</em>) – A list of file extensions.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of extensions, with a dot prepended to each extension,
-if it doesn&#8217;t already exist.</td>
+if it doesn’t already exist.</td>
 </tr>
 </tbody>
 </table>
@@ -1118,23 +1108,23 @@ if it doesn&#8217;t already exist.</td>
 <code class="descclassname">get_datafiles.</code><code class="descname">_get_license</code><span class="sig-paren">(</span><em>pkg_dir</em>, <em>license_name='LICENSE'</em>, <em>p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_license" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the LICENSE file.</p>
 <p>This private function is called by the main
-<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a> function and is used to add
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
 the LICENSE file to the returned list of data files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>pkg_dir</strong> (<em>str</em>) &#8211; </li>
-<li><strong>license_name</strong> (<em>str</em>) &#8211; </li>
-<li><strong>p2e</strong> (<em>bool</em>) &#8211; </li>
+<li><strong>pkg_dir</strong> (<em>str</em>) – </li>
+<li><strong>license_name</strong> (<em>str</em>) – </li>
+<li><strong>p2e</strong> (<em>bool</em>) – </li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>For argument descriptions</strong>, refer to the docstring for
-<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a>.</p>
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1152,23 +1142,23 @@ README and LICENSE files live.</td>
 <code class="descclassname">get_datafiles.</code><code class="descname">_get_readmefiles</code><span class="sig-paren">(</span><em>pkg_dir, readme_exts=['.html', '.md'], p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_readmefiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the README files.</p>
 <p>This private function is called by the main
-<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a> function and is used to add
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
 the README file(s) to the returned list of data files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>pkg_dir</strong> (<em>str</em>) &#8211; </li>
-<li><strong>readme_exts</strong> (<em>list</em>) &#8211; </li>
-<li><strong>p2e</strong> (<em>bool</em>) &#8211; </li>
+<li><strong>pkg_dir</strong> (<em>str</em>) – </li>
+<li><strong>readme_exts</strong> (<em>list</em>) – </li>
+<li><strong>p2e</strong> (<em>bool</em>) – </li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>For argument descriptions</strong>, refer to the docstring for
-<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal"><span class="pre">get_datafiles()</span></code></a>.</p>
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1184,8 +1174,8 @@ README and LICENSE files live.</td>
 <p>Although this function is designed to get the README files with
 a given extension, <strong>there is no validation on the file name</strong>,
 only on the extension.</p>
-<p class="last">In otherwords, if there is a file named <code class="docutils literal"><span class="pre">FOO.html</span></code>, it will be
-picked up if .html is in the <code class="docutils literal"><span class="pre">readme_exts</span></code> list.</p>
+<p class="last">In otherwords, if there is a file named <code class="docutils literal notranslate"><span class="pre">FOO.html</span></code>, it will be
+picked up if .html is in the <code class="docutils literal notranslate"><span class="pre">readme_exts</span></code> list.</p>
 </div>
 </dd></dl>
 
@@ -1193,47 +1183,47 @@ picked up if .html is in the <code class="docutils literal"><span class="pre">re
 <dt id="get_datafiles.get_datafiles">
 <code class="descclassname">get_datafiles.</code><code class="descname">get_datafiles</code><span class="sig-paren">(</span><em>pkg_dir, exts=['.json', '.sql', '.txt'], get_readme_files=True, readme_exts=['.html', '.md'], get_license=True, license_name='LICENSE', p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles.get_datafiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gather and return a list of project data files.</p>
-<p>This function is designed to be called by your project&#8217;s
-<code class="docutils literal"><span class="pre">setup.py</span></code> file and will return a list of data files used by
+<p>This function is designed to be called by your project’s
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file and will return a list of data files used by
 that project.</p>
-<p>The concept and principal design were adopted from matplotlib&#8217;s
-<code class="docutils literal"><span class="pre">get_py2exe_datafiles()</span></code> function.</p>
+<p>The concept and principal design were adopted from matplotlib’s
+<code class="docutils literal notranslate"><span class="pre">get_py2exe_datafiles()</span></code> function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pkg_dir</strong> (<em>str</em>) &#8211; <p>The project&#8217;s root directory to begin the search.
+<li><strong>pkg_dir</strong> (<em>str</em>) – <p>The project’s root directory to begin the search.
 Typically this your main package directory.</p>
 <ul>
-<li><strong>Tip</strong>: To get your package&#8217;s full path, you can use this
-in your <code class="docutils literal"><span class="pre">setup.py</span></code> file:<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pkg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span>
+<li><strong>Tip</strong>: To get your package’s full path, you can use this
+in your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pkg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span>
                        <span class="o">&lt;</span><span class="n">pkg_dir_name</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
-<li><strong>exts</strong> (<em>list</em>) &#8211; A list of file extensions used as a filter when
+<li><strong>exts</strong> (<em>list</em>) – A list of file extensions used as a filter when
 collecting data files.</li>
-<li><strong>get_readme_files</strong> (<em>bool</em>) &#8211; Include the package&#8217;s README file(s).</li>
-<li><strong>readme_exts</strong> (<em>list</em>) &#8211; A list of file extensions used as a filter
+<li><strong>get_readme_files</strong> (<em>bool</em>) – Include the package’s README file(s).</li>
+<li><strong>readme_exts</strong> (<em>list</em>) – A list of file extensions used as a filter
 when collecting README files.</li>
-<li><strong>get_license</strong> (<em>bool</em>) &#8211; Include the package&#8217;s LICENSE file.</li>
-<li><strong>license_name</strong> (<em>str</em>) &#8211; Name of the LICENSE file to be included.</li>
-<li><strong>p2e</strong> (<em>bool</em>) &#8211; <p>This package will be a py2exe installation.</p>
+<li><strong>get_license</strong> (<em>bool</em>) – Include the package’s LICENSE file.</li>
+<li><strong>license_name</strong> (<em>str</em>) – Name of the LICENSE file to be included.</li>
+<li><strong>p2e</strong> (<em>bool</em>) – <p>This package will be a py2exe installation.</p>
 <ul>
-<li><code class="docutils literal"><span class="pre">p2e=True</span></code> means the destination path is left as derived
+<li><code class="docutils literal notranslate"><span class="pre">p2e=True</span></code> means the destination path is left as derived
 by the function</li>
-<li><code class="docutils literal"><span class="pre">p2e=False</span></code> means the environment&#8217;s <code class="docutils literal"><span class="pre">site-packages</span></code>
-directory will be prepended to the data files&#8217; destination
+<li><code class="docutils literal notranslate"><span class="pre">p2e=False</span></code> means the environment’s <code class="docutils literal notranslate"><span class="pre">site-packages</span></code>
+directory will be prepended to the data files’ destination
 path</li>
 </ul>
 </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Your project&#8217;s <code class="docutils literal"><span class="pre">setup.py</span></code> file will pass its project&#8217;s
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Your project’s <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file will pass its project’s
 root directory and a list of desired file extensions.  This
 function then performs a directory walk and picks out the full
 path to each desired file.  The results are returned as a list
@@ -1241,17 +1231,17 @@ of tuples, which include the destination directory and the full
 path to each file.</p>
 <div class="line-block">
 <div class="line">The output format is shown here:</div>
-<div class="line"><code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">[('destination_dir',</span> <span class="pre">['/path/to/file.ext',</span> <span class="pre">'...'])]</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">[('destination_dir',</span> <span class="pre">['/path/to/file.ext',</span> <span class="pre">'...'])]</span></code></div>
 </div>
-<p>If the <code class="docutils literal"><span class="pre">p2e</span></code> (py2exe) flag is <code class="docutils literal"><span class="pre">False</span></code>, the platform /
-environment&#8217;s site-packages directory is prepended to the
+<p>If the <code class="docutils literal notranslate"><span class="pre">p2e</span></code> (py2exe) flag is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the platform /
+environment’s site-packages directory is prepended to the
 destination path, so the data files are installed to the
 site-package directory.  Otherwise, the package directory
 structure is used, with the package root being root.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use this function in your <code class="docutils literal"><span class="pre">setup.py</span></code> file:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="k">import</span> <span class="n">get_datafiles</span>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use this function in your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="k">import</span> <span class="n">get_datafiles</span>
 
 <span class="n">data_files</span> <span class="o">=</span> <span class="n">get_datafiles</span><span class="p">(</span><span class="n">pkg_dir</span><span class="o">=</span><span class="s1">&#39;myprog/package&#39;</span><span class="p">,</span>
                            <span class="n">exts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;.sql&#39;</span><span class="p">],</span>
@@ -1275,13 +1265,13 @@ structure is used, with the package root being root.</p>
 creator.</p>
 <p>The calling program is responsible for passing the proper
 arguments to create the log file header.
-(i.e.: printheader=True, headertext=&#8217;some,header,text,here&#8217;)</p>
-<p>It is suggested to initialise the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a> class
-at program startup, with the <code class="docutils literal"><span class="pre">printheader</span></code> parameter
-set to <code class="docutils literal"><span class="pre">True</span></code>.  This is safe because if the log file
+(i.e.: printheader=True, headertext=’some,header,text,here’)</p>
+<p>It is suggested to initialise the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class
+at program startup, with the <code class="docutils literal notranslate"><span class="pre">printheader</span></code> parameter
+set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.  This is safe because if the log file
 already exists, the header will not be re-created.  However,
 if the log file does not exist, it will be created with a
-header, using the value of the <code class="docutils literal"><span class="pre">headertext</span></code> parameter.</p>
+header, using the value of the <code class="docutils literal notranslate"><span class="pre">headertext</span></code> parameter.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
@@ -1296,8 +1286,8 @@ header, using the value of the <code class="docutils literal"><span class="pre">
 <tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a> class in your project:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class in your project:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
 
 <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">printheader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headertext</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
@@ -1315,7 +1305,7 @@ header, using the value of the <code class="docutils literal"><span class="pre">
 <dd><p>This is a small and simple log file creator/writer class.</p>
 <p>The calling program is responsible for passing the proper arguments
 to create the log file header.
-(i.e.: printheader=True, headertext=&#8217;some,header,text,here&#8217;)</p>
+(i.e.: printheader=True, headertext=’some,header,text,here’)</p>
 <p>On class instantiation, validation is performed to determine if the
 log file exists.  If the log file does not exist, a header is
 required before writing to the log file.  These parameters can be
@@ -1326,37 +1316,37 @@ log file already exists.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) &#8211; Full path to the log file.</li>
-<li><strong>autofill</strong> (<em>bool</em>) &#8211; Automatically populate <code class="docutils literal"><span class="pre">datetime(now)</span></code>, host
+<li><strong>filepath</strong> (<em>str</em>) – Full path to the log file.</li>
+<li><strong>autofill</strong> (<em>bool</em>) – Automatically populate <code class="docutils literal notranslate"><span class="pre">datetime(now)</span></code>, host
 and username values, to each log entry.</li>
-<li><strong>printheader</strong> (<em>bool</em>) &#8211; Print a log file header using the text
-passed into the <code class="docutils literal"><span class="pre">headertext</span></code> parameter.
+<li><strong>printheader</strong> (<em>bool</em>) – Print a log file header using the text
+passed into the <code class="docutils literal notranslate"><span class="pre">headertext</span></code> parameter.
 <strong>Note: The header will only be written if the log file
 does not exist.</strong></li>
-<li><strong>headertext</strong> (<em>str</em>) &#8211; String of delimited column labels to be
+<li><strong>headertext</strong> (<em>str</em>) – String of delimited column labels to be
 written as the header.</li>
-<li><strong>sep</strong> (<em>str</em>) &#8211; Separator to be used in the log file.  This separator
+<li><strong>sep</strong> (<em>str</em>) – Separator to be used in the log file.  This separator
 is used when writing the autofill values.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">File Validation:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">On class instantiation, tests are performed to ensure the log
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">On class instantiation, tests are performed to ensure the log
 file is being populated in a logical way.</p>
 <blockquote>
 <div><ul class="simple">
-<li>If <code class="docutils literal"><span class="pre">printheader</span></code> is <code class="docutils literal"><span class="pre">False</span></code>, and the log file does not
+<li>If <code class="docutils literal notranslate"><span class="pre">printheader</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, and the log file does not
 exist, the user is notified</li>
-<li>If <code class="docutils literal"><span class="pre">printheader</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, yet <code class="docutils literal"><span class="pre">headertext</span></code> is
+<li>If <code class="docutils literal notranslate"><span class="pre">printheader</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, yet <code class="docutils literal notranslate"><span class="pre">headertext</span></code> is
 blank, the user is instructed to pass header text</li>
-<li>If <code class="docutils literal"><span class="pre">printheader</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, yet the log file already
+<li>If <code class="docutils literal notranslate"><span class="pre">printheader</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, yet the log file already
 exists, the header will not be written</li>
 </ul>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a> class in your project:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class in your project:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
 
 <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">printheader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1383,29 +1373,29 @@ exists, the header will not be written</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text</strong> (<em>str</em>) &#8211; Delimited text string to be written to the log.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>text</strong> (<em>str</em>) – Delimited text string to be written to the log.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If <code class="docutils literal"><span class="pre">autofill</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, the datetime, host and username
+<p class="last">If <code class="docutils literal notranslate"><span class="pre">autofill</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the datetime, host and username
 values <strong>will be populated automatically</strong>, and <em>do not</em>
-need to be passed into the <code class="docutils literal"><span class="pre">text</span></code> argument.</p>
+need to be passed into the <code class="docutils literal notranslate"><span class="pre">text</span></code> argument.</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">If the <code class="docutils literal"><span class="pre">autofill</span></code> argument is <code class="docutils literal"><span class="pre">True</span></code>, the current
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">If the <code class="docutils literal notranslate"><span class="pre">autofill</span></code> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the current
 datetime, host and username values are written (in that
-order), ahead of the text string provided to the <code class="docutils literal"><span class="pre">text</span></code>
-argument.  The <code class="docutils literal"><span class="pre">sep</span></code> parameter (defined at instantiation),
+order), ahead of the text string provided to the <code class="docutils literal notranslate"><span class="pre">text</span></code>
+argument.  The <code class="docutils literal notranslate"><span class="pre">sep</span></code> parameter (defined at instantiation),
 is used to separate these auto-populated fields.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To write to the log file:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Just adding some random text to my log&#39;</span><span class="p">)</span>
@@ -1423,8 +1413,8 @@ is used to separate these auto-populated fields.</p>
 <dd><p>Write a blank line to the log file.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">autofill</span></code> information <strong>is not</strong> written.  This is a
-true blank line, created by writing a &#8216;\n&#8217; value to the
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">autofill</span></code> information <strong>is not</strong> written.  This is a
+true blank line, created by writing a ‘\n’ value to the
 log.</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1432,7 +1422,7 @@ log.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To write a blank line to the log file:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="k">import</span> <span class="n">Log</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;path/to/file.log&#39;</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">write_blank_line</span><span class="p">()</span>
@@ -1482,10 +1472,10 @@ little bit.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>total_values</strong> (<em>int</em>) &#8211; Total number of iterations.</li>
-<li><strong>bar_len</strong> (<em>int</em>) &#8211; Complete length of the progress bar, in chars.</li>
-<li><strong>symbol</strong> (<em>str</em>) &#8211; The symbol which is used to track progress.</li>
-<li><strong>color</strong> (<em>str</em>) &#8211; Colour of the progress bar; where only the first
+<li><strong>total_values</strong> (<em>int</em>) – Total number of iterations.</li>
+<li><strong>bar_len</strong> (<em>int</em>) – Complete length of the progress bar, in chars.</li>
+<li><strong>symbol</strong> (<em>str</em>) – The symbol which is used to track progress.</li>
+<li><strong>color</strong> (<em>str</em>) – Colour of the progress bar; where only the first
 letter of the colour is required.</li>
 </ul>
 </td>
@@ -1494,7 +1484,7 @@ letter of the colour is required.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">You might implement the progress bar in a loop like this:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">utils3.progressbar</span> <span class="k">import</span> <span class="n">ProgressBar</span>
 
 <span class="n">pb</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">total_values</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">bar_len</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span>
@@ -1520,13 +1510,13 @@ letter of the colour is required.</li>
 
 <dl class="method">
 <dt id="progressbar.ProgressBar._getcolor">
-<code class="descname">_getcolor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str<a class="headerlink" href="#progressbar.ProgressBar._getcolor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create ANSI colour escape sequence to user&#8217;s colour.</p>
+<code class="descname">_getcolor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#progressbar.ProgressBar._getcolor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create ANSI colour escape sequence to user’s colour.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ANSI escape sequence string for the user&#8217;s colour.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ANSI escape sequence string for the user’s colour.</td>
 </tr>
 </tbody>
 </table>
@@ -1540,16 +1530,280 @@ letter of the colour is required.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>current</strong> (<em>int</em>) &#8211; Index value for the current iteration.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>current</strong> (<em>int</em>) – Index value for the current iteration.
 This value is compared against the initialised
-<code class="docutils literal"><span class="pre">total_values</span></code> parameter to determine the current
+<code class="docutils literal notranslate"><span class="pre">total_values</span></code> parameter to determine the current
 position in the overall progress.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Refer to the <a class="reference internal" href="#progressbar.ProgressBar" title="progressbar.ProgressBar"><code class="xref py py-class docutils literal"><span class="pre">ProgressBar</span></code></a> class
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Refer to the <a class="reference internal" href="#progressbar.ProgressBar" title="progressbar.ProgressBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressBar</span></code></a> class
 docstring.</td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-registry">
+<span id="registry"></span><h2><strong>registry</strong><a class="headerlink" href="#module-registry" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module provides a simple interface to the Windows
+registry.  It contains a <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> class that can
+be used to interact with the registry; and is supported by
+the <a class="reference internal" href="#registry.Key" title="registry.Key"><code class="xref py py-class docutils literal notranslate"><span class="pre">Key</span></code></a> and <a class="reference internal" href="#registry.Value" title="registry.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">Value</span></code></a> classes.</p>
+<p>This module also provides the following objects that can be
+used to directly access the registry methods for each root
+HKEY.</p>
+<blockquote>
+<div><ul class="simple">
+<li>hkcr = HKEY_CLASSES_ROOT</li>
+<li>hkcu = HKEY_CURRENT_USER</li>
+<li>hklm = HKEY_LOCAL_MACHINE</li>
+<li>hkus = HKEY_USERS</li>
+<li>hkcc = HKEY_CURRENT_CONFIG</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">M Critchard</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">For a use example, refer to the <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> docstring.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="registry.Key">
+<em class="property">class </em><code class="descclassname">registry.</code><code class="descname">Key</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Windows registry keys.</p>
+<p>It provides methods that can be used to interact with the values
+of the key.</p>
+<dl class="method">
+<dt id="registry.Key.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise a private self._key attribute.</p>
+<p>This attribute is used throughout the class to provide a set
+of key specific functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Key.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the key value specified by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Name of the registry key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If the value exists, a value object is returned, otherwise
+<code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Key.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the data of the key value specified by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the registry key.</li>
+<li><strong>data</strong> (<em>str</em>) – Data to store into the key.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, only strings or unicode values are supported.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="registry.Registry">
+<em class="property">class </em><code class="descclassname">registry.</code><code class="descname">Registry</code><span class="sig-paren">(</span><em>hkey</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Windows registry.</p>
+<p>It provides methods that can be used to interact with the keys and
+values in the registry.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example of how to get the value of a registry key:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">registry</span>
+
+<span class="n">hkcu</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">hkcu</span>
+<span class="n">my_value</span> <span class="o">=</span> <span class="n">hkcu</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;control panel\desktop&#39;</span><span class="p">,</span> <span class="s1">&#39;wallpaper&#39;</span><span class="p">)</span>
+<span class="n">my_wallpaper</span> <span class="o">=</span> <span class="n">my_value</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="registry.Registry.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>hkey</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise a private self._hkey attribute.</p>
+<p>This attribute is used throughout the class to provide a set
+of hkey specific functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry._open_key">
+<code class="descname">_open_key</code><span class="sig-paren">(</span><em>path</em>, <em>sam</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry._open_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open and return the key specified by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Path to the registry key.</li>
+<li><strong>sam</strong> – The SAM privilege level used to open the key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The key is opened with privilege level defined by <code class="docutils literal notranslate"><span class="pre">sam</span></code>.
+The user is notified if an error occurs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">If opened successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.OpenKey</span></code> object is
+returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.create_key">
+<code class="descname">create_key</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.create_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the key specified by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Path to the registry key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">If a creation error occurs, the user is notified.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If created successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.CreateKey</span></code> object is
+returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.delete_key">
+<code class="descname">delete_key</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.delete_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the key specified by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Path to the registry key.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>All of the values under the key are also deleted</strong> but
+subkeys cannot be deleted with this method. The user is
+notified if an error occurs.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If deleted successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.DeleteKey</span></code> object is
+returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>path</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the key value specified by the path and name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Path to the registry key.</li>
+<li><strong>name</strong> (<em>str</em>) – Name of the registry key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">If the value exists, a value object is returned, otherwise
+<code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>path</em>, <em>name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the data of the key value specified by the path and name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Path to the registry key.</li>
+<li><strong>name</strong> (<em>str</em>) – Name of the registry key.</li>
+<li><strong>data</strong> (<em>str</em>) – Data to store into the key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">If the value doesn’t exist, this method creates it and sets
+its type and data accordingly. A check is performed to
+determine if the operation has been completed successfully.
+If it hasn’t the user is notified.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The value of the registry key.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="registry.Value">
+<em class="property">class </em><code class="descclassname">registry.</code><code class="descname">Value</code><span class="sig-paren">(</span><em>name</em>, <em>regtype</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Windows registry values.</p>
+<p>It provides name, type and data attributes to mimic the attributes
+of a value in the registry.</p>
+<dl class="method">
+<dt id="registry.Value.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name</em>, <em>regtype</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name, type and data attributes.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1562,7 +1816,7 @@ docstring.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body">This module is designed to report program errors to the
-console and/or a log file, using the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a>
+console and/or a log file, using the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a>
 class.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body">Linux/Windows | Python 3.5</td>
@@ -1584,10 +1838,10 @@ class.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>error</strong> (<em>Exception</em>) &#8211; Python Exception object from the built-in
+<li><strong>error</strong> (<em>Exception</em>) – Python Exception object from the built-in
 try/except error handler.  Refer to the use example below.</li>
-<li><strong>logevent</strong> (<em>bool</em>) &#8211; Send the error to a log file.</li>
-<li><strong>logfilename</strong> (<em>str</em>) &#8211; Full path to the log file.</li>
+<li><strong>logevent</strong> (<em>bool</em>) – Send the error to a log file.</li>
+<li><strong>logfilename</strong> (<em>str</em>) – Full path to the log file.</li>
 </ul>
 </td>
 </tr>
@@ -1595,17 +1849,17 @@ try/except error handler.  Refer to the use example below.</li>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The <code class="docutils literal"><span class="pre">logevent</span></code> parameter assumes the log file exists and the
+<p>The <code class="docutils literal notranslate"><span class="pre">logevent</span></code> parameter assumes the log file exists and the
 header is already written.</p>
-<p class="last">For general logging help, you can use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal"><span class="pre">Log</span></code></a>
-class which is built into <code class="docutils literal"><span class="pre">utils3</span></code>.</p>
+<p class="last">For general logging help, you can use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a>
+class which is built into <code class="docutils literal notranslate"><span class="pre">utils3</span></code>.</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Here is an example of how to use the error reporter:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">reporterror</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">reporterror</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># SOMETHING BAD HAPPENS HERE ...</span>
@@ -1616,7 +1870,7 @@ class which is built into <code class="docutils literal"><span class="pre">utils
 </pre></div>
 </div>
 <p>And the output looks like this:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span>ERROR:  division by zero
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span>ERROR:  division by zero
 TYPE:   &lt;class &#39;ZeroDivisionError&#39;&gt;
 FUNC:   &lt;module&gt;
 LINE:   2
