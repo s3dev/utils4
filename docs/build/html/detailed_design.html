@@ -16,7 +16,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Change Log" href="changelog.html" />
-    <link rel="prev" title="The Docs" href="index.html" /> 
+    <link rel="prev" title="Overview" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/Triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
           <span>utils3 - vx.x.x Documentation</span></a></h1>
@@ -25,7 +25,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">The Docs</a>
+        «&#160;&#160;<a href="index.html">Overview</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -1884,6 +1884,633 @@ CMD:    1/0
 </dd></dl>
 
 </div>
+<div class="section" id="user-interface">
+<h2><strong>user_interface</strong><a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-user_interface"></span><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This class module provides an interface to the Win / Linux
+Command Line Interpreters (CLI).</p>
+<p>It contains a <a class="reference internal" href="#user_interface.UserInterface" title="user_interface.UserInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserInterface</span></code></a> class whose methods
+provide a standard way of reporting normal, alternative and
+abnormal behaviour.  The following formats are built-in:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt><strong>fully customisable messages and headers</strong> via the</dt>
+<dd><a class="reference internal" href="#user_interface.UserInterface.print_" title="user_interface.UserInterface.print_"><code class="xref py py-meth docutils literal notranslate"><span class="pre">print_()</span></code></a> method</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>headings</strong></dt>
+<dd>black text, cyan background
+black text, green background
+black text, white background
+black text, yellow background</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>user input expected</strong></dt>
+<dd>white text, black background</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>normal behaviour</strong></dt>
+<dd>green text, black background</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>alternative behaviour</strong> (e.g. a warning)</dt>
+<dd>yellow text, black background</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>abnormal or erroneous behaviour</strong></dt>
+<dd>red text, black background</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">M Critchard / J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first last"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="user_interface.PrintBanner">
+<em class="property">class </em><code class="descclassname">user_interface.</code><code class="descname">PrintBanner</code><span class="sig-paren">(</span><em>name=None</em>, <em>version=None</em>, <em>desc=None</em>, <em>info=None</em>, <em>chars=72</em>, <em>ribbon='-'</em>, <em>fore='white'</em>, <em>back='black'</em>, <em>style='bright'</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner" title="Permalink to this definition">¶</a></dt>
+<dd><p>PURPOSE:
+This class is used to print a program information banner to the CLI,
+which may be useful if you want to use a ‘standardised’ program
+header across all of your programs.  This class can be called at
+the start of a program.</p>
+<p>Refer to the DESIGN and PARAMETERS sections for configuration
+details; as this banner is highly configurable.</p>
+<p>Program     :    bob_the_great
+Version     :    2.0.3</p>
+<p>USE:
+import utils3.user_interface as ui
+ui.PrintBanner(name=’bob_the_great’, version=‘2.0.3’,</p>
+<blockquote>
+<div>desc=’Gives conclusive proof why Bob is so great.’)</div></blockquote>
+<dl class="method">
+<dt id="user_interface.PrintBanner.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name=None</em>, <em>version=None</em>, <em>desc=None</em>, <em>info=None</em>, <em>chars=72</em>, <em>ribbon='-'</em>, <em>fore='white'</em>, <em>back='black'</em>, <em>style='bright'</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display program info to the CLI at the start of a program.</p>
+<p>DESIGN:
+In short, if the ‘info’ parameter is left as None, a default
+banner is generated using the values passed into the name,
+version and desc parameters.</p>
+<p>The string templates used for the banner layout may be
+configured in the UI config file.</p>
+<p>Additional configuration is available through the other
+parameters, which are all defined in the PARAMETERS section
+below.</p>
+<p>Also, the title of the console window is updated to show the
+program’s name and version, if all of the following criteria
+are met:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Windows OS</li>
+<li>name parameter is not None</li>
+<li>version parameter is not None</li>
+</ul>
+</div></blockquote>
+<p>BASIC PARAMETERS:
+- name
+Name of your program.
+- version
+The version number of your program.
+- desc
+Description of what your program is all about.</p>
+<p>INFO PARAMETER:
+- info
+The info parameter is used to generate a completely customised
+banner.  Basically, whatever key/value pairs you pass in, are
+what will be printed in the banner.</p>
+<p>This parameter accepts a list of dictionaries.  For example:
+info = [{‘Program’:’bob_the_great’},</p>
+<blockquote>
+<div>{‘Version’:‘2.0.3’},
+{‘’:’‘},
+{‘Description’:’Gives proof why Bob is great.’},
+{‘Comments’:’Some more reasons Bob is so great.’}]</div></blockquote>
+<blockquote>
+<div><p>Program          :    bob_the_great
+Version          :    2.0.3</p>
+<p>Description      :    Gives proof why Bob is great.
+Comments         :    Some more reasons Bob is so great.</p>
+</div></blockquote>
+<p>CONFIG PARAMETERS:
+- chars
+In the number of characters, the size of the buffer used for
+the background colour, and the length of the ribbon.
+- ribbon
+The character(s) to use for the ribbon.
+If multiple characters are passed into this parameter, these
+characters will be repeated until the length of the ‘chars’
+parameter is met.
+- fore
+Text colour.  The eight basic colour names are accepted as
+strings.
+- back
+Background colour.  The eight basic colour names are accepted
+as strings.
+- style
+Brightness of the text/background.  Accepted strings:</p>
+<blockquote>
+<div><ul class="simple">
+<li>dim</li>
+<li>bright (default)</li>
+<li>normal</li>
+</ul>
+</div></blockquote>
+<p>USE:
+import utils3.user_interface as ui
+ui.PrintBanner(name=’bob_the_great’, version=‘2.0.3’,</p>
+<blockquote>
+<div>desc=’Gives proof why Bob is so great.’,
+chars=55, ribbon=’~-‘, fore=’yellow’,
+back=’black’, style=’bright’)</div></blockquote>
+<p>Will print this:
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
+<blockquote>
+<div><p>Program        :    bob_the_great
+Version        :    2.0.3</p>
+<p>Description    :    Gives proof why Bob is so great.</p>
+</div></blockquote>
+<p>~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.PrintBanner._add_ribbon">
+<code class="descname">_add_ribbon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._add_ribbon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add blank line and ribbon to start and end of banner.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.PrintBanner._get_longest_key">
+<code class="descname">_get_longest_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._get_longest_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of the longest key, as an integer.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="user_interface.PrintBanner._get_os">
+<em class="property">static </em><code class="descname">_get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._get_os" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the OS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.PrintBanner._print_prog_banner">
+<code class="descname">_print_prog_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._print_prog_banner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using the ‘info’ parameter as reference, determine if the
+default or user-defined banner should be printed; then print
+the banner using the UserInterface class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.PrintBanner._setup_custom">
+<code class="descname">_setup_custom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._setup_custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set up the user-defined banner.</p>
+<p>DESIGN:
+Set the buffer (pad) for all ‘key’ elements using the length of
+the longest dict key.  This allows all ‘:’ characters to align,
+regardless of the varying lengths of each key.</p>
+<p>Then, iterate through the list of dictionaries and extract the
+key/value pairs for use in the banner.  The banner’s layout
+template is defined in the UI config file.</p>
+<p>Finally, add the starting/ending blank line and ribbon to the
+compiled list.  This list is then used by the
+_print_prog_banner() method to print the banner to the CLI.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.PrintBanner._setup_default">
+<code class="descname">_setup_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._setup_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set up the default banner.</p>
+<p>DESIGN:
+A pre-defined list of ‘key’ items is iterated, which is used to
+build the list containing the lines to print.</p>
+<p>Finally, add the starting/ending blank line and ribbon to the
+compiled list.  This list is then used by the
+_print_prog_banner() method to print the banner to the CLI.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.PrintBanner._update_console_title">
+<code class="descname">_update_console_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._update_console_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>For Windows, update the console window title.</p>
+<p>DESIGN:
+This method is only functional if the OS is Windows and the
+name and version arguments are passed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="user_interface.UserInterface">
+<em class="property">class </em><code class="descclassname">user_interface.</code><code class="descname">UserInterface</code><a class="headerlink" href="#user_interface.UserInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Linux/Windows CLIs and provides a
+standard way of reporting normal, alternative and abnormal
+behaviour.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To print a green header to the console:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.user_interface</span> <span class="k">as</span> <span class="nn">ui</span>
+
+<span class="n">_UI</span> <span class="o">=</span> <span class="n">ui</span><span class="o">.</span><span class="n">UserInterface</span><span class="p">()</span>
+<span class="n">_UI</span><span class="o">.</span><span class="n">print_heading_green</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;THIS IS MY HEADER&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="user_interface.UserInterface.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body">This constructor initialises <code class="docutils literal notranslate"><span class="pre">colorama</span></code> - which enables
+the user to print coloured text to the Windows CLI - and
+loads the config file, which is used throughout the class.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Background win_unicode_console:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><code class="docutils literal notranslate"><span class="pre">win_unicode_console</span></code> is used here to fix a problem
+between the Python <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code> function and the Windows
+CLI. The problem causes ANSI characters to be <strong>displayed</strong>
+to the console, rather than <strong>setting</strong> colours.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It <strong>may</strong> be possible to remove use of
+<code class="docutils literal notranslate"><span class="pre">win_unicode_console</span></code> when/if we move to Python 3.6.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Background colorama:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">Colorama is initialised here to “strip ANSI characters from
+stdout and convert them into the equivalent win32 calls”;
+per Jonathan Hartley, creator of Colorama.</p>
+<p class="last">The Win32 console (excluding <em>some</em> versions of Win10) does
+not support ANSI escape sequences, and therefore (unlike
+<a href="#id1"><span class="problematic" id="id2">*</span></a>nix) simply printing the escape sequence to the native
+Win CLI with the text does not work.  So we use Colorama
+for the low-level win32 work.  Thanks Jonathan!!</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="user_interface.UserInterface._build_color_dict">
+<em class="property">static </em><code class="descname">_build_color_dict</code><span class="sig-paren">(</span><em>class_</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._build_color_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dictionary of colours available in the colorama
+.Fore and .Back classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">For example, when the <code class="docutils literal notranslate"><span class="pre">colorama.Fore</span></code> class is passed,
+the output looks like:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;black&#39;</span><span class="p">:</span> <span class="s1">&#39;[30m&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="s1">&#39;[34m&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span>
+ <span class="s1">&#39;white&#39;</span><span class="p">:</span> <span class="s1">&#39;[37m&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="s1">&#39;[33m&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="user_interface.UserInterface._pad">
+<em class="property">static </em><code class="descname">_pad</code><span class="sig-paren">(</span><em>text</em>, <em>padto</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pad the text value, with (n) spaces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>text</strong> (<em>str</em>) – Text to print.</li>
+<li><strong>padto</strong> (<em>int</em>) – Field size for text block.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first last">The padto value is a <strong>field size</strong> value, <strong>not</strong> the
+number of blank characters added to the end of the text
+string.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.get_input">
+<code class="descname">get_input</code><span class="sig-paren">(</span><em>prompt</em>, <em>fore='white'</em>, <em>back='black'</em>, <em>style='normal'</em>, <em>ending_char='\n'</em>, <em>add_space=False</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.get_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get user input via a CLI prompt formatted by the caller.</p>
+<p>This method extends the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">raw_input()</span></code> user
+prompt by adding appearance control and text colouring through
+<code class="docutils literal notranslate"><span class="pre">colorama</span></code>.  Like the <code class="xref py py-func docutils literal notranslate"><span class="pre">raw_input()</span></code> function, the
+user’s input is returned to the caller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prompt</strong> (<em>str</em>) – The prompt text to be displayed.</li>
+<li><strong>fore</strong> (<em>str</em>) – The text colour, as a string.</li>
+<li><strong>back</strong> (<em>str</em>) – Background colour, as a string.</li>
+<li><strong>style</strong> (<em>str</em>) – The ‘normal’ style selects the 8 original
+foreground colours (SGR 30-37).
+The ‘bright’ style provides access to the 8 additional
+foreground colours (SGR 90-97).</li>
+<li><strong>ending_char</strong> (<em>str</em>) – Character to be added to the end of the
+prompt.</li>
+<li><strong>add_space</strong> (<em>bool</em>) – Add a space separator between the prompt
+and the user’s input.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Options:</th><td class="field-body"><ul class="first last simple">
+<li><dl class="first docutils">
+<dt><strong>fore / back</strong></dt>
+<dd>black, blue, cyan, green, magenta, red, white, yellow</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>style</strong></dt>
+<dd>bright, dim, normal</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_">
+<code class="descname">print_</code><span class="sig-paren">(</span><em>text</em>, <em>fore='white'</em>, <em>back='black'</em>, <em>style='bright'</em>, <em>h_pad=0</em>, <em>v_pad=0</em>, <em>sleep=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the passed text in the specified format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This method extends the functionality of the built-in
+<code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code> function by adding the options for
+text/background colouring and padding.  The user can pass
+specific text/background colours along with a style and
+horizontal and vertical padding.</p>
+<p>The colour and style strings are referenced against
+colorama’s .Fore() .Back() and .Style() classes -
+(via a dictionary built into this class’ constructor) -
+where the ANSI escape sequences are extracted and added to
+the output text string.</p>
+<p>In addition to colour, horizontal and vertical padding are
+available.</p>
+<p>After a message or banner is printed, the sleep timer can be
+called to pause the program for (n) seconds, for the user to
+read the message or banner.  If the <code class="docutils literal notranslate"><span class="pre">v_pad</span></code> value is &gt; 0,
+and the sleep value is 0, the sleep timer value is
+overridden with the value defined in the config file’s
+<code class="docutils literal notranslate"><span class="pre">v_pad_sleep</span></code> key.</p>
+<p>For further detail, refer to the <strong>Parameters</strong> section
+of this docstring, and refer to the <strong>Options</strong> section for
+each string parameter’s available options.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>text</strong> (<em>str</em>) – The text to be printed to the console.</li>
+<li><strong>fore</strong> (<em>str</em>) – The text colour, as a string.</li>
+<li><strong>back</strong> (<em>str</em>) – Background colour, as a string.</li>
+<li><strong>style</strong> (<em>str</em>) – The ‘normal’ style selects the 8 original
+foreground colours (SGR 30-37).
+The ‘bright’ style provides access to the 8 additional
+foreground colours (SGR 90-97).</li>
+<li><strong>h_pad</strong> (<em>int</em>) – The amount of horizontal padding, in
+characters.
+This option will increase the field size to the value
+of <code class="docutils literal notranslate"><span class="pre">h_pad</span></code> and add (n) blank characters of background
+colour after the text string.
+If greater than the number of text characters, colour
+will extend past the end of the text.  Note: the
+<code class="docutils literal notranslate"><span class="pre">h_pad</span></code> value is a <strong>field size</strong> value, <strong>not</strong> the
+number of spaces past the end of the text string.</li>
+<li><strong>v_pad</strong> (<em>int</em>) – The amount of vertical padding, in lines.
+This option will add (n) blank lines of backgound
+colour above and below the text string - acting like a
+banner.  The banner will extend to the number of spaces
+specified in the <code class="docutils literal notranslate"><span class="pre">h_pad</span></code> parameter.</li>
+<li><strong>sleep</strong> (<em>float</em>) – Number of seconds to pause the program after
+a message or banner is printed.
+Although the default sleep value is 0 seconds, the
+default changes to (n) second, if the <code class="docutils literal notranslate"><span class="pre">v_pad</span></code>
+parameter is &gt; 0.  This provides a default pause for
+the user to read the banner.  The default <code class="docutils literal notranslate"><span class="pre">v_pad</span></code>
+sleep time can be updated in the config file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first last simple">
+<li><dl class="first docutils">
+<dt><strong>fore / back</strong></dt>
+<dd>black, blue, cyan, green, magenta, red, white, yellow</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>style</strong></dt>
+<dd>bright, dim, normal</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_alert">
+<code class="descname">print_alert</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_alert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red text on a black background.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="user_interface.UserInterface.print_blank_lines">
+<em class="property">static </em><code class="descname">print_blank_lines</code><span class="sig-paren">(</span><em>quantity=1</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_blank_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print (n) blank lines.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="user_interface.UserInterface.print_error">
+<em class="property">static </em><code class="descname">print_error</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red error text on a black background.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>text</strong> (<em>str</em>) – This is the <strong>error object</strong> as generated by
+the Exception.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.user_interface</span> <span class="k">as</span> <span class="nn">ui</span>
+
+<span class="n">_ui</span> <span class="o">=</span> <span class="n">ui</span><span class="o">.</span><span class="n">UserInterface</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span>
+    <span class="n">_ui</span><span class="o">.</span><span class="n">print_error</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_error_enviro">
+<code class="descname">print_error_enviro</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_enviro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red environment error text on a black background.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">It uses the stack and the config file to print a message for
+environment errors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_error_intoor">
+<code class="descname">print_error_intoor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_intoor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red ‘integer out of range’ error text on black background.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">It uses the stack and the config file to print a message for
+‘integer out of range’ errors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_error_notimp">
+<code class="descname">print_error_notimp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_notimp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red ‘not implemented’ error text on black background.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">It uses the stack and the config file to print a message
+for ‘not implemented’ errors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_error_unexpd">
+<code class="descname">print_error_unexpd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_unexpd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red ‘unexpected error’ text on black background.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">It uses the stack and the config file to print a message for
+‘unexpected error’ errors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_error_windws">
+<code class="descname">print_error_windws</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_windws" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print red ‘Windows error’ text on black background.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">It uses the stack and the config file to print a message for
+‘Windows error’ errors.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_heading_cyan">
+<code class="descname">print_heading_cyan</code><span class="sig-paren">(</span><em>text</em>, <em>padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_cyan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print black text on a cyan background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_heading_green">
+<code class="descname">print_heading_green</code><span class="sig-paren">(</span><em>text</em>, <em>padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_green" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print black text on a green background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_heading_red">
+<code class="descname">print_heading_red</code><span class="sig-paren">(</span><em>text</em>, <em>padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_red" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print black text on a red background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_heading_white">
+<code class="descname">print_heading_white</code><span class="sig-paren">(</span><em>text</em>, <em>padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_white" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print black text on a white background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_heading_yellow">
+<code class="descname">print_heading_yellow</code><span class="sig-paren">(</span><em>text</em>, <em>padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_yellow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print black text on a yellow background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_normal">
+<code class="descname">print_normal</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print green text on a black background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="user_interface.UserInterface.print_warning">
+<code class="descname">print_warning</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print yellow text on a black background.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -1891,7 +2518,7 @@ CMD:    1/0
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">The Docs</a>
+        «&#160;&#160;<a href="index.html">Overview</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

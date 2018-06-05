@@ -79,8 +79,16 @@
 </li>
         <li><a href="detailed_design.html#registry.Value.__init__">(registry.Value method)</a>
 </li>
+        <li><a href="detailed_design.html#user_interface.PrintBanner.__init__">(user_interface.PrintBanner method)</a>
+</li>
+        <li><a href="detailed_design.html#user_interface.UserInterface.__init__">(user_interface.UserInterface method)</a>
+</li>
       </ul></li>
       <li><a href="detailed_design.html#get_datafiles._add_dot">_add_dot() (in module get_datafiles)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._add_ribbon">_add_ribbon() (user_interface.PrintBanner method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface._build_color_dict">_build_color_dict() (user_interface.UserInterface static method)</a>
 </li>
       <li><a href="detailed_design.html#database.MySQL._connect">_connect() (database.MySQL method)</a>
 
@@ -92,10 +100,10 @@
         <li><a href="detailed_design.html#database.SQLite._connect">(database.SQLite method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#database.SQLite._db_file_exists">_db_file_exists() (database.SQLite method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#database.Oracle._execute_commit">_execute_commit() (database.Oracle method)</a>
 </li>
       <li><a href="detailed_design.html#config._file_exists">_file_exists() (in module config)</a>
@@ -104,15 +112,27 @@
 </li>
       <li><a href="detailed_design.html#get_datafiles._get_license">_get_license() (in module get_datafiles)</a>
 </li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._get_longest_key">_get_longest_key() (user_interface.PrintBanner method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._get_os">_get_os() (user_interface.PrintBanner static method)</a>
+</li>
       <li><a href="detailed_design.html#get_datafiles._get_readmefiles">_get_readmefiles() (in module get_datafiles)</a>
 </li>
       <li><a href="detailed_design.html#progressbar.ProgressBar._getcolor">_getcolor() (progressbar.ProgressBar method)</a>
 </li>
       <li><a href="detailed_design.html#registry.Registry._open_key">_open_key() (registry.Registry method)</a>
 </li>
+      <li><a href="detailed_design.html#user_interface.UserInterface._pad">_pad() (user_interface.UserInterface static method)</a>
+</li>
       <li><a href="detailed_design.html#database.Database._parse_script">_parse_script() (database.Database static method)</a>
 </li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._print_prog_banner">_print_prog_banner() (user_interface.PrintBanner method)</a>
+</li>
       <li><a href="detailed_design.html#dict2obj.Dict2Obj._read_json">_read_json() (dict2obj.Dict2Obj static method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._setup_custom">_setup_custom() (user_interface.PrintBanner method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._setup_default">_setup_default() (user_interface.PrintBanner method)</a>
 </li>
       <li><a href="detailed_design.html#database.Database._table_exists">_table_exists() (database.Database method)</a>
 
@@ -120,6 +140,8 @@
         <li><a href="detailed_design.html#database.MySQL._table_exists">(database.MySQL method)</a>
 </li>
       </ul></li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner._update_console_title">_update_console_title() (user_interface.PrintBanner method)</a>
+</li>
       <li><a href="detailed_design.html#dict2obj.Dict2Obj._validate">_validate() (dict2obj.Dict2Obj method)</a>
 </li>
       <li><a href="detailed_design.html#dict2obj.Dict2Obj._validate_fileexists">_validate_fileexists() (dict2obj.Dict2Obj static method)</a>
@@ -194,6 +216,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#user_interface.UserInterface.get_input">get_input() (user_interface.UserInterface method)</a>
+</li>
       <li><a href="detailed_design.html#registry.Key.get_value">get_value() (registry.Key method)</a>
 
       <ul>
@@ -244,10 +268,44 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="detailed_design.html#progressbar.ProgressBar">ProgressBar (class in progressbar)</a>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_">print_() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_alert">print_alert() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_blank_lines">print_blank_lines() (user_interface.UserInterface static method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_error">print_error() (user_interface.UserInterface static method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_error_enviro">print_error_enviro() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_error_intoor">print_error_intoor() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_error_notimp">print_error_notimp() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_error_unexpd">print_error_unexpd() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_error_windws">print_error_windws() (user_interface.UserInterface method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_heading_cyan">print_heading_cyan() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_heading_green">print_heading_green() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_heading_red">print_heading_red() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_heading_white">print_heading_white() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_heading_yellow">print_heading_yellow() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_normal">print_normal() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface.print_warning">print_warning() (user_interface.UserInterface method)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.PrintBanner">PrintBanner (class in user_interface)</a>
+</li>
+      <li><a href="detailed_design.html#progressbar.ProgressBar">ProgressBar (class in progressbar)</a>
+</li>
       <li><a href="detailed_design.html#module-progressbar">progressbar (module)</a>
 </li>
   </ul></td>
@@ -307,6 +365,12 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#progressbar.ProgressBar.update_progress">update_progress() (progressbar.ProgressBar method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#module-user_interface">user_interface (module)</a>
+</li>
+      <li><a href="detailed_design.html#user_interface.UserInterface">UserInterface (class in user_interface)</a>
 </li>
   </ul></td>
 </tr></table>

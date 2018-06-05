@@ -62,9 +62,9 @@ Detailed Module Design
     :special-members:
     :exclude-members: __dict__, __module__, __weakref__
 
-***************
+************
 **registry**
-***************
+************
 .. automodule:: registry
     :members:
     :undoc-members:
@@ -76,6 +76,17 @@ Detailed Module Design
 **reporterror**
 ***************
 .. automodule:: reporterror
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__
+
+
+***************
+**user_interface**
+***************
+.. automodule:: user_interface
     :members:
     :undoc-members:
     :private-members:
