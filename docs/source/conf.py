@@ -126,8 +126,8 @@ todo_include_todos = False
 # a list of builtin themes.
 #
 # html_theme = 'alabaster'
-html_theme = 'haiku'
-# html_theme = 'rr'
+# html_theme = 'haiku'
+html_theme = 's3dev'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -141,7 +141,7 @@ html_theme = 'haiku'
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-html_title = 'utils3 - v%s' % __version__
+html_title = 'utils3 - v%s Documentation' % __version__
 html_logo = 'images/Triangle_black_sm.png'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
