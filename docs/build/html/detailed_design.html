@@ -1884,13 +1884,13 @@ CMD:    1/0
 </dd></dl>
 
 </div>
-<div class="section" id="user-interface">
-<h2><strong>user_interface</strong><a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-user_interface"></span><table class="docutils field-list" frame="void" rules="none">
+<div class="section" id="module-user_interface">
+<span id="user-interface"></span><h2><strong>user_interface</strong><a class="headerlink" href="#module-user_interface" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This class module provides an interface to the Win / Linux
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This class module provides an interface to the Win/Linux
 Command Line Interpreters (CLI).</p>
 <p>It contains a <a class="reference internal" href="#user_interface.UserInterface" title="user_interface.UserInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserInterface</span></code></a> class whose methods
 provide a standard way of reporting normal, alternative and
@@ -1948,170 +1948,271 @@ black text, yellow background</dd>
 <dl class="class">
 <dt id="user_interface.PrintBanner">
 <em class="property">class </em><code class="descclassname">user_interface.</code><code class="descname">PrintBanner</code><span class="sig-paren">(</span><em>name=None</em>, <em>version=None</em>, <em>desc=None</em>, <em>info=None</em>, <em>chars=72</em>, <em>ribbon='-'</em>, <em>fore='white'</em>, <em>back='black'</em>, <em>style='bright'</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner" title="Permalink to this definition">¶</a></dt>
-<dd><p>PURPOSE:
-This class is used to print a program information banner to the CLI,
-which may be useful if you want to use a ‘standardised’ program
+<dd><p>This class is used to print a banner of information to the CLI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This may be useful if you want to use a ‘standardised’ program
 header across all of your programs.  This class can be called at
 the start of a program.</p>
-<p>Refer to the DESIGN and PARAMETERS sections for configuration
-details; as this banner is highly configurable.</p>
-<p>Program     :    bob_the_great
-Version     :    2.0.3</p>
-<p>USE:
-import utils3.user_interface as ui
-ui.PrintBanner(name=’bob_the_great’, version=‘2.0.3’,</p>
-<blockquote>
-<div>desc=’Gives conclusive proof why Bob is so great.’)</div></blockquote>
+<p class="last">The banner can also be used to display and report expected error
+information.  For example, if a certain validation type of
+error is expected, a customised version of this banner can wrap
+the error information such as error type, the issue, the file
+name/location, and the resolution.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For further detail, refer to the <strong>Design</strong> and <strong>Parameters</strong>
+sections of the <a class="reference internal" href="#user_interface.PrintBanner.__init__" title="user_interface.PrintBanner.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code></a> method, as the banner
+is highly configurable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example Banner:</th><td class="field-body"><p class="first">Below is a printed example of a program header banner:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------</span>
+<span class="n">Program</span>     <span class="p">:</span>    <span class="n">bob_the_great</span>
+<span class="n">Version</span>     <span class="p">:</span>    <span class="mf">2.0</span><span class="o">.</span><span class="mi">3</span>
+
+<span class="n">Description</span> <span class="p">:</span>    <span class="n">Gives</span> <span class="n">conclusive</span> <span class="n">proof</span> <span class="n">why</span> <span class="n">Bob</span> <span class="ow">is</span> <span class="n">so</span> <span class="n">great</span><span class="o">.</span>
+<span class="o">------------------------------------------------------------</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example Code:</th><td class="field-body"><p class="first">This code can be used to print the banner above:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.user_interface</span> <span class="k">as</span> <span class="nn">ui</span>
+
+<span class="n">ui</span><span class="o">.</span><span class="n">PrintBanner</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bob_the_great&#39;</span><span class="p">,</span>
+               <span class="n">version</span><span class="o">=</span><span class="s1">&#39;2.0.3&#39;</span><span class="p">,</span>
+               <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Gives conclusive proof why Bob is so great.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="user_interface.PrintBanner.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>name=None</em>, <em>version=None</em>, <em>desc=None</em>, <em>info=None</em>, <em>chars=72</em>, <em>ribbon='-'</em>, <em>fore='white'</em>, <em>back='black'</em>, <em>style='bright'</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display program info to the CLI at the start of a program.</p>
-<p>DESIGN:
-In short, if the ‘info’ parameter is left as None, a default
-banner is generated using the values passed into the name,
-version and desc parameters.</p>
+<dd><p>Display a configurable information banner to the CLI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">In short, if the <code class="docutils literal notranslate"><span class="pre">info</span></code> parameter is left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, a
+default banner is generated using the values passed into
+the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code> and <code class="docutils literal notranslate"><span class="pre">desc</span></code> parameters.</p>
 <p>The string templates used for the banner layout may be
-configured in the UI config file.</p>
+configured in the <code class="docutils literal notranslate"><span class="pre">user_interface_config.json</span></code> config
+file.</p>
 <p>Additional configuration is available through the other
-parameters, which are all defined in the PARAMETERS section
-below.</p>
+parameters, which are all defined in the <strong>Parameters</strong>
+section below.</p>
 <p>Also, the title of the console window is updated to show the
 program’s name and version, if all of the following criteria
 are met:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Windows OS</li>
-<li>name parameter is not None</li>
-<li>version parameter is not None</li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code> parameter is not <code class="docutils literal notranslate"><span class="pre">None</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">version</span></code> parameter is not <code class="docutils literal notranslate"><span class="pre">None</span></code></li>
 </ul>
 </div></blockquote>
-<p>BASIC PARAMETERS:
-- name
-Name of your program.
-- version
-The version number of your program.
-- desc
-Description of what your program is all about.</p>
-<p>INFO PARAMETER:
-- info
-The info parameter is used to generate a completely customised
-banner.  Basically, whatever key/value pairs you pass in, are
-what will be printed in the banner.</p>
-<p>This parameter accepts a list of dictionaries.  For example:
-info = [{‘Program’:’bob_the_great’},</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Name of your program.</li>
+<li><strong>version</strong> (<em>str</em>) – The program’s version number.</li>
+<li><strong>desc</strong> (<em>str</em>) – Description of what your program is all about.</li>
+<li><strong>info</strong> (<em>list</em>) – <p>The info parameter is used to generate a
+completely customised banner.  Basically, whatever
+key/value pairs you pass in, are what will be printed
+in the banner.</p>
+<p>This parameter accepts a <strong>list of dictionaries</strong>.</p>
+<p>For example, this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;Program&#39;</span><span class="p">:</span><span class="s1">&#39;bob_the_great&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;Version&#39;</span><span class="p">:</span><span class="s1">&#39;2.0.3&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;Description&#39;</span><span class="p">:</span><span class="s1">&#39;Gives proof why Bob is great.&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;Comments&#39;</span><span class="p">:</span><span class="s1">&#39;Some more reasons Bob is so great.&#39;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>… will print this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------------------------------------</span>
+ <span class="n">Program</span>          <span class="p">:</span>    <span class="n">bob_the_great</span>
+ <span class="n">Version</span>          <span class="p">:</span>    <span class="mf">2.0</span><span class="o">.</span><span class="mi">3</span>
+
+ <span class="n">Description</span>      <span class="p">:</span>    <span class="n">Gives</span> <span class="n">proof</span> <span class="n">why</span> <span class="n">Bob</span> <span class="ow">is</span> <span class="n">great</span><span class="o">.</span>
+ <span class="n">Comments</span>         <span class="p">:</span>    <span class="n">Some</span> <span class="n">more</span> <span class="n">reasons</span> <span class="n">Bob</span> <span class="ow">is</span> <span class="n">so</span> <span class="n">great</span><span class="o">.</span>
+<span class="o">----------------------------------------------------------------</span>
+</pre></div>
+</div>
+</li>
+<li><strong>chars</strong> (<em>int</em>) – In the number of characters, the size of the
+buffer used for the background colour, and the length
+of the ribbon.</li>
+<li><strong>ribbon</strong> (<em>str</em>) – The character(s) to use for the ribbon.
+If multiple characters are passed into this parameter,
+these characters will be repeated until the length of
+the <code class="docutils literal notranslate"><span class="pre">chars</span></code> parameter is met.</li>
+<li><strong>fore</strong> (<em>str</em>) – Text colour.  The eight basic colour names
+are accepted as strings.</li>
+<li><strong>back</strong> (<em>str</em>) – Background colour.  The eight basic colour
+names are accepted as strings.</li>
+<li><strong>style</strong> (<em>str</em>) – <p>Brightness of the text/background.
+Accepted strings:</p>
 <blockquote>
-<div>{‘Version’:‘2.0.3’},
-{‘’:’‘},
-{‘Description’:’Gives proof why Bob is great.’},
-{‘Comments’:’Some more reasons Bob is so great.’}]</div></blockquote>
-<blockquote>
-<div><p>Program          :    bob_the_great
-Version          :    2.0.3</p>
-<p>Description      :    Gives proof why Bob is great.
-Comments         :    Some more reasons Bob is so great.</p>
-</div></blockquote>
-<p>CONFIG PARAMETERS:
-- chars
-In the number of characters, the size of the buffer used for
-the background colour, and the length of the ribbon.
-- ribbon
-The character(s) to use for the ribbon.
-If multiple characters are passed into this parameter, these
-characters will be repeated until the length of the ‘chars’
-parameter is met.
-- fore
-Text colour.  The eight basic colour names are accepted as
-strings.
-- back
-Background colour.  The eight basic colour names are accepted
-as strings.
-- style
-Brightness of the text/background.  Accepted strings:</p>
-<blockquote>
-<div><ul class="simple">
+<div><ul>
 <li>dim</li>
 <li>bright (default)</li>
 <li>normal</li>
 </ul>
 </div></blockquote>
-<p>USE:
-import utils3.user_interface as ui
-ui.PrintBanner(name=’bob_the_great’, version=‘2.0.3’,</p>
-<blockquote>
-<div>desc=’Gives proof why Bob is so great.’,
-chars=55, ribbon=’~-‘, fore=’yellow’,
-back=’black’, style=’bright’)</div></blockquote>
-<p>Will print this:
-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
-<blockquote>
-<div><p>Program        :    bob_the_great
-Version        :    2.0.3</p>
-<p>Description    :    Gives proof why Bob is so great.</p>
-</div></blockquote>
-<p>~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Use this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.user_interface</span> <span class="k">as</span> <span class="nn">ui</span>
+
+<span class="n">ui</span><span class="o">.</span><span class="n">PrintBanner</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bob_the_great&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;2.0.3&#39;</span><span class="p">,</span>
+               <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Gives proof why Bob is so great.&#39;</span><span class="p">,</span>
+               <span class="n">chars</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">ribbon</span><span class="o">=</span><span class="s1">&#39;~-&#39;</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
+               <span class="n">back</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;bright&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>… to print this:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</span>
+ <span class="n">Program</span>        <span class="p">:</span>    <span class="n">bob_the_great</span>
+ <span class="n">Version</span>        <span class="p">:</span>    <span class="mf">2.0</span><span class="o">.</span><span class="mi">3</span>
+
+ <span class="n">Description</span>    <span class="p">:</span>    <span class="n">Gives</span> <span class="n">proof</span> <span class="n">why</span> <span class="n">Bob</span> <span class="ow">is</span> <span class="n">so</span> <span class="n">great</span><span class="o">.</span>
+<span class="o">~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="user_interface.PrintBanner._add_ribbon">
 <code class="descname">_add_ribbon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._add_ribbon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add blank line and ribbon to start and end of banner.</p>
+<dd><p>Add a blank line and ribbon to start and end of banner.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="user_interface.PrintBanner._get_longest_key">
-<code class="descname">_get_longest_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._get_longest_key" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_longest_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#user_interface.PrintBanner._get_longest_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the length of the longest key, as an integer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">The longest key is used to determine where the field
+separator is placed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The length of the longest dictionary key, in the number of
+characters.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="user_interface.PrintBanner._get_os">
-<em class="property">static </em><code class="descname">_get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._get_os" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">_get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#user_interface.PrintBanner._get_os" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the OS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The OS as a string.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="user_interface.PrintBanner._print_prog_banner">
 <code class="descname">_print_prog_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._print_prog_banner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Using the ‘info’ parameter as reference, determine if the
+<dd><p>Print the banner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">Using the <code class="docutils literal notranslate"><span class="pre">info</span></code> parameter as reference, determine if the
 default or user-defined banner should be printed; then print
-the banner using the UserInterface class.</p>
+the banner using the <a class="reference internal" href="#user_interface.UserInterface.print_" title="user_interface.UserInterface.print_"><code class="xref py py-meth docutils literal notranslate"><span class="pre">print_()</span></code></a> method.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="user_interface.PrintBanner._setup_custom">
 <code class="descname">_setup_custom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._setup_custom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set up the user-defined banner.</p>
-<p>DESIGN:
-Set the buffer (pad) for all ‘key’ elements using the length of
-the longest dict key.  This allows all ‘:’ characters to align,
-regardless of the varying lengths of each key.</p>
-<p>Then, iterate through the list of dictionaries and extract the
-key/value pairs for use in the banner.  The banner’s layout
-template is defined in the UI config file.</p>
-<p>Finally, add the starting/ending blank line and ribbon to the
-compiled list.  This list is then used by the
-_print_prog_banner() method to print the banner to the CLI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Set the buffer (pad) for all ‘key’ elements using the
+length of the longest dict key.  This allows all ‘:’
+characters to align, regardless of the varying lengths of
+each key.</p>
+<p>Then, iterate through the list of dictionaries and extract
+the key/value pairs for use in the banner.  The banner’s
+layout template is defined in the user_interface config
+file.</p>
+<p class="last">Finally, add the starting/ending blank line and ribbon to
+the compiled list.  This list is then used by the
+<a class="reference internal" href="#user_interface.PrintBanner._print_prog_banner" title="user_interface.PrintBanner._print_prog_banner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_print_prog_banner()</span></code></a> method to print
+the banner to the CLI.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="user_interface.PrintBanner._setup_default">
 <code class="descname">_setup_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._setup_default" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set up the default banner.</p>
-<p>DESIGN:
-A pre-defined list of ‘key’ items is iterated, which is used to
-build the list containing the lines to print.</p>
-<p>Finally, add the starting/ending blank line and ribbon to the
-compiled list.  This list is then used by the
-_print_prog_banner() method to print the banner to the CLI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">A pre-defined list of ‘key’ items is iterated, which is
+used to build the list containing the lines to print.</p>
+<p class="last">Finally, add the starting/ending blank line and ribbon to
+the compiled list.  This list is then used by the
+<a class="reference internal" href="#user_interface.PrintBanner._print_prog_banner" title="user_interface.PrintBanner._print_prog_banner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_print_prog_banner()</span></code></a> method to print
+the banner to the CLI.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="user_interface.PrintBanner._update_console_title">
 <code class="descname">_update_console_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._update_console_title" title="Permalink to this definition">¶</a></dt>
-<dd><p>For Windows, update the console window title.</p>
-<p>DESIGN:
-This method is only functional if the OS is Windows and the
-name and version arguments are passed.</p>
+<dd><p>For <strong>Windows only</strong>, update the console window title.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body">This method is only functional if the OS is Windows and the
+<code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> arguments are passed.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -2172,7 +2273,7 @@ stdout and convert them into the equivalent win32 calls”;
 per Jonathan Hartley, creator of Colorama.</p>
 <p class="last">The Win32 console (excluding <em>some</em> versions of Win10) does
 not support ANSI escape sequences, and therefore (unlike
-<a href="#id1"><span class="problematic" id="id2">*</span></a>nix) simply printing the escape sequence to the native
+*nix) simply printing the escape sequence to the native
 Win CLI with the text does not work.  So we use Colorama
 for the low-level win32 work.  Thanks Jonathan!!</p>
 </td>
@@ -2184,8 +2285,8 @@ for the low-level win32 work.  Thanks Jonathan!!</p>
 <dl class="staticmethod">
 <dt id="user_interface.UserInterface._build_color_dict">
 <em class="property">static </em><code class="descname">_build_color_dict</code><span class="sig-paren">(</span><em>class_</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._build_color_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a dictionary of colours available in the colorama
-.Fore and .Back classes.</p>
+<dd><p>Create a dictionary of colours available in the <code class="docutils literal notranslate"><span class="pre">colorama</span></code>
+<code class="docutils literal notranslate"><span class="pre">.Fore</span></code> and <code class="docutils literal notranslate"><span class="pre">.Back</span></code> classes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2371,8 +2472,8 @@ sleep time can be updated in the config file.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>text</strong> (<em>str</em>) – This is the <strong>error object</strong> as generated by
-the Exception.</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>text</strong> (<em>str</em>) – This is the <strong>error object</strong> generated by the
+Exception.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.user_interface</span> <span class="k">as</span> <span class="nn">ui</span>

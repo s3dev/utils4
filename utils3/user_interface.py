@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-:Purpose:   This class module provides an interface to the Win / Linux
+:Purpose:   This class module provides an interface to the Win/Linux
             Command Line Interpreters (CLI).
 
             It contains a :class:`~UserInterface` class whose methods
@@ -88,7 +88,7 @@ class UserInterface(object):
 
             The Win32 console (excluding *some* versions of Win10) does
             not support ANSI escape sequences, and therefore (unlike
-            *nix) simply printing the escape sequence to the native
+            \*nix) simply printing the escape sequence to the native
             Win CLI with the text does not work.  So we use Colorama
             for the low-level win32 work.  Thanks Jonathan!!
 
@@ -422,130 +422,144 @@ class UserInterface(object):
         return {k.lower():v for k, v in vars(class_).items()}
 
 
+# ALLOW MANY ATTRIBS AND FEW METHODS
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-few-public-methods
 class PrintBanner(object):
+    """This class is used to print a banner of information to the CLI.
+
+    :Design:
+        This may be useful if you want to use a 'standardised' program
+        header across all of your programs.  This class can be called at
+        the start of a program.
+
+        The banner can also be used to display and report expected error
+        information.  For example, if a certain validation type of
+        error is expected, a customised version of this banner can wrap
+        the error information such as error type, the issue, the file
+        name/location, and the resolution.
+
+    For further detail, refer to the **Design** and **Parameters**
+    sections of the :meth:`~PrintBanner.__init__` method, as the banner
+    is highly configurable.
+
+    :Example Banner:
+        Below is a printed example of a program header banner::
+
+            ------------------------------------------------------------
+            Program     :    bob_the_great
+            Version     :    2.0.3
+
+            Description :    Gives conclusive proof why Bob is so great.
+            ------------------------------------------------------------
+
+    :Example Code:
+        This code can be used to print the banner above::
+
+            import utils3.user_interface as ui
+
+            ui.PrintBanner(name='bob_the_great',
+                           version='2.0.3',
+                           desc='Gives conclusive proof why Bob is so great.')
+
     """
-    PURPOSE:
-    This class is used to print a program information banner to the CLI,
-    which may be useful if you want to use a 'standardised' program
-    header across all of your programs.  This class can be called at
-    the start of a program.
-
-    Refer to the DESIGN and PARAMETERS sections for configuration
-    details; as this banner is highly configurable.
-
-    For example:
-    ------------------------------------------------------------------
-    Program     :    bob_the_great
-    Version     :    2.0.3
-
-    Description :    Gives conclusive proof why Bob is so great.
-    ------------------------------------------------------------------
-
-    USE:
-    import utils3.user_interface as ui
-    ui.PrintBanner(name='bob_the_great', version='2.0.3',
-                   desc='Gives conclusive proof why Bob is so great.')
-    """
-
-    # ALLOW MANY ATTRIBS AND FEW METHODS
-    # pylint: disable=too-many-instance-attributes
-    # pylint: disable=too-few-public-methods
 
     def __init__(self, name=None, version=None, desc=None, info=None, chars=72,
                  ribbon='-', fore='white', back='black', style='bright'):
+        """Display a configurable information banner to the CLI.
+
+        :Design:
+            In short, if the ``info`` parameter is left as ``None``, a
+            default banner is generated using the values passed into
+            the ``name``, ``version`` and ``desc`` parameters.
+
+            The string templates used for the banner layout may be
+            configured in the ``user_interface_config.json`` config
+            file.
+
+            Additional configuration is available through the other
+            parameters, which are all defined in the **Parameters**
+            section below.
+
+            Also, the title of the console window is updated to show the
+            program's name and version, if all of the following criteria
+            are met:
+
+                * Windows OS
+                * ``name`` parameter is not ``None``
+                * ``version`` parameter is not ``None``
+
+        Args:
+            name (str): Name of your program.
+            version (str): The program's version number.
+            desc (str): Description of what your program is all about.
+            info (list): The info parameter is used to generate a
+                completely customised banner.  Basically, whatever
+                key/value pairs you pass in, are what will be printed
+                in the banner.
+
+                This parameter accepts a **list of dictionaries**.
+
+                For example, this code::
+
+                    info = [{'Program':'bob_the_great'},
+                            {'Version':'2.0.3'},
+                            {'':''},
+                            {'Description':'Gives proof why Bob is great.'},
+                            {'Comments':'Some more reasons Bob is so great.'}]
+
+                ... will print this::
+
+                    ----------------------------------------------------------------
+                     Program          :    bob_the_great
+                     Version          :    2.0.3
+
+                     Description      :    Gives proof why Bob is great.
+                     Comments         :    Some more reasons Bob is so great.
+                    ----------------------------------------------------------------
+
+            chars (int): In the number of characters, the size of the
+                buffer used for the background colour, and the length
+                of the ribbon.
+            ribbon (str): The character(s) to use for the ribbon.
+                If multiple characters are passed into this parameter,
+                these characters will be repeated until the length of
+                the ``chars`` parameter is met.
+            fore (str):  Text colour.  The eight basic colour names
+                are accepted as strings.
+            back (str): Background colour.  The eight basic colour
+                names are accepted as strings.
+            style (str): Brightness of the text/background.
+                Accepted strings:
+
+                    * dim
+                    * bright (default)
+                    * normal
+
+        :Example:
+
+            Use this code::
+
+                import utils3.user_interface as ui
+
+                ui.PrintBanner(name='bob_the_great', version='2.0.3',
+                               desc='Gives proof why Bob is so great.',
+                               chars=55, ribbon='~-', fore='yellow',
+                               back='black', style='bright')
+
+            ... to print this::
+
+                ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+                 Program        :    bob_the_great
+                 Version        :    2.0.3
+
+                 Description    :    Gives proof why Bob is so great.
+                ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
         """
-        Display program info to the CLI at the start of a program.
-
-        DESIGN:
-        In short, if the 'info' parameter is left as None, a default
-        banner is generated using the values passed into the name,
-        version and desc parameters.
-
-        The string templates used for the banner layout may be
-        configured in the UI config file.
-
-        Additional configuration is available through the other
-        parameters, which are all defined in the PARAMETERS section
-        below.
-
-        Also, the title of the console window is updated to show the
-        program's name and version, if all of the following criteria
-        are met:
-            - Windows OS
-            - name parameter is not None
-            - version parameter is not None
-
-        BASIC PARAMETERS:
-        - name
-        Name of your program.
-        - version
-        The version number of your program.
-        - desc
-        Description of what your program is all about.
-
-        INFO PARAMETER:
-        - info
-        The info parameter is used to generate a completely customised
-        banner.  Basically, whatever key/value pairs you pass in, are
-        what will be printed in the banner.
-
-        This parameter accepts a list of dictionaries.  For example:
-        info = [{'Program':'bob_the_great'},
-                {'Version':'2.0.3'},
-                {'':''},
-                {'Description':'Gives proof why Bob is great.'},
-                {'Comments':'Some more reasons Bob is so great.'}]
-
-        This info parameter would be parsed into:
-        ----------------------------------------------------------------
-         Program          :    bob_the_great
-         Version          :    2.0.3
-
-         Description      :    Gives proof why Bob is great.
-         Comments         :    Some more reasons Bob is so great.
-        ----------------------------------------------------------------
-
-        CONFIG PARAMETERS:
-        - chars
-        In the number of characters, the size of the buffer used for
-        the background colour, and the length of the ribbon.
-        - ribbon
-        The character(s) to use for the ribbon.
-        If multiple characters are passed into this parameter, these
-        characters will be repeated until the length of the 'chars'
-        parameter is met.
-        - fore
-        Text colour.  The eight basic colour names are accepted as
-        strings.
-        - back
-        Background colour.  The eight basic colour names are accepted
-        as strings.
-        - style
-        Brightness of the text/background.  Accepted strings:
-            - dim
-            - bright (default)
-            - normal
-
-        USE:
-        import utils3.user_interface as ui
-        ui.PrintBanner(name='bob_the_great', version='2.0.3',
-                       desc='Gives proof why Bob is so great.',
-                       chars=55, ribbon='~-', fore='yellow',
-                       back='black', style='bright')
-
-        Will print this:
-        ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-         Program        :    bob_the_great
-         Version        :    2.0.3
-
-         Description    :    Gives proof why Bob is so great.
-        ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-        """
-
         # SET LOCATION OF THE UI CONFIG FILE EXPLICITLY
         conf_file = os.path.join(os.path.realpath(os.path.dirname(__file__)),
                                  'user_interface_config.json')
-
         # INITIALISE
         self._name      = name
         self._version   = version
@@ -563,68 +577,75 @@ class PrintBanner(object):
         self._adtl      = 4
         self._cfg       = config.loadconfig(conf_file)
         self._ui        = UserInterface()
-
         # PRINT PROGRAM INFO BANNER
         self._print_prog_banner()
-
         # UPDATE CONSOLE WINDOW TITLE
         self._update_console_title()
 
-    # ------------------------------------------------------------------
     def _add_ribbon(self):
-        """Add blank line and ribbon to start and end of banner."""
-        # ADD BLANK START/END LINES AND RIBBON
+        """Add a blank line and ribbon to start and end of banner."""
         self._to_print.insert(0, '')
         self._to_print.insert(1, self._ribbon)
         self._to_print.append(self._ribbon)
         self._to_print.append('')
 
-    # ------------------------------------------------------------------
-    def _get_longest_key(self):
-        """Return the length of the longest key, as an integer."""
+    def _get_longest_key(self) -> int:
+        """Return the length of the longest key, as an integer.
+
+        :Design:
+            The longest key is used to determine where the field
+            separator is placed.
+
+        Returns:
+            The length of the longest dictionary key, in the number of
+            characters.
+
+        """
         keys = [list(i)[0] for i in self._info]
         longest = max([len(i) for i in keys])
         return longest
 
-    # ------------------------------------------------------------------
     def _print_prog_banner(self):
-        """
-        Using the 'info' parameter as reference, determine if the
-        default or user-defined banner should be printed; then print
-        the banner using the UserInterface class.
+        """Print the banner.
+
+        :Design:
+            Using the ``info`` parameter as reference, determine if the
+            default or user-defined banner should be printed; then print
+            the banner using the :meth:`~UserInterface.print_` method.
+
         """
         # TEST TYPE OF BANNER TO CREATE
         if self._info is not None:
             self._setup_custom()
         else:
             self._setup_default()
-
         # PRINT PROGRAM INFO BANNER
         for text in self._to_print:
             self._ui.print_(text=text, fore=self._fore, back=self._back,
                             style=self._style, h_pad=self._chars)
 
-    # ------------------------------------------------------------------
     def _setup_custom(self):
-        """
-        Set up the user-defined banner.
+        """Set up the user-defined banner.
 
-        DESIGN:
-        Set the buffer (pad) for all 'key' elements using the length of
-        the longest dict key.  This allows all ':' characters to align,
-        regardless of the varying lengths of each key.
+        :Design:
+            Set the buffer (pad) for all 'key' elements using the
+            length of the longest dict key.  This allows all ':'
+            characters to align, regardless of the varying lengths of
+            each key.
 
-        Then, iterate through the list of dictionaries and extract the
-        key/value pairs for use in the banner.  The banner's layout
-        template is defined in the UI config file.
+            Then, iterate through the list of dictionaries and extract
+            the key/value pairs for use in the banner.  The banner's
+            layout template is defined in the user_interface config
+            file.
 
-        Finally, add the starting/ending blank line and ribbon to the
-        compiled list.  This list is then used by the
-        _print_prog_banner() method to print the banner to the CLI.
+            Finally, add the starting/ending blank line and ribbon to
+            the compiled list.  This list is then used by the
+            :meth:`~PrintBanner._print_prog_banner` method to print
+            the banner to the CLI.
+
         """
         # DETERMINE REQUIRED PADDING
         pad = self._get_longest_key() + self._adtl
-
         # BUILD PRINT STRING FROM LIST OF DICTS
         for i in self._info:
             for key, val in i.items():
@@ -636,22 +657,21 @@ class PrintBanner(object):
                 else:
                     # ADD A BLANK LINE
                     self._to_print.append('')
-
         # ADD START/END RIBBON
         self._add_ribbon()
 
-    # ------------------------------------------------------------------
     def _setup_default(self):
-        """
-        Set up the default banner.
+        """Set up the default banner.
 
-        DESIGN:
-        A pre-defined list of 'key' items is iterated, which is used to
-        build the list containing the lines to print.
+        :Design:
+            A pre-defined list of 'key' items is iterated, which is
+            used to build the list containing the lines to print.
 
-        Finally, add the starting/ending blank line and ribbon to the
-        compiled list.  This list is then used by the
-        _print_prog_banner() method to print the banner to the CLI.
+            Finally, add the starting/ending blank line and ribbon to
+            the compiled list.  This list is then used by the
+            :meth:`~PrintBanner._print_prog_banner` method to print
+            the banner to the CLI.
+
         """
         # BUILD PRINT STRING
         for title, name in zip(['Program', 'Version', '', 'Description'],
@@ -663,18 +683,16 @@ class PrintBanner(object):
             else:
                 # ADD A BLANK LINE
                 self._to_print.append('')
-
         # ADD START/END RIBBON
         self._add_ribbon()
 
-    # ------------------------------------------------------------------
     def _update_console_title(self):
-        """
-        For Windows, update the console window title.
+        """For **Windows only**, update the console window title.
 
-        DESIGN:
-        This method is only functional if the OS is Windows and the
-        name and version arguments are passed.
+        :Design:
+            This method is only functional if the OS is Windows and the
+            ``name`` and ``version`` arguments are passed.
+
         """
         # TEST OS
         is_win = 'win' in self._get_os()
@@ -683,8 +701,12 @@ class PrintBanner(object):
             # CHANGE CMD WINDOW TITLE
             windll.kernel32.SetConsoleTitleW(u'%s - %s' % (self._name, self._version))
 
-    # ------------------------------------------------------------------
     @staticmethod
-    def _get_os():
-        """Return the OS."""
+    def _get_os() -> str:
+        """Return the OS.
+
+        Returns:
+            The OS as a string.
+
+        """
         return platform.system().lower()

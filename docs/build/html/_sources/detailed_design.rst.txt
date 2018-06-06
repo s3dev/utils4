@@ -83,9 +83,9 @@ Detailed Module Design
     :exclude-members: __dict__, __module__, __weakref__
 
 
-***************
+******************
 **user_interface**
-***************
+******************
 .. automodule:: user_interface
     :members:
     :undoc-members:
