@@ -248,6 +248,10 @@ div.note {
     min-height: 42px;
     border: none;
 }
+div.note a:link { 
+    color: #e8e8e8; 
+    font-style: bold;
+}
 div.warning {
     padding: 10px 15px 10px 80px;
     /*background: #fffbc6 url(alert_warning_32.png) 15px 15px no-repeat;*/
@@ -255,6 +259,10 @@ div.warning {
     color: #ffffff;
     min-height: 42px;
     border: none;
+}
+div.warning a:link { 
+    color: #e8e8e8; 
+    font-style: bold;
 }
 div.seealso {
     /*background: #e4ffde;*/

@@ -2612,6 +2612,1244 @@ for ‘not implemented’ errors.</td>
 </dd></dl>
 
 </div>
+<div class="section" id="module-utils">
+<span id="utils"></span><h2><strong>utils</strong><a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">Central library for standard S3DEV utilities.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">View the module help:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the package version:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">u</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="utils.__test">
+<code class="descclassname">utils.</code><code class="descname">__test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.__test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a test statement.  Used for testing only.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._convert_to_colorscale">
+<code class="descclassname">utils.</code><code class="descname">_convert_to_colorscale</code><span class="sig-paren">(</span><em>cmap</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#utils._convert_to_colorscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a matplotlib colourmap to a colourscale list.</p>
+<p>This is a helper function used to convert a colourmap into a
+colourscale list, as used by Plotly’s colorscale parameter.</p>
+<p>A colourscale list is a list of tuples where the first index of the
+tuple is a value between 0 and 1 (inclusive), showing the order of
+the colour in sequence, and the second index is the colour value,
+as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mf">0.00</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#f7fbff&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.33</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#abd0e6&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.66</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#3787c0&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">1.00</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#08306b&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>cmap</strong> (<em>matplotlib.colors.LinearSegmentedColormap</em>) – A matplotlib
+colourmap.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Help:</th><td class="field-body"><p class="first">The <code class="docutils literal notranslate"><span class="pre">cmap</span></code> object may be generated this way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">cm</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>numpy</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of colourscale tuples for the given colour map.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._dbconn_fields">
+<code class="descclassname">utils.</code><code class="descname">_dbconn_fields</code><span class="sig-paren">(</span><em>dbtype</em>, <em>fields</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract database credentials from a JSON file, prompt for
+missing values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dbtype</strong> (<em>str</em>) – Type of the database being connected.</li>
+<li><strong>fields</strong> (<em>list</em>) – <p>List of credentials to test.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><strong>filename</strong> (<em>str</em>) – Full file path to the credentials JSON file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first last">Using the passed file, the config key/value pairs are loaded
+into a dictionary where a test is made to determine if the
+expected fields (as defined by the <code class="docutils literal notranslate"><span class="pre">fields</span></code> argument) is
+present.  If an expected field is missing, the user is prompted
+for the value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This function handles the <strong>credential file parsing</strong> and
+<strong>credential prompting</strong> for the following classes:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference internal" href="#database.MySQL" title="database.MySQL"><code class="xref py py-class docutils literal notranslate"><span class="pre">MySQL</span></code></a></li>
+<li><a class="reference internal" href="#database.Oracle" title="database.Oracle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Oracle</span></code></a></li>
+<li><a class="reference internal" href="#database.SQLServer" title="database.SQLServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLServer</span></code></a></li>
+</ul>
+</div></blockquote>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A completed credential dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._dbconn_mysql_conn">
+<code class="descclassname">utils.</code><code class="descname">_dbconn_mysql_conn</code><span class="sig-paren">(</span><em>creds</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_mysql_conn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the MySQL connection and cursor objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) – Database connection credentials.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">The <code class="docutils literal notranslate"><span class="pre">creds</span></code> dictionary argument is passed directly to the
+<code class="docutils literal notranslate"><span class="pre">mysql.connector.connect</span></code> function as a set of **kwargs.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the connection handler and error trapper for the
+<a class="reference internal" href="#database.MySQL" title="database.MySQL"><code class="xref py py-class docutils literal notranslate"><span class="pre">MySQL</span></code></a> database connection class.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Upon successful connection, the function returns the database
+connection and cursor objects, wrapped in a dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._dbconn_oracle_conn">
+<code class="descclassname">utils.</code><code class="descname">_dbconn_oracle_conn</code><span class="sig-paren">(</span><em>creds</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_oracle_conn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the Oracle database connection and cursor objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) – Database connection credentials.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">The <code class="docutils literal notranslate"><span class="pre">creds</span></code> dictionary argument is parsed into a connection
+string and passed into the <code class="docutils literal notranslate"><span class="pre">cx_Oracle.connect</span></code> function.
+Then, the returned connection and cursor objects are wrapped
+into a dictionary and returned.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the connection handler and error trapper for the
+<a class="reference internal" href="#database.Oracle" title="database.Oracle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Oracle</span></code></a> database connection class.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Upon successful connection, the function returns the database
+connection and cursor objects, wrapped in a dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._dbconn_params">
+<code class="descclassname">utils.</code><code class="descname">_dbconn_params</code><span class="sig-paren">(</span><em>dbtype</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a dictionary of database login credentials, prompt for
+missing values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dbtype</strong> (<em>str</em>) – Type of the database being connected.</li>
+<li><strong>**params</strong> (<em>dict</em>) – Key/value pairs for connection credentials.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first last">This function tests each passed credential field
+(passed as **kwargs), if any keys are missing a value, the user
+is prompted for the credential.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This function handles the <strong>credential prompting</strong> for the
+following classes:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference internal" href="#database.MySQL" title="database.MySQL"><code class="xref py py-class docutils literal notranslate"><span class="pre">MySQL</span></code></a></li>
+<li><a class="reference internal" href="#database.Oracle" title="database.Oracle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Oracle</span></code></a></li>
+<li><a class="reference internal" href="#database.SQLServer" title="database.SQLServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLServer</span></code></a></li>
+</ul>
+</div></blockquote>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A completed credential dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._dbconn_sql_conn">
+<code class="descclassname">utils.</code><code class="descname">_dbconn_sql_conn</code><span class="sig-paren">(</span><em>creds</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_sql_conn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the SQL Server database connection and cursor objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>creds</strong> (<em>dict</em>) – Database connection credentials.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">When building the connection string, the
+<a class="reference internal" href="#utils.getdrivername" title="utils.getdrivername"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.getdrivername()</span></code></a> function is used to get the name of
+the odbc driver.  Then, the <code class="docutils literal notranslate"><span class="pre">creds</span></code> dictionary argument is
+parsed into a connection string (including the found driver
+name) and passed into the <code class="docutils literal notranslate"><span class="pre">pyodbc.connect</span></code> function.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the connection handler and error trapper for the
+<a class="reference internal" href="#database.SQLServer" title="database.SQLServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLServer</span></code></a> database connection class.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Upon successful connection, the function returns the database
+connection and cursor objects, wrapped in a dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._prev_mpl">
+<code class="descclassname">utils.</code><code class="descname">_prev_mpl</code><span class="sig-paren">(</span><em>cmap</em>, <em>cmap_name</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._prev_mpl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preview a colourmap using matplotlib.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cmap</strong> (<em>list</em>) – The colour map you want to preview.  This must be
+a Python list of rgb/rgba/hex values.</li>
+<li><strong>cmap_name</strong> (<em>str</em>) – The name of the matplotlib colour map.
+For example: (Blues, OrRd, winter, etc.)  This name is only
+used to <strong>display</strong> the colour map name in the graph title.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This helper method is designed to be called from the
+<a class="reference internal" href="#utils.getcolormap" title="utils.getcolormap"><code class="xref py py-func docutils literal notranslate"><span class="pre">getcolormap()</span></code></a> function, as a means of
+displaying / previewing the colour map chosen, using the
+<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plotting library.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Advantage:</th><td class="field-body"><p class="first">This method allows you to <strong>preview the colourmap directly
+within the IDE</strong>; e.g.: Spyder, Jupyter Notebook, etc.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first last simple">
+<li>matplotlib</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils._prev_plotly">
+<code class="descclassname">utils.</code><code class="descname">_prev_plotly</code><span class="sig-paren">(</span><em>cmap</em>, <em>cmap_name</em>, <em>out_file='c:/temp/cmap_graph.html'</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._prev_plotly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preview a colourmap, as a bar graph, in Plotly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cmap</strong> (<em>list</em>) – The colour map you want to preview.  This must be
+a Python list of rgb/rgba/hex values.</li>
+<li><strong>cmap_name</strong> (<em>str</em>) – The name of the matplotlib colour map.
+For example: (Blues, OrRd, winter, etc.)  This name is only
+used to <strong>display</strong> the colour map name in the graph title.</li>
+<li><strong>out_file</strong> (<em>str</em>) – Full file path to the output HTML file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This helper method is designed to be called from the
+<a class="reference internal" href="#utils.getcolormap" title="utils.getcolormap"><code class="xref py py-func docutils literal notranslate"><span class="pre">getcolormap()</span></code></a> function, as a means of
+displaying / previewing the colour map chosen, using the
+<code class="docutils literal notranslate"><span class="pre">plotly</span></code> plotting library.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Advantage:</th><td class="field-body"><p class="first">This method <strong>displays the hex/rgb/rgba colour code</strong> value
+for each bar as hovertext.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first last simple">
+<li>plotly &gt;= 2.0.6</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.clean_df">
+<code class="descclassname">utils.</code><code class="descname">clean_df</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.clean_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a cleaned Pandas DataFrame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>df</strong> (<em>pandas.DataFrame</em>) – The DataFrame to be cleaned.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This function performs the following cleaning tasks:</p>
+<blockquote>
+<div><ul class="simple">
+<li>column names: replace a space with an underscore</li>
+<li>column names: convert to lower case</li>
+<li>values:       strip whitespace</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">clean_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A ‘cleaned’ copy of the dataframe.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.dbconn_mysql">
+<code class="descclassname">utils.</code><code class="descname">dbconn_mysql</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>password=None</em>, <em>database=None</em>, <em>port=3306</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_mysql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return MySQL database connection and cursor objects.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function <strong>should not be interacted with directly</strong>.
+Rather, use the parent class: <a class="reference internal" href="#database.MySQL" title="database.MySQL"><code class="xref py py-class docutils literal notranslate"><span class="pre">MySQL</span></code></a>.</p>
+<p class="last"><strong>Refer to the use example in the class.</strong></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>host</strong> (<em>str</em>) – IP address or machine name of the host or database
+server.</li>
+<li><strong>user</strong> (<em>str</em>) – User name used to authenticate.</li>
+<li><strong>password</strong> (<em>str</em>) – Just what it says on the tin.  :-)</li>
+<li><strong>database</strong> (<em>str</em>) – Name of the database to connect.</li>
+<li><strong>port</strong> (<em>int</em>) – The TCP/IP port of the MySQL server; must be an
+integer.</li>
+<li><strong>from_file</strong> (<em>bool</em>) – <p>Boolean flag instructing the function to use
+the provided config (JSON) file for connection details.</p>
+<blockquote>
+<div><ul>
+<li><strong>Valid keys:</strong> user, password, database, host, port</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>filename</strong> (<em>str</em>) – Full file path to the JSON file containing the
+connection details.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To prompt for login details, leave the argument(s) blank.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This function is designed to to create a connection to a MySQL
+database using either the provided login details, or directly
+from a config file.  If a login detail is not provided, the
+end-user is prompted; which can be used as a security feature.</p>
+<p>Once all credentials are gathered, the connection is tested.  If
+successful, the connection and cursor objects are returned to the
+calling program, as a dictionary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">conn</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">connection</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
+ <span class="n">cur</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">cursor</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>mysql-connector (2.1.4)</li>
+</ul>
+<p>Installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">==</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">4</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body"><p class="first">To connect using <strong>passed connection details</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_mysql</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">database</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example 2:</th><td class="field-body"><p class="first">To connect using <strong>a config file</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_mysql</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;db_config.json&#39;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first last">Refer here for the <cite>mysql.connection</cite> <a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html">argument keys</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.dbconn_oracle">
+<code class="descclassname">utils.</code><code class="descname">dbconn_oracle</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>userid=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_oracle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Oracle database connection and cursor objects.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function <strong>should not be interacted with directly</strong>.
+Rather, use the parent class: <a class="reference internal" href="#database.Oracle" title="database.Oracle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Oracle</span></code></a>.</p>
+<p class="last"><strong>Refer to the use example in the class.</strong></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>host</strong> (<em>str</em>) – Database host; or database name.</li>
+<li><strong>user</strong> (<em>str</em>) – User name, or schema name.</li>
+<li><strong>userid</strong> (<em>str</em>) – Same as <code class="docutils literal notranslate"><span class="pre">user</span></code> parameter.  (Both are not
+required, but included for backwards-compatibility)</li>
+<li><strong>password</strong> (<em>str</em>) – Just what it says on the tin.  :-)</li>
+<li><strong>from_file</strong> (<em>bool</em>) – <p>Boolean flag instructing the function to use
+the provided config (JSON) file for connection details.</p>
+<blockquote>
+<div><ul>
+<li><strong>Valid keys:</strong> host, user, password</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>filename</strong> (<em>str</em>) – Full file path to the JSON file containing the
+connection details</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To prompt for login details, leave the argument(s) blank.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to create a connection to an Oracle database
+using either the provided login details, or directly from a
+config file. If a login detail is not provided, the user is
+prompted; which can be used as a security feature.</p>
+<p>The connection is tested.  If successful, the connection and
+cursor objects are returned to the calling program, as a
+dictionary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">conn</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">connection</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
+ <span class="n">cur</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">cursor</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>cx_Oracle</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body"><p class="first">To connect using <strong>passed connection details</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_oracle</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;myhost&#39;</span><span class="p">,</span> <span class="n">userid</span><span class="o">=</span><span class="s1">&#39;myuser&#39;</span><span class="p">,</span>
+                      <span class="n">password</span><span class="o">=</span><span class="s1">&#39;mypass&#39;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example 2:</th><td class="field-body"><p class="first">To connect using <strong>a config file</strong>:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_oracle</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;db_config.json&#39;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.dbconn_sql">
+<code class="descclassname">utils.</code><code class="descname">dbconn_sql</code><span class="sig-paren">(</span><em>server=None</em>, <em>database=None</em>, <em>userid=None</em>, <em>user=None</em>, <em>password=None</em>, <em>from_file=False</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return SQL Server database connection and cursor objects.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function <strong>should not be interacted with directly</strong>.
+Rather, use the parent class: <a class="reference internal" href="#database.SQLServer" title="database.SQLServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLServer</span></code></a>.</p>
+<p class="last"><strong>Refer to the use example in the class.</strong></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> (<em>str</em>) – Name of the server on which the database lives.</li>
+<li><strong>database</strong> (<em>str</em>) – Name of the database to which you’re connecting.</li>
+<li><strong>user</strong> (<em>str</em>) – User name used to authenticate.</li>
+<li><strong>userid</strong> (<em>str</em>) – Same as <code class="docutils literal notranslate"><span class="pre">user</span></code> parameter.  (Both are not
+required, but included for backwards-compatibility)</li>
+<li><strong>password</strong> (<em>str</em>) – Just what it says on the tin.  :-)</li>
+<li><strong>from_file</strong> (<em>bool</em>) – <p>Boolean flag instructing the function to use
+the provided config (JSON) file for connection details.</p>
+<blockquote>
+<div><ul>
+<li><strong>Valid keys:</strong> server, database, user, password</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>filename</strong> (<em>str</em>) – Full file path to the JSON file containing the
+connection details.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To prompt for login details, leave the argument(s) blank.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to create a connection to a SQL Server database
+using the either provided login parameters, or directly from a
+config file. If a login detail is not provided, the user is
+prompted; which can be used as a security feature.</p>
+<p>The connection is tested.  If successful, the connection and
+cursor objects are returned to the calling program, as a
+dictionary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">conn</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">connection</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
+ <span class="n">cur</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">cursor</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>pyodbc</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body"><p class="first">To connect using <strong>passed connection details</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_sql</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example 1:</th><td class="field-body"><p class="first">To connect using <strong>a config file</strong>:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_sql</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;db_config.json&#39;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.dbconn_sqlite">
+<code class="descclassname">utils.</code><code class="descname">dbconn_sqlite</code><span class="sig-paren">(</span><em>db_path</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_sqlite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return SQLite database connection and cursor objects.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function <strong>should not be interacted with directly</strong>.
+Rather, use the parent class: <a class="reference internal" href="#database.SQLite" title="database.SQLite"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLite</span></code></a>.</p>
+<p class="last"><strong>Refer to the use example in the class.</strong></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to create and return database connection and
+cursor objects for a SQLite database, using the passed database
+filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">conn</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">connection</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
+ <span class="n">cur</span><span class="p">:</span><span class="o">&lt;</span><span class="n">the</span> <span class="n">cursor</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>db_path</strong> (<em>str</em>) – Full file path to the SQLite database file.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>sqlite3</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">To connect:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">dbo</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dbconn_sqlite</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;conn&#39;</span><span class="p">]</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">dbo</span><span class="p">[</span><span class="s1">&#39;cur&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.direxists">
+<code class="descclassname">utils.</code><code class="descname">direxists</code><span class="sig-paren">(</span><em>path</em>, <em>create_path=True</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.direxists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a directory exists.  If not, create it, if instructed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – The directory path to be tested.</li>
+<li><strong>create_path</strong> (<em>bool</em>) – Create the path if it doesn’t exist.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to test if a directory path exists.  If the
+path does not exist, the path can be created; as determined by
+the <code class="docutils literal notranslate"><span class="pre">create_path</span></code> parameter.</p>
+<p>This function expands in the standard <code class="docutils literal notranslate"><span class="pre">os.path.exists()</span></code>
+function in that the path can be created if it doesn’t already
+exist, by passing the <code class="docutils literal notranslate"><span class="pre">create_path</span></code> parameter as <code class="docutils literal notranslate"><span class="pre">True</span></code>;
+which is the default action.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">u</span><span class="o">.</span><span class="n">direxists</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/my/path/to_create&#39;</span><span class="p">,</span> <span class="n">create_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the directory exists, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.fileexists">
+<code class="descclassname">utils.</code><code class="descname">fileexists</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.fileexists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a file exists.  If not, notify the user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filepath</strong> (<em>str</em>) – Full file path to test.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed check if a file exists.  A boolean value is
+returned to the calling program.</p>
+<p>This function expands in the standard <code class="docutils literal notranslate"><span class="pre">os.path.isfile()</span></code>
+function in that the user is notified if the path does not
+exist.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/path/to/file.ext&#39;</span><span class="p">):</span>
+    <span class="n">do</span> <span class="n">stuff</span> <span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">dont</span> <span class="n">do</span> <span class="n">stuff</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the file exists, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.format_exif_date">
+<code class="descclassname">utils.</code><code class="descname">format_exif_date</code><span class="sig-paren">(</span><em>datestring</em>, <em>input_format='%Y:%m:%d %H:%M:%S'</em>, <em>output_format='%Y%m%d%H%M%S'</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.format_exif_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format an exif timestamp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>datestring</strong> (<em>str</em>) – The datetime string to be formatted.
+A typical exif date format is: yyyy:mm:dd hh:mi:ss</li>
+<li><strong>input_format</strong> (<em>str</em>) – Format mask for the value passed to the
+<code class="docutils literal notranslate"><span class="pre">datetime</span></code> parameter</li>
+<li><strong>output_format</strong> (<em>str</em>) – Convert to this format.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to convert the exif date/timestamp
+from 2010:01:31 12:31:18 (or a caller specified) format to a
+format specified by the caller.</p>
+<p>This is useful for storing an exif date as a datetime string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">newdate</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">format_exif_date</span><span class="p">(</span><span class="s1">&#39;2010:01:31 12:31:18&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A formatted datetime string.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.get_os">
+<code class="descclassname">utils.</code><code class="descname">get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.get_os" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the platform’s general OS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">my_os</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">get_os</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A string of the platform’s general OS.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.getcolormap">
+<code class="descclassname">utils.</code><code class="descname">getcolormap</code><span class="sig-paren">(</span><em>colormap='Blues'</em>, <em>n=5</em>, <em>colorscale=False</em>, <em>dtype='hex'</em>, <em>preview=False</em>, <em>preview_in='mpl'</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.getcolormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a specified matplotlib colour map, as a list or colours.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>colormap</strong> (<em>str</em>) – Name of the matplotlib color map.</li>
+<li><strong>n</strong> (<em>int</em>) – Number of colors to return.</li>
+<li><strong>colorscale</strong> (<em>bool</em>) – <p>Convert the returned colour map into a list
+of colour scale values.  This is useful with Plotly’s
+colorscale parameter.  Returned format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mf">0.00</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#f7fbff&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.33</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#abd0e6&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.66</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#3787c0&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.00</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#08306b&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
+<li><strong>dtype</strong> (<em>str</em>) – <p>Data type to return.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Current only “hex” is supported.</p>
+</div>
+</li>
+<li><strong>preview</strong> (<em>bool</em>) – This option creates a plotly or matplotlib
+graph displaying the colormap.</li>
+<li><strong>preview_in</strong> (<em>str</em>) – <p>Display method for previewing the graph.</p>
+<ul>
+<li>’mpl’ = matplotlib (used for inline preview)</li>
+<li>’plotly’ = plotly (use for html display in a web browser)</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to return a list of colour values from a
+matplotlib colormap.  The number of returned colour values can
+range from 1 to 256.</p>
+<p>This is useful when creating a graph which requires gradient
+colour map. (e.g.: a plotly bar chart)</p>
+<p>To print a list of available colour maps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">u</span><span class="o">.</span><span class="n">listcolormaps</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>matplotlib</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="o">&gt;</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">getcolourmap</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">,</span>
+                        <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;hex&#39;</span><span class="p">,</span>
+                        <span class="n">preview</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">preview_in</span><span class="o">=</span><span class="s1">&#39;plotly&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of colours.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.getdrivername">
+<code class="descclassname">utils.</code><code class="descname">getdrivername</code><span class="sig-paren">(</span><em>drivername</em>, <em>returnall=False</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#utils.getdrivername" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of ODBC driver names, matching the regex pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>drivername</strong> (<em>str</em>) – A <strong>regex pattern</strong> for the ODBC driver you’re
+searching.</li>
+<li><strong>returnall</strong> (<em>bool</em>) – Return <strong>all</strong> drivers found.  By default,
+only the first hit is returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This is a helper function designed to get and return the name
+of an ODBC driver.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">drivername</span></code> parameter should be formatted as a regex
+pattern. If multiple drivers are found, by default, only the
+first driver in the list is returned.  However, the
+<code class="docutils literal notranslate"><span class="pre">returnall</span></code> parameter adjusts this action.</p>
+<p>This function has a dependency on <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code>. Therefore,
+the <a class="reference internal" href="#utils.testimport" title="utils.testimport"><code class="xref py py-func docutils literal notranslate"><span class="pre">testimport()</span></code></a> function is called before
+<code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> is imported. If the <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> library is not
+installed, the user is notified.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>pyodbc</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">getdrivername</span><span class="p">(</span><span class="n">drivername</span><span class="o">=</span><span class="s1">&#39;SQL Server.*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of ODBC drivers.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.getsitepackages">
+<code class="descclassname">utils.</code><code class="descname">getsitepackages</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.getsitepackages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the site packages directory, based on platform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This function returns the directory path to site-packages
+based on the platform.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The function first uses the local <a class="reference internal" href="#utils.get_os" title="utils.get_os"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_os()</span></code></a>
+function to get the platform’s base OS.  The OS is then tested
+and the site-packages location is returned using the OS
+appropriate element from the <code class="docutils literal notranslate"><span class="pre">site.getsitepackages()</span></code> list.</p>
+<p>If the OS is not accounted for, or fails the test, a value of
+‘unknown’ is returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Rationale:</th><td class="field-body"><p class="first">The need for this function comes out of the observation there
+are many (many!) different ways on stackoverflow (and other
+sites) to get the location to which <code class="docutils literal notranslate"><span class="pre">pip</span></code> will install a
+package, and many of the answers contradict each other.  Also,
+the <code class="docutils literal notranslate"><span class="pre">site.getsitepackages()</span></code> function returns a list of two
+options (in all tested cases); and the Linux / Windows paths
+are in different locations in this list.</p>
+<p>So this function was written to help simplify matters …
+hopefully.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">my_sitepkgs</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">getsitepackages</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The path to the <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> directory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.json_read">
+<code class="descclassname">utils.</code><code class="descname">json_read</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#utils.json_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return JSON file contents as a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filepath</strong> (<em>str</em>) – Full file path to the JSON file to read.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Function designed to read a JSON file, and return the values
+as a dictionary.</p>
+<p>This utility is useful when reading a JSON config file for a
+Python program.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">json_read</span><span class="p">(</span><span class="n">filepath</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the JSON file’s key/value pairs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.json_write">
+<code class="descclassname">utils.</code><code class="descname">json_write</code><span class="sig-paren">(</span><em>dictionary</em>, <em>filepath='c:/temp/tempfile.json'</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.json_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a JSON file at a given file path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dictionary</strong> (<em>dict</em>) – The Python dictionary you are converting to
+a JSON file.</li>
+<li><strong>filepath</strong> (<em>str</em>) – Full file path to store the JSON file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Method designed to write a Python dictionary to a JSON file in
+the specified file location.  If a file location is not
+specified, the default file and location is used.</p>
+<p>This utility is useful when creating a JSON config file.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">u</span><span class="o">.</span><span class="n">json_write</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">my_dict</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/path/to/output.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.listcolormaps">
+<code class="descclassname">utils.</code><code class="descname">listcolormaps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.listcolormaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a list of available matplotlib colour maps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">A very simple method used to print a list of colour maps
+available in matplotlib.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>matplotlib</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">u</span><span class="o">.</span><span class="n">listcolormaps</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.ping">
+<code class="descclassname">utils.</code><code class="descname">ping</code><span class="sig-paren">(</span><em>server</em>, <em>count=1</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ping an IP address, server or web address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> (<em>str</em>) – Either an IP address, a server name or a web
+address.</li>
+<li><strong>count</strong> (<em>int</em>) – The number of ping attempts.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, <strong>only Windows is supported</strong>, with a Linux update
+to follow.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Design:</th><td class="field-body"><p class="first">Using the platform’s native ‘ping’ command (via the
+<code class="docutils literal notranslate"><span class="pre">subprocess</span></code> package), a server is pinged, and a boolean
+value is returned to the caller to indicate if the ping was
+successful.</p>
+<p>A ping status of <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">=</span> <span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p>
+<p>If the server name is preceeded by <code class="docutils literal notranslate"><span class="pre">\\</span></code> or <code class="docutils literal notranslate"><span class="pre">//</span></code>, these are
+stripped out using the <code class="docutils literal notranslate"><span class="pre">os.path.basename()</span></code> function.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the ping was successful, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.rgb2hex">
+<code class="descclassname">utils.</code><code class="descname">rgb2hex</code><span class="sig-paren">(</span><em>rgb_string</em>, <em>drop_alpha=False</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.rgb2hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an RGB string to HEX.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rgb_string</strong> (<em>str</em>) – This is the RGB or RGBA string to convert.</li>
+<li><strong>drop_alpha</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> will <strong>drop the alpha value</strong> from
+the HEX string.  This is useful for colour maps that
+automatically return an alpha channel, yet the
+plotting program does not accept alpha values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This function is designed to convert an RGB (or RGBA) string to
+a HEX string.</p>
+<dl class="docutils">
+<dt>For example: ‘rgb(195, 0, 0)’ returns #c30000</dt>
+<dd><p class="first last">‘rgba(65, 125, 50, 0.25)’ returns #40417d32</p>
+</dd>
+</dl>
+<p>This is useful as some colour functions return an RGB or RGBA
+string, and <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> <strong>only accepts HEX strings</strong>.</p>
+<p>Regex is used to extract the colour channels from the string.
+Therefore, the ‘rgb’ or ‘rgba’ prefix <strong>is not required</strong>;
+although accepted for standard use.</p>
+<p>The extracted integer values (or float value in the case of
+alpha), are converted to HEX and returned as a compiled HEX
+string.</p>
+<p>If an alpha value is present, the alpha value is moved to the
+first byte of the HEX string; making the HEX string read as
+#argb.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">clr</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">rgb2hex</span><span class="p">(</span><span class="s1">&#39;rgb(195, 0, 0)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A HEX string; i.e. <code class="docutils literal notranslate"><span class="pre">#c30000</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.testimport">
+<code class="descclassname">utils.</code><code class="descname">testimport</code><span class="sig-paren">(</span><em>module_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.testimport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a Python library is installed.</p>
+<p>For example, the <a class="reference internal" href="#utils.getdrivername" title="utils.getdrivername"><code class="xref py py-func docutils literal notranslate"><span class="pre">getdrivername()</span></code></a> function uses this
+function before attempting to import the <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>module_name</strong> (<em>str</em>) – The name of the module to be found.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This is a small helper function designed to test if a library
+is installed before trying to import it.</p>
+<p>If the library is not intalled, the user is notified.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>imp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">testimport</span><span class="p">(</span><span class="s1">&#39;mymodule&#39;</span><span class="p">):</span> <span class="kn">import</span> <span class="nn">mymodule</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if the library was found, otherwise, False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.unidecode">
+<code class="descclassname">utils.</code><code class="descname">unidecode</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.unidecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempt to convert a Unicode object into an ASCII string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>string</strong> (<em>str</em>) – The string to be decoded.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">This function is a light wrapper around the
+<code class="docutils literal notranslate"><span class="pre">unidecode.unidecode</span></code> function.</p>
+<p><strong>Per the</strong> <code class="docutils literal notranslate"><span class="pre">unicode</span></code> <strong>docstring:</strong></p>
+<p>“Transliterate an Unicode object into an ASCII string.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unidecode</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;北亰&quot;</span><span class="p">)</span>
+<span class="go">&quot;Bei Jing &quot;</span>
+</pre></div>
+</div>
+<p>This function first tries to convert the string using ASCII
+codec. If it fails (because of non-ASCII characters), it falls
+back to transliteration using the character tables.</p>
+<p>This is approx. five times faster if the string only contains
+ASCII characters, but slightly slower than using unidecode
+directly if non-ASCII chars are present.”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dependencies:</th><td class="field-body"><ul class="first simple">
+<li>unidecode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3.utils</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">If the passed <code class="docutils literal notranslate"><span class="pre">string</span></code> value is a str data type, the decoded
+string is returned, otherwise the original value is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 

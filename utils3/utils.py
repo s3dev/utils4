@@ -1,25 +1,25 @@
-"""------------------------------------------------------------------------------------------------
-Program:    utils.py
-Purpose:    Central library for standard S3DEV utilities.
+# -*- coding: utf-8 -*-
+"""
+:Purpose:   Central library for standard S3DEV utilities.
 
-Developer:  J. Berendt
-Email:      support@73rdstreetdevelopment.co.uk
+:Platform:  Linux/Windows | Python 3.5
+:Developer: J Berendt
+:Email:     support@73rdstreetdevelopment.co.uk
 
-Comments:
+:Example:
+    View the module help::
 
-Use:        > from utils3 import utils as u
-            > help(u)
+        import utils3.utils as u
 
----------------------------------------------------------------------------------------------------
-UPDATE LOG:
-Date        Programmer      Version     Update
-05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
-                                        utils module.
-07.03.18    J. Berendt      1.0.1       Minor code formatting updates.
-                                        Print statements changed to proper case.
-13.03.18    J. Berendt      1.1.0       Updated the input() function to use six.moves.input()
-                                        for Py2/Py3 compatibility.
-------------------------------------------------------------------------------------------------"""
+        help(u)
+
+    Get the package version::
+
+        import utils3.utils as u
+
+        u.__version__
+
+"""
 
 # AS THIS IS A UTILITIES PACKAGE, NOT ALL IMPORTS ARE USED DURING
 # EXECUTION, SO MOST IMPORTS SIT WITH THE METHOD OR FUNCTION IN WHICH
@@ -32,41 +32,37 @@ from utils3 import reporterror
 from utils3 import user_interface
 from utils3._version import __version__
 
-# GLOBAL CONSTANTS / CLASS INSTANTIATIONS
+# PRIVATE GLOBAL CLASS INSTANTIATIONS
 _UI = user_interface.UserInterface()
-
 
 # ----------------------------------------------------------------------
 def clean_df(df):
+    """Return a cleaned Pandas DataFrame.
+
+    Args:
+        df (pandas.DataFrame): The DataFrame to be cleaned.
+
+    :Design:
+        This function performs the following cleaning tasks:
+
+            - column names: replace a space with an underscore
+            - column names: convert to lower case
+            - values:       strip whitespace
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            df = u.clean_df(df)
+
+    Returns:
+        A 'cleaned' copy of the dataframe.
+
     """
-    Return a cleaned pandas dataframe.
-
-    DESIGN:
-    Function designed to clean dataframe content.
-        - column names: replace a space with an underscore
-        - column names: convert to lower case
-        - values:       strip whitespace
-
-    Function returns a 'cleaned' copy of the dataframe.
-
-    PARAMETERS:
-        - df
-          The pandas dataframe for cleaning.
-
-    DEPENDENTS:
-        - numpy
-
-    USE:
-    > import utils3.utils as u
-    > df = u.clean_df(df)
-    """
-
-    # EXTERNAL IMPORTS
     import numpy as np
 
     # CREATE A COPY OF THE DATAFRAME
     df_c = df.copy()
-
     # CLEAN HEADERS (REPLACE, STRIP WHITESPACE, UPPER CASE)
     df_c.rename(columns=lambda col: col.strip().replace(' ', '_').lower(), inplace=True)
 
@@ -84,67 +80,76 @@ def clean_df(df):
 # ----------------------------------------------------------------------
 def dbconn_mysql(host=None, user=None, password=None, database=None, port=3306,
                  from_file=False, filename=None):
+    """Return MySQL database connection and cursor objects.
+
+    Warning:
+        This function **should not be interacted with directly**.
+        Rather, use the parent class: :class:`~database.MySQL`.
+
+        **Refer to the use example in the class.**
+
+    Args:
+        host (str): IP address or machine name of the host or database
+            server.
+        user (str): User name used to authenticate.
+        password (str): Just what it says on the tin.  :-)
+        database (str): Name of the database to connect.
+        port (int): The TCP/IP port of the MySQL server; must be an
+            integer.
+        from_file (bool): Boolean flag instructing the function to use
+            the provided config (JSON) file for connection details.
+
+                - **Valid keys:** user, password, database, host, port
+
+        filename (str): Full file path to the JSON file containing the
+            connection details.
+
+    Note:
+        To prompt for login details, leave the argument(s) blank.
+
+    :Design:
+        This function is designed to to create a connection to a MySQL
+        database using either the provided login details, or directly
+        from a config file.  If a login detail is not provided, the
+        end-user is prompted; which can be used as a security feature.
+
+        Once all credentials are gathered, the connection is tested.  If
+        successful, the connection and cursor objects are returned to the
+        calling program, as a dictionary::
+
+            {conn:<the connection object>,
+             cur:<the cursor object>}
+
+    :Dependencies:
+        - mysql-connector (2.1.4)
+
+        Installation::
+
+            pip install mysql-connector==2.1.4
+
+    :Example 1:
+        To connect using **passed connection details**::
+
+            import utils3.utils as u
+            dbo = u.dbconn_mysql(host, user, password, database)
+            conn = dbo['conn']
+            cur = dbo['cur']
+
+    :Example 2:
+        To connect using **a config file**::
+
+            import utils3.utils as u
+            dbo = u.dbconn_mysql(from_file=True, filename='db_config.json')
+            conn = dbo['conn']
+            cur = dbo['cur']
+
+    :Source:
+        Refer here for the `mysql.connection` `argument keys`_.
+
+    .. _argument keys: https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html
+
+
     """
-    Return MySQL database connection and cursor objects.  Prompt for
-    missing credentials.
-
-    DESIGN:
-    Function designed to create a connection to a MySQL database
-    using the provided login details, or directly from a config file.
-    If a login detail is not provided, the end-user is prompted; which
-    can be used as a security feature.
-
-    Once all credentials are gathered, the connection is tested.  If
-    successful, the connection and cursor objects are returned to the
-    calling program, as a dictionary.
-
-    conn = [the connection object]
-    cur  = [the cursor object]
-
-    NOTE: To prompt for login details, leave the argument(s) blank.
-
-    SOURCE:
-    The connection argument keys for a MySQL connection using the
-    mysql.connection library, are listed here:
-    https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html
-
-    PARAMETERS:
-        - host (default=None)
-          IP address or machine name of the host or database server
-        - user (default=None)
-          user name used to authenticate
-        - password (default=None)
-          just what it says on the tin  :-)
-        - database (default=None)
-          name of the database to connect
-        - port (default=3306)
-          the TCP/IP port of the MySQL server; must be an integer
-        - from_file (default=False)
-          boolean flag instructing the function to use the provided
-          config (JSON) file for connection details
-          valid keys:
-              - user, password, database, host, port
-        - filename (default=None)
-          file path and name of the JSON file containing the connection
-          details
-
-    DEPENDENCIES:
-    - mysql-connector (2.1.4)
-      Installation: > pip install mysql-connector==2.1.4
-
-    USE: PASSED CONNECTION DETAILS:
-    > import utils3.utils as u
-    > dbo = u.dbconn_mysql(host, user, password, database)
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-
-    USE: CONNECTION DETAILS FROM JSON:
-    > import utils3.utils as u
-    > dbo = u.dbconn_mysql(from_file=True, filename='db_config.json')
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-    """
-
     try:
         # INITIALISE
         creds = dict()
@@ -177,61 +182,65 @@ def dbconn_mysql(host=None, user=None, password=None, database=None, port=3306,
 # ----------------------------------------------------------------------
 def dbconn_oracle(host=None, user=None, userid=None, password=None,
                   from_file=False, filename=None):
+    """Return Oracle database connection and cursor objects.
+
+    Warning:
+        This function **should not be interacted with directly**.
+        Rather, use the parent class: :class:`~database.Oracle`.
+
+        **Refer to the use example in the class.**
+
+    Args:
+        host (str): Database host; or database name.
+        user (str): User name, or schema name.
+        userid (str): Same as ``user`` parameter.  (Both are not
+               required, but included for backwards-compatibility)
+        password (str): Just what it says on the tin.  :-)
+        from_file (bool): Boolean flag instructing the function to use
+            the provided config (JSON) file for connection details.
+
+                - **Valid keys:** host, user, password
+
+        filename (str): Full file path to the JSON file containing the
+            connection details
+
+    Note:
+        To prompt for login details, leave the argument(s) blank.
+
+    :Design:
+        Function designed to create a connection to an Oracle database
+        using either the provided login details, or directly from a
+        config file. If a login detail is not provided, the user is
+        prompted; which can be used as a security feature.
+
+        The connection is tested.  If successful, the connection and
+        cursor objects are returned to the calling program, as a
+        dictionary::
+
+            {conn:<the connection object>,
+             cur:<the cursor object>}
+
+    :Dependencies:
+        - cx_Oracle
+
+    :Example 1:
+        To connect using **passed connection details**::
+
+            import utils3.utils as u
+            dbo = u.dbconn_oracle(host='myhost', userid='myuser',
+                                  password='mypass')
+            conn = dbo['conn']
+            cur = dbo['cur']
+
+    :Example 2:
+        To connect using **a config file**::
+
+            import utils3.utils as u
+            dbo = u.dbconn_oracle(from_file=True, filename='db_config.json')
+            conn = dbo['conn']
+            cur = dbo['cur']
+
     """
-    Return Oracle database connection and cursor objects.  Prompt for
-    missing credentials.
-
-    DESIGN:
-    Function designed to create a connection to an Oracle database
-    using the provided login details, or directly from a config file.
-    If a login detail is not provided, the user is prompted; which can
-    be used as a security
-    feature.
-
-    The connection is tested.  If successful, the connection and
-    cursor objects are returned to the calling program, as a
-    dictionary.
-
-    conn = [the connection object]
-    cur  = [the cursor object]
-
-    NOTE: To prompt for login details, leave the argument(s) blank.
-
-    PARAMETERS:
-        - host (default=None)
-          database host; or database name
-        - user (default=None)
-          user name, or schema name
-        - userid (default=None)
-          same as 'user' parameter (both are not needed)
-        - password (default=None)
-          just what it says on the tin  :-)
-        - from_file (default=False)
-          boolean flag instructing the function to use the provided
-          config (JSON) file for connection details
-          valid keys:
-              - host, user, password
-        - filename (default=None)
-          file path and name of the JSON file containing the connection
-          details
-
-    DEPENDENCIES:
-    - cx_Oracle
-
-    USE:
-    > import utils3.utils as u
-    > dbo = u.dbconn_oracle(host='myhost', userid='myuser',
-                            password='mypass')
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-
-    USE: CONNECTION DETAILS FROM JSON:
-    > import utils3.utils as u
-    > dbo = u.dbconn_oracle(from_file=True, filename='db_config.json')
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-    """
-
     try:
         # INITIALISE
         creds = dict()
@@ -266,61 +275,65 @@ def dbconn_oracle(host=None, user=None, userid=None, password=None,
 # ----------------------------------------------------------------------
 def dbconn_sql(server=None, database=None, userid=None, user=None,
                password=None, from_file=False, filename=None):
+    """Return SQL Server database connection and cursor objects.
+
+    Warning:
+        This function **should not be interacted with directly**.
+        Rather, use the parent class: :class:`~database.SQLServer`.
+
+        **Refer to the use example in the class.**
+
+    Args:
+        server (str): Name of the server on which the database lives.
+        database (str): Name of the database to which you're connecting.
+        user (str): User name used to authenticate.
+        userid (str): Same as ``user`` parameter.  (Both are not
+               required, but included for backwards-compatibility)
+        password (str): Just what it says on the tin.  :-)
+        from_file (bool): Boolean flag instructing the function to use
+            the provided config (JSON) file for connection details.
+
+                - **Valid keys:** server, database, user, password
+
+        filename (str): Full file path to the JSON file containing the
+            connection details.
+
+    Note:
+        To prompt for login details, leave the argument(s) blank.
+
+    :Design:
+        Function designed to create a connection to a SQL Server database
+        using the either provided login parameters, or directly from a
+        config file. If a login detail is not provided, the user is
+        prompted; which can be used as a security feature.
+
+        The connection is tested.  If successful, the connection and
+        cursor objects are returned to the calling program, as a
+        dictionary::
+
+            {conn:<the connection object>,
+             cur:<the cursor object>}
+
+    :Dependencies:
+        - pyodbc
+
+    :Example 1:
+        To connect using **passed connection details**::
+
+            import utils3.utils as u
+            dbo = u.dbconn_sql(server, database, user, password)
+            conn = dbo['conn']
+            cur = dbo['cur']
+
+    :Example 1:
+        To connect using **a config file**::
+
+            import utils3.utils as u
+            dbo = u.dbconn_sql(from_file=True, filename='db_config.json')
+            conn = dbo['conn']
+            cur = dbo['cur']
+
     """
-    Return SQL Server database connection and cursor objects.  Prompt
-    for missing credentials.
-
-    DESIGN:
-    Function designed to create a connection to a SQL Server database
-    using the provided login parameters, or directly froma config file.
-    If a login detail is not provided, the user is prompted; which can
-    be used as a security
-    feature.
-
-    The connection is tested.  If successful, the connection and cursor
-    objects are returned to the calling program, as a dictionary.
-
-    conn = [the connection object]
-    cur  = [the cursor object]
-
-    NOTE: To prompt for login details, leave the argument(s) blank.
-
-    PARAMETERS:
-        - server (default=None)
-          name of the server on which the database lives
-        - database (default=None)
-          name of the database to which you're connecting
-        - user (default=None)
-          just what it says on the tin
-        - userid (default=None)
-          same as 'user' parameter (both are not needed)
-        - password (default=None)
-          again, just what it says on the tin  :-)
-        - from_file (default=False)
-          boolean flag instructing the function to use the provided
-          config (JSON) file for connection details
-          valid keys:
-              - server, database, user, password
-        - filename (default=None)
-          file path and name of the JSON file containing the connection
-          details
-
-    DEPENDENCIES:
-    - pyodbc
-
-    USE:
-    > import utils3.utils as u
-    > dbo = u.dbconn_sql(server, database, user, password)
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-
-    USE: CONNECTION DETAILS FROM JSON:
-    > import utils3.utils as u
-    > dbo = u.dbconn_sql(from_file=True, filename='db_config.json')
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-    """
-
     try:
         # INITIALISE
         creds = dict()
@@ -355,84 +368,82 @@ def dbconn_sql(server=None, database=None, userid=None, user=None,
 
 # ----------------------------------------------------------------------
 def dbconn_sqlite(db_path):
+    """Return SQLite database connection and cursor objects.
+
+    Warning:
+        This function **should not be interacted with directly**.
+        Rather, use the parent class: :class:`~database.SQLite`.
+
+        **Refer to the use example in the class.**
+
+    :Design:
+        Function designed to create and return database connection and
+        cursor objects for a SQLite database, using the passed database
+        filename::
+
+            {conn:<the connection object>,
+             cur:<the cursor object>}
+
+    Args:
+        db_path (str): Full file path to the SQLite database file.
+
+    :Dependencies:
+        - sqlite3
+
+    :Example:
+        To connect::
+
+            import utils3.utils as u
+            dbo = u.dbconn_sqlite(db_path)
+            conn = dbo['conn']
+            cur = dbo['cur']
+
     """
-    Return a dictionary containing the connection and cursor objects
-    for a SQLite database connection.
-
-    DESIGN:
-    Function designed to create and return database connection and
-    cursor objects for a SQLite database, using the passed database
-    filename.
-
-    conn = [the connection object]
-    cur  = [the cursor object]
-
-    PARAMETERS:
-        - db_path
-        Full path to the SQLite database file.
-
-    DEPENDENCIES:
-    - sqlite3
-    - reporterror
-
-    USE:
-    > import utils3.utils as u
-    > dbo = u.dbconn_sqlite(db_path)
-    > conn = dbo['conn']
-    > cur = dbo['cur']
-    """
-
-    # BUILT-IN IMPORTS
     import sqlite3 as sql
 
     try:
         # CREATE CONNECTION / CURSOR OBJECTS
         connection = sql.connect(db_path)
         cursor = connection.cursor()
-
         # STORE RESULT IN DICTIONARY
         return dict(conn=connection, cur=cursor)
-
     except Exception as err:
         # NOTIFICATION
         reporterror.reporterror(err)
 
 
 # ----------------------------------------------------------------------
-def direxists(path, create_path=True):
+def direxists(path, create_path=True) -> bool:
+    """Test if a directory exists.  If not, create it, if instructed.
+
+    Args:
+        path (str): The directory path to be tested.
+        create_path (bool): Create the path if it doesn't exist.
+
+    :Design:
+        Function designed to test if a directory path exists.  If the
+        path does not exist, the path can be created; as determined by
+        the ``create_path`` parameter.
+
+        This function expands in the standard ``os.path.exists()``
+        function in that the path can be created if it doesn't already
+        exist, by passing the ``create_path`` parameter as ``True``;
+        which is the default action.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            u.direxists(path='/my/path/to_create', create_path=True)
+
+    Returns:
+        True if the directory exists, otherwise False.
+
     """
-    Return a boolean value based on if a directory exists.  If
-    instructed by the caller, create the directory tree.
-
-    DESIGN:
-    Function designed to test if a directory path exists.  If the path
-    does not exist, the path can be created; determined by passed the
-    value of create_path(boolean).
-
-    This function expands in the standard os.path.exists() function in
-    that the path can be created, if it doesn't already exist, by
-    passing the create_path parameter as True; which is the default
-    action.
-
-    PARAMETERS:
-        - path
-          the directory you are testing
-        - create_path (default=True)
-
-    DEPENDENCIES:
-    - os
-
-    USE:
-    > import utils3.utils as u
-    > u.direxists(path[, create_path])
-    """
-
-    # BUILT-IN IMPORTS
     import os
 
     # INITIALISE VARIABLE
     found = False
-
     # LOOP
     while True:
         # TEST IF PATH EXISTS
@@ -455,36 +466,37 @@ def direxists(path, create_path=True):
 
 
 # ----------------------------------------------------------------------
-def fileexists(filepath):
+def fileexists(filepath) -> bool:
+    """Test if a file exists.  If not, notify the user.
+
+    Args:
+        filepath (str): Full file path to test.
+
+    :Design:
+        Function designed check if a file exists.  A boolean value is
+        returned to the calling program.
+
+        This function expands in the standard ``os.path.isfile()``
+        function in that the user is notified if the path does not
+        exist.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            if u.fileexists(filepath='/path/to/file.ext'):
+                do stuff ...
+            else:
+                dont do stuff
+
+    Returns:
+        True if the file exists, otherwise False.
+
     """
-    Return a boolean value based on if a file exists.  Notify user
-    is not found.
-
-    DESIGN:
-    Function designed check if a file exists.  A boolean value is
-    returned to the calling program.
-
-    This function expands in the standard os.path.isfile() function in
-    that the user is automatically notified if the path does not exist.
-
-    PARAMETERS:
-        - filepath
-          the file path you are testing
-
-    DEPENDENCIES:
-    - os
-
-    USE:
-    > import utils3.utils as u
-    > if u.fileexists(filepath='/path/to/file.ext'): do stuff ...
-    """
-
-    # BUILT-IN IMPORTS
     import os
 
     # INITIALISE VARIABLE
     found = False
-
     # TEST IF FILE EXISTS
     if os.path.isfile(filepath):
         # SET FLAG
@@ -501,35 +513,33 @@ def fileexists(filepath):
 
 # ----------------------------------------------------------------------
 def format_exif_date(datestring, input_format='%Y:%m:%d %H:%M:%S',
-                     output_format='%Y%m%d%H%M%S'):
+                     output_format='%Y%m%d%H%M%S') -> str:
+    """Format an exif timestamp.
+
+    Args:
+        datestring (str): The datetime string to be formatted.
+            A typical exif date format is: yyyy:mm:dd hh:mi:ss
+        input_format (str): Format mask for the value passed to the
+            ``datetime`` parameter
+        output_format (str): Convert to this format.
+
+    :Design:
+        Function designed to convert the exif date/timestamp
+        from 2010:01:31 12:31:18 (or a caller specified) format to a
+        format specified by the caller.
+
+        This is useful for storing an exif date as a datetime string.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            newdate = u.format_exif_date('2010:01:31 12:31:18')
+
+    Returns:
+        A formatted datetime string.
+
     """
-    Return a formatted exif date string.
-
-    DESIGN:
-    Function designed to convert the exif date/timestamp
-    from 2010:01:31 12:31:18 (or a caller specified) format to a
-    format specified by the caller.
-
-    This is useful for storing an exif date as a datetime string.
-
-    PARAMETERS:
-    - datestring
-    the datetime string to be converted.
-    typical exif date format: yyyy:mm:dd hh:mi:ss
-    - input_format (default='%Y:%m:%d %H:%M:%S')
-    formatting string for the input datetime value.
-    - output_format (default='%Y%m%d%H%M%S')
-    formatting string for the resulting date time value.
-
-    DEPENDENCIES:
-    - datetime
-
-    USE:
-    > import utils.utils as u
-    > newdate = u.format_exif_date('2010:01:31 12:31:18')
-    """
-
-    # BUILT-IN IMPORTS
     from datetime import datetime as dt
 
     # RETURN FORMATTED STRING
@@ -537,10 +547,19 @@ def format_exif_date(datestring, input_format='%Y:%m:%d %H:%M:%S',
 
 
 # ----------------------------------------------------------------------
-def get_os():
-    """Return the platform's OS."""
+def get_os() -> str:
+    """Get the platform's general OS.
 
-    # BUILT-IN IMPORTS
+    :Example:
+        ::
+
+            import utils3.utils as u
+            my_os = u.get_os()
+
+    Returns:
+        A string of the platform's general OS.
+
+    """
     import platform
 
     return platform.system().lower()
@@ -549,54 +568,60 @@ def get_os():
 # ----------------------------------------------------------------------
 def getcolormap(colormap='Blues', n=5, colorscale=False, dtype='hex',
                 preview=False, preview_in='mpl'):
+    """Return a specified matplotlib colour map, as a list or colours.
+
+    Args:
+        colormap (str): Name of the matplotlib color map.
+        n (int): Number of colors to return.
+        colorscale (bool): Convert the returned colour map into a list
+            of colour scale values.  This is useful with Plotly's
+            colorscale parameter.  Returned format::
+
+                [(0.00, u'#f7fbff'), (0.33, u'#abd0e6'),
+                 (0.66, u'#3787c0'), (1.00, u'#08306b')]
+
+        dtype (str): Data type to return.
+
+            Note:
+                Current only "hex" is supported.
+
+        preview (bool): This option creates a plotly or matplotlib
+            graph displaying the colormap.
+        preview_in (str): Display method for previewing the graph.
+
+            * 'mpl' = matplotlib (used for inline preview)
+            * 'plotly' = plotly (use for html display in a web browser)
+
+    :Design:
+        Function designed to return a list of colour values from a
+        matplotlib colormap.  The number of returned colour values can
+        range from 1 to 256.
+
+        This is useful when creating a graph which requires gradient
+        colour map. (e.g.: a plotly bar chart)
+
+        To print a list of available colour maps::
+
+            import utils3.utils as u
+            u.listcolormaps()
+
+    :Dependencies:
+        - matplotlib
+
+    :Example:
+        ::
+
+            > import utils3.utils as u
+            > cmap = u.getcolourmap(colormap='winter',
+                                    n=50,
+                                    dtype='hex',
+                                    preview=True,
+                                    preview_in='plotly')
+
+    Returns:
+        A list of colours.
+
     """
-    Return a specified matplotlib colour map, as a list or colours.
-
-    DESIGN:
-    Function designed to return a list of colour values from a
-    matplotlib colormap.  The number of returned colour values can
-    range from 1 to 256.
-
-    This is useful when creating a graph which requires gradient
-    colour map. (e.g.: a plotly bar chart)
-
-    To print a list of available colour maps:
-    > import utils3.utils as u
-    > u.listcolormaps()
-
-    PARAMETERS:
-        - colormap (default='Blues')
-          name of the matplotlib color map
-        - n (default=1)
-          number of colors to return
-        - colorscale (default=False)
-          converts the retured colour map into a list of colour scale
-          values.  this is useful with Plotly's colorscale parameter.
-          returned format: [(0.00, u'#f7fbff'), (0.33, u'#abd0e6'),
-                            (0.66, u'#3787c0'), (1.00, u'#08306b')]
-        - dtype (default='hex')
-          data type to return
-        - preview (default=False)
-          this option creates a plotly or matplotlib graph displaying
-          the colormap.
-        - preview_in (default='mpl')
-          display method for previewing the graph.
-          'mpl' = matplotlib (used for inline preview)
-          'plotly' = plotly (use for html display in a web browser)
-
-    DEPENDENCIES:
-    - matplotlib
-
-    USE:
-    > import utils3.utils as u
-    > cmap = u.getcolourmap(colormap='winter',
-                            n=50,
-                            dtype='hex',
-                            preview=True,
-                            preview_in='plotly')
-    """
-
-    # EXTERNAL IMPORTS
     # RENAME rbg2hex TO AVOID CONFLICT WITH utils.rgb2hex FUNCTION
     from matplotlib import cm
     from matplotlib.colors import rgb2hex as r2h
@@ -623,49 +648,48 @@ def getcolormap(colormap='Blues', n=5, colorscale=False, dtype='hex',
 
 
 # ----------------------------------------------------------------------
-def getdrivername(drivername, returnall=False):
+def getdrivername(drivername, returnall=False) -> list:
+    """Return a list of ODBC driver names, matching the regex pattern.
+
+    Args:
+        drivername (str): A **regex pattern** for the ODBC driver you're
+            searching.
+        returnall (bool): Return **all** drivers found.  By default,
+            only the first hit is returned.
+
+    :Design:
+        This is a helper function designed to get and return the name
+        of an ODBC driver.
+
+        The ``drivername`` parameter should be formatted as a regex
+        pattern. If multiple drivers are found, by default, only the
+        first driver in the list is returned.  However, the
+        ``returnall`` parameter adjusts this action.
+
+        This function has a dependency on ``pyodbc``. Therefore,
+        the :func:`~utils.testimport()` function is called before
+        ``pyodbc`` is imported. If the ``pyodbc`` library is not
+        installed, the user is notified.
+
+    :Dependencies:
+        - pyodbc
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            driver = u.getdrivername(drivername='SQL Server.*')
+
+    Returns:
+        A list of ODBC drivers.
+
     """
-    Return the driver name for an ODBC driver, using a caller provided
-    regex pattern.
-
-    DESIGN:
-    Helper function designed to get and return the name of an ODBC
-    driver.
-
-    The argument can be formatted as a regex expression.  If multiple
-    drivers are found, by default, only the first driver in the list is
-    returned.
-    However, the returnall parameter toggles this action.
-
-    This function has a dependency on pyodbc. Therefore,
-    the utils.testimport() function is called before pyodbc it is
-    imported. If the pyodbc library is not installed, the user is
-    notified.
-
-    PARAMETERS:
-        - drivername
-          the name of the driver you're looking for. should be
-          formatted as regex.
-        - returnall (default=False)
-          return all drivers found.
-
-    DEPENDENCIES:
-    - re
-    - pyodbc
-
-    USE:
-    > driver = getdrivername(drivername='SQL Server.*')
-    """
-
-    # BUILT-IN IMPORTS
     import re
 
     # TEST FOR LIBRARY BEFORE TRYING TO IMPORT
     if testimport('pyodbc'):
-
         # EXTERNAL IMPORTS
         import pyodbc
-
         # TEST IF USER WANTS ALL DRIVERS RETURNED
         if returnall:
             # RETURN ALL
@@ -678,40 +702,48 @@ def getdrivername(drivername, returnall=False):
 
 
 # ----------------------------------------------------------------------
-def getsitepackages():
+def getsitepackages() -> str:
+    """Return the site packages directory, based on platform.
+
+    :Purpose:
+        This function returns the directory path to site-packages
+        based on the platform.
+
+    :Design:
+        The function first uses the local :func:`~utils.get_os()`
+        function to get the platform's base OS.  The OS is then tested
+        and the site-packages location is returned using the OS
+        appropriate element from the ``site.getsitepackages()`` list.
+
+        If the OS is not accounted for, or fails the test, a value of
+        'unknown' is returned.
+
+    :Rationale:
+        The need for this function comes out of the observation there
+        are many (many!) different ways on stackoverflow (and other
+        sites) to get the location to which ``pip`` will install a
+        package, and many of the answers contradict each other.  Also,
+        the ``site.getsitepackages()`` function returns a list of two
+        options (in all tested cases); and the Linux / Windows paths
+        are in different locations in this list.
+
+        So this function was written to help simplify matters ...
+        hopefully.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            my_sitepkgs = u.getsitepackages()
+
+    Returns:
+        The path to the ``site-packages`` directory.
+
     """
-    Return the site packages directory, based on platform.
-
-    PURPOSE:
-    This function returns the directory path to site-packages based on
-    the platform.
-
-    DESIGN:
-    The function first uses the local _get_os() function to get the
-    platform's base OS.  The OS is then tested and the site-packages
-    location is returned using the OS appropriate element from the
-    site.getsitepackages() list.
-
-    If the OS is not accounted for, or fails the test, a value of
-    'unknown' is returned.
-
-    RATIONALE:
-    The need for this function comes out of the observation there are
-    many (many!) different ways on stackoverflow (and other sites) to
-    get the location to which pip will install a package, and most of
-    the answers contradict each other.  Also, the site.getsitepackages()
-    function returns a list of two options (in all tested cases); and
-    the Linux / Windows paths are in different locations in this list.
-
-    So this function was written to help simplify matters ... hopefully.
-    """
-
-    # BUILT-IN IMPORTS
     import site
 
     # GET PLATFORM
     my_os = get_os()
-
     # TEST PLATFORM >> GET SITE-PACKAGES DIRECTORY
     if 'win' in my_os:
         sitepkgs_dir = site.getsitepackages()[1]
@@ -724,35 +756,33 @@ def getsitepackages():
 
 
 # ----------------------------------------------------------------------
-def json_read(filepath):
+def json_read(filepath) -> dict:
+    """Return JSON file contents as a dictionary.
+
+    Args:
+        filepath (str): Full file path to the JSON file to read.
+
+    :Design:
+        Function designed to read a JSON file, and return the values
+        as a dictionary.
+
+        This utility is useful when reading a JSON config file for a
+        Python program.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            vals = u.json_read(filepath=/path/to/file.json)
+
+    Returns:
+        A dictionary containing the JSON file's key/value pairs.
+
     """
-    Return JSON file contents as a dictionary.
-
-    DESIGN:
-    Function designed to read a JSON file, and return the values as a
-    dictionary.
-
-    This utility is useful when reading a json config file for a python
-    program.
-
-    PARAMETERS:
-        - filepath
-          path to the JSON file to read.
-
-    DEPENDENCIES:
-    - json
-
-    USE:
-    > import utils3.utils as u
-    > vals = u.json_read(filepath=/path/to/file.json)
-    """
-
-    # BUILT-IN IMPORTS
     import json
 
     # TEST IF FILE EXISTS
     if fileexists(filepath):
-
         # OPEN JSON FILE / STORE VALUES TO DICTIONARY
         with open(filepath, 'r') as infile:
             vals = json.load(infile)
@@ -763,35 +793,27 @@ def json_read(filepath):
 
 # ----------------------------------------------------------------------
 def json_write(dictionary, filepath='c:/temp/tempfile.json'):
+    """Create a JSON file at a given file path.
+
+    Args:
+        dictionary (dict): The Python dictionary you are converting to
+            a JSON file.
+        filepath (str): Full file path to store the JSON file.
+
+    :Design:
+        Method designed to write a Python dictionary to a JSON file in
+        the specified file location.  If a file location is not
+        specified, the default file and location is used.
+
+        This utility is useful when creating a JSON config file.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            u.json_write(dictionary=my_dict, filepath='/path/to/output.json')
+
     """
-    Create a JSON file at a specific location based on the contents of
-    a caller provided dictionary.
-
-    DESIGN:
-    Method designed to write a python dictionary to a JSON file in the
-    specified file location.
-
-    If a file is not specified, the default file and location is:
-    c:/temp/tempfile.json
-
-    This utility is useful when creating a json config file.
-
-    PARAMETERS:
-        - dictionary
-          the python dictionary you are converting to a json file.
-        - filepath
-          the path and filename for the output json file.
-
-    DEPENDENCIES:
-    - json
-
-    USE:
-    > import utils3.utils as u
-    > u.json_write(dictionary=mypy_dict[,
-                   filepath='/path/to/output.json'])
-    """
-
-    # BUILT-IN IMPORTS
     import json
 
     # OPEN / WRITE JSON FILE
@@ -801,54 +823,55 @@ def json_write(dictionary, filepath='c:/temp/tempfile.json'):
 
 # ----------------------------------------------------------------------
 def listcolormaps():
+    """Print a list of available matplotlib colour maps.
+
+    :Purpose:
+        A very simple method used to print a list of colour maps
+        available in matplotlib.
+
+    :Dependencies:
+        - matplotlib
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            u.listcolormaps()
+
     """
-    Print a list of available matplotlib colour maps.
-
-    PURPOSE:
-    A very simple method used to print a list of colour maps available
-    in matplotlib.
-
-    DEPENDENCIES:
-    - matplotlib
-
-    USE:
-    > import utils3.utils as u
-    > u.listcolormaps()
-    """
-
-    # EXTERNAL IMPORTS
     from matplotlib.pyplot import colormaps
 
     print(colormaps())
 
 
 # ----------------------------------------------------------------------
-def ping(server, count=1):
+def ping(server, count=1) -> bool:
+    r"""Ping an IP address, server or web address.
+
+    Args:
+        server (str): Either an IP address, a server name or a web
+            address.
+        count (int): The number of ping attempts.
+
+    Note:
+        Currently, **only Windows is supported**, with a Linux update
+        to follow.
+
+    :Design:
+        Using the platform's native 'ping' command (via the
+        ``subprocess`` package), a server is pinged, and a boolean
+        value is returned to the caller to indicate if the ping was
+        successful.
+
+        A ping status of ``0 = True``, and ``1 = False``.
+
+        If the server name is preceeded by ``\\`` or ``//``, these are
+        stripped out using the ``os.path.basename()`` function.
+
+    Returns:
+        True if the ping was successful, otherwise False.
+
     """
-    Ping an IP address, server name or web address, and return
-    a boolean value based on the result.
-
-    NOTE: Currently, **only Windows is supported**, with a Linux
-    update to follow soon.
-
-    DESIGN:
-    Using the platform's native 'ping' command (via the subprocess
-    package), a server is pinged, and a boolean value is returned to
-    the caller to indicate if the server was reached.
-    A ping status of 0 = True, and 1 = False.
-
-    If the server name is preceeded by \\ or //, these are stripped out
-    using the os.path.basename() function.
-
-    PARAMETERS:
-    - server
-    This string value can be either an IP address, a server name or a
-    web address.
-    - count (default=1)
-    An integer value indicating the number of ping attempts.
-    """
-
-    # BUILT-IN IMPORTS
     import os
     import subprocess
 
@@ -867,7 +890,6 @@ def ping(server, count=1):
         status = 1
         # USER NOTIFICATION
         _UI.print_warning('\nSorry ... this function does not support Linux, yet.\n')
-
     else:
         # SET STATUS
         status = 1
@@ -880,48 +902,48 @@ def ping(server, count=1):
 
 
 # ----------------------------------------------------------------------
-def rgb2hex(rgb_string, drop_alpha=False):
+def rgb2hex(rgb_string, drop_alpha=False) -> str:
+    """Convert an RGB string to HEX.
+
+    Args:
+        rgb_string (str): This is the RGB or RGBA string to convert.
+        drop_alpha (bool): ``True`` will **drop the alpha value** from
+            the HEX string.  This is useful for colour maps that
+            automatically return an alpha channel, yet the
+            plotting program does not accept alpha values.
+
+    :Design:
+        This function is designed to convert an RGB (or RGBA) string to
+        a HEX string.
+
+        For example: 'rgb(195, 0, 0)' returns #c30000
+                     'rgba(65, 125, 50, 0.25)' returns #40417d32
+
+        This is useful as some colour functions return an RGB or RGBA
+        string, and ``matplotlib.pyplot`` **only accepts HEX strings**.
+
+        Regex is used to extract the colour channels from the string.
+        Therefore, the 'rgb' or 'rgba' prefix **is not required**;
+        although accepted for standard use.
+
+        The extracted integer values (or float value in the case of
+        alpha), are converted to HEX and returned as a compiled HEX
+        string.
+
+        If an alpha value is present, the alpha value is moved to the
+        first byte of the HEX string; making the HEX string read as
+        #argb.
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            clr = u.rgb2hex('rgb(195, 0, 0)')
+
+    Returns:
+        A HEX string; i.e. ``#c30000``.
+
     """
-    Return a hex string, which was converted from an RGB string.
-
-    DESIGN:
-    This function is designed to convert an rgb (or rgba) string to a
-    hex string.
-
-    For example: 'rgb(195, 0, 0)' returns #c00000
-                 'rgba(65, 125, 50, 0.25)' returns #40417d32
-
-    This is useful as some colour functions return an rgb or rgba
-    string, and matplotlib.pyplot only accepts hex strings.
-
-    Regex is used to extract the colour channels from the string.
-    Therefore, the 'rgb' or 'rgba' prefix is not required; although
-    accepted for standard use.
-
-    The extracted integer values (or float value in the case of alpha),
-    are converted to hex and returned as a compiled hex string.
-
-    If an alpha value is present, the alpha value is moved to the first
-    byte of the hex string; making the hex string read as #argb.
-
-    PARAMETERS:
-        - rgb_string
-          This is the rgb or rgba string to convert.
-        - drop_alpha (default=False)
-          'True' will drop the alpha value from the hex string.
-          This is useful for colour maps that automatically return an
-          alpha channel, yet the [plotting program] does not accept
-          alpha values.
-
-    DEPENDENCIES:
-    - re
-
-    USE:
-    > import utils3.utils as u
-    > clr = u.rgb2hex('rgb(195, 0, 0)')
-    """
-
-    # BUILT-IN IMPORTS
     import re
 
     try:
@@ -977,38 +999,40 @@ def rgb2hex(rgb_string, drop_alpha=False):
 
 
 # ----------------------------------------------------------------------
-def testimport(module_name):
+def testimport(module_name) -> bool:
+    """Test if a Python library is installed.
+
+    For example, the :func:`~utils.getdrivername` function uses this
+    function before attempting to import the ``pyodbc`` library.
+
+    Args:
+        module_name (str): The name of the module to be found.
+
+    :Design:
+        This is a small helper function designed to test if a library
+        is installed before trying to import it.
+
+        If the library is not intalled, the user is notified.
+
+    :Dependencies:
+
+        * imp
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            if u.testimport('mymodule'): import mymodule
+
+    Returns:
+        True if the library was found, otherwise, False.
+
     """
-    Return a boolean value based on if a Python module was found.
-
-    DESIGN:
-    This is a small helper function designed to test if a
-    module/library is installed before trying to import it.
-
-    This can be useful when a method requires an 'obscure' library, and
-    importing on a deployment environment where the library is not
-    installed, could have adverse effects.
-
-    If the library is not intalled, the user is notified.
-
-    PARAMETERS:
-        - module_name
-          the name of the module you're testing is installed.
-
-    DEPENDENCIES:
-    - imp
-
-    USE:
-    > import utils3.utils as u
-    > if u.testimport('mymodule'): import mymodule
-    """
-
     # BUILT-IN IMPORTS
     import imp
 
     # INITIALISE
     found = False
-
     try:
         # TRY TO IMPORT MODULE
         imp.find_module(module_name)
@@ -1022,38 +1046,54 @@ def testimport(module_name):
 
 
 # ----------------------------------------------------------------------
-def unidecode(string):
+def unidecode(string) -> str:
+    """Attempt to convert a Unicode object into an ASCII string.
+
+    Args:
+        string (str): The string to be decoded.
+
+    :Design:
+        This function is a light wrapper around the
+        ``unidecode.unidecode`` function.
+
+        **Per the** ``unicode`` **docstring:**
+
+        "Transliterate an Unicode object into an ASCII string.
+
+        >>> unidecode(u"北亰")
+        "Bei Jing "
+
+        This function first tries to convert the string using ASCII
+        codec. If it fails (because of non-ASCII characters), it falls
+        back to transliteration using the character tables.
+
+        This is approx. five times faster if the string only contains
+        ASCII characters, but slightly slower than using unidecode
+        directly if non-ASCII chars are present."
+
+    :Dependencies:
+
+        * unidecode
+
+    :Example:
+        ::
+
+            import utils3.utils as u
+            s = u.unidecode(string)
+
+    Returns:
+        If the passed ``string`` value is a str data type, the decoded
+        string is returned, otherwise the original value is returned.
+
     """
-    Return a unicode decoded string.
-
-    DESIGN:
-    Method designed to test a passed string for being unicode type,
-    then return a decoded string value.
-
-    If the passed string is not unicode, the original value is
-    returned.
-
-    PARAMETERS:
-        - string
-          the unicode string you wish to test/decode.
-
-    DEPENDENCIES:
-    - unidecode
-
-    USE:
-    > import utils3.utils as u
-    > s = u.unidecode(string)
-    """
-
     # EXTERNAL IMPORTS
     # RENAME unidecode TO AVOID CONFLICT WITH utils.unidecode FUNCTION
     from unidecode import unidecode as uni
 
     # INITIALISE VARIABLE
     decoded = None
-
-    # TEST PASSED VALUE AS BEING UNICODE > STORE DECODED (OR ORIGINAL) VALUE
-    decoded = uni(string) if isinstance(string) else string
+    # TEST PASSED VALUE AS BEING A STRING >> STORE DECODED (OR ORIGINAL) VALUE
+    decoded = uni(string) if isinstance(string, str) else string
 
     # RETURN VALUE
     return decoded
@@ -1061,21 +1101,24 @@ def unidecode(string):
 
 # ----------------------------------------------------------------------
 def _dbconn_mysql_conn(creds):
+    r"""Create the MySQL connection and cursor objects.
+
+    Args:
+        creds (dict): Database connection credentials.
+
+    :Design:
+        The ``creds`` dictionary argument is passed directly to the
+        ``mysql.connector.connect`` function as a set of \*\*kwargs.
+
+    Note:
+        This is the connection handler and error trapper for the
+        :class:`~database.MySQL` database connection class.
+
+    Returns:
+        Upon successful connection, the function returns the database
+        connection and cursor objects, wrapped in a dictionary.
+
     """
-    Return a dictionary containing the connection and cursor objects
-    for a MySQL database connection.
-
-    PURPOSE:
-    This function is used to make a connection to a MySQL database.
-
-    DESIGN:
-    The passed credential dictionary is passed directly into the
-    mysql.connect function as a set of **kwargs.
-
-    Upon successful connection, the function returned the db connection
-    and cursor objects, wrapped in a dictionary.
-    """
-
     # EXTERNAL IMPORTS
     import mysql.connector as sql
 
@@ -1083,10 +1126,8 @@ def _dbconn_mysql_conn(creds):
         # CREATE CONNECTION / CURSOR OBJECTS
         connection = sql.connect(**creds)
         cursor = connection.cursor()
-
         # RETURN THE CONN/CUR OBJECTS IN A DICT
         return dict(conn=connection, cur=cursor)
-
     except Exception as err:
         # ALERT USER TO CONNECTION ERROR
         _UI.print_alert('\nThe database connection failed for '
@@ -1097,35 +1138,37 @@ def _dbconn_mysql_conn(creds):
 
 # ----------------------------------------------------------------------
 def _dbconn_oracle_conn(creds):
+    """Create the Oracle database connection and cursor objects.
+
+    Args:
+        creds (dict): Database connection credentials.
+
+    :Design:
+        The ``creds`` dictionary argument is parsed into a connection
+        string and passed into the ``cx_Oracle.connect`` function.
+        Then, the returned connection and cursor objects are wrapped
+        into a dictionary and returned.
+
+    Note:
+        This is the connection handler and error trapper for the
+        :class:`~database.Oracle` database connection class.
+
+    Returns:
+        Upon successful connection, the function returns the database
+        connection and cursor objects, wrapped in a dictionary.
+
     """
-    Return a dictionary containing the connection and cursor objects
-    for an Oracle database connection.
-
-    PURPOSE:
-    This function is used to make a connection to an Oracle database.
-
-    DESIGN:
-    Using a passed credential dictionary, an Oracle connection string
-    is built and used for connection.
-
-    Upon successful connection, the function returned the db connection
-    and cursor objects, wrapped in a dictionary.
-    """
-
     # EXTERNAL IMPORTS
     import cx_Oracle
 
     try:
         # BUILD CONNECTION STRING
         connstring = '%s/%s@%s' % (creds['user'], creds['password'], creds['host'])
-
         # MAKE THE CONNECTION >> GET CURSOR OBJECT
         connection = cx_Oracle.connect(connstring)
         cursor = connection.cursor()
-
         # RETURN THE CONN/CUR OBJECTS IN A DICT
         return dict(conn=connection, cur=cursor)
-
     except Exception as err:
         # ALERT USER TO CONNECTION ERROR
         _UI.print_alert('\nThe database connection failed for '
@@ -1136,22 +1179,27 @@ def _dbconn_oracle_conn(creds):
 
 # ----------------------------------------------------------------------
 def _dbconn_sql_conn(creds):
+    """Create the SQL Server database connection and cursor objects.
+
+    Args:
+        creds (dict): Database connection credentials.
+
+    :Design:
+        When building the connection string, the
+        :func:`utils.getdrivername` function is used to get the name of
+        the odbc driver.  Then, the ``creds`` dictionary argument is
+        parsed into a connection string (including the found driver
+        name) and passed into the ``pyodbc.connect`` function.
+
+    Note:
+        This is the connection handler and error trapper for the
+        :class:`~database.SQLServer` database connection class.
+
+    Returns:
+        Upon successful connection, the function returns the database
+        connection and cursor objects, wrapped in a dictionary.
+
     """
-    Return a dictionary containing the connection and cursor objects
-    for a SQL Server database connection.
-
-    PURPOSE:
-    This function is used to make a connection to a SQL Server database.
-
-    DESIGN:
-    The database credentials are passed into the pyodbc library, which
-    searches for the SQL Server driver, via the getdrivername()
-    function.
-
-    Upon successful connection, the function returned the db connection
-    and cursor objects, wrapped in a dictionary.
-    """
-
     # EXTERNAL IMPORTS
     import pyodbc
 
@@ -1167,13 +1215,10 @@ def _dbconn_sql_conn(creds):
                                      creds['database'],
                                      creds['user'],
                                      creds['password']))
-
         # CREATE CURSOR OBJECT
         cursor = connection.cursor()
-
         # STORE RESULT IN DICTIONARY
         return dict(conn=connection, cur=cursor)
-
     except Exception as err:
         # ALERT USER TO CONNECTION ERROR
         _UI.print_alert('\nThe database connection failed for '
@@ -1182,33 +1227,44 @@ def _dbconn_sql_conn(creds):
         _UI.print_error(err)
 
 
-
 # ----------------------------------------------------------------------
 def _dbconn_fields(dbtype, fields, filename):
+    """Extract database credentials from a JSON file, prompt for
+    missing values.
+
+    Args:
+        dbtype (str): Type of the database being connected.
+        fields (list): List of credentials to test.
+            For example::
+
+                ['server', 'user', 'password', 'port']
+
+        filename (str): Full file path to the credentials JSON file.
+
+    :Design:
+        Using the passed file, the config key/value pairs are loaded
+        into a dictionary where a test is made to determine if the
+        expected fields (as defined by the ``fields`` argument) is
+        present.  If an expected field is missing, the user is prompted
+        for the value.
+
+    Note:
+        This function handles the **credential file parsing** and
+        **credential prompting** for the following classes:
+
+            * :class:`~database.MySQL`
+            * :class:`~database.Oracle`
+            * :class:`~database.SQLServer`
+
+    Returns:
+        A completed credential dictionary.
+
     """
-    Return a dictionary of database login credentials, based on a
-    fields from a JSON config file.
-
-    PURPOSE:
-    This is a general-purpose function used to extract database
-    credentials from a passed JSON config file.
-
-    DESIGN:
-    Using the passed file, the config key/values are loaded into a
-    dictionary which is iterated, testing if the expected fields are
-    present.  If an expected field is not present, the user is prompted
-    for the value.
-
-    The completed credential dictionary is then returned.
-    """
-
     try:
         # INITIALISE
         creds = dict()
-
         # LOAD CONNECTION DETAILS FROM CONFIG FILE
         conf = config.loadconfig(filename=filename)
-
         # LOOP THROUGH EXPECTED KEYS
         for key in fields:
             # TEST KEY EXISTS IN CONFIG FILE
@@ -1218,10 +1274,8 @@ def _dbconn_fields(dbtype, fields, filename):
             else:
                 # PROMPT FOR VALUE >> ADD TO CREDENTIAL DICT
                 creds[key] = six.moves.input('Please enter the %s %s: ' % (dbtype, key))
-
         # RETURN DICTIONARY OF CREDENTIALS
         return creds
-
     except Exception as err:
         # USER NOTIFICATION
         _UI.print_alert('\nAn error occurred while checking the database credentials in the '
@@ -1232,33 +1286,40 @@ def _dbconn_fields(dbtype, fields, filename):
 
 # ----------------------------------------------------------------------
 def _dbconn_params(dbtype, **params):
+    r"""Build a dictionary of database login credentials, prompt for
+    missing values.
+
+    Args:
+        dbtype (str): Type of the database being connected.
+        **params (dict): Key/value pairs for connection credentials.
+
+    :Design:
+        This function tests each passed credential field
+        (passed as \*\*kwargs), if any keys are missing a value, the user
+        is prompted for the credential.
+
+    Note:
+        This function handles the **credential prompting** for the
+        following classes:
+
+            * :class:`~database.MySQL`
+            * :class:`~database.Oracle`
+            * :class:`~database.SQLServer`
+
+    Returns:
+        A completed credential dictionary.
+
     """
-    Return a dictionary of database login credentials, based on
-    the parameters provided by the caller.
-
-    PURPOSE:
-    This is a general-purpose function used to test if the provided
-    database credential parameters have been populated.
-
-    DESIGN:
-    This function iterates over the passed credential fields (passed as
-    **kwargs), and tests each field for a None value.  If a None value
-    is found, the user is prompted for the credential.
-
-    The completed credential dictionary is then returned.
-    """
-
     try:
         # LOOP THROUGH KEYS AND GET MISSING VALUES
         for key, _ in params.items():
             # TEST VALUE
             if params[key] is None:
                 # PROMPT USER FOR VALUE
-                params[key] = six.moves.input('Please enter the %s for the %s connection: ' % (key, dbtype))
-
+                params[key] = six.moves.input('Please enter the %s for the %s connection: ' %
+                                              (key, dbtype))
         # RETURN COMPLETED DICTIONARY
         return params
-
     except Exception as err:
         # USER NOTIFICATION
         _UI.print_alert('\nAn error occurred while checking the passed database credentials.')
@@ -1267,22 +1328,40 @@ def _dbconn_params(dbtype, **params):
 
 
 # ----------------------------------------------------------------------
-def _convert_to_colorscale(cmap):
+def _convert_to_colorscale(cmap) -> list:
+    """Convert a matplotlib colourmap to a colourscale list.
+
+    This is a helper function used to convert a colourmap into a
+    colourscale list, as used by Plotly's colorscale parameter.
+
+    A colourscale list is a list of tuples where the first index of the
+    tuple is a value between 0 and 1 (inclusive), showing the order of
+    the colour in sequence, and the second index is the colour value,
+    as shown below::
+
+        [(0.00, u'#f7fbff'),
+         (0.33, u'#abd0e6'),
+         (0.66, u'#3787c0'),
+         (1.00, u'#08306b')]
+
+    Args:
+        cmap (matplotlib.colors.LinearSegmentedColormap): A matplotlib
+            colourmap.
+
+    :Help:
+        The ``cmap`` object may be generated this way::
+
+            from matplotlib import cm
+            cmap = cm.get_cmap('Blues', 5)
+
+    :Dependencies:
+
+        * numpy
+
+    Returns:
+        A list of colourscale tuples for the given colour map.
+
     """
-    Return a colour scale list, as converted from a colour map.
-
-    PURPOSE:
-    This is a helper function used to convert a colour map into a
-    colour scale list, as used by the Plotly colorscale parameter.
-
-    DESIGN:
-    Returned format: [(0.00, u'#f7fbff'), (0.33, u'#abd0e6'),
-                      (0.66, u'#3787c0'), (1.00, u'#08306b')]
-
-    DEPENDENCIES:
-    - numpy
-    """
-
     # EXTERNAL IMPORTS
     import numpy as np
 
@@ -1291,32 +1370,30 @@ def _convert_to_colorscale(cmap):
 
 # ----------------------------------------------------------------------
 def _prev_mpl(cmap, cmap_name):
+    """Preview a colourmap using matplotlib.
+
+    Args:
+        cmap (list): The colour map you want to preview.  This must be
+            a Python list of rgb/rgba/hex values.
+        cmap_name (str): The name of the matplotlib colour map.
+            For example: (Blues, OrRd, winter, etc.)  This name is only
+            used to **display** the colour map name in the graph title.
+
+    :Design:
+        This helper method is designed to be called from the
+        :func:`~utils.getcolormap` function, as a means of
+        displaying / previewing the colour map chosen, using the
+        ``matplotlib`` plotting library.
+
+    :Advantage:
+        This method allows you to **preview the colourmap directly
+        within the IDE**; e.g.: Spyder, Jupyter Notebook, etc.
+
+    :Dependencies:
+
+        * matplotlib
+
     """
-    Preview a colour map using matplotlib.
-
-    DESIGN:
-    This method is designed to be called form the getcolormap()
-    function, as a means of displaying / previewing the colour map
-    chosen, using the matplotlib plotting library.
-
-    ADVANTAGE:
-    This method displays the colour map preview directly within the
-    [Sypder] IDE, Jupyter Notebook.
-
-    PARAMETERS:
-    - cmap
-      The colour map you want to preview.  This must be a python list of
-      rgb/rgba/hex values.
-    - cmap_name
-      The name of the matplotlib colour map.  (e.g.: OrRd, winter, etc.)
-      This name is only used to display the colour map name in the
-      graph title.
-
-    DEPENDENCIES:
-    - matplotlib
-    """
-
-    # EXTERNAL IMPORTS
     import matplotlib.pyplot as plt
 
     # CREATE GRAPH DATA
@@ -1340,34 +1417,31 @@ def _prev_mpl(cmap, cmap_name):
 
 # ----------------------------------------------------------------------
 def _prev_plotly(cmap, cmap_name, out_file='c:/temp/cmap_graph.html'):
+    """Preview a colourmap, as a bar graph, in Plotly.
+
+    Args:
+        cmap (list): The colour map you want to preview.  This must be
+            a Python list of rgb/rgba/hex values.
+        cmap_name (str): The name of the matplotlib colour map.
+            For example: (Blues, OrRd, winter, etc.)  This name is only
+            used to **display** the colour map name in the graph title.
+        out_file (str): Full file path to the output HTML file.
+
+    :Design:
+        This helper method is designed to be called from the
+        :func:`~utils.getcolormap` function, as a means of
+        displaying / previewing the colour map chosen, using the
+        ``plotly`` plotting library.
+
+    :Advantage:
+        This method **displays the hex/rgb/rgba colour code** value
+        for each bar as hovertext.
+
+    :Dependencies:
+
+        * plotly >= 2.0.6
+
     """
-    Preview a colour map (bar graph) using Plotly.
-
-    DESIGN:
-    This method is designed to be called form the getcolormap()
-    function, as a means of displaying / previewing the colour map
-    chosen, using the plotly library.
-
-    ADVANTAGE:
-    This method displays the hex/rgb/rgba colour code value for each
-    bar as hovertext.
-
-    PARAMETERS:
-    - cmap
-      The colour map you want to preview.  This must be a python list of
-      rgb/rgba/hex values.
-    - cmap_name
-      The name of the matplotlib colour map.  (e.g.: OrRd, winter, etc.)
-      This name is only used to display the colour map name in the
-      graph title.
-    - out_file (default='c:/temp/cmap_graph.html')
-      File path/name for the html graph output; if you wish to save
-      the file.
-
-    DEPENDENCIES:
-    - plotly >= 2.0.6
-    """
-
     # TEST IF PLOTLY HAS BEEN INSTALLED
     if testimport('plotly'):
 

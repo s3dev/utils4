@@ -39,7 +39,9 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -84,6 +86,8 @@
         <li><a href="detailed_design.html#user_interface.UserInterface.__init__">(user_interface.UserInterface method)</a>
 </li>
       </ul></li>
+      <li><a href="detailed_design.html#utils.__test">__test() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#get_datafiles._add_dot">_add_dot() (in module get_datafiles)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.PrintBanner._add_ribbon">_add_ribbon() (user_interface.PrintBanner method)</a>
@@ -100,10 +104,22 @@
         <li><a href="detailed_design.html#database.SQLite._connect">(database.SQLite method)</a>
 </li>
       </ul></li>
+      <li><a href="detailed_design.html#utils._convert_to_colorscale">_convert_to_colorscale() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#database.SQLite._db_file_exists">_db_file_exists() (database.SQLite method)</a>
+</li>
+      <li><a href="detailed_design.html#utils._dbconn_fields">_dbconn_fields() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils._dbconn_mysql_conn">_dbconn_mysql_conn() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils._dbconn_oracle_conn">_dbconn_oracle_conn() (in module utils)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils._dbconn_params">_dbconn_params() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils._dbconn_sql_conn">_dbconn_sql_conn() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#database.Oracle._execute_commit">_execute_commit() (database.Oracle method)</a>
 </li>
       <li><a href="detailed_design.html#config._file_exists">_file_exists() (in module config)</a>
@@ -125,6 +141,10 @@
       <li><a href="detailed_design.html#user_interface.UserInterface._pad">_pad() (user_interface.UserInterface static method)</a>
 </li>
       <li><a href="detailed_design.html#database.Database._parse_script">_parse_script() (database.Database static method)</a>
+</li>
+      <li><a href="detailed_design.html#utils._prev_mpl">_prev_mpl() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils._prev_plotly">_prev_plotly() (in module utils)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.PrintBanner._print_prog_banner">_print_prog_banner() (user_interface.PrintBanner method)</a>
 </li>
@@ -158,6 +178,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="changelog.html#module-changelog">changelog (module)</a>
 </li>
+      <li><a href="detailed_design.html#utils.clean_df">clean_df() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#module-config">config (module)</a>
 </li>
       <li><a href="detailed_design.html#database.MySQL.connect">connect() (database.MySQL method)</a>
@@ -186,13 +208,23 @@
 </li>
       <li><a href="detailed_design.html#module-database">database (module)</a>
 </li>
-      <li><a href="detailed_design.html#registry.Registry.delete_key">delete_key() (registry.Registry method)</a>
+      <li><a href="detailed_design.html#utils.dbconn_mysql">dbconn_mysql() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils.dbconn_oracle">dbconn_oracle() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils.dbconn_sql">dbconn_sql() (in module utils)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.dbconn_sqlite">dbconn_sqlite() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#registry.Registry.delete_key">delete_key() (registry.Registry method)</a>
+</li>
       <li><a href="detailed_design.html#dict2obj.Dict2Obj">Dict2Obj (class in dict2obj)</a>
 </li>
       <li><a href="detailed_design.html#module-dict2obj">dict2obj (module)</a>
+</li>
+      <li><a href="detailed_design.html#utils.direxists">direxists() (in module utils)</a>
 </li>
       <li><a href="detailed_design.html#database.Database.disconnect">disconnect() (database.Database method)</a>
 </li>
@@ -207,6 +239,18 @@
   </ul></td>
 </tr></table>
 
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.fileexists">fileexists() (in module utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.format_exif_date">format_exif_date() (in module utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -214,16 +258,36 @@
 </li>
       <li><a href="detailed_design.html#get_datafiles.get_datafiles">get_datafiles() (in module get_datafiles)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#user_interface.UserInterface.get_input">get_input() (user_interface.UserInterface method)</a>
 </li>
+      <li><a href="detailed_design.html#utils.get_os">get_os() (in module utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#registry.Key.get_value">get_value() (registry.Key method)</a>
 
       <ul>
         <li><a href="detailed_design.html#registry.Registry.get_value">(registry.Registry method)</a>
 </li>
       </ul></li>
+      <li><a href="detailed_design.html#utils.getcolormap">getcolormap() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils.getdrivername">getdrivername() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#utils.getsitepackages">getsitepackages() (in module utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.json_read">json_read() (in module utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.json_write">json_write() (in module utils)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -238,6 +302,8 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.listcolormaps">listcolormaps() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#config.loadconfig">loadconfig() (in module config)</a>
 </li>
   </ul></td>
@@ -268,6 +334,8 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.ping">ping() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#user_interface.UserInterface.print_">print_() (user_interface.UserInterface method)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.UserInterface.print_alert">print_alert() (user_interface.UserInterface method)</a>
@@ -324,6 +392,8 @@
 </li>
       <li><a href="detailed_design.html#reporterror.reporterror">reporterror() (in module reporterror)</a>
 </li>
+      <li><a href="detailed_design.html#utils.rgb2hex">rgb2hex() (in module utils)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -359,11 +429,17 @@
 </li>
       </ul></li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.testimport">testimport() (in module utils)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#utils.unidecode">unidecode() (in module utils)</a>
+</li>
       <li><a href="detailed_design.html#progressbar.ProgressBar.update_progress">update_progress() (progressbar.ProgressBar method)</a>
 </li>
   </ul></td>
@@ -371,6 +447,8 @@
       <li><a href="detailed_design.html#module-user_interface">user_interface (module)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.UserInterface">UserInterface (class in user_interface)</a>
+</li>
+      <li><a href="detailed_design.html#module-utils">utils (module)</a>
 </li>
   </ul></td>
 </tr></table>
