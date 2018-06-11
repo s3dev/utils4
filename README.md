@@ -1,73 +1,24 @@
 
-# utils3 v0.4.0
+# utils3
 ---
-The **utils3** package is a continuation of `utils v6.1.5`, and has been updated to support Python 3.
+This is a centralised Python library of commonly used utilities; which include database connection classes, colourmaps, JSON config file loading, program event logging, error reporting, console interfacing, etc.
 
-This package is a centralised library of commonly used utilities.  These utilities include database connection classes, colourmaps, config file (JSON) loading, program event logging, error reporting, console user interface, etc.
-
-Change log information is included in each module's header.
+The **utils3** package is a continuation of `utils v6.1.5`, which has been updated to support Python 3.5.
 
 
-## PACKAGE CONFIGURATION
+## Example Use & Detailed Design
 ---
-Verion 6 of the utils package features the addition of the `database` class module, which includes intuitive database access wrappers for MySQL, Oracle, SQLite and SQL Server databases.
-
-Outlined below is the current package configuration, with classes listed in **bold**.
-
-- utils
-   + config
-      + loadconfig()
-   + database
-      + **Database()**
-         + **MySQL()**
-         + **Oracle()**
-         + **SQLite()**
-         + **SQLServer()**
-   + dict2obj
-      + **Dict2Obj()**
-   + log
-      + **Log()**
-         + write()
-         + write_blank_line()
-   + get_datafiles
-      + get_datafiles()
-   + progressbar
-       + **ProgressBar()**
-          + update_progress()
-   + registry
-      + **Registry()**
-         + various Win registry access methods and functions
-   + reporterror
-      + reporterror()
-   + user_interface
-      + **UserInterface()**
-         + various console output and error printing methods
-      + **PrintBanner()**
-   + utils
-      + clean_df()
-      + dbconn_mysql()
-      + dbconn_oracle()
-      + dbconn_sql()
-      + dbconn_sqlite()
-      + direxists()
-      + fileexists()
-      + format_exif_date()
-      + get_os()
-      + getcolormap()
-      + getdrivername()
-      + getsitepackages()
-      + json_read()
-      + json_write()
-      + listcolormaps()
-      + ping()
-      + rgb2hex()
-      + testimport()
-      + unidecode()
+Please refer to the linked <a href="./docs/build/html/index.html" style="font-weight: bold; text-decoration: none;" target="_blank">Sphinx documentation</a> for example code use, and detailed design documentation.
 
 
-## INSTALLATION
+## Change Log
 ---
-### LINUX
+Git change log information can be found <a href="./docs/build/html/changelog.html" style="font-weight: bold; text-decoration: none;" target="_blank">here</a>.
+
+
+## Installation
+---
+### Linux
 Any of the following options will get you there ...
 
 - **GitHub**
@@ -87,7 +38,7 @@ sudo pip install .
 ```
 
 
-### WINDOWS
+### Windows
 Any of the following options will get you there ...
 
 - **GitHub**
@@ -107,7 +58,7 @@ pip install .
 ```
 
 
-### UPGRADING A CURRENT INSTALLATION
+### Upgrading a Current Installation
 To upgrade a current installation, use an install command as listed above, and append the `--upgrade` argument to the command.  
 For example:
 
@@ -116,7 +67,7 @@ sudo pip install git+https://github.com/s3dev/utils3 --upgrade
 ```
 
 
-## VERSION CHECK
+## Version Check
 ---
 To see which version of `utils3` is installed, use the `__version__` attribute from the `utils` module.
 ```python
@@ -125,39 +76,43 @@ utils.__version__
 ```
 
 
-## PACKAGE HELP
+## Module Help
 ---
 ```python
-import utils3.utils as utils
+from utils3 import utils
 help(utils)
 ```  
 ```python
-import utils3.config as config
+from utils3 import config
 help(config)
+```  
+```python
+from utils3 import database
+help(database)
 ```  
 ```python
 from utils3.get_datafiles import get_datafiles
 help(get_datafiles)
 ```  
 ```python
-import utils3.log as log
+from utils3 import log
 help(log)
 ```  
 ```python
-import utils3.progressbar as progressbar
+from utils3 import progressbar
 help(progressbar.ProgressBar)
 ```  
 ```python
-import utils3.reporterror as reporterror
+from utils3 import reporterror
 help(reporterror)
 ```  
 ```python
-import utils3.user_interface as ui
-help(ui)
+from utils3 import user_interface
+help(user_interface)
 ```  
 
 
-## TROUBLESHOOTING
+## Troubleshooting
 ---
 If you are installing from a local repo and do not have internet access, or the Linux (or Windows) installation is giving you trouble with **cx_Oracle**, use the `--no-deps` argument for **pip**.  This argument will ignore the dependencies (and not try to access the internet), and allow you to install each dependency yourself, *if* you require it.  
 
