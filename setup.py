@@ -1,54 +1,74 @@
 '''------------------------------------------------------------------------------------------------
 Program:    setup.py
-Purpose:    Setup packager for utils.
+Purpose:    Setup packager.
 
 Comments:
 
             Installation:
-            > cd /path/to/package_x.x.x
+            > cd /path/to/package
             > pip install . --no-deps
+
+            git installation:
+            > pip install git+file:///<drive>:/path/to/package --upgrade --no-deps
 
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
 Date        Programmer      Version     Update
-05.03.18    M. Critchard    1.0.0       Permanently branched for Python 3 from the Python 2.7
-                                        utils module.
-13.03.18    J. Berendt      1.1.0       Added win_unicode_console as a required package.
+12.06.18    J. Berendt      0.1.0       Written to replace the current class setup file for
+                                        utils3 v0.5.0.
 ------------------------------------------------------------------------------------------------'''
 
 import os
 from setuptools import setup, find_packages
-
-from utils3 import get_datafiles
+from utils3.get_datafiles import get_datafiles
+from utils3 import utils
 from utils3._version import __version__
 
+# -------------------------------------------------------------------------
+# PACKAGE CONSTANTS (EDIT THESE)
+PACKAGE         = 'utils3'
+VERSION         = __version__
+PLATFORMS       = 'Python 3.5'
+DESC            = 'Bespoke general utilities package for Python 3.5.'
+AUTHOR          = 'J. Berendt'
+AUTHOR_EMAIL    = 'support@73rdstreetdevelopment.co.uk'
+URL             = 'https://github.com/s3dev/utils3'
+LICENSE         = 'MIT'
+ROOT            = os.path.realpath(os.path.dirname(__file__))
+PACKAGE_ROOT    = os.path.join(ROOT, PACKAGE)
+SITE_PKGS       = os.path.join(utils.getsitepackages(), PACKAGE)
+INCL_PKG_DATA   = False
 
-class Packager(object):
+# PACKAGE REQUIREMENTS
+REQUIRES        = ['colorama',
+                   'cx_Oracle',
+                   'matplotlib',
+                   'mysql-connector==2.1.4',
+                   'numpy',
+                   'pyodbc',
+                   'plotly',
+                   'unidecode',
+                   'win_unicode_console']
+PACKAGES        = find_packages()
 
-    @staticmethod
-    def run():
-        package = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'utils3')
-        setup(name='utils3',
-              version=__version__,
-              platforms='Python 3.5',
-              description='Bespoke general utilities package for Python 3.5.',
-              author='J. Berendt',
-              author_email='support@73rdstreetdevelopment.co.uk',
-              url='https://github.com/s3dev/utils3',
-              license='MIT',
-              packages=find_packages(),
-              install_requires=['colorama',
-                                'cx_Oracle',
-                                'matplotlib',
-                                'mysql-connector==2.1.4',
-                                'numpy',
-                                'pyodbc',
-                                'plotly',
-                                'unidecode',
-                                'win_unicode_console'],
-              data_files=get_datafiles.get_datafiles(pkg_dir=package))
+# ADD DATA FILES
+# SPHINX DOCUMENTATION IS EXCLUDED AT THE MINUTE
+DATA_FILES      = [(SITE_PKGS, ['README.html', 'README.md'])] + \
+                  get_datafiles(pkg_dir=PACKAGE_ROOT, get_readme_files=False)
 
-
-if __name__ == '__main__':
-    packager = Packager()
-    packager.run()
+# -----------------------------------------------------------------------
+# SETUP PARAMETERS (DO NOT EDIT THESE)
+setup(name=PACKAGE,
+      version=VERSION,
+      platforms=PLATFORMS,
+      description=DESC,
+      author=AUTHOR,
+      author_email=AUTHOR_EMAIL,
+      maintainer=AUTHOR,
+      maintainer_email=AUTHOR_EMAIL,
+      url=URL,
+      license=LICENSE,
+      packages=PACKAGES,
+      install_requires=REQUIRES,
+      data_files=DATA_FILES,
+      include_package_data=INCL_PKG_DATA)
