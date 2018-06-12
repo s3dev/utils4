@@ -16,6 +16,7 @@ UPDATE LOG:
 Date        Programmer      Version     Update
 12.06.18    J. Berendt      0.1.0       Written to replace the current class setup file for
                                         utils3 v0.5.0.
+                                        Added Sphinx documentation.
 ------------------------------------------------------------------------------------------------'''
 
 import os
@@ -51,10 +52,8 @@ REQUIRES        = ['colorama',
                    'win_unicode_console']
 PACKAGES        = find_packages()
 
-# ADD DATA FILES
-# SPHINX DOCUMENTATION IS EXCLUDED AT THE MINUTE
-DATA_FILES      = [(SITE_PKGS, ['README.html', 'README.md'])] + \
-                  get_datafiles(pkg_dir=PACKAGE_ROOT, get_readme_files=False)
+# ADD DATA AND DOCUMENTATION FILES
+DATA_FILES      = get_datafiles(pkg_dir=PACKAGE_ROOT, get_docs=True)
 
 # -----------------------------------------------------------------------
 # SETUP PARAMETERS (DO NOT EDIT THESE)

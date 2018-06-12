@@ -1139,7 +1139,7 @@ README and LICENSE files live.</td>
 
 <dl class="function">
 <dt id="get_datafiles._get_readmefiles">
-<code class="descclassname">get_datafiles.</code><code class="descname">_get_readmefiles</code><span class="sig-paren">(</span><em>pkg_dir, readme_exts=['.html', '.md'], p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_readmefiles" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">get_datafiles.</code><code class="descname">_get_readmefiles</code><span class="sig-paren">(</span><em>pkg_dir, readme_name='README', readme_exts=['.html', '.md'], p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_readmefiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the README files.</p>
 <p>This private function is called by the main
 <a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
@@ -1150,6 +1150,7 @@ the README file(s) to the returned list of data files.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>pkg_dir</strong> (<em>str</em>) – </li>
+<li><strong>readme_name</strong> (<em>str</em>) – </li>
 <li><strong>readme_exts</strong> (<em>list</em>) – </li>
 <li><strong>p2e</strong> (<em>bool</em>) – </li>
 </ul>
@@ -1171,17 +1172,45 @@ README and LICENSE files live.</td>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Although this function is designed to get the README files with
-a given extension, <strong>there is no validation on the file name</strong>,
-only on the extension.</p>
-<p class="last">In otherwords, if there is a file named <code class="docutils literal notranslate"><span class="pre">FOO.html</span></code>, it will be
-picked up if .html is in the <code class="docutils literal notranslate"><span class="pre">readme_exts</span></code> list.</p>
+<p class="last">The actual file names are tested against the <code class="docutils literal notranslate"><span class="pre">readme_name</span></code>
+parameter as lower case.  So the parameter is <strong>not case
+sensative</strong>.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="get_datafiles._get_sphinxfiles">
+<code class="descclassname">get_datafiles.</code><code class="descname">_get_sphinxfiles</code><span class="sig-paren">(</span><em>pkg_dir</em>, <em>docs_path='./docs'</em>, <em>p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_sphinxfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Sphinx documentation files.</p>
+<p>This private function is called by the main
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
+the distributable Sphinx documentation files to the returned list
+of data files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pkg_dir</strong> (<em>str</em>) – </li>
+<li><strong>docs_path</strong> (<em>str</em>) – </li>
+<li><strong>p2e</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For argument descriptions</strong>, refer to the docstring for
+<a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">docs_path</span></code> parameter <strong>must</strong> contain the <strong>relative
+path</strong> to the docs directory, in relation to <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="get_datafiles.get_datafiles">
-<code class="descclassname">get_datafiles.</code><code class="descname">get_datafiles</code><span class="sig-paren">(</span><em>pkg_dir, exts=['.json', '.sql', '.txt'], get_readme_files=True, readme_exts=['.html', '.md'], get_license=True, license_name='LICENSE', p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles.get_datafiles" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">get_datafiles.</code><code class="descname">get_datafiles</code><span class="sig-paren">(</span><em>pkg_dir, exts=['.json', '.sql', '.txt'], get_docs=False, docs_path='./docs', get_readme_files=True, readme_name='README', readme_exts=['.html', '.md'], get_license=True, license_name='LICENSE', p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles.get_datafiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gather and return a list of project data files.</p>
 <p>This function is designed to be called by your project’s
 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file and will return a list of data files used by
@@ -1206,7 +1235,13 @@ in your <code class="docutils literal notranslate"><span class="pre">setup.py</s
 </li>
 <li><strong>exts</strong> (<em>list</em>) – A list of file extensions used as a filter when
 collecting data files.</li>
+<li><strong>get_docs</strong> (<em>bool</em>) – Include Sphinx documentation.</li>
+<li><strong>docs_path</strong> (<em>str</em>) – <strong>Relative</strong> path to the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory, in
+relation to <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.  Ideally, the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory
+sits in parallel with <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</li>
 <li><strong>get_readme_files</strong> (<em>bool</em>) – Include the package’s README file(s).</li>
+<li><strong>readme_name</strong> (<em>str</em>) – Name of the readme file.  This is <strong>not case
+sensative</strong>.</li>
 <li><strong>readme_exts</strong> (<em>list</em>) – A list of file extensions used as a filter
 when collecting README files.</li>
 <li><strong>get_license</strong> (<em>bool</em>) – Include the package’s LICENSE file.</li>
