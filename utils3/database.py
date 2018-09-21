@@ -65,6 +65,7 @@ class Database(object):
         # TEST FOR CONNECTION
         if self.connection_active():
             # CLOSE THE DATABASE CONNECTION
+            self.cur.close()
             self.conn.close()
             self.connected = False
 
