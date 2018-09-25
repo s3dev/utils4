@@ -1,12 +1,10 @@
-Metadata-Version: 1.2
+Metadata-Version: 1.0
 Name: utils3
-Version: 0.6.0
+Version: 0.7.0
 Summary: Bespoke general utilities package for Python 3.5.
 Home-page: https://github.com/s3dev/utils3
 Author: J. Berendt
 Author-email: support@73rdstreetdevelopment.co.uk
-Maintainer: J. Berendt
-Maintainer-email: support@73rdstreetdevelopment.co.uk
 License: MIT
 Description: UNKNOWN
 Platform: Python 3.5
