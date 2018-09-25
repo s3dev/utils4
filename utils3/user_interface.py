@@ -33,6 +33,7 @@ import inspect
 import os
 import platform
 import time
+import warnings
 
 import win_unicode_console
 from colorama import Fore, Back, Style
@@ -94,7 +95,7 @@ class UserInterface(object):
 
         """
         # INSTALL FIX FOR PYTHON 3 WINDOWS CLI ISSUE
-        win_unicode_console.enable()
+        self._enable_win_unicode_console()
         # COLORAMA INITIALISATION
         colourinit()
         # SET LOCATION OF THE UI CONFIG FILE EXPLICITLY (SHOULD WORK FOR WIN AND LINUX)
@@ -391,6 +392,44 @@ class UserInterface(object):
         print(Style.RESET_ALL)
 
     @staticmethod
+    def _build_color_dict(class_):
+        """Create a dictionary of colours available in the ``colorama``
+        ``.Fore`` and ``.Back`` classes.
+
+        :Example:
+            For example, when the ``colorama.Fore`` class is passed,
+            the output looks like::
+
+                {'black': '\x1b[30m', 'blue': '\x1b[34m', ...,
+                 'white': '\x1b[37m', 'yellow': '\x1b[33m'}
+
+        """
+        return {k.lower():v for k, v in vars(class_).items()}
+
+    def _enable_win_unicode_console(self):
+        """Enable the Windows CLI console colours for Py3."""
+        # WHEN win_unicode_console IS ENABLED, A RUNTIME WARNING IS
+        # THROWN DUE TO A MISMATCH IN THE stdin AND stdout ENCODING
+        # TYPES; IGNORE IT.
+        self._disable_warnings()
+        win_unicode_console.enable()
+        self._reset_warnings()
+
+    @staticmethod
+    def _disable_warnings():
+        """Disable runtime warnings.
+
+        When ``win_unicode_console.enable()`` is called on class
+        instantiation, a RuntimeWarning is thrown.  This method lets us
+        ignore that.
+
+        Immediately following the line that will throw an error
+        :meth:`~_reset_warnings` should be called.
+
+        """
+        warnings.filterwarnings('ignore', category=Warning)
+
+    @staticmethod
     def _pad(text, padto):
         """Pad the text value, with (n) spaces.
 
@@ -407,19 +446,9 @@ class UserInterface(object):
         return '{:{padto}}'.format(text.expandtabs(4), padto=padto)
 
     @staticmethod
-    def _build_color_dict(class_):
-        """Create a dictionary of colours available in the ``colorama``
-        ``.Fore`` and ``.Back`` classes.
-
-        :Example:
-            For example, when the ``colorama.Fore`` class is passed,
-            the output looks like::
-
-                {'black': '\x1b[30m', 'blue': '\x1b[34m', ...,
-                 'white': '\x1b[37m', 'yellow': '\x1b[33m'}
-
-        """
-        return {k.lower():v for k, v in vars(class_).items()}
+    def _reset_warnings():
+        """Reset warning messages if any are disabled."""
+        warnings.resetwarnings()
 
 
 # ALLOW MANY ATTRIBS AND FEW METHODS

@@ -1,5 +1,5 @@
 /*
- * s3dev.css_t
+ * rr.css_t
  * ~~~~~~~~~~~
  *
  * Sphinx stylesheet -- haiku theme.
@@ -20,16 +20,16 @@
  * :license: BSD, see LICENSE for details.
  *
  * -------------------------------------------------------------------
- * This theme has been updated by 73rd Street Development, using s3DEV
- * branding guidelines.
+ * This theme has been updated by Rolls-Royce, using RR branding 
+ * guidelines.
  *
- *     Copyright 2018, 73rd Street Development. All rights reserved.
+ *     Copyright 2018, Rolls-Royce. All rights reserved.
  *     Distributed under the terms of the MIT License.
  *
  *     Authors:
- *              J. Berendt <support@73rdstreetdevelopment.co.uk>
+ *              J. Berendt <jeremy.berendt@rolls-royce.com>
  *
- * :copyright: Copyright 2018 by 73rd Street Development, see AUTHORS.
+ * :copyright: Copyright 2018 by Rolls-Royce, see AUTHORS.
  * :license: BSD, see LICENSE for details.
  *
  */
@@ -49,7 +49,7 @@ body {
     font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
     min-width: 59em;
     max-width: 70em;
-    color: #252525;
+    color: #444444;
 }
 
 div.footer {
@@ -64,41 +64,41 @@ div.footer {
 a:link {
     font-weight: bold;
     text-decoration: none;
-    color: #555555;
+    color: #007588;
 }
 
 a:visited {
     font-weight: bold;
     text-decoration: none;
-    color: #c30062;
+    color: #9f0000;
 }
 
 a:hover, a:active {
     /*text-decoration: underline;*/
     text-decoration: none;
-    color: #0063c4;
+    color: #d83f11;
 }
 
 /* Some headers act as anchors, don't give them a hover effect */
 
 h1 a:hover, a:active {
     text-decoration: none;
-    color: #c30000;
+    color: #004a50;
 }
 
 h2 a:hover, a:active {
     text-decoration: none;
-    color: #c30000;
+    color: #004a50;
 }
 
 h3 a:hover, a:active {
     text-decoration: none;
-    color: #c30000;
+    color: #004a50;
 }
 
 h4 a:hover, a:active {
     text-decoration: none;
-    color: #c30000;
+    color: #004a50;
 }
 
 a.headerlink {
@@ -134,14 +134,14 @@ div.header h1 {
     font-size: 1.6em;
     font-weight: normal;
     letter-spacing: 1px;
-    color: #c30000;
+    color: #004a50;
     border: 0;
     margin: 0;
     padding-top: 15px;
 }
 div.header h1 a {
     font-weight: normal;
-    color: #c30000;
+    color: #004a50;
 }
 div.header h2 {
     font-size: 1.3em;
@@ -162,7 +162,7 @@ div.header img.rightlogo {
 div.title {
     font-size: 1.3em;
     font-weight: bold;
-    color: #c30000;
+    color: #004a50;
     border-bottom: dotted thin #e0e0e0;
     margin-bottom: 25px;
 }
@@ -216,11 +216,11 @@ table.index td {
 table.index a:link, table.index a:visited {
     font-weight: normal;
     text-decoration: none;
-    color: #555555;
+    color: #007588;
 }
 table.index a:hover, table.index a:active {
     text-decoration: underline;
-    color: #0063c4;
+    color: #d83f11;
 }
 
 
@@ -243,30 +243,22 @@ div.admonition {
 div.note {
     padding: 10px 15px 10px 80px;
     /*background: #e4ffde url(alert_info_32.png) 15px 15px no-repeat;*/
-    background: #007777 url(alert_info_32_white.png) 15px 15px no-repeat;
+    background: #007588 url(alert_info_32_white.png) 15px 15px no-repeat;
     color: #ffffff;
     min-height: 42px;
     border: none;
-}
-div.note a:link { 
-    color: #e8e8e8; 
-    font-style: bold;
 }
 div.warning {
     padding: 10px 15px 10px 80px;
     /*background: #fffbc6 url(alert_warning_32.png) 15px 15px no-repeat;*/
-    background: #770000 url(alert_warning_32_white.png) 15px 15px no-repeat;
+    background: #d83f11 url(alert_warning_32_white.png) 15px 15px no-repeat;
     color: #ffffff;
     min-height: 42px;
     border: none;
 }
-div.warning a:link { 
-    color: #e8e8e8; 
-    font-style: bold;
-}
 div.seealso {
     /*background: #e4ffde;*/
-    background: #00773c;
+    background: #819c00;
     color: #ffffff;
     border: none;
 }
@@ -275,7 +267,7 @@ div.seealso {
 h1 {
     font-size: 1.3em;
     font-weight: bold;
-    color: #c30000;
+    color: #004a50;
     /*border-bottom: dotted thin #e0e0e0;*/
     border-bottom: 2px solid #efeff4;
     margin-top: 30px;
@@ -284,7 +276,7 @@ h1 {
 h2 {
     font-size: 1.2em;
     font-weight: normal;
-    color: #c30000;
+    color: #004a50;
     /*border-bottom: dotted thin #e0e0e0;*/
     border-bottom: 2px solid #efeff4;
     margin-top: 30px;
@@ -293,14 +285,14 @@ h2 {
 h3 {
     font-size: 1.1em;
     font-weight: normal;
-    color: #c30000;
+    color: #004a50;
     margin-top: 30px;
 }
 
 h4 {
     font-size: 1.0em;
     font-weight: normal;
-    color: #c30000;
+    color: #004a50;
     margin-top: 30px;
 }
 
