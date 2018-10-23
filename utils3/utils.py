@@ -26,7 +26,6 @@
 # THEY ARE USED.
 
 import six
-
 from utils3 import config
 from utils3 import reporterror
 from utils3 import user_interface
@@ -1016,7 +1015,7 @@ def testimport(module_name) -> bool:
 
     :Dependencies:
 
-        * imp
+        * importlib
 
     :Example:
         ::
@@ -1025,23 +1024,19 @@ def testimport(module_name) -> bool:
             if u.testimport('mymodule'): import mymodule
 
     Returns:
-        True if the library was found, otherwise, False.
+        True if the library was found, otherwise False.
 
     """
-    # BUILT-IN IMPORTS
-    import imp
+    import importlib
 
-    # INITIALISE
-    found = False
     try:
-        # TRY TO IMPORT MODULE
-        imp.find_module(module_name)
-        found = True
-    except ImportError:
-        # MODULE NOT FOUND
+        result = importlib.util.find_spec(module_name)
+        found = result is not None
+        if not found:
+            print('\nSorry ... the (%s) library/module is not installed.' % (module_name))
+    except ImportError as err:
         found = False
-        print('\nSorry ... the (%s) library/module is not installed.' % (module_name))
-
+        print('ImportError: %s' % (err))
     return found
 
 
@@ -1268,7 +1263,7 @@ def _dbconn_fields(dbtype, fields, filename):
         # LOOP THROUGH EXPECTED KEYS
         for key in fields:
             # TEST KEY EXISTS IN CONFIG FILE
-            if conf.has_key(key):
+            if key in conf:
                 # ADD EXISTING VALUE TO CREDENTIAL DICT (USED FOR CONNECTION)
                 creds[key] = conf[key]
             else:

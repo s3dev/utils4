@@ -3,6 +3,11 @@ Program:    setup.py
 Purpose:    Setup packager.
 
 Comments:
+            Create source dist:
+            > python setup.py sdist
+
+            Create wheel dist:
+            > python setup.py bdist_wheel
 
             Installation:
             > cd /path/to/package
