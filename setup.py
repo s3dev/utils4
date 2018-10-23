@@ -44,6 +44,7 @@ ROOT            = os.path.realpath(os.path.dirname(__file__))
 PACKAGE_ROOT    = os.path.join(ROOT, PACKAGE)
 SITE_PKGS       = os.path.join(utils.getsitepackages(), PACKAGE)
 INCL_PKG_DATA   = False
+CLASSIFIERS     = ['Programming Language :: Python :: 3.5']
 
 # PACKAGE REQUIREMENTS
 REQUIRES        = ['colorama',
@@ -75,4 +76,5 @@ setup(name=PACKAGE,
       packages=PACKAGES,
       install_requires=REQUIRES,
       data_files=DATA_FILES,
-      include_package_data=INCL_PKG_DATA)
+      include_package_data=INCL_PKG_DATA,
+      classifiers=CLASSIFIERS)
