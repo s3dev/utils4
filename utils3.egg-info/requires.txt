@@ -1,9 +1,0 @@
-colorama
-cx_Oracle
-matplotlib
-mysql-connector==2.1.4
-numpy
-pyodbc
-plotly
-unidecode
-win_unicode_console

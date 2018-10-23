@@ -1,34 +1,24 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Change Log &#8212; utils3 - v0.7.0 Documentation</title>
-    
-    <link rel="stylesheet" href="_static/rr.css" type="text/css" />
+    <title>Change Log &#8212; utils3 - v0.8.0 Documentation</title>
+    <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.7.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="utils3 - v0.7.0 Documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Detailed Module Design" href="detailed_design.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/Triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.7.0 Documentation</span></a></h1>
+          <span>utils3 - v0.8.0 Documentation</span></a></h1>
         <h2 class="heading"><span>Change Log</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -46,11 +36,15 @@
   <div class="section" id="module-changelog">
 <span id="change-log"></span><h1>Change Log<a class="headerlink" href="#module-changelog" title="Permalink to this headline">¶</a></h1>
 <ul>
+<li><strong class="first">0.8.0 - Added validation.py to handle various validation rules.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-10-23 15:22:25</em></li>
+<li><strong class="first">0.8.0 - Various minor Py35 compatibility bug fixes.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-10-23 15:00:13</em></li>
+<li><strong class="first">0.8.0 - Added __version__ as an attribute to utils3.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-10-23 14:34:35</em></li>
+<li><strong class="first">0.7.0 - Added package dist.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-09-25 17:52:35</em></li>
 <li><strong class="first">0.7.0 - Updated to remove RuntimeWarning on UserInterface instantiation.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-09-25 17:37:01</em></li>
 <li><strong class="first">0.6.1 - Added self.cur.close() to disconnect() in database.py. This</strong><span> by </span><em>critchard_mark</em><span> at </span><em>2018-09-21 15:09:27</em><p>ensures connections are properly closed when database objects
         go out of scope.</p>
 </li>
-<li><strong class="first">Merge branch &#8216;upd_dist&#8217;</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-06-13 15:22:56</em></li>
+<li><strong class="first">Merge branch ‘upd_dist’</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-06-13 15:22:56</em></li>
 <li><strong class="first">0.6.0 - Added package dist.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-06-13 15:21:03</em></li>
 <li><strong class="first">0.6.0 - Added package dist.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-06-13 15:21:03</em></li>
 <li><strong class="first">0.6.0 - Updated Sphinx change log information.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-06-13 15:17:37</em></li>
@@ -87,12 +81,12 @@ Updated the SQLite class with:
 <li><strong class="first">x.x.x - Sphinx documentation: database.py complete.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-30 16:32:12</em></li>
 <li><strong class="first">x.x.x - Sphinx documentation: config.py complete.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-30 13:04:57</em></li>
 <li><strong class="first">x.x.x - Sphinx documentation: General setup complete.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-30 12:43:43</em></li>
-<li><strong class="first">Merge branch &#8216;upd_general&#8217;</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-27 16:48:13</em></li>
+<li><strong class="first">Merge branch ‘upd_general’</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-27 16:48:13</em></li>
 <li><strong class="first">0.4.0 - General package versioning updates.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-27 16:47:36</em></li>
-<li><strong class="first">0.4.0 - Updates to the database.SQLite class.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-27 16:43:14</em><p>- Database file is created if it doesn&#8217;t exist.
+<li><strong class="first">0.4.0 - Updates to the database.SQLite class.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-27 16:43:14</em><p>- Database file is created if it doesn’t exist.
 - Added the .vacuum() method to shrink database file size.</p>
 </li>
-<li><strong class="first">Merge branch &#8216;master&#8217; of file:///g:/repo_generic/utils3</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-16 16:39:34</em></li>
+<li><strong class="first">Merge branch ‘master’ of file:///g:/repo_generic/utils3</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-16 16:39:34</em></li>
 <li><strong class="first">0.3.1 - Updated __version__ import for utils.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-16 16:31:17</em></li>
 <li><strong class="first">0.3.1 - Updated __version__ import for utils.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-04-16 16:31:17</em></li>
 <li><strong class="first">0.3.0 - Improvements to user_interface.py</strong><span> by </span><em>critchard_mark</em><span> at </span><em>2018-03-28 11:51:29</em><p>&gt; Updated print_heading_.* methods to override bright style
@@ -113,7 +107,7 @@ list comprehension.</p>
 <li><strong class="first">0.2.1 - Updated setup.py to include win_unicode_console as a required</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-13 12:33:39</em><p>package.</p>
 </li>
 <li><strong class="first">0.2.1 - README updates.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-13 12:27:22</em></li>
-<li><strong class="first">0.2.1 - Merged Mark&#8217;s win_unicode_console update for user_interface.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-13 12:20:16</em><p>Merge file:///g/Repo_Generic/utils3 into merge_remote</p>
+<li><strong class="first">0.2.1 - Merged Mark’s win_unicode_console update for user_interface.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-13 12:20:16</em><p>Merge file:///g/Repo_Generic/utils3 into merge_remote</p>
 </li>
 <li><strong class="first">0.2.0 - Added unittest for Dict2Obj class into the config test module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-13 12:05:05</em></li>
 <li><strong class="first">0.2.0 - New version to include the Dict2Obj update.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-12 16:19:27</em><p>- Added the __version__ attribute to the utils module to enable package
@@ -127,14 +121,14 @@ or dictionaries, and returns an object - allowing config files to
 be accessed as object attributes, rather than as a dictionary.</p>
 </li>
 <li><strong class="first">0.1.0 - Minor code formatting updates for the utils module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-07 16:08:22</em></li>
-<li><strong class="first">0.1.0 - Py3 compatibility updates to the user_interface module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-07 16:01:40</em><p>- Updated the PrintBanner class to use Py3&#8217;s floor division
+<li><strong class="first">0.1.0 - Py3 compatibility updates to the user_interface module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-07 16:01:40</em><p>- Updated the PrintBanner class to use Py3’s floor division
 operator (//) when calculating the length of the ribbon.
 - Minor formatting updates.</p>
 </li>
 <li><strong class="first">0.1.0 - Minor code cleaning for the reporterror module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-07 14:59:14</em></li>
-<li><strong class="first">0.1.0 - Minor formatting and cleaning for registry module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-07 14:20:20</em><p>- Removed the &#8216;computer_name&#8217; parameter from Registry class.</p>
+<li><strong class="first">0.1.0 - Minor formatting and cleaning for registry module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-07 14:20:20</em><p>- Removed the ‘computer_name’ parameter from Registry class.</p>
 </li>
-<li><strong class="first">0.1.0 - Cleaned and updated progressbar module for Py3.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-06 16:01:34</em><p>- Updated to move the &#8216;total number of items&#8217; from the inner
+<li><strong class="first">0.1.0 - Cleaned and updated progressbar module for Py3.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2018-03-06 16:01:34</em><p>- Updated to move the ‘total number of items’ from the inner
 update_progress function to the instantiation.
 NOTE: This **will break** current implementations.  A minor update
 will be required to your program.
