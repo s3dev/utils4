@@ -56,10 +56,12 @@ REQUIRES        = ['colorama',
                    'plotly',
                    'unidecode',
                    'win_unicode_console']
+
 PACKAGES        = find_packages()
 
 # ADD DATA AND DOCUMENTATION FILES
 DATA_FILES      = get_datafiles(pkg_dir=PACKAGE_ROOT, get_docs=True)
+#PACKAGE_DATA    = {'utils3': ['user_interface_config.json', 'LICENSE']}
 
 # -----------------------------------------------------------------------
 # SETUP PARAMETERS (DO NOT EDIT THESE)
@@ -78,3 +80,4 @@ setup(name=PACKAGE,
       data_files=DATA_FILES,
       include_package_data=INCL_PKG_DATA,
       classifiers=CLASSIFIERS)
+#      package_data=PACKAGE_DATA)
