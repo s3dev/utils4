@@ -3,18 +3,19 @@ Program:    setup.py
 Purpose:    Setup packager.
 
 Comments:
-            Create source dist:
-            > python setup.py sdist
-
-            Create wheel dist:
-            > python setup.py bdist_wheel
-
-            Installation:
+            Create source and wheel distributions:
             > cd /path/to/package
-            > pip install . --no-deps
+            > python setup.py sdist bdist_wheel
+
+            Simple installation:
+            > cd /path/to/package/dist
+            > pip install utils3-<...>.whl --no-deps
 
             git installation:
-            > pip install git+file:///<drive>:/path/to/package --upgrade --no-deps
+            > pip install git+file:///<drive>:/path/to/package --no-deps
+
+            github installation:
+            > pip install git+https://github.com/s3dev/utils3
 
 ---------------------------------------------------------------------------------------------------
 UPDATE LOG:
@@ -44,7 +45,13 @@ ROOT            = os.path.realpath(os.path.dirname(__file__))
 PACKAGE_ROOT    = os.path.join(ROOT, PACKAGE)
 SITE_PKGS       = os.path.join(utils.getsitepackages(), PACKAGE)
 INCL_PKG_DATA   = False
-CLASSIFIERS     = ['Programming Language :: Python :: 3.5']
+CLASSIFIERS     = ['Programming Language :: Python :: 3.5',
+                   'License :: OSI Approved :: MIT License',
+                   'Operating System :: Microsoft :: Windows',
+                   'Operating System :: POSIX :: Linux',
+                   'Topic :: Software Development',
+                   'Topic :: Software Development :: Libraries',
+                   'Topic :: Utilities']
 
 # PACKAGE REQUIREMENTS
 REQUIRES        = ['colorama',
@@ -61,7 +68,7 @@ PACKAGES        = find_packages()
 
 # ADD DATA AND DOCUMENTATION FILES
 DATA_FILES      = get_datafiles(pkg_dir=PACKAGE_ROOT, get_docs=True)
-#PACKAGE_DATA    = {'utils3': ['user_interface_config.json', 'LICENSE']}
+PACKAGE_DATA    = {'utils3': ['user_interface_config.json']}
 
 # -----------------------------------------------------------------------
 # SETUP PARAMETERS (DO NOT EDIT THESE)
@@ -79,5 +86,5 @@ setup(name=PACKAGE,
       install_requires=REQUIRES,
       data_files=DATA_FILES,
       include_package_data=INCL_PKG_DATA,
-      classifiers=CLASSIFIERS)
-#      package_data=PACKAGE_DATA)
+      classifiers=CLASSIFIERS,
+      package_data=PACKAGE_DATA)
