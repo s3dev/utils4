@@ -1903,6 +1903,122 @@ docstring.</td>
 </dd></dl>
 
 </div>
+<div class="section" id="module-pywarnings">
+<span id="pywarnings"></span><h2><strong>pywarnings</strong><a class="headerlink" href="#module-pywarnings" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module provides a simple wrapper around Python’s
+built-in <code class="docutils literal notranslate"><span class="pre">warnings</span></code> library, and enables easy access
+to ignore (a given set of) Python warnings.  These warnings
+can be configured in your app’s config file.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example code use:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">pywarnings</span>
+
+<span class="k">class</span> <span class="nc">MyApp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;My really cool app!&#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Class initialiser.&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span> <span class="o">=</span> <span class="c1"># You app&#39;s config file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pywarns</span> <span class="o">=</span> <span class="n">pywarnings</span><span class="o">.</span><span class="n">PyWarnings</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+        <span class="sd">&#39;&#39;&#39;Main app controller.&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pywarns</span><span class="o">.</span><span class="n">ignore_warnings</span><span class="p">()</span>
+        <span class="c1"># DO APP STUFF</span>
+        <span class="c1"># ...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pywarns</span><span class="o">.</span><span class="n">reset_warnings</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pywarnings.PyWarnings">
+<em class="property">class </em><code class="descclassname">pywarnings.</code><code class="descname">PyWarnings</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple wrapper around Python’s built-in <code class="docutils literal notranslate"><span class="pre">warnings</span></code> library.</p>
+<p>This class provides easy access to ignore (a given set of) warnings
+using your program’s config file.</p>
+<p>An example of your <code class="docutils literal notranslate"><span class="pre">py_warnings</span></code> config file key is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;py_warnings&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;ignore&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                 <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PendingDeprecationWarning&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;FutureWarning&quot;</span><span class="p">]}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">ignore</span></code> key toggles if the listed warnings are disabled.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">categories</span></code> key is a list of Python warnings you wish
+to disable.  This list <strong>is not</strong> case sensitive.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<em>dict</em>) – A dictionary containing your app’s config.
+(Or, at least a dictionary containing the <code class="docutils literal notranslate"><span class="pre">py_warnings</span></code>
+key.)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Remember to call the <a class="reference internal" href="#pywarnings.PyWarnings.reset_warnings" title="pywarnings.PyWarnings.reset_warnings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset_warnings()</span></code></a> method at the end
+of your program!</p>
+</div>
+<dl class="method">
+<dt id="pywarnings.PyWarnings.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class initialiser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywarnings.PyWarnings.ignore_warnings">
+<code class="descname">ignore_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.ignore_warnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore Python warnings.</p>
+<p>This method is designed to ignore (a given set of) Python
+warnings. Remember, the <strong>warnings must be reset at the end of
+your program</strong>.  This is <strong>not</strong> done automatically.</p>
+<p>These actions are controlled via the <code class="docutils literal notranslate"><span class="pre">py_warnings</span></code> key in
+your config file.</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ignore</span></code>: Boolean flag to ignore the warnings</li>
+<li><code class="docutils literal notranslate"><span class="pre">categories</span></code>: A list of warning type(s) to ignore</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>The list of warnings in the <code class="docutils literal notranslate"><span class="pre">warn_types</span></code> local dictionary
+variable was taken from <a class="reference external" href="https://docs.python.org/3.5/library/warnings.html#warning-categories">here</a>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pywarnings.PyWarnings.reset_warnings">
+<em class="property">static </em><code class="descname">reset_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.reset_warnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn Python warnings back on.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-registry">
 <span id="registry"></span><h2><strong>registry</strong><a class="headerlink" href="#module-registry" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
