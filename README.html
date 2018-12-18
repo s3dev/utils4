@@ -11779,8 +11779,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="utils3">utils3<a class="anchor-link" href="#utils3">&#182;</a></h1><hr>
-<p>This is a centralised Python library of commonly used utilities; which include database connection classes, colourmaps, JSON config file loading, program event logging, error reporting, console interfacing, etc.</p>
-<p>The <strong>utils3</strong> package is a continuation of <code>utils v6.1.5</code>, which has been updated to support Python 3.5.</p>
+<p>The <strong>utils3</strong> library is a collection of commonly used Python 3.5 utilities. These utilities include database connection classes, colourmaps, JSON config file loading, program event logging, error reporting, console user interface, etc.</p>
+<p><code>utils3</code> is a Python 3.5 continuation of the discontinued Python 2.7 <code>utils</code> package, which ended with v6.1.5.</p>
 <h2 id="Example-Use-&amp;-Detailed-Design">Example Use &amp; Detailed Design<a class="anchor-link" href="#Example-Use-&amp;-Detailed-Design">&#182;</a></h2><hr>
 <p>Please refer to the linked <a href="./docs/build/html/index.html" style="font-weight: bold; text-decoration: none;" target="_blank">Sphinx documentation</a> for example code use, and detailed design documentation.</p>
 <h2 id="Change-Log">Change Log<a class="anchor-link" href="#Change-Log">&#182;</a></h2><hr>
@@ -11823,9 +11823,9 @@ For example:</p>
 <div class="highlight"><pre><span></span>sudo pip install git+https://github.com/s3dev/utils3 --upgrade
 </pre></div>
 <h2 id="Version-Check">Version Check<a class="anchor-link" href="#Version-Check">&#182;</a></h2><hr>
-<p>To see which version of <code>utils3</code> is installed, use the <code>__version__</code> attribute from the <code>utils</code> module.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="n">utils</span><span class="o">.</span><span class="n">__version__</span>
+<p>To see which version of <code>utils3</code> is installed, use the <code>__version__</code> attribute from the <code>utils3</code> module.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils3</span>
+<span class="n">utils3</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 <h2 id="Module-Help">Module Help<a class="anchor-link" href="#Module-Help">&#182;</a></h2><hr>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">utils</span>
@@ -11834,23 +11834,7 @@ For example:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="n">help</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">database</span>
-<span class="n">help</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.get_datafiles</span> <span class="kn">import</span> <span class="n">get_datafiles</span>
-<span class="n">help</span><span class="p">(</span><span class="n">get_datafiles</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">log</span>
-<span class="n">help</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">progressbar</span>
-<span class="n">help</span><span class="p">(</span><span class="n">progressbar</span><span class="o">.</span><span class="n">ProgressBar</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">reporterror</span>
-<span class="n">help</span><span class="p">(</span><span class="n">reporterror</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="kn">import</span> <span class="n">user_interface</span>
-<span class="n">help</span><span class="p">(</span><span class="n">user_interface</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="c1"># etc ...</span>
 </pre></div>
 <h2 id="Troubleshooting">Troubleshooting<a class="anchor-link" href="#Troubleshooting">&#182;</a></h2><hr>
 <p>If you are installing from a local repo and do not have internet access, or the Linux (or Windows) installation is giving you trouble with <strong>cx_Oracle</strong>, use the <code>--no-deps</code> argument for <strong>pip</strong>.  This argument will ignore the dependencies (and not try to access the internet), and allow you to install each dependency yourself, <em>if</em> you require it.</p>

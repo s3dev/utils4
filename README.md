@@ -1,9 +1,9 @@
 
 # utils3
 ---
-This is a centralised Python library of commonly used utilities; which include database connection classes, colourmaps, JSON config file loading, program event logging, error reporting, console interfacing, etc.
+The **utils3** library is a collection of commonly used Python 3.5 utilities. These utilities include database connection classes, colourmaps, JSON config file loading, program event logging, error reporting, console user interface, etc.
 
-The **utils3** package is a continuation of `utils v6.1.5`, which has been updated to support Python 3.5.
+`utils3` is a Python 3.5 continuation of the discontinued Python 2.7 `utils` package, which ended with v6.1.5.
 
 
 ## Example Use & Detailed Design
@@ -69,10 +69,11 @@ sudo pip install git+https://github.com/s3dev/utils3 --upgrade
 
 ## Version Check
 ---
-To see which version of `utils3` is installed, use the `__version__` attribute from the `utils` module.
+To see which version of `utils3` is installed, use the `__version__` attribute from the `utils3` module.
+
 ```python
-from utils3 import utils
-utils.__version__
+import utils3
+utils3.__version__
 ```
 
 
@@ -85,32 +86,10 @@ help(utils)
 ```python
 from utils3 import config
 help(config)
-```  
+```
 ```python
-from utils3 import database
-help(database)
-```  
-```python
-from utils3.get_datafiles import get_datafiles
-help(get_datafiles)
-```  
-```python
-from utils3 import log
-help(log)
-```  
-```python
-from utils3 import progressbar
-help(progressbar.ProgressBar)
-```  
-```python
-from utils3 import reporterror
-help(reporterror)
-```  
-```python
-from utils3 import user_interface
-help(user_interface)
-```  
-
+# etc ...
+```
 
 ## Troubleshooting
 ---
