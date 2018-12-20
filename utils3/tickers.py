@@ -34,8 +34,9 @@ from utils3 import utils
 
 # pylint: disable=too-few-public-methods
 class _GenericWait(object):
-    """This generic class holds functionality which is used for all
-    ticker types, and is inherited by each ticker.
+    """This generic class holds functionality which is inherited by 
+    each ticker type.
+    
     """
 
     def __init__(self, charset, delay):
@@ -45,11 +46,27 @@ class _GenericWait(object):
         self._charset = charset
         self._delay = self._set_delay(delay=delay)
         self._gen = self._generator()
+        self._esc_clearline = '\r\033[K'
 
-    def stop(self):
-        """Stop the ticker."""
+    def stop(self, err=False):
+        """Stop the ticker.
+        
+        Args:
+            err (bool): If the ticker's processing is stopped under 
+                error, passing ``True`` will clear the output line
+                rather than printing ``Done.`` to the console.
+
+        """
         self._busy = False
-        self._print_end()
+        if not err:
+            self._print_end()
+        else:
+            self._clearline()
+
+    def _clearline(self):
+        """Clear the current line of the console."""
+        sys.stdout.write(self._esc_clearline)
+        sys.stdout.flush()
 
     def _generator(self):
         """Generate the character set."""
@@ -65,7 +82,7 @@ class _GenericWait(object):
 
     def _print_end(self):
         """Write this to the console when the ticker is stopped."""
-        sys.stdout.write('\r\033[K')
+        sys.stdout.write(self._esc_clearline)
         sys.stdout.write('Done.')
         sys.stdout.flush()
         time.sleep(self._delay)
