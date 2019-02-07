@@ -1,30 +1,34 @@
 #!/usr/bin/env python
-'''------------------------------------------------------------------------------------------------
-Program:    setup.py
-Purpose:    Setup packager.
+# -*- coding: utf-8 -*-
+"""
+:App:       setup.py
+:Purpose:   Python library packager.
 
-Comments:
-            Create source and wheel distributions:
-            > cd /path/to/package
-            > python setup.py sdist bdist_wheel
+:Version:   0.2.1
+:Platform:  Linux/Windows | Python 3.5
+:Developer: J Berendt
+:Email:     support@73rdstreetdevelopment.co.uk
 
-            Simple installation:
-            > cd /path/to/package/dist
-            > pip install utils3-<...>.whl --no-deps
+:Example:
+    Create source and wheel distributions::
 
-            git installation:
-            > pip install git+file:///<drive>:/path/to/package --no-deps
+        $ cd /path/to/package
+        $ python setup.py sdist bdist_wheel
 
-            github installation:
-            > pip install git+https://github.com/s3dev/utils3
+    Simple installation::
 
----------------------------------------------------------------------------------------------------
-UPDATE LOG:
-Date        Programmer      Version     Update
-12.06.18    J. Berendt      0.1.0       Written to replace the current class setup file for
-                                        utils3 v0.5.0.
-                                        Added Sphinx documentation.
-------------------------------------------------------------------------------------------------'''
+        $ cd /path/to/package/dist
+        $ pip install <pkgname>-<...>.whl
+
+    git installation::
+
+        $ pip install git+file:///<drive>/path/to/package
+
+    github installation::
+
+        $ pip install git+https://github.com/s3dev/<pkgname>
+
+"""
 
 import os
 from setuptools import setup, find_packages
@@ -32,60 +36,58 @@ from utils3.get_datafiles import get_datafiles
 from utils3 import utils
 from utils3._version import __version__
 
-# -------------------------------------------------------------------------
-# PACKAGE CONSTANTS (EDIT THESE)
-PACKAGE         = 'utils3'
-VERSION         = __version__
-PLATFORMS       = 'Python 3.5'
-DESC            = 'Bespoke general utilities package for Python 3.5.'
-AUTHOR          = 'J. Berendt'
-AUTHOR_EMAIL    = 'support@73rdstreetdevelopment.co.uk'
-URL             = 'https://github.com/s3dev/utils3'
-LICENSE         = 'MIT'
-ROOT            = os.path.realpath(os.path.dirname(__file__))
-PACKAGE_ROOT    = os.path.join(ROOT, PACKAGE)
-SITE_PKGS       = os.path.join(utils.getsitepackages(), PACKAGE)
-INCL_PKG_DATA   = False
-CLASSIFIERS     = ['Programming Language :: Python :: 3.5',
-                   'License :: OSI Approved :: MIT License',
-                   'Operating System :: Microsoft :: Windows',
-                   'Operating System :: POSIX :: Linux',
-                   'Topic :: Software Development',
-                   'Topic :: Software Development :: Libraries',
-                   'Topic :: Utilities']
 
-# PACKAGE REQUIREMENTS
-REQUIRES        = ['colorama',
-                   'cx_Oracle',
-                   'matplotlib',
-                   'mysql-connector==2.1.4',
-                   'numpy',
-                   'pyodbc',
-                   'plotly',
-                   'unidecode',
-                   'win_unicode_console']
+# pylint: disable=too-few-public-methods
+class Setup(object):
+    """Create a dist package for this library."""
 
-PACKAGES        = find_packages()
+    PACKAGE         = 'utils3'
+    VERSION         = __version__
+    PLATFORMS       = 'Python 3.5'
+    DESC            = 'Bespoke general utilities package for Python 3.5.'
+    AUTHOR          = 'J. Berendt'
+    AUTHOR_EMAIL    = 'support@73rdstreetdevelopment.co.uk'
+    URL             = 'https://github.com/s3dev/utils3'
+    LICENSE         = 'MIT'
+    ROOT            = os.path.realpath(os.path.dirname(__file__))
+    PACKAGE_ROOT    = os.path.join(ROOT, PACKAGE)
+    SITE_PKGS       = os.path.join(utils.getsitepackages(), PACKAGE)
+    INCL_PKG_DATA   = False
+    CLASSIFIERS     = ['Programming Language :: Python :: 3.5',
+                       'License :: OSI Approved :: MIT License',
+                       'Operating System :: Microsoft :: Windows',
+                       'Operating System :: POSIX :: Linux',
+                       'Topic :: Software Development',
+                       'Topic :: Software Development :: Libraries',
+                       'Topic :: Utilities']
 
-# ADD DATA AND DOCUMENTATION FILES
-DATA_FILES      = get_datafiles(pkg_dir=PACKAGE_ROOT, get_docs=True)
-PACKAGE_DATA    = {'utils3': ['user_interface_config.json']}
+    # PACKAGE REQUIREMENTS
+    REQUIRES        = ['colorama', 'win_unicode_console']
+    PACKAGES        = find_packages()
 
-# -----------------------------------------------------------------------
-# SETUP PARAMETERS (DO NOT EDIT THESE)
-setup(name=PACKAGE,
-      version=VERSION,
-      platforms=PLATFORMS,
-      description=DESC,
-      author=AUTHOR,
-      author_email=AUTHOR_EMAIL,
-      maintainer=AUTHOR,
-      maintainer_email=AUTHOR_EMAIL,
-      url=URL,
-      license=LICENSE,
-      packages=PACKAGES,
-      install_requires=REQUIRES,
-      data_files=DATA_FILES,
-      include_package_data=INCL_PKG_DATA,
-      classifiers=CLASSIFIERS,
-      package_data=PACKAGE_DATA)
+    # ADD DATA AND DOCUMENTATION FILES
+    DATA_FILES      = get_datafiles(pkg_dir=PACKAGE_ROOT, get_docs=True)
+    PACKAGE_DATA    = {'utils3': ['user_interface_config.json']}
+
+    def run(self):
+        """Run the setup."""
+        setup(name=self.PACKAGE,
+              version=self.VERSION,
+              platforms=self.PLATFORMS,
+              description=self.DESC,
+              author=self.AUTHOR,
+              author_email=self.AUTHOR_EMAIL,
+              maintainer=self.AUTHOR,
+              maintainer_email=self.AUTHOR_EMAIL,
+              url=self.URL,
+              license=self.LICENSE,
+              packages=self.PACKAGES,
+              install_requires=self.REQUIRES,
+              data_files=self.DATA_FILES,
+              include_package_data=self.INCL_PKG_DATA,
+              classifiers=self.CLASSIFIERS,
+              package_data=self.PACKAGE_DATA)
+
+
+if __name__ == '__main__':
+    Setup().run()

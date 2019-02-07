@@ -27,6 +27,8 @@
 import colorama
 from utils3 import utils
 
+# THIS IS OK DUE TO INVERSE INHERITANCE
+# pylint: disable=no-member
 # pylint: disable=too-few-public-methods
 class _Generic(object):
     """The generic worker class inherited by the specific classes."""
@@ -173,4 +175,3 @@ class Colours(object):
     def text(self):
         """Text colours."""
         return self._text
-

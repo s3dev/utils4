@@ -153,6 +153,7 @@ def dbconn_mysql(host=None, user=None, password=None, database=None, port=3306,
         # INITIALISE
         creds = dict()
         dbtype = 'mysql'
+        conn = None
 
         # TEST IF CONFIG FILE IS USED
         if from_file:
@@ -170,7 +171,9 @@ def dbconn_mysql(host=None, user=None, password=None, database=None, port=3306,
         # TEST A VALID CREDENTIAL FILE WAS BUILT
         if creds is not None:
             # MAKE THE CONNECTION >> GET THE CONN/CUR OBJECTS
-            return _dbconn_mysql_conn(creds=creds)
+            conn = _dbconn_mysql_conn(creds=creds)
+
+        return conn
 
     except Exception as err:
         # ALERT USER TO CONNECTION ERROR
@@ -244,6 +247,7 @@ def dbconn_oracle(host=None, user=None, userid=None, password=None,
         # INITIALISE
         creds = dict()
         dbtype = 'oracle'
+        conn = None
 
         # TEST IF CONFIG FILE IS USED
         if from_file:
@@ -263,7 +267,9 @@ def dbconn_oracle(host=None, user=None, userid=None, password=None,
         # TEST A VALID CREDENTIAL FILE WAS BUILT
         if creds is not None:
             # MAKE THE CONNECTION >> GET THE CONN/CUR OBJECTS
-            return _dbconn_oracle_conn(creds=creds)
+            conn = _dbconn_oracle_conn(creds=creds)
+
+        return conn
 
     except Exception as err:
         # ALERT USER TO CONNECTION ERROR
@@ -337,6 +343,7 @@ def dbconn_sql(server=None, database=None, userid=None, user=None,
         # INITIALISE
         creds = dict()
         dbtype = 'sql_server'
+        conn = None
 
         # COMBINE USER AND USERID
         user = user if user is not None else userid
@@ -357,7 +364,9 @@ def dbconn_sql(server=None, database=None, userid=None, user=None,
         # TEST A VALID CREDENTIAL FILE WAS BUILT
         if creds is not None:
             # MAKE THE CONNECTION >> GET THE CONN/CUR OBJECTS
-            return _dbconn_sql_conn(creds=creds)
+            conn = _dbconn_sql_conn(creds=creds)
+
+        return conn
 
     except Exception as err:
         # ALERT USER TO CONNECTION ERROR
@@ -643,7 +652,9 @@ def getcolormap(colormap='Blues', n=5, colorscale=False, dtype='hex',
         if preview_in == 'plotly': _prev_plotly(cmap=colors, cmap_name=colormap)
 
     # TEST FOR COLORSCALE >> RETURN COLOUR MAP OR COLOUR SCALE
-    return colors if colorscale is False else _convert_to_colorscale(cmap=colors)
+    result = colors if colorscale is False else _convert_to_colorscale(cmap=colors)
+
+    return result
 
 
 # ----------------------------------------------------------------------
@@ -685,6 +696,9 @@ def getdrivername(drivername, returnall=False) -> list:
     """
     import re
 
+    # INITIALISE
+    drivers = []
+
     # TEST FOR LIBRARY BEFORE TRYING TO IMPORT
     if testimport('pyodbc'):
         # EXTERNAL IMPORTS
@@ -697,7 +711,7 @@ def getdrivername(drivername, returnall=False) -> list:
             # GET THE ODBC DRIVER NAME FOR SQL SERVER
             drivers = [driver for driver in pyodbc.drivers() if re.search(drivername, driver)][0]
 
-        return drivers
+    return drivers
 
 
 # ----------------------------------------------------------------------
@@ -780,14 +794,17 @@ def json_read(filepath) -> dict:
     """
     import json
 
+    # INITIALISE
+    vals = {}
+
     # TEST IF FILE EXISTS
     if fileexists(filepath):
         # OPEN JSON FILE / STORE VALUES TO DICTIONARY
         with open(filepath, 'r') as infile:
             vals = json.load(infile)
 
-        # RETURN DICTIONARY TO PROGRAM
-        return vals
+    # RETURN DICTIONARY OF RESULT
+    return vals
 
 
 # ----------------------------------------------------------------------
