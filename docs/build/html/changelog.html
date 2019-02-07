@@ -36,7 +36,29 @@
   <div class="section" id="module-changelog">
 <span id="change-log"></span><h1>Change Log<a class="headerlink" href="#module-changelog" title="Permalink to this headline">¶</a></h1>
 <ul>
+<li><strong class="first">0.10.3 - Updated registry.py so it *only* tries to work on Windows.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2019-02-07 15:59:58</em></li>
+<li><strong class="first">0.10.3 - Merge fix for _version.py.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2019-02-07 15:51:00</em></li>
 <li><strong class="first">0.10.3 - Various stability updates across the library.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2019-02-07 08:54:01</em><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- Removed unrequired packages from the setup file.
+  Often times utils3 is imported for a key feature, and you don&#39;t
+  always need Oracle connection capability, or matplotlib, etc.
+  Additionally, this should make installation and updates less painful.
+
+- Latitude and longitude rules updated to:
+  - Accept 0 as a valid lat/lon value.
+  - Return False to 90.01 (lat) and 180.01 (lon) as decimals were
+    previously accepted for lat/lon values of 90 and 180 respectively.
+
+- The ._busy member of tickers.Spinner and tickers.WaitTicker has been
+  renamed to .busy, as this threw pylint error when accessed externally.
+  *CAUTION*:
+  This has not been updated for backwards compatability.  If you use
+  ._busy in your code, please update your code.
+
+- Dev note: The `pylintr` shell script has been added.
+</pre></div>
+</div>
+</li>
+<li><strong class="first">0.11.0 - Various stability updates across the library.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2019-02-07 08:54:01</em><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- Removed unrequired packages from the setup file.
   Often times utils3 is imported for a key feature, and you don&#39;t
   always need Oracle connection capability, or matplotlib, etc.
   Additionally, this should make installation and updates less painful.

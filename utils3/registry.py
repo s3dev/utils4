@@ -27,9 +27,9 @@ import utils3.user_interface as ui
 from utils3 import utils
 
 _UI = ui.UserInterface()
+_OS = utils.get_os()
 
 # TEST OS BEFORE IMPORTING winreg
-_OS = utils.get_os()
 if 'win' in _OS:
     import winreg as wr
 else:
@@ -107,10 +107,10 @@ class Key(object):
                 raise NotImplementedError
         except NotImplementedError:
             _UI.print_error_notimp()
-            return None
+            # return None
         except WindowsError:
             _UI.print_error_windws()
-            return None
+            # return None
 
 
 # ----------------------------------------------------------------------
@@ -248,9 +248,11 @@ class Registry(object):
             _UI.print_error_windws()
             return None
 
-# SHORTCUT CLASS INSTANCES FOR OUTSIDE ACCESS
-hkcr = Registry(wr.HKEY_CLASSES_ROOT)
-hkcu = Registry(wr.HKEY_CURRENT_USER)
-hklm = Registry(wr.HKEY_LOCAL_MACHINE)
-hkus = Registry(wr.HKEY_USERS)
-hkcc = Registry(wr.HKEY_CURRENT_CONFIG)
+# TEST OS BEFORE SHORTCUTTING
+if 'win' in _OS:
+    # SHORTCUT CLASS INSTANCES FOR OUTSIDE ACCESS
+    hkcr = Registry(wr.HKEY_CLASSES_ROOT)
+    hkcu = Registry(wr.HKEY_CURRENT_USER)
+    hklm = Registry(wr.HKEY_LOCAL_MACHINE)
+    hkus = Registry(wr.HKEY_USERS)
+    hkcc = Registry(wr.HKEY_CURRENT_CONFIG)

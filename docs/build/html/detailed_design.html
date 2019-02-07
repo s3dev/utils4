@@ -2019,8 +2019,269 @@ variable was taken from <a class="reference external" href="https://docs.python.
 </dd></dl>
 
 </div>
-<div class="section" id="registry">
-<h2><strong>registry</strong><a class="headerlink" href="#registry" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-registry">
+<span id="registry"></span><h2><strong>registry</strong><a class="headerlink" href="#module-registry" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module provides a simple interface to the Windows
+registry.  It contains a <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> class that can
+be used to interact with the registry; and is supported by
+the <a class="reference internal" href="#registry.Key" title="registry.Key"><code class="xref py py-class docutils literal notranslate"><span class="pre">Key</span></code></a> and <a class="reference internal" href="#registry.Value" title="registry.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">Value</span></code></a> classes.</p>
+<p>This module also provides the following objects that can be
+used to directly access the registry methods for each root
+HKEY.</p>
+<blockquote>
+<div><ul class="simple">
+<li>hkcr = HKEY_CLASSES_ROOT</li>
+<li>hkcu = HKEY_CURRENT_USER</li>
+<li>hklm = HKEY_LOCAL_MACHINE</li>
+<li>hkus = HKEY_USERS</li>
+<li>hkcc = HKEY_CURRENT_CONFIG</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">M Critchard</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">For a use example, refer to the <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> docstring.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="registry.Key">
+<em class="property">class </em><code class="descclassname">registry.</code><code class="descname">Key</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Windows registry keys.</p>
+<p>It provides methods that can be used to interact with the values
+of the key.</p>
+<dl class="method">
+<dt id="registry.Key.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise a private self._key attribute.</p>
+<p>This attribute is used throughout the class to provide a set
+of key specific functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Key.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the key value specified by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Name of the registry key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">If the value exists, a value object is returned, otherwise
+<code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Key.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the data of the key value specified by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the registry key.</li>
+<li><strong>data</strong> (<em>str</em>) – Data to store into the key.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, only strings or unicode values are supported.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="registry.Registry">
+<em class="property">class </em><code class="descclassname">registry.</code><code class="descname">Registry</code><span class="sig-paren">(</span><em>hkey</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Windows registry.</p>
+<p>It provides methods that can be used to interact with the keys and
+values in the registry.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example of how to get the value of a registry key:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3</span> <span class="k">import</span> <span class="n">registry</span>
+
+<span class="n">hkcu</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">hkcu</span>
+<span class="n">my_value</span> <span class="o">=</span> <span class="n">hkcu</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;control panel\desktop&#39;</span><span class="p">,</span> <span class="s1">&#39;wallpaper&#39;</span><span class="p">)</span>
+<span class="n">my_wallpaper</span> <span class="o">=</span> <span class="n">my_value</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="registry.Registry.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>hkey</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise a private self._hkey attribute.</p>
+<p>This attribute is used throughout the class to provide a set
+of hkey specific functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry._open_key">
+<code class="descname">_open_key</code><span class="sig-paren">(</span><em>path</em>, <em>sam</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry._open_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open and return the key specified by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Path to the registry key.</li>
+<li><strong>sam</strong> – The SAM privilege level used to open the key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">The key is opened with privilege level defined by <code class="docutils literal notranslate"><span class="pre">sam</span></code>.
+The user is notified if an error occurs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">If opened successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.OpenKey</span></code> object is
+returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.create_key">
+<code class="descname">create_key</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.create_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the key specified by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Path to the registry key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body">If a creation error occurs, the user is notified.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If created successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.CreateKey</span></code> object is
+returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.delete_key">
+<code class="descname">delete_key</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.delete_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the key specified by the path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – Path to the registry key.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>All of the values under the key are also deleted</strong> but
+subkeys cannot be deleted with this method. The user is
+notified if an error occurs.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">If deleted successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.DeleteKey</span></code> object is
+returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>path</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the key value specified by the path and name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Path to the registry key.</li>
+<li><strong>name</strong> (<em>str</em>) – Name of the registry key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">If the value exists, a value object is returned, otherwise
+<code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="registry.Registry.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>path</em>, <em>name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the data of the key value specified by the path and name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) – Path to the registry key.</li>
+<li><strong>name</strong> (<em>str</em>) – Name of the registry key.</li>
+<li><strong>data</strong> (<em>str</em>) – Data to store into the key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Design:</th><td class="field-body"><p class="first">If the value doesn’t exist, this method creates it and sets
+its type and data accordingly. A check is performed to
+determine if the operation has been completed successfully.
+If it hasn’t the user is notified.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The value of the registry key.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="registry.Value">
+<em class="property">class </em><code class="descclassname">registry.</code><code class="descname">Value</code><span class="sig-paren">(</span><em>name</em>, <em>regtype</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates the Windows registry values.</p>
+<p>It provides name, type and data attributes to mimic the attributes
+of a value in the registry.</p>
+<dl class="method">
+<dt id="registry.Value.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name</em>, <em>regtype</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name, type and data attributes.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-reporterror">
 <span id="reporterror"></span><h2><strong>reporterror</strong><a class="headerlink" href="#module-reporterror" title="Permalink to this headline">¶</a></h2>

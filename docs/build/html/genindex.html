@@ -44,6 +44,7 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#O"><strong>O</strong></a>
@@ -88,6 +89,12 @@
         <li><a href="detailed_design.html#progressbar.ProgressBar.__init__">(progressbar.ProgressBar method)</a>
 </li>
         <li><a href="detailed_design.html#pywarnings.PyWarnings.__init__">(pywarnings.PyWarnings method)</a>
+</li>
+        <li><a href="detailed_design.html#registry.Key.__init__">(registry.Key method)</a>
+</li>
+        <li><a href="detailed_design.html#registry.Registry.__init__">(registry.Registry method)</a>
+</li>
+        <li><a href="detailed_design.html#registry.Value.__init__">(registry.Value method)</a>
 </li>
         <li><a href="detailed_design.html#tickers.Spinner.__init__">(tickers.Spinner method)</a>
 </li>
@@ -170,10 +177,10 @@
 </li>
       <li><a href="detailed_design.html#validation._FileExtensionRule">_FileExtensionRule (class in validation)</a>
 </li>
-      <li><a href="detailed_design.html#config._fromjson">_fromjson() (in module config)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#config._fromjson">_fromjson() (in module config)</a>
+</li>
       <li><a href="detailed_design.html#tickers._GenericWait._generator">_generator() (tickers._GenericWait method)</a>
 </li>
       <li><a href="detailed_design.html#colours._Generic">_Generic (class in colours)</a>
@@ -213,6 +220,8 @@
 </li>
       </ul></li>
       <li><a href="detailed_design.html#database.SQLite._match">_match() (database.SQLite method)</a>
+</li>
+      <li><a href="detailed_design.html#registry.Registry._open_key">_open_key() (registry.Registry method)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.UserInterface._pad">_pad() (user_interface.UserInterface static method)</a>
 </li>
@@ -320,8 +329,6 @@
 </li>
       <li><a href="detailed_design.html#module-config">config (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#database.MySQL.connect">connect() (database.MySQL method)</a>
 
       <ul>
@@ -332,7 +339,11 @@
         <li><a href="detailed_design.html#database.SQLite.connect">(database.SQLite method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#database.Database.connection_active">connection_active() (database.Database method)</a>
+</li>
+      <li><a href="detailed_design.html#registry.Registry.create_key">create_key() (registry.Registry method)</a>
 </li>
       <li><a href="detailed_design.html#colours._Generic.cyan">cyan (colours._Generic attribute)</a>
 </li>
@@ -355,6 +366,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#utils.dbconn_sqlite">dbconn_sqlite() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#registry.Registry.delete_key">delete_key() (registry.Registry method)</a>
 </li>
       <li><a href="detailed_design.html#dict2obj.Dict2Obj">Dict2Obj (class in dict2obj)</a>
 </li>
@@ -404,6 +417,12 @@
 </li>
       <li><a href="detailed_design.html#utils.get_os">get_os() (in module utils)</a>
 </li>
+      <li><a href="detailed_design.html#registry.Key.get_value">get_value() (registry.Key method)</a>
+
+      <ul>
+        <li><a href="detailed_design.html#registry.Registry.get_value">(registry.Registry method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#utils.getcolormap">getcolormap() (in module utils)</a>
@@ -457,6 +476,14 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#utils.json_write">json_write() (in module utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#registry.Key">Key (class in registry)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -560,12 +587,16 @@
 </li>
       <li><a href="detailed_design.html#validation.RegEx">RegEx (class in validation)</a>
 </li>
-      <li><a href="detailed_design.html#module-reporterror">reporterror (module)</a>
+      <li><a href="detailed_design.html#registry.Registry">Registry (class in registry)</a>
 </li>
-      <li><a href="detailed_design.html#reporterror.reporterror">reporterror() (in module reporterror)</a>
+      <li><a href="detailed_design.html#module-registry">registry (module)</a>
+</li>
+      <li><a href="detailed_design.html#module-reporterror">reporterror (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#reporterror.reporterror">reporterror() (in module reporterror)</a>
+</li>
       <li><a href="detailed_design.html#colours._Generic.reset">reset (colours._Generic attribute)</a>
 </li>
       <li><a href="detailed_design.html#pywarnings.PyWarnings.reset_warnings">reset_warnings() (pywarnings.PyWarnings static method)</a>
@@ -582,14 +613,20 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#registry.Key.set_data">set_data() (registry.Key method)</a>
+
+      <ul>
+        <li><a href="detailed_design.html#registry.Registry.set_data">(registry.Registry method)</a>
+</li>
+      </ul></li>
       <li><a href="detailed_design.html#tickers.Spinner">Spinner (class in tickers)</a>
 </li>
       <li><a href="detailed_design.html#database.SQLite">SQLite (class in database)</a>
 </li>
-      <li><a href="detailed_design.html#database.SQLServer">SQLServer (class in database)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#database.SQLServer">SQLServer (class in database)</a>
+</li>
       <li><a href="detailed_design.html#tickers.Spinner.start">start() (tickers.Spinner method)</a>
 
       <ul>
@@ -651,6 +688,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#module-validation">validation (module)</a>
+</li>
+      <li><a href="detailed_design.html#registry.Value">Value (class in registry)</a>
 </li>
   </ul></td>
 </tr></table>
