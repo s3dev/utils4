@@ -1,2 +1,2 @@
-#!/usr/bin/bash
-./make.bat clean && ./make.bat html
+#!/usr/bin/env bash
+make clean && make html

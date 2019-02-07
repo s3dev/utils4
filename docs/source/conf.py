@@ -142,7 +142,7 @@ html_theme = 's3dev'
 # "<project> v<release> documentation" by default.
 #
 html_title = 'utils3 - v%s Documentation' % __version__
-html_logo = 'images/Triangle_black_sm.png'
+html_logo = 'images/triangle_black_sm.png'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
