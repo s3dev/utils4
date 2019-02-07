@@ -126,12 +126,12 @@ class RegEx(object):
     @staticmethod
     def _set_latitude() -> str:
         """Return the regex for latitude."""
-        return r'^(-)?([1-9]|[1-8][0-9]|90)(\.[0-9]{1,})?$'
+        return r'^(-)?(([0-9]|[1-8][0-9])(\.[0-9]{1,})?|90)$'
 
     @staticmethod
     def _set_longitude() -> str:
         """Return the regex for longitude."""
-        return r'^(-)?([1-9]|[1-9][0-9]|1[0-7][0-9]|180)(\.[0-9]{1,})?$'
+        return r'^(-)?(([0-9]|[1-9][0-9]|1[0-7][0-9])(\.[0-9]{1,})?|180)$'
 
     @staticmethod
     def _set_yymmdd() -> str:

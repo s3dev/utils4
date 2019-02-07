@@ -1,0 +1,107 @@
+************* Module utils3.registry
+E: 34, 4: Unable to import 'winreg' (import-error)
+E: 89,15: Undefined variable 'WindowsError' (undefined-variable)
+E:111,15: Undefined variable 'WindowsError' (undefined-variable)
+R: 92, 4: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+E:201,15: Undefined variable 'WindowsError' (undefined-variable)
+E:223,15: Undefined variable 'WindowsError' (undefined-variable)
+E:247,15: Undefined variable 'WindowsError' (undefined-variable)
+
+
+Report
+======
+73 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |3      |3          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |10     |10         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    utils3 
+      \-user_interface (utils3.registry)
+      \-utils (utils3.registry)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |76     |29.46 |76       |=          |
++----------+-------+------+---------+-----------+
+|docstring |154    |59.69 |154      |=          |
++----------+-------+------+---------+-----------+
+|comment   |8      |3.10  |8        |=          |
++----------+-------+------+---------+-----------+
+|empty     |20     |7.75  |20       |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |0      |0        |=          |
++-----------+-------+---------+-----------+
+|refactor   |1      |1        |=          |
++-----------+-------+---------+-----------+
+|warning    |0      |0        |=          |
++-----------+-------+---------+-----------+
+|error      |6      |6        |=          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-------------------------------+------------+
+|message id                     |occurrences |
++===============================+============+
+|undefined-variable             |5           |
++-------------------------------+------------+
+|inconsistent-return-statements |1           |
++-------------------------------+------------+
+|import-error                   |1           |
++-------------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 5.75/10 (previous run: 5.75/10, +0.00)
+

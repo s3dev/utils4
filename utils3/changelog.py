@@ -2,4 +2,5 @@
 """
 .. git_changelog::
     :revisions: 99
+    :detailed-message-pre: True
 """

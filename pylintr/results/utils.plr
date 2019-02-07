@@ -1,0 +1,119 @@
+************* Module utils3.utils
+C:148, 0: Line too long (102/100) (line-too-long)
+I:709,44: Module 'pyodbc' has not 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+I:712,44: Module 'pyodbc' has not 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+I:1180,21: Module 'cx_Oracle' has not 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+I:1220,21: Module 'pyodbc' has not 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+
+
+Report
+======
+277 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |28     |28         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    cx_Oracle (utils3.utils)
+    matplotlib 
+      \-cm (utils3.utils)
+      \-colors (utils3.utils)
+      \-pyplot (utils3.utils)
+    mysql 
+      \-connector (utils3.utils)
+    numpy (utils3.utils)
+    plotly 
+      \-graph_objs (utils3.utils)
+      \-offline (utils3.utils)
+    pyodbc (utils3.utils)
+    six (utils3.utils)
+    unidecode (utils3.utils)
+    utils3 
+      \-_version (utils3.utils)
+      \-config (utils3.utils)
+      \-reporterror (utils3.utils)
+      \-user_interface (utils3.utils)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |304    |20.40 |304      |=          |
++----------+-------+------+---------+-----------+
+|docstring |879    |58.99 |879      |=          |
++----------+-------+------+---------+-----------+
+|comment   |176    |11.81 |176      |=          |
++----------+-------+------+---------+-----------+
+|empty     |131    |8.79  |131      |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |1      |1        |=          |
++-----------+-------+---------+-----------+
+|refactor   |0      |0        |=          |
++-----------+-------+---------+-----------+
+|warning    |0      |0        |=          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |=          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++----------------------+------------+
+|message id            |occurrences |
++======================+============+
+|c-extension-no-member |4           |
++----------------------+------------+
+|line-too-long         |1           |
++----------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 9.96/10 (previous run: 9.96/10, +0.00)
+

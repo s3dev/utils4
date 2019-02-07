@@ -15,7 +15,6 @@
 :Example:
     To implement the spinner into your program::
 
-        import time
         from utils3.tickers import Spinner
 
         spinner = Spinner()
@@ -34,15 +33,15 @@ from utils3 import utils
 
 # pylint: disable=too-few-public-methods
 class _GenericWait(object):
-    """This generic class holds functionality which is inherited by 
+    """This generic class holds functionality which is inherited by
     each ticker type.
-    
+
     """
 
     def __init__(self, charset, delay):
         """Class initialiser."""
+        self.busy = False
         self._is_windows()
-        self._busy = False
         self._charset = charset
         self._delay = self._set_delay(delay=delay)
         self._gen = self._generator()
@@ -50,14 +49,14 @@ class _GenericWait(object):
 
     def stop(self, err=False):
         """Stop the ticker.
-        
+
         Args:
-            err (bool): If the ticker's processing is stopped under 
+            err (bool): If the ticker's processing is stopped under
                 error, passing ``True`` will clear the output line
                 rather than printing ``Done.`` to the console.
 
         """
-        self._busy = False
+        self.busy = False
         if not err:
             self._print_end()
         else:
@@ -140,13 +139,13 @@ class Spinner(_GenericWait):
 
     def start(self):
         """Start the spinner in a new thread."""
-        self._busy = True
+        self.busy = True
         self._print_start()
         threading.Thread(target=self._spinner).start()
 
     def _spinner(self):
         """Run the spinner."""
-        while self._busy:
+        while self.busy:
             sys.stdout.write(next(self._gen))
             sys.stdout.flush()
             time.sleep(self._delay)
@@ -184,14 +183,14 @@ class WaitTicker(_GenericWait):
 
     def start(self):
         """Start the ticker in a new thread."""
-        self._busy = True
+        self.busy = True
         self._print_start()
         threading.Thread(target=self._ticker).start()
 
     def _ticker(self):
         """Run the ticker."""
         i = 1
-        while self._busy:
+        while self.busy:
             if i <= self._nticks:
                 # ADD TICKS
                 sys.stdout.write(next(self._gen))
@@ -200,7 +199,7 @@ class WaitTicker(_GenericWait):
                 i += 1
             else:
                 # REMOVE TICKS
-                while i > 1 and self._busy:
+                while i > 1 and self.busy:
                     sys.stdout.write('\b\033[K')
                     sys.stdout.flush()
                     time.sleep(self._delay)

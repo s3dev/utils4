@@ -1,0 +1,18 @@
+Pylint Summary:
+------------------------
+changelog.plr:
+colours.plr: 10.00/10
+config.plr: 10.00/10
+conf.plr:
+database.plr: 9.95/10
+log.plr: 10.00/10
+progressbar.plr: 10.00/10
+pywarnings.plr: 10.00/10
+registry.plr: 5.75/10
+reporterror.plr: 10.00/10
+setup.plr: 10.00/10
+tickers.plr: 10.00/10
+utils.plr: 9.96/10
+validation.plr: 10.00/10
+------------------------
+Run date: Thu 7 Feb 08:37:51 GMT 2019
