@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dirs="./build ./dist"
+dirs="./build ./dist ./utils3.egg-info"
 
 # CHECK FOR EXISTING BUILD/DIST DIRS
 echo ""

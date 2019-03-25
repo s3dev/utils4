@@ -34,8 +34,6 @@ import os
 import platform
 import time
 import warnings
-
-import win_unicode_console
 from colorama import Fore, Back, Style
 from colorama import init as colourinit
 
@@ -44,8 +42,9 @@ import utils3.reporterror as reporterror
 
 # ALLOW OUR IMPORT ORDER
 # pylint: disable=wrong-import-order
-# TEST OS BEFORE IMPORTING THESE:
+# ONLY IMPORT IF WINDOWS
 if 'win' in platform.system().lower():
+    import win_unicode_console
     from ctypes import windll
 
 
@@ -94,10 +93,12 @@ class UserInterface(object):
             for the low-level win32 work.  Thanks Jonathan!!
 
         """
-        # INSTALL FIX FOR PYTHON 3 WINDOWS CLI ISSUE
-        self._enable_win_unicode_console()
-        # COLORAMA INITIALISATION
-        colourinit()
+        # RUN ONLY IF WINDOWS
+        if 'win' in platform.system().lower():
+            # INSTALL FIX FOR PYTHON 3 WINDOWS CLI ISSUE
+            self._enable_win_unicode_console()
+            # COLORAMA INITIALISATION
+            colourinit()
         # SET LOCATION OF THE UI CONFIG FILE EXPLICITLY (SHOULD WORK FOR WIN AND LINUX)
         ui_config_file = os.path.join(os.path.realpath(os.path.dirname(__file__)),
                                       'user_interface_config.json')

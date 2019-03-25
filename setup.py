@@ -31,6 +31,7 @@
 """
 
 import os
+import platform
 from setuptools import setup, find_packages
 from utils3.get_datafiles import get_datafiles
 from utils3 import utils
@@ -62,8 +63,11 @@ class Setup(object):
                        'Topic :: Utilities']
 
     # PACKAGE REQUIREMENTS
-    REQUIRES        = ['colorama', 'win_unicode_console']
     PACKAGES        = find_packages()
+    REQUIRES        = ['colorama']
+    # ONLY REQUIRE IF WINDOWS
+    if 'win' in platform.system().lower():
+        REQUIRES.append('win_unicode_console')
 
     # ADD DATA AND DOCUMENTATION FILES
     DATA_FILES      = get_datafiles(pkg_dir=PACKAGE_ROOT, get_docs=True)
