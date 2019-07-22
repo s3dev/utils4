@@ -112,6 +112,16 @@ Detailed Module Design
     :special-members:
     :exclude-members: __dict__, __module__, __weakref__
 
+*************
+**timedelta**
+*************
+.. automodule:: timedelta
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__
+
 ******************
 **user_interface**
 ******************

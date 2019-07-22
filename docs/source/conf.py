@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'utils3'
-copyright = '2018 | S3DEV'
+copyright = '2019 | S3DEV'
 author = 'J. Berendt'
 
 # The version info for the project you're documenting, acts as replacement for

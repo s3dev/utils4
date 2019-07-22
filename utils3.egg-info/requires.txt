@@ -1,1 +1,2 @@
 colorama
+win_unicode_console

@@ -1,15 +1,15 @@
 ************* Module conf
 C:250, 0: Wrong hanging indentation (remove 1 space).
-     # The paper size ('letterpaper' or 'a4paper').
+     # The paper size ('letterpaper' or 'a4paper').
     |^ (bad-continuation)
 C:254, 0: Wrong hanging indentation (remove 1 space).
-     # The font size ('10pt', '11pt' or '12pt').
+     # The font size ('10pt', '11pt' or '12pt').
     |^ (bad-continuation)
 C:258, 0: Wrong hanging indentation (remove 1 space).
-     # Additional stuff for the LaTeX preamble.
+     # Additional stuff for the LaTeX preamble.
     |^ (bad-continuation)
 C:262, 0: Wrong hanging indentation (remove 1 space).
-     # Latex figure (float) alignment
+     # Latex figure (float) alignment
     |^ (bad-continuation)
 C:  1, 0: Missing module docstring (missing-docstring)
 W: 56, 0: Redefining built-in 'copyright' (redefined-builtin)
@@ -40,13 +40,13 @@ C:270, 0: Constant name "latex_documents" doesn't conform to '(([A-Z_][A-Z0-9_]*
 C:312, 0: Constant name "man_pages" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
 C:327, 0: Constant name "texinfo_documents" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
 
-
-Report
-======
-28 statements analysed.
-
-Statistics by type
-------------------
+
+Report
+======
+28 statements analysed.
+
+Statistics by type
+------------------
 
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
@@ -59,28 +59,28 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-
-
-
-Raw metrics
------------
+
+
+
+Raw metrics
+-----------
 
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |38     |10.89 |38       |=          |
+|code      |38     |10.89 |39       |-1.00      |
 +----------+-------+------+---------+-----------+
 |docstring |2      |0.57  |2        |=          |
 +----------+-------+------+---------+-----------+
-|comment   |235    |67.34 |235      |=          |
+|comment   |235    |67.34 |81       |+154.00    |
 +----------+-------+------+---------+-----------+
-|empty     |74     |21.20 |74       |=          |
+|empty     |74     |21.20 |39       |+35.00     |
 +----------+-------+------+---------+-----------+
-
-
-
-Duplication
------------
+
+
+
+Duplication
+-----------
 
 +-------------------------+------+---------+-----------+
 |                         |now   |previous |difference |
@@ -89,16 +89,16 @@ Duplication
 +-------------------------+------+---------+-----------+
 |percent duplicated lines |0.000 |0.000    |=          |
 +-------------------------+------+---------+-----------+
-
-
-
-Messages by category
---------------------
+
+
+
+Messages by category
+--------------------
 
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |30     |30       |=          |
+|convention |30     |26       |+4.00      |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |=          |
 +-----------+-------+---------+-----------+
@@ -106,11 +106,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |error      |1      |1        |=          |
 +-----------+-------+---------+-----------+
-
-
-
-Messages
---------
+
+
+
+Messages
+--------
 
 +----------------------+------------+
 |message id            |occurrences |
@@ -127,10 +127,10 @@ Messages
 +----------------------+------------+
 |import-error          |1           |
 +----------------------+------------+
+
+
+
 
-
-
-
---------------------------------------------------------------------
-Your code has been rated at -2.86/10 (previous run: -2.86/10, +0.00)
-
+--------------------------------------------------------------------
+Your code has been rated at -2.86/10 (previous run: -1.03/10, -1.82)
+
