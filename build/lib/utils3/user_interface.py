@@ -14,6 +14,7 @@
                     black text, green background
                     black text, white background
                     black text, yellow background
+                    white text, blue background
                 - **user input expected**
                     white text, black background
                 - **normal behaviour**
@@ -329,6 +330,10 @@ class UserInterface(object):
         cls = stack[1][0].f_locals['self'].__class__
         text = self._cfg['windws'].format(mtd, cls)
         self.print_error(text)
+
+    def print_heading_blue(self, text, padto=0):
+        """Print white text on a blue background."""
+        self.print_(text=text, fore='white', back='blue', style='normal', h_pad=padto)
 
     def print_heading_cyan(self, text, padto=0):
         """Print black text on a cyan background."""
