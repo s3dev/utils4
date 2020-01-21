@@ -1,52 +1,52 @@
 ************* Module conf
-C:250, 0: Wrong hanging indentation (remove 1 space).
-     # The paper size ('letterpaper' or 'a4paper').
+/devmt/py/utils3_0.12.0/docs/source/conf.py:250:0: C0330: Wrong hanging indentation (remove 1 space).
+     # The paper size ('letterpaper' or 'a4paper').
     |^ (bad-continuation)
-C:254, 0: Wrong hanging indentation (remove 1 space).
-     # The font size ('10pt', '11pt' or '12pt').
+/devmt/py/utils3_0.12.0/docs/source/conf.py:254:0: C0330: Wrong hanging indentation (remove 1 space).
+     # The font size ('10pt', '11pt' or '12pt').
     |^ (bad-continuation)
-C:258, 0: Wrong hanging indentation (remove 1 space).
-     # Additional stuff for the LaTeX preamble.
+/devmt/py/utils3_0.12.0/docs/source/conf.py:258:0: C0330: Wrong hanging indentation (remove 1 space).
+     # Additional stuff for the LaTeX preamble.
     |^ (bad-continuation)
-C:262, 0: Wrong hanging indentation (remove 1 space).
-     # Latex figure (float) alignment
+/devmt/py/utils3_0.12.0/docs/source/conf.py:262:0: C0330: Wrong hanging indentation (remove 1 space).
+     # Latex figure (float) alignment
     |^ (bad-continuation)
-C:  1, 0: Missing module docstring (missing-docstring)
-W: 56, 0: Redefining built-in 'copyright' (redefined-builtin)
-E: 24, 0: Unable to import '_version' (import-error)
-C: 24, 0: Import "from _version import __version__" should be placed at the top of the module (wrong-import-position)
-C: 36, 0: Constant name "extensions" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 39, 0: Constant name "templates_path" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 45, 0: Constant name "source_suffix" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 52, 0: Constant name "master_doc" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 55, 0: Constant name "project" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 56, 0: Constant name "copyright" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 57, 0: Constant name "author" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 65, 0: Constant name "version" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 68, 0: Constant name "release" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 75, 0: Constant name "language" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C: 89, 0: Constant name "exclude_patterns" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:111, 0: Constant name "pygments_style" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:120, 0: Constant name "todo_include_todos" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:130, 0: Constant name "html_theme" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:144, 0: Constant name "html_title" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:145, 0: Constant name "html_logo" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:165, 0: Constant name "html_static_path" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:211, 0: Constant name "html_show_sphinx" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:215, 0: Constant name "html_show_copyright" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:245, 0: Constant name "htmlhelp_basename" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:249, 0: Constant name "latex_elements" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:270, 0: Constant name "latex_documents" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:312, 0: Constant name "man_pages" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
-C:327, 0: Constant name "texinfo_documents" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:1:0: C0111: Missing module docstring (missing-docstring)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:56:0: W0622: Redefining built-in 'copyright' (redefined-builtin)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:24:0: E0401: Unable to import '_version' (import-error)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:24:0: C0413: Import "from _version import __version__" should be placed at the top of the module (wrong-import-position)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:36:0: C0103: Constant name "extensions" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:39:0: C0103: Constant name "templates_path" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:45:0: C0103: Constant name "source_suffix" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:52:0: C0103: Constant name "master_doc" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:55:0: C0103: Constant name "project" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:56:0: C0103: Constant name "copyright" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:57:0: C0103: Constant name "author" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:65:0: C0103: Constant name "version" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:68:0: C0103: Constant name "release" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:75:0: C0103: Constant name "language" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:89:0: C0103: Constant name "exclude_patterns" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:111:0: C0103: Constant name "pygments_style" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:120:0: C0103: Constant name "todo_include_todos" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:130:0: C0103: Constant name "html_theme" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:144:0: C0103: Constant name "html_title" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:145:0: C0103: Constant name "html_logo" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:165:0: C0103: Constant name "html_static_path" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:211:0: C0103: Constant name "html_show_sphinx" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:215:0: C0103: Constant name "html_show_copyright" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:245:0: C0103: Constant name "htmlhelp_basename" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:249:0: C0103: Constant name "latex_elements" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:270:0: C0103: Constant name "latex_documents" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:312:0: C0103: Constant name "man_pages" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
+/devmt/py/utils3_0.12.0/docs/source/conf.py:327:0: C0103: Constant name "texinfo_documents" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
 
-
-Report
-======
-28 statements analysed.
-
-Statistics by type
-------------------
+
+Report
+======
+28 statements analysed.
+
+Statistics by type
+------------------
 
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
@@ -59,28 +59,28 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-
-
-
-Raw metrics
------------
+
+
+
+Raw metrics
+-----------
 
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |38     |10.89 |39       |-1.00      |
+|code      |38     |10.89 |38       |=          |
 +----------+-------+------+---------+-----------+
 |docstring |2      |0.57  |2        |=          |
 +----------+-------+------+---------+-----------+
-|comment   |235    |67.34 |81       |+154.00    |
+|comment   |235    |67.34 |235      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |74     |21.20 |39       |+35.00     |
+|empty     |74     |21.20 |74       |=          |
 +----------+-------+------+---------+-----------+
-
-
-
-Duplication
------------
+
+
+
+Duplication
+-----------
 
 +-------------------------+------+---------+-----------+
 |                         |now   |previous |difference |
@@ -89,16 +89,16 @@ Duplication
 +-------------------------+------+---------+-----------+
 |percent duplicated lines |0.000 |0.000    |=          |
 +-------------------------+------+---------+-----------+
-
-
-
-Messages by category
---------------------
+
+
+
+Messages by category
+--------------------
 
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |30     |26       |+4.00      |
+|convention |30     |30       |=          |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |=          |
 +-----------+-------+---------+-----------+
@@ -106,11 +106,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |error      |1      |1        |=          |
 +-----------+-------+---------+-----------+
-
-
-
-Messages
---------
+
+
+
+Messages
+--------
 
 +----------------------+------------+
 |message id            |occurrences |
@@ -127,10 +127,10 @@ Messages
 +----------------------+------------+
 |import-error          |1           |
 +----------------------+------------+
-
-
-
 
---------------------------------------------------------------------
-Your code has been rated at -2.86/10 (previous run: -1.03/10, -1.82)
-
+
+
+
+--------------------------------------------------------------------
+Your code has been rated at -2.86/10 (previous run: -2.86/10, +0.00)
+

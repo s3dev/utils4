@@ -32,6 +32,16 @@ Detailed Module Design
     :special-members:
     :exclude-members: __dict__, __module__, __weakref__
 
+**********
+**dfdiff**
+**********
+.. automodule:: dfdiff
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__
+
 ************
 **dict2obj**
 ************

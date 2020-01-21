@@ -1,84 +1,99 @@
+************* Module utils3.registry
+/devmt/py/utils3_0.12.0/utils3/registry.py:34:4: E0401: Unable to import 'winreg' (import-error)
+/devmt/py/utils3_0.12.0/utils3/registry.py:41:0: R0205: Class 'Value' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+/devmt/py/utils3_0.12.0/utils3/registry.py:57:0: R0205: Class 'Key' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+/devmt/py/utils3_0.12.0/utils3/registry.py:89:15: E0602: Undefined variable 'WindowsError' (undefined-variable)
+/devmt/py/utils3_0.12.0/utils3/registry.py:111:15: E0602: Undefined variable 'WindowsError' (undefined-variable)
+/devmt/py/utils3_0.12.0/utils3/registry.py:117:0: R0205: Class 'Registry' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+/devmt/py/utils3_0.12.0/utils3/registry.py:201:15: E0602: Undefined variable 'WindowsError' (undefined-variable)
+/devmt/py/utils3_0.12.0/utils3/registry.py:223:15: E0602: Undefined variable 'WindowsError' (undefined-variable)
+/devmt/py/utils3_0.12.0/utils3/registry.py:247:15: E0602: Undefined variable 'WindowsError' (undefined-variable)
 
-
-Report
-======
-72 statements analysed.
-
-Statistics by type
-------------------
+
+Report
+======
+72 statements analysed.
+
+Statistics by type
+------------------
 
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |1      |NC         |NC         |100.00      |0.00     |
+|module   |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |3      |NC         |NC         |100.00      |0.00     |
+|class    |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |10     |NC         |NC         |100.00      |0.00     |
+|method   |10     |10         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |0      |NC         |NC         |0           |0        |
+|function |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-
-
-
-External dependencies
----------------------
-::
-
-    utils3 
-      \-user_interface (utils3.registry)
-      \-utils (utils3.registry)
-
-
-
-Raw metrics
------------
+
+
+
+Raw metrics
+-----------
 
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |76     |29.23 |NC       |NC         |
+|code      |76     |29.23 |76       |=          |
 +----------+-------+------+---------+-----------+
-|docstring |154    |59.23 |NC       |NC         |
+|docstring |154    |59.23 |154      |=          |
 +----------+-------+------+---------+-----------+
-|comment   |11     |4.23  |NC       |NC         |
+|comment   |11     |4.23  |11       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |19     |7.31  |NC       |NC         |
+|empty     |19     |7.31  |19       |=          |
 +----------+-------+------+---------+-----------+
-
-
-
-Duplication
------------
+
+
+
+Duplication
+-----------
 
 +-------------------------+------+---------+-----------+
 |                         |now   |previous |difference |
 +=========================+======+=========+===========+
-|nb duplicated lines      |0     |NC       |NC         |
+|nb duplicated lines      |0     |0        |=          |
 +-------------------------+------+---------+-----------+
-|percent duplicated lines |0.000 |NC       |NC         |
+|percent duplicated lines |0.000 |0.000    |=          |
 +-------------------------+------+---------+-----------+
-
-
-
-Messages by category
---------------------
+
+
+
+Messages by category
+--------------------
 
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |NC       |NC         |
+|convention |0      |0        |=          |
 +-----------+-------+---------+-----------+
-|refactor   |0      |NC       |NC         |
+|refactor   |3      |0        |+3.00      |
 +-----------+-------+---------+-----------+
-|warning    |0      |NC       |NC         |
+|warning    |0      |0        |=          |
 +-----------+-------+---------+-----------+
-|error      |0      |NC       |NC         |
+|error      |6      |6        |=          |
 +-----------+-------+---------+-----------+
-
-
-
 
-------------------------------------
-Your code has been rated at 10.00/10
-
+
+
+Messages
+--------
+
++---------------------------+------------+
+|message id                 |occurrences |
++===========================+============+
+|undefined-variable         |5           |
++---------------------------+------------+
+|useless-object-inheritance |3           |
++---------------------------+------------+
+|import-error               |1           |
++---------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 5.42/10 (previous run: 5.83/10, -0.42)
+
