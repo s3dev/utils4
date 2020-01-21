@@ -1,120 +1,117 @@
 ************* Module utils3.utils
-C:148, 0: Line too long (102/100) (line-too-long)
-I:709,44: Module 'pyodbc' has not 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-I:712,44: Module 'pyodbc' has not 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-E:1135, 4: Unable to import 'mysql.connector' (import-error)
-I:1180,21: Module 'cx_Oracle' has not 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-I:1220,21: Module 'pyodbc' has not 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/devmt/py/utils3_0.12.0/utils3/utils.py:148:0: C0301: Line too long (102/100) (line-too-long)
+/devmt/py/utils3_0.12.0/utils3/utils.py:709:44: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/devmt/py/utils3_0.12.0/utils3/utils.py:712:44: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/devmt/py/utils3_0.12.0/utils3/utils.py:917:11: R1719: The if expression can be replaced with 'test' (simplifiable-if-expression)
+/devmt/py/utils3_0.12.0/utils3/utils.py:1180:21: I1101: Module 'cx_Oracle' has no 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/devmt/py/utils3_0.12.0/utils3/utils.py:1220:21: I1101: Module 'pyodbc' has no 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 
-
-Report
-======
-277 statements analysed.
-
-Statistics by type
-------------------
+
+Report
+======
+277 statements analysed.
+
+Statistics by type
+------------------
 
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |1      |NC         |NC         |100.00      |0.00     |
+|module   |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |0      |NC         |NC         |0           |0        |
+|class    |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |0      |NC         |NC         |0           |0        |
+|method   |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-|function |28     |NC         |NC         |100.00      |0.00     |
+|function |28     |28         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-
-
-
-External dependencies
----------------------
+
+
+
+External dependencies
+---------------------
 ::
-
-    cx_Oracle (utils3.utils)
-    matplotlib 
-      \-cm (utils3.utils)
-      \-colors (utils3.utils)
-      \-pyplot (utils3.utils)
-    numpy (utils3.utils)
-    plotly 
-      \-graph_objs (utils3.utils)
-      \-offline (utils3.utils)
-    pyodbc (utils3.utils)
-    six (utils3.utils)
-    unidecode (utils3.utils)
-    utils3 
-      \-_version (utils3.utils)
-      \-config (utils3.utils)
-      \-reporterror (utils3.utils)
-      \-user_interface (utils3.utils)
-
-
-
-Raw metrics
------------
+
+    cx_Oracle (utils3.utils)
+    matplotlib 
+      \-cm (utils3.utils)
+      \-colors (utils3.utils)
+      \-pyplot (utils3.utils)
+    mysql 
+      \-connector (utils3.utils)
+    numpy (utils3.utils)
+    plotly 
+      \-graph_objs (utils3.utils)
+      \-offline (utils3.utils)
+    pyodbc (utils3.utils)
+    six (utils3.utils)
+    unidecode (utils3.utils)
+
+
+
+Raw metrics
+-----------
 
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |304    |20.40 |NC       |NC         |
+|code      |304    |20.40 |304      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |879    |58.99 |NC       |NC         |
+|docstring |879    |58.99 |879      |=          |
 +----------+-------+------+---------+-----------+
-|comment   |176    |11.81 |NC       |NC         |
+|comment   |176    |11.81 |176      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |131    |8.79  |NC       |NC         |
+|empty     |131    |8.79  |131      |=          |
 +----------+-------+------+---------+-----------+
-
-
-
-Duplication
------------
+
+
+
+Duplication
+-----------
 
 +-------------------------+------+---------+-----------+
 |                         |now   |previous |difference |
 +=========================+======+=========+===========+
-|nb duplicated lines      |0     |NC       |NC         |
+|nb duplicated lines      |0     |0        |=          |
 +-------------------------+------+---------+-----------+
-|percent duplicated lines |0.000 |NC       |NC         |
+|percent duplicated lines |0.000 |0.000    |=          |
 +-------------------------+------+---------+-----------+
-
-
-
-Messages by category
---------------------
+
+
+
+Messages by category
+--------------------
 
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |1      |NC       |NC         |
+|convention |1      |1        |=          |
 +-----------+-------+---------+-----------+
-|refactor   |0      |NC       |NC         |
+|refactor   |1      |0        |+1.00      |
 +-----------+-------+---------+-----------+
-|warning    |0      |NC       |NC         |
+|warning    |0      |0        |=          |
 +-----------+-------+---------+-----------+
-|error      |1      |NC       |NC         |
+|error      |0      |0        |=          |
 +-----------+-------+---------+-----------+
-
-
-
-Messages
---------
 
-+----------------------+------------+
-|message id            |occurrences |
-+======================+============+
-|c-extension-no-member |4           |
-+----------------------+------------+
-|line-too-long         |1           |
-+----------------------+------------+
-|import-error          |1           |
-+----------------------+------------+
-
-
-
 
------------------------------------
-Your code has been rated at 9.78/10
-
+
+Messages
+--------
+
++---------------------------+------------+
+|message id                 |occurrences |
++===========================+============+
+|c-extension-no-member      |4           |
++---------------------------+------------+
+|simplifiable-if-expression |1           |
++---------------------------+------------+
+|line-too-long              |1           |
++---------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 9.93/10 (previous run: 9.96/10, -0.04)
+
