@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Index &#8212; utils3 - v0.12.0 Documentation</title>
+    <title>Index &#8212; utils3 - v0.13.0 Documentation</title>
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,7 +18,7 @@
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.12.0 Documentation</span></a></h1>
+          <span>utils3 - v0.13.0 Documentation</span></a></h1>
         <h2 class="heading"><span>Index</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -63,10 +63,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#database.Database.__del__">__del__() (database.Database method)</a>
 </li>
-      <li><a href="detailed_design.html#colours._Back.__init__">__init__() (colours._Back method)</a>
+      <li><a href="detailed_design.html#cmaps._Preview.__init__">__init__() (cmaps._Preview method)</a>
 
       <ul>
         <li><a href="detailed_design.html#colours.Colours.__init__">(colours.Colours method)</a>
+</li>
+        <li><a href="detailed_design.html#colours._Back.__init__">(colours._Back method)</a>
 </li>
         <li><a href="detailed_design.html#colours._Generic.__init__">(colours._Generic method)</a>
 </li>
@@ -133,6 +135,8 @@
       </ul></li>
       <li><a href="detailed_design.html#user_interface.UserInterface._build_color_dict">_build_color_dict() (user_interface.UserInterface static method)</a>
 </li>
+      <li><a href="detailed_design.html#cmaps._Preview._build_dataset">_build_dataset() (cmaps._Preview method)</a>
+</li>
       <li><a href="detailed_design.html#tickers._GenericWait._clearline">_clearline() (tickers._GenericWait method)</a>
 </li>
       <li><a href="detailed_design.html#colours._Generic._colorama_init">_colorama_init() (colours._Generic method)</a>
@@ -173,6 +177,8 @@
 </li>
       <li><a href="detailed_design.html#user_interface.UserInterface._enable_win_unicode_console">_enable_win_unicode_console() (user_interface.UserInterface method)</a>
 </li>
+      <li><a href="detailed_design.html#crypto.Crypto._encode">_encode() (crypto.Crypto static method)</a>
+</li>
       <li><a href="detailed_design.html#database.Oracle._execute_commit">_execute_commit() (database.Oracle method)</a>
 </li>
       <li><a href="detailed_design.html#config._file_exists">_file_exists() (in module config)</a>
@@ -181,10 +187,10 @@
 </li>
       <li><a href="detailed_design.html#dfdiff._Messages._fmt">_fmt (dfdiff._Messages attribute)</a>
 </li>
-      <li><a href="detailed_design.html#config._fromjson">_fromjson() (in module config)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#config._fromjson">_fromjson() (in module config)</a>
+</li>
       <li><a href="detailed_design.html#tickers._GenericWait._generator">_generator() (tickers._GenericWait method)</a>
 </li>
       <li><a href="detailed_design.html#colours._Generic">_Generic (class in colours)</a>
@@ -240,6 +246,8 @@
       <li><a href="detailed_design.html#utils._prev_mpl">_prev_mpl() (in module utils)</a>
 </li>
       <li><a href="detailed_design.html#utils._prev_plotly">_prev_plotly() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#cmaps._Preview">_Preview (class in cmaps)</a>
 </li>
       <li><a href="detailed_design.html#tickers._GenericWait._print_end">_print_end() (tickers._GenericWait method)</a>
 </li>
@@ -317,10 +325,14 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="detailed_design.html#colours.Colours.back">back (colours.Colours attribute)</a>
+      <li><a href="detailed_design.html#crypto.Crypto.b64">b64() (crypto.Crypto method)</a>
+</li>
+      <li><a href="detailed_design.html#crypto.Crypto.b64md5">b64md5() (crypto.Crypto method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#colours.Colours.back">back (colours.Colours attribute)</a>
+</li>
       <li><a href="detailed_design.html#colours._Generic.black">black (colours._Generic attribute)</a>
 </li>
       <li><a href="detailed_design.html#colours._Generic.blue">blue (colours._Generic attribute)</a>
@@ -334,6 +346,10 @@
       <li><a href="changelog.html#module-changelog">changelog (module)</a>
 </li>
       <li><a href="detailed_design.html#utils.clean_df">clean_df() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#cmaps.CMaps">CMaps (class in cmaps)</a>
+</li>
+      <li><a href="detailed_design.html#module-cmaps">cmaps (module)</a>
 </li>
       <li><a href="detailed_design.html#colours.Colours">Colours (class in colours)</a>
 </li>
@@ -360,6 +376,10 @@
       <li><a href="detailed_design.html#database.Database.connection_active">connection_active() (database.Database method)</a>
 </li>
       <li><a href="detailed_design.html#registry.Registry.create_key">create_key() (registry.Registry method)</a>
+</li>
+      <li><a href="detailed_design.html#crypto.Crypto">Crypto (class in crypto)</a>
+</li>
+      <li><a href="detailed_design.html#module-crypto">crypto (module)</a>
 </li>
       <li><a href="detailed_design.html#colours._Generic.cyan">cyan (colours._Generic attribute)</a>
 </li>
@@ -435,22 +455,26 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#cmaps.CMaps.get_cmap">get_cmap() (cmaps.CMaps static method)</a>
+</li>
       <li><a href="detailed_design.html#module-get_datafiles">get_datafiles (module)</a>
 </li>
       <li><a href="detailed_design.html#get_datafiles.get_datafiles">get_datafiles() (in module get_datafiles)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.UserInterface.get_input">get_input() (user_interface.UserInterface method)</a>
 </li>
+      <li><a href="detailed_design.html#cmaps.CMaps.get_named_colours">get_named_colours() (cmaps.CMaps static method)</a>
+</li>
       <li><a href="detailed_design.html#utils.get_os">get_os() (in module utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#registry.Key.get_value">get_value() (registry.Key method)</a>
 
       <ul>
         <li><a href="detailed_design.html#registry.Registry.get_value">(registry.Registry method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#utils.getcolormap">getcolormap() (in module utils)</a>
 </li>
       <li><a href="detailed_design.html#utils.getdrivername">getdrivername() (in module utils)</a>
@@ -541,6 +565,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="detailed_design.html#crypto.Crypto.md5">md5() (crypto.Crypto method)</a>
+</li>
       <li><a href="detailed_design.html#database.MySQL">MySQL (class in database)</a>
 </li>
   </ul></td>
@@ -558,6 +584,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#utils.ping">ping() (in module utils)</a>
+</li>
+      <li><a href="detailed_design.html#cmaps._Preview.plot">plot() (cmaps._Preview method)</a>
 </li>
       <li><a href="detailed_design.html#user_interface.UserInterface.print_">print_() (user_interface.UserInterface method)</a>
 </li>
@@ -717,11 +745,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#database.SQLite.vacuum">vacuum() (database.SQLite method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#module-validation">validation (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detailed_design.html#registry.Value">Value (class in registry)</a>
+</li>
+      <li><a href="detailed_design.html#cmaps.CMaps.view_cmaps">view_cmaps() (cmaps.CMaps static method)</a>
 </li>
   </ul></td>
 </tr></table>

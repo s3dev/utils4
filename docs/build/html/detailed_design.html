@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Detailed Module Design &#8212; utils3 - v0.12.0 Documentation</title>
+    <title>Detailed Module Design &#8212; utils3 - v0.13.0 Documentation</title>
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -19,7 +19,7 @@
     <link rel="prev" title="Overview" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.12.0 Documentation</span></a></h1>
+          <span>utils3 - v0.13.0 Documentation</span></a></h1>
         <h2 class="heading"><span>Detailed Module Design</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -38,6 +38,130 @@
         
   <div class="section" id="detailed-module-design">
 <h1>Detailed Module Design<a class="headerlink" href="#detailed-module-design" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-cmaps">
+<span id="cmaps"></span><h2><strong>cmaps</strong><a class="headerlink" href="#module-cmaps" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module provides an easy-access, light-weight wrapper,
+around <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s colour maps.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example code use:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.cmaps</span> <span class="k">import</span> <span class="n">cmaps</span>
+<span class="n">clrs</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">as_hex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">preview</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">clrs</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;#005ed0&#39;</span><span class="p">,</span> <span class="s1">&#39;#007ec0&#39;</span><span class="p">,</span> <span class="s1">&#39;#009eb0&#39;</span><span class="p">,</span> <span class="s1">&#39;#00bfa0&#39;</span><span class="p">,</span> <span class="s1">&#39;#00ff80&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="cmaps.CMaps">
+<em class="property">class </em><code class="descclassname">cmaps.</code><code class="descname">CMaps</code><a class="headerlink" href="#cmaps.CMaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides an easy-access layer to <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s colour maps.</p>
+<dl class="staticmethod">
+<dt id="cmaps.CMaps.get_cmap">
+<em class="property">static </em><code class="descname">get_cmap</code><span class="sig-paren">(</span><em>map_name</em>, <em>n</em>, <em>as_hex=False</em>, <em>preview=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps.CMaps.get_cmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of (n) RGBA or Hex colours from a specified map.</p>
+<p>This colour wrapper is specialised to return (n) colours from
+a normalised colour map. Meaning, rather than returning the
+5 lightest colours, or the 200 lightest to medium colours, the
+lightest colours are removed (as often they are difficult to
+see in a graph) and the darkest colour is added. The intent
+is to provide (n) ‘usable’ colours for graphing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>map_name</strong> (<em>str</em>) – Name of the matplotlib colourmap.</li>
+<li><strong>n</strong> (<em>int</em>) – Number of colours to return.  Must be &gt;= 256.</li>
+<li><strong>as_hex</strong> (<em>bool</em>) – Return the colours as a hex string. By
+default, colours are returned as RGBA.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list (or np.array) of (n) colours.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cmaps.CMaps.get_named_colours">
+<em class="property">static </em><code class="descname">get_named_colours</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#cmaps.CMaps.get_named_colours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of CSS name and hex value.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cmaps.CMaps.view_cmaps">
+<em class="property">static </em><code class="descname">view_cmaps</code><span class="sig-paren">(</span><em>view_only=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps.CMaps.view_cmaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the available colour maps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>view_only</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> the list will be printed
+and <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.  If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the list
+is returned and nothing is printed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cmaps._Preview">
+<em class="property">class </em><code class="descclassname">cmaps.</code><code class="descname">_Preview</code><span class="sig-paren">(</span><em>colours</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide a preview for a given colourmap.</p>
+<dl class="method">
+<dt id="cmaps._Preview.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>colours</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>_Preview class initialiser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>colours</strong> (<em>list</em><em>, </em><em>np.array</em>) – Iterable of colours for preview.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cmaps._Preview._build_dataset">
+<code class="descname">_build_dataset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview._build_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataset to be plotted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cmaps._Preview.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot to show colours.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-colours">
 <span id="colours"></span><h2><strong>colours</strong><a class="headerlink" href="#module-colours" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
@@ -432,6 +556,144 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-crypto">
+<span id="crypto"></span><h2><strong>crypto</strong><a class="headerlink" href="#module-crypto" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Purpose:</th><td class="field-body"><p class="first">This module provides a light wrapper around the <code class="docutils literal notranslate"><span class="pre">base64</span></code>
+and <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries to provide some additional
+functionality.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Platform:</th><td class="field-body"><p class="first">Linux/Windows | Python 3.5</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Developer:</th><td class="field-body"><p class="first">J Berendt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Email:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Comments:</th><td class="field-body"><p class="first">n/a</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Example code use:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils3.crypto</span> <span class="k">import</span> <span class="n">crypto</span>
+
+<span class="c1"># Obtain a quick MD5 hash.</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The quick brown fox jumps over the lazy dog&quot;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">9e107</span><span class="n">d9d372bb6826bd81d3542a419d6</span>
+
+<span class="c1"># Obtain a Base64 encoded MD5 hash.</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The quick brown fox jumps over the lazy dog&quot;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">b64md5</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">OWUxMDdkOWQzNzJiYjY4MjZiZDgxZDM1NDJhNDE5ZDY</span><span class="o">=</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="crypto.Crypto">
+<em class="property">class </em><code class="descclassname">crypto.</code><code class="descname">Crypto</code><a class="headerlink" href="#crypto.Crypto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class used for hashing and encoding.</p>
+<p>This class acts as a simple wrapper around the <code class="docutils literal notranslate"><span class="pre">base64</span></code> and
+<code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries, providing additional functionality.</p>
+<dl class="staticmethod">
+<dt id="crypto.Crypto._encode">
+<em class="property">static </em><code class="descname">_encode</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#crypto.Crypto._encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a string is <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before processing.</p>
+<p>If the string is <code class="docutils literal notranslate"><span class="pre">str</span></code>, it is converted to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> and
+returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A <code class="docutils literal notranslate"><span class="pre">bytes</span></code> encoded string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="crypto.Crypto.b64">
+<code class="descname">b64</code><span class="sig-paren">(</span><em>data</em>, <em>decode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#crypto.Crypto.b64" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an encoded/decoded Base64 encryption.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>str</em>) – String to be encoded.  If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type
+is passed, it is encoded to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before encoding.</li>
+<li><strong>decode</strong> (<em>bool</em>) – Return a decoded string.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An encoded or decoded Base64 encrypted string.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="crypto.Crypto.b64md5">
+<code class="descname">b64md5</code><span class="sig-paren">(</span><em>data</em>, <em>trunc=None</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#crypto.Crypto.b64md5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a truncated Base64 encoded MD5 hash from a string or
+array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>str</em><em>, </em><em>iterable</em>) – Object containing string(s) to be
+encoded.</li>
+<li><strong>trunc</strong> (<em>int</em>) – Truncate the Base64 string to (n) characters.
+As string slicing is used, values such as <code class="docutils literal notranslate"><span class="pre">-1</span></code> are
+also valid.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An (optionally truncated) Base64 encoded MD5 hash of the
+passed string or iterable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="crypto.Crypto.md5">
+<code class="descname">md5</code><span class="sig-paren">(</span><em>data</em>, <em>decode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#crypto.Crypto.md5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an encoded/decoded MD5 hash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>str</em>) – String to be hashed.  If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type
+is passed, it is encoded to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before hashing.</li>
+<li><strong>decode</strong> (<em>bool</em>) – Return a decoded string.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An encoded or decoded MD5 hash.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>

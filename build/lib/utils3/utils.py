@@ -634,6 +634,11 @@ def getcolormap(colormap='Blues', n=5, colorscale=False, dtype='hex',
     from matplotlib import cm
     from matplotlib.colors import rgb2hex as r2h
 
+    # DEPRECATION NOTICE
+    print('\nDeprecation Warning: This function has been deprecated and '
+          'will be removed in future versions.\nFor colourmap access, '
+          'refer to the ``utils3.cmaps`` module.')
+
     # CREATE A COLOR MAP OBJECT (MAP, NUMBER OF VALUES)
     cmap = cm.get_cmap(colormap, n)
 
@@ -858,6 +863,11 @@ def listcolormaps():
     from matplotlib.pyplot import colormaps
 
     print(colormaps())
+
+    # DEPRECATION NOTICE
+    print('\nDeprecation Warning: This function has been deprecated and '
+          'will be removed in future versions.\nFor colourmap access, '
+          'refer to the ``utils3.cmaps`` module.')
 
 
 # ----------------------------------------------------------------------

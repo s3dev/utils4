@@ -2,6 +2,16 @@
 Detailed Module Design
 ######################
 
+*********
+**cmaps**
+*********
+.. automodule:: cmaps
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__
+
 ***********
 **colours**
 ***********
@@ -16,6 +26,16 @@ Detailed Module Design
 **config**
 **********
 .. automodule:: config
+    :members:
+    :undoc-members:
+    :private-members:
+    :special-members:
+    :exclude-members: __dict__, __module__, __weakref__
+
+**********
+**crypto**
+**********
+.. automodule:: crypto
     :members:
     :undoc-members:
     :private-members:
