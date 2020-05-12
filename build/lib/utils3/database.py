@@ -84,8 +84,6 @@ class Database(object):
         success = False
         if self.connected:
             success = True
-        else:
-            self._ui.print_warning('\nThe database must be connected first.')
         return success
 
     def run_query(self, query) -> list:
