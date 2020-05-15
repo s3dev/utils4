@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 :Purpose:   This module is designed to report program errors to the
@@ -6,7 +7,7 @@
 
 :Platform:  Linux/Windows | Python 3.5
 :Developer: J Berendt
-:Email:     support@73rdstreetdevelopment.co.uk
+:Email:     support@s3dev.co.uk
 
 :Comments:  n/a
 
@@ -44,37 +45,32 @@ def reporterror(error, logevent=False, logfilepath='c:/temp/reporterror.log'):
 
             ERROR:  division by zero
             TYPE:   <class 'ZeroDivisionError'>
-            FUNC:   <module>
+            MODU:   <./module/with/error.py>
+            FUNC:   <func_name>
             LINE:   2
             CMD:    1/0
 
     """
-    # BUILT-IN IMPORTS
     import sys
     import traceback
-    # SELF-DEPENDENT IMPORTS
     from utils3.log import Log
 
-    # GET TRACEBACK OBJECTS
     exc_type, _, exc_tb = sys.exc_info()
-    _, line_num, func_name, text = traceback.extract_tb(exc_tb)[-1]
+    fnam, line, func, text = traceback.extract_tb(exc_tb)[-1]
 
-    # USER NOTIFICATION
     print('')
     print('ERROR:\t%s'  % error)
     print('TYPE:\t%s'   % exc_type)
-    print('FUNC:\t%s'   % func_name)
-    print('LINE:\t%s'   % line_num)
+    print('MODU:\t%s'   % fnam)
+    print('FUNC:\t%s'   % func)
+    print('LINE:\t%s'   % line)
     print('CMD:\t%s'    % text)
     print('')
 
-    # LOG THE ERROR
     if logevent:
-        # SETUP THE LOGGER
         logger = Log(filepath=logfilepath)
-        # LOG ERROR
-        logger.write(text='ERROR: %s; CMD: %s; METHOD: %s; LINE: %s' %
-                     (error, text, func_name, line_num))
+        msg = 'ERROR: {}, CMD: {}, MODULE: {}, FUNC: {}, LINE: {}'
+        msg = text.format(error, text, fnam, func, line)
+        logger.write(msg)
 
-    # CLEANUP
     del (exc_type, exc_tb)
