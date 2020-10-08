@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Change Log &#8212; utils3 - v0.13.2 Documentation</title>
+    <title>Change Log &#8212; utils3 - v0.13.3 Documentation</title>
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -17,7 +17,7 @@
     <link rel="prev" title="Detailed Module Design" href="detailed_design.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.13.2 Documentation</span></a></h1>
+          <span>utils3 - v0.13.3 Documentation</span></a></h1>
         <h2 class="heading"><span>Change Log</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -35,6 +35,26 @@
   <div class="section" id="module-changelog">
 <span id="change-log"></span><h1>Change Log<a class="headerlink" href="#module-changelog" title="Permalink to this headline">¶</a></h1>
 <ul>
+<li><p><strong>0.13.3 - User interface module bug fix.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2020-10-08 08:35:41</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Details:
+- BUG: Addressed a bug in the user_interface module where all warning
+  messages were displayed in any application instantiating
+  UserInterface, although the application itself had set warnings to
+  &#39;ignore&#39;.
+- FIX: Rather than ignoring, then resetting the warnings, a
+  (previously unknown) argument has been passed into the `enable()`
+  function of `win_unicode_console`to bypass the stdin and stdout
+  encoding check. It was the mismatch in stdin and stdout encoding
+  which threw the RuntimeWaring, causing the need for warning
+  suppression.
+
+Other changes:
+- New pylintr
+
+Released: 2020-10-08
+</pre></div>
+</div>
+</li>
 <li><p><strong>0.13.2 - Updated reporterror module to include the module name.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2020-05-15 16:32:13</em></p></li>
 <li><p><strong>0.13.1 - Bug fix to database module.  Sphinx updates.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2020-05-12 20:09:32</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>

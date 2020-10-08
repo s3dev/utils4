@@ -1,11 +1,12 @@
 ************* Module utils3.database
-/devmt/py/utils3_0.12.0/utils3/database.py:258:0: C0301: Line too long (106/100) (line-too-long)
-/devmt/py/utils3_0.12.0/utils3/database.py:39:0: R0205: Class 'Database' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+/var/devmt/py/utils3_0.13.3/utils3/database.py:256:0: C0301: Line too long (106/100) (line-too-long)
+/var/devmt/py/utils3_0.13.3/utils3/database.py:39:0: R0205: Class 'Database' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+/var/devmt/py/utils3_0.13.3/utils3/database.py:162:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
 
 
 Report
 ======
-209 statements analysed.
+208 statements analysed.
 
 Statistics by type
 ------------------
@@ -13,13 +14,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |1      |1          |=          |100.00      |0.00     |
+|module   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |5      |5          |=          |100.00      |0.00     |
+|class    |5      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |30     |30         |=          |100.00      |0.00     |
+|method   |30     |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |0      |0          |=          |0           |0        |
+|function |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -30,13 +31,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |251    |28.39 |251      |=          |
+|code      |249    |28.23 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |489    |55.32 |489      |=          |
+|docstring |489    |55.44 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |91     |10.29 |91       |=          |
+|comment   |91     |10.32 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |53     |6.00  |53       |=          |
+|empty     |53     |6.01  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -47,9 +48,9 @@ Duplication
 +-------------------------+------+---------+-----------+
 |                         |now   |previous |difference |
 +=========================+======+=========+===========+
-|nb duplicated lines      |0     |0        |=          |
+|nb duplicated lines      |0     |NC       |NC         |
 +-------------------------+------+---------+-----------+
-|percent duplicated lines |0.000 |0.000    |=          |
+|percent duplicated lines |0.000 |NC       |NC         |
 +-------------------------+------+---------+-----------+
 
 
@@ -60,13 +61,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |1      |1        |=          |
+|convention |1      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|refactor   |1      |0        |+1.00      |
+|refactor   |2      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|warning    |0      |0        |=          |
+|warning    |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|error      |0      |0        |=          |
+|error      |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
 
 
@@ -79,6 +80,8 @@ Messages
 +===========================+============+
 |useless-object-inheritance |1           |
 +---------------------------+------------+
+|unnecessary-comprehension  |1           |
++---------------------------+------------+
 |line-too-long              |1           |
 +---------------------------+------------+
 
@@ -86,5 +89,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 9.90/10 (previous run: 9.95/10, -0.05)
+Your code has been rated at 9.86/10 (previous run: 9.90/10, -0.05)
 

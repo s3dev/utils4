@@ -1,8 +1,13 @@
+************* Module utils3.crypto
+/var/devmt/py/utils3_0.13.3/utils3/crypto.py:94:8: C0103: Variable name "h" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils3_0.13.3/utils3/crypto.py:112:8: C0103: Variable name "h" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils3_0.13.3/utils3/crypto.py:114:12: C0103: Variable name "h" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils3_0.13.3/utils3/crypto.py:118:0: C0103: Constant name "crypto" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
 
 
 Report
 ======
-65 statements analysed.
+25 statements analysed.
 
 Statistics by type
 ------------------
@@ -12,20 +17,12 @@ Statistics by type
 +=========+=======+===========+===========+============+=========+
 |module   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |2      |NC         |NC         |100.00      |0.00     |
+|class    |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |8      |NC         |NC         |100.00      |0.00     |
+|method   |4      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-
-
-
-External dependencies
----------------------
-::
-
-    pandas (utils3.dfdiff)
 
 
 
@@ -35,13 +32,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |73     |44.51 |NC       |NC         |
+|code      |27     |22.50 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |64     |39.02 |NC       |NC         |
+|docstring |81     |67.50 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |13     |7.93  |NC       |NC         |
+|comment   |2      |1.67  |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |14     |8.54  |NC       |NC         |
+|empty     |10     |8.33  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -65,7 +62,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |NC       |NC         |
+|convention |4      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |refactor   |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -76,7 +73,18 @@ Messages by category
 
 
 
+Messages
+--------
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
++-------------+------------+
+|message id   |occurrences |
++=============+============+
+|invalid-name |4           |
++-------------+------------+
+
+
+
+
+-----------------------------------
+Your code has been rated at 8.40/10
 

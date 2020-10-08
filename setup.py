@@ -4,7 +4,6 @@
 :App:       setup.py
 :Purpose:   Python library packager.
 
-:Version:   0.2.1
 :Platform:  Linux/Windows | Python 3.5
 :Developer: J Berendt
 :Email:     support@73rdstreetdevelopment.co.uk
@@ -29,6 +28,7 @@
         $ pip install git+https://github.com/s3dev/<pkgname>
 
 """
+# pylint: disable=too-few-public-methods
 
 import os
 import platform
@@ -38,16 +38,15 @@ from utils3 import utils
 from utils3._version import __version__
 
 
-# pylint: disable=too-few-public-methods
-class Setup(object):
+class Setup():
     """Create a dist package for this library."""
 
     PACKAGE         = 'utils3'
     VERSION         = __version__
     PLATFORMS       = 'Python 3.5'
-    DESC            = 'Bespoke general utilities package for Python 3.5.'
+    DESC            = 'Bespoke general utilities package for Python 3.5+.'
     AUTHOR          = 'J. Berendt'
-    AUTHOR_EMAIL    = 'support@73rdstreetdevelopment.co.uk'
+    AUTHOR_EMAIL    = 'support@s3dev.uk'
     URL             = 'https://github.com/s3dev/utils3'
     LICENSE         = 'MIT'
     ROOT            = os.path.realpath(os.path.dirname(__file__))
@@ -55,7 +54,10 @@ class Setup(object):
     SITE_PKGS       = os.path.join(utils.getsitepackages(), PACKAGE)
     INCL_PKG_DATA   = False
     CLASSIFIERS     = ['Programming Language :: Python :: 3.5',
+                       'Programming Language :: Python :: 3.6',
+                       'Programming Language :: Python :: 3.7',
                        'License :: OSI Approved :: MIT License',
+                       'Development Status :: 4 - Beta',
                        'Operating System :: Microsoft :: Windows',
                        'Operating System :: POSIX :: Linux',
                        'Topic :: Software Development',

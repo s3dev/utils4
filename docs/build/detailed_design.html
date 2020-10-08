@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Detailed Module Design &#8212; utils3 - v0.13.2 Documentation</title>
+    <title>Detailed Module Design &#8212; utils3 - v0.13.3 Documentation</title>
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,7 +18,7 @@
     <link rel="prev" title="Overview" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.13.2 Documentation</span></a></h1>
+          <span>utils3 - v0.13.3 Documentation</span></a></h1>
         <h2 class="heading"><span>Detailed Module Design</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -67,13 +67,13 @@ around <code class="docutils literal notranslate"><span class="pre">matplotlib</
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="cmaps.CMaps">
 <em class="property">class </em><code class="sig-prename descclassname">cmaps.</code><code class="sig-name descname">CMaps</code><a class="headerlink" href="#cmaps.CMaps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides an easy-access layer to <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s colour maps.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="cmaps.CMaps.get_cmap">
-<em class="property">static </em><code class="sig-name descname">get_cmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map_name</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">as_hex</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">preview</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps.CMaps.get_cmap" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">get_cmap</code><span class="sig-paren">(</span><em class="sig-param">map_name</em>, <em class="sig-param">n</em>, <em class="sig-param">as_hex=False</em>, <em class="sig-param">preview=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps.CMaps.get_cmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a list of (n) RGBA or Hex colours from a specified map.</p>
 <p>This colour wrapper is specialised to return (n) colours from
 a normalised colour map. Meaning, rather than returning the
@@ -96,15 +96,15 @@ default, colours are returned as RGBA.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="cmaps.CMaps.get_named_colours">
 <em class="property">static </em><code class="sig-name descname">get_named_colours</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#cmaps.CMaps.get_named_colours" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a dictionary of CSS name and hex value.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="cmaps.CMaps.view_cmaps">
-<em class="property">static </em><code class="sig-name descname">view_cmaps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">view_only</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps.CMaps.view_cmaps" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">view_cmaps</code><span class="sig-paren">(</span><em class="sig-param">view_only=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps.CMaps.view_cmaps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the available colour maps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -117,13 +117,13 @@ is returned and nothing is printed.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="cmaps._Preview">
-<em class="property">class </em><code class="sig-prename descclassname">cmaps.</code><code class="sig-name descname">_Preview</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colours</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cmaps.</code><code class="sig-name descname">_Preview</code><span class="sig-paren">(</span><em class="sig-param">colours</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide a preview for a given colourmap.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="cmaps._Preview.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colours</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">colours</em><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>_Preview class initialiser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -132,13 +132,13 @@ is returned and nothing is printed.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="cmaps._Preview._build_dataset">
 <code class="sig-name descname">_build_dataset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview._build_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a dataset to be plotted.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="cmaps._Preview.plot">
 <code class="sig-name descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cmaps._Preview.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot to show colours.</p>
@@ -179,9 +179,9 @@ called to configure Windows to handle CLI colouring.</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="colours.Colours">
-<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">Colours</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours.Colours" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">Colours</code><span class="sig-paren">(</span><em class="sig-param">bright=True</em><span class="sig-paren">)</span><a class="headerlink" href="#colours.Colours" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main colours class, which contains text and bkg colours.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -201,19 +201,19 @@ to configure Windows to handle CLI colouring.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="colours.Colours.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours.Colours.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bright=True</em><span class="sig-paren">)</span><a class="headerlink" href="#colours.Colours.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours.Colours.back">
 <em class="property">property </em><code class="sig-name descname">back</code><a class="headerlink" href="#colours.Colours.back" title="Permalink to this definition">¶</a></dt>
 <dd><p>Background colours.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours.Colours.text">
 <em class="property">property </em><code class="sig-name descname">text</code><a class="headerlink" href="#colours.Colours.text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Text colours.</p>
@@ -221,83 +221,83 @@ to configure Windows to handle CLI colouring.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="colours._Back">
-<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">_Back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Back" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">_Back</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Back" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class contains background colours.</p>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._BLK">
 <code class="sig-name descname">_BLK</code><em class="property"> = 40</em><a class="headerlink" href="#colours._Back._BLK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._BLU">
 <code class="sig-name descname">_BLU</code><em class="property"> = 44</em><a class="headerlink" href="#colours._Back._BLU" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._CYN">
 <code class="sig-name descname">_CYN</code><em class="property"> = 46</em><a class="headerlink" href="#colours._Back._CYN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._GRN">
 <code class="sig-name descname">_GRN</code><em class="property"> = 42</em><a class="headerlink" href="#colours._Back._GRN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._MAG">
 <code class="sig-name descname">_MAG</code><em class="property"> = 45</em><a class="headerlink" href="#colours._Back._MAG" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._RED">
 <code class="sig-name descname">_RED</code><em class="property"> = 41</em><a class="headerlink" href="#colours._Back._RED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._WHT">
 <code class="sig-name descname">_WHT</code><em class="property"> = 47</em><a class="headerlink" href="#colours._Back._WHT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Back._YLW">
 <code class="sig-name descname">_YLW</code><em class="property"> = 43</em><a class="headerlink" href="#colours._Back._YLW" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Back.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Back.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Back.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="colours._Generic">
-<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">_Generic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">_Generic</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic" title="Permalink to this definition">¶</a></dt>
 <dd><p>The generic worker class inherited by the specific classes.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic._colorama_init">
 <code class="sig-name descname">_colorama_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic._colorama_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>If Windows, run colorama init so colours display properly.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic._get_os">
 <em class="property">static </em><code class="sig-name descname">_get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic._get_os" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the OS.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic._set_bright">
-<em class="property">static </em><code class="sig-name descname">_set_bright</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic._set_bright" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_set_bright</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Generic._set_bright" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the escape sequence template.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -306,55 +306,55 @@ to configure Windows to handle CLI colouring.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.black">
 <em class="property">property </em><code class="sig-name descname">black</code><a class="headerlink" href="#colours._Generic.black" title="Permalink to this definition">¶</a></dt>
 <dd><p>Black</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.blue">
 <em class="property">property </em><code class="sig-name descname">blue</code><a class="headerlink" href="#colours._Generic.blue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Blue</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.cyan">
 <em class="property">property </em><code class="sig-name descname">cyan</code><a class="headerlink" href="#colours._Generic.cyan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cyan</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.green">
 <em class="property">property </em><code class="sig-name descname">green</code><a class="headerlink" href="#colours._Generic.green" title="Permalink to this definition">¶</a></dt>
 <dd><p>Green</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.magenta">
 <em class="property">property </em><code class="sig-name descname">magenta</code><a class="headerlink" href="#colours._Generic.magenta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Magenta</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.red">
 <em class="property">property </em><code class="sig-name descname">red</code><a class="headerlink" href="#colours._Generic.red" title="Permalink to this definition">¶</a></dt>
 <dd><p>Red</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.reset">
 <em class="property">property </em><code class="sig-name descname">reset</code><a class="headerlink" href="#colours._Generic.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset colour output.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.white">
 <em class="property">property </em><code class="sig-name descname">white</code><a class="headerlink" href="#colours._Generic.white" title="Permalink to this definition">¶</a></dt>
 <dd><p>White</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Generic.yellow">
 <em class="property">property </em><code class="sig-name descname">yellow</code><a class="headerlink" href="#colours._Generic.yellow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Yellow</p>
@@ -362,53 +362,53 @@ to configure Windows to handle CLI colouring.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="colours._Text">
-<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">_Text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Text" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">colours.</code><code class="sig-name descname">_Text</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Text" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class contains colours for text.</p>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._BLK">
 <code class="sig-name descname">_BLK</code><em class="property"> = 30</em><a class="headerlink" href="#colours._Text._BLK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._BLU">
 <code class="sig-name descname">_BLU</code><em class="property"> = 34</em><a class="headerlink" href="#colours._Text._BLU" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._CYN">
 <code class="sig-name descname">_CYN</code><em class="property"> = 36</em><a class="headerlink" href="#colours._Text._CYN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._GRN">
 <code class="sig-name descname">_GRN</code><em class="property"> = 32</em><a class="headerlink" href="#colours._Text._GRN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._MAG">
 <code class="sig-name descname">_MAG</code><em class="property"> = 35</em><a class="headerlink" href="#colours._Text._MAG" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._RED">
 <code class="sig-name descname">_RED</code><em class="property"> = 31</em><a class="headerlink" href="#colours._Text._RED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._WHT">
 <code class="sig-name descname">_WHT</code><em class="property"> = 37</em><a class="headerlink" href="#colours._Text._WHT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="colours._Text._YLW">
 <code class="sig-name descname">_YLW</code><em class="property"> = 33</em><a class="headerlink" href="#colours._Text._YLW" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="colours._Text.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bright</span></em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Text.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bright</em><span class="sig-paren">)</span><a class="headerlink" href="#colours._Text.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
@@ -443,9 +443,9 @@ to configure Windows to handle CLI colouring.</p>
 </div>
 </dd>
 </dl>
-<dl class="py function">
+<dl class="function">
 <dt id="config._file_exists">
-<code class="sig-prename descclassname">config.</code><code class="sig-name descname">_file_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fullpath</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">config.</code><code class="sig-name descname">_file_exists</code><span class="sig-paren">(</span><em class="sig-param">fullpath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#config._file_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if the requested config file exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -454,9 +454,9 @@ to configure Windows to handle CLI colouring.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="config._fromjson">
-<code class="sig-prename descclassname">config.</code><code class="sig-name descname">_fromjson</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">config.</code><code class="sig-name descname">_fromjson</code><span class="sig-paren">(</span><em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#config._fromjson" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract values from the JSON file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -465,9 +465,9 @@ to configure Windows to handle CLI colouring.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="config.loadconfig">
-<code class="sig-prename descclassname">config.</code><code class="sig-name descname">loadconfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'config.json'</span></em>, <em class="sig-param"><span class="n">return_as_obj</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.loadconfig" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">config.</code><code class="sig-name descname">loadconfig</code><span class="sig-paren">(</span><em class="sig-param">filename='config.json'</em>, <em class="sig-param">return_as_obj=False</em><span class="sig-paren">)</span><a class="headerlink" href="#config.loadconfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a program’s JSON config file and return it as a dictionary or
 an object.</p>
 <dl class="field-list">
@@ -558,15 +558,15 @@ functionality.</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="crypto.Crypto">
 <em class="property">class </em><code class="sig-prename descclassname">crypto.</code><code class="sig-name descname">Crypto</code><a class="headerlink" href="#crypto.Crypto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class used for hashing and encoding.</p>
 <p>This class acts as a simple wrapper around the <code class="docutils literal notranslate"><span class="pre">base64</span></code> and
 <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries, providing additional functionality.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="crypto.Crypto._encode">
-<em class="property">static </em><code class="sig-name descname">_encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#crypto.Crypto._encode" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_encode</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#crypto.Crypto._encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a string is <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before processing.</p>
 <p>If the string is <code class="docutils literal notranslate"><span class="pre">str</span></code>, it is converted to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> and
 returned.</p>
@@ -577,9 +577,9 @@ returned.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="crypto.Crypto.b64">
-<code class="sig-name descname">b64</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">decode</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#crypto.Crypto.b64" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">b64</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">decode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#crypto.Crypto.b64" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an encoded/decoded Base64 encryption.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -595,9 +595,9 @@ is passed, it is encoded to <code class="docutils literal notranslate"><span cla
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="crypto.Crypto.b64md5">
-<code class="sig-name descname">b64md5</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">trunc</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#crypto.Crypto.b64md5" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">b64md5</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">trunc=None</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#crypto.Crypto.b64md5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a truncated Base64 encoded MD5 hash from a string or
 array.</p>
 <dl class="field-list simple">
@@ -617,9 +617,9 @@ passed string or iterable.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="crypto.Crypto.md5">
-<code class="sig-name descname">md5</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">decode</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#crypto.Crypto.md5" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">md5</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">decode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#crypto.Crypto.md5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an encoded/decoded MD5 hash.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -672,27 +672,27 @@ database connections follow similar logic:</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="database.Database">
 <em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">Database</code><a class="headerlink" href="#database.Database" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Database super-class is used to hold general properties or
 functions used by the more specific sub-classes.  In general, you
 shouldn’t need to call this super-class externally.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database.__del__">
 <code class="sig-name descname">__del__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Database.__del__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy the object(s) on garbage collection.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Database.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database._parse_script">
-<em class="property">static </em><code class="sig-name descname">_parse_script</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script_string</span></em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#database.Database._parse_script" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_parse_script</code><span class="sig-paren">(</span><em class="sig-param">script_string</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#database.Database._parse_script" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the passed <code class="docutils literal notranslate"><span class="pre">script_string</span></code> and return a list of SQL
 statements to be executed individually.</p>
 <dl class="field-list">
@@ -715,9 +715,9 @@ character.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database._table_exists">
-<code class="sig-name descname">_table_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sql</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Database._table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_table_exists</code><span class="sig-paren">(</span><em class="sig-param">sql</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Database._table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists, using the script provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -730,7 +730,7 @@ table exists.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database.connection_active">
 <code class="sig-name descname">connection_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Database.connection_active" title="Permalink to this definition">¶</a></dt>
 <dd><p>General database connection test.</p>
@@ -746,16 +746,16 @@ require an active connection.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database.disconnect">
 <code class="sig-name descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Database.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnect a database connection, and change the .connected
 property to False.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Database.run_query">
-<code class="sig-name descname">run_query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#database.Database.run_query" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run_query</code><span class="sig-paren">(</span><em class="sig-param">query</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#database.Database.run_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run query and return the results.</p>
 <p>This function runs the query that is passed as a string and
 returns the results as a list of rows.</p>
@@ -772,9 +772,9 @@ otherwise a blank list.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="database.MySQL">
-<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">MySQL</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">database</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">3306</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">MySQL</code><span class="sig-paren">(</span><em class="sig-param">host=None</em>, <em class="sig-param">database=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">port=3306</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">mysql-connector</span></code>, and
 used to handle database objects for MySQL.</p>
 <dl class="field-list">
@@ -822,15 +822,15 @@ credentials.  Required if <code class="docutils literal notranslate"><span class
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="database.MySQL.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">database</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">3306</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">host=None</em>, <em class="sig-param">database=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">port=3306</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.MySQL._connect">
-<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL._connect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param">creds</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL._connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to the database using the passed credentials, update
 class properties accordingly.</p>
 <dl class="field-list">
@@ -846,9 +846,9 @@ allowing the cursor to fetch all rows, rather than being
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.MySQL._table_exists">
-<code class="sig-name descname">_table_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sql</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL._table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_table_exists</code><span class="sig-paren">(</span><em class="sig-param">sql</em><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL._table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists and return a boolean result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Design</dt>
@@ -860,7 +860,7 @@ so the actions must be done in separate steps.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.MySQL.connect">
 <code class="sig-name descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.MySQL.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a database connection and update class attributes
@@ -890,9 +890,9 @@ the mysql.connection library, are listed here:
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.MySQL.table_exists">
-<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">table_name</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.MySQL.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param">table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.MySQL.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -910,9 +910,9 @@ function and provides the SQL statement to be run.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="database.Oracle">
-<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">Oracle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">Oracle</code><span class="sig-paren">(</span><em class="sig-param">host=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">cx_Oracle</span></code>, where
 commonly used functionality have been added as class methods and
 functions.</p>
@@ -946,15 +946,15 @@ credentials.</p></li>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="database.Oracle.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">host=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Oracle._connect">
-<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle._connect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param">creds</em><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle._connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a database connection and update class properties
 accordingly.</p>
 <dl class="field-list simple">
@@ -969,9 +969,9 @@ specific connection.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Oracle._execute_commit">
-<code class="sig-name descname">_execute_commit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sql</span></em>, <em class="sig-param"><span class="n">commit</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle._execute_commit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_execute_commit</code><span class="sig-paren">(</span><em class="sig-param">sql</em>, <em class="sig-param">commit</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle._execute_commit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute an SQL statement and commit if instructed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -991,7 +991,7 @@ otherwise False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Oracle.connect">
 <code class="sig-name descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Oracle.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a database connection and update class attributes
@@ -1014,9 +1014,9 @@ blank.</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Oracle.execute_script">
-<code class="sig-name descname">execute_script</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sql_file</span></em>, <em class="sig-param"><span class="n">commit</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle.execute_script" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">execute_script</code><span class="sig-paren">(</span><em class="sig-param">sql_file</em>, <em class="sig-param">commit=False</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle.execute_script" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a full SQL script on the database.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1041,9 +1041,9 @@ otherwise False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.Oracle.table_exists">
-<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">table_name</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param">table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.Oracle.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1062,9 +1062,9 @@ statement to be run.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="database.SQLServer">
-<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">SQLServer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">database</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">SQLServer</code><span class="sig-paren">(</span><em class="sig-param">server=None</em>, <em class="sig-param">database=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code>, and used to
 handle database objects for SQL Server.</p>
 <dl class="field-list">
@@ -1099,15 +1099,15 @@ credentials.</p></li>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLServer.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">database</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">server=None</em>, <em class="sig-param">database=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLServer._connect">
-<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer._connect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param">creds</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer._connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to the database using the passed credentials, update
 class properties accordingly.</p>
 <dl class="field-list simple">
@@ -1117,7 +1117,7 @@ class properties accordingly.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLServer.connect">
 <code class="sig-name descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLServer.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to the database, and update class attributes
@@ -1140,9 +1140,9 @@ blank.</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLServer.table_exists">
-<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">table_name</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLServer.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param">table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLServer.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1161,9 +1161,9 @@ the SQL statement to be run.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="database.SQLite">
-<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">SQLite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_file_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">database.</code><code class="sig-name descname">SQLite</code><span class="sig-paren">(</span><em class="sig-param">db_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is a lightweight wrapper for <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>, and used to
 handle database objects for SQLite.</p>
 <dl class="field-list">
@@ -1186,13 +1186,13 @@ handle database objects for SQLite.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_file_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">db_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite._connect">
 <code class="sig-name descname">_connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite._connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to the database file, and update class attributes
@@ -1206,7 +1206,7 @@ created automatically.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite._create_database_functions">
 <code class="sig-name descname">_create_database_functions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite._create_database_functions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add user-defined functions.</p>
@@ -1219,7 +1219,7 @@ via SQL code. For example:</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite._db_file_exists">
 <code class="sig-name descname">_db_file_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLite._db_file_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if the database file exists.</p>
@@ -1230,21 +1230,21 @@ via SQL code. For example:</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite._match">
-<code class="sig-name descname">_match</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pattern</span></em>, <em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite._match" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_match</code><span class="sig-paren">(</span><em class="sig-param">pattern</em>, <em class="sig-param">string</em><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite._match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap <code class="docutils literal notranslate"><span class="pre">re.match()</span></code> as a user-defined function.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite.connect">
 <code class="sig-name descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to the SQLite database file.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite.table_exists">
-<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">table_name</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLite.table_exists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">table_exists</code><span class="sig-paren">(</span><em class="sig-param">table_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#database.SQLite.table_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a table exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1261,7 +1261,7 @@ statement to be run.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="database.SQLite.vacuum">
 <code class="sig-name descname">vacuum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.SQLite.vacuum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shrink the size of the database file.</p>
@@ -1286,7 +1286,7 @@ file. Running VACUUM ensures that each table and index is
 largely stored contiguously within the database file. In
 some cases, VACUUM may also reduce the number of
 partially filled pages in the database, reducing the size
-of the database file further.”“</p></li>
+of the database file further.””</p></li>
 </ol>
 </dd>
 <dt class="field-even">References</dt>
@@ -1337,9 +1337,9 @@ release.</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="dfdiff.DataFrameDiff">
-<em class="property">class </em><code class="sig-prename descclassname">dfdiff.</code><code class="sig-name descname">DataFrameDiff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_source</span></em>, <em class="sig-param"><span class="n">df_test</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dfdiff.DataFrameDiff" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dfdiff.</code><code class="sig-name descname">DataFrameDiff</code><span class="sig-paren">(</span><em class="sig-param">df_source</em>, <em class="sig-param">df_test</em><span class="sig-paren">)</span><a class="headerlink" href="#dfdiff.DataFrameDiff" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is used to test and report differences in DataFrames.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1351,25 +1351,25 @@ This dataset is compared against the ‘expected’ dataset.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff.DataFrameDiff.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_source</span></em>, <em class="sig-param"><span class="n">df_test</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff.DataFrameDiff.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">df_source</em>, <em class="sig-param">df_test</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff.DataFrameDiff.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>DataFrame difference class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff.DataFrameDiff._get_mismatches">
 <code class="sig-name descname">_get_mismatches</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff.DataFrameDiff._get_mismatches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loop to build a list of columns with mismatches.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff.DataFrameDiff._report">
 <code class="sig-name descname">_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff.DataFrameDiff._report" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare values in mismatched columns and report.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff.DataFrameDiff.diff">
 <code class="sig-name descname">diff</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff.DataFrameDiff.diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare DataFrames and report the differences.</p>
@@ -1377,23 +1377,23 @@ This dataset is compared against the ‘expected’ dataset.</p></li>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="dfdiff._Messages">
 <em class="property">class </em><code class="sig-prename descclassname">dfdiff.</code><code class="sig-name descname">_Messages</code><a class="headerlink" href="#dfdiff._Messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class handles the messaging for DataFrame differencing.</p>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="dfdiff._Messages._fmt">
 <code class="sig-name descname">_fmt</code><em class="property"> = '{:&lt;10}\t{:&lt;10}\t{:&lt;25}\t{:&lt;25}'</em><a class="headerlink" href="#dfdiff._Messages._fmt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="dfdiff._Messages._ui">
 <code class="sig-name descname">_ui</code><em class="property"> = &lt;utils3.user_interface.UserInterface object&gt;</em><a class="headerlink" href="#dfdiff._Messages._ui" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff._Messages.column_mismatches">
-<code class="sig-name descname">column_mismatches</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.column_mismatches" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">column_mismatches</code><span class="sig-paren">(</span><em class="sig-param">columns</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.column_mismatches" title="Permalink to this definition">¶</a></dt>
 <dd><p>List columns with mismatches.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1402,15 +1402,15 @@ This dataset is compared against the ‘expected’ dataset.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff._Messages.column_mismatches_none">
 <code class="sig-name descname">column_mismatches_none</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.column_mismatches_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print message for no column mismatches.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff._Messages.data_mismatches">
-<code class="sig-name descname">data_mismatches</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">column</span></em>, <em class="sig-param"><span class="n">mismatches</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.data_mismatches" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">data_mismatches</code><span class="sig-paren">(</span><em class="sig-param">column</em>, <em class="sig-param">mismatches</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.data_mismatches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the data mismatches.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1423,9 +1423,9 @@ mismathes.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dfdiff._Messages.data_mismatches_none">
-<code class="sig-name descname">data_mismatches_none</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">column</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.data_mismatches_none" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">data_mismatches_none</code><span class="sig-paren">(</span><em class="sig-param">column</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dfdiff._Messages.data_mismatches_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print message for no data mismatches.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1458,9 +1458,9 @@ pairs become object attributes.</p>
 <dd class="field-odd"><p>Basic concept <a class="reference external" href="https://stackoverflow.com/a/1639197/6340496">attribution</a>.</p>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="dict2obj.Dict2Obj">
-<em class="property">class </em><code class="sig-prename descclassname">dict2obj.</code><code class="sig-name descname">Dict2Obj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">source</span><span class="o">=</span><span class="default_value">'dict'</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dict2obj.Dict2Obj" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dict2obj.</code><code class="sig-name descname">Dict2Obj</code><span class="sig-paren">(</span><em class="sig-param">dictionary=None</em>, <em class="sig-param">source='dict'</em>, <em class="sig-param">filepath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dict2obj.Dict2Obj" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Python object from a standard dictionary, or JSON file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1507,15 +1507,15 @@ dictionary.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="dict2obj.Dict2Obj.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">source</span><span class="o">=</span><span class="default_value">'dict'</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dict2obj.Dict2Obj.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">dictionary=None</em>, <em class="sig-param">source='dict'</em>, <em class="sig-param">filepath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dict2obj.Dict2Obj.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dict2obj.Dict2Obj._read_json">
-<em class="property">static </em><code class="sig-name descname">_read_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#dict2obj.Dict2Obj._read_json" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_read_json</code><span class="sig-paren">(</span><em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#dict2obj.Dict2Obj._read_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read values from a JSON file into a dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1527,9 +1527,9 @@ dictionary.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dict2obj.Dict2Obj._validate">
-<code class="sig-name descname">_validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_validate</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the following validation tests:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1552,9 +1552,9 @@ dictionary.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dict2obj.Dict2Obj._validate_fileexists">
-<em class="property">static </em><code class="sig-name descname">_validate_fileexists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_fileexists" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_validate_fileexists</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_fileexists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validation test: If a ‘json’ source, test the file path exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1571,9 +1571,9 @@ the file exists, otherwise False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dict2obj.Dict2Obj._validate_source">
-<em class="property">static </em><code class="sig-name descname">_validate_source</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_validate_source</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validation test: If a ‘json’ source, test a file path is
 provided.</p>
 <dl class="field-list simple">
@@ -1591,9 +1591,9 @@ file path is provided, otherwise False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="dict2obj.Dict2Obj._validate_source_value">
-<em class="property">static </em><code class="sig-name descname">_validate_source_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source_value" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_validate_source_value</code><span class="sig-paren">(</span><em class="sig-param">source</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dict2obj.Dict2Obj._validate_source_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validation test: The value of the <code class="docutils literal notranslate"><span class="pre">source</span></code> parameter is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1642,9 +1642,9 @@ data files for project packaging to the calling
 </div>
 </dd>
 </dl>
-<dl class="py function">
+<dl class="function">
 <dt id="get_datafiles._add_dot">
-<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_add_dot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ext_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._add_dot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_add_dot</code><span class="sig-paren">(</span><em class="sig-param">ext_list</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._add_dot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a dot (.) to the beginning of each extension in a list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1657,9 +1657,9 @@ if it doesn’t already exist.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="get_datafiles._get_license">
-<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_get_license</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pkg_dir</span></em>, <em class="sig-param"><span class="n">license_name</span><span class="o">=</span><span class="default_value">'LICENSE'</span></em>, <em class="sig-param"><span class="n">p2e</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_license" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_get_license</code><span class="sig-paren">(</span><em class="sig-param">pkg_dir</em>, <em class="sig-param">license_name='LICENSE'</em>, <em class="sig-param">p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_license" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the LICENSE file.</p>
 <p>This private function is called by the main
 <a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
@@ -1684,9 +1684,9 @@ README and LICENSE files live.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="get_datafiles._get_readmefiles">
-<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_get_readmefiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pkg_dir</span></em>, <em class="sig-param"><span class="n">readme_name</span><span class="o">=</span><span class="default_value">'README'</span></em>, <em class="sig-param"><span class="n">readme_exts</span><span class="o">=</span><span class="default_value">['.html', '.md']</span></em>, <em class="sig-param"><span class="n">p2e</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_readmefiles" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_get_readmefiles</code><span class="sig-paren">(</span><em class="sig-param">pkg_dir, readme_name='README', readme_exts=['.html', '.md'], p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_readmefiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the README files.</p>
 <p>This private function is called by the main
 <a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
@@ -1718,9 +1718,9 @@ sensative</strong>.</p>
 </div>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="get_datafiles._get_sphinxfiles">
-<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_get_sphinxfiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pkg_dir</span></em>, <em class="sig-param"><span class="n">docs_path</span><span class="o">=</span><span class="default_value">'./docs'</span></em>, <em class="sig-param"><span class="n">p2e</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_sphinxfiles" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">_get_sphinxfiles</code><span class="sig-paren">(</span><em class="sig-param">pkg_dir</em>, <em class="sig-param">docs_path='./docs'</em>, <em class="sig-param">p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles._get_sphinxfiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the Sphinx documentation files.</p>
 <p>This private function is called by the main
 <a class="reference internal" href="#get_datafiles.get_datafiles" title="get_datafiles.get_datafiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_datafiles()</span></code></a> function and is used to add
@@ -1744,9 +1744,9 @@ path</strong> to the docs directory, in relation to <code class="docutils litera
 </div>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="get_datafiles.get_datafiles">
-<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">get_datafiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pkg_dir</span></em>, <em class="sig-param"><span class="n">exts</span><span class="o">=</span><span class="default_value">['.json', '.sql', '.txt']</span></em>, <em class="sig-param"><span class="n">get_docs</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">docs_path</span><span class="o">=</span><span class="default_value">'./docs'</span></em>, <em class="sig-param"><span class="n">get_readme_files</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">readme_name</span><span class="o">=</span><span class="default_value">'README'</span></em>, <em class="sig-param"><span class="n">readme_exts</span><span class="o">=</span><span class="default_value">['.html', '.md']</span></em>, <em class="sig-param"><span class="n">get_license</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">license_name</span><span class="o">=</span><span class="default_value">'LICENSE'</span></em>, <em class="sig-param"><span class="n">p2e</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles.get_datafiles" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">get_datafiles.</code><code class="sig-name descname">get_datafiles</code><span class="sig-paren">(</span><em class="sig-param">pkg_dir, exts=['.json', '.sql', '.txt'], get_docs=False, docs_path='./docs', get_readme_files=True, readme_name='README', readme_exts=['.html', '.md'], get_license=True, license_name='LICENSE', p2e=False</em><span class="sig-paren">)</span><a class="headerlink" href="#get_datafiles.get_datafiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gather and return a list of project data files.</p>
 <p>This function is designed to be called by your project’s
 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file and will return a list of data files used by
@@ -1863,9 +1863,9 @@ header, using the value of the <code class="docutils literal notranslate"><span 
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="log.Log">
-<em class="property">class </em><code class="sig-prename descclassname">log.</code><code class="sig-name descname">Log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">autofill</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">printheader</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">headertext</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">sep</span><span class="o">=</span><span class="default_value">','</span></em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">log.</code><code class="sig-name descname">Log</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">autofill=True</em>, <em class="sig-param">printheader=False</em>, <em class="sig-param">headertext=''</em>, <em class="sig-param">sep='</em>, <em class="sig-param">'</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a small and simple log file creator/writer class.</p>
 <p>The calling program is responsible for passing the proper arguments
 to create the log file header.
@@ -1918,15 +1918,15 @@ exists, the header will not be written</p></li>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="log.Log.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">autofill</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">printheader</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">headertext</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">sep</span><span class="o">=</span><span class="default_value">','</span></em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">autofill=True</em>, <em class="sig-param">printheader=False</em>, <em class="sig-param">headertext=''</em>, <em class="sig-param">sep='</em>, <em class="sig-param">'</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="log.Log.write">
-<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.write" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write text to the log file defined at instantiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1959,7 +1959,7 @@ is used to separate these auto-populated fields.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="log.Log.write_blank_line">
 <code class="sig-name descname">write_blank_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#log.Log.write_blank_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a blank line to the log file.</p>
@@ -2005,9 +2005,9 @@ simple console progress bar.</p>
 <dd class="field-odd"><p>n/a</p>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="progressbar.ProgressBar">
-<em class="property">class </em><code class="sig-prename descclassname">progressbar.</code><code class="sig-name descname">ProgressBar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">total_values</span><span class="o">=</span><span class="default_value">25</span></em>, <em class="sig-param"><span class="n">bar_len</span><span class="o">=</span><span class="default_value">25</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'w'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">progressbar.</code><code class="sig-name descname">ProgressBar</code><span class="sig-paren">(</span><em class="sig-param">total_values=25</em>, <em class="sig-param">bar_len=25</em>, <em class="sig-param">symbol='.'</em>, <em class="sig-param">color='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement a console progress bar into a processing loop.</p>
 <dl class="field-list">
 <dt class="field-odd">Design</dt>
@@ -2047,13 +2047,13 @@ letter of the colour is required.</p></li>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="progressbar.ProgressBar.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">total_values</span><span class="o">=</span><span class="default_value">25</span></em>, <em class="sig-param"><span class="n">bar_len</span><span class="o">=</span><span class="default_value">25</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'w'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">total_values=25</em>, <em class="sig-param">bar_len=25</em>, <em class="sig-param">symbol='.'</em>, <em class="sig-param">color='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="progressbar.ProgressBar._getcolor">
 <code class="sig-name descname">_getcolor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#progressbar.ProgressBar._getcolor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create ANSI colour escape sequence to user’s colour.</p>
@@ -2064,9 +2064,9 @@ letter of the colour is required.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="progressbar.ProgressBar.update_progress">
-<code class="sig-name descname">update_progress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">current</span></em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.update_progress" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update_progress</code><span class="sig-paren">(</span><em class="sig-param">current</em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.update_progress" title="Permalink to this definition">¶</a></dt>
 <dd><p>Incrementally update the progress bar.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2128,9 +2128,9 @@ can be configured in your app’s config file.</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="pywarnings.PyWarnings">
-<em class="property">class </em><code class="sig-prename descclassname">pywarnings.</code><code class="sig-name descname">PyWarnings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pywarnings.</code><code class="sig-name descname">PyWarnings</code><span class="sig-paren">(</span><em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple wrapper around Python’s built-in <code class="docutils literal notranslate"><span class="pre">warnings</span></code> library.</p>
 <p>This class provides easy access to ignore (a given set of) warnings
 using your program’s config file.</p>
@@ -2157,13 +2157,13 @@ key.)</p>
 <p>Remember to call the <a class="reference internal" href="#pywarnings.PyWarnings.reset_warnings" title="pywarnings.PyWarnings.reset_warnings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset_warnings()</span></code></a> method at the end
 of your program!</p>
 </div>
-<dl class="py method">
+<dl class="method">
 <dt id="pywarnings.PyWarnings.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="pywarnings.PyWarnings.ignore_warnings">
 <code class="sig-name descname">ignore_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.ignore_warnings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ignore Python warnings.</p>
@@ -2185,7 +2185,7 @@ variable was taken from <a class="reference external" href="https://docs.python.
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="pywarnings.PyWarnings.reset_warnings">
 <em class="property">static </em><code class="sig-name descname">reset_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywarnings.PyWarnings.reset_warnings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn Python warnings back on.</p>
@@ -2228,23 +2228,23 @@ HKEY.</p>
 <dd class="field-odd"><p>For a use example, refer to the <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> docstring.</p>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="registry.Key">
-<em class="property">class </em><code class="sig-prename descclassname">registry.</code><code class="sig-name descname">Key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">registry.</code><code class="sig-name descname">Key</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class encapsulates the Windows registry keys.</p>
 <p>It provides methods that can be used to interact with the values
 of the key.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Key.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialise a private self._key attribute.</p>
 <p>This attribute is used throughout the class to provide a set
 of key specific functions.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Key.get_value">
-<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.get_value" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.get_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the key value specified by name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2257,9 +2257,9 @@ of key specific functions.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Key.set_data">
-<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Key.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the data of the key value specified by name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2277,9 +2277,9 @@ of key specific functions.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="registry.Registry">
-<em class="property">class </em><code class="sig-prename descclassname">registry.</code><code class="sig-name descname">Registry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hkey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">registry.</code><code class="sig-name descname">Registry</code><span class="sig-paren">(</span><em class="sig-param">hkey</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class encapsulates the Windows registry.</p>
 <p>It provides methods that can be used to interact with the keys and
 values in the registry.</p>
@@ -2295,17 +2295,17 @@ values in the registry.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Registry.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hkey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">hkey</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialise a private self._hkey attribute.</p>
 <p>This attribute is used throughout the class to provide a set
 of hkey specific functions.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Registry._open_key">
-<code class="sig-name descname">_open_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">sam</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry._open_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_open_key</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">sam</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry._open_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open and return the key specified by the path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2325,9 +2325,9 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Registry.create_key">
-<code class="sig-name descname">create_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.create_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_key</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.create_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the key specified by the path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2343,9 +2343,9 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Registry.delete_key">
-<code class="sig-name descname">delete_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.delete_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_key</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.delete_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete the key specified by the path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2366,9 +2366,9 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Registry.get_value">
-<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.get_value" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.get_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the key value specified by the path and name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2384,9 +2384,9 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Registry.set_data">
-<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">name</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Registry.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the data of the key value specified by the path and name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2410,15 +2410,15 @@ If it hasn’t the user is notified.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="registry.Value">
-<em class="property">class </em><code class="sig-prename descclassname">registry.</code><code class="sig-name descname">Value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">regtype</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">registry.</code><code class="sig-name descname">Value</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">regtype</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class encapsulates the Windows registry values.</p>
 <p>It provides name, type and data attributes to mimic the attributes
 of a value in the registry.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="registry.Value.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">regtype</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">regtype</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#registry.Value.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the name, type and data attributes.</p>
 </dd></dl>
 
@@ -2446,9 +2446,9 @@ class.</p>
 <dd class="field-odd"><p>n/a</p>
 </dd>
 </dl>
-<dl class="py function">
+<dl class="function">
 <dt id="reporterror.reporterror">
-<code class="sig-prename descclassname">reporterror.</code><code class="sig-name descname">reporterror</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">error</span></em>, <em class="sig-param"><span class="n">logevent</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">logfilepath</span><span class="o">=</span><span class="default_value">'c:/temp/reporterror.log'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reporterror.reporterror" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">reporterror.</code><code class="sig-name descname">reporterror</code><span class="sig-paren">(</span><em class="sig-param">error</em>, <em class="sig-param">logevent=False</em>, <em class="sig-param">logfilepath='c:/temp/reporterror.log'</em><span class="sig-paren">)</span><a class="headerlink" href="#reporterror.reporterror" title="Permalink to this definition">¶</a></dt>
 <dd><p>Report an error, derived from the built-in Exception object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2529,9 +2529,9 @@ processes in your program.</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="tickers.Spinner">
-<em class="property">class </em><code class="sig-prename descclassname">tickers.</code><code class="sig-name descname">Spinner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Spinner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">tickers.</code><code class="sig-name descname">Spinner</code><span class="sig-paren">(</span><em class="sig-param">delay=None</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Spinner" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class features a wait spinner for long-running processes
 within your program.</p>
 <dl class="field-list">
@@ -2552,19 +2552,19 @@ within your program.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="tickers.Spinner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Spinner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">delay=None</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Spinner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers.Spinner._spinner">
 <code class="sig-name descname">_spinner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Spinner._spinner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the spinner.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers.Spinner.start">
 <code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers.Spinner.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the spinner in a new thread.</p>
@@ -2572,9 +2572,9 @@ within your program.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="tickers.WaitTicker">
-<em class="property">class </em><code class="sig-prename descclassname">tickers.</code><code class="sig-name descname">WaitTicker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">charset</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">nticks</span><span class="o">=</span><span class="default_value">25</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.WaitTicker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">tickers.</code><code class="sig-name descname">WaitTicker</code><span class="sig-paren">(</span><em class="sig-param">charset='.'</em>, <em class="sig-param">delay=0.05</em>, <em class="sig-param">nticks=25</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.WaitTicker" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class features a wait ticker for long-running processes
 within your program.</p>
 <dl class="field-list">
@@ -2599,19 +2599,19 @@ within your program.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="tickers.WaitTicker.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">charset</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="n">nticks</span><span class="o">=</span><span class="default_value">25</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.WaitTicker.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">charset='.'</em>, <em class="sig-param">delay=0.05</em>, <em class="sig-param">nticks=25</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers.WaitTicker.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers.WaitTicker._ticker">
 <code class="sig-name descname">_ticker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers.WaitTicker._ticker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the ticker.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers.WaitTicker.start">
 <code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers.WaitTicker.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the ticker in a new thread.</p>
@@ -2619,50 +2619,50 @@ within your program.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="tickers._GenericWait">
-<em class="property">class </em><code class="sig-prename descclassname">tickers.</code><code class="sig-name descname">_GenericWait</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">charset</span></em>, <em class="sig-param"><span class="n">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">tickers.</code><code class="sig-name descname">_GenericWait</code><span class="sig-paren">(</span><em class="sig-param">charset</em>, <em class="sig-param">delay</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait" title="Permalink to this definition">¶</a></dt>
 <dd><p>This generic class holds functionality which is inherited by
 each ticker type.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">charset</span></em>, <em class="sig-param"><span class="n">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">charset</em>, <em class="sig-param">delay</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait._clearline">
 <code class="sig-name descname">_clearline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait._clearline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear the current line of the console.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait._generator">
 <code class="sig-name descname">_generator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait._generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the character set.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait._is_windows">
 <em class="property">static </em><code class="sig-name descname">_is_windows</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait._is_windows" title="Permalink to this definition">¶</a></dt>
 <dd><p>If Win, run colorama init so colours display properly.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait._print_end">
 <code class="sig-name descname">_print_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait._print_end" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this to the console when the ticker is stopped.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait._print_start">
 <em class="property">static </em><code class="sig-name descname">_print_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait._print_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this to the console when the ticker is started.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait._set_delay">
-<em class="property">static </em><code class="sig-name descname">_set_delay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#tickers._GenericWait._set_delay" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_set_delay</code><span class="sig-paren">(</span><em class="sig-param">delay</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#tickers._GenericWait._set_delay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the delay between each spinner tick.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2673,9 +2673,9 @@ time.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="tickers._GenericWait.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">err</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait.stop" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><em class="sig-param">err=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tickers._GenericWait.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop the ticker.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2721,9 +2721,9 @@ rather than printing <code class="docutils literal notranslate"><span class="pre
 </div>
 </dd>
 </dl>
-<dl class="py function">
+<dl class="function">
 <dt id="timedelta.timedelta">
-<code class="sig-prename descclassname">timedelta.</code><code class="sig-name descname">timedelta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">origin</span></em>, <em class="sig-param"><span class="n">unit</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#timedelta.timedelta" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">timedelta.</code><code class="sig-name descname">timedelta</code><span class="sig-paren">(</span><em class="sig-param">origin</em>, <em class="sig-param">unit</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#timedelta.timedelta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate a time delta, of a given unit, from the original value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2732,7 +2732,7 @@ rather than printing <code class="docutils literal notranslate"><span class="pre
 time delta is to be calculated.</p></li>
 <li><p><strong>unit</strong> (<em>str</em>) – <p>Time unit to be used.  Valid options are:</p>
 <ul>
-<li><p>’s‘ = seconds</p></li>
+<li><p>’s’ = seconds</p></li>
 <li><p>’m’ = minutes</p></li>
 <li><p>’h’ = hours</p></li>
 <li><p>’d’ = days</p></li>
@@ -2810,9 +2810,9 @@ white text, blue background</p>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="user_interface.PrintBanner">
-<em class="property">class </em><code class="sig-prename descclassname">user_interface.</code><code class="sig-name descname">PrintBanner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">version</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">info</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">chars</span><span class="o">=</span><span class="default_value">72</span></em>, <em class="sig-param"><span class="n">ribbon</span><span class="o">=</span><span class="default_value">'-'</span></em>, <em class="sig-param"><span class="n">fore</span><span class="o">=</span><span class="default_value">'white'</span></em>, <em class="sig-param"><span class="n">back</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">'bright'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">user_interface.</code><code class="sig-name descname">PrintBanner</code><span class="sig-paren">(</span><em class="sig-param">name=None</em>, <em class="sig-param">version=None</em>, <em class="sig-param">desc=None</em>, <em class="sig-param">info=None</em>, <em class="sig-param">chars=72</em>, <em class="sig-param">ribbon='-'</em>, <em class="sig-param">fore='white'</em>, <em class="sig-param">back='black'</em>, <em class="sig-param">style='bright'</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is used to print a banner of information to the CLI.</p>
 <dl class="field-list">
 <dt class="field-odd">Design</dt>
@@ -2852,9 +2852,9 @@ is highly configurable.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">version</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">info</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">chars</span><span class="o">=</span><span class="default_value">72</span></em>, <em class="sig-param"><span class="n">ribbon</span><span class="o">=</span><span class="default_value">'-'</span></em>, <em class="sig-param"><span class="n">fore</span><span class="o">=</span><span class="default_value">'white'</span></em>, <em class="sig-param"><span class="n">back</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">'bright'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name=None</em>, <em class="sig-param">version=None</em>, <em class="sig-param">desc=None</em>, <em class="sig-param">info=None</em>, <em class="sig-param">chars=72</em>, <em class="sig-param">ribbon='-'</em>, <em class="sig-param">fore='white'</em>, <em class="sig-param">back='black'</em>, <em class="sig-param">style='bright'</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display a configurable information banner to the CLI.</p>
 <dl class="field-list">
 <dt class="field-odd">Design</dt>
@@ -2953,13 +2953,13 @@ Accepted strings:</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._add_ribbon">
 <code class="sig-name descname">_add_ribbon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._add_ribbon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a blank line and ribbon to start and end of banner.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._get_longest_key">
 <code class="sig-name descname">_get_longest_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#user_interface.PrintBanner._get_longest_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the length of the longest key, as an integer.</p>
@@ -2975,7 +2975,7 @@ characters.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._get_os">
 <em class="property">static </em><code class="sig-name descname">_get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#user_interface.PrintBanner._get_os" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the OS.</p>
@@ -2986,7 +2986,7 @@ characters.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._print_prog_banner">
 <code class="sig-name descname">_print_prog_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._print_prog_banner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the banner.</p>
@@ -2999,7 +2999,7 @@ the banner using the <a class="reference internal" href="#user_interface.UserInt
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._setup_custom">
 <code class="sig-name descname">_setup_custom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._setup_custom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set up the user-defined banner.</p>
@@ -3021,7 +3021,7 @@ the banner to the CLI.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._setup_default">
 <code class="sig-name descname">_setup_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._setup_default" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set up the default banner.</p>
@@ -3037,7 +3037,7 @@ the banner to the CLI.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.PrintBanner._update_console_title">
 <code class="sig-name descname">_update_console_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.PrintBanner._update_console_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>For <strong>Windows only</strong>, update the console window title.</p>
@@ -3051,7 +3051,7 @@ the banner to the CLI.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="user_interface.UserInterface">
 <em class="property">class </em><code class="sig-prename descclassname">user_interface.</code><code class="sig-name descname">UserInterface</code><a class="headerlink" href="#user_interface.UserInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class encapsulates the Linux/Windows CLIs and provides a
@@ -3068,7 +3068,7 @@ behaviour.</p>
 </div>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
@@ -3104,9 +3104,9 @@ for the low-level win32 work.  Thanks Jonathan!!</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface._build_color_dict">
-<em class="property">static </em><code class="sig-name descname">_build_color_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">class_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._build_color_dict" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_build_color_dict</code><span class="sig-paren">(</span><em class="sig-param">class_</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._build_color_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a dictionary of colours available in the <code class="docutils literal notranslate"><span class="pre">colorama</span></code>
 <code class="docutils literal notranslate"><span class="pre">.Fore</span></code> and <code class="docutils literal notranslate"><span class="pre">.Back</span></code> classes.</p>
 <dl class="field-list">
@@ -3121,26 +3121,15 @@ the output looks like:</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="user_interface.UserInterface._disable_warnings">
-<em class="property">static </em><code class="sig-name descname">_disable_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._disable_warnings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Disable runtime warnings.</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">win_unicode_console.enable()</span></code> is called on class
-instantiation, a RuntimeWarning is thrown.  This method lets us
-ignore that.</p>
-<p>Immediately following the line that will throw an error
-<a class="reference internal" href="#user_interface.UserInterface._reset_warnings" title="user_interface.UserInterface._reset_warnings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_reset_warnings()</span></code></a> should be called.</p>
-</dd></dl>
-
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface._enable_win_unicode_console">
 <code class="sig-name descname">_enable_win_unicode_console</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._enable_win_unicode_console" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable the Windows CLI console colours for Py3.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface._pad">
-<em class="property">static </em><code class="sig-name descname">_pad</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._pad" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_pad</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pad the text value, with (n) spaces.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3157,15 +3146,9 @@ string.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="user_interface.UserInterface._reset_warnings">
-<em class="property">static </em><code class="sig-name descname">_reset_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface._reset_warnings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset warning messages if any are disabled.</p>
-</dd></dl>
-
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.get_input">
-<code class="sig-name descname">get_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prompt</span></em>, <em class="sig-param"><span class="n">fore</span><span class="o">=</span><span class="default_value">'white'</span></em>, <em class="sig-param"><span class="n">back</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">'normal'</span></em>, <em class="sig-param"><span class="n">ending_char</span><span class="o">=</span><span class="default_value">'\n'</span></em>, <em class="sig-param"><span class="n">add_space</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.get_input" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_input</code><span class="sig-paren">(</span><em class="sig-param">prompt</em>, <em class="sig-param">fore='white'</em>, <em class="sig-param">back='black'</em>, <em class="sig-param">style='normal'</em>, <em class="sig-param">ending_char='\n'</em>, <em class="sig-param">add_space=False</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.get_input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get user input via a CLI prompt formatted by the caller.</p>
 <p>This method extends the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">raw_input()</span></code> user
 prompt by adding appearance control and text colouring through
@@ -3204,9 +3187,9 @@ and the user’s input.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_">
-<code class="sig-name descname">print_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">fore</span><span class="o">=</span><span class="default_value">'white'</span></em>, <em class="sig-param"><span class="n">back</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">'bright'</span></em>, <em class="sig-param"><span class="n">h_pad</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">v_pad</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sleep</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">fore='white'</em>, <em class="sig-param">back='black'</em>, <em class="sig-param">style='bright'</em>, <em class="sig-param">h_pad=0</em>, <em class="sig-param">v_pad=0</em>, <em class="sig-param">sleep=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the passed text in the specified format.</p>
 <dl class="field-list">
 <dt class="field-odd">Design</dt>
@@ -3281,21 +3264,21 @@ sleep time can be updated in the config file.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_alert">
-<code class="sig-name descname">print_alert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_alert" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_alert</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_alert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red text on a black background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_blank_lines">
-<em class="property">static </em><code class="sig-name descname">print_blank_lines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quantity</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_blank_lines" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">print_blank_lines</code><span class="sig-paren">(</span><em class="sig-param">quantity=1</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_blank_lines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print (n) blank lines.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_error">
-<em class="property">static </em><code class="sig-name descname">print_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">print_error</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red error text on a black background.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3317,7 +3300,7 @@ Exception.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_error_enviro">
 <code class="sig-name descname">print_error_enviro</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_enviro" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red environment error text on a black background.</p>
@@ -3329,7 +3312,7 @@ environment errors.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_error_intoor">
 <code class="sig-name descname">print_error_intoor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_intoor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red ‘integer out of range’ error text on black background.</p>
@@ -3341,7 +3324,7 @@ environment errors.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_error_notimp">
 <code class="sig-name descname">print_error_notimp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_notimp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red ‘not implemented’ error text on black background.</p>
@@ -3353,7 +3336,7 @@ for ‘not implemented’ errors.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_error_unexpd">
 <code class="sig-name descname">print_error_unexpd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_unexpd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red ‘unexpected error’ text on black background.</p>
@@ -3365,7 +3348,7 @@ for ‘not implemented’ errors.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_error_windws">
 <code class="sig-name descname">print_error_windws</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_error_windws" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print red ‘Windows error’ text on black background.</p>
@@ -3377,51 +3360,51 @@ for ‘not implemented’ errors.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_heading_blue">
-<code class="sig-name descname">print_heading_blue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_blue" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_heading_blue</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_blue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print white text on a blue background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_heading_cyan">
-<code class="sig-name descname">print_heading_cyan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_cyan" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_heading_cyan</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_cyan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print black text on a cyan background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_heading_green">
-<code class="sig-name descname">print_heading_green</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_green" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_heading_green</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_green" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print black text on a green background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_heading_red">
-<code class="sig-name descname">print_heading_red</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_red" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_heading_red</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_red" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print black text on a red background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_heading_white">
-<code class="sig-name descname">print_heading_white</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_white" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_heading_white</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_white" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print black text on a white background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_heading_yellow">
-<code class="sig-name descname">print_heading_yellow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">padto</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_yellow" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_heading_yellow</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">padto=0</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_heading_yellow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print black text on a yellow background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_normal">
-<code class="sig-name descname">print_normal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_normal" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_normal</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_normal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print green text on a black background.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="user_interface.UserInterface.print_warning">
-<code class="sig-name descname">print_warning</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_warning" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">print_warning</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.UserInterface.print_warning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print yellow text on a black background.</p>
 </dd></dl>
 
@@ -3458,15 +3441,15 @@ for ‘not implemented’ errors.</p>
 </div>
 </dd>
 </dl>
-<dl class="py function">
+<dl class="function">
 <dt id="utils.__test">
 <code class="sig-prename descclassname">utils.</code><code class="sig-name descname">__test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.__test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print a test statement.  Used for testing only.</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._convert_to_colorscale">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_convert_to_colorscale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmap</span></em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#utils._convert_to_colorscale" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_convert_to_colorscale</code><span class="sig-paren">(</span><em class="sig-param">cmap</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#utils._convert_to_colorscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a matplotlib colourmap to a colourscale list.</p>
 <p>This is a helper function used to convert a colourmap into a
 colourscale list, as used by Plotly’s colorscale parameter.</p>
@@ -3503,9 +3486,9 @@ colourmap.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._dbconn_fields">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_fields</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dbtype</span></em>, <em class="sig-param"><span class="n">fields</span></em>, <em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_fields" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_fields</code><span class="sig-paren">(</span><em class="sig-param">dbtype</em>, <em class="sig-param">fields</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_fields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract database credentials from a JSON file, prompt for
 missing values.</p>
 <dl class="field-list simple">
@@ -3548,9 +3531,9 @@ for the value.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._dbconn_mysql_conn">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_mysql_conn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_mysql_conn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_mysql_conn</code><span class="sig-paren">(</span><em class="sig-param">creds</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_mysql_conn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the MySQL connection and cursor objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3574,9 +3557,9 @@ connection and cursor objects, wrapped in a dictionary.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._dbconn_oracle_conn">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_oracle_conn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_oracle_conn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_oracle_conn</code><span class="sig-paren">(</span><em class="sig-param">creds</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_oracle_conn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the Oracle database connection and cursor objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3602,9 +3585,9 @@ connection and cursor objects, wrapped in a dictionary.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._dbconn_params">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dbtype</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_params</code><span class="sig-paren">(</span><em class="sig-param">dbtype</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a dictionary of database login credentials, prompt for
 missing values.</p>
 <dl class="field-list simple">
@@ -3639,9 +3622,9 @@ following classes:</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._dbconn_sql_conn">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_sql_conn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_sql_conn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_dbconn_sql_conn</code><span class="sig-paren">(</span><em class="sig-param">creds</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._dbconn_sql_conn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the SQL Server database connection and cursor objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3668,9 +3651,9 @@ connection and cursor objects, wrapped in a dictionary.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._prev_mpl">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_prev_mpl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmap</span></em>, <em class="sig-param"><span class="n">cmap_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._prev_mpl" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_prev_mpl</code><span class="sig-paren">(</span><em class="sig-param">cmap</em>, <em class="sig-param">cmap_name</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._prev_mpl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Preview a colourmap using matplotlib.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3700,9 +3683,9 @@ within the IDE</strong>; e.g.: Spyder, Jupyter Notebook, etc.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils._prev_plotly">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_prev_plotly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmap</span></em>, <em class="sig-param"><span class="n">cmap_name</span></em>, <em class="sig-param"><span class="n">out_file</span><span class="o">=</span><span class="default_value">'c:/temp/cmap_graph.html'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils._prev_plotly" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">_prev_plotly</code><span class="sig-paren">(</span><em class="sig-param">cmap</em>, <em class="sig-param">cmap_name</em>, <em class="sig-param">out_file='c:/temp/cmap_graph.html'</em><span class="sig-paren">)</span><a class="headerlink" href="#utils._prev_plotly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Preview a colourmap, as a bar graph, in Plotly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3733,9 +3716,9 @@ for each bar as hovertext.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.clean_df">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">clean_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.clean_df" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">clean_df</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.clean_df" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a cleaned Pandas DataFrame.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3763,9 +3746,9 @@ for each bar as hovertext.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.dbconn_mysql">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_mysql</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">database</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">3306</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_mysql" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_mysql</code><span class="sig-paren">(</span><em class="sig-param">host=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">database=None</em>, <em class="sig-param">port=3306</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_mysql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return MySQL database connection and cursor objects.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3847,9 +3830,9 @@ calling program, as a dictionary:</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.dbconn_oracle">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_oracle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">userid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_oracle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_oracle</code><span class="sig-paren">(</span><em class="sig-param">host=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">userid=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_oracle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return Oracle database connection and cursor objects.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3923,9 +3906,9 @@ dictionary:</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.dbconn_sql">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_sql</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">database</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">userid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">from_file</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_sql" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_sql</code><span class="sig-paren">(</span><em class="sig-param">server=None</em>, <em class="sig-param">database=None</em>, <em class="sig-param">userid=None</em>, <em class="sig-param">user=None</em>, <em class="sig-param">password=None</em>, <em class="sig-param">from_file=False</em>, <em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_sql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return SQL Server database connection and cursor objects.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3999,9 +3982,9 @@ dictionary:</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.dbconn_sqlite">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_sqlite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_sqlite" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">dbconn_sqlite</code><span class="sig-paren">(</span><em class="sig-param">db_path</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.dbconn_sqlite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return SQLite database connection and cursor objects.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -4039,9 +4022,9 @@ filename:</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.direxists">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">direxists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">create_path</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.direxists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">direxists</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">create_path=True</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.direxists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a directory exists.  If not, create it, if instructed.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4071,9 +4054,9 @@ which is the default action.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.fileexists">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">fileexists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.fileexists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">fileexists</code><span class="sig-paren">(</span><em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.fileexists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a file exists.  If not, notify the user.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4101,9 +4084,9 @@ exist.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.format_exif_date">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">format_exif_date</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datestring</span></em>, <em class="sig-param"><span class="n">input_format</span><span class="o">=</span><span class="default_value">'%Y:%m:%d %H:%M:%S'</span></em>, <em class="sig-param"><span class="n">output_format</span><span class="o">=</span><span class="default_value">'%Y%m%d%H%M%S'</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.format_exif_date" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">format_exif_date</code><span class="sig-paren">(</span><em class="sig-param">datestring</em>, <em class="sig-param">input_format='%Y:%m:%d %H:%M:%S'</em>, <em class="sig-param">output_format='%Y%m%d%H%M%S'</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.format_exif_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Format an exif timestamp.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4133,7 +4116,7 @@ format specified by the caller.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.get_os">
 <code class="sig-prename descclassname">utils.</code><code class="sig-name descname">get_os</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.get_os" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the platform’s general OS.</p>
@@ -4150,9 +4133,9 @@ format specified by the caller.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.getcolormap">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">getcolormap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colormap</span><span class="o">=</span><span class="default_value">'Blues'</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">colorscale</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'hex'</span></em>, <em class="sig-param"><span class="n">preview</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">preview_in</span><span class="o">=</span><span class="default_value">'mpl'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.getcolormap" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">getcolormap</code><span class="sig-paren">(</span><em class="sig-param">colormap='Blues'</em>, <em class="sig-param">n=5</em>, <em class="sig-param">colorscale=False</em>, <em class="sig-param">dtype='hex'</em>, <em class="sig-param">preview=False</em>, <em class="sig-param">preview_in='mpl'</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.getcolormap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a specified matplotlib colour map, as a list or colours.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4216,9 +4199,9 @@ colour map. (e.g.: a plotly bar chart)</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.getdrivername">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">getdrivername</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">drivername</span></em>, <em class="sig-param"><span class="n">returnall</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#utils.getdrivername" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">getdrivername</code><span class="sig-paren">(</span><em class="sig-param">drivername</em>, <em class="sig-param">returnall=False</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#utils.getdrivername" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of ODBC driver names, matching the regex pattern.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4258,7 +4241,7 @@ installed, the user is notified.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.getsitepackages">
 <code class="sig-prename descclassname">utils.</code><code class="sig-name descname">getsitepackages</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.getsitepackages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the site packages directory, based on platform.</p>
@@ -4298,9 +4281,9 @@ hopefully.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.json_read">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">json_read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#utils.json_read" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">json_read</code><span class="sig-paren">(</span><em class="sig-param">filepath</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#utils.json_read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return JSON file contents as a dictionary.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4324,9 +4307,9 @@ Python program.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.json_write">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">json_write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">'c:/temp/tempfile.json'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.json_write" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">json_write</code><span class="sig-paren">(</span><em class="sig-param">dictionary</em>, <em class="sig-param">filepath='c:/temp/tempfile.json'</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.json_write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a JSON file at a given file path.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4351,7 +4334,7 @@ specified, the default file and location is used.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.listcolormaps">
 <code class="sig-prename descclassname">utils.</code><code class="sig-name descname">listcolormaps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.listcolormaps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print a list of available matplotlib colour maps.</p>
@@ -4374,9 +4357,9 @@ available in matplotlib.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.ping">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">ping</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span></em>, <em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.ping" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">ping</code><span class="sig-paren">(</span><em class="sig-param">server</em>, <em class="sig-param">count=1</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.ping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ping an IP address, server or web address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4408,9 +4391,9 @@ stripped out using the <code class="docutils literal notranslate"><span class="p
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.rgb2hex">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">rgb2hex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rgb_string</span></em>, <em class="sig-param"><span class="n">drop_alpha</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.rgb2hex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">rgb2hex</code><span class="sig-paren">(</span><em class="sig-param">rgb_string</em>, <em class="sig-param">drop_alpha=False</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.rgb2hex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an RGB string to HEX.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4453,9 +4436,9 @@ first byte of the HEX string; making the HEX string read as
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.testimport">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">testimport</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.testimport" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">testimport</code><span class="sig-paren">(</span><em class="sig-param">module_name</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#utils.testimport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a Python library is installed.</p>
 <p>For example, the <a class="reference internal" href="#utils.getdrivername" title="utils.getdrivername"><code class="xref py py-func docutils literal notranslate"><span class="pre">getdrivername()</span></code></a> function uses this
 function before attempting to import the <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> library.</p>
@@ -4485,9 +4468,9 @@ is installed before trying to import it.</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="utils.unidecode">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">unidecode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.unidecode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">unidecode</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#utils.unidecode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempt to convert a Unicode object into an ASCII string.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4559,29 +4542,29 @@ functionality will be added as needed.</p>
 </div>
 </dd>
 </dl>
-<dl class="py class">
+<dl class="class">
 <dt id="validation.RegEx">
 <em class="property">class </em><code class="sig-prename descclassname">validation.</code><code class="sig-name descname">RegEx</code><a class="headerlink" href="#validation.RegEx" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class holds a variety of validation regex strings.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx._set_ip_ipv4">
 <em class="property">static </em><code class="sig-name descname">_set_ip_ipv4</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#validation.RegEx._set_ip_ipv4" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the regex for an IPv4 IP address.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx._set_latitude">
 <em class="property">static </em><code class="sig-name descname">_set_latitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#validation.RegEx._set_latitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the regex for latitude.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx._set_longitude">
 <em class="property">static </em><code class="sig-name descname">_set_longitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#validation.RegEx._set_longitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the regex for longitude.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx._set_yymmdd">
 <em class="property">static </em><code class="sig-name descname">_set_yymmdd</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#validation.RegEx._set_yymmdd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the regex for yymmdd.</p>
@@ -4591,25 +4574,25 @@ functionality will be added as needed.</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx.ip_ipv4">
 <em class="property">property </em><code class="sig-name descname">ip_ipv4</code><a class="headerlink" href="#validation.RegEx.ip_ipv4" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regex string for an IPv4 IP address.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx.latitude">
 <em class="property">property </em><code class="sig-name descname">latitude</code><a class="headerlink" href="#validation.RegEx.latitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regex string for latitude.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx.longitude">
 <em class="property">property </em><code class="sig-name descname">longitude</code><a class="headerlink" href="#validation.RegEx.longitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regex string for longitude.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.RegEx.yymmdd">
 <em class="property">property </em><code class="sig-name descname">yymmdd</code><a class="headerlink" href="#validation.RegEx.yymmdd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Regex string for yymmdd.</p>
@@ -4617,19 +4600,19 @@ functionality will be added as needed.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="validation.Rules">
 <em class="property">class </em><code class="sig-prename descclassname">validation.</code><code class="sig-name descname">Rules</code><a class="headerlink" href="#validation.Rules" title="Permalink to this definition">¶</a></dt>
 <dd><p>A collection of validation rules.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#validation.Rules.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.file_ext_match">
-<code class="sig-name descname">file_ext_match</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">ext</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.file_ext_match" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">file_ext_match</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">ext</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.file_ext_match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a filename has the expected extension.</p>
 <p>The matching rules are <strong>case insensitive</strong>.</p>
 <dl class="field-list simple">
@@ -4646,9 +4629,9 @@ the dot.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.is_coordinates">
-<code class="sig-name descname">is_coordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_coordinates" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_coordinates</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_coordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test <code class="docutils literal notranslate"><span class="pre">value</span></code> is a valid set of geo coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Rules</dt>
@@ -4665,9 +4648,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.is_ip">
-<code class="sig-name descname">is_ip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_ip" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_ip</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_ip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a valid IPv4 IP address.</p>
 <p>This function matches four sets of numbers from 0-255,
 separated by a decimal; where <strong>leading zeros are not allowed</strong>.</p>
@@ -4682,9 +4665,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.is_latitude">
-<code class="sig-name descname">is_latitude</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_latitude" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_latitude</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_latitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test <code class="docutils literal notranslate"><span class="pre">value</span></code> is a latitude coordinate (-90, 90).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4697,9 +4680,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.is_list">
-<code class="sig-name descname">is_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">indexes</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_list" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_list</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">indexes=None</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a list with (n) number of indexes.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">indexes</span></code> argument is optional.</p>
 <dl class="field-list simple">
@@ -4716,9 +4699,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.is_longitude">
-<code class="sig-name descname">is_longitude</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_longitude" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_longitude</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_longitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test <code class="docutils literal notranslate"><span class="pre">value</span></code> is a longitude coordinate (-180, 180).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4731,9 +4714,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.is_string">
-<code class="sig-name descname">is_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_string" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_string</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.is_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4745,9 +4728,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation.Rules.yymmdd">
-<code class="sig-name descname">yymmdd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.yymmdd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">yymmdd</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation.Rules.yymmdd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if <code class="docutils literal notranslate"><span class="pre">value</span></code> matches the ‘yymmdd’ date pattern.</p>
 <p>With the current implementation, this function only validates
 2015, onwards.</p>
@@ -4763,19 +4746,19 @@ False.</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="validation._FileExtensionRule">
 <em class="property">class </em><code class="sig-prename descclassname">validation.</code><code class="sig-name descname">_FileExtensionRule</code><a class="headerlink" href="#validation._FileExtensionRule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate file extensions.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="validation._FileExtensionRule._prepare_ext">
-<em class="property">static </em><code class="sig-name descname">_prepare_ext</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ext</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#validation._FileExtensionRule._prepare_ext" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">_prepare_ext</code><span class="sig-paren">(</span><em class="sig-param">ext</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#validation._FileExtensionRule._prepare_ext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert the extension to lowercase and remove any dots.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation._FileExtensionRule.file_ext_match">
-<code class="sig-name descname">file_ext_match</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">ext</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation._FileExtensionRule.file_ext_match" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">file_ext_match</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">ext</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation._FileExtensionRule.file_ext_match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verify a filename has the expected extension.</p>
 <p>The matching rules are <strong>case insensitive</strong>.</p>
 <dl class="field-list simple">
@@ -4794,13 +4777,13 @@ the dot.</p></li>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="validation._IsInstanceRules">
 <em class="property">class </em><code class="sig-prename descclassname">validation.</code><code class="sig-name descname">_IsInstanceRules</code><a class="headerlink" href="#validation._IsInstanceRules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validation rules for Python data types.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="validation._IsInstanceRules.is_list">
-<em class="property">static </em><code class="sig-name descname">is_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">indexes</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation._IsInstanceRules.is_list" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">is_list</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">indexes=None</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation._IsInstanceRules.is_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a list with (n) number of indexes.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">indexes</span></code> argument is optional.</p>
 <dl class="field-list simple">
@@ -4817,9 +4800,9 @@ False.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="validation._IsInstanceRules.is_string">
-<em class="property">static </em><code class="sig-name descname">is_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation._IsInstanceRules.is_string" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">is_string</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#validation._IsInstanceRules.is_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

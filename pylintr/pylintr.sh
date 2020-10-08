@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #-----------------------------------------------------------------------
 # Prog:     pylintr.sh
-# Version:  0.1.1
+# Version:  0.2.0
 # Desc:     This script walks down a project tree searching for all
 #           *.py files and runs pylint over each file, using the default
 #           pylint config file and stores the report to the defined
@@ -24,6 +24,8 @@
 #                              Moved script and output into same dir.
 #                              Added date run to summary.
 # 17.01.19  J. Berendt  0.1.2  Converted line endings to Unix format.
+# 10.06.20  J. Berendt  0.2.0  Updated to use the local .pylintrc file
+#                              if available.
 #-----------------------------------------------------------------------
 
 EXT=".plr"
@@ -35,11 +37,16 @@ if [ ! -d ${OUTPUT} ]; then
     echo
     echo Creating output directory ...
     mkdir ${OUTPUT}
+    printf "Done.\n\n"
 else
     echo
     echo Removing current results ...
     rm ${OUTPUT}/*${EXT}
+    printf "Done.\n\n"
 fi
+
+# Determine which .pylintrc file to use.
+[ -f "../.pylintrc" ] && rcfile='--rcfile=../.pylintrc' || rcfile=""
 
 # RUN PYLINT OVER ALL *.PY FILES
 for f in $( /usr/bin/find ../ -name "*.py" ); do
@@ -47,7 +54,7 @@ for f in $( /usr/bin/find ../ -name "*.py" ); do
     if [[ ${base} =~ ^[a-z]+\.py ]]; then
         echo Processing: ${f}
         outname=$( echo ${base} | sed s/.py// )${EXT}
-        pylint ${f} > "${OUTPUT}/${outname}"
+        pylint "${rcfile}" ${f} > "${OUTPUT}/${outname}"
     fi
 done
 

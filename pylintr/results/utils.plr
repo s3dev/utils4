@@ -1,15 +1,45 @@
 ************* Module utils3.utils
-/devmt/py/utils3_0.12.0/utils3/utils.py:148:0: C0301: Line too long (102/100) (line-too-long)
-/devmt/py/utils3_0.12.0/utils3/utils.py:709:44: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-/devmt/py/utils3_0.12.0/utils3/utils.py:712:44: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-/devmt/py/utils3_0.12.0/utils3/utils.py:917:11: R1719: The if expression can be replaced with 'test' (simplifiable-if-expression)
-/devmt/py/utils3_0.12.0/utils3/utils.py:1180:21: I1101: Module 'cx_Oracle' has no 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-/devmt/py/utils3_0.12.0/utils3/utils.py:1220:21: I1101: Module 'pyodbc' has no 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:148:0: C0301: Line too long (102/100) (line-too-long)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:61:4: C0415: Import outside toplevel (numpy) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:410:4: C0415: Import outside toplevel (sqlite3) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:451:4: C0415: Import outside toplevel (os) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:458:8: R1723: Unnecessary "else" after "break" (no-else-break)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:504:4: C0415: Import outside toplevel (os) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:551:4: C0415: Import outside toplevel (datetime) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:571:4: C0415: Import outside toplevel (platform) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:634:4: C0415: Import outside toplevel (matplotlib) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:635:4: C0415: Import outside toplevel (matplotlib.colors) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:702:4: C0415: Import outside toplevel (re) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:710:8: C0415: Import outside toplevel (pyodbc) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:714:44: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:717:44: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:761:4: C0415: Import outside toplevel (site) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:800:4: C0415: Import outside toplevel (json) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:838:4: C0415: Import outside toplevel (json) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:863:4: C0415: Import outside toplevel (matplotlib.pyplot) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:901:4: C0415: Import outside toplevel (os) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:902:4: C0415: Import outside toplevel (subprocess) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:927:11: R1719: The if expression can be replaced with 'test' (simplifiable-if-expression)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:973:4: C0415: Import outside toplevel (re) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1002:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1009:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1057:4: C0415: Import outside toplevel (importlib) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1113:4: C0415: Import outside toplevel (unidecode) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1145:4: C0415: Import outside toplevel (mysql.connector) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1184:4: C0415: Import outside toplevel (cx_Oracle) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1184:4: E0401: Unable to import 'cx_Oracle' (import-error)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1226:4: C0415: Import outside toplevel (pyodbc) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1230:21: I1101: Module 'pyodbc' has no 'connect' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1388:4: C0415: Import outside toplevel (numpy) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1390:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1419:4: C0415: Import outside toplevel (matplotlib.pyplot) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1471:8: C0415: Import outside toplevel (plotly.offline) (import-outside-toplevel)
+/var/devmt/py/utils3_0.13.3/utils3/utils.py:1472:8: C0415: Import outside toplevel (plotly.graph_objs) (import-outside-toplevel)
 
 
 Report
 ======
-277 statements analysed.
+279 statements analysed.
 
 Statistics by type
 ------------------
@@ -17,13 +47,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |1      |1          |=          |100.00      |0.00     |
+|module   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |0      |0          |=          |0           |0        |
+|class    |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |0      |0          |=          |0           |0        |
+|method   |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-|function |28     |28         |=          |100.00      |0.00     |
+|function |28     |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -32,7 +62,6 @@ External dependencies
 ---------------------
 ::
 
-    cx_Oracle (utils3.utils)
     matplotlib 
       \-cm (utils3.utils)
       \-colors (utils3.utils)
@@ -55,13 +84,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |304    |20.40 |304      |=          |
+|code      |306    |20.40 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |879    |58.99 |879      |=          |
+|docstring |883    |58.87 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |176    |11.81 |176      |=          |
+|comment   |178    |11.87 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |131    |8.79  |131      |=          |
+|empty     |133    |8.87  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -72,9 +101,9 @@ Duplication
 +-------------------------+------+---------+-----------+
 |                         |now   |previous |difference |
 +=========================+======+=========+===========+
-|nb duplicated lines      |0     |0        |=          |
+|nb duplicated lines      |0     |NC       |NC         |
 +-------------------------+------+---------+-----------+
-|percent duplicated lines |0.000 |0.000    |=          |
+|percent duplicated lines |0.000 |NC       |NC         |
 +-------------------------+------+---------+-----------+
 
 
@@ -85,13 +114,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |1      |1        |=          |
+|convention |27     |NC       |NC         |
 +-----------+-------+---------+-----------+
-|refactor   |1      |0        |+1.00      |
+|refactor   |5      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|warning    |0      |0        |=          |
+|warning    |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|error      |0      |0        |=          |
+|error      |1      |NC       |NC         |
 +-----------+-------+---------+-----------+
 
 
@@ -102,16 +131,24 @@ Messages
 +---------------------------+------------+
 |message id                 |occurrences |
 +===========================+============+
-|c-extension-no-member      |4           |
+|import-outside-toplevel    |26          |
++---------------------------+------------+
+|unnecessary-comprehension  |3           |
++---------------------------+------------+
+|c-extension-no-member      |3           |
 +---------------------------+------------+
 |simplifiable-if-expression |1           |
 +---------------------------+------------+
+|no-else-break              |1           |
++---------------------------+------------+
 |line-too-long              |1           |
++---------------------------+------------+
+|import-error               |1           |
 +---------------------------+------------+
 
 
 
 
 ------------------------------------------------------------------
-Your code has been rated at 9.93/10 (previous run: 9.96/10, -0.04)
+Your code has been rated at 8.67/10 (previous run: 9.93/10, -1.25)
 

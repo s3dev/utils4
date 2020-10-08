@@ -414,26 +414,7 @@ class UserInterface(object):
 
     def _enable_win_unicode_console(self):
         """Enable the Windows CLI console colours for Py3."""
-        # WHEN win_unicode_console IS ENABLED, A RUNTIME WARNING IS
-        # THROWN DUE TO A MISMATCH IN THE stdin AND stdout ENCODING
-        # TYPES; IGNORE IT.
-        self._disable_warnings()
-        win_unicode_console.enable()
-        self._reset_warnings()
-
-    @staticmethod
-    def _disable_warnings():
-        """Disable runtime warnings.
-
-        When ``win_unicode_console.enable()`` is called on class
-        instantiation, a RuntimeWarning is thrown.  This method lets us
-        ignore that.
-
-        Immediately following the line that will throw an error
-        :meth:`~_reset_warnings` should be called.
-
-        """
-        warnings.filterwarnings('ignore', category=Warning)
+        win_unicode_console.enable(use_readline_hook=False)
 
     @staticmethod
     def _pad(text, padto):
@@ -450,11 +431,6 @@ class UserInterface(object):
 
         """
         return '{:{padto}}'.format(text.expandtabs(4), padto=padto)
-
-    @staticmethod
-    def _reset_warnings():
-        """Reset warning messages if any are disabled."""
-        warnings.resetwarnings()
 
 
 # ALLOW MANY ATTRIBS AND FEW METHODS

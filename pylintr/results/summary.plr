@@ -1,20 +1,22 @@
 Pylint Summary:
 ------------------------
 changelog.plr:
+cmaps.plr: 10.00/10
 colours.plr: 9.69/10
 config.plr: 9.57/10
 conf.plr:
-database.plr: 9.90/10
+crypto.plr: 8.40/10
+database.plr: 9.86/10
 dfdiff.plr: 10.00/10
 log.plr: 9.73/10
 progressbar.plr: 9.76/10
 pywarnings.plr: 9.29/10
 registry.plr: 5.42/10
-reporterror.plr: 10.00/10
-setup.plr: 9.67/10
+reporterror.plr: 8.50/10
+setup.plr: 10.00/10
 tickers.plr: 9.87/10
 timedelta.plr: 10.00/10
-utils.plr: 9.93/10
+utils.plr: 8.67/10
 validation.plr: 9.32/10
 ------------------------
-Run date: Tue 21 Jan 21:25:01 GMT 2020
+Run date: Thu 8 Oct 09:05:48 BST 2020
