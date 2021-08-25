@@ -2,21 +2,22 @@
 
 dirs="./build ./dist ./utils3.egg-info"
 
-# CHECK FOR EXISTING BUILD/DIST DIRS
-echo ""
-echo Checking for existing build directories ...
+# Check for existing build/dist directories.
+printf "\nChecking for existing build directories ...\n\n"
 for d in ${dirs}; do
-    # IF FOUND, DELETE IT
+    # Delete the directory if it exists.
     if [ -d "${d}" ]; then
-        echo Deleting "${d}"
+        printf "Deleting %s\n" ${d}
         rm -rf "${d}"
     fi
 done
 
-# PACKAGE IT!
+# Create the package and wheel file.
 python ./setup.py sdist bdist_wheel
 
-# NOTIFICATION
-echo ""
-echo All done.
-echo ""
+# Update requirements file.
+printf "\nUpdating the requirements file ...\n"
+pipreqs . --force
+
+# Notfication.
+printf "\nAll done.\n\n"

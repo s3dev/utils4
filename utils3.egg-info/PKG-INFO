@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: utils3
-Version: 0.13.3
+Version: 0.14.0
 Summary: Bespoke general utilities package for Python 3.5+.
 Home-page: https://github.com/s3dev/utils3
 Author: J. Berendt
@@ -13,6 +13,7 @@ Platform: Python 3.5
 Classifier: Programming Language :: Python :: 3.5
 Classifier: Programming Language :: Python :: 3.6
 Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Development Status :: 4 - Beta
 Classifier: Operating System :: Microsoft :: Windows
