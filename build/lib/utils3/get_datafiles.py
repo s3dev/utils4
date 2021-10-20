@@ -22,15 +22,14 @@
                                    p2e=False)
 
 """
+# pylint: disable=dangerous-default-value
 
 import os
 import utils3.utils as utils
 
-# ALLOW A LIST AS DEFAULT METHOD PARAMETER
-# pylint: disable=dangerous-default-value
 def get_datafiles(pkg_dir, exts=['.json', '.sql', '.txt'],
                   get_docs=False, docs_path='./docs',
-                  get_readme_files=True, readme_name='README', readme_exts=['.html', '.md'],
+                  get_readme_files=True, readme_exts=['.html', '.md'],
                   get_license=True, license_name='LICENSE',
                   p2e=False):
     """Gather and return a list of project data files.
@@ -59,8 +58,6 @@ def get_datafiles(pkg_dir, exts=['.json', '.sql', '.txt'],
             relation to ``setup.py``.  Ideally, the ``docs`` directory
             sits in parallel with ``setup.py``.
         get_readme_files (bool): Include the package's README file(s).
-        readme_name (str): Name of the readme file.  This is **not case
-            sensative**.
         readme_exts (list): A list of file extensions used as a filter
             when collecting README files.
         get_license (bool): Include the package's LICENSE file.

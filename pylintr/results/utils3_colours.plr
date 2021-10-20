@@ -1,14 +1,8 @@
-************* Module utils3.validation
-/var/devmt/py/utils3_0.13.3/utils3/validation.py:29:0: R0205: Class '_FileExtensionRule' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-/var/devmt/py/utils3_0.13.3/utils3/validation.py:49:17: R1719: The if expression can be replaced with 'test' (simplifiable-if-expression)
-/var/devmt/py/utils3_0.13.3/utils3/validation.py:58:0: R0205: Class '_IsInstanceRules' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-/var/devmt/py/utils3_0.13.3/utils3/validation.py:97:0: R0205: Class 'RegEx' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-/var/devmt/py/utils3_0.13.3/utils3/validation.py:147:0: R0205: Class 'Rules' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
 
 
 Report
 ======
-73 statements analysed.
+64 statements analysed.
 
 Statistics by type
 ------------------
@@ -20,10 +14,18 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |class    |4      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |21     |NC         |NC         |100.00      |0.00     |
+|method   |18     |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    colorama (utils3.colours)
 
 
 
@@ -33,13 +35,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |86     |29.97 |NC       |NC         |
+|code      |79     |43.89 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |170    |59.23 |NC       |NC         |
+|docstring |68     |37.78 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |2      |0.70  |NC       |NC         |
+|comment   |4      |2.22  |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |29     |10.10 |NC       |NC         |
+|empty     |29     |16.11 |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -65,7 +67,7 @@ Messages by category
 +===========+=======+=========+===========+
 |convention |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|refactor   |5      |NC       |NC         |
+|refactor   |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |warning    |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -74,20 +76,7 @@ Messages by category
 
 
 
-Messages
---------
 
-+---------------------------+------------+
-|message id                 |occurrences |
-+===========================+============+
-|useless-object-inheritance |4           |
-+---------------------------+------------+
-|simplifiable-if-expression |1           |
-+---------------------------+------------+
-
-
-
-
-------------------------------------------------------------------
-Your code has been rated at 9.32/10 (previous run: 9.32/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.38/10, +0.62)
 

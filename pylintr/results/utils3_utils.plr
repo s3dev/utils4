@@ -1,0 +1,124 @@
+************* Module utils3.utils
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:83:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:189:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:285:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:382:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:462:8: R1723: Unnecessary "else" after "break" (no-else-break)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:931:11: R1719: The if expression can be replaced with 'test' (simplifiable-if-expression)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:1006:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:1013:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:935:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:1129:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:1166:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:1207:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils3_0.14.1/utils3/utils.py:1394:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+
+
+Report
+======
+279 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |28     |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    matplotlib 
+      \-cm (utils3.utils)
+      \-colors (utils3.utils)
+      \-pyplot (utils3.utils)
+    mysql 
+      \-connector (utils3.utils)
+    numpy (utils3.utils)
+    plotly 
+      \-graph_objs (utils3.utils)
+      \-offline (utils3.utils)
+    six (utils3.utils)
+    unidecode (utils3.utils)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |306    |20.35 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |883    |58.71 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |182    |12.10 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |133    |8.84  |NC       |NC         |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |13     |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-------------------------------+------------+
+|message id                     |occurrences |
++===============================+============+
+|inconsistent-return-statements |8           |
++-------------------------------+------------+
+|unnecessary-comprehension      |3           |
++-------------------------------+------------+
+|simplifiable-if-expression     |1           |
++-------------------------------+------------+
+|no-else-break                  |1           |
++-------------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 9.53/10 (previous run: 8.03/10, +1.51)
+

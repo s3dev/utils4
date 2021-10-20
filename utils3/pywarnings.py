@@ -36,7 +36,8 @@
 
 import warnings
 
-class PyWarnings(object):
+
+class PyWarnings():
     """A simple wrapper around Python's built-in ``warnings`` library.
 
     This class provides easy access to ignore (a given set of) warnings

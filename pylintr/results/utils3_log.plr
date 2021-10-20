@@ -1,10 +1,8 @@
-************* Module utils3.pywarnings
-/var/devmt/py/utils3_0.13.3/utils3/pywarnings.py:39:0: R0205: Class 'PyWarnings' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
 
 
 Report
 ======
-14 statements analysed.
+37 statements analysed.
 
 Statistics by type
 ------------------
@@ -29,13 +27,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |17     |14.91 |NC       |NC         |
+|code      |41     |20.60 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |89     |78.07 |NC       |NC         |
+|docstring |125    |62.81 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |3      |2.63  |NC       |NC         |
+|comment   |21     |10.55 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |5      |4.39  |NC       |NC         |
+|empty     |12     |6.03  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -61,7 +59,7 @@ Messages by category
 +===========+=======+=========+===========+
 |convention |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|refactor   |1      |NC       |NC         |
+|refactor   |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |warning    |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -70,18 +68,7 @@ Messages by category
 
 
 
-Messages
---------
 
-+---------------------------+------------+
-|message id                 |occurrences |
-+===========================+============+
-|useless-object-inheritance |1           |
-+---------------------------+------------+
-
-
-
-
-------------------------------------------------------------------
-Your code has been rated at 9.29/10 (previous run: 9.29/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.73/10, +0.27)
 

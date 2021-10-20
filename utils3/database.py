@@ -23,20 +23,18 @@
                 > True
 
 """
+# pylint: disable=protected-access
+# pylint: disable=super-with-arguments  # For Py35 compatibility.
+# pylint: disable=too-few-public-methods
+# pylint: disable=too-many-instance-attributes
 
 import os
 import re
 from utils3 import utils
 from utils3 import user_interface as ui
 
-# ALLOW ANY NUMBER OF PUBLIC METHODS
-# pylint: disable=too-few-public-methods
-# ALLOW ANY NUMBER OF INSTANCE ATTRIBUTES
-# pylint: disable=too-many-instance-attributes
-# ALLOW ACCESS TO PRIVATE utils MEMBERS
-# pylint: disable=protected-access
 
-class Database(object):
+class Database():
     """
     The Database super-class is used to hold general properties or
     functions used by the more specific sub-classes.  In general, you
@@ -126,13 +124,14 @@ class Database(object):
             True if the table exists, otherwise False.
 
         """
+        exists = False
         try:
             # RUN QUERY >> CONVERT RESULT TO BOOLEAN
-            return bool(self.cur.execute(sql).fetchall()[0][0])
-
+            exists = bool(self.cur.execute(sql).fetchall()[0][0])
         except Exception as err:
             # USER NOTIFICATION
             self._ui.print_error(err)
+        return exists
 
     @staticmethod
     def _parse_script(script_string) -> list:
@@ -159,7 +158,7 @@ class Database(object):
 
         """
         # PARSE THE SCRIPT INTO INDIVIDUAL STATEMENTS
-        cmds = [line for line in script_string.split(';')]
+        cmds = [line for line in script_string.split(';') if line]
 
         # LOOP THROUGH EACH STATEMENT
         for idx, cmd in enumerate(cmds):
@@ -232,6 +231,7 @@ class MySQL(Database):
         self._filename  = filename
 
     def connect(self):
+        # pylint: disable=line-too-long
         """
         Create a database connection and update class attributes
         accordingly.
@@ -346,14 +346,16 @@ class MySQL(Database):
             so the actions must be done in separate steps.
 
         """
+        exists = False
         try:
             # RUN QUERY
             self.cur.execute(sql)
             # GET >> CONVERT RESULT TO BOOLEAN AND RETURN
-            return bool(self.cur.fetchall()[0][0])
+            exists = bool(self.cur.fetchall()[0][0])
         except Exception as err:
             # USER NOTIFICATION
             self._ui.print_error(err)
+        return exists
 
 
 # ----------------------------------------------------------------------

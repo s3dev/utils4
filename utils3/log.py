@@ -40,7 +40,7 @@ from datetime import datetime as dt
 import utils3.reporterror as reporterror
 
 
-class Log(object):
+class Log():
     """This is a small and simple log file creator/writer class.
 
     The calling program is responsible for passing the proper arguments

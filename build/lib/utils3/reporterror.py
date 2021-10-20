@@ -13,6 +13,10 @@
 
 """
 
+import sys
+import traceback
+from utils3.log import Log
+
 def reporterror(error, logevent=False, logfilepath='c:/temp/reporterror.log'):
     """Report an error, derived from the built-in Exception object.
 
@@ -51,9 +55,6 @@ def reporterror(error, logevent=False, logfilepath='c:/temp/reporterror.log'):
             CMD:    1/0
 
     """
-    import sys
-    import traceback
-    from utils3.log import Log
 
     exc_type, _, exc_tb = sys.exc_info()
     fnam, line, func, text = traceback.extract_tb(exc_tb)[-1]

@@ -29,6 +29,7 @@
         >>> OWUxMDdkOWQzNzJiYjY4MjZiZDgxZDM1NDJhNDE5ZDY=
 
 """
+# pylint: disable=invalid-name
 
 import base64
 import hashlib

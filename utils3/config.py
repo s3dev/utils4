@@ -105,13 +105,10 @@ def _file_exists(fullpath) -> bool:
         True of the file exists, otherwise False.
 
     """
-    # TEST IF THE FILE EXISTS
-    if os.path.exists(fullpath):
-        # LOAD CONFIG FILE
-        return True
-    else:
-        # USER NOTIFICATION
+    exists = os.path.exists(fullpath)
+    if not exists:
         raise UserWarning('The config file (%s) could not be found.' % (fullpath))
+    return exists
 
 
 def _fromjson(filepath) -> dict:

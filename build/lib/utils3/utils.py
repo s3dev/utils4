@@ -20,6 +20,9 @@
         u.__version__
 
 """
+# For Linux checks.
+# pylint: disable=import-error
+# pylint: disable=import-outside-toplevel
 
 # AS THIS IS A UTILITIES PACKAGE, NOT ALL IMPORTS ARE USED DURING
 # EXECUTION, SO MOST IMPORTS SIT WITH THE METHOD OR FUNCTION IN WHICH
@@ -79,6 +82,7 @@ def clean_df(df):
 # ----------------------------------------------------------------------
 def dbconn_mysql(host=None, user=None, password=None, database=None, port=3306,
                  from_file=False, filename=None):
+    # pylint: disable=line-too-long
     """Return MySQL database connection and cursor objects.
 
     Warning:

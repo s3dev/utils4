@@ -2,7 +2,7 @@
 
 Report
 ======
-30 statements analysed.
+31 statements analysed.
 
 Statistics by type
 ------------------
@@ -25,10 +25,8 @@ External dependencies
 ---------------------
 ::
 
-    utils3 
-      \-_version (setup)
-      \-get_datafiles (setup)
-      \-utils (setup)
+    pandas (utils3.reader)
+    xlrd (utils3.reader)
 
 
 
@@ -38,13 +36,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |47     |46.08 |NC       |NC         |
+|code      |41     |36.61 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |40     |39.22 |NC       |NC         |
+|docstring |60     |53.57 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |6      |5.88  |NC       |NC         |
+|comment   |4      |3.57  |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |9      |8.82  |NC       |NC         |
+|empty     |7      |6.25  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 

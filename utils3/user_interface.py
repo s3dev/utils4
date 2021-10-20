@@ -29,27 +29,28 @@
 :Email:     support@73rdstreetdevelopment.co.uk
 
 """
+# For Linux checks.
+# pylint: disable=import-error
+# pylint: disable=too-few-public-methods
+# pylint: disable=wrong-import-order
 
 import inspect
 import os
 import platform
 import time
-import warnings
 from colorama import Fore, Back, Style
 from colorama import init as colourinit
 
 import utils3.config as config
 import utils3.reporterror as reporterror
 
-# ALLOW OUR IMPORT ORDER
-# pylint: disable=wrong-import-order
-# ONLY IMPORT IF WINDOWS
+# Only import if windows.
 if 'win' in platform.system().lower():
     import win_unicode_console
     from ctypes import windll
 
 
-class UserInterface(object):
+class UserInterface():
     """This class encapsulates the Linux/Windows CLIs and provides a
     standard way of reporting normal, alternative and abnormal
     behaviour.
@@ -65,7 +66,7 @@ class UserInterface(object):
     """
 
     def __init__(self):
-        """Class initialiser.
+        r"""Class initialiser.
 
         :Purpose:
             This constructor initialises ``colorama`` - which enables
@@ -412,7 +413,8 @@ class UserInterface(object):
         """
         return {k.lower():v for k, v in vars(class_).items()}
 
-    def _enable_win_unicode_console(self):
+    @staticmethod
+    def _enable_win_unicode_console():
         """Enable the Windows CLI console colours for Py3."""
         win_unicode_console.enable(use_readline_hook=False)
 
@@ -433,10 +435,7 @@ class UserInterface(object):
         return '{:{padto}}'.format(text.expandtabs(4), padto=padto)
 
 
-# ALLOW MANY ATTRIBS AND FEW METHODS
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=too-few-public-methods
-class PrintBanner(object):
+class PrintBanner():
     """This class is used to print a banner of information to the CLI.
 
     :Design:

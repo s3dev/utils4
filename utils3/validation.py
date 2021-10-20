@@ -21,12 +21,13 @@
         >>> True
 
 """
+# pylint: disable=too-few-public-methods
 
 import os
 import re
 
-# pylint: disable=too-few-public-methods
-class _FileExtensionRule(object):
+
+class _FileExtensionRule():
     """Validate file extensions."""
 
     def file_ext_match(self, filename, ext) -> bool:
@@ -46,7 +47,7 @@ class _FileExtensionRule(object):
         _filename, _ext = os.path.splitext(filename)
         _ext = self._prepare_ext(ext=_ext)
         ext = self._prepare_ext(ext=ext)
-        result = True if _ext == ext else False
+        result = _ext == ext
         return result
 
     @staticmethod
@@ -55,7 +56,7 @@ class _FileExtensionRule(object):
         return ext.replace('.', '').lower()
 
 
-class _IsInstanceRules(object):
+class _IsInstanceRules():
     """Validation rules for Python data types."""
 
     @staticmethod
@@ -94,7 +95,7 @@ class _IsInstanceRules(object):
         return isinstance(value, str)
 
 
-class RegEx(object):
+class RegEx():
     """This class holds a variety of validation regex strings."""
 
     @property
@@ -144,7 +145,7 @@ class RegEx(object):
         return '((1[56789]|2[0-9]))(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])'
 
 
-class Rules(object):
+class Rules():
     """A collection of validation rules."""
 
     def __init__(self):

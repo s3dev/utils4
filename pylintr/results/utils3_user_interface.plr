@@ -1,12 +1,8 @@
-************* Module utils3.database
-/var/devmt/py/utils3_0.13.3/utils3/database.py:256:0: C0301: Line too long (106/100) (line-too-long)
-/var/devmt/py/utils3_0.13.3/utils3/database.py:39:0: R0205: Class 'Database' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-/var/devmt/py/utils3_0.13.3/utils3/database.py:162:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
 
 
 Report
 ======
-208 statements analysed.
+166 statements analysed.
 
 Statistics by type
 ------------------
@@ -16,12 +12,20 @@ Statistics by type
 +=========+=======+===========+===========+============+=========+
 |module   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |5      |NC         |NC         |100.00      |0.00     |
+|class    |2      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |30     |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |function |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    colorama (utils3.user_interface)
 
 
 
@@ -31,13 +35,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |249    |28.23 |NC       |NC         |
+|code      |186    |25.69 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |489    |55.44 |NC       |NC         |
+|docstring |449    |62.02 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |91     |10.32 |NC       |NC         |
+|comment   |49     |6.77  |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |53     |6.01  |NC       |NC         |
+|empty     |40     |5.52  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -61,9 +65,9 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |1      |NC       |NC         |
+|convention |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
-|refactor   |2      |NC       |NC         |
+|refactor   |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |warning    |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -72,22 +76,7 @@ Messages by category
 
 
 
-Messages
---------
 
-+---------------------------+------------+
-|message id                 |occurrences |
-+===========================+============+
-|useless-object-inheritance |1           |
-+---------------------------+------------+
-|unnecessary-comprehension  |1           |
-+---------------------------+------------+
-|line-too-long              |1           |
-+---------------------------+------------+
-
-
-
-
-------------------------------------------------------------------
-Your code has been rated at 9.86/10 (previous run: 9.90/10, -0.05)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.40/10, +0.60)
 

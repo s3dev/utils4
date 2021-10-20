@@ -1,11 +1,12 @@
-************* Module utils3.colours
-/var/devmt/py/utils3_0.13.3/utils3/colours.py:33:0: R0205: Class '_Generic' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-/var/devmt/py/utils3_0.13.3/utils3/colours.py:144:0: R0205: Class 'Colours' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+************* Module test.test_utils
+/var/devmt/py/utils3_0.14.1/test/test_utils.py:67:22: R1719: The if expression can be replaced with 'not test' (simplifiable-if-expression)
+/var/devmt/py/utils3_0.14.1/test/test_utils.py:68:22: R1719: The if expression can be replaced with 'not test' (simplifiable-if-expression)
+/var/devmt/py/utils3_0.14.1/test/test_utils.py:136:12: C0415: Import outside toplevel (warnings) (import-outside-toplevel)
 
 
 Report
 ======
-64 statements analysed.
+82 statements analysed.
 
 Statistics by type
 ------------------
@@ -15,11 +16,11 @@ Statistics by type
 +=========+=======+===========+===========+============+=========+
 |module   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |4      |NC         |NC         |100.00      |0.00     |
+|class    |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |18     |NC         |NC         |100.00      |0.00     |
+|method   |14     |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |0      |NC         |NC         |0           |0        |
+|function |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -28,7 +29,10 @@ External dependencies
 ---------------------
 ::
 
-    colorama (utils3.colours)
+    pandas (test.test_utils)
+    six (test.test_utils)
+    utils3 
+      \-utils (test.test_utils)
 
 
 
@@ -38,13 +42,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |79     |44.13 |NC       |NC         |
+|code      |83     |36.73 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |67     |37.43 |NC       |NC         |
+|docstring |36     |15.93 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |5      |2.79  |NC       |NC         |
+|comment   |63     |27.88 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |28     |15.64 |NC       |NC         |
+|empty     |44     |19.47 |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -68,7 +72,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |NC       |NC         |
+|convention |1      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |refactor   |2      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -85,12 +89,14 @@ Messages
 +---------------------------+------------+
 |message id                 |occurrences |
 +===========================+============+
-|useless-object-inheritance |2           |
+|simplifiable-if-expression |2           |
++---------------------------+------------+
+|import-outside-toplevel    |1           |
 +---------------------------+------------+
 
 
 
 
 ------------------------------------------------------------------
-Your code has been rated at 9.69/10 (previous run: 9.69/10, +0.00)
+Your code has been rated at 9.63/10 (previous run: 9.63/10, +0.00)
 

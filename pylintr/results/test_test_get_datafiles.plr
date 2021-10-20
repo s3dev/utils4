@@ -1,13 +1,8 @@
-************* Module utils3.crypto
-/var/devmt/py/utils3_0.13.3/utils3/crypto.py:94:8: C0103: Variable name "h" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
-/var/devmt/py/utils3_0.13.3/utils3/crypto.py:112:8: C0103: Variable name "h" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
-/var/devmt/py/utils3_0.13.3/utils3/crypto.py:114:12: C0103: Variable name "h" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
-/var/devmt/py/utils3_0.13.3/utils3/crypto.py:118:0: C0103: Constant name "crypto" doesn't conform to '(([A-Z_][A-Z0-9_]*)|(__.*__))$' pattern (invalid-name)
 
 
 Report
 ======
-25 statements analysed.
+13 statements analysed.
 
 Statistics by type
 ------------------
@@ -19,10 +14,19 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |4      |NC         |NC         |100.00      |0.00     |
+|method   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |0      |NC         |NC         |0           |0        |
+|function |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    utils3 
+      \-get_datafiles (test.test_get_datafiles)
 
 
 
@@ -32,13 +36,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |27     |22.50 |NC       |NC         |
+|code      |14     |28.00 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |81     |67.50 |NC       |NC         |
+|docstring |16     |32.00 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |2      |1.67  |NC       |NC         |
+|comment   |8      |16.00 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |10     |8.33  |NC       |NC         |
+|empty     |12     |24.00 |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -62,7 +66,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |4      |NC       |NC         |
+|convention |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |refactor   |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -73,18 +77,7 @@ Messages by category
 
 
 
-Messages
---------
 
-+-------------+------------+
-|message id   |occurrences |
-+=============+============+
-|invalid-name |4           |
-+-------------+------------+
-
-
-
-
------------------------------------
-Your code has been rated at 8.40/10
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 

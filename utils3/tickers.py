@@ -24,6 +24,7 @@
         spinner.stop()
 
 """
+# pylint: disable=super-with-arguments  # For Py35 compatibility.
 
 import sys
 import threading
@@ -31,8 +32,8 @@ import time
 import colorama
 from utils3 import utils
 
-# pylint: disable=too-few-public-methods
-class _GenericWait(object):
+
+class _GenericWait():
     """This generic class holds functionality which is inherited by
     each ticker type.
 

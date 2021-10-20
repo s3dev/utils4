@@ -1,12 +1,8 @@
-************* Module utils3.reporterror
-/var/devmt/py/utils3_0.13.3/utils3/reporterror.py:54:4: C0415: Import outside toplevel (sys) (import-outside-toplevel)
-/var/devmt/py/utils3_0.13.3/utils3/reporterror.py:55:4: C0415: Import outside toplevel (traceback) (import-outside-toplevel)
-/var/devmt/py/utils3_0.13.3/utils3/reporterror.py:56:4: C0415: Import outside toplevel (utils3.log) (import-outside-toplevel)
 
 
 Report
 ======
-20 statements analysed.
+212 statements analysed.
 
 Statistics by type
 ------------------
@@ -16,11 +12,11 @@ Statistics by type
 +=========+=======+===========+===========+============+=========+
 |module   |1      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |0      |NC         |NC         |0           |0        |
+|class    |5      |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |0      |NC         |NC         |0           |0        |
+|method   |30     |NC         |NC         |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |1      |NC         |NC         |100.00      |0.00     |
+|function |0      |NC         |NC         |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -31,13 +27,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |22     |28.21 |NC       |NC         |
+|code      |253    |28.62 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |49     |62.82 |NC       |NC         |
+|docstring |489    |55.32 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |2      |2.56  |NC       |NC         |
+|comment   |90     |10.18 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |5      |6.41  |NC       |NC         |
+|empty     |52     |5.88  |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -61,7 +57,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |3      |NC       |NC         |
+|convention |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
 |refactor   |0      |NC       |NC         |
 +-----------+-------+---------+-----------+
@@ -72,18 +68,7 @@ Messages by category
 
 
 
-Messages
---------
 
-+------------------------+------------+
-|message id              |occurrences |
-+========================+============+
-|import-outside-toplevel |3           |
-+------------------------+------------+
-
-
-
-
-------------------------------------------------------------------
-Your code has been rated at 8.50/10 (previous run: 8.50/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.57/10, +0.43)
 

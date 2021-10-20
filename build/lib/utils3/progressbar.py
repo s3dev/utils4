@@ -10,14 +10,15 @@
 :Comments:  n/a
 
 """
+# pylint:disable=too-few-public-methods
+
+# TODO: Update to offer background colour.
 
 import sys
 import colorama
 
-# TODO: Update to offer background colour.
 
-# pylint:disable=too-few-public-methods
-class ProgressBar(object):
+class ProgressBar():
     """Implement a console progress bar into a processing loop.
 
     :Design:

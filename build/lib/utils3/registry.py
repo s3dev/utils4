@@ -22,6 +22,9 @@
 :Example:  For a use example, refer to the :class:`~Registry` docstring.
 
 """
+# Disable for Linux checks.
+# pylint: disable=import-error
+# pylint: disable=undefined-variable
 
 import utils3.user_interface as ui
 from utils3 import utils
@@ -38,7 +41,7 @@ else:
 # IGNORE PYLINT WARNINGS
 # pylint: disable=too-few-public-methods
 # pylint: disable=invalid-name
-class Value(object):
+class Value():
     """This class encapsulates the Windows registry values.
 
     It provides name, type and data attributes to mimic the attributes
@@ -54,7 +57,7 @@ class Value(object):
 
 
 # ----------------------------------------------------------------------
-class Key(object):
+class Key():
     """This class encapsulates the Windows registry keys.
 
     It provides methods that can be used to interact with the values
@@ -114,7 +117,7 @@ class Key(object):
 
 
 # ----------------------------------------------------------------------
-class Registry(object):
+class Registry():
     r"""This class encapsulates the Windows registry.
 
     It provides methods that can be used to interact with the keys and

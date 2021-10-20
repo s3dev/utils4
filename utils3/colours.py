@@ -7,7 +7,7 @@
             The eight additional 'bright' colours are accessed by
             passing ``True`` to the ``bright`` argument.
 
-:Platform:  Linux/Windows | Python 3.5
+:Platform:  Linux/Windows | Python 3.8
 :Developer: J Berendt
 :Email:     support@73rdstreetdevelopment.co.uk
 
@@ -23,14 +23,14 @@
         print(t.red+'Hello!'+t.reset)
 
 """
+# pylint: disable=no-member
+# pylint: disable=super-with-arguments  # For Py35 compatibility.
 
 import colorama
 from utils3 import utils
 
-# THIS IS OK DUE TO INVERSE INHERITANCE
-# pylint: disable=no-member
-# pylint: disable=too-few-public-methods
-class _Generic(object):
+
+class _Generic():
     """The generic worker class inherited by the specific classes."""
 
     def __init__(self, bright):
@@ -97,14 +97,14 @@ class _Generic(object):
         return my_os
 
     @staticmethod
-    def _set_bright(bright):
+    def _set_bright(bright: bool):
         """Set the escape sequence template.
 
         Args:
             bright (bool): The ``bright`` flag passed in by the caller.
 
         """
-        return 1 if bright else 0
+        return int(bright)
 
 
 class _Back(_Generic):
@@ -119,7 +119,7 @@ class _Back(_Generic):
     _CYN=46
     _WHT=47
 
-    def __init__(self, bright):
+    def __init__(self, bright: bool):
         """Class initialiser."""
         super(_Back, self).__init__(bright=bright)
 
@@ -136,16 +136,17 @@ class _Text(_Generic):
     _CYN=36
     _WHT=37
 
-    def __init__(self, bright):
+    def __init__(self, bright: bool):
         """Class initialiser."""
         super(_Text, self).__init__(bright=bright)
 
 
-class Colours(object):
+class Colours():
     """The main colours class, which contains text and bkg colours.
 
     Args:
         bright (bool): Provides access to the eight 'bright' colours.
+            Defaults to True.
 
     :Comments:
         If used on Windows, the ``colorama.init()`` method is called
@@ -161,7 +162,7 @@ class Colours(object):
 
     """
 
-    def __init__(self, bright=True):
+    def __init__(self, bright: bool=True):
         """Class initialiser."""
         self._back = _Back(bright=bright)
         self._text = _Text(bright=bright)
