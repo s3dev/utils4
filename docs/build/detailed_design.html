@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>Detailed Module Design &#8212; utils3 - v0.14.1 Documentation</title>
+    <title>Detailed Module Design &#8212; utils3 - v0.15.0 Documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -19,7 +19,7 @@
     <link rel="prev" title="Overview" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.14.1 Documentation</span></a></h1>
+          <span>utils3 - v0.15.0 Documentation</span></a></h1>
         <h2 class="heading"><span>Detailed Module Design</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -516,6 +516,277 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
 <span class="n">my_param</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">my_param</span>
 </pre></div>
 </div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-convert">
+<span id="convert"></span><h2><strong>convert</strong><a class="headerlink" href="#module-convert" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Purpose</dt>
+<dd class="field-odd"><p>This module contains various low-level conversion functions.</p>
+</dd>
+<dt class="field-even">Platform</dt>
+<dd class="field-even"><p>Linux/Windows | Python 3.8</p>
+</dd>
+<dt class="field-odd">Developer</dt>
+<dd class="field-odd"><p>J Berendt</p>
+</dd>
+<dt class="field-even">Email</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</dd>
+<dt class="field-odd">Comments</dt>
+<dd class="field-odd"><p>These functions are designed to be as close to core Python,
+or a C-esque implementation, as possible.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt id="convert.ascii2bin">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">ascii2bin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asciistring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.ascii2bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an ASCII string into a binary string representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) – ASCII string to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A binary string representation for the passed ASCII text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.ascii2hex">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">ascii2hex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asciistring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.ascii2hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an ASCII string into a hexidecimal string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) – ASCII string to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A hexidecimal string representation of the passed ASCII
+text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.ascii2int">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">ascii2int</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asciistring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#convert.ascii2int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an ASCII string to a list of integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) – ASCII string to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of integers, as converted from he ASCII string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.bin2ascii">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">bin2ascii</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binstring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.bin2ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a binary string representation into ASCII text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binstring</strong> (<em>str</em>) – Binary string to be converted.</p></li>
+<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit chunks into which the binary string is
+broken for conversion. Defaults to 8.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An ASCII string representation of the passed binary string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.bin2hex">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">bin2hex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binstring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.bin2hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a binary string representation into a hex string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binstring</strong> (<em>str</em>) – Binary string to be converted.</p></li>
+<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit chunks into which the binary string is
+broken for conversion. Defaults to 8.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A hexidecimal string representation of the passed binary string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.bin2int">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">bin2int</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binstring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#convert.bin2int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a binary string representation into an integer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binstring</strong> (<em>str</em>) – Binary string to be converted.</p></li>
+<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit chunks into which the binary string is
+broken for conversion. Defaults to 8.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Integer value from the binary string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.hex2ascii">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">hex2ascii</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.hex2ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a hexidecimal string to ASCII text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hexstring</strong> (<em>str</em>) – Hex string to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An ASCII string representation for the passed hex string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.hex2bin">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">hex2bin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.hex2bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a hexidecimal string into a binary string representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hexstring</strong> (<em>str</em>) – Hex string to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A binary string representation of the passed hex string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.hex2int">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">hex2int</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstring</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbytes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#convert.hex2int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a hexidecimal string to an integer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hexstring</strong> (<em>str</em>) – Hex string to be converted.</p></li>
+<li><p><strong>nbytes</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of bytes to consider for each
+decimal value. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="o">=</span><span class="s1">&#39;c0ffee&#39;</span><span class="p">,</span> <span class="n">nbytes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">192</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">238</span><span class="p">]</span>
+
+<span class="n">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="o">=</span><span class="s1">&#39;c0ffee&#39;</span><span class="p">,</span> <span class="n">nbytes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">49407</span><span class="p">,</span> <span class="mi">238</span><span class="p">]</span>
+
+<span class="n">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="o">=</span><span class="s1">&#39;c0ffee&#39;</span><span class="p">,</span> <span class="n">nbytes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">12648430</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of decimal values, as converted from the hex string.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.int2ascii">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">int2ascii</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.int2ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an integer to an ASCII character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Integer value to be converted to ASCII text.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The passed integer value must be &lt;= 127.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the passed integer is &gt; 127.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The ASCII character associated to the passed integer.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.int2bin">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">int2bin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.int2bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an 8-bit integer to a binary string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Integer value to be converted.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The passed integer value must be &lt;= 255.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the passed integer is &gt; 255.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A binary string representation of the passed integer.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="convert.int2hex">
+<code class="sig-prename descclassname"><span class="pre">convert.</span></code><code class="sig-name descname"><span class="pre">int2hex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#convert.int2hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an integer into a hexidecimal string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Integer value to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A two character hexidecimal string for the passed integer
+value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
