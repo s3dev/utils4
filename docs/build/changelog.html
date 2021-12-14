@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>Change Log &#8212; utils3 - v0.15.0 Documentation</title>
+    <title>Change Log &#8212; utils3 - v0.15.1 Documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -18,7 +18,7 @@
     <link rel="prev" title="Detailed Module Design" href="detailed_design.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.15.0 Documentation</span></a></h1>
+          <span>utils3 - v0.15.1 Documentation</span></a></h1>
         <h2 class="heading"><span>Change Log</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -36,6 +36,22 @@
   <section id="module-changelog">
 <span id="change-log"></span><h1>Change Log<a class="headerlink" href="#module-changelog" title="Permalink to this headline">¶</a></h1>
 <ul>
+<li><p><strong>0.15.1 - Progress bar bug fix.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2021-12-14 12:48:54</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">progressbar</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">BUG</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">When</span> <span class="n">run</span> <span class="n">on</span> <span class="n">Windows</span><span class="p">,</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">initialisation</span> <span class="n">method</span>
+    <span class="n">re</span><span class="o">-</span><span class="n">initialised</span> <span class="n">colorama</span> <span class="k">for</span> <span class="n">each</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">bar</span><span class="o">.</span>
+  <span class="o">-</span> <span class="n">This</span> <span class="n">caused</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">to</span> <span class="n">slow</span> <span class="n">down</span> <span class="n">substantially</span> <span class="n">after</span>
+    <span class="n">about</span> <span class="mi">200</span> <span class="n">iterations</span><span class="p">,</span> <span class="ow">and</span> <span class="ow">in</span> <span class="n">some</span> <span class="n">cases</span> <span class="n">caused</span> <span class="n">programs</span> <span class="n">crashes</span>
+    <span class="n">due</span> <span class="n">to</span> <span class="n">a</span> <span class="n">stack</span> <span class="n">overflow</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">FIX</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Moved</span> <span class="n">the</span> <span class="n">colorama</span> <span class="n">initialisation</span> <span class="n">into</span> <span class="n">the</span> <span class="fm">__init__</span> <span class="n">module</span> <span class="n">of</span>
+    <span class="n">the</span> <span class="n">utils3</span> <span class="n">package</span><span class="p">,</span> <span class="ow">and</span> <span class="n">only</span> <span class="n">to</span> <span class="n">initialise</span> <span class="k">if</span> <span class="n">on</span> <span class="n">Windows</span><span class="o">.</span>
+
+<span class="n">Released</span><span class="p">:</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">14</span>
+</pre></div>
+</div>
+</li>
 <li><p><strong>0.15.0 - Addition of the convert module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2021-10-26 21:00:10</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">convert</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
 <span class="o">-</span> <span class="n">The</span> <span class="n">convert</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">various</span> <span class="n">data</span> <span class="nb">type</span> <span class="n">conversions</span>

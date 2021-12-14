@@ -1,12 +1,12 @@
+pandas==1.2.2
+plotly==4.14.3
+xlrd==2.0.1
+Unidecode==1.2.0
 matplotlib==3.3.4
 colorama==0.4.4
 six==1.15.0
-Unidecode==1.2.0
-xlrd==2.0.1
-plotly==4.14.3
-pandas==1.2.2
 numpy==1.19.2
-cx_Oracle==8.2.1
+cx_Oracle==8.3.0
 mysql_connector_repackaged==0.3.1
 pyodbc==4.0.32
 win_unicode_console==0.5

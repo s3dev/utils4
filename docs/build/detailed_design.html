@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>Detailed Module Design &#8212; utils3 - v0.15.0 Documentation</title>
+    <title>Detailed Module Design &#8212; utils3 - v0.15.1 Documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/s3dev.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -19,7 +19,7 @@
     <link rel="prev" title="Overview" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/triangle_black_sm.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>utils3 - v0.15.0 Documentation</span></a></h1>
+          <span>utils3 - v0.15.1 Documentation</span></a></h1>
         <h2 class="heading"><span>Detailed Module Design</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -2264,13 +2264,13 @@ log.</p>
 simple console progress bar.</p>
 </dd>
 <dt class="field-even">Platform</dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.5</p>
+<dd class="field-even"><p>Linux/Windows | Python 3.5+</p>
 </dd>
 <dt class="field-odd">Developer</dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
 <dt class="field-even">Email</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;73rdstreetdevelopment&#46;co&#46;uk">support<span>&#64;</span>73rdstreetdevelopment<span>&#46;</span>co<span>&#46;</span>uk</a></p>
+<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
 <dt class="field-odd">Comments</dt>
 <dd class="field-odd"><p>n/a</p>
@@ -2302,18 +2302,19 @@ letter of the colour is required.</p></li>
 </dd>
 <dt class="field-even">Example</dt>
 <dd class="field-even"><p>You might implement the progress bar in a loop like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">utils3.progressbar</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils3.progressbar</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
 
-<span class="n">pb</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">total_values</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">bar_len</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span>
-                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">total_values</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">bar_len</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span>
+<span class="go">                     color=&#39;red&#39;)</span>
 
-<span class="c1"># SOME PROCESS</span>
-<span class="k">for</span> <span class="n">i</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">):</span>
-    <span class="c1"># UPDATE PROGRESS</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">update_progress</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-    <span class="c1"># OPTIONAL PAUSE TO SEE UPDATES</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="go"># Some process.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="c1"># &lt; some processing &gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="c1"># Update progress bar.</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">pb</span><span class="o">.</span><span class="n">update_progress</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="c1"># Optional pause to see updates.</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -2321,7 +2322,7 @@ letter of the colour is required.</p></li>
 <dl class="py method">
 <dt id="progressbar.ProgressBar.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#progressbar.ProgressBar.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class initialiser.</p>
+<dd><p>Progress bar class initialiser.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2331,6 +2332,9 @@ letter of the colour is required.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>ANSI escape sequence string for the user’s colour.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
