@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>progressbar &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>progressbar</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for progressbar</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This is a small class module which provides access to a</span>
+<span class="sd">            simple console progress bar.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:   For a simple usage example, refer to the :class:`~ProgressBar`</span>
+<span class="sd">            class docstring.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<div class="viewcode-block" id="ProgressBar"><a class="viewcode-back" href="../progressbar.html#progressbar.ProgressBar">[docs]</a><span class="k">class</span> <span class="nc">ProgressBar</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Implement a console progress bar into a processing loop.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        total_values (int, optional): Total number of iterations.</span>
+<span class="sd">            Defaults to 25.</span>
+<span class="sd">        bar_len (int, optional): Complete length of the progress bar, in chars.</span>
+<span class="sd">            Defaults to 25</span>
+<span class="sd">        symbol (str, optional): The symbol which is used to track progress.</span>
+<span class="sd">            Defaults to ``&#39;.&#39;``.</span>
+<span class="sd">        color (str, optional): Colour of the progress bar; where only the first</span>
+<span class="sd">            letter of the colour is required.</span>
+<span class="sd">            Options are: red, green, yellow, blue, magenta, cyan, white.</span>
+<span class="sd">            Defaults to &#39;w&#39; (white).</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This is a simple console progress bar which should be called</span>
+<span class="sd">        **inside** a processing loop.</span>
+
+<span class="sd">        On instantiation, you can pass in the bar colour, length and</span>
+<span class="sd">        symbol parameters if you want to configure the appearance a</span>
+<span class="sd">        little bit.</span>
+
+<span class="sd">    :Colour Options:</span>
+<span class="sd">        red, green, yellow, blue, magenta, cyan, white</span>
+
+<span class="sd">    :Example:</span>
+<span class="sd">        You might implement the progress bar in a loop like this::</span>
+
+<span class="sd">            &gt;&gt;&gt; import time</span>
+<span class="sd">            &gt;&gt;&gt; from utils3.progressbar import ProgressBar</span>
+
+<span class="sd">            &gt;&gt;&gt; pb = ProgressBar(total_values=25,</span>
+<span class="sd">                                 bar_len=25,</span>
+<span class="sd">                                 symbol=&#39;#&#39;,</span>
+<span class="sd">                                 color=&#39;red&#39;)</span>
+
+<span class="sd">            &gt;&gt;&gt; for i range(26):</span>
+<span class="sd">            &gt;&gt;&gt;    # &lt; some processing &gt;</span>
+<span class="sd">            &gt;&gt;&gt;    pb.update_progress(current=i)</span>
+<span class="sd">            &gt;&gt;&gt;    # Optional pause to see updates.</span>
+<span class="sd">            &gt;&gt;&gt;    time.sleep(.1)</span>
+
+<span class="sd">            Processing 25 of 25 [ ......................... ] 100% Complete</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProgressBar.__init__"><a class="viewcode-back" href="../progressbar.html#progressbar.ProgressBar.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total_values</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">bar_len</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Progress bar class initialiser.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total</span> <span class="o">=</span> <span class="n">total_values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bar_len</span> <span class="o">=</span> <span class="n">bar_len</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="o">=</span> <span class="n">symbol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rst</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0m&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getcolor</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ProgressBar.update_progress"><a class="viewcode-back" href="../progressbar.html#progressbar.ProgressBar.update_progress">[docs]</a>    <span class="k">def</span> <span class="nf">update_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>  <span class="c1"># pragma: nocover</span>
+        <span class="sd">&quot;&quot;&quot;Incrementally update the progress bar.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            current (int): Index value for the current iteration.</span>
+<span class="sd">                This value is compared against the initialised ``total_values``</span>
+<span class="sd">                parameter to determine the current position in the overall</span>
+<span class="sd">                progress.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            Refer to the :class:`~ProgressBar` class docstring.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Calculate percent complete.</span>
+        <span class="n">percent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">current</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total</span>
+        <span class="c1"># Number of ticks.</span>
+        <span class="n">ticks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">percent</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bar_len</span><span class="p">))</span>
+        <span class="c1"># Number of space placeholders.</span>
+        <span class="n">spaces</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bar_len</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">ticks</span><span class="p">))</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_clr</span><span class="si">}</span><span class="s1">&#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Processing </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="p">)</span><span class="si">}</span><span class="s1"> of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="si">}</span><span class="s1"> [ </span><span class="si">{</span><span class="n">ticks</span><span class="o">+</span><span class="n">spaces</span><span class="si">}</span><span class="s1"> ] &#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">percent</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">% Complete </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_rst</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_getcolor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create ANSI colour escape sequence to user&#39;s colour.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: ANSI escape sequence string for the user&#39;s colour.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">}</span>
+        <span class="n">seq</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[</span><span class="si">{</span><span class="n">clrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s1">;40m&#39;</span>
+        <span class="k">return</span> <span class="n">seq</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

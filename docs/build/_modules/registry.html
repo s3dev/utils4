@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>registry &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>registry</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for registry</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module provides a simple interface to the Windows</span>
+<span class="sd">            registry.  It contains a :class:`~Registry` class that can</span>
+<span class="sd">            be used to interact with the registry; and is supported by</span>
+<span class="sd">            the :class:`~Key` and :class:`~Value` classes.</span>
+
+<span class="sd">            This module also provides the following objects that can be</span>
+<span class="sd">            used to directly access the registry methods for each root</span>
+<span class="sd">            HKEY.</span>
+
+<span class="sd">                - hkcr = HKEY_CLASSES_ROOT</span>
+<span class="sd">                - hkcu = HKEY_CURRENT_USER</span>
+<span class="sd">                - hklm = HKEY_LOCAL_MACHINE</span>
+<span class="sd">                - hkus = HKEY_USERS</span>
+<span class="sd">                - hkcc = HKEY_CURRENT_CONFIG</span>
+
+<span class="sd">:Platform:  Windows | Python 3.6+</span>
+<span class="sd">:Developer: M Critchard</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Example:  For a use example, refer to the :class:`~Registry` docstring.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">utils</span>
+    <span class="kn">from</span> <span class="nn">reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
+    <span class="kn">from</span> <span class="nn">user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
+    <span class="kn">from</span> <span class="nn">utils4.reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
+    <span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
+
+<span class="n">_OS</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_os</span><span class="p">()</span>
+
+<span class="c1"># Test OS before importing winreg.</span>
+<span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_OS</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">winreg</span> <span class="k">as</span> <span class="nn">wr</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Your operating system (</span><span class="si">{</span><span class="n">_OS</span><span class="si">}</span><span class="s1">) is not compatible with this module.&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Value"><a class="viewcode-back" href="../registry.html#registry.Value">[docs]</a><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry values.</span>
+
+<span class="sd">    It provides the following attributes to mimic the attributes of a value</span>
+<span class="sd">    in the registry:</span>
+
+<span class="sd">        - :attr:`~name`</span>
+<span class="sd">        - :attr:`~type`</span>
+<span class="sd">        - :attr:`~data`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pylint: disable=too-few-public-methods</span>
+
+<div class="viewcode-block" id="Value.__init__"><a class="viewcode-back" href="../registry.html#registry.Value.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">regtype</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the name, type and data attributes.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">regtype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="Key"><a class="viewcode-back" href="../registry.html#registry.Key">[docs]</a><span class="k">class</span> <span class="nc">Key</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry keys.</span>
+
+<span class="sd">    It provides methods that can be used to interact with the values</span>
+<span class="sd">    of the key.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Key.__init__"><a class="viewcode-back" href="../registry.html#registry.Key.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialise a private self._key attribute.</span>
+
+<span class="sd">        This attribute is used throughout the class to provide a set</span>
+<span class="sd">        of key specific functions.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_key</span> <span class="o">=</span> <span class="n">key</span></div>
+
+<div class="viewcode-block" id="Key.get_value"><a class="viewcode-back" href="../registry.html#registry.Key.get_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the key value specified by name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): Name of the registry key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            If the value exists, a value object is returned, otherwise</span>
+<span class="sd">            ``None`` is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">regtype</span> <span class="o">=</span> <span class="n">wr</span><span class="o">.</span><span class="n">QueryValueEx</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">Value</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">regtype</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="k">except</span> <span class="ne">WindowsError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Key.set_data"><a class="viewcode-back" href="../registry.html#registry.Key.set_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the data of the key value specified by name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): Name of the registry key.</span>
+<span class="sd">            data (str): Data to store into the key.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            Currently, only strings or unicode values are supported.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">wr</span><span class="o">.</span><span class="n">SetValueEx</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wr</span><span class="o">.</span><span class="n">REG_SZ</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">except</span> <span class="ne">NotImplementedError</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">WindowsError</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Registry"><a class="viewcode-back" href="../registry.html#registry.Registry">[docs]</a><span class="k">class</span> <span class="nc">Registry</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry.</span>
+
+<span class="sd">    It provides methods that can be used to interact with the keys and</span>
+<span class="sd">    values in the registry.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Example of how to get the value of a registry key::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import registry</span>
+
+<span class="sd">            &gt;&gt;&gt; hkcu = registry.hkcu</span>
+<span class="sd">            &gt;&gt;&gt; my_value = hkcu.get_value(&#39;control panel\desktop&#39;, &#39;wallpaper&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; my_wallpaper = my_value.data</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Registry.__init__"><a class="viewcode-back" href="../registry.html#registry.Registry.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hkey</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialise a private self._hkey attribute.</span>
+
+<span class="sd">        This attribute is used throughout the class to provide a set</span>
+<span class="sd">        of hkey specific functions.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hkey</span> <span class="o">=</span> <span class="n">hkey</span></div>
+
+<div class="viewcode-block" id="Registry.get_value"><a class="viewcode-back" href="../registry.html#registry.Registry.get_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the key value specified by the path and name</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Path to the registry key.</span>
+<span class="sd">            name (str): Name of the registry key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            If the value exists, a value object is returned, otherwise</span>
+<span class="sd">            ``None`` is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_key</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">wr</span><span class="o">.</span><span class="n">KEY_READ</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="Registry.set_data"><a class="viewcode-back" href="../registry.html#registry.Registry.set_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the data of the key value specified by the path and name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Path to the registry key.</span>
+<span class="sd">            name (str): Name of the registry key.</span>
+<span class="sd">            data (str): Data to store into the key.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            If the value doesn&#39;t exist, this method creates it and sets</span>
+<span class="sd">            its type and data accordingly. A check is performed to</span>
+<span class="sd">            determine if the operation has been completed successfully.</span>
+<span class="sd">            If it hasn&#39;t the user is notified.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The value of the registry key.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_key</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">wr</span><span class="o">.</span><span class="n">KEY_SET_VALUE</span><span class="p">)</span>
+        <span class="n">key</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_key</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">wr</span><span class="o">.</span><span class="n">KEY_READ</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">data</span> <span class="o">!=</span> <span class="n">data</span><span class="p">):</span>
+            <span class="n">ui</span><span class="o">.</span><span class="n">print_error_unexpected</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="Registry.create_key"><a class="viewcode-back" href="../registry.html#registry.Registry.create_key">[docs]</a>    <span class="k">def</span> <span class="nf">create_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create the key specified by the path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Path to the registry key.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            If a creation error occurs, the user is notified.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            If created successfully, a ``winreg.CreateKey`` object is</span>
+<span class="sd">            returned, otherwise ``None`` is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wr</span><span class="o">.</span><span class="n">CreateKey</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hkey</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">WindowsError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Registry.delete_key"><a class="viewcode-back" href="../registry.html#registry.Registry.delete_key">[docs]</a>    <span class="k">def</span> <span class="nf">delete_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delete the key specified by the path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Path to the registry key.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            **All of the values under the key are also deleted** but</span>
+<span class="sd">            subkeys cannot be deleted with this method. The user is</span>
+<span class="sd">            notified if an error occurs.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            If deleted successfully, a ``winreg.DeleteKey`` object is</span>
+<span class="sd">            returned, otherwise ``None`` is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wr</span><span class="o">.</span><span class="n">DeleteKey</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hkey</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">WindowsError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Registry._open_key"><a class="viewcode-back" href="../registry.html#registry.Registry._open_key">[docs]</a>    <span class="k">def</span> <span class="nf">_open_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sam</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Open and return the key specified by the path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Path to the registry key.</span>
+<span class="sd">            sam: The SAM privilege level used to open the key.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            The key is opened with privilege level defined by ``sam``.</span>
+<span class="sd">            The user is notified if an error occurs.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            If opened successfully, a ``winreg.OpenKey`` object is</span>
+<span class="sd">            returned, otherwise ``None`` is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">wr</span><span class="o">.</span><span class="n">OpenKey</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hkey</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sam</span><span class="p">)</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">Key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">key</span>
+        <span class="k">except</span> <span class="ne">WindowsError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span></div></div>
+
+<span class="c1"># Test IS before shortcutting.</span>
+<span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_OS</span><span class="p">:</span>
+    <span class="c1"># Shortcut class instances for outside access.</span>
+    <span class="n">hkcr</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">HKEY_CLASSES_ROOT</span><span class="p">)</span>
+    <span class="n">hkcu</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">HKEY_CURRENT_USER</span><span class="p">)</span>
+    <span class="n">hklm</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">HKEY_LOCAL_MACHINE</span><span class="p">)</span>
+    <span class="n">hkus</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">HKEY_USERS</span><span class="p">)</span>
+    <span class="n">hkcc</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">HKEY_CURRENT_CONFIG</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

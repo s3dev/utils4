@@ -1,0 +1,34 @@
+
+.. _library-api:
+
+========================
+Libary API Documentation
+========================
+The page contains the low-level documentation for each of the importable
+modules in ``utils4``.
+
+In addition to the documentation, most of the public methods come with one
+or more usage examples and access to the source code itself.
+
+.. toctree:: 
+    :caption: Links to module-level documentation
+
+    cmaps
+    config
+    convert
+    crypto
+    dfdiff
+    dict2obj
+    log
+    palette    
+    progressbar
+    pywarnings
+    reader
+    registry
+    reporterror
+    termcolour
+    tickers
+    timedelta
+    user_interface
+    utils
+    validation

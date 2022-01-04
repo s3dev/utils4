@@ -1,0 +1,111 @@
+************* Module utils4.user_interface
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:44:0: R0402: Use 'from utils3 import config' instead (consider-using-from-import)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:45:0: R0402: Use 'from utils3 import reporterror' instead (consider-using-from-import)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:153:17: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:248:22: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:250:18: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:253:22: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:260:18: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:435:15: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:712:45: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/user_interface.py:712:45: W1406: The u prefix for strings is no longer necessary in Python >=3.0 (redundant-u-string-prefix)
+
+
+Report
+======
+167 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |2      |2          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |30     |30         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    colorama (utils4.user_interface)
+    utils3 
+      \-config (utils4.user_interface)
+      \-reporterror (utils4.user_interface)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |186    |25.58 |186      |=          |
++----------+-------+------+---------+-----------+
+|docstring |449    |61.76 |449      |=          |
++----------+-------+------+---------+-----------+
+|comment   |49     |6.74  |49       |=          |
++----------+-------+------+---------+-----------+
+|empty     |43     |5.91  |43       |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |0          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |7      |7        |7          |
++-----------+-------+---------+-----------+
+|refactor   |2      |2        |2          |
++-----------+-------+---------+-----------+
+|warning    |1      |1        |1          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |0          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++---------------------------+------------+
+|message id                 |occurrences |
++===========================+============+
+|consider-using-f-string    |7           |
++---------------------------+------------+
+|consider-using-from-import |2           |
++---------------------------+------------+
+|redundant-u-string-prefix  |1           |
++---------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 9.40/10 (previous run: 9.40/10, +0.00)
+

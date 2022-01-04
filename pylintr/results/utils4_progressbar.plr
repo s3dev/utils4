@@ -1,0 +1,94 @@
+************* Module utils4.progressbar
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:89:37: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:113:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:114:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:115:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:116:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:117:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:118:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:119:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+
+
+Report
+======
+40 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |3      |3          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |39     |31.97 |39       |=          |
++----------+-------+------+---------+-----------+
+|docstring |69     |56.56 |69       |=          |
++----------+-------+------+---------+-----------+
+|comment   |8      |6.56  |8        |=          |
++----------+-------+------+---------+-----------+
+|empty     |6      |4.92  |6        |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |0          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |8      |8        |8          |
++-----------+-------+---------+-----------+
+|refactor   |0      |0        |0          |
++-----------+-------+---------+-----------+
+|warning    |0      |0        |0          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |0          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++------------------------+------------+
+|message id              |occurrences |
++========================+============+
+|consider-using-f-string |8           |
++------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 8.00/10 (previous run: 8.00/10, +0.00)
+

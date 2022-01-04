@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crypto &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>crypto</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for crypto</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module provides a light wrapper around the ``base64``</span>
+<span class="sd">            and ``hashlib`` libraries to provide some additional</span>
+<span class="sd">            functionality.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:</span>
+<span class="sd">    Example code use::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+
+<span class="sd">    To obtain a quick MD5 hash::</span>
+
+<span class="sd">        &gt;&gt;&gt; s = &quot;The quick brown fox jumps over the lazy dog&quot;</span>
+<span class="sd">        &gt;&gt;&gt; output = crypto.md5(s)</span>
+<span class="sd">        &gt;&gt;&gt; print(output)</span>
+
+<span class="sd">        9e107d9d372bb6826bd81d3542a419d6</span>
+
+
+<span class="sd">    To obtain a Base64 encoded MD5 hash::</span>
+
+<span class="sd">        &gt;&gt;&gt; s = &quot;The quick brown fox jumps over the lazy dog&quot;</span>
+<span class="sd">        &gt;&gt;&gt; output = crypto.b64md5(s)</span>
+<span class="sd">        &gt;&gt;&gt; print(output)</span>
+
+<span class="sd">        OWUxMDdkOWQzNzJiYjY4MjZiZDgxZDM1NDJhNDE5ZDY=</span>
+
+
+<span class="sd">    For examples on checksumming a file, please refer to:</span>
+
+<span class="sd">        - :meth:`Crypto.checksum_crc32`</span>
+<span class="sd">        - :meth:`Crypto.checksum_md5`</span>
+<span class="sd">        - :meth:`Crypto.checksum_sha1`</span>
+<span class="sd">        - :meth:`Crypto.checksum_sha256`</span>
+<span class="sd">        - :meth:`Crypto.checksum_sha512`</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=invalid-name</span>
+
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">zlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">convert</span>
+
+
+<div class="viewcode-block" id="Crypto"><a class="viewcode-back" href="../crypto.html#crypto.Crypto">[docs]</a><span class="k">class</span> <span class="nc">Crypto</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Main class used for hashing and encoding.</span>
+
+<span class="sd">    This class acts as a simple wrapper around the ``base64`` and</span>
+<span class="sd">    ``hashlib`` libraries, providing additional functionality.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Crypto.b64"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.b64">[docs]</a>    <span class="k">def</span> <span class="nf">b64</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">decode</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Create an encoded or decoded Base64 encryption.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (str): String to be encoded. If a ``str`` data type is</span>
+<span class="sd">                received, it is encoded to ``bytes`` before encoding.</span>
+<span class="sd">            decode (bool, optional): Return a decoded string. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[bytes, str]: An encoded or decoded Base64 encrypted string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">decode</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">b</span></div>
+
+<div class="viewcode-block" id="Crypto.b64md5"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.b64md5">[docs]</a>    <span class="k">def</span> <span class="nf">b64md5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">iter</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">trunc</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create an optionally truncated Base64 encoded MD5 hash from a</span>
+<span class="sd">        string or array.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (Union[iter, str]): A string or an iterable object containing</span>
+<span class="sd">                strings to be encoded.</span>
+<span class="sd">            trunc (int, optional): Truncate the Base64 string to (n)</span>
+<span class="sd">                characters. As string slicing is used, values such as ``-1``</span>
+<span class="sd">                are also valid. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: An (optionally truncated) Base64 encoded MD5 hash of the</span>
+<span class="sd">            passed string or iterable.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b64</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">[:</span><span class="n">trunc</span><span class="p">]</span> <span class="k">if</span> <span class="n">trunc</span> <span class="k">else</span> <span class="n">b</span>
+        <span class="k">return</span> <span class="n">b</span></div>
+
+<div class="viewcode-block" id="Crypto.checksum_crc32"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.checksum_crc32">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">checksum_crc32</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_integer</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Generate a 32-bit CRC32 checksum for the given file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Full path to the file.</span>
+<span class="sd">            return_integer (bool, optional): Return the original unsigned</span>
+<span class="sd">                32-bit integer, rather than the hex string. Defaults to False.</span>
+
+<span class="sd">        Important:</span>
+<span class="sd">            This algorithm is *not* cryptographically strong and should not be</span>
+<span class="sd">            used for authentication or digital signatures; nor is it suitable</span>
+<span class="sd">            for use as a general hash algorithm.</span>
+
+<span class="sd">            -- zlib.crc32 `Documentation`_</span>
+
+<span class="sd">            .. _Documentation: https://docs.python.org/3/library/zlib.html#zlib.crc32</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method breaks the file into 32768-byte chunks for more memory</span>
+<span class="sd">            efficient reading. Meaning this method has a maximum memory use</span>
+<span class="sd">            overhead of ~32K.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            Example for calculating the crc32 checksum for a file, returning a</span>
+<span class="sd">            hex string::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+<span class="sd">                &gt;&gt;&gt; crypto.checksum_crc32(path=&#39;/tmp/test.txt&#39;)</span>
+<span class="sd">                &#39;2a30e66b&#39;</span>
+
+
+<span class="sd">            Example for calculating the crc32 checksum for a file, returning</span>
+<span class="sd">            an integer::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+<span class="sd">                &gt;&gt;&gt; crypto.checksum_crc32(path=&#39;/tmp/test.txt&#39;, return_integer=True)</span>
+<span class="sd">                707847787</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[int, str]: If the ``return_integer`` value is ``False``</span>
+<span class="sd">            (default action), a CRC32 32-bit hex string (checksum string) of</span>
+<span class="sd">            the file&#39;s contents is returned. Otherwise, an unsigned 32-bit</span>
+<span class="sd">            integer is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">32</span> <span class="c1"># 32K chunks</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">crcval</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">crcval</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">crc32</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">crcval</span><span class="p">)</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">return_integer</span><span class="p">:</span>
+            <span class="n">rtn</span> <span class="o">=</span> <span class="n">crcval</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rtn</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">int2hex</span><span class="p">(</span><span class="n">crcval</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rtn</span></div>
+
+<div class="viewcode-block" id="Crypto.checksum_md5"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.checksum_md5">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">checksum_md5</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generate a 128-bit MD5 checksum for the given file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Full path to the file.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method breaks the file into 32768-byte chunks</span>
+<span class="sd">            (64-bytes * 512 blocks) for more memory efficient reading;</span>
+<span class="sd">            taking advantage of the fact that MD5 uses 512-bit (64-byte) digest</span>
+<span class="sd">            blocks. Meaning this method has a maximum memory use overhead of</span>
+<span class="sd">            ~32K.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            Example calculating the MD5 checksum for a file::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+<span class="sd">                &gt;&gt;&gt; crypto.checksum_md5(path=&#39;/tmp/test.txt&#39;)</span>
+<span class="sd">                &#39;9ec06901e8f25eb9810c5e0db88e7dcd&#39;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A 128-bit MD5 hex digest (checksum string) of the file&#39;s</span>
+<span class="sd">            contents.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">()</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">64</span><span class="o">*</span><span class="mi">512</span>  <span class="c1"># 32K chunks - 64-byte digest blocks (x512 blocks)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">md5</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">md5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Crypto.checksum_sha1"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.checksum_sha1">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">checksum_sha1</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generate a 160-bit SHA1 checksum for the given file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Full path to the file.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method breaks the file into 32768-byte chunks</span>
+<span class="sd">            (64-bytes * 512 blocks) for more memory efficient reading;</span>
+<span class="sd">            taking advantage of the fact that SHA1 uses 512-bit (64-byte)</span>
+<span class="sd">            digest blocks. Meaning this method has a maximum memory use</span>
+<span class="sd">            overhead of ~32K.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            Example calculating the SHA1 checksum for a file::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+<span class="sd">                &gt;&gt;&gt; crypto.checksum_sha1(path=&#39;/tmp/test.txt&#39;)</span>
+<span class="sd">                &#39;e49a1493c637a24800119fb53ef7dbc580221e89&#39;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A 160-bit SHA1 hex digest (checksum string) of the file&#39;s</span>
+<span class="sd">            contents.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sha1</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">()</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">64</span><span class="o">*</span><span class="mi">512</span>  <span class="c1"># 32K chunks - 64-byte digest blocks (x512 blocks)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sha1</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sha1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Crypto.checksum_sha256"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.checksum_sha256">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">checksum_sha256</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generate a 256-bit SHA256 checksum for the given file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Full path to the file.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method breaks the file into 32768-byte chunks</span>
+<span class="sd">            (64-bytes * 512 blocks) for more memory efficient reading;</span>
+<span class="sd">            taking advantage of the fact that SHA256 uses 512-bit (64-byte)</span>
+<span class="sd">            digest blocks. Meaning this method has a maximum memory use</span>
+<span class="sd">            overhead of ~32K.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            Example calculating the SHA256 checksum for a file::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+<span class="sd">                &gt;&gt;&gt; crypto.checksum_sha256(path=&#39;/tmp/test.txt&#39;)</span>
+<span class="sd">                &#39;e899df8e51b60bf8a6ede73fe5c7b4267bf5e48937e848bac3c6efd906833821&#39;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A 256-bit SHA256 hex digest (checksum string) of the file&#39;s</span>
+<span class="sd">            contents.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sha256</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">64</span><span class="o">*</span><span class="mi">512</span>  <span class="c1"># 32K chunks - 64-byte digest blocks (x512 blocks)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sha256</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sha256</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Crypto.checksum_sha512"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.checksum_sha512">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">checksum_sha512</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generate a 512-bit SHA512 checksum for the given file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): Full path to the file.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method breaks the file into 32768-byte chunks</span>
+<span class="sd">            (128-bytes * 256 blocks) for more memory efficient reading;</span>
+<span class="sd">            taking advantage of the fact that SHA512 uses 1024-bit (128-byte)</span>
+<span class="sd">            digest blocks. Meaning this method has a maximum memory use</span>
+<span class="sd">            overhead of ~32K.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            Example calculating the SHA512 checksum for a file::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.crypto import crypto</span>
+
+<span class="sd">                &gt;&gt;&gt; crypto.checksum_sha512(path=&#39;/tmp/test.txt&#39;)</span>
+<span class="sd">                (&#39;247adcb6f5b284b3e45c9281171ba7a6&#39;</span>
+<span class="sd">                 &#39;2502692ee9ee8020bd5827602972409f&#39;</span>
+<span class="sd">                 &#39;9bdfc2ec7e5452223c19b3745d3f04e2&#39;</span>
+<span class="sd">                 &#39;542ef0d0e075139d1ee3b5f678c9aaec&#39;)  # Single string</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A 512-bit SHA512 hex digest (checksum string) of the file&#39;s</span>
+<span class="sd">            contents.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sha512</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">()</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">128</span><span class="o">*</span><span class="mi">256</span>  <span class="c1"># 32K chunks - 128-byte digest blocks (x256 blocks)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sha512</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sha512</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Crypto.md5"><a class="viewcode-back" href="../crypto.html#crypto.Crypto.md5">[docs]</a>    <span class="k">def</span> <span class="nf">md5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">decode</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create an optionally encoded or decoded MD5 hash.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (str): String to be hashed. If a ``str`` data type</span>
+<span class="sd">                is passed, it is encoded to ``bytes`` before hashing.</span>
+<span class="sd">            decode (bool, optional): Return a decoded string. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: An encoded or decoded MD5 hash, depending on the value passed</span>
+<span class="sd">            to the ``decode`` parameter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">decode</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">h</span></div>
+
+<div class="viewcode-block" id="Crypto._encode"><a class="viewcode-back" href="../crypto.html#crypto.Crypto._encode">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_encode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Test if a string is ``str`` or ``bytes`` before processing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (Union[bytes, str]): String value to be encoded.</span>
+
+<span class="sd">        If the received ``data`` parameter is a ``str`` type, it is converted</span>
+<span class="sd">        to a ``bytes`` type and returned. If the string is already a ``bytes``</span>
+<span class="sd">        type, it is returned, unmodified.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the ``data`` object is neither a ``str`` or</span>
+<span class="sd">                ``bytes`` type.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bytes: A ``bytes`` encoded string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expected a bytes or str type.&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<span class="n">crypto</span> <span class="o">=</span> <span class="n">Crypto</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

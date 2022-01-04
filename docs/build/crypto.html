@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crypto - Extended functionality from the base64 and hashlib libraries &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dfdiff - A pandas.DataFrame differencing tool" href="dfdiff.html" />
+    <link rel="prev" title="convert - Functions to convert between low-level types (binary, hex, ascii and int)" href="convert.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> utils4
+            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html">log - Providing easy logging to your project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">registry - A simple interface to the Windows registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">validation - A small collection of validation rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
+      <li>crypto - Extended functionality from the base64 and hashlib libraries</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-crypto">
+<span id="crypto-extended-functionality-from-the-base64-and-hashlib-libraries"></span><h1>crypto - Extended functionality from the base64 and hashlib libraries<a class="headerlink" href="#module-crypto" title="Permalink to this headline"></a></h1>
+<dl class="field-list">
+<dt class="field-odd">Purpose</dt>
+<dd class="field-odd"><p>This module provides a light wrapper around the <code class="docutils literal notranslate"><span class="pre">base64</span></code>
+and <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries to provide some additional
+functionality.</p>
+</dd>
+<dt class="field-even">Platform</dt>
+<dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
+</dd>
+<dt class="field-odd">Developer</dt>
+<dd class="field-odd"><p>J Berendt</p>
+</dd>
+<dt class="field-even">Email</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</dd>
+<dt class="field-odd">Comments</dt>
+<dd class="field-odd"><p>n/a</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>Example code use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+</pre></div>
+</div>
+<p>To obtain a quick MD5 hash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The quick brown fox jumps over the lazy dog&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="go">9e107d9d372bb6826bd81d3542a419d6</span>
+</pre></div>
+</div>
+<p>To obtain a Base64 encoded MD5 hash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The quick brown fox jumps over the lazy dog&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">b64md5</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="go">OWUxMDdkOWQzNzJiYjY4MjZiZDgxZDM1NDJhNDE5ZDY=</span>
+</pre></div>
+</div>
+<p>For examples on checksumming a file, please refer to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#crypto.Crypto.checksum_crc32" title="crypto.Crypto.checksum_crc32"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Crypto.checksum_crc32()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#crypto.Crypto.checksum_md5" title="crypto.Crypto.checksum_md5"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Crypto.checksum_md5()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#crypto.Crypto.checksum_sha1" title="crypto.Crypto.checksum_sha1"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Crypto.checksum_sha1()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#crypto.Crypto.checksum_sha256" title="crypto.Crypto.checksum_sha256"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Crypto.checksum_sha256()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#crypto.Crypto.checksum_sha512" title="crypto.Crypto.checksum_sha512"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Crypto.checksum_sha512()</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="crypto.Crypto">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">crypto.</span></span><span class="sig-name descname"><span class="pre">Crypto</span></span><a class="reference internal" href="_modules/crypto.html#Crypto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto" title="Permalink to this definition"></a></dt>
+<dd><p>Main class used for hashing and encoding.</p>
+<p>This class acts as a simple wrapper around the <code class="docutils literal notranslate"><span class="pre">base64</span></code> and
+<code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries, providing additional functionality.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto._encode">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto._encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto._encode" title="Permalink to this definition"></a></dt>
+<dd><p>Test if a string is <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Union</em><em>[</em><em>bytes</em><em>, </em><em>str</em><em>]</em>) – String value to be encoded.</p>
+</dd>
+</dl>
+<p>If the received <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter is a <code class="docutils literal notranslate"><span class="pre">str</span></code> type, it is converted
+to a <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type and returned. If the string is already a <code class="docutils literal notranslate"><span class="pre">bytes</span></code>
+type, it is returned, unmodified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the <code class="docutils literal notranslate"><span class="pre">data</span></code> object is neither a <code class="docutils literal notranslate"><span class="pre">str</span></code> or
+    <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">bytes</span></code> encoded string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.b64">
+<span class="sig-name descname"><span class="pre">b64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.b64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.b64" title="Permalink to this definition"></a></dt>
+<dd><p>Create an encoded or decoded Base64 encryption.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>str</em>) – String to be encoded. If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type is
+received, it is encoded to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before encoding.</p></li>
+<li><p><strong>decode</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return a decoded string. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An encoded or decoded Base64 encrypted string.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Union[bytes, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.b64md5">
+<span class="sig-name descname"><span class="pre">b64md5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">iter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trunc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.b64md5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.b64md5" title="Permalink to this definition"></a></dt>
+<dd><p>Create an optionally truncated Base64 encoded MD5 hash from a
+string or array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>iter</em><em>, </em><em>str</em><em>]</em>) – A string or an iterable object containing
+strings to be encoded.</p></li>
+<li><p><strong>trunc</strong> (<em>int</em><em>, </em><em>optional</em>) – Truncate the Base64 string to (n)
+characters. As string slicing is used, values such as <code class="docutils literal notranslate"><span class="pre">-1</span></code>
+are also valid. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An (optionally truncated) Base64 encoded MD5 hash of the
+passed string or iterable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.checksum_crc32">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checksum_crc32</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_integer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.checksum_crc32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.checksum_crc32" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a 32-bit CRC32 checksum for the given file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p></li>
+<li><p><strong>return_integer</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return the original unsigned
+32-bit integer, rather than the hex string. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This algorithm is <em>not</em> cryptographically strong and should not be
+used for authentication or digital signatures; nor is it suitable
+for use as a general hash algorithm.</p>
+<p>– zlib.crc32 <a class="reference external" href="https://docs.python.org/3/library/zlib.html#zlib.crc32">Documentation</a></p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Design</dt>
+<dd class="field-odd"><p>This method breaks the file into 32768-byte chunks for more memory
+efficient reading. Meaning this method has a maximum memory use
+overhead of ~32K.</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>Example for calculating the crc32 checksum for a file, returning a
+hex string:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crypto</span><span class="o">.</span><span class="n">checksum_crc32</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">)</span>
+<span class="go">&#39;2a30e66b&#39;</span>
+</pre></div>
+</div>
+<p>Example for calculating the crc32 checksum for a file, returning
+an integer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crypto</span><span class="o">.</span><span class="n">checksum_crc32</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">,</span> <span class="n">return_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">707847787</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>If the <code class="docutils literal notranslate"><span class="pre">return_integer</span></code> value is <code class="docutils literal notranslate"><span class="pre">False</span></code>
+(default action), a CRC32 32-bit hex string (checksum string) of
+the file’s contents is returned. Otherwise, an unsigned 32-bit
+integer is returned.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[int, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.checksum_md5">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checksum_md5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.checksum_md5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.checksum_md5" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a 128-bit MD5 checksum for the given file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+</dd>
+<dt class="field-even">Design</dt>
+<dd class="field-even"><p>This method breaks the file into 32768-byte chunks
+(64-bytes * 512 blocks) for more memory efficient reading;
+taking advantage of the fact that MD5 uses 512-bit (64-byte) digest
+blocks. Meaning this method has a maximum memory use overhead of
+~32K.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Example calculating the MD5 checksum for a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crypto</span><span class="o">.</span><span class="n">checksum_md5</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">)</span>
+<span class="go">&#39;9ec06901e8f25eb9810c5e0db88e7dcd&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 128-bit MD5 hex digest (checksum string) of the file’s
+contents.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.checksum_sha1">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checksum_sha1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.checksum_sha1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.checksum_sha1" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a 160-bit SHA1 checksum for the given file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+</dd>
+<dt class="field-even">Design</dt>
+<dd class="field-even"><p>This method breaks the file into 32768-byte chunks
+(64-bytes * 512 blocks) for more memory efficient reading;
+taking advantage of the fact that SHA1 uses 512-bit (64-byte)
+digest blocks. Meaning this method has a maximum memory use
+overhead of ~32K.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Example calculating the SHA1 checksum for a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crypto</span><span class="o">.</span><span class="n">checksum_sha1</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">)</span>
+<span class="go">&#39;e49a1493c637a24800119fb53ef7dbc580221e89&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 160-bit SHA1 hex digest (checksum string) of the file’s
+contents.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.checksum_sha256">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checksum_sha256</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.checksum_sha256"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.checksum_sha256" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a 256-bit SHA256 checksum for the given file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+</dd>
+<dt class="field-even">Design</dt>
+<dd class="field-even"><p>This method breaks the file into 32768-byte chunks
+(64-bytes * 512 blocks) for more memory efficient reading;
+taking advantage of the fact that SHA256 uses 512-bit (64-byte)
+digest blocks. Meaning this method has a maximum memory use
+overhead of ~32K.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Example calculating the SHA256 checksum for a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crypto</span><span class="o">.</span><span class="n">checksum_sha256</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">)</span>
+<span class="go">&#39;e899df8e51b60bf8a6ede73fe5c7b4267bf5e48937e848bac3c6efd906833821&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 256-bit SHA256 hex digest (checksum string) of the file’s
+contents.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.checksum_sha512">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checksum_sha512</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.checksum_sha512"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.checksum_sha512" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a 512-bit SHA512 checksum for the given file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+</dd>
+<dt class="field-even">Design</dt>
+<dd class="field-even"><p>This method breaks the file into 32768-byte chunks
+(128-bytes * 256 blocks) for more memory efficient reading;
+taking advantage of the fact that SHA512 uses 1024-bit (128-byte)
+digest blocks. Meaning this method has a maximum memory use
+overhead of ~32K.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Example calculating the SHA512 checksum for a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crypto</span><span class="o">.</span><span class="n">checksum_sha512</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">)</span>
+<span class="go">(&#39;247adcb6f5b284b3e45c9281171ba7a6&#39;</span>
+<span class="go"> &#39;2502692ee9ee8020bd5827602972409f&#39;</span>
+<span class="go"> &#39;9bdfc2ec7e5452223c19b3745d3f04e2&#39;</span>
+<span class="go"> &#39;542ef0d0e075139d1ee3b5f678c9aaec&#39;)  # Single string</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 512-bit SHA512 hex digest (checksum string) of the file’s
+contents.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto.md5">
+<span class="sig-name descname"><span class="pre">md5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.md5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.md5" title="Permalink to this definition"></a></dt>
+<dd><p>Create an optionally encoded or decoded MD5 hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>str</em>) – String to be hashed. If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type
+is passed, it is encoded to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before hashing.</p></li>
+<li><p><strong>decode</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return a decoded string. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An encoded or decoded MD5 hash, depending on the value passed
+to the <code class="docutils literal notranslate"><span class="pre">decode</span></code> parameter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="convert.html" class="btn btn-neutral float-left" title="convert - Functions to convert between low-level types (binary, hex, ascii and int)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dfdiff.html" class="btn btn-neutral float-right" title="dfdiff - A pandas.DataFrame differencing tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

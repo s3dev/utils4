@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>reporterror &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>reporterror</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for reporterror</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module is designed to report program errors to the</span>
+<span class="sd">            console and/or a log file, using the :class:`~log.Log`</span>
+<span class="sd">            class.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:   For a usage example, refer to the :meth:`~reporterror` method&#39;s</span>
+<span class="sd">            docstring.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.log</span> <span class="kn">import</span> <span class="n">Log</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
+
+
+<span class="k">if</span> <span class="s1">&#39;linux&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">_PATH</span> <span class="o">=</span> <span class="s1">&#39;/tmp/reporterror.log&#39;</span>
+<span class="k">elif</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">_PATH</span> <span class="o">=</span> <span class="s1">&#39;c:/temp/reporterror.log&#39;</span>  <span class="c1"># pragma: nocover</span>
+<span class="k">else</span><span class="p">:</span> <span class="n">_PATH</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># pragma: nocover</span>
+
+
+<div class="viewcode-block" id="reporterror"><a class="viewcode-back" href="../reporterror.html#reporterror.reporterror">[docs]</a><span class="k">def</span> <span class="nf">reporterror</span><span class="p">(</span><span class="n">error</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">logevent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logfilepath</span><span class="o">=</span><span class="n">_PATH</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Report an error, derived from the passed ``Exception`` object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        error (Exception): Python ``Exception`` object from the built-in</span>
+<span class="sd">            try/except error handler.  Refer to the use example below.</span>
+<span class="sd">        logevent (bool, optional): Send the error to a log file.</span>
+<span class="sd">            Defaults to False.</span>
+<span class="sd">        logfilename (str, optional): Full path to the log file. Defaults to:</span>
+
+<span class="sd">            - **Linux**: ``&#39;/tmp/reporterror.log&#39;``</span>
+<span class="sd">            - **Windows**: ``&#39;c:/temp/reporterror.log&#39;``</span>
+<span class="sd">            - **Other**: ``None``</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The ``logevent`` parameter assumes the log file exists and the</span>
+<span class="sd">        header is already written.</span>
+
+<span class="sd">        For general logging help, you can use the :class:`~log.Log`</span>
+<span class="sd">        class which is built into ``utils4``.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Report a simple error to the terminal::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.reporterror import reporterror</span>
+
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            &gt;&gt;&gt;     1/0  # Force a known error.</span>
+<span class="sd">            &gt;&gt;&gt; except Exception as err:</span>
+<span class="sd">            &gt;&gt;&gt;     reporterror(err)</span>
+
+<span class="sd">        Output::</span>
+
+<span class="sd">            ERROR:  division by zero</span>
+<span class="sd">            TYPE:   &lt;class &#39;ZeroDivisionError&#39;&gt;</span>
+<span class="sd">            MODU:   &lt;./module/with/error.py&gt;</span>
+<span class="sd">            FUNC:   &lt;func_name&gt;</span>
+<span class="sd">            LINE:   2</span>
+<span class="sd">            CMD:    1/0</span>
+
+
+<span class="sd">        Report a simple error to the terminal and create a log file entry::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.reporterror import reporterror</span>
+
+<span class="sd">            &gt;&gt;&gt; try:</span>
+<span class="sd">            &gt;&gt;&gt;     1/0  # Force a known error.</span>
+<span class="sd">            &gt;&gt;&gt; except Exception as err:</span>
+<span class="sd">            &gt;&gt;&gt;     reporterror(err, logevent=True, logfilepath=&#39;/tmp/errors.log&#39;)</span>
+
+<span class="sd">        .. tip::</span>
+<span class="sd">            **Reminder:** The log file must already exist.</span>
+
+<span class="sd">            For help with the :mod:`utils4.log` module, please refer to the</span>
+<span class="sd">            documentation here: :class:`~log.Log`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">exc_type</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">exc_tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+    <span class="n">fnam</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">extract_tb</span><span class="p">(</span><span class="n">exc_tb</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+           <span class="sa">f</span><span class="s1">&#39;ERROR:</span><span class="se">\t</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+           <span class="sa">f</span><span class="s1">&#39;TYPE:</span><span class="se">\t</span><span class="si">{</span><span class="n">exc_type</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+           <span class="sa">f</span><span class="s1">&#39;MODU:</span><span class="se">\t</span><span class="si">{</span><span class="n">fnam</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+           <span class="sa">f</span><span class="s1">&#39;FUNC:</span><span class="se">\t</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+           <span class="sa">f</span><span class="s1">&#39;LINE:</span><span class="se">\t</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+           <span class="sa">f</span><span class="s1">&#39;CMD:</span><span class="se">\t</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">logevent</span><span class="p">,</span> <span class="n">logfilepath</span><span class="p">]):</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">logfilepath</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ERROR: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s1">; CMD: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">; MODULE: </span><span class="si">{</span><span class="n">fnam</span><span class="si">}</span><span class="s1">; FUNC: </span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s1">; LINE: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">del</span> <span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

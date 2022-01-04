@@ -1,0 +1,115 @@
+************* Module tests.test_mathfunc
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:32:23: C0201: Consider iterating the dictionary directly instead of calling .keys() (consider-iterating-dictionary)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:74:21: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:126:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:126:21: C0103: Variable name "t" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:143:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:143:21: C0103: Variable name "t" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:160:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:160:21: C0103: Variable name "t" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:174:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:189:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:204:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:331:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:360:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:375:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:390:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:405:18: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_0.1.0/tests/test_mathfunc.py:45:0: R0904: Too many public methods (25/20) (too-many-public-methods)
+
+
+Report
+======
+175 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |25     |25         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    utils4 (tests.test_mathfunc)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |179    |43.66 |179      |=          |
++----------+-------+------+---------+-----------+
+|docstring |197    |48.05 |197      |=          |
++----------+-------+------+---------+-----------+
+|comment   |5      |1.22  |5        |=          |
++----------+-------+------+---------+-----------+
+|empty     |29     |7.07  |29       |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |0          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |16     |16       |16         |
++-----------+-------+---------+-----------+
+|refactor   |1      |1        |1          |
++-----------+-------+---------+-----------+
+|warning    |0      |0        |0          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |0          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++------------------------------+------------+
+|message id                    |occurrences |
++==============================+============+
+|invalid-name                  |15          |
++------------------------------+------------+
+|too-many-public-methods       |1           |
++------------------------------+------------+
+|consider-iterating-dictionary |1           |
++------------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 9.03/10 (previous run: 9.03/10, +0.00)
+

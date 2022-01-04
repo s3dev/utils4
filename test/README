@@ -1,3 +1,0 @@
-Use this command, in the `test` directory to run unit tests:
-
-$ python -m unittest discover

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>user_interface &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>user_interface</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for user_interface</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This class module provides an interface to the Windows/Linux</span>
+<span class="sd">            command line interfaces (CLI), enabling the user to easily print</span>
+<span class="sd">            text, headings and banners in a variety of pre-defined</span>
+<span class="sd">            (and customisable) colour layouts, to the terminal.</span>
+
+<span class="sd">            The callable printing methods in this module mean the user does not</span>
+<span class="sd">            need to mess with ANSI escape sequences and other formatting</span>
+<span class="sd">            overhead. Rather, just call the method and the overhead is taken</span>
+<span class="sd">            care of.</span>
+
+<span class="sd">            This module contains a :class:`~UserInterface` class whose methods</span>
+<span class="sd">            provide a standard way of reporting normal, alternative and</span>
+<span class="sd">            abnormal behaviour. The following formats are built-in:</span>
+
+<span class="sd">                - **Fully customisable messages and headers** via the</span>
+<span class="sd">                  :meth:`~UserInterface.print_` method.</span>
+<span class="sd">                - **The ability to print headings**, such as:</span>
+
+<span class="sd">                    - black text on a cyan background</span>
+<span class="sd">                    - black text on a green background</span>
+<span class="sd">                    - black text on a white background</span>
+<span class="sd">                    - black text on a yellow background</span>
+<span class="sd">                    - white text on a blue background</span>
+<span class="sd">                    - etc ...</span>
+
+<span class="sd">                - **User input expected**: as white text on a black background</span>
+<span class="sd">                - **Normal behaviour**:  as green text on a black background</span>
+<span class="sd">                - **Alternative behaviour**: (e.g. a warning) as yellow text</span>
+<span class="sd">                  on a black background</span>
+<span class="sd">                - **Abnormal or erroneous behaviour**: as red text on a black</span>
+<span class="sd">                  background</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: M Critchard, J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Example:   For usage examples, please refer to the following class docstrings:</span>
+
+<span class="sd">                - :class:`~PrintBanner`</span>
+<span class="sd">                - :class:`~UserInterface`</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=line-too-long</span>
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="c1"># pylint: disable=wrong-import-position</span>
+
+
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">utils4.reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
+<span class="kn">from</span> <span class="nn">utils4.termcolour</span> <span class="kn">import</span> <span class="n">Back</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">Style</span>
+
+<span class="c1"># Only import if windows.</span>
+<span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="c1"># import win_unicode_console</span>
+    <span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="n">windll</span>
+
+
+<div class="viewcode-block" id="_Config"><a class="viewcode-back" href="../user_interface.html#user_interface._Config">[docs]</a><span class="k">class</span> <span class="nc">_Config</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Storage class for the module&#39;s config items.&quot;&quot;&quot;</span>
+
+    <span class="n">v_pad_sleep</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">default_string</span> <span class="o">=</span> <span class="s2">&quot; {title:</span><span class="si">{pad}</span><span class="s2">}:</span><span class="si">{spaces}{name}</span><span class="s2">&quot;</span>
+    <span class="n">custom_string</span> <span class="o">=</span> <span class="s2">&quot; {key:</span><span class="si">{pad}</span><span class="s2">}:</span><span class="si">{spaces}{val}</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="PrintBanner"><a class="viewcode-back" href="../user_interface.html#user_interface.PrintBanner">[docs]</a><span class="k">class</span> <span class="nc">PrintBanner</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class is used to print an information banner to the terminal.</span>
+
+<span class="sd">    Generally, this class is used in the startup routine of an application</span>
+<span class="sd">    to display information about the application. For example, information such</span>
+<span class="sd">    as the application title, version, security classification, etc.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This may be useful if you want to use a &#39;standardised&#39; program</span>
+<span class="sd">        header across all of your programs.  This class can be called in the</span>
+<span class="sd">        program&#39;s startup routine.</span>
+
+<span class="sd">        The banner can also be used to display and report expected error</span>
+<span class="sd">        information.  For example, if a certain validation type of</span>
+<span class="sd">        error is expected, a customised version of this banner can wrap</span>
+<span class="sd">        the error information such as error type, the issue, the file</span>
+<span class="sd">        name/location, and the resolution.</span>
+
+<span class="sd">    For further detail, refer to the **Design** and **Parameters**</span>
+<span class="sd">    sections of the :meth:`~PrintBanner.__init__` method, as the banner</span>
+<span class="sd">    is highly configurable.</span>
+
+<span class="sd">    :Example Banner:</span>
+<span class="sd">        Below is a printed example of a program header banner::</span>
+
+<span class="sd">            ------------------------------------------------------------</span>
+<span class="sd">            Program     :    Spam and Eggs</span>
+<span class="sd">            Version     :    2.0.3</span>
+
+<span class="sd">            Description :    The complete spam and eggs recipe guide.</span>
+<span class="sd">            ------------------------------------------------------------</span>
+
+<span class="sd">    :Example Code:</span>
+
+<span class="sd">        This code can be used to print the banner above::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.user_interface import PrintBanner</span>
+
+<span class="sd">            &gt;&gt;&gt; PrintBanner(name=&#39;Spam and Eggs&#39;,</span>
+<span class="sd">                            version=&#39;2.0.3&#39;,</span>
+<span class="sd">                            desc=&#39;The complete spam and eggs recipe guide.&#39;)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PrintBanner.__init__"><a class="viewcode-back" href="../user_interface.html#user_interface.PrintBanner.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">info</span><span class="p">:</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">chars</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span>
+                 <span class="n">ribbon</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+                 <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;brightwhite&#39;</span><span class="p">,</span>
+                 <span class="n">back</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                 <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Display a configurable information banner to the terminal.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str, optional): Name of your program. Defaults to None.</span>
+<span class="sd">            version (str, optional): The program&#39;s version number.</span>
+<span class="sd">                Defaults to None.</span>
+<span class="sd">            desc (str, optional): Description of what your program is all</span>
+<span class="sd">                about. Defaults to None.</span>
+<span class="sd">            info (list, optional): A list of dictionaries containing the fields</span>
+<span class="sd">                to be used. Defaults to None.</span>
+
+<span class="sd">                The ``info`` parameter is used to generate a completely</span>
+<span class="sd">                customised banner.  Essentially, whatever key/value pairs you</span>
+<span class="sd">                pass in, are what will be printed in the banner.</span>
+
+<span class="sd">                .. hint::</span>
+
+<span class="sd">                    For example, this ``info`` parameter::</span>
+
+<span class="sd">                        &gt;&gt;&gt; info = [{&#39;Program&#39;:&#39;Spam and Eggs&#39;},</span>
+<span class="sd">                        &gt;&gt;&gt;         {&#39;Version&#39;:&#39;2.0.3&#39;},</span>
+<span class="sd">                        &gt;&gt;&gt;         {&#39;&#39;:&#39;&#39;},  # Gives an empty line.</span>
+<span class="sd">                        &gt;&gt;&gt;         {&#39;Description&#39;:&#39;The complete spam and eggs recipe guide.&#39;},</span>
+<span class="sd">                        &gt;&gt;&gt;         {&#39;Comments&#39;:&#39;They\&#39;re even better in green!&#39;}]</span>
+
+<span class="sd">                        &gt;&gt;&gt; PrintBanner(info=info)</span>
+
+<span class="sd">                    ... will print the banner::</span>
+
+<span class="sd">                        ------------------------------------------------------------------------</span>
+<span class="sd">                         Program        :    Spam and Eggs</span>
+<span class="sd">                         Version        :    2.0.3</span>
+
+<span class="sd">                         Description    :    The complete spam and eggs recipe guide.</span>
+<span class="sd">                         Comments       :    They&#39;re even better in green!</span>
+<span class="sd">                        ------------------------------------------------------------------------</span>
+
+<span class="sd">            chars (int, optional): In the number of characters, the size of the</span>
+<span class="sd">                buffer used for the background colour, and the length of the</span>
+<span class="sd">                ribbon. Defaults to 72.</span>
+<span class="sd">            ribbon (str, optional): The character(s) to use for the ribbon.</span>
+<span class="sd">                If multiple characters are passed into this parameter, these</span>
+<span class="sd">                characters will be repeated until the length of the ``chars``</span>
+<span class="sd">                parameter is met. Defaults to ``&#39;-&#39;``.</span>
+<span class="sd">            fore (str, optional): Text colour.  The eight `basic colour names`_</span>
+<span class="sd">                are accepted as strings. Defaults to &#39;brightwhite&#39;.</span>
+<span class="sd">            back (str, optional): Background colour. The eight</span>
+<span class="sd">                `basic colour names`_ are accepted as strings. Defaults to</span>
+<span class="sd">                &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): Style of the text. Defaults to &#39;normal&#39;.</span>
+
+<span class="sd">                Options:</span>
+<span class="sd">                    - dim</span>
+<span class="sd">                    - bold</span>
+<span class="sd">                    - normal</span>
+<span class="sd">                    - underline</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            In short, if the ``info`` parameter is left as ``None``, a</span>
+<span class="sd">            default banner is generated using the values passed into</span>
+<span class="sd">            the ``name``, ``version`` and ``desc`` parameters.</span>
+
+<span class="sd">            The string templates used for the banner layout may be</span>
+<span class="sd">            configured in this module&#39;s private :class:`~_Config` class.</span>
+
+<span class="sd">            Additional configuration is available through the other</span>
+<span class="sd">            parameters, which are all defined in the **Parameters**</span>
+<span class="sd">            section above.</span>
+
+<span class="sd">            Also, the title of the console window is updated to show the</span>
+<span class="sd">            program&#39;s name and version, if *all* of the following criteria</span>
+<span class="sd">            are met:</span>
+
+<span class="sd">                - Windows OS</span>
+<span class="sd">                - ``name`` parameter is not ``None``</span>
+<span class="sd">                - ``version`` parameter is not ``None``</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            The following code block::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.user_interface import PrintBanner</span>
+
+<span class="sd">                &gt;&gt;&gt; PrintBanner(name=&#39;Spam and Eggs&#39;,</span>
+<span class="sd">                                version=&#39;2.0.3&#39;,</span>
+<span class="sd">                                desc=&#39;The complete spam and eggs guide.&#39;,</span>
+<span class="sd">                                chars=55,</span>
+<span class="sd">                                ribbon=&#39;~-&#39;,</span>
+<span class="sd">                                fore=&#39;brightyellow&#39;,</span>
+<span class="sd">                                back=&#39;black&#39;,</span>
+<span class="sd">                                style=&#39;normal&#39;)</span>
+
+<span class="sd">            ... will print this banner in yellow text on a black background::</span>
+
+<span class="sd">                ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</span>
+<span class="sd">                 Program        :    Spam and Eggs</span>
+<span class="sd">                 Version        :    2.0.3</span>
+
+<span class="sd">                 Description    :    The complete spam and eggs guide.</span>
+<span class="sd">                ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</span>
+
+
+<span class="sd">        .. _basic colour names: https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_desc</span> <span class="o">=</span> <span class="n">desc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="n">info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chars</span> <span class="o">=</span> <span class="n">chars</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ribbon</span> <span class="o">=</span> <span class="n">ribbon</span> <span class="o">*</span> <span class="p">(</span><span class="n">chars</span> <span class="o">//</span> <span class="nb">len</span><span class="p">(</span><span class="n">ribbon</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fore</span> <span class="o">=</span> <span class="n">fore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_back</span> <span class="o">=</span> <span class="n">back</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_style</span> <span class="o">=</span> <span class="n">style</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_blank</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spaces</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pad</span> <span class="o">=</span> <span class="mi">15</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adtl</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span> <span class="o">=</span> <span class="n">_Config</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_print_prog_banner</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_console_title</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_add_ribbon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add a blank line and ribbon to start and end of banner.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ribbon</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ribbon</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_longest_key</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return the length of the longest key, as an integer.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            The longest key is used to determine where the field</span>
+<span class="sd">            separator is placed.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Length of the longest dictionary key, in the number of</span>
+<span class="sd">            characters.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get and return the system&#39;s OS.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The system&#39;s OS as a string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_print_prog_banner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print the banner.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            Using the ``info`` parameter as reference, determine if the</span>
+<span class="sd">            default or user-defined banner should be printed; then print the</span>
+<span class="sd">            banner using the :meth:`~UserInterface.print_` method.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Test type of banner to create.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_setup_custom</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_setup_default</span><span class="p">()</span>
+        <span class="c1"># Print program info banner.</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="p">:</span>
+            <span class="n">ui</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+                      <span class="n">fore</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fore</span><span class="p">,</span>
+                      <span class="n">back</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_back</span><span class="p">,</span>
+                      <span class="n">style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">,</span>
+                      <span class="n">h_pad</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_chars</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_setup_custom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set up the user-defined banner.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            Set the buffer (padding) for all &#39;key&#39; elements using the length</span>
+<span class="sd">            of the longest dict key.  This allows all ``&#39;:&#39;`` characters to</span>
+<span class="sd">            align, regardless of the varying lengths of each key.</span>
+
+<span class="sd">            Next, iterate through the list of dictionaries and extract the</span>
+<span class="sd">            key/value pairs for use in the banner. The banner&#39;s layout</span>
+<span class="sd">            template is defined in this module&#39;s private :class:`~_Config`</span>
+<span class="sd">            class.</span>
+
+<span class="sd">            Finally, add the starting/ending blank line and ribbon to</span>
+<span class="sd">            the compiled list.  This list is then used by the</span>
+<span class="sd">            :meth:`~PrintBanner._print_prog_banner` method to print the banner</span>
+<span class="sd">            to the terminal.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_longest_key</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adtl</span>
+        <span class="c1"># Build print string from list of dicts.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># Test if line should be left blank.</span>
+                <span class="k">if</span> <span class="n">key</span><span class="p">:</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">custom_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                                                          <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span>
+                                                          <span class="n">spaces</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_spaces</span><span class="p">,</span>
+                                                          <span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Add a blank line.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># Add start/end ribbons.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_ribbon</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_setup_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set up the default banner.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            A pre-defined list of &#39;key&#39; items is iterated, which is used to</span>
+<span class="sd">            build the list containing the lines to print.</span>
+
+<span class="sd">            Finally, add the starting/ending blank line and ribbon to the</span>
+<span class="sd">            compiled list. This list is then used by the</span>
+<span class="sd">            :meth:`~PrintBanner._print_prog_banner` method to print the banner</span>
+<span class="sd">            to the terminal.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Build print string.</span>
+        <span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s1">&#39;Program&#39;</span><span class="p">,</span> <span class="s1">&#39;Version&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Description&#39;</span><span class="p">],</span>
+                               <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_desc</span><span class="p">]):</span>
+            <span class="c1"># Test if line should be left blank.</span>
+            <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">default_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                                                       <span class="n">pad</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pad</span><span class="p">,</span>
+                                                       <span class="n">spaces</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_spaces</span><span class="p">,</span>
+                                                       <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Add a blank line.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_to_print</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># Add start/end ribbons.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_ribbon</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_update_console_title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For **Windows only**, update the cmd window&#39;s title.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method is only functional if the OS is Windows and the</span>
+<span class="sd">            ``name`` and ``version`` arguments are passed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">is_win</span> <span class="o">=</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_os</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="n">is_win</span><span class="p">]):</span>
+            <span class="c1"># Change cmd window title.</span>
+            <span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">SetConsoleTitleW</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UserInterface"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface">[docs]</a><span class="k">class</span> <span class="nc">UserInterface</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class encapsulates the Linux/Windows command line interfaces and</span>
+<span class="sd">    provides a standard way of reporting normal, alternative and abnormal</span>
+<span class="sd">    behaviour.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Below are a couple of examples showing how easy it is to print</span>
+<span class="sd">        coloured text to the terminal.</span>
+
+<span class="sd">        To print a green text to the console::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.user_interface import ui</span>
+
+<span class="sd">            &gt;&gt;&gt; ui.print_(text=&#39;Some text ...&#39;, fore=&#39;green&#39;, style=&#39;normal&#39;)</span>
+
+
+<span class="sd">        To print a blue text on a white background to the console::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.user_interface import ui</span>
+
+<span class="sd">            &gt;&gt;&gt; ui.print_(text=&#39;Some text ...&#39;, fore=&#39;blue&#39;, back=&#39;white&#39;, style=&#39;normal&#39;)</span>
+
+
+<span class="sd">        To print a green header to the console::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.user_interface import ui</span>
+
+<span class="sd">            &gt;&gt;&gt; ui.print_heading_green(text=&#39;Header for a section of output&#39;)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UserInterface.__init__"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;UserInterface class initialiser.</span>
+
+<span class="sd">        - **Purpose**:</span>
+
+<span class="sd">            If Windows is detected as the system&#39;s OS, the ``utils4.__init__``</span>
+<span class="sd">            module initialises the ``colorama`` library, which enables the</span>
+<span class="sd">            user to print coloured text to the Windows terminal.</span>
+
+<span class="sd">        - **Background on** ``win_unicode_console``:</span>
+
+<span class="sd">            The ``win_unicode_console`` library is used here to fix a problem</span>
+<span class="sd">            between the Python :func:`~input` function and the Windows</span>
+<span class="sd">            CLI. The problem causes ANSI characters to be **displayed** to the</span>
+<span class="sd">            terminal, rather than **setting** colours.</span>
+
+<span class="sd">        - **Background on** ``colorama``:</span>
+
+<span class="sd">            The ``colorama`` library is initialised to:</span>
+
+<span class="sd">              &#39;strip ANSI characters from stdout and convert them into the</span>
+<span class="sd">              equivalent win32 calls.&#39;</span>
+
+<span class="sd">              -- Jonathan Hartley, creator of colorama.</span>
+
+<span class="sd">            The Win32 console (excluding *some* later versions of Win10) does</span>
+<span class="sd">            not support ANSI escape sequences, and therefore (unlike UNIX and</span>
+<span class="sd">            Unix-like systems) simply printing the escape sequence to the</span>
+<span class="sd">            native Windows CLI with the text does *not* work. To address this,</span>
+<span class="sd">            we use the ``colorama`` library for the low-level Win32 work.</span>
+<span class="sd">            Thanks Jonathan!</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            It **may** be possible to remove use of ``win_unicode_console``</span>
+<span class="sd">            in later versions of Python, possibly 3.6+.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Removed in v1.0.0a1.</span>
+        <span class="c1"># Only initialise win_unicode_console if on Windows.</span>
+        <span class="c1"># if &#39;win&#39; in platform.system().lower():</span>
+            <span class="c1"># self._enable_win_unicode_console()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span> <span class="o">=</span> <span class="n">_Config</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fore</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_color_dict</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="n">Text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_back</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_color_dict</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="n">Back</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_color_dict</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="n">Style</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.get_input"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.get_input">[docs]</a>    <span class="k">def</span> <span class="nf">get_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                  <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+                  <span class="n">back</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                  <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+                  <span class="n">ending_char</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                  <span class="n">add_space</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deprecated version of the new method: :meth:`~prompt`.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            This method has been deprecated.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;This method has been deprecated and will be removed in a future version. &#39;</span>
+                      <span class="s1">&#39;Please use the `prompt()` method instead.&#39;</span><span class="p">,</span>
+                      <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+                           <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span>
+                           <span class="n">back</span><span class="o">=</span><span class="n">back</span><span class="p">,</span>
+                           <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+                           <span class="n">ending_char</span><span class="o">=</span><span class="n">ending_char</span><span class="p">,</span>
+                           <span class="n">add_space</span><span class="o">=</span><span class="n">add_space</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_">[docs]</a>    <span class="k">def</span> <span class="nf">print_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+               <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;brightwhite&#39;</span><span class="p">,</span>
+               <span class="n">back</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+               <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+               <span class="n">h_pad</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+               <span class="n">v_pad</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+               <span class="n">sleep</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrap the built-in :func:`print` function to provide colour customisation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): The text to be printed to the terminal.</span>
+<span class="sd">            fore (str, optional): The text colour. Defaults to &#39;brightwhite&#39;.</span>
+<span class="sd">            back (str, optional): Background colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): ANSI style selector. Defaults to &#39;normal.&#39;</span>
+<span class="sd">            h_pad (int, optional): The amount of horizontal padding, in</span>
+<span class="sd">                characters. This option will increase the field size to the</span>
+<span class="sd">                value of ``h_pad`` and add (n) blank characters of background</span>
+<span class="sd">                colour after the text string. If greater than the number of</span>
+<span class="sd">                text characters, colour will extend past the end of the text.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">                Note:</span>
+<span class="sd">                    The ``h_pad`` value is a **field size** value, **not** the</span>
+<span class="sd">                    number of spaces past the end of the text string.</span>
+
+<span class="sd">            v_pad (int, optional): The amount of vertical padding, in lines.</span>
+<span class="sd">                This option will add (n) blank lines of backgound colour above</span>
+<span class="sd">                and below the text string, acting like a banner. The banner</span>
+<span class="sd">                will extend to the number of spaces specified in the ``h_pad``</span>
+<span class="sd">                parameter. Defaults to 0.</span>
+<span class="sd">            sleep (float, optional): Number of seconds to pause the program</span>
+<span class="sd">                after a message or banner is printed. Although the default</span>
+<span class="sd">                sleep value is 0 seconds, the default changes to (n) second,</span>
+<span class="sd">                if the ``v_pad`` parameter is &gt; 0. This provides a default</span>
+<span class="sd">                pause for the user to read the banner. The default ``v_pad``</span>
+<span class="sd">                sleep time can be updated in this module&#39;s private</span>
+<span class="sd">                :class:`~_Config` class. Defaults to 0.</span>
+
+<span class="sd">        **Colour and Style Options:**</span>
+
+<span class="sd">            - **fore / back**</span>
+<span class="sd">                black, blue, cyan, green, magenta, red, white, yellow,</span>
+<span class="sd">                brightblack, brightblue, brightcyan, brightgreen,</span>
+<span class="sd">                brightmagenta, brightred, brightwhite, brightyellow</span>
+
+<span class="sd">            - **style**</span>
+<span class="sd">                bold, dim, normal, underline</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method extends the functionality of the built-in :func:`print`</span>
+<span class="sd">            function by adding the options for text/background colouring and</span>
+<span class="sd">            padding. The user can pass specific text/background colours along</span>
+<span class="sd">            with a style and horizontal and vertical padding.</span>
+
+<span class="sd">            The colour and style strings are implemented using ANSI escape</span>
+<span class="sd">            sequences, which are added to the text string.</span>
+
+<span class="sd">            In addition to colour, horizontal and vertical padding are</span>
+<span class="sd">            available.</span>
+
+<span class="sd">            After a message or banner is printed, the sleep timer can be</span>
+<span class="sd">            called to pause the program for (n) seconds, for the user to read</span>
+<span class="sd">            the message or banner. If the ``v_pad`` value is &gt; 0, and the</span>
+<span class="sd">            sleep value is 0, the sleep timer value is overridden with the</span>
+<span class="sd">            value defined in this module&#39;s private :class:`~_Config` class,</span>
+<span class="sd">            under the ``v_pad_sleep`` key.</span>
+
+<span class="sd">            For further detail, refer to the **Parameters** section</span>
+<span class="sd">            of this docstring, and refer to the **Colour and Style Options**</span>
+<span class="sd">            section for each string parameter&#39;s available options.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_fore</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fore</span><span class="p">[</span><span class="n">fore</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">_back</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_back</span><span class="p">[</span><span class="n">back</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">_style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="n">style</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="c1"># Test for horizontal padding.</span>
+        <span class="k">if</span> <span class="n">h_pad</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pad</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">padto</span><span class="o">=</span><span class="n">h_pad</span><span class="p">)</span>
+            <span class="n">spaces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pad</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="o">=</span><span class="n">h_pad</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Create spaces for v-padding.</span>
+            <span class="n">spaces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pad</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+        <span class="c1"># Test for upper and lower padding.</span>
+        <span class="k">if</span> <span class="n">v_pad</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Add blank line above banner.</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="c1"># Print upper pad (n) times.</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">v_pad</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_fore</span><span class="si">}{</span><span class="n">_back</span><span class="si">}{</span><span class="n">_style</span><span class="si">}{</span><span class="n">spaces</span><span class="si">}{</span><span class="n">Text</span><span class="o">.</span><span class="n">RESET</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Print message &amp; add space before text to bring off console wall.</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_fore</span><span class="si">}{</span><span class="n">_back</span><span class="si">}{</span><span class="n">_style</span><span class="si">}{</span><span class="n">text</span><span class="si">}{</span><span class="n">Text</span><span class="o">.</span><span class="n">RESET</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Print lower pad (n) times.</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">v_pad</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_fore</span><span class="si">}{</span><span class="n">_back</span><span class="si">}{</span><span class="n">_style</span><span class="si">}{</span><span class="n">spaces</span><span class="si">}{</span><span class="n">Text</span><span class="o">.</span><span class="n">RESET</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Add blank line below banner.</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="c1"># Update sleep timer for banner if sleep=0.</span>
+            <span class="n">sleep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">v_pad_sleep</span> <span class="k">if</span> <span class="n">sleep</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">sleep</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Print message with no v-padding.</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_fore</span><span class="si">}{</span><span class="n">_back</span><span class="si">}{</span><span class="n">_style</span><span class="si">}{</span><span class="n">text</span><span class="si">}{</span><span class="n">Text</span><span class="o">.</span><span class="n">RESET</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># Pause for user to read output.</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_alert"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_alert">[docs]</a>    <span class="k">def</span> <span class="nf">print_alert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print red text on a black background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;brightred&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_blank_lines"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_blank_lines">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">print_blank_lines</span><span class="p">(</span><span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print (n) blank lines.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            qualtity (int, optional): Number of blank lines to print.</span>
+<span class="sd">                Defaults to 1.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">quantity</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_error"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_error">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">print_error</span><span class="p">(</span><span class="n">error</span><span class="p">:</span> <span class="nb">object</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print red error text on a black background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            error (object): This is the **error object** generated by the</span>
+<span class="sd">                Exception.</span>
+
+<span class="sd">        This method calls the :meth:`~reporterror.reporterror` method</span>
+<span class="sd">        to generate the error message.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            To print an error message::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4.user_interface import ui</span>
+
+<span class="sd">                &gt;&gt;&gt; try:</span>
+<span class="sd">                &gt;&gt;&gt;     1/0</span>
+<span class="sd">                &gt;&gt;&gt; except Exception as err:</span>
+<span class="sd">                &gt;&gt;&gt;     ui.print_error(error=err)</span>
+
+<span class="sd">                ERROR:	division by zero</span>
+<span class="sd">                TYPE:	&lt;class &#39;ZeroDivisionError&#39;&gt;</span>
+<span class="sd">                MODU:	/tmp/ipykernel_27103/573922745.py</span>
+<span class="sd">                FUNC:	&lt;module&gt;</span>
+<span class="sd">                LINE:	2</span>
+<span class="sd">                CMD:    1/0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Text</span><span class="o">.</span><span class="n">BRIGHTRED</span><span class="p">)</span>
+        <span class="n">reporterror</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Text</span><span class="o">.</span><span class="n">RESET</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_error_unexpected"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_error_unexpected">[docs]</a>    <span class="k">def</span> <span class="nf">print_error_unexpected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print red &#39;unexpected error&#39; text on black background.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            This method uses the call stack to print a message for</span>
+<span class="sd">            &#39;unexpected error&#39; errors.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+        <span class="n">mthd</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_back</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">clss</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="n">f_locals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">last</span><span class="o">.</span><span class="n">f_lineno</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;An unexpected error has occurred whilst running the &quot;</span><span class="si">{</span><span class="n">mthd</span><span class="si">}</span><span class="s1">&quot; method</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;in &quot;</span><span class="si">{</span><span class="n">clss</span><span class="si">}</span><span class="s1">&quot;, on line number </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_heading_blue"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_heading_blue">[docs]</a>    <span class="k">def</span> <span class="nf">print_heading_blue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;brightwhite&#39;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print white text on a blue background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;brightwhite&#39;.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+<span class="sd">            padto (int, optional): Padding width, as number of characters.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">padto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_heading_cyan"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_heading_cyan">[docs]</a>    <span class="k">def</span> <span class="nf">print_heading_cyan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print black text on a cyan background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+<span class="sd">            padto (int, optional): Padding width, as number of characters.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">padto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_heading_green"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_heading_green">[docs]</a>    <span class="k">def</span> <span class="nf">print_heading_green</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print black text on a green background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+<span class="sd">            padto (int, optional): Padding width, as number of characters.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">padto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_heading_red"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_heading_red">[docs]</a>    <span class="k">def</span> <span class="nf">print_heading_red</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print black text on a red background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+<span class="sd">            padto (int, optional): Padding width, as number of characters.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;brightred&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">padto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_heading_white"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_heading_white">[docs]</a>    <span class="k">def</span> <span class="nf">print_heading_white</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print black text on a white background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+<span class="sd">            padto (int, optional): Padding width, as number of characters.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">padto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_heading_yellow"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_heading_yellow">[docs]</a>    <span class="k">def</span> <span class="nf">print_heading_yellow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print black text on a yellow background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+<span class="sd">            padto (int, optional): Padding width, as number of characters.</span>
+<span class="sd">                Defaults to 0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="n">fore</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">padto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_normal"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_normal">[docs]</a>    <span class="k">def</span> <span class="nf">print_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print green text on a black background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;brightgreen&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.print_warning"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.print_warning">[docs]</a>    <span class="k">def</span> <span class="nf">print_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print yellow text on a black background.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to be printed.</span>
+<span class="sd">            style (str, optional): Style to be used. Defaults to &#39;normal&#39;.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;brightyellow&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UserInterface.prompt"><a class="viewcode-back" href="../user_interface.html#user_interface.UserInterface.prompt">[docs]</a>    <span class="k">def</span> <span class="nf">prompt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+               <span class="n">fore</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;brightwhite&#39;</span><span class="p">,</span>
+               <span class="n">back</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+               <span class="n">style</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+               <span class="n">ending_char</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+               <span class="n">add_space</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get user input via a CLI prompt formatted by the caller.</span>
+
+<span class="sd">        This method extends the built-in :func:`input` function (although not</span>
+<span class="sd">        used by this method) by adding appearance control and text colouring.</span>
+<span class="sd">        Like the :func:`input` function, the user&#39;s input is returned to the</span>
+<span class="sd">        caller as a ``str`` type.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): The text to be displayed.</span>
+<span class="sd">            fore (str, optional): Text colour. Defaults to &#39;brightwhite&#39;.</span>
+<span class="sd">            back (str, optional): Background colour. Defaults to &#39;black&#39;.</span>
+<span class="sd">            style (str, optional): The &#39;normal&#39; style selects the 8 original</span>
+<span class="sd">                foreground colours (SGR 30-37). The &#39;bright&#39; style provides</span>
+<span class="sd">                access to the 8 additional foreground colours (SGR 90-97).</span>
+<span class="sd">                Defaults to &#39;normal&#39;.</span>
+<span class="sd">            ending_char (str, optional): Character to be added to the end of</span>
+<span class="sd">                the prompt. If the user&#39;s input should be on a new line,</span>
+<span class="sd">                pass ``\n`` into this parameter. Defaults to ``&#39;&#39;``.</span>
+<span class="sd">            add_space (bool, optional): Add a space separator between the</span>
+<span class="sd">                prompt and the user&#39;s input. Defaults to True.</span>
+
+<span class="sd">        **Colour and Style Options:**</span>
+
+<span class="sd">            - **fore / back**</span>
+<span class="sd">                black, blue, cyan, green, magenta, red, white, yellow,</span>
+<span class="sd">                brightblack, brightblue, brightcyan, brightgreen,</span>
+<span class="sd">                brightmagenta, brightred, brightwhite, brightyellow</span>
+
+<span class="sd">            - **style**</span>
+<span class="sd">                bold, dim, normal, underline</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            To use the prompt in its standard form::</span>
+
+<span class="sd">                &gt;&gt;&gt; inp = ui.prompt(&#39;Enter a number:&#39;)</span>
+
+<span class="sd">                Enter a number: 73</span>
+
+<span class="sd">                &gt;&gt;&gt; inp</span>
+<span class="sd">                &#39;73&#39;</span>
+
+
+<span class="sd">            Request user input in red text::</span>
+
+<span class="sd">                &gt;&gt;&gt; inp = ui.prompt(&#39;Enter a number:&#39;, fore=&#39;brightred&#39;)</span>
+
+<span class="sd">                Enter a number: 13</span>
+
+<span class="sd">                &gt;&gt;&gt; inp</span>
+<span class="sd">                &#39;13&#39;</span>
+
+
+<span class="sd">            Request user input in red text in a new line::</span>
+
+<span class="sd">                &gt;&gt;&gt; inp = ui.prompt(&#39;An unnecessarily long prompt requesting a number:&#39;,</span>
+<span class="sd">                                    fore=&#39;brightred&#39;,</span>
+<span class="sd">                                    ending_char=&#39;\n&#39;,</span>
+<span class="sd">                                    add_space=False)</span>
+
+<span class="sd">                An unnecessarily long prompt requesting a number:</span>
+<span class="sd">                37</span>
+
+<span class="sd">                &gt;&gt;&gt; inp</span>
+<span class="sd">                &#39;37&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_fore</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fore</span><span class="p">[</span><span class="n">fore</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">_back</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_back</span><span class="p">[</span><span class="n">back</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">_style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_style</span><span class="p">[</span><span class="n">style</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">add_space</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1"># Reset colours before printing a new line char.</span>
+        <span class="k">if</span> <span class="n">ending_char</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span> <span class="n">ending_char</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+        <span class="n">text_</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_fore</span><span class="si">}{</span><span class="n">_back</span><span class="si">}{</span><span class="n">_style</span><span class="si">}{</span><span class="n">text</span><span class="si">}{</span><span class="n">Text</span><span class="o">.</span><span class="n">RESET</span><span class="si">}{</span><span class="n">space</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="c1"># Prompt user and return input to the caller.</span>
+        <span class="c1"># print() and sys calls are used as the input() function does not</span>
+        <span class="c1"># play nicely with the ANSI sequences on Windows.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">text_</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">ending_char</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># Remove the newline character from the read.</span>
+        <span class="k">return</span> <span class="n">resp</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_build_color_dict</span><span class="p">(</span><span class="n">class_</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a dictionary of colours available in the ``termcolours``</span>
+<span class="sd">        ``.Text``, ``.Back`` and ``.Style`` classes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            class_ (object): Class object to be parsed and extracted into a</span>
+<span class="sd">                dict.</span>
+
+<span class="sd">        :Example:</span>
+
+<span class="sd">            For example, when the ``termcolours.Text`` class is passed,</span>
+<span class="sd">            the output looks like::</span>
+
+<span class="sd">                {&#39;black&#39;: &#39;\x1b[30m&#39;,</span>
+<span class="sd">                 &#39;blue&#39;: &#39;\x1b[34m&#39;,</span>
+<span class="sd">                 ...,</span>
+<span class="sd">                 &#39;white&#39;: &#39;\x1b[37m&#39;,</span>
+<span class="sd">                 &#39;yellow&#39;: &#39;\x1b[33m&#39;}</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary of key/values (attr/values) from the passed</span>
+<span class="sd">            class object, with the keys in lower case.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">class_</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="c1"># Removed in v1.0.0a1.</span>
+    <span class="c1"># @staticmethod</span>
+    <span class="c1"># def _enable_win_unicode_console():</span>
+    <span class="c1">#     &quot;&quot;&quot;Enable the Windows CLI console colours for Py3.&quot;&quot;&quot;</span>
+    <span class="c1">#     win_unicode_console.enable(use_readline_hook=False)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_pad</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">padto</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pad the text value, with (n) spaces.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Text to print.</span>
+<span class="sd">            padto (int): Field size for text block.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            The ``padto`` parameter is a **field size** value, **not** the</span>
+<span class="sd">            number of blank characters added to the end of the text string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">text</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">:{</span><span class="n">padto</span><span class="si">}}</span><span class="s1">&#39;</span></div>
+
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">UserInterface</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

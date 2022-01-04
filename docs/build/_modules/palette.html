@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>palette &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>palette</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for palette</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This class module provides quick-access to CSS-4 named colours in</span>
+<span class="sd">            both RGB and hexidecimal formats.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     development@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    Use the hex colour palette::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.palette import hexpalette</span>
+
+<span class="sd">        &gt;&gt;&gt; hexpalette.aliceblue</span>
+<span class="sd">        &#39;#F0F8FF&#39;</span>
+
+
+<span class="sd">    Use the RGB colour palette::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.palette import rgbpalette</span>
+
+<span class="sd">        &gt;&gt;&gt; rgbpalette.aliceblue</span>
+<span class="sd">        [240, 248, 255]</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+
+<span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">convert</span>
+<span class="kn">from</span> <span class="nn">utils4.reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
+
+
+<div class="viewcode-block" id="HexPalette"><a class="viewcode-back" href="../palette.html#palette.HexPalette">[docs]</a><span class="k">class</span> <span class="nc">HexPalette</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Complete CSS-4 colour palette (in hex format), as object attributes.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="HexPalette.__init__"><a class="viewcode-back" href="../palette.html#palette.HexPalette.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;HexPalette class initialiser.</span>
+
+<span class="sd">        This initialiser dynamically creates all named colours as class</span>
+<span class="sd">        attributes using the :class:`~CSS4Colours` class as its data source.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">css</span> <span class="o">=</span> <span class="n">CSS4Colours</span><span class="p">()</span><span class="o">.</span><span class="n">colours</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">css</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="RGBPalette"><a class="viewcode-back" href="../palette.html#palette.RGBPalette">[docs]</a><span class="k">class</span> <span class="nc">RGBPalette</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Complete CSS-4 colour palette (in RGB format), as object attributes.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RGBPalette.__init__"><a class="viewcode-back" href="../palette.html#palette.RGBPalette.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;RGBPalette class initialiser.</span>
+
+<span class="sd">        This initialiser dynamically creates all named colours as class</span>
+<span class="sd">        attributes using the :class:`~CSS4Colours` class as its data source.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hex_</span> <span class="o">=</span> <span class="n">HexPalette</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">hex_</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">convert</span><span class="o">.</span><span class="n">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">nbytes</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># Placed at the bottom of the module for cleanness, as it&#39;s very long.</span>
+<div class="viewcode-block" id="CSS4Colours"><a class="viewcode-back" href="../palette.html#palette.CSS4Colours">[docs]</a><span class="k">class</span> <span class="nc">CSS4Colours</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Lazy class container to hold the raw CSS level 4 colour name lookup.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">colours</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The 148 colour names from the CSS level 4 colour specification.</span>
+
+<span class="sd">        For example:</span>
+
+<span class="sd">            - aliceblue</span>
+<span class="sd">            - antiquewhite</span>
+<span class="sd">            - aqua</span>
+<span class="sd">            - ...</span>
+<span class="sd">            - whitesmoke</span>
+<span class="sd">            - yellow</span>
+<span class="sd">            - yellowgreen</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">clrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;aliceblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0F8FF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;antiquewhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#FAEBD7&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;aqua&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FFFF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;aquamarine&#39;</span><span class="p">:</span> <span class="s1">&#39;#7FFFD4&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;azure&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0FFFF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;beige&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5F5DC&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;bisque&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFE4C4&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;black&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;blanchedalmond&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFEBCD&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;blueviolet&#39;</span><span class="p">:</span> <span class="s1">&#39;#8A2BE2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;brown&#39;</span><span class="p">:</span> <span class="s1">&#39;#A52A2A&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;burlywood&#39;</span><span class="p">:</span> <span class="s1">&#39;#DEB887&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cadetblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#5F9EA0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;chartreuse&#39;</span><span class="p">:</span> <span class="s1">&#39;#7FFF00&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;chocolate&#39;</span><span class="p">:</span> <span class="s1">&#39;#D2691E&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;coral&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF7F50&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cornflowerblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#6495ED&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cornsilk&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFF8DC&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;crimson&#39;</span><span class="p">:</span> <span class="s1">&#39;#DC143C&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FFFF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#00008B&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkcyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#008B8B&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkgoldenrod&#39;</span><span class="p">:</span> <span class="s1">&#39;#B8860B&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkgray&#39;</span><span class="p">:</span> <span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#006400&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkgrey&#39;</span><span class="p">:</span> <span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkkhaki&#39;</span><span class="p">:</span> <span class="s1">&#39;#BDB76B&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkmagenta&#39;</span><span class="p">:</span> <span class="s1">&#39;#8B008B&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkolivegreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#556B2F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkorange&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF8C00&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkorchid&#39;</span><span class="p">:</span> <span class="s1">&#39;#9932CC&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkred&#39;</span><span class="p">:</span> <span class="s1">&#39;#8B0000&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darksalmon&#39;</span><span class="p">:</span> <span class="s1">&#39;#E9967A&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkseagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#8FBC8F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkslateblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#483D8B&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkslategray&#39;</span><span class="p">:</span> <span class="s1">&#39;#2F4F4F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkslategrey&#39;</span><span class="p">:</span> <span class="s1">&#39;#2F4F4F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkturquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#00CED1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;darkviolet&#39;</span><span class="p">:</span> <span class="s1">&#39;#9400D3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;deeppink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF1493&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;deepskyblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#00BFFF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dimgray&#39;</span><span class="p">:</span> <span class="s1">&#39;#696969&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dimgrey&#39;</span><span class="p">:</span> <span class="s1">&#39;#696969&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dodgerblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#1E90FF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;firebrick&#39;</span><span class="p">:</span> <span class="s1">&#39;#B22222&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;floralwhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFAF0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;forestgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#228B22&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;fuchsia&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF00FF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;gainsboro&#39;</span><span class="p">:</span> <span class="s1">&#39;#DCDCDC&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ghostwhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#F8F8FF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFD700&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;goldenrod&#39;</span><span class="p">:</span> <span class="s1">&#39;#DAA520&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;gray&#39;</span><span class="p">:</span> <span class="s1">&#39;#808080&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="s1">&#39;#008000&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;greenyellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#ADFF2F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;grey&#39;</span><span class="p">:</span> <span class="s1">&#39;#808080&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;honeydew&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0FFF0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;hotpink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF69B4&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;indianred&#39;</span><span class="p">:</span> <span class="s1">&#39;#CD5C5C&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;indigo&#39;</span><span class="p">:</span> <span class="s1">&#39;#4B0082&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ivory&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFF0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;khaki&#39;</span><span class="p">:</span> <span class="s1">&#39;#F0E68C&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lavender&#39;</span><span class="p">:</span> <span class="s1">&#39;#E6E6FA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lavenderblush&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFF0F5&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lawngreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#7CFC00&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lemonchiffon&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFACD&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#ADD8E6&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightcoral&#39;</span><span class="p">:</span> <span class="s1">&#39;#F08080&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightcyan&#39;</span><span class="p">:</span> <span class="s1">&#39;#E0FFFF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightgoldenrodyellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FAFAD2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightgray&#39;</span><span class="p">:</span> <span class="s1">&#39;#D3D3D3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#90EE90&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightgrey&#39;</span><span class="p">:</span> <span class="s1">&#39;#D3D3D3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightpink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFB6C1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightsalmon&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFA07A&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightseagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#20B2AA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightskyblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#87CEFA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightslategray&#39;</span><span class="p">:</span> <span class="s1">&#39;#778899&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightslategrey&#39;</span><span class="p">:</span> <span class="s1">&#39;#778899&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightsteelblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#B0C4DE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lightyellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFE0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;lime&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;limegreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#32CD32&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;linen&#39;</span><span class="p">:</span> <span class="s1">&#39;#FAF0E6&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;magenta&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF00FF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;maroon&#39;</span><span class="p">:</span> <span class="s1">&#39;#800000&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumaquamarine&#39;</span><span class="p">:</span> <span class="s1">&#39;#66CDAA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#0000CD&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumorchid&#39;</span><span class="p">:</span> <span class="s1">&#39;#BA55D3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumpurple&#39;</span><span class="p">:</span> <span class="s1">&#39;#9370DB&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumseagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#3CB371&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumslateblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#7B68EE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumspringgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FA9A&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumturquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#48D1CC&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mediumvioletred&#39;</span><span class="p">:</span> <span class="s1">&#39;#C71585&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;midnightblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#191970&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mintcream&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5FFFA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;mistyrose&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFE4E1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;moccasin&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFE4B5&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;navajowhite&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFDEAD&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;navy&#39;</span><span class="p">:</span> <span class="s1">&#39;#000080&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;oldlace&#39;</span><span class="p">:</span> <span class="s1">&#39;#FDF5E6&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;olive&#39;</span><span class="p">:</span> <span class="s1">&#39;#808000&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;olivedrab&#39;</span><span class="p">:</span> <span class="s1">&#39;#6B8E23&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;orange&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFA500&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;orangered&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF4500&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;orchid&#39;</span><span class="p">:</span> <span class="s1">&#39;#DA70D6&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;palegoldenrod&#39;</span><span class="p">:</span> <span class="s1">&#39;#EEE8AA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;palegreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#98FB98&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;paleturquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#AFEEEE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;palevioletred&#39;</span><span class="p">:</span> <span class="s1">&#39;#DB7093&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;papayawhip&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFEFD5&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;peachpuff&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFDAB9&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;peru&#39;</span><span class="p">:</span> <span class="s1">&#39;#CD853F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;pink&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFC0CB&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;plum&#39;</span><span class="p">:</span> <span class="s1">&#39;#DDA0DD&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;powderblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#B0E0E6&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;purple&#39;</span><span class="p">:</span> <span class="s1">&#39;#800080&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;rebeccapurple&#39;</span><span class="p">:</span> <span class="s1">&#39;#663399&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;rosybrown&#39;</span><span class="p">:</span> <span class="s1">&#39;#BC8F8F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;royalblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#4169E1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;saddlebrown&#39;</span><span class="p">:</span> <span class="s1">&#39;#8B4513&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;salmon&#39;</span><span class="p">:</span> <span class="s1">&#39;#FA8072&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;sandybrown&#39;</span><span class="p">:</span> <span class="s1">&#39;#F4A460&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;seagreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#2E8B57&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;seashell&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFF5EE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;sienna&#39;</span><span class="p">:</span> <span class="s1">&#39;#A0522D&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;silver&#39;</span><span class="p">:</span> <span class="s1">&#39;#C0C0C0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;skyblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#87CEEB&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;slateblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#6A5ACD&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;slategray&#39;</span><span class="p">:</span> <span class="s1">&#39;#708090&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;slategrey&#39;</span><span class="p">:</span> <span class="s1">&#39;#708090&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;snow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFAFA&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;springgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#00FF7F&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;steelblue&#39;</span><span class="p">:</span> <span class="s1">&#39;#4682B4&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;tan&#39;</span><span class="p">:</span> <span class="s1">&#39;#D2B48C&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;teal&#39;</span><span class="p">:</span> <span class="s1">&#39;#008080&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;thistle&#39;</span><span class="p">:</span> <span class="s1">&#39;#D8BFD8&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;tomato&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF6347&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;turquoise&#39;</span><span class="p">:</span> <span class="s1">&#39;#40E0D0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;violet&#39;</span><span class="p">:</span> <span class="s1">&#39;#EE82EE&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;wheat&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5DEB3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;white&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;whitesmoke&#39;</span><span class="p">:</span> <span class="s1">&#39;#F5F5F5&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFF00&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;yellowgreen&#39;</span><span class="p">:</span> <span class="s1">&#39;#9ACD32&#39;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">clrs</span></div>
+
+
+<span class="n">hexpalette</span> <span class="o">=</span> <span class="n">HexPalette</span><span class="p">()</span>
+<span class="n">rgbpalette</span> <span class="o">=</span> <span class="n">RGBPalette</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

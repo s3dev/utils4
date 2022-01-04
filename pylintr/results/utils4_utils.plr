@@ -1,0 +1,161 @@
+************* Module utils4.utils
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:158:16: R1735: Consider using {} instead of dict() (use-dict-literal)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:83:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:252:16: R1735: Consider using {} instead of dict() (use-dict-literal)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:189:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:348:16: R1735: Consider using {} instead of dict() (use-dict-literal)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:285:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:382:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:462:8: R1723: Unnecessary "else" after "break" (no-else-break)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:518:14: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:812:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:845:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:916:33: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:917:40: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:917:40: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:927:24: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:931:11: R1719: The if expression can be replaced with 'test' (simplifiable-if-expression)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1006:0: R1721: Unnecessary use of a comprehension, use list(ints[:4]) instead. (unnecessary-comprehension)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1008:19: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1013:0: R1721: Unnecessary use of a comprehension, use list(ints) instead. (unnecessary-comprehension)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1015:19: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:935:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1067:18: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1070:14: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1159:24: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1129:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1192:21: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1200:24: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1166:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1234:36: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1250:24: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1207:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1291:16: R1735: Consider using {} instead of dict() (use-dict-literal)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1302:45: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1307:24: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1343:15: R1733: Unnecessary dictionary index lookup, use '_' instead (unnecessary-dict-index-lookup)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1345:46: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1394:0: R1721: Unnecessary use of a comprehension, use list(zip(np.linspace(0, 1, num=len(cmap)), cmap)) instead. (unnecessary-comprehension)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1433:14: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+/var/devmt/py/utils4_0.1.0/utils4/utils.py:1485:33: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+
+
+Report
+======
+279 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |28     |28         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    matplotlib 
+      \-cm (utils4.utils)
+      \-colors (utils4.utils)
+      \-pyplot (utils4.utils)
+    mysql 
+      \-connector (utils4.utils)
+    numpy (utils4.utils)
+    six (utils4.utils)
+    utils3 
+      \-_version (utils4.utils)
+      \-config (utils4.utils)
+      \-reporterror (utils4.utils)
+      \-user_interface (utils4.utils)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |306    |20.35 |306      |=          |
++----------+-------+------+---------+-----------+
+|docstring |883    |58.71 |883      |=          |
++----------+-------+------+---------+-----------+
+|comment   |182    |12.10 |182      |=          |
++----------+-------+------+---------+-----------+
+|empty     |133    |8.84  |133      |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |0          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |17     |17       |17         |
++-----------+-------+---------+-----------+
+|refactor   |19     |19       |19         |
++-----------+-------+---------+-----------+
+|warning    |3      |3        |3          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |0          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-------------------------------+------------+
+|message id                     |occurrences |
++===============================+============+
+|consider-using-f-string        |17          |
++-------------------------------+------------+
+|inconsistent-return-statements |8           |
++-------------------------------+------------+
+|use-dict-literal               |4           |
++-------------------------------+------------+
+|unspecified-encoding           |3           |
++-------------------------------+------------+
+|unnecessary-comprehension      |3           |
++-------------------------------+------------+
+|unnecessary-dict-index-lookup  |1           |
++-------------------------------+------------+
+|simplifiable-if-expression     |1           |
++-------------------------------+------------+
+|no-else-break                  |1           |
++-------------------------------+------------+
+|consider-using-with            |1           |
++-------------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 8.60/10 (previous run: 8.60/10, +0.00)
+

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>log &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>log</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for log</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This is a small class module designed as a central log file</span>
+<span class="sd">            creator.</span>
+
+<span class="sd">            The calling program is responsible for passing the proper</span>
+<span class="sd">            arguments to create the log file header. For example::</span>
+
+<span class="sd">                (printheader=True, headertext=&#39;some,header,text,here&#39;)</span>
+
+<span class="sd">            It is suggested to initialise the :class:`~Log` class</span>
+<span class="sd">            at program startup, with the ``printheader`` parameter</span>
+<span class="sd">            set to ``True``. This is safe because if the log file</span>
+<span class="sd">            already exists, the header will not be re-created. However,</span>
+<span class="sd">            if the log file does not exist, it will be created with a</span>
+<span class="sd">            header, using the value of the ``headertext`` parameter.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    To use the :class:`~Log` class in your project::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.log import Log</span>
+
+<span class="sd">        &gt;&gt; header = &#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
+<span class="sd">        &gt;&gt; logger = Log(filepath=&#39;/tmp/testlog.log&#39;,</span>
+<span class="sd">                        printheader=True,</span>
+<span class="sd">                        headertext=header)</span>
+<span class="sd">        &gt;&gt; logger.write(text=&#39;Most cows can jump over the moon,Fact,94.2,pct&#39;)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">getpass</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">dt</span>
+
+
+<div class="viewcode-block" id="Log"><a class="viewcode-back" href="../log.html#log.Log">[docs]</a><span class="k">class</span> <span class="nc">Log</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This is a small and simple log file creator/writer class.</span>
+
+<span class="sd">    The calling program is responsible for passing the proper arguments</span>
+<span class="sd">    to create the log file header. For example::</span>
+
+<span class="sd">        (printheader=True, headertext=&#39;some,header,text,here&#39;)</span>
+
+<span class="sd">    On class instantiation, validation is performed to determine if the</span>
+<span class="sd">    log file exists.  If the log file does not exist, a header is</span>
+<span class="sd">    required before writing to the log file. These parameters can be passed to</span>
+<span class="sd">    the class on instantiation, and will be ignored if the log file already</span>
+<span class="sd">    exists.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filepath (str): Full path to the log file.</span>
+<span class="sd">        autofill (bool, optional): Automatically populate ``datetime.now()``,</span>
+<span class="sd">            host and username values, to each log entry. Defaults to True.</span>
+<span class="sd">        printheader (bool, optional): Print a log file header using the text</span>
+<span class="sd">            passed into the ``headertext`` parameter. Defaults to False.</span>
+
+<span class="sd">            .. note:: The header will only be written if the log file does not</span>
+<span class="sd">                      exist.</span>
+
+<span class="sd">        headertext (str, optional): String of delimited column labels to be</span>
+<span class="sd">            written as the header. Defaults to &#39;&#39;.</span>
+<span class="sd">        sep (str, optional): Separator to be used in the log file. This</span>
+<span class="sd">            separator is used when writing the autofill values.</span>
+<span class="sd">            Defaults to &#39;,&#39;.</span>
+
+<span class="sd">    :File Validation:</span>
+<span class="sd">        On class instantiation, tests are performed to ensure the log</span>
+<span class="sd">        file is being populated in a logical way.</span>
+
+<span class="sd">            * If ``printheader`` is ``False``, and the log file does not</span>
+<span class="sd">              exist, the user is notified.</span>
+<span class="sd">            * If ``printheader`` is ``True``, yet ``headertext`` is</span>
+<span class="sd">              blank, the user is instructed to pass header text.</span>
+<span class="sd">            * If ``printheader`` is ``True``, yet the log file already</span>
+<span class="sd">              exists, the header will not be written.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        To use the :class:`~Log` class in your project::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4.log import Log</span>
+
+<span class="sd">            &gt;&gt;&gt; header = &#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
+<span class="sd">            &gt;&gt;&gt; logger = Log(filepath=&#39;/tmp/testlog.log&#39;,</span>
+<span class="sd">                             printheader=True,</span>
+<span class="sd">                             headertext=header)</span>
+
+<span class="sd">            &gt;&gt;&gt; logger.write(text=&#39;Most cows can jump over the moon,Fact,94.2,pct&#39;)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Log.__init__"><a class="viewcode-back" href="../log.html#log.Log.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">printheader</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">headertext</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Log class initialiser.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span> <span class="o">=</span> <span class="n">filepath</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_autofill</span> <span class="o">=</span> <span class="n">autofill</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_printheader</span> <span class="o">=</span> <span class="n">printheader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headertext</span> <span class="o">=</span> <span class="n">headertext</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep</span> <span class="o">=</span> <span class="n">sep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_user</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_autotext</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Log.write"><a class="viewcode-back" href="../log.html#log.Log.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write text to the log file defined at instantiation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (str): Delimited text string to be written to the log.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            If ``autofill`` is ``True``, the datetime, host and username</span>
+<span class="sd">            values **will be populated automatically**; these do *not*</span>
+<span class="sd">            need to be passed into the ``text`` argument.</span>
+
+<span class="sd">        :Design:</span>
+<span class="sd">            If the ``autofill`` argument is ``True``, the current</span>
+<span class="sd">            datetime, host and username values are written (in that</span>
+<span class="sd">            order), ahead of the text string provided to the ``text``</span>
+<span class="sd">            argument. The ``sep`` parameter (defined at instantiation),</span>
+<span class="sd">            is used to separate these auto-populated fields.</span>
+
+<span class="sd">        :Example:</span>
+<span class="sd">            To write to the log file::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils3.log import Log</span>
+
+<span class="sd">                &gt;&gt;&gt; logger = Log(filepath=&#39;/tmp/testlog.log, autofill=True)</span>
+<span class="sd">                &gt;&gt;&gt; logger.write(text=&#39;Just adding some random text to my log&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+                <span class="n">auto_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sep</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_autotext</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_autofill</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">auto_text</span><span class="p">)</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Log.write_blank_line"><a class="viewcode-back" href="../log.html#log.Log.write_blank_line">[docs]</a>    <span class="k">def</span> <span class="nf">write_blank_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write a blank line to the log file.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            The ``autofill`` information is **not** written. This is a</span>
+<span class="sd">            true blank line, created by writing the system&#39;s native line</span>
+<span class="sd">            separator character(s)to the log.</span>
+
+<span class="sd">        :Example:</span>
+<span class="sd">            To write a blank line to the log file::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils3.log import Log</span>
+
+<span class="sd">                &gt;&gt;&gt; logger = Log(filepath=&#39;/tmp/testlog.log&#39;, autofill=True)</span>
+<span class="sd">                &gt;&gt;&gt; logger.write_blank_line()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setup tasks performed on class instantiation.</span>
+
+<span class="sd">        :Tasks:</span>
+
+<span class="sd">            - Create the log file.</span>
+<span class="sd">            - Write the header.</span>
+
+<span class="sd">        :Validation:</span>
+
+<span class="sd">            - If the log file does not exist, ensure a header is requested.</span>
+<span class="sd">            - If the header is requested, ensure the header text is provided.</span>
+
+<span class="sd">        Raised:</span>
+<span class="sd">            UserWarning: If either of the validation criteria are not met.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_autotext</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sep</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_user</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sep</span><span class="si">}</span><span class="s1">&#39;</span>
+                          <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_autofill</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># Verify the logfile does not exists, ensure a header is requested.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_printheader</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">UserWarning</span><span class="p">(</span><span class="s1">&#39;Header expected, log does not already exist.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="s1">&#39;- Log file does not exist, therefore a header must be requested,</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="s1">&#39;  as the header is written at the time of log file creation.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># Verify header text is populated, if print header is requested.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_printheader</span> <span class="o">&amp;</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headertext</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">UserWarning</span><span class="p">(</span><span class="s1">&#39;Header requested, but header text not received.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="s1">&#39;- The printheader argument is True, however the headertext string</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="s1">&#39;  is blank. A headertext string must also be supplied.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># Write the header if 1) requested, 2) header text provided and 3) log file does not exist.</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_printheader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headertext</span><span class="p">,</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="p">)]):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_headertext</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

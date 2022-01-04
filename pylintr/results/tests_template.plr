@@ -1,0 +1,2 @@
+************* Module tests.template
+../tests/template.py:23:11: E0001: invalid syntax (<unknown>, line 23) (syntax-error)

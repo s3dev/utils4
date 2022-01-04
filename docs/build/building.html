@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building utils4 from a Source Distribution &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> utils4
+            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Building utils4 from a Source Distribution</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-utils4-from-a-source-distribution">
+<span id="building-from-source"></span><h1>Building utils4 from a Source Distribution<a class="headerlink" href="#building-utils4-from-a-source-distribution" title="Permalink to this headline"></a></h1>
+<p>As this library contains C extensions, you may need to build the code from
+source, to accommodate your specific architecture or OS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Windows users:</strong></p>
+<p>If building for Windows, you will need a C-compiler installed.</p>
+<p>For example, the <em>MinGW</em> development environment is an easy to install
+option which provides this functionality for Windows, a link is
+provided below.</p>
+</div>
+<p>The good people at <a class="reference external" href="https://winlibs.com">winlibs</a> have put together 7-Zip and Zip archives
+for a number of <em>standalone</em> GCC and MinGW-w64 builds. Once the selected
+build is downloaded, refer to the <em>Usage</em> section for installation and
+usage details.</p>
+<section id="building-utils4-from-source">
+<h2>Building utils4 from source<a class="headerlink" href="#building-utils4-from-source" title="Permalink to this headline"></a></h2>
+<p>The steps below demonstrate building <code class="docutils literal notranslate"><span class="pre">utils4</span></code> from the <em>latest</em> source
+distribution.</p>
+<ol class="arabic">
+<li><p>Download the source distribution from the <a class="reference external" href="https://s3dev.uk/downloads">S3DEV archive</a>.</p></li>
+<li><p>Copy the source distribution file (<code class="docutils literal notranslate"><span class="pre">utils4-latest.tar.gz</span></code>) to your
+local PC.</p></li>
+<li><p>Navigate to the directory into which the source was just copied.</p></li>
+<li><p>Extract the source <a class="footnote-reference brackets" href="#id2" id="id1">1</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tar -zxvf utils4-latest.tar.gz
+</pre></div>
+</div>
+</li>
+<li><p>Navigate into the extracted source directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ./utils4-latest
+</pre></div>
+</div>
+</li>
+<li><p><strong>Unix-like</strong> - Option A: Build the distribution from source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python ./setup.py build
+</pre></div>
+</div>
+</li>
+<li><p><strong>Unix-like</strong> - Option B: Build a wheel from source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python ./setup.py bdist_wheel
+</pre></div>
+</div>
+</li>
+<li><p><strong>Unix-like</strong> - Option C: Install directly from source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install .
+</pre></div>
+</div>
+</li>
+<li><p><strong>Windows</strong>: Build the distribution from source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py build --compiler=mingw32  # &lt;-- specify the compiler to be used
+</pre></div>
+</div>
+</li>
+<li><p><strong>Windows</strong> - Option A: Build a wheel from the build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Reminder: The a .\build directory must exist.
+$ python setup.py bdist_wheel
+</pre></div>
+</div>
+</li>
+<li><p><strong>Windows</strong> - Option B: Install from the build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Reminder: The a .\build directory must exist.
+$ pip install .
+</pre></div>
+</div>
+</li>
+<li><p>Install the newly created wheel as any other:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ./dist
+$ pip install utils4-latest-&lt;architecture&gt;.whl
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="questions-or-issues">
+<h2>Questions or Issues<a class="headerlink" href="#questions-or-issues" title="Permalink to this headline"></a></h2>
+<p>If you have any issues or questions with your installation, please refer
+to the <a class="reference internal" href="index.html#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section, or feel free to
+<a class="reference internal" href="contact.html#contact-us"><span class="std std-ref">contact us</span></a>.</p>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>If using Windows, <a class="reference external" href="https://www.7-zip.org/">7-zip</a> can be used to extract <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code> files.</p>
+</dd>
+</dl>
+<p>Last updated: 04 Apr 2022</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

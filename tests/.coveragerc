@@ -1,0 +1,12 @@
+[run]
+omit = 
+    ./testlibs/*
+    ./base.py
+    ./test_*.py
+    ../utils4/user_interface.py
+
+[report]
+exclude_lines =
+    nocover
+    except ImportError:
+    except Exception as err:

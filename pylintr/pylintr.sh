@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #-----------------------------------------------------------------------
 # Prog:     pylintr.sh
-# Version:  0.3.0
+# Version:  0.3.1
 # Desc:     This script walks down a project tree searching for all
 #           *.py files and runs pylint over each file, using the default
 #           pylint config file and stores the report to the defined
@@ -35,6 +35,10 @@
 #                              character. For example: test_thing1.py
 # 26.05.21  J. Berendt  0.3.0  Updated to print a second summary; 
 #                              showing pylintr scores less than 10;
+# 27.08.21  J. Berendt  0.3.1  Updated to allow *.py files with two or
+#                              more characters (including numbers) in the 
+#                              filename to be linted. 
+#                              Previously, numbers were not allowed.
 #-----------------------------------------------------------------------
 
 EXT=".plr"
@@ -62,7 +66,7 @@ for f in $( /usr/bin/find ../ -name "*.py" | grep -v "docs" ); do
     bname=$( basename ${f} )
     dname=$( basename $( dirname ${f} ) )_
     [ $dname = ".._" ] && dname=""
-    if [[ ${bname} =~ ^[a-z][a-z_]+\.py ]]; then
+    if [[ ${bname} =~ ^[a-z][a-z0-9_]+\.py ]]; then
         echo Processing: ${f}
         outname=${dname}$( echo ${bname} | sed s/.py// )${EXT}
         pylint "${rcfile}" ${f} > "${OUTPUT}/${outname}"

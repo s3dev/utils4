@@ -1,28 +1,39 @@
 Pylint Summary:
 ------------------------
-setup.plr: 10.00/10
-test_test_config.plr: 8.38/10
-test_test_get_datafiles.plr: 10.00/10
-test_test_log.plr: 10.00/10
-test_test_utils.plr: 9.63/10
-utils3_changelog.plr:
-utils3_cmaps.plr: 10.00/10
-utils3_colours.plr: 10.00/10
-utils3_config.plr: 10.00/10
-utils3_crypto.plr: 10.00/10
-utils3_database.plr: 10.00/10
-utils3_dfdiff.plr: 10.00/10
-utils3_get_datafiles.plr: 10.00/10
-utils3_log.plr: 10.00/10
-utils3_progressbar.plr: 10.00/10
-utils3_pywarnings.plr: 10.00/10
-utils3_reader.plr: 10.00/10
-utils3_registry.plr: 10.00/10
-utils3_reporterror.plr: 10.00/10
-utils3_tickers.plr: 10.00/10
-utils3_timedelta.plr: 10.00/10
-utils3_user_interface.plr: 10.00/10
-utils3_utils.plr: 9.53/10
-utils3_validation.plr: 10.00/10
+setup.plr: 9.66/10
+testlibs_config.plr:
+testlibs_constants.plr:
+testlibs_msgs.plr: 10.00/10
+testlibs_utilities.plr: 10.00/10
+tests_base.plr: 10.00/10
+tests_template.plr:
+tests_test_cmaps.plr: 7.50/10
+tests_test_config.plr: 10.00/10
+tests_test_convert.plr: 10.00/10
+tests_test_crypto.plr: 10.00/10
+tests_test_dfdiff.plr: 10.00/10
+tests_test_dict2obj.plr: 10.00/10
+tests_test_log.plr: 10.00/10
+tests_test_mathfunc.plr: 9.03/10
+utils4_changelog.plr:
+utils4_cmaps.plr: 10.00/10
+utils4_colours.plr: 10.00/10
+utils4_config.plr: 10.00/10
+utils4_convert.plr: 10.00/10
+utils4_crypto.plr: 10.00/10
+utils4_dfdiff.plr: 10.00/10
+utils4_dict2obj.plr: 10.00/10
+utils4_get_datafiles.plr: 9.63/10
+utils4_log.plr: 10.00/10
+utils4_progressbar.plr: 8.00/10
+utils4_pywarnings.plr: 10.00/10
+utils4_reader.plr: 10.00/10
+utils4_registry.plr: 9.86/10
+utils4_reporterror.plr: 7.00/10
+utils4_tickers.plr: 9.87/10
+utils4_timedelta.plr: 9.58/10
+utils4_user_interface.plr: 9.40/10
+utils4_utils.plr: 8.60/10
+utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Wed 20 Oct 15:30:29 BST 2021
+Run date: Fri 11 Mar 13:56:18 GMT 2022

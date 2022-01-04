@@ -1,0 +1,6 @@
+,Linux x86_64,Linux armv7l,Windows x86_64
+Python 3.6,Y,Y,Y
+Python 3.7,Y,Y,Y
+Python 3.8,Y,Y,Y
+Python 3.9,Y,--,--
+Python 3.10,Y,--,--

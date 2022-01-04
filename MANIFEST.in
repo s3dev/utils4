@@ -1,0 +1,15 @@
+# Include C libs.
+recursive-include utils4/libs/ libmfunc*
+exclude utils4/libs/test*
+
+# Include the test suite.
+recursive-include tests *
+prune tests/__pycache__
+prune tests/testlibs/__pycache__
+
+# Include the documentation.
+recursive-include docs/build *
+
+# Include other files.
+include requirements.txt
+

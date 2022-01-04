@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   Central library for general utility-based methods.</span>
+
+<span class="sd">            This ``utils`` module was the starting place of the original</span>
+<span class="sd">            ``utils`` library. Therefore, it&#39;s historically been a</span>
+<span class="sd">            &#39;dumping-ground&#39; for general S3DEV utilities and function wrappers</span>
+<span class="sd">            specialised to the needs of S3DEV projects, which did not seem to</span>
+<span class="sd">            fit in anywhere else. So we&#39;ll be honest, it&#39;s a bit of a melting</span>
+<span class="sd">            pot of functions.</span>
+
+<span class="sd">            With the overhaul of the ``utils3`` library into ``utils4``, *many*</span>
+<span class="sd">            of the original functions, which were no longer being used, have</span>
+<span class="sd">            been removed in an effort to clean the module&#39;s code base.</span>
+
+<span class="sd">            If you are looking for a function which used to be here, please</span>
+<span class="sd">            refer to the last ``utils3`` release, which is v0.15.1.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">Note:</span>
+<span class="sd">            Any libraries which are not built-in, are imported *only* if/when</span>
+<span class="sd">            the function which uses them is called.</span>
+
+<span class="sd">            This helps to reduce the packages required by ``utils4``.</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    For usage examples, please refer to the docstring for each method.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=import-outside-toplevel  # Keep required dependencies to a minimum.</span>
+<span class="c1"># pylint: disable=wrong-import-order</span>
+
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">site</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">utils4.reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
+<span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
+
+
+<div class="viewcode-block" id="clean_dataframe"><a class="viewcode-back" href="../utils.html#utils.clean_dataframe">[docs]</a><span class="k">def</span> <span class="nf">clean_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean a ``pandas.DataFrame`` data structure.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pd.DataFrame): DataFrame to be cleaned.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        The DataFrame is cleaned *in-place*. An object is *not* returned by</span>
+<span class="sd">        this function.</span>
+
+<span class="sd">        The following cleaning tasks are performed:</span>
+
+<span class="sd">            - Column names:</span>
+
+<span class="sd">                - All punctuation characters are removed, with the exception</span>
+<span class="sd">                  of three characters. See next bullet point.</span>
+<span class="sd">                - The ``-``, ``[space]`` and ``_`` characters are replaced</span>
+<span class="sd">                  with an underscore.</span>
+<span class="sd">                - All column names are converted to lower case.</span>
+
+<span class="sd">            - Data:</span>
+
+<span class="sd">                - All ``object`` (string) fields, are stripped of leading and</span>
+<span class="sd">                  trailing whitespace.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Example for cleaning a DataFrame::</span>
+
+<span class="sd">            &gt;&gt;&gt; import pandas as pd  # For demonstration only.</span>
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; # Define a dirty testing dataset.</span>
+<span class="sd">            &gt;&gt;&gt; df = pd.DataFrame({&#39;Column #1&#39;: [&#39; Text field 1.&#39;,</span>
+<span class="sd">                                                 &#39;   Text field 2.&#39;,</span>
+<span class="sd">                                                 &#39; Text field 3.    &#39;],</span>
+<span class="sd">                                   &#39;  COLUmn (2)&#39;: [1.0,</span>
+<span class="sd">                                                    2.0,</span>
+<span class="sd">                                                    3.0]})</span>
+<span class="sd">            &gt;&gt;&gt; utils.clean_dataframe(df)</span>
+<span class="sd">            &gt;&gt;&gt; df</span>
+<span class="sd">                    column_1  column_2</span>
+<span class="sd">            0  Text field 1.       1.0</span>
+<span class="sd">            1  Text field 2.       2.0</span>
+<span class="sd">            2  Text field 3.       3.0</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Define replacement/translation characters.</span>
+    <span class="n">repls</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">}</span>
+    <span class="n">repls</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;-&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">:</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">:</span> <span class="s1">&#39;_&#39;</span><span class="p">})</span>
+    <span class="n">trans</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">repls</span><span class="p">)</span>
+    <span class="c1"># Clean column names.</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="c1"># Strip whitespace from text values.</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="direxists"><a class="viewcode-back" href="../utils.html#utils.direxists">[docs]</a><span class="k">def</span> <span class="nf">direxists</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">create_path</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Test if a directory exists. If not, create it, if instructed.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): The directory path to be tested.</span>
+<span class="sd">        create_path (bool, optional): Create the path if it doesn&#39;t exist.</span>
+<span class="sd">            Defaults to False.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        Function designed to test if a directory path exists. If the</span>
+<span class="sd">        path does *not* exist, the path can be created; as determined by</span>
+<span class="sd">        the ``create_path`` parameter.</span>
+
+<span class="sd">        This function extends the built-in :func:`os.path.exists()` function</span>
+<span class="sd">        in that the path can be created if it doesn&#39;t already exist, by</span>
+<span class="sd">        passing the ``create_path`` parameter as ``True``.</span>
+
+<span class="sd">        If the path is created by this function, the function is recursively</span>
+<span class="sd">        called to test if the path exists, and will return ``True``.</span>
+
+<span class="sd">        If a filename is passed with the path, the filename is automatically</span>
+<span class="sd">        stripped from the path before the test begins.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a directory exists, and create it if it does not exist::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.direxists(path=&#39;/tmp/path/to_create/file.csv&#39;,</span>
+<span class="sd">                                create_path=True)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the directory exists (or was created), otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># Remove file if passed with the path.</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">create_path</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="n">direxists</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">create_path</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">found</span></div>
+
+<div class="viewcode-block" id="fileexists"><a class="viewcode-back" href="../utils.html#utils.fileexists">[docs]</a><span class="k">def</span> <span class="nf">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Test if a file exists. If not, notify the user or raise an error.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filepath (str): Full file path to test.</span>
+<span class="sd">        error (bool, optional): Action to be taken if the file does not exist.</span>
+<span class="sd">            Defaults to &#39;ignore&#39;. Options:</span>
+
+<span class="sd">                - ``&#39;ignore&#39;``: Take no action.</span>
+<span class="sd">                - ``&#39;alert&#39;``: Alert the user the filepath does not exist via</span>
+<span class="sd">                  a simple message to the terminal.</span>
+<span class="sd">                - ``&#39;raise&#39;``: Raise a ``FileNotFoundError``. This will abort</span>
+<span class="sd">                  all subsequent processing.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        Function designed check if a file exists.  A boolean value is</span>
+<span class="sd">        returned to the calling program.</span>
+
+<span class="sd">        This function extends the built-in :func:`os.path.isfile` function</span>
+<span class="sd">        in that the user can be notified if the path does not exist, or an</span>
+<span class="sd">        error can be raised.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file exists, using ``&#39;ignore&#39;``, the default action::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; if utils.fileexists(filepath=&#39;/tmp/path/to/file.csv&#39;):</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+<span class="sd">            &gt;&gt;&gt; else:</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+
+
+<span class="sd">        Test if a file exists, using ``&#39;alert&#39;``::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; if utils.fileexists(filepath=&#39;/tmp/path/to/file.csv&#39;,</span>
+<span class="sd">                                    error=&#39;alert&#39;):</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+<span class="sd">            &gt;&gt;&gt; else:</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+
+<span class="sd">            File not found: /tmp/path/to/file.csv</span>
+
+
+<span class="sd">        Test if a file exists, using ``&#39;raise&#39;``::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; if utils.fileexists(filepath=&#39;/tmp/path/to/file.csv&#39;,</span>
+<span class="sd">                                    error=&#39;raise&#39;):</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+<span class="sd">            &gt;&gt;&gt; else:</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+
+<span class="sd">            FileNotFoundError: File not found: /tmp/path/to/file.csv</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        FileNotFoundError: If the filepath does not exist and the ``error``</span>
+<span class="sd">            parameter is ``&#39;raise&#39;``.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the file exists, otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">error</span> <span class="o">==</span> <span class="s1">&#39;alert&#39;</span><span class="p">:</span>
+            <span class="n">ui</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">File not found: </span><span class="si">{</span><span class="n">filepath</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">error</span> <span class="o">==</span> <span class="s1">&#39;raise&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File not found: </span><span class="si">{</span><span class="n">filepath</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">found</span></div>
+
+
+<div class="viewcode-block" id="format_exif_date"><a class="viewcode-back" href="../utils.html#utils.format_exif_date">[docs]</a><span class="k">def</span> <span class="nf">format_exif_date</span><span class="p">(</span><span class="n">datestring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">input_format</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;%Y:%m:</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">,</span>
+                     <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">%H%M%S&#39;</span><span class="p">,</span>
+                     <span class="n">return_datetime</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Format an exif timestamp.</span>
+
+<span class="sd">        This function is useful for storing an exif date as a datetime string.</span>
+<span class="sd">        For example, extracting the exif data from an image to be stored into</span>
+<span class="sd">        a database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        datestring (str): The datetime string to be formatted.</span>
+<span class="sd">            A typical exif date format is: yyyy:mm:dd hh:mi:ss</span>
+<span class="sd">        input_format (str, optional): Format mask for the input datetime value.</span>
+<span class="sd">            Defaults to &#39;%Y:%m:%d %H:%M:%S&#39;.</span>
+<span class="sd">        output_format (str, optional): Format mask for the output datetime,</span>
+<span class="sd">            if returned as a string. Defaults to &#39;%Y%m%d%H%M%S&#39;.</span>
+<span class="sd">        return_datetime (bool, optional): Return a ``datetime`` object, rather</span>
+<span class="sd">            than a formatted string.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        Function designed to convert the exif date/timestamp from</span>
+<span class="sd">        &#39;2010:01:31 12:31:18&#39; (or a caller specified format) to a format</span>
+<span class="sd">        specified by the caller.</span>
+
+<span class="sd">        The default input mask is the standard exif capture datetime format.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">            Convert the exif datetime to the default output string format::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">                &gt;&gt;&gt; formatted = utils.format_exif_date(&#39;2010:01:31 12:31:18&#39;)</span>
+<span class="sd">                &gt;&gt;&gt; formatted</span>
+<span class="sd">                &#39;20100131123118&#39;</span>
+
+
+<span class="sd">            Convert the exif datetime to a datetime object::</span>
+
+<span class="sd">                &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">                &gt;&gt;&gt; formatted = utils.format_exif_date(&#39;2010:01:31 12:31:18&#39;,</span>
+<span class="sd">                                                       return_datetime=True)</span>
+<span class="sd">                &gt;&gt;&gt; formatted</span>
+<span class="sd">                datetime.datetime(2010, 1, 31, 12, 31, 18)</span>
+
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Union[str, datetime.datetime]: A formatted datetime string, if the</span>
+<span class="sd">        ``return_datetime`` parameter is ``False``, otherwise a</span>
+<span class="sd">        ``datetime.datetime`` object.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pylint: disable=no-else-return</span>
+    <span class="n">_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">datestring</span><span class="p">,</span> <span class="n">input_format</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">return_datetime</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_dt</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">output_format</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="get_os"><a class="viewcode-back" href="../utils.html#utils.get_os">[docs]</a><span class="k">def</span> <span class="nf">get_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get the platform&#39;s OS.</span>
+
+<span class="sd">    This method is a very thin wrapper around the :func:`platform.system()`</span>
+<span class="sd">    function.</span>
+
+<span class="sd">    :Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; myos = utils.get_os()</span>
+<span class="sd">            &gt;&gt;&gt; myos</span>
+<span class="sd">            &#39;linux&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A string of the platform&#39;s operating system, in lower case.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="getdrivername"><a class="viewcode-back" href="../utils.html#utils.getdrivername">[docs]</a><span class="k">def</span> <span class="nf">getdrivername</span><span class="p">(</span><span class="n">driver</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_all</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+    <span class="sd">&quot;&quot;&quot;Return a list of ODBC driver names, matching the regex pattern.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        driver (str): A **regex pattern** for the ODBC driver you&#39;re searching.</span>
+<span class="sd">        return_all (bool, optional): If True, *all* drivers matching the</span>
+<span class="sd">            pattern are returned. Defaults to False, which returns only the</span>
+<span class="sd">            first driver name.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This is a helper function designed to get and return the names</span>
+<span class="sd">        of ODBC drivers.</span>
+
+<span class="sd">        The ``driver`` parameter should be formatted as a regex</span>
+<span class="sd">        pattern. If multiple drivers are found, by default, only the</span>
+<span class="sd">        first driver in the list is returned. However, the</span>
+<span class="sd">        ``return_all`` parameter adjusts this action to return all driver</span>
+<span class="sd">        names.</span>
+
+<span class="sd">        This function has a dependency on the ``pyodbc`` library. Therefore,</span>
+<span class="sd">        the :func:`~utils.testimport()` function is called before ``pyodbc``</span>
+<span class="sd">        is imported. If the ``pyodbc`` library is not installed, the user is</span>
+<span class="sd">        notified.</span>
+
+<span class="sd">    :Dependencies:</span>
+<span class="sd">        - ``pyodbc`` library</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">            Get the driver name for the SQL Server ODBC driver::</span>
+
+<span class="sd">            &gt;&gt;&gt; import utils3.utils as u</span>
+<span class="sd">            &gt;&gt;&gt; driver = u.getdrivername(drivername=&#39;SQL Server.*&#39;)</span>
+
+<span class="sd">    :Troubleshooting:</span>
+
+<span class="sd">        - On Unix-like systems, the following error message::</span>
+
+<span class="sd">            ImportError: libodbc.so.2: cannot open shared object file: No such file or directory</span>
+
+<span class="sd">          can be resolved by installing the ``unixodbc-dev`` package as::</span>
+
+<span class="sd">            $ sudo apt install unixodbc-dev</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list of ODBC drivers, if any were found.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">drivers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">testimport</span><span class="p">(</span><span class="s1">&#39;pyodbc&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">pyodbc</span>
+        <span class="n">drivers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">drivers</span><span class="p">()</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">i</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">return_all</span> <span class="ow">and</span> <span class="n">drivers</span><span class="p">:</span>
+            <span class="n">drivers</span> <span class="o">=</span> <span class="n">drivers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">drivers</span></div>
+
+<div class="viewcode-block" id="getsitepackages"><a class="viewcode-back" href="../utils.html#utils.getsitepackages">[docs]</a><span class="k">def</span> <span class="nf">getsitepackages</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the Python installation&#39;s site packages directory.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        The function first uses the local :func:`~utils.get_os()`</span>
+<span class="sd">        function to get the system&#39;s OS. The OS is then tested and the</span>
+<span class="sd">        site-packages location is returned using the OS-appropriate element</span>
+<span class="sd">        from the list returned by the built-in :func:`site.getsitepackages`</span>
+<span class="sd">        function.</span>
+
+<span class="sd">        If the OS is not accounted for, or fails the test, a value of</span>
+<span class="sd">        &#39;unknown&#39; is returned.</span>
+
+<span class="sd">    :Rationale:</span>
+<span class="sd">        The need for this function comes out of the observation there are many</span>
+<span class="sd">        (many!) different ways on stackoverflow (and other sites) to get the</span>
+<span class="sd">        location to which ``pip`` will install a package, and many of the</span>
+<span class="sd">        answers contradict each other. Also, the :func:`site.getsitepackages`</span>
+<span class="sd">        function returns a list of options (in all tested cases); and the</span>
+<span class="sd">        Linux / Windows paths are in different locations in this list.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">            Get the location of the ``site-packages`` directory::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.getsitepackages()</span>
+<span class="sd">            &#39;/home/&lt;username&gt;/venvs/py38/lib/python3.8/site-packages&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Full path to the ``site-packages`` directory.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_os</span> <span class="o">=</span> <span class="n">get_os</span><span class="p">()</span>
+    <span class="n">pkgs</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
+    <span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">:</span>  <span class="c1"># pragma: nocover  # utils4 will *rarely* ever be tested on Windows.</span>
+        <span class="n">pkgs</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">getsitepackages</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s1">&#39;lin&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">:</span>
+        <span class="n">pkgs</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">getsitepackages</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">pkgs</span></div>
+
+<div class="viewcode-block" id="gzip_compress"><a class="viewcode-back" href="../utils.html#utils.gzip_compress">[docs]</a><span class="k">def</span> <span class="nf">gzip_compress</span><span class="p">(</span><span class="n">in_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compress a file using ``gzip``.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        in_path (str): Full path to the file to be compressed. If the file</span>
+<span class="sd">            does not exist, a ``FileNotFoundError`` is raised.</span>
+<span class="sd">        out_path (str, optional): Full path to the compressed output file.</span>
+<span class="sd">            Defaults to None. If this value is ``None`` a ``&#39;.gz&#39;`` file</span>
+<span class="sd">            extension is appended to the path provided to the ``in_path``</span>
+<span class="sd">            parameter.</span>
+<span class="sd">        size (int, optional): Size of the chunk to be read / written during</span>
+<span class="sd">            compression. Defaults to 10MiB.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Compress a text file::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.gzip_compress(in_path=&#39;/tmp/rand.txt&#39;)</span>
+<span class="sd">            &#39;/tmp/rand.txt.gz&#39;</span>
+
+
+<span class="sd">        Compress a text file, specifying the output path::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.gzip_compress(in_path=&#39;/tmp/rand.txt&#39;, out_path=&#39;/tmp/rand2.txt.gz&#39;)</span>
+<span class="sd">            &#39;/tmp/rand2.txt.gz&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Full path to the output file.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">10</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>  <span class="c1"># Default to 10MiB.</span>
+    <span class="k">if</span> <span class="n">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">in_path</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">out_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">in_path</span><span class="si">}</span><span class="s1">.gz&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">in_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">comp</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span> <span class="n">compresslevel</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+                <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out_path</span></div>
+
+<div class="viewcode-block" id="gzip_decompress"><a class="viewcode-back" href="../utils.html#utils.gzip_decompress">[docs]</a><span class="k">def</span> <span class="nf">gzip_decompress</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Decompress a ``.gz`` file using ``gzip``.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be decompressed. If the file</span>
+<span class="sd">            does not exist, a ``FileNotFoundError`` is raised.</span>
+<span class="sd">        encoding (str, optional): Encoding to be used to decode the</span>
+<span class="sd">            decompressed binary data. Defaults to &#39;utf-8&#39;.</span>
+<span class="sd">        size (int, optional): Size of the chunk to be read / written during</span>
+<span class="sd">            decompression. Defaults to 1MiB.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The output path is simply the ``path`` value with *last* file</span>
+<span class="sd">        extension removed.</span>
+
+<span class="sd">        In general cases, a file compressed using gzip will have a ``.gz``</span>
+<span class="sd">        extension appended onto the existing filename and extension.</span>
+<span class="sd">        For example: ``data.txt.gz``.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        **Newline Characters:**</span>
+
+<span class="sd">        When the decompressed file is written, the ``newline`` character is</span>
+<span class="sd">        specified as ``&#39;&#39;``, which enables &#39;universal newline mode&#39;, whereby</span>
+<span class="sd">        the system&#39;s newline character is used. However, the *original* line</span>
+<span class="sd">        endings - those used in the compressed file - are written back to the</span>
+<span class="sd">        decompressed file.</span>
+
+<span class="sd">        This method is used to ensure the checksum hash on the original</span>
+<span class="sd">        (unzipped) and decompressed file can be compared.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Decompress a text file::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.gzip_decompress(path=&#39;/tmp/rand.txt.gz&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the decompression was successful, otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">10</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>  <span class="c1"># Default to 1 MiB.</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">):</span>
+            <span class="n">out_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+                <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">decomp</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">chunk</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+                    <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">decomp</span><span class="p">)</span>
+                    <span class="n">chunk</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">success</span></div>
+
+<div class="viewcode-block" id="ping"><a class="viewcode-back" href="../utils.html#utils.ping">[docs]</a><span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">server</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Ping an IP address, server or web address.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        server (str): IP address, server name or web address.</span>
+<span class="sd">        count (int, optional): The number of ping attempts. Defaults to 1.</span>
+<span class="sd">        verbose (bool, optional): Display all stdout and/or stderr output, if</span>
+<span class="sd">            the returned status code is non-zero. Defaults to False.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        Using the platform&#39;s native ``ping`` command (via a ``subprocess``</span>
+<span class="sd">        call) the host is pinged, and a boolean value is returned to the</span>
+<span class="sd">        caller to indicate if the ping was successful.</span>
+
+<span class="sd">        A ping status:</span>
+
+<span class="sd">            - 0 returns True</span>
+<span class="sd">            - Non-zero returns False</span>
+
+<span class="sd">        If the server name is preceeded by ``\\`` or ``//``, these are</span>
+<span class="sd">        stripped out using the built-in :func:`os.path.basename()` function.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Ping the local PC at 127.0.0.1::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.ping(server=&#39;127.0.0.1&#39;)</span>
+<span class="sd">            True</span>
+
+
+<span class="sd">        Ping an unknown server::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.ping(server=&#39;//S3DHOST01&#39;, verbose=True)</span>
+
+<span class="sd">            [PingError]:</span>
+<span class="sd">            ping: S3DHOST01: Temporary failure in name resolution</span>
+<span class="sd">            False</span>
+
+
+<span class="sd">        Ping an unreachable IP address::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.ping(server=&#39;192.168.0.99&#39;, count=3, verbose=True)</span>
+
+<span class="sd">            [PingError]:</span>
+<span class="sd">            PING 192.168.0.99 (192.168.0.99) 56(84) bytes of data.</span>
+<span class="sd">            From 192.168.0.XX icmp_seq=1 Destination Host Unreachable</span>
+<span class="sd">            From 192.168.0.XX icmp_seq=2 Destination Host Unreachable</span>
+<span class="sd">            From 192.168.0.XX icmp_seq=3 Destination Host Unreachable</span>
+
+<span class="sd">            --- 192.168.0.99 ping statistics ---</span>
+<span class="sd">            3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2037ms</span>
+<span class="sd">            False</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the ping was successful, otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">_os</span> <span class="o">=</span> <span class="n">get_os</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">:</span>  <span class="c1"># pragma: nocover  # utils4 will *rarely* ever be tested on Windows.</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ping&#39;</span><span class="p">,</span> <span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s1">&#39;lin&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ping&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;-c</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Process aborted, unsupported OS.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                       <span class="sa">f</span><span class="s1">&#39;- OS identified as: </span><span class="si">{</span><span class="n">_os</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cmd</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span> <span class="k">as</span> <span class="n">proc</span><span class="p">:</span>
+            <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span>
+    <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Destination host unreachable&#39;</span> <span class="ow">in</span> <span class="n">stdout</span><span class="p">):</span>
+        <span class="c1"># Hard code status if host is unreachable.</span>
+        <span class="c1"># Generally, this will return 0, so it must be overridden.</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">verbose</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">status</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]):</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[PingError]:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stdout</span><span class="p">:</span>
+            <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">stderr</span><span class="p">:</span>
+            <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="testimport"><a class="viewcode-back" href="../utils.html#utils.testimport">[docs]</a><span class="k">def</span> <span class="nf">testimport</span><span class="p">(</span><span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Test if a Python library is installed.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        module_name (str): Exact name of the module to be found.</span>
+<span class="sd">        verbose (bool, optional): Notify if the library is not installed.</span>
+<span class="sd">            Defaults to True.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This is a small helper function designed to test if a library is</span>
+<span class="sd">        installed before trying to import it.</span>
+
+<span class="sd">        If the library is not intalled the user is notified, if the ``verbose``</span>
+<span class="sd">        argument is True.</span>
+
+<span class="sd">    :Internal Use:</span>
+<span class="sd">        For example, the :meth:`~utils.getdrivername` function uses this</span>
+<span class="sd">        function before attempting to import the ``pyodbc`` library.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Execute a path only if ``mymodule`` is installed::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; if utils.testimport(&#39;mymodule&#39;, verbose=True):</span>
+<span class="sd">            &gt;&gt;&gt;     import mymodule</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+<span class="sd">            &gt;&gt;&gt; else:</span>
+<span class="sd">            &gt;&gt;&gt;     ...</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the library is installed, otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span><span class="p">(</span><span class="n">module_name</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="ow">not</span> <span class="n">found</span><span class="p">):</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Library/module not installed: </span><span class="si">{</span><span class="n">module_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">found</span></div>
+
+<div class="viewcode-block" id="unidecode"><a class="viewcode-back" href="../utils.html#utils.unidecode">[docs]</a><span class="k">def</span> <span class="nf">unidecode</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Attempt to convert a Unicode string object into a 7-bit ASCII string.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        string (str): The string to be decoded.</span>
+<span class="sd">        **kwargs (dict): Keyword arguments passed directly into the underlying</span>
+<span class="sd">            :func:`unidecode.unidecode` function.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This function is a light wrapper around the :func:`unidecode.unidecode`</span>
+<span class="sd">        function.</span>
+
+<span class="sd">        **Per the** ``unicode`` **docstring:**</span>
+
+<span class="sd">        &quot;Transliterate an Unicode object into an ASCII string.&quot;</span>
+
+<span class="sd">        Example::</span>
+
+<span class="sd">            &gt;&gt;&gt; unidecode(u&quot;北亰&quot;)</span>
+<span class="sd">            &quot;Bei Jing &quot;</span>
+
+<span class="sd">        &quot;This function first tries to convert the string using ASCII codec.</span>
+<span class="sd">        If it fails (because of non-ASCII characters), it falls back to</span>
+<span class="sd">        transliteration using the character tables.&quot;</span>
+
+<span class="sd">        &quot;This is approx. five times faster if the string only contains ASCII</span>
+<span class="sd">        characters, but slightly slower than</span>
+<span class="sd">        :func:`unidecode.unicode_expect_nonascii` if non-ASCII characters are</span>
+<span class="sd">        present.&quot;</span>
+
+<span class="sd">    :Dependencies:</span>
+
+<span class="sd">        - ``unidecode`` library</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Convert a Polish address into pure ASCII::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; addr = &#39;ul. Bałtów 8a 27-423 Bałtów, woj. świętokrzyskie&#39;</span>
+<span class="sd">            &gt;&gt;&gt; utils.unidecode(addr)</span>
+<span class="sd">            &#39;ul. Baltow 8a 27-423 Baltow, woj. swietokrzyskie&#39;</span>
+
+
+<span class="sd">        Convert the first line of &#39;The Seventh Letter&#39;, by Plato::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; text = &#39;Πλάτων τοῖς Δίωνος οἰκείοις τε καὶ ἑταίροις εὖ πράττειν.&#39;</span>
+<span class="sd">            &gt;&gt;&gt; utils.unidecode(text)</span>
+<span class="sd">            &#39;Platon tois Dionos oikeiois te kai etairois eu prattein.&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: If the ``unidecode`` library is installed and the passed</span>
+<span class="sd">        ``string`` value is a ``str`` data type, the decoded string is</span>
+<span class="sd">        returned, otherwise the original value is returned.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pylint: disable=redefined-outer-name  # No adverse effects and keeps clear variable name.</span>
+    <span class="k">if</span> <span class="n">testimport</span><span class="p">(</span><span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;unidecode&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">unidecode</span> <span class="k">as</span> <span class="nn">unidecode_</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">unidecode_</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">string</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">string</span>
+    <span class="k">return</span> <span class="n">decoded</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmaps &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>cmaps</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for cmaps</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module provides an easy-access, light-weight wrapper,</span>
+<span class="sd">            around ``matplotlib``&#39;s colour maps, and can be used for</span>
+<span class="sd">            retrieving and previewing named colour maps.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Examples:</span>
+
+<span class="sd">    Retrieve 5 colours from the &#39;viridis&#39; colour map in hex format</span>
+<span class="sd">    and preview the colours::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.cmaps import cmaps</span>
+
+<span class="sd">        &gt;&gt;&gt; clrs = cmaps.get_cmap(&#39;viridis&#39;, 15, as_hex=True, preview=True)</span>
+<span class="sd">        &gt;&gt;&gt; clrs</span>
+
+<span class="sd">        [&#39;#2d718e&#39;, &#39;#297b8e&#39;, &#39;#25858e&#39;, &#39;#218f8d&#39;, &#39;#1f998a&#39;,</span>
+<span class="sd">         &#39;#20a386&#39;, &#39;#26ad81&#39;, &#39;#34b679&#39;, &#39;#46c06f&#39;, &#39;#5cc863&#39;,</span>
+<span class="sd">         &#39;#73d056&#39;, &#39;#8ed645&#39;, &#39;#aadc32&#39;, &#39;#c5e021&#39;, &#39;#fde725&#39;]</span>
+
+<span class="sd">    .. figure:: _static/img/cmaps_viridis15.png</span>
+<span class="sd">        :scale: 75%</span>
+<span class="sd">        :align: center</span>
+
+<span class="sd">        Preview of the requested &#39;viridis&#39; colour map of 15 colours</span>
+
+
+<span class="sd">    List named colours from the matplotlib colour palette::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.cmaps import cmaps</span>
+
+<span class="sd">        &gt;&gt;&gt; cmaps.get_named_colours()</span>
+
+<span class="sd">        {&#39;aliceblue&#39;: &#39;#F0F8FF&#39;,</span>
+<span class="sd">         &#39;antiquewhite&#39;: &#39;#FAEBD7&#39;,</span>
+<span class="sd">         &#39;aqua&#39;: &#39;#00FFFF&#39;,</span>
+<span class="sd">         ...,</span>
+<span class="sd">         &#39;whitesmoke&#39;: &#39;#F5F5F5&#39;,</span>
+<span class="sd">         &#39;yellow&#39;: &#39;#FFFF00&#39;,</span>
+<span class="sd">         &#39;yellowgreen&#39;: &#39;#9ACD32&#39;}</span>
+
+
+<span class="sd">    List or retrieve colour map names::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.cmaps import cmaps</span>
+
+<span class="sd">        &gt;&gt;&gt; cmaps.view_cmaps(view_only=True)</span>
+
+<span class="sd">        [&#39;magma&#39;,</span>
+<span class="sd">         &#39;inferno&#39;,</span>
+<span class="sd">         &#39;plasma&#39;,</span>
+<span class="sd">         ...,</span>
+<span class="sd">         &#39;tab20_r&#39;,</span>
+<span class="sd">         &#39;tab20b_r&#39;,</span>
+<span class="sd">         &#39;tab20c_r&#39;]</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=import-error</span>
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="c1"># pylint: disable=wrong-import-order</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+
+<div class="viewcode-block" id="_Preview"><a class="viewcode-back" href="../cmaps.html#cmaps._Preview">[docs]</a><span class="k">class</span> <span class="nc">_Preview</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+    <span class="sd">&quot;&quot;&quot;Provide a preview for a given colourmap.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="_Preview.__init__"><a class="viewcode-back" href="../cmaps.html#cmaps._Preview.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colours</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;_Preview class initialiser.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            colours (Union[list, np.array]): Iterable of colours for</span>
+<span class="sd">                preview.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_c</span> <span class="o">=</span> <span class="n">colours</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">colours</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_dataset</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="_Preview.plot"><a class="viewcode-back" href="../cmaps.html#cmaps._Preview.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Plot to show colours.&quot;&quot;&quot;</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="mi">6</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">else</span> <span class="mi">10</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="mf">1.618033</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">,</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">,</span>
+                   <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                   <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                   <span class="n">c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_c</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="_Preview._build_dataset"><a class="viewcode-back" href="../cmaps.html#cmaps._Preview._build_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">_build_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a dataset to be plotted.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="CMaps"><a class="viewcode-back" href="../cmaps.html#cmaps.CMaps">[docs]</a><span class="k">class</span> <span class="nc">CMaps</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Provides an easy-access layer to ``matplotlib``&#39;s colour maps.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CMaps.get_cmap"><a class="viewcode-back" href="../cmaps.html#cmaps.CMaps.get_cmap">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_cmap</span><span class="p">(</span><span class="n">map_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+                 <span class="n">as_hex</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">preview</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get a list of (n) RGBA or Hex colours from a specified map.</span>
+
+<span class="sd">        This colour wrapper is specialised to return (n) colours from</span>
+<span class="sd">        a normalised colour map. Meaning, rather than returning the</span>
+<span class="sd">        5 lightest colours, or the 200 lightest to medium colours, the</span>
+<span class="sd">        lightest colours are removed (as often they are difficult to</span>
+<span class="sd">        see in a graph) and the darkest colour is added. The intent</span>
+<span class="sd">        is to provide (n) &#39;usable&#39; colours for graphing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            map_name (str): Name of the matplotlib colourmap.</span>
+<span class="sd">            n (int, optional): Number of colours to return. Must</span>
+<span class="sd">                be &gt;= 255. Defaults to 25.</span>
+<span class="sd">            as_hex (bool, optional): Return the colours as a hex string.</span>
+<span class="sd">                Defaults to False, which returns colours as RGBA.</span>
+<span class="sd">            preview (bool, optional): Preview the colour map. Defaults</span>
+<span class="sd">                to False.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the value of ``n`` is not between 1 and 255.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[list, np.array]: Iterable of (n) colours.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">255</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The value of n must be: 1 &lt;= n &lt;= 255.&#39;</span><span class="p">)</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">map_name</span><span class="p">)</span>
+        <span class="n">clrs</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">)))</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">256</span><span class="o">//</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">clrs</span><span class="p">[::</span><span class="n">N</span><span class="p">]</span>
+        <span class="c1"># Trim colours until desired length is met.</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Shave colours off boths ends until desired length is met.</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">clrs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">as_hex</span><span class="p">:</span>
+            <span class="n">c_</span> <span class="o">=</span> <span class="p">[</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">rgb2hex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">c_</span><span class="p">[:]</span>
+        <span class="k">if</span> <span class="n">preview</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+            <span class="n">_Preview</span><span class="p">(</span><span class="n">colours</span><span class="o">=</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">c</span></div>
+
+<div class="viewcode-block" id="CMaps.get_named_colours"><a class="viewcode-back" href="../cmaps.html#cmaps.CMaps.get_named_colours">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_named_colours</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return a dictionary of CSS name and hex value.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dict of named colours as ``{name: hex_code}`` pairs.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">cnames</span></div>
+
+<div class="viewcode-block" id="CMaps.view_cmaps"><a class="viewcode-back" href="../cmaps.html#cmaps.CMaps.view_cmaps">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">view_cmaps</span><span class="p">(</span><span class="n">view_only</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Show the available colour map names.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            view_only (bool, optional): If ``True`` the list will be</span>
+<span class="sd">                printed and ``None`` is returned.  If ``False``, the list</span>
+<span class="sd">                is returned and nothing is printed. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[list, None]: A list of colour maps names if</span>
+<span class="sd">            ``view-only`` is False, otherwise None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colormaps</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">view_only</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">c</span></div></div>
+
+
+<span class="n">cmaps</span> <span class="o">=</span> <span class="n">CMaps</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

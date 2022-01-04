@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>termcolour &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>termcolour</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for termcolour</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module contains basic and bright (16 colours) text and</span>
+<span class="sd">            background ANSI colour codes for colouring Linux and Windows</span>
+<span class="sd">            terminal output.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  If used on Windows, the ``colorama.init()`` method is</span>
+<span class="sd">            called by the ``utils4.__init__`` module to configure Windows</span>
+<span class="sd">            to handle CLI colouring.</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    Print red text to the terminal::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.termcolour import Text</span>
+
+<span class="sd">        &gt;&gt;&gt; print(f&#39;{Text.RED}ALERT! This is red text.{Text.RESET}&#39;)</span>
+<span class="sd">        ALERT! This is red text.</span>
+
+
+<span class="sd">    Print red text on a white background to the terminal::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.termcolour import Back, Text</span>
+
+<span class="sd">        &gt;&gt;&gt; print(f&#39;{Text.RED}{Back.BRIGHTWHITE}ALERT! This is red text on white.{Text.RESET}&#39;)</span>
+<span class="sd">        ALERT! This is red text on white.</span>
+
+
+<span class="sd">    Print bold yellow text on a black background to the terminal::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.termcolour import Back, Text, Style</span>
+
+<span class="sd">        &gt;&gt;&gt; print(f&#39;{Text.YELLOW}{Back.BLACK}{Style.BOLD}Bold yellow text.{Text.RESET}&#39;)</span>
+<span class="sd">        Bold yellow text.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="_AnsiBase"><a class="viewcode-back" href="../termcolour.html#termcolour._AnsiBase">[docs]</a><span class="k">class</span> <span class="nc">_AnsiBase</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Generic base ANSI colours class.</span>
+
+<span class="sd">    The colours for each class are dynamically created as class attributes</span>
+<span class="sd">    by the initialiser of this base class.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">RESET</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="_AnsiBase.__init__"><a class="viewcode-back" href="../termcolour.html#termcolour._AnsiBase.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;ANSI generic base class initialiser.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__dir__</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s1">m&#39;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="AnsiBack"><a class="viewcode-back" href="../termcolour.html#termcolour.AnsiBack">[docs]</a><span class="k">class</span> <span class="nc">AnsiBack</span><span class="p">(</span><span class="n">_AnsiBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ANSI background colour codes.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The bright colours have been included, but are not always supported.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BLACK</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">RED</span> <span class="o">=</span> <span class="mi">41</span>
+    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="n">YELLOW</span> <span class="o">=</span> <span class="mi">43</span>
+    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">44</span>
+    <span class="n">MAGENTA</span> <span class="o">=</span> <span class="mi">45</span>
+    <span class="n">CYAN</span> <span class="o">=</span> <span class="mi">46</span>
+    <span class="n">WHITE</span> <span class="o">=</span> <span class="mi">47</span>
+    <span class="n">BRIGHTBLACK</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">BRIGHTRED</span> <span class="o">=</span> <span class="mi">101</span>
+    <span class="n">BRIGHTGREEN</span> <span class="o">=</span> <span class="mi">102</span>
+    <span class="n">BRIGHTYELLOW</span> <span class="o">=</span> <span class="mi">103</span>
+    <span class="n">BRIGHTBLUE</span> <span class="o">=</span> <span class="mi">104</span>
+    <span class="n">BRIGHTMAGENTA</span> <span class="o">=</span> <span class="mi">105</span>
+    <span class="n">BRIGHTCYAN</span> <span class="o">=</span> <span class="mi">106</span>
+    <span class="n">BRIGHTWHITE</span> <span class="o">=</span> <span class="mi">107</span></div>
+
+<div class="viewcode-block" id="AnsiStyle"><a class="viewcode-back" href="../termcolour.html#termcolour.AnsiStyle">[docs]</a><span class="k">class</span> <span class="nc">AnsiStyle</span><span class="p">(</span><span class="n">_AnsiBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ANSI style codes.&quot;&quot;&quot;</span>
+
+    <span class="n">BOLD</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">DIM</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">UNDERLINE</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">NORMAL</span> <span class="o">=</span> <span class="mi">22</span></div>
+
+
+<div class="viewcode-block" id="AnsiText"><a class="viewcode-back" href="../termcolour.html#termcolour.AnsiText">[docs]</a><span class="k">class</span> <span class="nc">AnsiText</span><span class="p">(</span><span class="n">_AnsiBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ANSI foreground (text) colour codes.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The bright colours have been included, but are not always supported.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BLACK</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">RED</span> <span class="o">=</span> <span class="mi">31</span>
+    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">32</span>
+    <span class="n">YELLOW</span> <span class="o">=</span> <span class="mi">33</span>
+    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">34</span>
+    <span class="n">MAGENTA</span> <span class="o">=</span> <span class="mi">35</span>
+    <span class="n">CYAN</span> <span class="o">=</span> <span class="mi">36</span>
+    <span class="n">WHITE</span> <span class="o">=</span> <span class="mi">37</span>
+    <span class="n">BRIGHTBLACK</span> <span class="o">=</span> <span class="mi">90</span>
+    <span class="n">BRIGHTRED</span> <span class="o">=</span> <span class="mi">91</span>
+    <span class="n">BRIGHTGREEN</span> <span class="o">=</span> <span class="mi">92</span>
+    <span class="n">BRIGHTYELLOW</span> <span class="o">=</span> <span class="mi">93</span>
+    <span class="n">BRIGHTBLUE</span> <span class="o">=</span> <span class="mi">94</span>
+    <span class="n">BRIGHTMAGENTA</span> <span class="o">=</span> <span class="mi">95</span>
+    <span class="n">BRIGHTCYAN</span> <span class="o">=</span> <span class="mi">96</span>
+    <span class="n">BRIGHTWHITE</span> <span class="o">=</span> <span class="mi">97</span></div>
+
+
+<span class="n">Text</span> <span class="o">=</span> <span class="n">AnsiText</span><span class="p">()</span>
+<span class="n">Back</span> <span class="o">=</span> <span class="n">AnsiBack</span><span class="p">()</span>
+<span class="n">Style</span> <span class="o">=</span> <span class="n">AnsiStyle</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>log - Providing easy logging to your project &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="palette - Quick access to named CSS4 colours" href="palette.html" />
+    <link rel="prev" title="dict2obj - Conversion tool for JSON structure to object" href="dict2obj.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> utils4
+            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">log - Providing easy logging to your project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">registry - A simple interface to the Windows registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">validation - A small collection of validation rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
+      <li>log - Providing easy logging to your project</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-log">
+<span id="log-providing-easy-logging-to-your-project"></span><h1>log - Providing easy logging to your project<a class="headerlink" href="#module-log" title="Permalink to this headline"></a></h1>
+<dl class="field-list">
+<dt class="field-odd">Purpose</dt>
+<dd class="field-odd"><p>This is a small class module designed as a central log file
+creator.</p>
+<p>The calling program is responsible for passing the proper
+arguments to create the log file header. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">printheader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headertext</span><span class="o">=</span><span class="s1">&#39;some,header,text,here&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is suggested to initialise the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class
+at program startup, with the <code class="docutils literal notranslate"><span class="pre">printheader</span></code> parameter
+set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This is safe because if the log file
+already exists, the header will not be re-created. However,
+if the log file does not exist, it will be created with a
+header, using the value of the <code class="docutils literal notranslate"><span class="pre">headertext</span></code> parameter.</p>
+</dd>
+<dt class="field-even">Platform</dt>
+<dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
+</dd>
+<dt class="field-odd">Developer</dt>
+<dd class="field-odd"><p>J Berendt</p>
+</dd>
+<dt class="field-even">Email</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</dd>
+<dt class="field-odd">Comments</dt>
+<dd class="field-odd"><p>n/a</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class in your project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
+
+<span class="go">&gt;&gt; header = &#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
+<span class="go">&gt;&gt; logger = Log(filepath=&#39;/tmp/testlog.log&#39;,</span>
+<span class="go">                printheader=True,</span>
+<span class="go">                headertext=header)</span>
+<span class="go">&gt;&gt; logger.write(text=&#39;Most cows can jump over the moon,Fact,94.2,pct&#39;)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="log.Log">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">log.</span></span><span class="sig-name descname"><span class="pre">Log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printheader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headertext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log" title="Permalink to this definition"></a></dt>
+<dd><p>This is a small and simple log file creator/writer class.</p>
+<p>The calling program is responsible for passing the proper arguments
+to create the log file header. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">printheader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headertext</span><span class="o">=</span><span class="s1">&#39;some,header,text,here&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On class instantiation, validation is performed to determine if the
+log file exists.  If the log file does not exist, a header is
+required before writing to the log file. These parameters can be passed to
+the class on instantiation, and will be ignored if the log file already
+exists.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Full path to the log file.</p></li>
+<li><p><strong>autofill</strong> (<em>bool</em><em>, </em><em>optional</em>) – Automatically populate <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code>,
+host and username values, to each log entry. Defaults to True.</p></li>
+<li><p><strong>printheader</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Print a log file header using the text
+passed into the <code class="docutils literal notranslate"><span class="pre">headertext</span></code> parameter. Defaults to False.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The header will only be written if the log file does not
+exist.</p>
+</div>
+</p></li>
+<li><p><strong>headertext</strong> (<em>str</em><em>, </em><em>optional</em>) – String of delimited column labels to be
+written as the header. Defaults to ‘’.</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>optional</em>) – Separator to be used in the log file. This
+separator is used when writing the autofill values.
+Defaults to ‘,’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">File Validation</dt>
+<dd class="field-even"><p>On class instantiation, tests are performed to ensure the log
+file is being populated in a logical way.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">printheader</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, and the log file does not
+exist, the user is notified.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">printheader</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, yet <code class="docutils literal notranslate"><span class="pre">headertext</span></code> is
+blank, the user is instructed to pass header text.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">printheader</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, yet the log file already
+exists, the header will not be written.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class in your project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;COMMENT,TYPE,VAL,UNIT&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/tmp/testlog.log&#39;</span><span class="p">,</span>
+<span class="go">                 printheader=True,</span>
+<span class="go">                 headertext=header)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Most cows can jump over the moon,Fact,94.2,pct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="log.Log.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printheader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headertext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Log class initialiser.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="log.Log.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.write" title="Permalink to this definition"></a></dt>
+<dd><p>Write text to the log file defined at instantiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Delimited text string to be written to the log.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">autofill</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the datetime, host and username
+values <strong>will be populated automatically</strong>; these do <em>not</em>
+need to be passed into the <code class="docutils literal notranslate"><span class="pre">text</span></code> argument.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Design</dt>
+<dd class="field-odd"><p>If the <code class="docutils literal notranslate"><span class="pre">autofill</span></code> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the current
+datetime, host and username values are written (in that
+order), ahead of the text string provided to the <code class="docutils literal notranslate"><span class="pre">text</span></code>
+argument. The <code class="docutils literal notranslate"><span class="pre">sep</span></code> parameter (defined at instantiation),
+is used to separate these auto-populated fields.</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>To write to the log file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="kn">import</span> <span class="n">Log</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/tmp/testlog.log, autofill=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Just adding some random text to my log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="log.Log.write_blank_line">
+<span class="sig-name descname"><span class="pre">write_blank_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.write_blank_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.write_blank_line" title="Permalink to this definition"></a></dt>
+<dd><p>Write a blank line to the log file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">autofill</span></code> information is <strong>not</strong> written. This is a
+true blank line, created by writing the system’s native line
+separator character(s)to the log.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>To write a blank line to the log file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="kn">import</span> <span class="n">Log</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/tmp/testlog.log&#39;</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">write_blank_line</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dict2obj.html" class="btn btn-neutral float-left" title="dict2obj - Conversion tool for JSON structure to object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="palette.html" class="btn btn-neutral float-right" title="palette - Quick access to named CSS4 colours" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

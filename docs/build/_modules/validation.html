@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>validation &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>validation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for validation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module serves as a general validation processor.</span>
+
+<span class="sd">            .. note::</span>
+<span class="sd">                This is currently **very basic** module, and only contains</span>
+<span class="sd">                validation rules which are commonly used by S3DEV projects.</span>
+<span class="sd">                More functionality will be added as needed.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    Test if an IP address is valid::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4 import validation</span>
+
+<span class="sd">        &gt;&gt;&gt; validation.rules.is_ip(value=&#39;128.31.0.62&#39;)</span>
+<span class="sd">        True</span>
+
+
+<span class="sd">    Test if a set of geo coordinates is valid::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4 import validation</span>
+
+<span class="sd">        &gt;&gt;&gt; validation.rules.is_coordinates(value=[&#39;4.6097100&#39;, &#39;-74.0817500&#39;])</span>
+<span class="sd">        True</span>
+
+
+<span class="sd">    Return the regex pattern for latitude::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4 import validation</span>
+
+<span class="sd">        &gt;&gt;&gt; validation.regex.latitude</span>
+<span class="sd">        re.compile(r&#39;^(-)?(([0-9]|[1-8][0-9])(\.[0-9]{1,})?|90)$&#39;, re.UNICODE)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">ipaddress</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<div class="viewcode-block" id="RegEx"><a class="viewcode-back" href="../validation.html#validation.RegEx">[docs]</a><span class="k">class</span> <span class="nc">RegEx</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class holds a variety of validation regex strings.</span>
+
+<span class="sd">    Each property in this class returns a *compiled* regex pattern, of the</span>
+<span class="sd">    type ``re.Pattern``.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">latitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Regex string for latitude.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            re.Pattern: A compiled regex pattern for latitude.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(-)?(([0-9]|[1-8][0-9])(\.[0-9]{1,})?|90)$&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">longitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Regex string for longitude.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            re.Pattern: A compiled regex pattern for longitude.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;^(-)?(([0-9]|[1-9][0-9]|1[0-7][0-9])(\.[0-9]{1,})?|180)$&#39;</span></div>
+
+
+<div class="viewcode-block" id="Rules"><a class="viewcode-back" href="../validation.html#validation.Rules">[docs]</a><span class="k">class</span> <span class="nc">Rules</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A collection of validation rules.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Rules.__init__"><a class="viewcode-back" href="../validation.html#validation.Rules.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class initialiser.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_re</span> <span class="o">=</span> <span class="n">RegEx</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Rules.is_coordinates"><a class="viewcode-back" href="../validation.html#validation.Rules.is_coordinates">[docs]</a>    <span class="k">def</span> <span class="nf">is_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Test ``value`` is a valid set of geo coordinates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (List[str]): A list containing latitude and longitude as</span>
+<span class="sd">                strings.</span>
+
+<span class="sd">        :Rules:</span>
+
+<span class="sd">            - ``value`` is a ``list``</span>
+<span class="sd">            - The index 0 is a valid latitude coordinate (-90, 90)</span>
+<span class="sd">            - The index 1 is a valid longitude coordinate (-180, 180)</span>
+<span class="sd">            - For example::</span>
+
+<span class="sd">                [&#39;4.6097100&#39;, &#39;-74.0817500&#39;]</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if ``value`` is a *valid* set of coordinates, otherwise</span>
+<span class="sd">            False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">is_lat</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">is_lon</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">is_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_list</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">indexes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_list</span><span class="p">:</span>
+            <span class="n">is_lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_latitude</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">is_lon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_longitude</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">is_list</span><span class="p">,</span> <span class="n">is_lat</span><span class="p">,</span> <span class="n">is_lon</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="Rules.is_ip"><a class="viewcode-back" href="../validation.html#validation.Rules.is_ip">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_ip</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Test if an IP address (IPv4 or IPv6) is valid.</span>
+
+<span class="sd">        This function wraps the built-in :func:`ipaddress.ip_address` function</span>
+<span class="sd">        to test whether an IP address is valid, or not.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (str): The IP address to be tested.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if ``value`` is a valid IPv4 or IPv6 address, otherwise</span>
+<span class="sd">            False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Rules.is_latitude"><a class="viewcode-back" href="../validation.html#validation.Rules.is_latitude">[docs]</a>    <span class="k">def</span> <span class="nf">is_latitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Test ``value`` is a latitude coordinate (-90, 90).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (str): The latitude coordinate to be tested.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if ``value`` is a valid latitude coordinate, otherwise</span>
+<span class="sd">            False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_re</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Rules.is_list"><a class="viewcode-back" href="../validation.html#validation.Rules.is_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_list</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">indexes</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Validate if ``value`` is a ``list`` with (n) number of indexes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (list): The object to be tested.</span>
+<span class="sd">            indexes (int, optional): Number of expected indexes in the list.</span>
+<span class="sd">                Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if ``value`` is a ``list`` with (n) indexes, otherwise</span>
+<span class="sd">            False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_idx</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">_list</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_list</span> <span class="ow">and</span> <span class="n">indexes</span><span class="p">:</span>
+            <span class="n">_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="n">indexes</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">_list</span><span class="p">,</span> <span class="n">_idx</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="Rules.is_longitude"><a class="viewcode-back" href="../validation.html#validation.Rules.is_longitude">[docs]</a>    <span class="k">def</span> <span class="nf">is_longitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Test ``value`` is a longitude coordinate (-180, 180).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (str): The longitude coordinate to be tested.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if ``value`` is a valid longitude coordinate, otherwise</span>
+<span class="sd">            False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_re</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span></div></div>
+
+
+<span class="n">regex</span> <span class="o">=</span> <span class="n">RegEx</span><span class="p">()</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="n">Rules</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

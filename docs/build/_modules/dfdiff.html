@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dfdiff &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>dfdiff</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dfdiff</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module provides DataFrame differencing logic.</span>
+
+<span class="sd">            The caller creates an instance which accepts the two DataFrames</span>
+<span class="sd">            to be compared as the arguments. When the</span>
+<span class="sd">            :meth:`~DataFrameDiff.diff` method is called, a list of columns</span>
+<span class="sd">            containing value mismatches is compiled. Then, the list of column</span>
+<span class="sd">            mismatches is iterated with each value in the column being</span>
+<span class="sd">            compared. All value mismatches are reported to the terminal.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Note:      It&#39;s worth noting that current functionality **does not</span>
+<span class="sd">            check data types**, unlike the pandas ``pd.DataFrame.equals()``</span>
+<span class="sd">            method. This functionality may be added in a future release.</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    Short example for differencing two DataFrames::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4 import dfdiff</span>
+
+<span class="sd">        &gt;&gt;&gt; d = dfdiff.DataFrameDiff(df_source, df_test)</span>
+<span class="sd">        &gt;&gt;&gt; d.diff()</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=wrong-import-order</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">zip_longest</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+    <span class="kn">from</span> <span class="nn">user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
+
+
+<span class="k">class</span> <span class="nc">_Messages</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This private class handles the messaging for DataFrame differencing.&quot;&quot;&quot;</span>
+
+    <span class="n">_FMT</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt;10}</span><span class="se">\t</span><span class="si">{:&lt;10}</span><span class="se">\t</span><span class="si">{:&lt;25}</span><span class="se">\t</span><span class="si">{:&lt;25}</span><span class="s1">&#39;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">column_mismatches</span><span class="p">(</span><span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List columns with mismatches.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            columns (list): A list of columns containing mismatches.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=consider-using-f-string</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Column mismatches:&#39;</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="s1">&#39;- </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">columns</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">column_mismatches_none</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Print message for no column mismatches.&quot;&quot;&quot;</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">No mismatches for this set.&#39;</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">data_mismatches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mismatches</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print the data mismatches.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            column (str): Name of the column being analysed.</span>
+<span class="sd">            mismatches (list): A list of tuples containing data mismatches,</span>
+<span class="sd">                as::</span>
+
+<span class="sd">                    [(0, 0, 1, 2), (1, 1, 3, 4)]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Data mismatches for column: </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_FMT</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;SrcRow&#39;</span><span class="p">,</span> <span class="s1">&#39;TstRow&#39;</span><span class="p">,</span> <span class="s1">&#39;SrcValue&#39;</span><span class="p">,</span> <span class="s1">&#39;TstValue&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">92</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_FMT</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mismatches</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">data_mismatches_none</span><span class="p">(</span><span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print message for no data mismatches.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            column (str): Name of the column being analysed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">No data mismatches for </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fore</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DataFrameDiff"><a class="viewcode-back" href="../dfdiff.html#dfdiff.DataFrameDiff">[docs]</a><span class="k">class</span> <span class="nc">DataFrameDiff</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Test and report differences in two pandas DataFrames.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_source (pd.DataFrame): DataFrame containing **source** data.</span>
+<span class="sd">            This dataset holds the **expected** results.</span>
+<span class="sd">        df_test (pd.DataFrame): DataFrame containing the **test** data.</span>
+<span class="sd">            This dataset is compared against the &#39;expected&#39; dataset.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DataFrameDiff.__init__"><a class="viewcode-back" href="../dfdiff.html#dfdiff.DataFrameDiff.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df_source</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_test</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;DataFrame difference class initialiser.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df_s</span> <span class="o">=</span> <span class="n">df_source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_df_t</span> <span class="o">=</span> <span class="n">df_test</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_mismatches</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span> <span class="o">=</span> <span class="n">_Messages</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DataFrameDiff.diff"><a class="viewcode-back" href="../dfdiff.html#dfdiff.DataFrameDiff.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compare DataFrames and report the differences.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_mismatches</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_report</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_mismatches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build a list of columns with mismatches.&quot;&quot;&quot;</span>
+        <span class="c1"># Add column to list if it contains a mismatch.</span>
+        <span class="n">mis</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df_s</span><span class="o">.</span><span class="n">columns</span>
+               <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_df_t</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_df_s</span><span class="p">[</span><span class="n">col</span><span class="p">])]</span>
+        <span class="k">if</span> <span class="n">mis</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="o">.</span><span class="n">column_mismatches</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_col_mismatches</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="o">.</span><span class="n">column_mismatches_none</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_mismatches</span> <span class="o">=</span> <span class="n">mis</span>
+
+    <span class="k">def</span> <span class="nf">_report</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Compare values in mismatched columns and report.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_col_mismatches</span><span class="p">:</span>
+            <span class="n">mismatches</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Zip source and test datasets.</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">idx1</span><span class="p">,</span> <span class="n">row1</span><span class="p">),</span> <span class="p">(</span><span class="n">idx2</span><span class="p">,</span> <span class="n">row2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_df_s</span><span class="o">.</span><span class="n">iterrows</span><span class="p">(),</span>
+                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_df_t</span><span class="o">.</span><span class="n">iterrows</span><span class="p">(),</span>
+                                                          <span class="n">fillvalue</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)):</span>
+                <span class="c1"># Catch if a row exists in one dataset and not the other.</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">row1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="n">row2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">]):</span>
+                    <span class="n">idx1</span> <span class="o">=</span> <span class="n">idx1</span> <span class="k">if</span> <span class="n">idx1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">idx2</span>
+                    <span class="n">idx2</span> <span class="o">=</span> <span class="n">idx2</span> <span class="k">if</span> <span class="n">idx2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">idx1</span>
+                    <span class="n">val1</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">if</span> <span class="n">row1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;no value (source)&#39;</span>
+                    <span class="n">val2</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">if</span> <span class="n">row2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;no value (test)&#39;</span>
+                <span class="c1"># Convert datetimes to string for compare.</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">):</span>
+                    <span class="n">val1</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                    <span class="n">val2</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                <span class="c1"># Enable compare of nan types.</span>
+                <span class="k">elif</span> <span class="nb">any</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">]),</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">])]):</span>
+                    <span class="c1"># Convert mismatched nan/NaT types to &#39;NaT&#39; string.</span>
+                    <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">]),</span> <span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="ow">is</span> <span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">]):</span>
+                        <span class="n">val1</span> <span class="o">=</span> <span class="s1">&#39;NaT&#39;</span>
+                        <span class="n">val2</span> <span class="o">=</span> <span class="s1">&#39;NaT&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">val1</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                        <span class="n">val2</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                <span class="c1"># Reformat floats to align.</span>
+                <span class="k">elif</span> <span class="nb">any</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="nb">float</span><span class="p">),</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="nb">float</span><span class="p">)]):</span>
+                    <span class="n">val1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">]),</span> <span class="mi">5</span><span class="p">)</span>
+                    <span class="n">val2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">]),</span> <span class="mi">5</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Convert to string for each compare.</span>
+                    <span class="n">val1</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row1</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                    <span class="n">val2</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row2</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                <span class="c1"># Do the compare.</span>
+                <span class="k">if</span> <span class="n">val1</span> <span class="o">!=</span> <span class="n">val2</span><span class="p">:</span>
+                    <span class="c1"># Add any mismatches to a list for reporting.</span>
+                    <span class="n">mismatches</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">mismatches</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="o">.</span><span class="n">data_mismatches</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">mismatches</span><span class="o">=</span><span class="n">mismatches</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="o">.</span><span class="n">data_mismatches_none</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

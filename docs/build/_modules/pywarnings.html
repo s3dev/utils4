@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pywarnings &mdash; utils4 - v1.0.0a1 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0a1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>pywarnings</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pywarnings</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module provides a simple wrapper around Python&#39;s built-in</span>
+<span class="sd">            ``warnings`` library, and enables easy access to ignore a single</span>
+<span class="sd">            or set of Python warnings.</span>
+
+<span class="sd">            While this module can be used to ignore a single warning, the true</span>
+<span class="sd">            purpose of this module is to enable &#39;passive&#39; warning control by</span>
+<span class="sd">            having the ability to use a ``dict`` from your app&#39;s config file</span>
+<span class="sd">            to control the display (or non-display) of warnings. Refer to the</span>
+<span class="sd">            use cases below for an example.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     support@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    Ignore a single warning manually::</span>
+
+<span class="sd">        &gt;&gt;&gt; import warnings  # Imported for test demo only.</span>
+<span class="sd">        &gt;&gt;&gt; from utils4 import pywarnings</span>
+
+<span class="sd">        &gt;&gt;&gt; pywarn = pywarnings.PyWarnings(ignore=True, categories=&#39;FutureWarning&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; pywarn.ignore_warnings()</span>
+
+<span class="sd">        &gt;&gt;&gt; # Test.</span>
+<span class="sd">        &gt;&gt;&gt; warnings.warn(&#39;&#39;, FutureWarning)</span>
+
+<span class="sd">        &gt;&gt;&gt; # Re-enable warnings.</span>
+<span class="sd">        &gt;&gt;&gt; pywarn.reset_warnings()</span>
+
+<span class="sd">        &gt;&gt;&gt; # Test.</span>
+<span class="sd">        &gt;&gt;&gt; warnings.warn(&#39;&#39;, FutureWarning)</span>
+<span class="sd">        /tmp/ipykernel_48184/477226589.py:1: FutureWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, FutureWarning)</span>
+
+
+<span class="sd">    Ignore a list of warnings manually::</span>
+
+<span class="sd">        &gt;&gt;&gt; import warnings  # Imported for test demo only.</span>
+<span class="sd">        &gt;&gt;&gt; from utils4 import pywarnings</span>
+
+<span class="sd">        &gt;&gt;&gt; pywarn = pywarnings.PyWarnings(ignore=True,</span>
+<span class="sd">                                           categories=[&#39;FutureWarning&#39;,</span>
+<span class="sd">                                                       &#39;ResourceWarning&#39;,</span>
+<span class="sd">                                                       &#39;UserWarning&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; pywarn.ignore_warnings()</span>
+
+<span class="sd">        &gt;&gt;&gt; # Test.</span>
+<span class="sd">        &gt;&gt;&gt; for w in [FutureWarning, ResourceWarning, UserWarning]:</span>
+<span class="sd">        &gt;&gt;&gt;     warnings.warn(&#39;&#39;, w)</span>
+
+<span class="sd">        &gt;&gt;&gt; # Re-enable warnings.</span>
+<span class="sd">        &gt;&gt;&gt; pywarn.reset_warnings()</span>
+
+<span class="sd">        &gt;&gt;&gt; # Test.</span>
+<span class="sd">        &gt;&gt;&gt; for w in [FutureWarning, ResourceWarning, UserWarning]:</span>
+<span class="sd">        &gt;&gt;&gt;     warnings.warn(&#39;&#39;, w)</span>
+<span class="sd">        /tmp/ipykernel_48184/3608596380.py:2: FutureWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, w)</span>
+<span class="sd">        /tmp/ipykernel_48184/3608596380.py:2: ResourceWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, w)</span>
+<span class="sd">        /tmp/ipykernel_48184/3608596380.py:2: UserWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, w)</span>
+
+
+<span class="sd">    Ignore a list of warnings manually using a ``dict`` from your app&#39;s config</span>
+<span class="sd">    file::</span>
+
+<span class="sd">        &gt;&gt;&gt; import warnings  # Imported for test demo only.</span>
+<span class="sd">        &gt;&gt;&gt; from utils4 import pywarnings</span>
+
+<span class="sd">        &gt;&gt;&gt; config = {&#39;key1&#39;: &#39;value1&#39;,</span>
+<span class="sd">                      &#39;key2&#39;: &#39;value2&#39;,</span>
+<span class="sd">                      &#39;py_warnings&#39;: {&#39;ignore&#39;: True,</span>
+<span class="sd">                                      &#39;categories&#39;: [&#39;FutureWarning&#39;,</span>
+<span class="sd">                                                     &#39;ResourceWarning&#39;,</span>
+<span class="sd">                                                     &#39;UserWarning&#39;]},</span>
+<span class="sd">                      &#39;keyN&#39;: [&#39;value10&#39;, &#39;value11&#39;, &#39;value12&#39;]}</span>
+
+<span class="sd">        &gt;&gt;&gt; pywarn = pywarnings.PyWarnings(config=config)</span>
+<span class="sd">        &gt;&gt;&gt; pywarn.ignore_warnings()</span>
+
+<span class="sd">        &gt;&gt;&gt; # Test.</span>
+<span class="sd">        &gt;&gt;&gt; for w in [FutureWarning, ResourceWarning, UserWarning]:</span>
+<span class="sd">        &gt;&gt;&gt;     warnings.warn(&#39;&#39;, w)</span>
+
+<span class="sd">        &gt;&gt;&gt; # Re-enable warnings.</span>
+<span class="sd">        &gt;&gt;&gt; pywarn.reset_warnings()</span>
+
+<span class="sd">        &gt;&gt;&gt; # Test.</span>
+<span class="sd">        &gt;&gt;&gt; for w in [FutureWarning, ResourceWarning, UserWarning]:</span>
+<span class="sd">        &gt;&gt;&gt;     warnings.warn(&#39;&#39;, w)</span>
+<span class="sd">        /tmp/ipykernel_48184/3608596380.py:2: FutureWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, w)</span>
+<span class="sd">        /tmp/ipykernel_48184/3608596380.py:2: ResourceWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, w)</span>
+<span class="sd">        /tmp/ipykernel_48184/3608596380.py:2: UserWarning:</span>
+<span class="sd">          warnings.warn(&#39;&#39;, w)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+
+<div class="viewcode-block" id="PyWarnings"><a class="viewcode-back" href="../pywarnings.html#pywarnings.PyWarnings">[docs]</a><span class="k">class</span> <span class="nc">PyWarnings</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A simple wrapper around Python&#39;s built-in ``warnings`` library.</span>
+
+<span class="sd">    This class provides easy access to ignore a single, or set of Python</span>
+<span class="sd">    warnings using your program&#39;s config file.</span>
+
+<span class="sd">    An example of your ``py_warnings`` config file key is shown below::</span>
+
+<span class="sd">        {&quot;py_warnings&quot;: {&quot;ignore&quot;: True,</span>
+<span class="sd">                         &quot;categories&quot;: [&quot;PendingDeprecationWarning&quot;,</span>
+<span class="sd">                                        &quot;FutureWarning&quot;]}}</span>
+
+<span class="sd">    -  The ``ignore`` key toggles if the listed warnings are disabled.</span>
+<span class="sd">    -  The ``categories`` key is a list of Python warnings you wish</span>
+<span class="sd">       to disable.  This list **is not** case sensitive.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ignore (bool): ``True`` will cause warnings to be ignored. This</span>
+<span class="sd">            argument enables the ignoring/not ignoring of warnings, without</span>
+<span class="sd">            needing to change your source code.</span>
+
+<span class="sd">        categories (Union[str, list]): A single category to ignore, or a list</span>
+<span class="sd">            of categories.</span>
+<span class="sd">        config (dict): A dictionary *containing* the following::</span>
+
+<span class="sd">            {&quot;py_warnings&quot;: {&quot;ignore&quot;: true,</span>
+<span class="sd">                             &quot;categories&quot;: [&quot;PendingDeprecationWarning&quot;,</span>
+<span class="sd">                                            &quot;FutureWarning&quot;]}}</span>
+
+<span class="sd">    :Required Arguments:</span>
+<span class="sd">        Either the (``ignore`` *and* ``categories``) arguments must be</span>
+<span class="sd">        provided, *or* the ``config`` argument on its own.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Remember to call the :meth:`~reset_warnings` method at the end</span>
+<span class="sd">        of your program!</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_WARN_TYPES</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;byteswarning&#39;</span><span class="p">:</span> <span class="ne">BytesWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;deprecationwarning&#39;</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;futurewarning&#39;</span><span class="p">:</span> <span class="ne">FutureWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;importwarning&#39;</span><span class="p">:</span> <span class="ne">ImportWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;pendingdeprecationwarning&#39;</span><span class="p">:</span> <span class="ne">PendingDeprecationWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;resourcewarning&#39;</span><span class="p">:</span> <span class="ne">ResourceWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;runtimewarning&#39;</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;syntaxwarning&#39;</span><span class="p">:</span> <span class="ne">SyntaxWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;unicodewarning&#39;</span><span class="p">:</span> <span class="ne">UnicodeWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;userwarning&#39;</span><span class="p">:</span> <span class="ne">UserWarning</span><span class="p">,</span>
+                   <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="ne">Warning</span><span class="p">}</span>
+
+<div class="viewcode-block" id="PyWarnings.__init__"><a class="viewcode-back" href="../pywarnings.html#pywarnings.PyWarnings.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class initialiser.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ignore</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;py_warnings&#39;</span><span class="p">][</span><span class="s1">&#39;ignore&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;py_warnings&#39;</span><span class="p">][</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ignore</span> <span class="o">=</span> <span class="n">ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">categories</span></div>
+
+<div class="viewcode-block" id="PyWarnings.ignore_warnings"><a class="viewcode-back" href="../pywarnings.html#pywarnings.PyWarnings.ignore_warnings">[docs]</a>    <span class="k">def</span> <span class="nf">ignore_warnings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ignore Python warnings.</span>
+
+<span class="sd">        This method is designed to ignore a single, or set of Python warnings.</span>
+<span class="sd">        Remember, the **warnings must be reset at the end of your program**,</span>
+<span class="sd">        as this is **not** done automatically.</span>
+
+<span class="sd">        These actions are controlled via the ``py_warnings`` key in</span>
+<span class="sd">        your config file.</span>
+
+<span class="sd">            - ``ignore``: Boolean flag to ignore the warnings</span>
+<span class="sd">            - ``categories``: A list of warning type(s) to ignore</span>
+
+<span class="sd">        :Reference:</span>
+<span class="sd">            The list of warnings in the :attr:`_WARN_TYPES` class dictionary</span>
+<span class="sd">            was taken from the Python ``warnings`` documentation, which can be</span>
+<span class="sd">            found `here`_.</span>
+
+<span class="sd">            .. _here: https://docs.python.org/3.5/library/warnings.html#warning-categories</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">]</span>  <span class="c1"># Ensure categories is a list.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ignore</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_WARN_TYPES</span><span class="p">[</span><span class="n">category</span><span class="o">.</span><span class="n">lower</span><span class="p">()])</span></div>
+
+<div class="viewcode-block" id="PyWarnings.reset_warnings"><a class="viewcode-back" href="../pywarnings.html#pywarnings.PyWarnings.reset_warnings">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">reset_warnings</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Turn Python warnings back on.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">resetwarnings</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
