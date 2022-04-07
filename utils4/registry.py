@@ -22,6 +22,10 @@
 :Example:  For a use example, refer to the :class:`~Registry` docstring.
 
 """
+# For Linux linting:
+# pylint: disable=undefined-variable    # WindowsError
+# pylint: disable=import-error          # import winreg
+# --
 
 try:
     import utils

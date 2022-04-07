@@ -28,15 +28,26 @@ Note:
             the ``_x_`` in the test module name.
 
 """
+# Enable installed library testing.
+# pylint: disable=global-statement
+# pylint: disable=import-outside-toplevel
+# pylint: disable=no-member
+# pylint: disable=no-name-in-module
+# --
 # pylint: disable=import-error
 # pylint: disable=invalid-name
 # pylint: disable=too-many-public-methods
 
 import ctypes
 import sys
-from base import TestBase
-from testlibs import msgs
-from testlibs.utilities import utilities
+try:
+    from .base import TestBase
+    from .testlibs import msgs
+    from .testlibs.utilities import utilities
+except ImportError:
+    from base import TestBase
+    from testlibs import msgs
+    from testlibs.utilities import utilities
 mathfunc = None  # Global placeholder for import
 
 # Kept just in case.

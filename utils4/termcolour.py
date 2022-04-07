@@ -39,6 +39,8 @@
         Bold yellow text.
 
 """
+# pylint: disable=too-few-public-methods
+
 
 class _AnsiBase:
     """Generic base ANSI colours class.

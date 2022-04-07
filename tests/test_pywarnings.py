@@ -15,9 +15,14 @@
 import contextlib
 import io
 import warnings
-from base import TestBase
-from testlibs import msgs
-from testlibs.utilities import utilities
+try:
+    from .base import TestBase
+    from .testlibs import msgs
+    from .testlibs.utilities import utilities
+except ImportError:
+    from base import TestBase
+    from testlibs import msgs
+    from testlibs.utilities import utilities
 # The imports for utils4 must be after TestBase.
 from utils4.pywarnings import PyWarnings
 

@@ -47,7 +47,7 @@ class ProgressBar:
         You might implement the progress bar in a loop like this::
 
             >>> import time
-            >>> from utils3.progressbar import ProgressBar
+            >>> from utils4.progressbar import ProgressBar
 
             >>> pb = ProgressBar(total_values=25,
                                  bar_len=25,
@@ -96,7 +96,7 @@ class ProgressBar:
         spaces = ' ' * (self._bar_len - len(ticks))
         msg = (f'{self._clr}'
                f'\rProcessing {str(current).zfill(self._len)} of {self._total} [ {ticks+spaces} ] '
-               f'{percent*100:.0f}% Complete {self._rst}')
+               f'{percent*100:.0f}% Complete{self._rst}')
         sys.stdout.write(msg)
         sys.stdout.flush()
 

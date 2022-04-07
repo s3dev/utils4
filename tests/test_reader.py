@@ -48,7 +48,8 @@ class TestReader(TestBase):
         with open(fp_exp, 'rb') as f:
             data = pickle.load(f)
             df_exp = pd.DataFrame(data)
-            df_exp[['col5', 'col6', 'col7']] = df_exp[['col5', 'col6', 'col7']].apply(pd.to_datetime)
+            df_exp[['col5', 'col6', 'col7']] = (df_exp[['col5', 'col6', 'col7']]
+                                                .apply(pd.to_datetime))
         r = Reader()
         df_test = r.read_xls(filepath=fp_test,
                              skiprows=6,
@@ -76,7 +77,8 @@ class TestReader(TestBase):
         with open(fp_exp, 'rb') as f:
             data = pickle.load(f)
             df_exp = pd.DataFrame(data)
-            df_exp[['col5', 'col6', 'col7']] = df_exp[['col5', 'col6', 'col7']].apply(pd.to_datetime)
+            df_exp[['col5', 'col6', 'col7']] = (df_exp[['col5', 'col6', 'col7']]
+                                                .apply(pd.to_datetime))
         r = Reader()
         df_test = r.read_xls(filepath=fp_test,
                              skiprows=6,

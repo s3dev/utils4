@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>progressbar &mdash; utils4 - v1.0.0a1 Documentation</title>
+  <title>progressbar &mdash; utils4 - v1.0.0b1 Documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -32,7 +32,7 @@
             <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.0.0a1
+                1.0.0b1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -122,7 +122,7 @@
 <span class="sd">        You might implement the progress bar in a loop like this::</span>
 
 <span class="sd">            &gt;&gt;&gt; import time</span>
-<span class="sd">            &gt;&gt;&gt; from utils3.progressbar import ProgressBar</span>
+<span class="sd">            &gt;&gt;&gt; from utils4.progressbar import ProgressBar</span>
 
 <span class="sd">            &gt;&gt;&gt; pb = ProgressBar(total_values=25,</span>
 <span class="sd">                                 bar_len=25,</span>
@@ -171,7 +171,7 @@
         <span class="n">spaces</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bar_len</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">ticks</span><span class="p">))</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_clr</span><span class="si">}</span><span class="s1">&#39;</span>
                <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Processing </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="p">)</span><span class="si">}</span><span class="s1"> of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="si">}</span><span class="s1"> [ </span><span class="si">{</span><span class="n">ticks</span><span class="o">+</span><span class="n">spaces</span><span class="si">}</span><span class="s1"> ] &#39;</span>
-               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">percent</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">% Complete </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_rst</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">percent</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">% Complete</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_rst</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
 
@@ -194,7 +194,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0b1.</p>
   </div>
 
    

@@ -345,8 +345,8 @@ def getdrivername(driver: str, return_all: bool=False) -> list:  # pragma: nocov
 
             Get the driver name for the SQL Server ODBC driver::
 
-            >>> import utils3.utils as u
-            >>> driver = u.getdrivername(drivername='SQL Server.*')
+            >>> from utils4 import utils
+            >>> driver = utils.getdrivername(driver='SQL Server.*')
 
     :Troubleshooting:
 
@@ -502,6 +502,7 @@ def gzip_decompress(path: str, encoding: str='utf-8', size: int=None) -> bool:
         bool: True if the decompression was successful, otherwise False.
 
     """
+    # pylint: disable=line-too-long
     size = (1<<2)**10 if size is None else size  # Default to 1 MiB.
     success = False
     try:
@@ -518,12 +519,14 @@ def gzip_decompress(path: str, encoding: str='utf-8', size: int=None) -> bool:
         reporterror(err)
     return success
 
-def ping(server: str, count: int=1, verbose: bool=False) -> bool:
+def ping(server: str, count: int=1, timeout: int=5, verbose: bool=False) -> bool:
     r"""Ping an IP address, server or web address.
 
     Args:
         server (str): IP address, server name or web address.
         count (int, optional): The number of ping attempts. Defaults to 1.
+        timeout (int, optional): Number of seconds to wait for response.
+            Defaults to 5.
         verbose (bool, optional): Display all stdout and/or stderr output, if
             the returned status code is non-zero. Defaults to False.
 
@@ -586,9 +589,10 @@ def ping(server: str, count: int=1, verbose: bool=False) -> bool:
     status = 1
     _os = get_os()
     if 'win' in _os:  # pragma: nocover  # utils4 will *rarely* ever be tested on Windows.
-        cmd = ['ping', '-n', f'{count}', f'{server}']
+        timeout *= 1000  # Windows timeout (-w) is in milliseconds.
+        cmd = ['ping', '-n', str(count), '-w', str(timeout), server]
     elif 'lin' in _os:
-        cmd = ['ping', f'-c{count}', f'{server}']
+        cmd = ['ping', f'-c{count}', f'-W{timeout}', server]
     else:  # pragma: nocover
         ui.print_alert('\nProcess aborted, unsupported OS.\n'
                        f'- OS identified as: {_os}\n')

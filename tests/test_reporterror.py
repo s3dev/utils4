@@ -17,10 +17,15 @@ import io
 import os
 import sys
 import traceback
-from base import TestBase
-from testlibs import msgs
-from testlibs.utilities import utilities
-# The imports for utils4 must be after TestBase.
+
+try:
+    from .base import TestBase
+    from .testlibs import msgs
+    from .testlibs.utilities import utilities
+except ImportError:
+    from base import TestBase
+    from testlibs import msgs
+    from testlibs.utilities import utilities
 from utils4.log import Log
 from utils4.reporterror import reporterror
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>log - Providing easy logging to your project &mdash; utils4 - v1.0.0a1 Documentation</title>
+  <title>log - Providing easy logging to your project &mdash; utils4 - v1.0.0b1 Documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -35,7 +35,7 @@
             <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.0.0a1
+                1.0.0b1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -233,7 +233,7 @@ is used to separate these auto-populated fields.</p>
 </dd>
 <dt class="field-even">Example</dt>
 <dd class="field-even"><p>To write to the log file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="kn">import</span> <span class="n">Log</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/tmp/testlog.log, autofill=True)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Just adding some random text to my log&#39;</span><span class="p">)</span>
@@ -256,7 +256,7 @@ separator character(s)to the log.</p>
 <dl class="field-list">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>To write a blank line to the log file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils3.log</span> <span class="kn">import</span> <span class="n">Log</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Log</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;/tmp/testlog.log&#39;</span><span class="p">,</span> <span class="n">autofill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">write_blank_line</span><span class="p">()</span>
@@ -281,7 +281,7 @@ separator character(s)to the log.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0a1.</p>
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0b1.</p>
   </div>
 
    

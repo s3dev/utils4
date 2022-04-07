@@ -17,7 +17,7 @@
     Example for reading an old-style .xls (pre-Excel 5.0/95) Workbook into a
     DataFrame::
 
-        >>> from utils3.reader import reader
+        >>> from utils4.reader import reader
         >>> df = reader.read_xls('/path/to/file.xls')
 
 """

@@ -130,7 +130,7 @@ class Log:
         :Example:
             To write to the log file::
 
-                >>> from utils3.log import Log
+                >>> from utils4.log import Log
 
                 >>> logger = Log(filepath='/tmp/testlog.log, autofill=True)
                 >>> logger.write(text='Just adding some random text to my log')
@@ -157,7 +157,7 @@ class Log:
         :Example:
             To write a blank line to the log file::
 
-                >>> from utils3.log import Log
+                >>> from utils4.log import Log
 
                 >>> logger = Log(filepath='/tmp/testlog.log', autofill=True)
                 >>> logger.write_blank_line()

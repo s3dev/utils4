@@ -1,17 +1,8 @@
-************* Module utils4.progressbar
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:89:37: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:113:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:114:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:115:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:116:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:117:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:118:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-/var/devmt/py/utils4_0.1.0/utils4/progressbar.py:119:56: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
 
 
 Report
 ======
-40 statements analysed.
+21 statements analysed.
 
 Statistics by type
 ------------------
@@ -36,13 +27,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |39     |31.97 |39       |=          |
+|code      |23     |20.18 |23       |=          |
 +----------+-------+------+---------+-----------+
-|docstring |69     |56.56 |69       |=          |
+|docstring |81     |71.05 |81       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |8      |6.56  |8        |=          |
+|comment   |4      |3.51  |4        |=          |
 +----------+-------+------+---------+-----------+
-|empty     |6      |4.92  |6        |=          |
+|empty     |6      |5.26  |6        |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -66,7 +57,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |8      |8        |8          |
+|convention |0      |0        |0          |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -80,15 +71,13 @@ Messages by category
 Messages
 --------
 
-+------------------------+------------+
-|message id              |occurrences |
-+========================+============+
-|consider-using-f-string |8           |
-+------------------------+------------+
++-----------+------------+
+|message id |occurrences |
++===========+============+
 
 
 
 
-------------------------------------------------------------------
-Your code has been rated at 8.00/10 (previous run: 8.00/10, +0.00)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 

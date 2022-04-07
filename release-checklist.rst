@@ -22,7 +22,9 @@ A checklist of things to remember for each release:
 
 #. Push to the remote repo.
 
-#. Copy the source distribution to (servers) and create builds for:
+#. Copy the source distribution to NAS01 and create builds for:
+
+    - Location: nas01/sharedfolders/Jez/S3D/Builds/
 
     - Linux x86_64
     - Linux armv7l

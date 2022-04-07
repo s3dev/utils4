@@ -15,14 +15,14 @@ done
 # Add line between deletion and setup runner.
 printf "\n"
 
+# Update requirements file.
+printf "Updating the requirements file ...\n"
+pipreqs . --force
+
 # Create the package and wheel file.
-printf "Creating the source distribution and wheel file ...\n"
+printf "\nCreating the source distribution and wheel file ...\n"
 sleep 1
 python ./setup.py sdist bdist_wheel
-
-# Update requirements file.
-printf "\nUpdating the requirements file ...\n"
-pipreqs . --force
 
 # Notfication.
 printf "\nAll done.\n\n"
