@@ -14,15 +14,22 @@
 
 #define PHI (1 + sqrt(5)) / 2
 
-/**
-    Function prototypes on which other functions rely are placed here
-    at the top of the module.
-*/
+// ------------------------------------------------------------------
+//
+// Function prototypes on which other functions rely are placed here
+// at the top of the module.
+//
+
 long long reverse(long n);
 
+// ------------------------------------------------------------------
+
 
 /**
-    Return the number of digits in (n).
+    Count the number of digits in an integer value.
+
+    @param n  Number whose digits are to be counted.
+    @return   Number of digits in the number (n).
 */
 int digits(long n) {
     int c = 0;
@@ -43,6 +50,9 @@ int digits(long n) {
 
     The `n` argument is the number to which the primes are generated,
     *not* generate the first (n) primes.
+
+    @param *P  Pointer to an empty array for the primes numbers indexes.
+    @param n   Generate an array of primes until this number, exclusive.
 */
 void esieve(int *P, int n) {
     int j;
@@ -59,31 +69,49 @@ void esieve(int *P, int n) {
     }
     P[0] = 0;
     P[1] = 0;
-    //return P;
 }
 
 /**
-    Return the Fibonacci number for the given index.
+    Generate the Fibonacci sequence to index (N), inclusive.
 
-    This method uses rounding (ceil/floor) for the final value
-    due to the truncation of fractional values in the casting
-    from double to integer (unsigned long long) type.
+    This function tests for an unsigned integer 'overflow' and stops
+    generating the sequence when an overflow is detected, leaving all
+    remaining values as their initialised value of 0.
 
-    Note: This method is only accurate to index 75!
+    The overflow is detected using the system's ULLONG_MAX limit.
+    
+    Reminder:
+        It is the responsibility of the *caller* to free the memory 
+        allocated by this function.
 
-    TODO: This method should be updated to calculated the F(n) 
-    iteratively to gain accruacy.
+    @param n  Ending index of the sequence, inclusive.
+    @return   A pointer to the sequence array.
 */
-unsigned long long fib(int n) {
-    double f;
-    unsigned long long f_;
-    f = ( pow(PHI, n) - pow(-1 / PHI, n) ) / sqrt(5);
-    f_ = ( (f - floor(f)) >= 0.5 ) ? ceil(f) : floor(f);
-    return f_;
+unsigned long long *fib(int n) {
+
+    int i;
+    unsigned long long *ptr_f = (unsigned long long *)calloc(102, sizeof(unsigned long long));
+
+    // Initialise and advance the pointer.
+    *ptr_f++ = 0;
+    *ptr_f++ = 1;
+
+    for ( i = 2; i <= n; ++i, ++ptr_f ) {
+        // Watch for integer overflow.
+        if ( (*(ptr_f - 1) < ULLONG_MAX - *(ptr_f - 2)) ) {
+            *ptr_f = *(ptr_f - 1) + *(ptr_f - 2);
+        } else {
+            printf("Overflow detected.\n");
+            break;
+        }
+    }
+    return ptr_f - i;
 }
 
 /**
     Return the Fibonacci index (floor) closest related to (n).
+
+    @param n  Number for which the Fibonacci index is calculated.
 */
 int fib_index(unsigned long long n) {
     return floor(log(n * sqrt(5) + 0.5) / log(PHI));
@@ -91,6 +119,10 @@ int fib_index(unsigned long long n) {
 
 /**
     Calculate the greatest common divisor of integers a and b.
+
+    @param a  Integer A.
+    @param b  Integer B.
+    @return   The GCD of A and B.
 */
 long gcd(long a, long b) {
     long tmp;
@@ -102,8 +134,37 @@ long gcd(long a, long b) {
     return a;
 }
 
+/**
+    Concatenate two integers.
+
+    @param x Integer A.
+    @param y Integer B.
+    @return  Integers A and B concatenated together as AB.
+*/
+long long intconcat(long long x, long long y) {
+    long long pow = 10;
+    while ( y >= pow ) pow *= 10;
+    return x * pow + y;
+}
+
+/**
+    Calculate the number of bits in a long long int.
+
+    @param n Number to be tested.
+    @return  The number of bits occupied by (n).
+*/
+int int_nbits(long long n) {
+    int c = 1;
+    if ( n == 0 ) return 0;
+    while ( (n >>= 1) >= 1 ) ++c;
+    return c;
+}
+
 /** 
     Test if a number is palindromatic.
+
+    @param n  Number to be tested.
+    @return   1 if the number is palindromatic, otherwise 0.
 */
 bool is_palindrome_num(long n) {
     long rev;
@@ -117,8 +178,11 @@ bool is_palindrome_num(long n) {
     Test if a number is pandigital.
 
     :Criteria:
-        - The number must *not* include zero.
+        - The number must *not* contain a zero.
         - Digits *must* be unique.
+
+    @param n  Number to be tested.
+    @return   1 if the number is pandigital, otherwise 0.
 */
 bool is_pandigital(long n) {
     long d = 0;
@@ -131,7 +195,10 @@ bool is_pandigital(long n) {
 }
 
 /**
-    Return 1 if the number if pentagonal, else 0.
+    Test if a number is pentagonal.
+
+    @param n  Number to be tested.
+    @return   1 if the number is pentagonal, otherwise 0.
 */
 bool is_pentagonal(long n) {
     if (n == 0) return 0;
@@ -140,11 +207,35 @@ bool is_pentagonal(long n) {
 }
 
 /**
-    Return 1 if the number is prime, otherwise 0.
+    Test if (n) is a perfect number.
 
-    This prime algorithm has been optimised for efficiency.
+    A perfect number is defined as a positive integer that is equal to the
+    sum of its positive divisors, excluding itself.
+
+    Note: The only perfect numbers below 1000000 are: 6, 28, 496 and 8128.
+
+    @param n Number to be tested.
+    @return  True if (n) is perfect, otherwise False.
 */
-bool is_prime(long n) {
+bool is_perfect(unsigned int n) {
+
+    unsigned int sum = 0;
+    unsigned int i = 1;
+
+    for ( ; i < n / 2+1; ++i ) {
+        if ( !(n % i) ) sum += i;
+    }
+    return ( sum == n ) ? 1 : 0;
+
+}
+
+/**
+    Test if a number is prime.
+
+    @param n  Number to be tested.
+    @return   1 if the number is prime, otherwise 0.
+*/
+bool is_prime(unsigned long n) {
     if (n == 2)
         return 1;
     else if ( !(n % 2) | (n < 2) )
@@ -159,7 +250,10 @@ bool is_prime(long n) {
 }
 
 /**
-    Return 1 if the number is triangular, else 0.
+    Test if a number is triangular.
+
+    @param n  Number to be tested.
+    @return   1 if the number is triangular, otherwise 0.
 */
 bool is_triangular(long n) {
     if (n == 0) return 0;
@@ -169,6 +263,10 @@ bool is_triangular(long n) {
 
 /**
     Calculate the lease common multiple of integers A and B.
+
+    @param a  Integer A.
+    @param b  Integer B.
+    @return   The LCM of A and B.
 */
 long lcm(long a, long b) {
     if ( (a < 0) | (b < 0) ) {
@@ -180,19 +278,70 @@ long lcm(long a, long b) {
 }
 
 /**
-    Return the value of PHI.
+    Calculate the value of PHI.
+
+    @return  The value of PHI, as (1 + sqrt(5)) / 2.
 */
 double phi(void) {
-    return (1 + sqrt(5)) / 2;
+    return PHI;
 }
 
 /**
-    Reverse an integer, return the reversed number.
+    Generate an array of prime factors of N, where N > 0.
+
+    Reminder:
+        It is the responsibility of the *caller* to free the memory 
+        allocated by this function.
+
+    @param N  Positive number to factorise.
+    @return   Pointer to the prime factors array.
+*/
+unsigned long *primefactors(unsigned long N) {
+    
+    float sqrtN = sqrt(N);
+    unsigned long *ptr_arr = (unsigned long *)calloc(256, sizeof(unsigned long));
+    int curr = 0;
+    int p = 3;
+
+    while ( N >= 2 ) {
+        // Primality test.
+        if ( is_prime(N) ) {
+            ptr_arr[curr++] = N;  
+            break;
+        } 
+        // Evens test.
+        if ( !(N % 2) ) {
+            ptr_arr[curr++] = 2;  
+            N /= 2;
+        } else {
+            // Loop to find next prime.
+            while ( p <= sqrtN ) {
+                if ( !(N % p) ) {
+                    ptr_arr[curr++] = p;
+                    N /= p;
+                    p = 3;
+                    break;  // In case n is now prime.
+                } else {
+                    p += 2;
+                }
+            }
+        }
+    }
+    return ptr_arr;
+}
+
+/**
+    Reverse an integer.
+
+    @param n  Number to be reversed.
+    @returns  The value of (n), reversed.
 */
 long long reverse(long n) {
+
     bool neg = n < 0;
     int d = digits(n) - 1;
     long long new = 0;
+
     // Account for negative values.
     if ( neg ) n = -n;
     while ( n >=1 ) {
@@ -205,6 +354,9 @@ long long reverse(long n) {
 
 /**
     Rotate (n), moving the last digit to the first.
+
+    @param n  Number to be rotated.
+    @return   The number (n), rotated left to right.
 */
 long long rotate(long n) {
     int d = digits(n);
@@ -257,3 +409,4 @@ int sizes(void) {
 
     return EXIT_SUCCESS;
 }
+

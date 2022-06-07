@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; utils4 - v1.0.0b1 Documentation</title>
+  <title>Index &mdash; utils4 - v1.1.0 Documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -32,7 +32,7 @@
             <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.0.0b1
+                1.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -123,6 +123,8 @@
         <li><a href="registry.html#registry.Registry.__init__">(registry.Registry method)</a>
 </li>
         <li><a href="registry.html#registry.Value.__init__">(registry.Value method)</a>
+</li>
+        <li><a href="stats.html#stats.LinearRegression.__init__">(stats.LinearRegression method)</a>
 </li>
         <li><a href="termcolour.html#termcolour._AnsiBase.__init__">(termcolour._AnsiBase method)</a>
 </li>
@@ -279,6 +281,8 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stats.html#stats.LinearRegression.calculate">calculate() (stats.LinearRegression method)</a>
+</li>
       <li>
     changelog
 
@@ -286,6 +290,8 @@
         <li><a href="changelog.html#module-changelog">module</a>
 </li>
       </ul></li>
+      <li><a href="srccheck.html#srccheck.SourceCheck.check">check() (srccheck.SourceCheck method)</a>
+</li>
       <li><a href="crypto.html#crypto.Crypto.checksum_crc32">checksum_crc32() (crypto.Crypto static method)</a>
 </li>
       <li><a href="crypto.html#crypto.Crypto.checksum_md5">checksum_md5() (crypto.Crypto static method)</a>
@@ -307,10 +313,10 @@
       </ul></li>
       <li><a href="cmaps.html#cmaps.CMaps">CMaps (class in cmaps)</a>
 </li>
-      <li><a href="palette.html#palette.CSS4Colours.colours">colours (palette.CSS4Colours property)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="palette.html#palette.CSS4Colours.colours">colours (palette.CSS4Colours property)</a>
+</li>
       <li>
     config
 
@@ -400,6 +406,8 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="srccheck.html#srccheck.SourceCheck.generate">generate() (srccheck.SourceCheck method)</a>
+</li>
       <li><a href="cmaps.html#cmaps.CMaps.get_cmap">get_cmap() (cmaps.CMaps static method)</a>
 </li>
       <li><a href="user_interface.html#user_interface.UserInterface.get_input">get_input() (user_interface.UserInterface method)</a>
@@ -460,6 +468,8 @@
 </li>
       <li><a href="convert.html#convert.int2hex">int2hex() (in module convert)</a>
 </li>
+      <li><a href="stats.html#stats.LinearRegression.intercept">intercept (stats.LinearRegression property)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="validation.html#validation.Rules.is_coordinates">is_coordinates() (validation.Rules method)</a>
@@ -488,8 +498,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="validation.html#validation.RegEx.latitude">latitude (validation.RegEx property)</a>
 </li>
+      <li><a href="stats.html#stats.LinearRegression">LinearRegression (class in stats)</a>
+</li>
       <li><a href="config.html#config.loadconfig">loadconfig() (in module config)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     log
 
@@ -497,8 +511,6 @@
         <li><a href="log.html#module-log">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="log.html#log.Log">Log (class in log)</a>
 </li>
       <li><a href="validation.html#validation.RegEx.longitude">longitude (validation.RegEx property)</a>
@@ -548,6 +560,10 @@
         <li><a href="registry.html#module-registry">registry</a>
 </li>
         <li><a href="reporterror.html#module-reporterror">reporterror</a>
+</li>
+        <li><a href="srccheck.html#module-srccheck">srccheck</a>
+</li>
+        <li><a href="stats.html#module-stats">stats</a>
 </li>
         <li><a href="termcolour.html#module-termcolour">termcolour</a>
 </li>
@@ -673,6 +689,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="registry.html#registry.Registry">Registry (class in registry)</a>
 </li>
+      <li><a href="stats.html#stats.LinearRegression.regression_line">regression_line (stats.LinearRegression property)</a>
+</li>
       <li>
     reporterror
 
@@ -702,14 +720,32 @@
         <li><a href="registry.html#registry.Registry.set_data">(registry.Registry method)</a>
 </li>
       </ul></li>
+      <li><a href="stats.html#stats.LinearRegression.slope">slope (stats.LinearRegression property)</a>
+</li>
+      <li><a href="srccheck.html#srccheck.SourceCheck">SourceCheck (class in srccheck)</a>
+</li>
       <li><a href="tickers.html#tickers.Spinner">Spinner (class in tickers)</a>
 </li>
+      <li>
+    srccheck
+
+      <ul>
+        <li><a href="srccheck.html#module-srccheck">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tickers.html#tickers.Spinner.start">start() (tickers.Spinner method)</a>
 
       <ul>
         <li><a href="tickers.html#tickers.WaitTicker.start">(tickers.WaitTicker method)</a>
+</li>
+      </ul></li>
+      <li>
+    stats
+
+      <ul>
+        <li><a href="stats.html#module-stats">module</a>
 </li>
       </ul></li>
       <li><a href="tickers.html#tickers._GenericWait.stop">stop() (tickers._GenericWait method)</a>
@@ -842,7 +878,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.0.0b1.</p>
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.1.0.</p>
   </div>
 
    

@@ -31,7 +31,7 @@ class _Base():
         print('\n\n', '-' * n, sep='')
         print(f'***     Starting test for: {msg}     ***'.center(n))
         print('-' * n, '\n', sep='')
-        sleep(1)
+        sleep(0.25)
 
 class _Errors:
     """Error messages container class."""

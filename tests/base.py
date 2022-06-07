@@ -42,8 +42,12 @@ class TestBase(unittest.TestCase):
 
     """
 
-    if 'linux' in sys.platform.lower(): _DIR_TMP = '/tmp'
-    elif 'win' in sys.platform.lower(): _DIR_TMP = 'c:/temp'
+    if 'linux' in sys.platform.lower():
+        _DIR_DSK = os.path.join(os.environ.get('HOME'), 'Desktop')
+        _DIR_TMP = '/tmp'
+    elif 'win' in sys.platform.lower():
+        _DIR_DSK = os.path.join(os.environ.get('USERPROFILE'), 'Desktop')
+        _DIR_TMP = 'c:/temp'
     else: _DIR_TMP = None
 
     _DIR_RESRC = './resources'

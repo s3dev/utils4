@@ -16,6 +16,8 @@ tests_test_palette.plr: 10.00/10
 tests_test_progressbar.plr: 10.00/10
 tests_test_reader.plr: 10.00/10
 tests_test_reporterror.plr: 10.00/10
+tests_test_srccheck.plr: 10.00/10
+tests_test_stats.plr: 9.58/10
 tests_test_timedelta.plr: 10.00/10
 tests_test_utils.plr: 10.00/10
 tests_test_validation.plr: 10.00/10
@@ -35,6 +37,8 @@ utils4_pywarnings.plr: 10.00/10
 utils4_reader.plr: 10.00/10
 utils4_registry.plr: 10.00/10
 utils4_reporterror.plr: 10.00/10
+utils4_srccheck.plr: 10.00/10
+utils4_stats.plr: 10.00/10
 utils4_termcolour.plr: 10.00/10
 utils4_tickers.plr: 10.00/10
 utils4_timedelta.plr: 10.00/10
@@ -42,4 +46,4 @@ utils4_user_interface.plr: 10.00/10
 utils4_utils.plr: 10.00/10
 utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Thu 7 Apr 14:23:26 BST 2022
+Run date: Fri 10 Jun 14:37:30 BST 2022

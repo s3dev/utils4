@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.1.0 Documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="termcolour - Easily add colour to terminal output" href="termcolour.html" />
+    <link rel="prev" title="srccheck - Checksum functionality for source code" href="srccheck.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> utils4
+            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html">log - Providing easy logging to your project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">registry - A simple interface to the Windows registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="srccheck.html">srccheck - Checksum functionality for source code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">stats - Statistics methods without the overhead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">validation - A small collection of validation rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
+      <li>stats - Statistics methods without the overhead</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-stats">
+<span id="stats-statistics-methods-without-the-overhead"></span><h1>stats - Statistics methods without the overhead<a class="headerlink" href="#module-stats" title="Permalink to this headline"></a></h1>
+<dl class="field-list">
+<dt class="field-odd">Purpose</dt>
+<dd class="field-odd"><p>This module contains the statistical calculations for the project.</p>
+</dd>
+<dt class="field-even">Platform</dt>
+<dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
+</dd>
+<dt class="field-odd">Developer</dt>
+<dd class="field-odd"><p>J Berendt</p>
+</dd>
+<dt class="field-even">Email</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</dd>
+<dt class="field-odd">Comments</dt>
+<dd class="field-odd"><p>n/a</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>Calculate a linear regression line on an X/Y dataset.:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lib.stats</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linreg</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># View the intercept value.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linreg</span><span class="o">.</span><span class="n">intercept</span>
+<span class="go">5.6</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># View the slope value.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linreg</span><span class="o">.</span><span class="n">slope</span>
+<span class="go">0.25678</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain the regression line array.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_</span> <span class="o">=</span> <span class="n">linreg</span><span class="o">.</span><span class="n">regression_line</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="stats.LinearRegression">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">LinearRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the linear regression of a dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.array</em>) – Array of X-values.</p></li>
+<li><p><strong>y</strong> (<em>np.array</em>) – Array of Y-values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Slope Calculation</dt>
+<dd class="field-even"><p>The calculation for the slope itself is borrowed from the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.linregress()</span></code> function. Whose <a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.0/scipy/stats/_stats_mstats_common.py#L16-L203">source code</a> was
+obtained on GitHub.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stats.LinearRegression.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>LinearRegression class initialiser.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stats.LinearRegression.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.calculate" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the linear regression for the X/Y data arrays.</p>
+<p>The result of the calculation is accessible via the
+<a class="reference internal" href="#stats.LinearRegression.regression_line" title="stats.LinearRegression.regression_line"><code class="xref py py-attr docutils literal notranslate"><span class="pre">regression_line</span></code></a> property.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="stats.LinearRegression.intercept">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intercept</span></span><a class="headerlink" href="#stats.LinearRegression.intercept" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the slope’s y-intercept.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="stats.LinearRegression.regression_line">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">regression_line</span></span><a class="headerlink" href="#stats.LinearRegression.regression_line" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the calculated regression line, as y-values.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="stats.LinearRegression.slope">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slope</span></span><a class="headerlink" href="#stats.LinearRegression.slope" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the slope value.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="srccheck.html" class="btn btn-neutral float-left" title="srccheck - Checksum functionality for source code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="termcolour.html" class="btn btn-neutral float-right" title="termcolour - Easily add colour to terminal output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.1.0.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
