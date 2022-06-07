@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>srccheck - Checksum functionality for source code &mdash; utils4 - v1.1.0 Documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="stats - Statistics methods without the overhead" href="stats.html" />
+    <link rel="prev" title="reporterror - Portable error reporting module" href="reporterror.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> utils4
+            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html">log - Providing easy logging to your project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">registry - A simple interface to the Windows registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">srccheck - Checksum functionality for source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html">stats - Statistics methods without the overhead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">validation - A small collection of validation rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
+      <li>srccheck - Checksum functionality for source code</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-srccheck">
+<span id="srccheck-checksum-functionality-for-source-code"></span><h1>srccheck - Checksum functionality for source code<a class="headerlink" href="#module-srccheck" title="Permalink to this headline"></a></h1>
+<dl class="field-list">
+<dt class="field-odd">Purpose</dt>
+<dd class="field-odd"><p>This module is used to perform checksum calculations on a
+collection of files to verify if the checksum <em>calculated</em> on each
+file matches the <em>expected</em> checksum value.</p>
+<p>In practical terms, an application can call the
+<a class="reference internal" href="#srccheck.SourceCheck.check" title="srccheck.SourceCheck.check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check()</span></code></a> method by passing a list of filepaths
+to be checksummed, along with a reference file (containing the
+expected checksums). If the checksum values match the reference
+file, a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> is returned to the caller application,
+signaling the inspected source code files have <em>not</em> been modified
+and are ‘safe’ for use. Otherwise, a value of <code class="docutils literal notranslate"><span class="pre">False</span></code> is
+returned to the caller the filenames of each failing file are
+printed to the terminal.</p>
+</dd>
+<dt class="field-even">Platform</dt>
+<dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
+</dd>
+<dt class="field-odd">Developer</dt>
+<dd class="field-odd"><p>J Berendt</p>
+</dd>
+<dt class="field-even">Email</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</dd>
+<dt class="field-odd">Comments</dt>
+<dd class="field-odd"><p>n/a</p>
+</dd>
+<dt class="field-even">Example usage</dt>
+<dd class="field-even"><p>Generate an <em>un-encrypted</em> reference file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.srccheck</span> <span class="kn">import</span> <span class="n">srccheck</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;list.c&#39;</span><span class="p">,</span> <span class="s1">&#39;of.py&#39;</span><span class="p">,</span> <span class="s1">&#39;files.sql&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srccheck</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">filepaths</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Verify checksums from within an application, with an <em>un-encrypted</em>
+reference file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.srccheck</span> <span class="kn">import</span> <span class="n">srccheck</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srccheck</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">ref_file</span><span class="o">=</span><span class="s1">&#39;path/to/srccheck.ref&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Generate an <strong>encrypted</strong> reference file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.srccheck</span> <span class="kn">import</span> <span class="n">srccheck</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;list.c&#39;</span><span class="p">,</span> <span class="s1">&#39;of.py&#39;</span><span class="p">,</span> <span class="s1">&#39;files.sql&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srccheck</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">filepaths</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Verify checksums from within an application, with an <em>encrypted</em> reference
+file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.srccheck</span> <span class="kn">import</span> <span class="n">srccheck</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srccheck</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">ref_file</span><span class="o">=</span><span class="s1">&#39;path/to/srccheck.ref&#39;</span><span class="p">,</span>
+<span class="go">                   key_file=&#39;path/to/srccheck.key&#39;)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><strong>Advanced usage:</strong></p>
+<p>If you wish to <em>delay the output</em> of mismatched files (to give the caller
+application display control), the caller can redirected the output from
+the <a class="reference internal" href="#srccheck.SourceCheck.check" title="srccheck.SourceCheck.check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check()</span></code></a> method into a buffer and display at a more
+appropriate time. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">redirect_stdout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.srccheck</span> <span class="kn">import</span> <span class="n">srccheck</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buff</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">redirect_stdout</span><span class="p">(</span><span class="n">buff</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">test</span> <span class="o">=</span> <span class="n">srccheck</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">ref_file</span><span class="o">=</span><span class="s1">&#39;path/to/srccheck.ref&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">test</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">buff</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buff</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="go">Checksum verification has failed for the following:</span>
+<span class="go">- 02-01_first.c</span>
+<span class="go">- 10-09_ptr_exchange.c</span>
+<span class="go">- 06-ex07.c</span>
+<span class="go">- 15-ex05_col_output.c</span>
+<span class="go">- 02-03_multi_lines.c</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="srccheck.SourceCheck">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">srccheck.</span></span><span class="sig-name descname"><span class="pre">SourceCheck</span></span><a class="reference internal" href="_modules/srccheck.html#SourceCheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck" title="Permalink to this definition"></a></dt>
+<dd><p>Verify source code checksums values are as expected.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="srccheck.SourceCheck.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/srccheck.html#SourceCheck.check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck.check" title="Permalink to this definition"></a></dt>
+<dd><p>Verify the provided source code file checksums are as expected.</p>
+<p>If any checksum do not match, the names of those files are reported
+to the terminal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_file</strong> (<em>str</em>) – Full path to the reference file containing the
+full paths to the file(s) to be tested and the associated
+checksum value(s).</p></li>
+<li><p><strong>key_file</strong> (<em>str</em><em>, </em><em>optional</em>) – Full path to the key file. If a key file
+is not provided, the method assumes the reference file is in
+plaintext CSV and does not attempt to decrypt.
+Defaults to ‘’.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">key_file</span></code> argument is <em>not</em> provided, it is assumed the
+<code class="docutils literal notranslate"><span class="pre">ref_file</span></code> is a plaintext CSV file, and decryption is <em>not</em>
+attempted.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">key_file</span></code> argument <em>is</em> provided, it is assumed the
+<code class="docutils literal notranslate"><span class="pre">ref_file</span></code> has been encrypted, and decryption is carried out.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – If either the reference file, or key file do
+    not exist.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if all file’s checksum values agree with the checksum
+listed in the reference file; otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="srccheck.SourceCheck.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepaths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/srccheck.html#SourceCheck.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck.generate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the reference file containing the source file checksums,
+and the associated key file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepaths</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of full paths which are to be
+included in the reference file.</p></li>
+<li><p><strong>encrypt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Encrypt the reference file and generate
+a key file. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Reference File</dt>
+<dd class="field-even"><p><strong>If unencrypted:</strong></p>
+<p>The reference file is a flat, plaintext CSV file with the file
+path as the first field and the checksum value as the second field.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filepath_01</span><span class="p">,</span><span class="n">md5_hash_string_01</span>
+<span class="n">filepath_02</span><span class="p">,</span><span class="n">md5_hash_string_02</span>
+<span class="n">filepath_03</span><span class="p">,</span><span class="n">md5_hash_string_03</span>
+<span class="o">...</span>
+<span class="n">filepath_NN</span><span class="p">,</span><span class="n">md5_hash_string_NN</span>
+</pre></div>
+</div>
+<p><strong>If encrypted:</strong></p>
+<p>The reference file contains is a serialised, encrypted
+representation of the full path and associated checksum value for
+all provided files, in JSON format. This data is written to the
+<code class="docutils literal notranslate"><span class="pre">srccheck.ref</span></code> file.</p>
+<p>A unique encryption key is created and stored with <em>each</em> call to
+this method, and stored to the <code class="docutils literal notranslate"><span class="pre">srccheck.key</span></code> file.</p>
+<p>To perform checks, both the reference file <em>and</em> the key file must
+be provided to the <a class="reference internal" href="#srccheck.SourceCheck.check" title="srccheck.SourceCheck.check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check()</span></code></a> method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These files are a <strong>pair</strong>. If one file is lost, the
+other file is useless.</p>
+</div>
+</dd>
+<dt class="field-odd">Layout</dt>
+<dd class="field-odd"><p><strong>If encrypted:</strong></p>
+<p>The layout of the <em>deserialised</em> and <em>decrypted</em> reference file is
+in basic JSON format, with the filename as the keys, and checksum
+values as the values.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;filepath_01&quot;</span><span class="p">:</span> <span class="s2">&quot;md5_hash_string_01&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;filepath_02&quot;</span><span class="p">:</span> <span class="s2">&quot;md5_hash_string_02&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;filepath_03&quot;</span><span class="p">:</span> <span class="s2">&quot;md5_hash_string_03&quot;</span><span class="p">,</span>
+ <span class="o">...</span><span class="p">,</span>
+ <span class="s2">&quot;filepath_NN&quot;</span><span class="p">:</span> <span class="s2">&quot;md5_hash_string_NN&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If any of the files provided to the
+    <code class="docutils literal notranslate"><span class="pre">filepaths</span></code> argument do not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reporterror.html" class="btn btn-neutral float-left" title="reporterror - Portable error reporting module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stats.html" class="btn btn-neutral float-right" title="stats - Statistics methods without the overhead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.1.0.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

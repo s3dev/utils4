@@ -80,7 +80,7 @@ class Setup:
 
     # Add C extensions.
     MODULES = [Extension('mathfunc',
-                         sources=['./utils4/libmfuncmodule.c', './utils4/libs/libmfunc.c'],
+                         sources=['./utils4/mathfuncmodule.c', './utils4/libs/_mathfunc.c'],
                          language='c')]
 
     def run(self):

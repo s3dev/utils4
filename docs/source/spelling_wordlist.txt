@@ -118,3 +118,10 @@ yellowgreen
 yymmdd
 yyyy
 zlib
+filepaths
+checksummed
+checksums
+plaintext
+decrypt
+serialised
+Accessor

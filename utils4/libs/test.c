@@ -3,7 +3,7 @@
 */
 
 #include <stdio.h>
-#include "libmfunc.h"
+#include "_mathfunc.h"
 
 void test_fib(void) {
     int test[] = {1, 5, 10, 25};
@@ -12,7 +12,12 @@ void test_fib(void) {
 
     printf("Fibonacci Test:\n");
     for ( int *p = test; p < end; ++p ) {
-        printf("- %d: %lld\n", *p, fib(*p));
+        printf("%d:\n - ", *p);
+        unsigned long long *result = fib(*p);
+        for ( int i = 1; i <= *p; ++i ) {
+            printf("%llu ", result[i]);
+        }
+        printf("\n");
     }
     printf("\n");
 }
@@ -25,6 +30,18 @@ void test_fib_index(void) {
     printf("Fibonacci Index Test:\n");
     for ( int *p = test; p < end; ++p ) {
         printf("- %d: %d\n", *p, fib_index(*p));
+    }
+    printf("\n");
+}
+
+void test_int_nbits(void) {
+    long long test[] = {0, 1, 3, 7, 15, 16, 255, 256, 123456789, 987654321};
+    int size = sizeof test / sizeof(test[0]);
+    long long *end = test + size;
+
+    printf("Integer n-bits Test:\n");
+    for ( long long *p = test; p != end; ++p ) {
+        printf("- %lld: %d\n", *p, int_nbits(*p));
     }
     printf("\n");
 }
@@ -48,7 +65,7 @@ void test_reverse(void) {
     
     printf("Reverse Test:\n");
     for ( long *p = test; p != end ; ++p ) {
-        printf("- %ld: %ld\n", *p, reverse(*p));
+        printf("- %ld: %lld\n", *p, reverse(*p));
     }
     printf("\n");
 }
@@ -62,6 +79,7 @@ int main(void) {
     printf("\n");
     test_fib();
     test_fib_index();
+    test_int_nbits();
     test_palindrome();
     test_reverse();
     test_sizes();

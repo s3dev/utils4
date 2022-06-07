@@ -16,8 +16,8 @@ done
 printf "\n"
 
 # Update requirements file.
-printf "Updating the requirements file ...\n"
-pipreqs . --force
+printf "Updating the requirements file, ignoring './tests' ...\n"
+pipreqs . --force --ignore tests
 
 # Create the package and wheel file.
 printf "\nCreating the source distribution ...\n"

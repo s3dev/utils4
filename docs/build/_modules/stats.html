@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stats &mdash; utils4 - v1.1.0 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>stats</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for stats</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module contains the statistical calculations for the project.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     development@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example:</span>
+
+<span class="sd">    Calculate a linear regression line on an X/Y dataset.:</span>
+
+<span class="sd">        &gt;&gt;&gt; from lib.stats import LinearRegression</span>
+
+<span class="sd">        &gt;&gt;&gt; linreg = LinearRegression(x, y)</span>
+<span class="sd">        &gt;&gt;&gt; linreg.calculate()</span>
+
+<span class="sd">        &gt;&gt;&gt; # View the intercept value.</span>
+<span class="sd">        &gt;&gt;&gt; linreg.intercept</span>
+<span class="sd">        5.6</span>
+
+<span class="sd">        &gt;&gt;&gt; # View the slope value.</span>
+<span class="sd">        &gt;&gt;&gt; linreg.slope</span>
+<span class="sd">        0.25678</span>
+
+<span class="sd">        &gt;&gt;&gt; # Obtain the regression line array.</span>
+<span class="sd">        &gt;&gt;&gt; y_ = linreg.regression_line</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=line-too-long</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="LinearRegression"><a class="viewcode-back" href="../stats.html#stats.LinearRegression">[docs]</a><span class="k">class</span> <span class="nc">LinearRegression</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the linear regression of a dataset.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.array): Array of X-values.</span>
+<span class="sd">        y (np.array): Array of Y-values.</span>
+
+<span class="sd">    :Slope Calculation:</span>
+<span class="sd">        The calculation for the slope itself is borrowed from the</span>
+<span class="sd">        :func:`scipy.stats.linregress` function. Whose `source code`_ was</span>
+<span class="sd">        obtained on GitHub.</span>
+
+<span class="sd">    .. _source code: https://github.com/scipy/scipy/blob/v1.8.0/scipy/stats/_stats_mstats_common.py#L16-L203</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LinearRegression.__init__"><a class="viewcode-back" href="../stats.html#stats.LinearRegression.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;LinearRegression class initialiser.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xbar</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ybar</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_c</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(())</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Accessor to the slope value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">intercept</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Accessor to the slope&#39;s y-intercept.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_c</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">regression_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Accessor to the calculated regression line, as y-values.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span>
+
+<div class="viewcode-block" id="LinearRegression.calculate"><a class="viewcode-back" href="../stats.html#stats.LinearRegression.calculate">[docs]</a>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the linear regression for the X/Y data arrays.</span>
+
+<span class="sd">        The result of the calculation is accessible via the</span>
+<span class="sd">        :attr:`regression_line` property.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calc_means</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calc_slope</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calc_intercept</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calc_regression_line</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_calc_intercept</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the intercept as: ybar - m * xbar.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ybar</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xbar</span>
+
+    <span class="k">def</span> <span class="nf">_calc_means</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the mean of the X and Y arrays.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xbar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ybar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_calc_regression_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the regression line as: y = mx + c.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_c</span>
+
+    <span class="k">def</span> <span class="nf">_calc_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the slope value as: R * ( std(y) / std(x) ).</span>
+
+<span class="sd">        Per the ``scipy`` source code comments::</span>
+
+<span class="sd">            # Average sums of square differences from the mean</span>
+<span class="sd">            #   ssxm = mean( (x-mean(x))^2 )</span>
+<span class="sd">            #   ssxym = mean( (x-mean(x)) * (y-mean(y)) )</span>
+
+<span class="sd">            ...</span>
+
+<span class="sd">            slope = ssxym / ssxm</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ssxm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="n">ssxym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xbar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ybar</span><span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">=</span> <span class="n">ssxym</span> <span class="o">/</span> <span class="n">ssxm</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_calc_std</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">ddof</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>  <span class="c1"># pragma nocover</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the standard deviation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (np.array): Array of values.</span>
+<span class="sd">            ddof (int): Degrees of freedom. Defaults to 1.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Standard deviation of the given values.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="n">ddof</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.1.0.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

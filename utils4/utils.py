@@ -600,7 +600,7 @@ def ping(server: str, count: int=1, timeout: int=5, verbose: bool=False) -> bool
         with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as proc:
             stdout, stderr = proc.communicate()
             status = proc.returncode
-    if ('win' in _os) & (b'Destination host unreachable' in stdout):
+    if ('win' in _os) & (b'Destination host unreachable' in stdout):  # pragma nocover
         # Hard code status if host is unreachable.
         # Generally, this will return 0, so it must be overridden.
         status = 1

@@ -1,10 +1,10 @@
 ************* Module utils4.utils
-/var/devmt/py/utils4_1.0.0b1/utils4/utils.py:368:30: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/var/devmt/py/utils4_1.1.0/utils4/utils.py:368:30: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 
 
 Report
 ======
-127 statements analysed.
+128 statements analysed.
 
 Statistics by type
 ------------------
@@ -39,13 +39,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |137    |19.00 |137      |=          |
+|code      |138    |19.06 |137      |+1.00      |
 +----------+-------+------+---------+-----------+
-|docstring |558    |77.39 |558      |=          |
+|docstring |560    |77.35 |558      |+2.00      |
 +----------+-------+------+---------+-----------+
-|comment   |11     |1.53  |11       |=          |
+|comment   |11     |1.52  |11       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |15     |2.08  |15       |=          |
+|empty     |15     |2.07  |15       |=          |
 +----------+-------+------+---------+-----------+
 
 

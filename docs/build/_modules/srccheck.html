@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>srccheck &mdash; utils4 - v1.1.0 Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> utils4
+            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">utils4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>srccheck</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for srccheck</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Purpose:   This module is used to perform checksum calculations on a</span>
+<span class="sd">            collection of files to verify if the checksum *calculated* on each</span>
+<span class="sd">            file matches the *expected* checksum value.</span>
+
+<span class="sd">            In practical terms, an application can call the</span>
+<span class="sd">            :meth:`~SourceCheck.check` method by passing a list of filepaths</span>
+<span class="sd">            to be checksummed, along with a reference file (containing the</span>
+<span class="sd">            expected checksums). If the checksum values match the reference</span>
+<span class="sd">            file, a value of ``True`` is returned to the caller application,</span>
+<span class="sd">            signaling the inspected source code files have *not* been modified</span>
+<span class="sd">            and are &#39;safe&#39; for use. Otherwise, a value of ``False`` is</span>
+<span class="sd">            returned to the caller the filenames of each failing file are</span>
+<span class="sd">            printed to the terminal.</span>
+
+<span class="sd">:Platform:  Linux/Windows | Python 3.6+</span>
+<span class="sd">:Developer: J Berendt</span>
+<span class="sd">:Email:     development@s3dev.uk</span>
+
+<span class="sd">:Comments:  n/a</span>
+
+<span class="sd">:Example usage:</span>
+
+<span class="sd">    Generate an *un-encrypted* reference file::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.srccheck import srccheck</span>
+
+<span class="sd">        &gt;&gt;&gt; files = [&#39;list.c&#39;, &#39;of.py&#39;, &#39;files.sql&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; srccheck.generate(filepaths=files, encrypt=False)</span>
+
+
+<span class="sd">    Verify checksums from within an application, with an *un-encrypted*</span>
+<span class="sd">    reference file::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.srccheck import srccheck</span>
+
+<span class="sd">        &gt;&gt;&gt; srccheck.check(ref_file=&#39;path/to/srccheck.ref&#39;)</span>
+<span class="sd">        True</span>
+
+<span class="sd">    Generate an **encrypted** reference file::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.srccheck import srccheck</span>
+
+<span class="sd">        &gt;&gt;&gt; files = [&#39;list.c&#39;, &#39;of.py&#39;, &#39;files.sql&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; srccheck.generate(filepaths=files, encrypt=True)</span>
+
+
+<span class="sd">    Verify checksums from within an application, with an *encrypted* reference</span>
+<span class="sd">    file::</span>
+
+<span class="sd">        &gt;&gt;&gt; from utils4.srccheck import srccheck</span>
+
+<span class="sd">        &gt;&gt;&gt; srccheck.check(ref_file=&#39;path/to/srccheck.ref&#39;,</span>
+<span class="sd">                           key_file=&#39;path/to/srccheck.key&#39;)</span>
+<span class="sd">        True</span>
+
+
+<span class="sd">    **Advanced usage:**</span>
+
+<span class="sd">    If you wish to *delay the output* of mismatched files (to give the caller</span>
+<span class="sd">    application display control), the caller can redirected the output from</span>
+<span class="sd">    the :meth:`~SourceCheck.check` method into a buffer and display at a more</span>
+<span class="sd">    appropriate time. For example::</span>
+
+<span class="sd">        &gt;&gt;&gt; from contextlib import redirect_stdout</span>
+<span class="sd">        &gt;&gt;&gt; from io import StringIO</span>
+<span class="sd">        &gt;&gt;&gt; from utils4.srccheck import srccheck</span>
+
+<span class="sd">        &gt;&gt;&gt; buff = StringIO()</span>
+<span class="sd">        &gt;&gt;&gt; with redirect_stdout(buff):</span>
+<span class="sd">        &gt;&gt;&gt;     test = srccheck.check(ref_file=&#39;path/to/srccheck.ref&#39;)</span>
+
+<span class="sd">        &gt;&gt;&gt; # ...</span>
+
+<span class="sd">        &gt;&gt;&gt; if not test:</span>
+<span class="sd">        &gt;&gt;&gt;     print(buff.getvalue())</span>
+<span class="sd">        &gt;&gt;&gt; buff.close()</span>
+
+<span class="sd">        Checksum verification has failed for the following:</span>
+<span class="sd">        - 02-01_first.c</span>
+<span class="sd">        - 10-09_ptr_exchange.c</span>
+<span class="sd">        - 06-ex07.c</span>
+<span class="sd">        - 15-ex05_col_output.c</span>
+<span class="sd">        - 02-03_multi_lines.c</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=wrong-import-order</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">cryptography</span> <span class="kn">import</span> <span class="n">fernet</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
+
+
+<div class="viewcode-block" id="SourceCheck"><a class="viewcode-back" href="../srccheck.html#srccheck.SourceCheck">[docs]</a><span class="k">class</span> <span class="nc">SourceCheck</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Verify source code checksums values are as expected.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SourceCheck.check"><a class="viewcode-back" href="../srccheck.html#srccheck.SourceCheck.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key_file</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Verify the provided source code file checksums are as expected.</span>
+
+<span class="sd">        If any checksum do not match, the names of those files are reported</span>
+<span class="sd">        to the terminal.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_file (str): Full path to the reference file containing the</span>
+<span class="sd">                full paths to the file(s) to be tested and the associated</span>
+<span class="sd">                checksum value(s).</span>
+<span class="sd">            key_file (str, optional): Full path to the key file. If a key file</span>
+<span class="sd">                is not provided, the method assumes the reference file is in</span>
+<span class="sd">                plaintext CSV and does not attempt to decrypt.</span>
+<span class="sd">                Defaults to &#39;&#39;.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            If the ``key_file`` argument is *not* provided, it is assumed the</span>
+<span class="sd">            ``ref_file`` is a plaintext CSV file, and decryption is *not*</span>
+<span class="sd">            attempted.</span>
+
+<span class="sd">            If the ``key_file`` argument *is* provided, it is assumed the</span>
+<span class="sd">            ``ref_file`` has been encrypted, and decryption is carried out.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If either the reference file, or key file do</span>
+<span class="sd">                not exist.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if all file&#39;s checksum values agree with the checksum</span>
+<span class="sd">            listed in the reference file; otherwise False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=no-else-return</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ref_file</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reference file not found: </span><span class="si">{</span><span class="n">ref_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">key_file</span><span class="p">,</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">key_file</span><span class="p">)]):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Key file not found: </span><span class="si">{</span><span class="n">key_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key_file</span><span class="p">:</span>
+            <span class="c1"># Decrypt reference file.</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ref_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rfp</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">rfp</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">key_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">kfp</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">fernet</span><span class="o">.</span><span class="n">Fernet</span><span class="p">(</span><span class="n">kfp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+            <span class="n">ref</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Read plaintext reference file.</span>
+            <span class="n">ref</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ref_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rfp</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">rfp</span><span class="p">:</span>
+                    <span class="n">ref</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)])</span>
+        <span class="n">chksums</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_checksum</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="n">ref</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="c1"># Object check for quick validation.</span>
+        <span class="k">if</span> <span class="n">chksums</span> <span class="o">==</span> <span class="n">ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_report_mismatches</span><span class="p">(</span><span class="n">checksums</span><span class="o">=</span><span class="n">chksums</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="n">ref</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="SourceCheck.generate"><a class="viewcode-back" href="../srccheck.html#srccheck.SourceCheck.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate the reference file containing the source file checksums,</span>
+<span class="sd">        and the associated key file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filepaths (list[str]): A list of full paths which are to be</span>
+<span class="sd">                included in the reference file.</span>
+<span class="sd">            encrypt (bool, optional): Encrypt the reference file and generate</span>
+<span class="sd">                a key file. Defaults to False.</span>
+
+<span class="sd">        :Reference File:</span>
+
+<span class="sd">            **If unencrypted:**</span>
+
+<span class="sd">            The reference file is a flat, plaintext CSV file with the file</span>
+<span class="sd">            path as the first field and the checksum value as the second field.</span>
+
+<span class="sd">            For example::</span>
+
+<span class="sd">                filepath_01,md5_hash_string_01</span>
+<span class="sd">                filepath_02,md5_hash_string_02</span>
+<span class="sd">                filepath_03,md5_hash_string_03</span>
+<span class="sd">                ...</span>
+<span class="sd">                filepath_NN,md5_hash_string_NN</span>
+
+<span class="sd">            **If encrypted:**</span>
+
+<span class="sd">            The reference file contains is a serialised, encrypted</span>
+<span class="sd">            representation of the full path and associated checksum value for</span>
+<span class="sd">            all provided files, in JSON format. This data is written to the</span>
+<span class="sd">            ``srccheck.ref`` file.</span>
+
+<span class="sd">            A unique encryption key is created and stored with *each* call to</span>
+<span class="sd">            this method, and stored to the ``srccheck.key`` file.</span>
+
+<span class="sd">            To perform checks, both the reference file *and* the key file must</span>
+<span class="sd">            be provided to the :meth:`~check` method.</span>
+
+<span class="sd">            .. note:: These files are a **pair**. If one file is lost, the</span>
+<span class="sd">                      other file is useless.</span>
+
+<span class="sd">        :Layout:</span>
+
+<span class="sd">            **If encrypted:**</span>
+
+<span class="sd">            The layout of the *deserialised* and *decrypted* reference file is</span>
+<span class="sd">            in basic JSON format, with the filename as the keys, and checksum</span>
+<span class="sd">            values as the values.</span>
+
+<span class="sd">            For example::</span>
+
+<span class="sd">                {&quot;filepath_01&quot;: &quot;md5_hash_string_01&quot;,</span>
+<span class="sd">                 &quot;filepath_02&quot;: &quot;md5_hash_string_02&quot;,</span>
+<span class="sd">                 &quot;filepath_03&quot;: &quot;md5_hash_string_03&quot;,</span>
+<span class="sd">                 ...,</span>
+<span class="sd">                 &quot;filepath_NN&quot;: &quot;md5_hash_string_NN&quot;}</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If any of the files provided to the</span>
+<span class="sd">                ``filepaths`` argument do not exist.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_files_exist</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="n">filepaths</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s1">&#39;The files listed above were not found.&#39;</span><span class="p">)</span>
+        <span class="n">op_ref</span><span class="p">,</span> <span class="n">op_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_outpaths</span><span class="p">()</span>
+        <span class="n">chksums</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_checksum</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="n">filepaths</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">encrypt</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">b64</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">op_key</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">kfp</span><span class="p">:</span>
+                <span class="n">kfp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">fernet</span><span class="o">.</span><span class="n">Fernet</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">op_ref</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rfp</span><span class="p">:</span>
+                <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">chksums</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()),</span> <span class="n">rfp</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Complete.</span><span class="se">\n</span><span class="s1">The reference and key files are available on your desktop.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">op_ref</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rfp</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">chksums</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">rfp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Complete.</span><span class="se">\n</span><span class="s1">The reference file is available on your desktop.&#39;</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_all_files_exist</span><span class="p">(</span><span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Verify all provided files exist.</span>
+
+<span class="sd">        If any file does not exist, the user is alerted via the terminal and a</span>
+<span class="sd">        ``FileNotFoundError`` exception is raised by the caller.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            files (list): List of files to be tested.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True, if all files exist, otherwise False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=consider-using-f-string</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">nexist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                <span class="n">nexist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">nexist</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The following files do not exist:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="s1">&#39; - </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">nexist</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">success</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_build_outpaths</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Build the output path to the reference and key files.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: Full path to the reference and key files as::</span>
+
+<span class="sd">                (&#39;fname.ref&#39;, &#39;fname.key&#39;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_os</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">fn_ref</span> <span class="o">=</span> <span class="s1">&#39;srccheck.ref&#39;</span>
+        <span class="n">fn_key</span> <span class="o">=</span> <span class="s1">&#39;srccheck.key&#39;</span>
+        <span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">:</span>  <span class="c1"># pragma nocover</span>
+            <span class="n">desk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;USERPROFILE&#39;</span><span class="p">),</span> <span class="s1">&#39;Desktop&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s1">&#39;lin&#39;</span> <span class="ow">in</span> <span class="n">_os</span><span class="p">:</span>
+            <span class="n">desk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">),</span> <span class="s1">&#39;Desktop&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma nocover</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Not a currently supported OS: </span><span class="si">{</span><span class="n">_os</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">desk</span><span class="p">,</span> <span class="n">fn_ref</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">desk</span><span class="p">,</span> <span class="n">fn_key</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_checksum</span><span class="p">(</span><span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Calculate checksum for all passed files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            files (list): List of full paths against which a checksum is to be</span>
+<span class="sd">                calculated.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary containing the filename and checksum for all</span>
+<span class="sd">            passed files, as::</span>
+
+<span class="sd">                {&#39;fname_01&#39;: &#39;checksum_hash_01&#39;,</span>
+<span class="sd">                 &#39;fname_02&#39;: &#39;checksum_hash_02&#39;,</span>
+<span class="sd">                 &#39;fname_03&#39;: &#39;checksum_hash_03&#39;,</span>
+<span class="sd">                 ...,</span>
+<span class="sd">                 &#39;fname_NN&#39;: &#39;checksum_hash_NN&#39;}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">crypto</span><span class="o">.</span><span class="n">checksum_md5</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">}</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_report_mismatches</span><span class="p">(</span><span class="n">checksums</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">reference</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report the files for which the checksums do not match.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            checksums (dict): A dictionary containing the recently calculated</span>
+<span class="sd">                checksums.</span>
+<span class="sd">            reference (dict): A dictionary containing the *expected* checksums.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=consider-using-f-string</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">reference</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">checksums</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">!=</span> <span class="n">v</span><span class="p">:</span>
+                <span class="n">m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Checksum verification has failed for the following:&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="s1">&#39;- </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+
+<span class="n">srccheck</span> <span class="o">=</span> <span class="n">SourceCheck</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.1.0.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

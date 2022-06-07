@@ -1,5 +1,5 @@
 # Include C libs.
-recursive-include utils4/libs/ libmfunc*
+recursive-include utils4/libs/ _mathfunc*
 exclude utils4/libs/test*
 
 # Include the test suite.

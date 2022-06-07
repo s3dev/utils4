@@ -26,6 +26,8 @@ or more usage examples and access to the source code itself.
     reader
     registry
     reporterror
+    srccheck
+    stats
     termcolour
     tickers
     timedelta

@@ -1,7 +1,7 @@
 CFLAGS=-Wall -pedantic -std=gnu99 -Wsign-compare -Wwrite-strings -Wtype-limits
 
-test: test.c libmfunc.c
-	gcc ${CFLAGS} -o test test.c libmfunc.c -lm
+test: test.c _mathfunc.c
+	gcc ${CFLAGS} -o test test.c _mathfunc.c -lm
 
 .PHONY: clean
 clean:

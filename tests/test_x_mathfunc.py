@@ -245,8 +245,14 @@ class TestMathfunc(TestBase):
               with the expected value.
 
         """
-        exp = [1, 5, 13, 55, 89, 190392490709135]
-        inp = [1, 5, 7, 10, 11, 70]
+        inp = [1, 5, 7, 10, 25]
+        exp = [[0, 1],
+               [0, 1, 1, 2, 3, 5],
+               [0, 1, 1, 2, 3, 5, 8, 13],
+               [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+               [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55,
+                89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765,
+                10946, 17711, 28657, 46368, 75025]]
         for e, i in zip(exp, inp):
             with self.subTest(msg=f'input={i} exp={e}'):
                 test = mathfunc.fib(i)
@@ -516,4 +522,72 @@ class TestMathfunc(TestBase):
         for e, i in zip(exp, inp):
             with self.subTest(msg=f'input={i} exp={e}'):
                 test = mathfunc.rotate(i)
+                utilities.assert_true(expected=e, test=test, msg=self._MSG1)
+
+    def test15__prime_factors(self):
+        """Test the ``prime_factors`` method.
+
+        :Test:
+            - Test a series of input values and ensure the expected list of
+              primes factors is returned.
+
+        """
+        inp = [7, 10, 13, 25, 123456, 98765431, 987654321]
+        exp = [[7],
+               [2, 5],
+               [13],
+               [5, 5],
+               [2, 2, 2, 2, 2, 2, 3, 643],
+               [98765431],
+               [3, 3, 17, 17, 379721]]
+        for e, i in zip(exp, inp):
+            with self.subTest(msg=f'input={i} exp={e}'):
+                test = mathfunc.primefactors(i)
+                utilities.assert_true(expected=e, test=test, msg=self._MSG1)
+
+    def test16__intconcat(self):
+        """Test the ``intconcat`` method.
+
+        :Test:
+            - verify integer concatenation is working as expected.
+
+        """
+        inp = [(1, 10), (200, 500), (123, 123), (123, 987), (123456, 987654)]
+        exp = [110, 200500, 123123, 123987, 123456987654]
+        for e, (a, b) in zip(exp, inp):
+            with self.subTest(msg=f'input={a, b} exp={e}'):
+                test = mathfunc.intconcat(a, b)
+                utilities.assert_true(expected=e, test=test, msg=self._MSG1)
+
+    def test17__int_nbits(self):
+        """Test the ``int_nbits`` method.
+
+        :Test:
+            - Using Python's built-in :func:`~int(n).bit_length` function,
+              verify the mathfunc is calculating the number of bits correctly.
+
+        """
+        inp = [0, 1, 3, 7, 8, 15, 16, 255, 256, 123456789, 987654321]
+        for i in inp:
+            with self.subTest(msg=f'input={i}'):
+                exp = int(i).bit_length()
+                test = mathfunc.int_nbits(i)
+                utilities.assert_true(expected=exp, test=test, msg=self._MSG1)
+
+    def test18__is_perfect(self):
+        """Test the ``is_perfect`` method.
+
+        :Test:
+            - Verify the output for a list of numbers; four of which are the
+              only perfect numbers less than 1000000.
+
+        """
+        inp = [(1, 0), (3, 0), (6, 1), (8, 0),              # 6
+               (20, 0), (24, 0), (28, 1), (29, 0),          # 28
+               (475, 0), (495, 0), (496, 1), (497, 0),      # 496
+               (8120, 0), (8125, 0), (8128, 1), (8129, 0),  # 8128
+               (10000, 0)]
+        for i, e in inp:
+            with self.subTest(msg=f'input={i} exp={e}'):
+                test = mathfunc.is_perfect(i)
                 utilities.assert_true(expected=e, test=test, msg=self._MSG1)

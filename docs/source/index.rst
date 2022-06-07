@@ -113,7 +113,7 @@ Indices and Tables
 
 .. rubric:: Footnotes
 
-.. _S3DEV archive: https://s3dev.uk/downloads
+.. _S3DEV archive: https://s3dev.uk/downloads/utils4
 .. _winlibs: https://winlibs.com
 
 |lastupdated|
