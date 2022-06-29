@@ -19,6 +19,7 @@ or more usage examples and access to the source code itself.
     crypto
     dfdiff
     dict2obj
+    filesys
     log
     palette    
     progressbar

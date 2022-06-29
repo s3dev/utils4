@@ -257,7 +257,7 @@ bool is_prime(unsigned long n) {
 */
 bool is_triangular(long n) {
     if (n == 0) return 0;
-    float tri = (sqrt(1 + 8*n) + 1 / 2);
+    float tri = ((sqrt(1 + 8*n) + 1) / 2);
     return ( !(fmod(tri, 1)) );
 }
 

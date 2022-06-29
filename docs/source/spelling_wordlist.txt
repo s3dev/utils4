@@ -48,6 +48,8 @@ docstring
 docstrings
 exif
 filepath
+filesys
+filesystem
 generalised
 geo
 gzip
@@ -67,6 +69,7 @@ Initialise
 initialised
 initialiser
 initialises
+inode
 instantiation
 intalled
 IPv
