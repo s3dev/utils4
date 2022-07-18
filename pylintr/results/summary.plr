@@ -9,15 +9,17 @@ tests_test_cmaps.plr: 10.00/10
 tests_test_config.plr: 10.00/10
 tests_test_convert.plr: 10.00/10
 tests_test_crypto.plr: 10.00/10
+tests_test_cutils.plr: 10.00/10
 tests_test_dfdiff.plr: 10.00/10
 tests_test_dict2obj.plr: 10.00/10
+tests_test_filesys.plr: 6.50/10
 tests_test_log.plr: 10.00/10
 tests_test_palette.plr: 10.00/10
 tests_test_progressbar.plr: 10.00/10
 tests_test_reader.plr: 10.00/10
 tests_test_reporterror.plr: 10.00/10
 tests_test_srccheck.plr: 10.00/10
-tests_test_stats.plr: 9.58/10
+tests_test_stats.plr: 10.00/10
 tests_test_timedelta.plr: 10.00/10
 tests_test_utils.plr: 10.00/10
 tests_test_validation.plr: 10.00/10
@@ -28,8 +30,10 @@ utils4_cmaps.plr: 10.00/10
 utils4_config.plr: 10.00/10
 utils4_convert.plr: 10.00/10
 utils4_crypto.plr: 10.00/10
+utils4_cutils.plr: 10.00/10
 utils4_dfdiff.plr: 10.00/10
 utils4_dict2obj.plr: 10.00/10
+utils4_filesys.plr: 10.00/10
 utils4_log.plr: 10.00/10
 utils4_palette.plr: 10.00/10
 utils4_progressbar.plr: 10.00/10
@@ -46,4 +50,4 @@ utils4_user_interface.plr: 10.00/10
 utils4_utils.plr: 10.00/10
 utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Fri 10 Jun 14:37:30 BST 2022
+Run date: Mon 18 Jul 14:43:03 BST 2022

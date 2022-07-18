@@ -188,7 +188,8 @@ bool is_pandigital(long n) {
     long d = 0;
     int e = (1 << (digits(n) + 1)) - 2;
     while (n > 0) {
-        d |= 1 << (int)(n - (floor(n / 10) * 10));
+        //d |= 1 << (int)(n - (floor(n / 10) * 10));
+        d |= 1 << ( n % 10 );
         n = floor(n / 10);
     }
     return (d == e) ? 1 : 0;

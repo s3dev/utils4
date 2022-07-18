@@ -58,6 +58,19 @@ void test_palindrome(void) {
     printf("\n");
 }
 
+void test_pandigital(void) {
+    long test[] = { 1235, 4569, 123457, 987653,       // No
+                    123, 1234, 987654321, 123456789 }; // Yes
+    long size = sizeof test / sizeof test[0];
+    long *end = test + size;
+    
+    printf("Pandigital Test:\n");
+    for ( long *p = test; p < end; ++p ) {
+        printf("- %ld: %d\n", *p, is_pandigital(*p));
+    }
+    printf("\n");
+}
+
 void test_reverse(void) {
     long test[] = { 12, 110, 123, 1230, 987654321, -12, -110, -123, -1230, -987654321 };
     int size = sizeof test / sizeof test[0];
@@ -81,6 +94,7 @@ int main(void) {
     test_fib_index();
     test_int_nbits();
     test_palindrome();
+    test_pandigital();
     test_reverse();
     test_sizes();
     return 1;

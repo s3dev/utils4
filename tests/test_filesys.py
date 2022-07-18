@@ -9,10 +9,8 @@
 
 :Comments:  n/a
 
-# pylint: disable=import-error
-# pylint: disable=invalid-name
-# pylint: disable=wrong-import-order
 """
+# pylint: disable=invalid-name
 
 try:
     import os

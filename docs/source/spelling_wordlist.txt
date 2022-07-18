@@ -43,9 +43,11 @@ DataFrame
 dataset
 datetime
 df
+dicts
 differencing
 docstring
 docstrings
+dst
 exif
 filepath
 filesys
@@ -81,6 +83,7 @@ kwargs
 libary
 Libary
 MiB
+memset
 mingw
 mpl
 mysql

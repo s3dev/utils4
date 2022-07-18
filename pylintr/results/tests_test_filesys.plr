@@ -1,0 +1,116 @@
+************* Module tests.test_filesys
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:48:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:49:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:61:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:62:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:74:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:75:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:79:4: C0103: Method name "test01__compare_files__line_endings" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:88:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:89:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:100:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:101:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:105:4: C0103: Method name "test01__compare_files__sig_only__true" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:113:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:114:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:118:4: C0103: Method name "test01__compare_files__sig_only__false" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:126:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:127:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:139:8: C0103: Variable name "f1" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:140:8: C0103: Variable name "f2" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:141:8: C0103: Variable name "f3" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+/var/devmt/py/utils4_1.3.0/tests/test_filesys.py:144:15: C0103: Variable name "e" doesn't conform to '[a-z_][a-z0-9_]{2,30}$' pattern (invalid-name)
+
+
+Report
+======
+60 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |9      |NC         |NC         |100.00      |33.33    |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    utils4 
+      \-filesys (tests.test_filesys)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |63     |42.28 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |70     |46.98 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |3      |2.01  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |13     |8.72  |NC       |NC         |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |21     |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-------------+------------+
+|message id   |occurrences |
++=============+============+
+|invalid-name |21          |
++-------------+------------+
+
+
+
+
+-----------------------------------
+Your code has been rated at 6.50/10
+

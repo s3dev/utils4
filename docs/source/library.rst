@@ -17,6 +17,7 @@ or more usage examples and access to the source code itself.
     config
     convert
     crypto
+    cutils
     dfdiff
     dict2obj
     filesys
