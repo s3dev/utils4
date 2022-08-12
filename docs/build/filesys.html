@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>filesys - Perform tests on files and the filesystem &mdash; utils4 - v1.3.0 Documentation</title>
+  <title>filesys - General filesystem tests and utilities &mdash; utils4 - v1.4.0 Documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -35,7 +35,7 @@
             <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.3.0
+                1.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -54,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">filesys - Perform tests on files and the filesystem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">filesys - General filesystem tests and utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="log.html">log - Providing easy logging to your project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
 <li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
@@ -91,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>filesys - Perform tests on files and the filesystem</li>
+      <li>filesys - General filesystem tests and utilities</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,7 +101,7 @@
            <div itemprop="articleBody">
              
   <section id="module-filesys">
-<span id="filesys-perform-tests-on-files-and-the-filesystem"></span><h1>filesys - Perform tests on files and the filesystem<a class="headerlink" href="#module-filesys" title="Permalink to this headline"></a></h1>
+<span id="filesys-general-filesystem-tests-and-utilities"></span><h1>filesys - General filesystem tests and utilities<a class="headerlink" href="#module-filesys" title="Permalink to this headline"></a></h1>
 <dl class="field-list">
 <dt class="field-odd">Purpose</dt>
 <dd class="field-odd"><p>This module contains tests and utilities relating to files and the
@@ -186,6 +186,45 @@ otherwise False.</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="filesys.dirsplit">
+<span class="sig-prename descclassname"><span class="pre">filesys.</span></span><span class="sig-name descname"><span class="pre">dirsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(None,)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/filesys.html#dirsplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#filesys.dirsplit" title="Permalink to this definition"></a></dt>
+<dd><p>Move all files from a single directory into (n) sub-directories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Full path to the source files. Additionally, all files
+will be moved into sub-directories in this path.</p></li>
+<li><p><strong>nfiles</strong> (<em>int</em>) – Number of source files to be moved into each directory.</p></li>
+<li><p><strong>pattern</strong> (<em>str</em><em>, </em><em>optional</em>) – A shell-style wildcard pattern used for
+collecting the source files. For example: <code class="docutils literal notranslate"><span class="pre">*.csv</span></code>.
+Defaults to ‘*’.</p></li>
+<li><p><strong>pairs</strong> (<em>bool</em><em>, </em><em>optional</em>) – Are the files in paris?. If True, the <code class="docutils literal notranslate"><span class="pre">repl</span></code>
+argument is used to replace a substring of the source file with
+that of the paired file, so each file pair is moved into the same
+directory. Defaults to False.</p></li>
+<li><p><strong>repl</strong> (<em>tuple</em><em>, </em><em>optional</em>) – <p>A tuple containing the old and new replacement
+strings. This argument is only in effect if the <code class="docutils literal notranslate"><span class="pre">pairs</span></code> argument
+is True. Defaults to (None,).</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;_input.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;_output.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the input file path does not exist.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the operation completes, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -199,7 +238,7 @@ otherwise False.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.3.0.</p>
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.4.0.</p>
   </div>
 
    

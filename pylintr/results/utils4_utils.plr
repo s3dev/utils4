@@ -1,5 +1,5 @@
 ************* Module utils4.utils
-/var/devmt/py/utils4_1.3.0/utils4/utils.py:368:30: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+/var/devmt/py/utils4_1.4.0/utils4/utils.py:368:30: I1101: Module 'pyodbc' has no 'drivers' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 
 
 Report

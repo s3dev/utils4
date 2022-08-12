@@ -12,7 +12,7 @@ tests_test_crypto.plr: 10.00/10
 tests_test_cutils.plr: 10.00/10
 tests_test_dfdiff.plr: 10.00/10
 tests_test_dict2obj.plr: 10.00/10
-tests_test_filesys.plr: 6.50/10
+tests_test_filesys.plr: 10.00/10
 tests_test_log.plr: 10.00/10
 tests_test_palette.plr: 10.00/10
 tests_test_progressbar.plr: 10.00/10
@@ -50,4 +50,4 @@ utils4_user_interface.plr: 10.00/10
 utils4_utils.plr: 10.00/10
 utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Mon 18 Jul 14:43:03 BST 2022
+Run date: Mon 15 Aug 09:52:36 BST 2022

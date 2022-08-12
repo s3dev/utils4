@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>filesys &mdash; utils4 - v1.3.0 Documentation</title>
+  <title>filesys &mdash; utils4 - v1.4.0 Documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -32,7 +32,7 @@
             <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.3.0
+                1.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -111,7 +111,16 @@
 <span class="c1"># pylint: disable=invalid-name</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">stat</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span> <span class="nn">utils4.reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">natsort</span> <span class="kn">import</span> <span class="n">natsorted</span>
+    <span class="n">_IMP_NATSORT</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c1"># Built-in sorting will be used instead.</span>
+    <span class="n">_IMP_NATSORT</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">_SIZE</span> <span class="o">=</span> <span class="mi">16</span><span class="o">*</span><span class="mi">1024</span>  <span class="c1"># 16 KiB</span>
 
@@ -171,6 +180,81 @@
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="n">_compare_content</span><span class="p">(</span><span class="n">file1</span><span class="o">=</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="o">=</span><span class="n">file2</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="dirsplit"><a class="viewcode-back" href="../filesys.html#filesys.dirsplit">[docs]</a><span class="k">def</span> <span class="nf">dirsplit</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+             <span class="n">nfiles</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+             <span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+             <span class="n">pairs</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">repl</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,))</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Move all files from a single directory into (n) sub-directories.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the source files. Additionally, all files</span>
+<span class="sd">            will be moved into sub-directories in this path.</span>
+<span class="sd">        nfiles (int): Number of source files to be moved into each directory.</span>
+<span class="sd">        pattern (str, optional): A shell-style wildcard pattern used for</span>
+<span class="sd">            collecting the source files. For example: ``*.csv``.</span>
+<span class="sd">            Defaults to &#39;*&#39;.</span>
+<span class="sd">        pairs (bool, optional): Are the files in paris?. If True, the ``repl``</span>
+<span class="sd">            argument is used to replace a substring of the source file with</span>
+<span class="sd">            that of the paired file, so each file pair is moved into the same</span>
+<span class="sd">            directory. Defaults to False.</span>
+<span class="sd">        repl (tuple, optional): A tuple containing the old and new replacement</span>
+<span class="sd">            strings. This argument is only in effect if the ``pairs`` argument</span>
+<span class="sd">            is True. Defaults to (None,).</span>
+
+<span class="sd">            For example::</span>
+
+<span class="sd">                (&#39;_input.csv&#39;, &#39;_output.txt&#39;)</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        FileNotFoundError: If the input file path does not exist.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the operation completes, otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s1">&#39;The requested path does not exist.&#39;</span><span class="p">)</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Setup.</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">pattern</span><span class="p">))</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">natsorted</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="k">if</span> <span class="n">_IMP_NATSORT</span> <span class="k">else</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">nfiles</span>
+        <span class="n">dirnum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># File iterator.</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># Define the (next) copy-to directory and create it.</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">nfiles</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">dirnum</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">dirnam</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dirnum</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dirnam</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dirpath</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">dirpath</span><span class="p">)</span>
+            <span class="c1"># Copy source file.</span>
+            <span class="n">base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dirnam</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Moving </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s1"> of </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="n">dirnam</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">dst</span><span class="o">=</span><span class="n">dst</span><span class="p">)</span>
+            <span class="n">_file_move_test</span><span class="p">(</span><span class="n">fpath</span><span class="o">=</span><span class="n">dst</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pairs</span><span class="p">:</span>
+                <span class="c1"># Copy paired file.</span>
+                <span class="n">base2</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">*</span><span class="n">repl</span><span class="p">)</span>
+                <span class="n">dst2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dirnam</span><span class="p">,</span> <span class="n">base2</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;\t\-- </span><span class="si">{</span><span class="n">base2</span><span class="si">}</span><span class="s1"> -&gt; </span><span class="si">{</span><span class="n">dirnam</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">base2</span><span class="p">),</span> <span class="n">dst</span><span class="o">=</span><span class="n">dst2</span><span class="p">)</span>
+                <span class="n">_file_move_test</span><span class="p">(</span><span class="n">fpath</span><span class="o">=</span><span class="n">dst2</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">ferr</span><span class="p">:</span>  <span class="c1"># progma nocover (cannot test)</span>
+        <span class="c1"># Designed to catch / print file move errors from _file_move_test().</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ferr</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">success</span></div>
+
 <span class="k">def</span> <span class="nf">_compare_content</span><span class="p">(</span><span class="n">file1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Compare the content of each file.</span>
 
@@ -197,6 +281,27 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">data1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data2</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
 
+<span class="k">def</span> <span class="nf">_file_move_test</span><span class="p">(</span><span class="n">fpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Test a file exists.</span>
+
+<span class="sd">    This method is used to verify the subject file was moved successfully.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fpath (str): File path to be tested.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        FileNotFoundError: If the subject file does not exist.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the file was moved successfully, otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fpath</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The following file was not copied successfully. Processing aborted.</span><span class="se">\n</span><span class="s1">&#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;-- </span><span class="si">{</span><span class="n">fpath</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
 <span class="k">def</span> <span class="nf">_sig</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Build a tuple containing elements of a file&#39;s signature.</span>
 
@@ -220,7 +325,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.3.0.</p>
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.4.0.</p>
   </div>
 
    

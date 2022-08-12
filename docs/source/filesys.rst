@@ -1,6 +1,6 @@
-===================================================
-filesys - Perform tests on files and the filesystem
-===================================================
+================================================
+filesys - General filesystem tests and utilities
+================================================
 
 .. automodule:: filesys
     :members:
