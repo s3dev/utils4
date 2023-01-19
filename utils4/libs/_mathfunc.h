@@ -4,6 +4,15 @@
 
 #include <stdbool.h>
 
+const char *VERSION = "1.1.1";
+
+/** 
+    The constant phi.
+
+    @return The constant value of phi.
+*/
+double PHI(void);
+
 /**
     Count the number of digits in an integer value.
 
@@ -13,16 +22,61 @@
 int digits(long n);
 
 /**
+    Populate distinct integers to the passed array.
+
+    This function uses a hash-table to identify distinct integers from the
+    passed array.
+
+    @param pvals  Pointer to an array containing integers.
+                  Note: The end of this array is identified when a zero is 
+                  encountered.
+    @param pdist  Pointer to an array to contain the distinct values.
+                  This array can be initialised to a single value,
+                  as the function will reallocate as required.
+                  Note: This array must be created using malloc and passed
+                  as an address.
+    @return       Number of distinct values added to the `pdist` array.
+
+    Usage:
+
+        int size;
+        unsigned long *pfac = primefactors(n);
+        unsigned long *pdist = (unsigned long *)malloc(sizeof(unsigned long));
+
+        size = distinctn(pfac, &pdist);
+
+        // ...
+
+        free(pfac);
+        free(pdist);
+
+    Reminder:
+        The *caller* is responsible for freeing values and distinct values
+        arrays. 
+
+*/
+int distinctn(unsigned long *pvals, unsigned long **pdist);
+
+/**
     Implementation of the Sieve of Eratosthenes.
 
-    Returns an indexed boolean array where 1 indicates the index of a 
-    prime number, whereas 0 indicates the index of a composite number.
+    A pointer to an array allocated to contain (n) boolean indicators
+    is passed into this function and populated with boolean values, 
+    where 1 indicates the position of a a prime number and 0 indicates 
+    the position of a composite number. If these indicators are indexed 
+    (starting at zero), the primes themselves will be revealed.
 
-    @param *P  Pointer to an array of (n) size.
-    @param n   Maximum number to which the prime index is generated.
-    @return    A pointer to the index array.
+    The `n` argument is the number to which the primes are generated,
+    *not* generate the first (n) primes.
+
+    @param *P  Pointer to an empty array for the primes numbers indexes.
+    @param n   Generate an array of primes until this number, exclusive.
+
+    Note: For primes > 1e6, it is better to allocate the array using
+    malloc, rather than 'standard' array initialisation, due to the amount
+    of allocation required.
 */
-int *esieve(int *P, int n);
+void esieve(bool *P, int n);
 
 /**
     Generate the Fibonacci sequence to index (N), inclusive.
@@ -111,6 +165,15 @@ bool is_pentagonal(long n);
 bool is_perfect(unsigned int n);
 
 /**
+    Test if two positive integers are permutations of eachother.
+
+    @param a  Integer to be tested.
+    @param b  Integer to be tested.
+    @return   1 if the integers are permutations, otherwise 0.
+*/
+bool is_permutation(unsigned long long a, unsigned long long b);
+
+/**
     Test if a number is prime.
 
     @param n  Number to be tested.
@@ -136,13 +199,24 @@ bool is_triangular(long n);
 long lcm(long a, long b);
 
 /**
-    Return the value of PHI.
+    Calculate the result of the phi (or Euler's totient) function.
 
-    Calculated as (1 + sqrt(5)) / 2
+    The phi function gives a count of positive integers less than N, which
+    are co-prime (or relatively) prime to N.
 
-    @return  Value of PHI.
+    If N is prime, the result of the phi function is N-1.
+
+    If N is not prime, the result is calculated as:
+
+        phi(n) = n * Pi(1 - 1/p)
+
+    where the product is obtained for all *distinct* prime factors of N,
+    (or p).
+
+    @param n  Integer for which phi is calculated.
+    @return   The result of the phi function.
 */
-double phi(void);
+unsigned long phi(unsigned long n);
 
 /**
     Generate an array of prime factors of N, where N > 0.

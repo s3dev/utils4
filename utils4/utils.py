@@ -84,16 +84,27 @@ def clean_dataframe(df: pd.DataFrame):
             >>> # Define a dirty testing dataset.
             >>> df = pd.DataFrame({'Column #1': [' Text field 1.',
                                                  '   Text field 2.',
-                                                 ' Text field 3.    '],
+                                                 ' Text field 3.    ',
+                                                 '  Text field 4.  ',
+                                                 '  Text field 5. '],
                                    '  COLUmn (2)': [1.0,
                                                     2.0,
-                                                    3.0]})
+                                                    3.0,
+                                                    '4',
+                                                    '5.0'],
+                                   'COLUMN 3  ': [1,
+                                                  2,
+                                                  3.0,
+                                                  4,
+                                                  5.0]})
             >>> utils.clean_dataframe(df)
             >>> df
-                    column_1  column_2
-            0  Text field 1.       1.0
-            1  Text field 2.       2.0
-            2  Text field 3.       3.0
+                    column_1 column_2  column_3
+            0  Text field 1.      1.0       1.0
+            1  Text field 2.      2.0       2.0
+            2  Text field 3.      3.0       3.0
+            3  Text field 4.        4       4.0
+            4  Text field 5.      5.0       5.0
 
     """
     # Define replacement/translation characters.
@@ -105,7 +116,7 @@ def clean_dataframe(df: pd.DataFrame):
     # Strip whitespace from text values.
     for col in df:
         if df[col].dtype == object:
-            df[col] = df[col].str.strip()
+            df[col] = df[col].astype(str).str.strip()
 
 def direxists(path: str, create_path: bool=False) -> bool:
     """Test if a directory exists. If not, create it, if instructed.

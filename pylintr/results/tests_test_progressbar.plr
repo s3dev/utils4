@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-progressbar (tests.test_progressbar)
-
-
+47 lines have been analyzed
 
 Raw metrics
 -----------

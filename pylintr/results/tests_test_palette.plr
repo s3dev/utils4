@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-palette (tests.test_palette)
-
-
+102 lines have been analyzed
 
 Raw metrics
 -----------

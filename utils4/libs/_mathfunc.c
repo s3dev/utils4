@@ -1,8 +1,8 @@
 /**
     General mathematical functions and supporting utilities library.
 
-    This C module is designed to be accessed as utils4.mathfuncs, in 
-    Python.
+    This C module is designed to be accessed as an included C library
+    and linked using '-lmf', or via Python using utils4.mathfuncs.
 */
 
 #include <float.h>
@@ -12,18 +12,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define PHI (1 + sqrt(5)) / 2
+// The version is found in the header file.
+#define _PHI (1 + sqrt(5)) / 2
 
-// ------------------------------------------------------------------
-//
-// Function prototypes on which other functions rely are placed here
-// at the top of the module.
-//
-
+/* -----------------------------------------------------------------
+  Function prototypes on which other functions rely are placed here
+  at the top of the module.
+  --------------------------------------------------------------- */
+unsigned long *primefactors(unsigned long N);
 long long reverse(long n);
 
 // ------------------------------------------------------------------
 
+/**
+    Return the constant phi.
+
+    @return Constant value of phi.
+*/
+double PHI(void) {
+    return _PHI;
+}
 
 /**
     Count the number of digits in an integer value.
@@ -44,17 +52,91 @@ int digits(long n) {
 }
 
 /**
-    Implementation of the Sieve of Eratosthenes which returns a pointer
-    to an array of indexed boolean values, where 1 indicates a prime 
-    number and 0 indicates a composite number.
+    Populate distinct integers to the passed array.
+
+    This function uses a hash-table to identify distinct integers from the
+    passed array.
+
+    @param pvals  Pointer to an array containing integers.
+                  Note: The end of this array is identified when a zero is 
+                  encountered.
+    @param pdist  Pointer to an array to contain the distinct values.
+                  This array can be initialised to a single value,
+                  as the function will reallocate as required.
+                  Note: This array must be created using malloc and passed
+                  as an address.
+    @return       Number of distinct values added to the `pdist` array.
+
+    Usage:
+
+        int size;
+        unsigned long *pfac = primefactors(n);
+        unsigned long *pdist = (unsigned long *)malloc(sizeof(unsigned long));
+
+        size = distinctn(pfac, &pdist);
+
+        // ...
+
+        free(pfac);
+        free(pdist);
+
+    Reminder:
+        The *caller* is responsible for freeing values and distinct values
+        arrays. 
+
+*/
+int distinctn(unsigned long *pvals, unsigned long **pdist) {
+
+    int size = 0;               // Number of distinct values, for return.
+    unsigned long maxf = 0;     // Max factor
+    unsigned long *ht;          // Hash-table
+
+    // Get max factor. Used for initialising the size of the hashtable.
+    for ( unsigned long i = 0; *(pvals + i) != 0; ++i ) {
+        maxf = *(pvals + i) > maxf ? *(pvals + i) : maxf;
+    }
+    ++maxf;
+
+    // Allocate space for the hash-table.
+    ht = (unsigned long *)calloc(maxf, sizeof(unsigned long));
+
+    // Populate the hash-table.
+    for ( unsigned long i = 0; *(pvals + i) != 0; ++i ) {
+        ht[pvals[i]] += 1;
+    }
+
+    // Populate the distinct array.
+    for ( unsigned long i = 0; i < maxf; ++i ) {
+        if ( *(ht + i) ) {
+            *pdist = (unsigned long *)realloc(*pdist, ++size * sizeof(unsigned long));
+            (*pdist)[size-1] = i;
+        }
+    }
+    free(ht);
+
+    return size;
+}
+
+/**
+    Implementation of the Sieve of Eratosthenes.
+
+    A pointer to an array allocated to contain (n) boolean indicators
+    is passed into this function and populated with boolean values, 
+    where 1 indicates the position of a a prime number and 0 indicates 
+    the position of a composite number. If these indicators are indexed 
+    (starting at zero), the primes themselves will be revealed.
 
     The `n` argument is the number to which the primes are generated,
     *not* generate the first (n) primes.
 
     @param *P  Pointer to an empty array for the primes numbers indexes.
     @param n   Generate an array of primes until this number, exclusive.
+
+    Note: For primes > 1e6, it is better to allocate the array using
+    malloc, rather than 'standard' array initialisation, due to the amount
+    of allocation required.
 */
-void esieve(int *P, int n) {
+void esieve(bool *P, int n) {
     int j;
     int i = 2;
     // Initialise the array to 1's.
@@ -114,7 +196,7 @@ unsigned long long *fib(int n) {
     @param n  Number for which the Fibonacci index is calculated.
 */
 int fib_index(unsigned long long n) {
-    return floor(log(n * sqrt(5) + 0.5) / log(PHI));
+    return floor(log(n * sqrt(5) + 0.5) / log(_PHI));
 }
 
 /**
@@ -231,6 +313,46 @@ bool is_perfect(unsigned int n) {
 }
 
 /**
+    Test if two positive integers are permutations of eachother.
+
+    @param a  Integer to be tested.
+    @param b  Integer to be tested.
+    @return   1 if the integers are permutations, otherwise 0.
+*/
+bool is_permutation(unsigned long long a, unsigned long long b) {
+
+    int n;
+    int ht_a[10] = {0};
+    int ht_b[10] = {0};
+    int sum_a = 0;
+    int sum_b = 0;
+   
+    // Build hash tables. 
+    while ( a > 0 ) {
+        n = a % 10;
+        sum_a += n;
+        ++ht_a[n];
+        a /= 10;
+    }
+    while ( b > 0 ) {
+        n = b % 10;
+        sum_b += n;
+        ++ht_b[n];
+        b /= 10;
+    }
+    // Shortcut test. If sums are not the same, it's not a permutation.
+    if ( sum_a != sum_b )
+        return 0;
+    // Test hash tables. Exit on first mismatch.
+    for ( int i = 0; i < 10; ++i ) {
+        if ( (ht_a[i] != ht_b[i]) )
+            return 0;
+    }
+    return 1;
+
+}
+
+/**
     Test if a number is prime.
 
     @param n  Number to be tested.
@@ -279,12 +401,43 @@ long lcm(long a, long b) {
 }
 
 /**
-    Calculate the value of PHI.
+    Calculate the result of the phi (or Euler's totient) function.
 
-    @return  The value of PHI, as (1 + sqrt(5)) / 2.
+    The phi function gives a count of positive integers less than N, which
+    are co-prime (or relatively) prime to N.
+
+    If N is prime, the result of the phi function is N-1.
+
+    If N is not prime, the result is calculated as:
+
+        phi(n) = n * Pi(1 - 1/p)
+
+    where the product is obtained for all *distinct* prime factors of N,
+    (or p).
+
+    @param n  Integer for which phi is calculated.
+    @return   The result of the phi function.
 */
-double phi(void) {
-    return PHI;
+unsigned long phi(unsigned long n) {
+
+    // Shortcut for prime integers.
+    if ( is_prime(n) )
+        return n-1;
+
+    // Full solution for composite integers.
+    unsigned long *pfac = primefactors(n);
+    unsigned long *pdist = (unsigned long *)malloc(sizeof(unsigned long));
+    int size = distinctn(pfac, &pdist);
+    unsigned long phi = n;
+
+    for ( int i = 0; i < size; ++i ) {
+        phi *= (1 - 1.0/pdist[i]);
+    }
+
+    free(pfac);
+    free(pdist);
+    
+    return phi;
 }
 
 /**

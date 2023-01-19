@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Change Log &mdash; utils4 - v1.4.0 Documentation</title>
+  <title>Change Log &mdash; utils4 - v1.5.0.dev1 Documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -35,7 +35,7 @@
             <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.4.0
+                1.5.0.dev1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -77,6 +77,36 @@
   <section id="module-changelog">
 <span id="change-log"></span><h1>Change Log<a class="headerlink" href="#module-changelog" title="Permalink to this headline"></a></h1>
 <ul>
+<li><p><strong>1.5.0.dev1 - Updates to the mathfunc and stats modules. Bug fixes.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2023-01-19 20:25:11</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mathfunc</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">PHI</span><span class="p">:</span> <span class="n">The</span> <span class="n">former</span> <span class="n">function</span> <span class="s1">&#39;phi&#39;</span> <span class="n">has</span> <span class="n">been</span> <span class="n">n</span> <span class="n">renamed</span> <span class="n">to</span> <span class="s1">&#39;PHI&#39;</span><span class="p">,</span> <span class="k">as</span> <span class="n">this</span>
+  <span class="n">calculates</span> <span class="n">a</span> <span class="o">*</span><span class="n">constant</span><span class="o">*</span> <span class="n">value</span> <span class="n">of</span> <span class="n">phi</span><span class="o">.</span> <span class="n">This</span> <span class="n">adjustment</span> <span class="n">also</span> <span class="n">makes</span>
+  <span class="n">the</span> <span class="s1">&#39;phi&#39;</span> <span class="n">function</span> <span class="n">name</span> <span class="n">available</span> <span class="k">for</span> <span class="n">the</span> <span class="n">new</span> <span class="n">function</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">phi</span><span class="p">:</span> <span class="n">A</span> <span class="n">new</span> <span class="s1">&#39;phi&#39;</span> <span class="n">function</span> <span class="n">has</span> <span class="n">been</span> <span class="n">added</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">Euler</span><span class="s1">&#39;s totient</span>
+  <span class="p">(</span><span class="ow">or</span> <span class="n">phi</span> <span class="n">function</span><span class="p">)</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">esieve</span><span class="p">:</span> <span class="n">Updated</span> <span class="n">to</span> <span class="n">support</span> <span class="n">a</span> <span class="n">larger</span> <span class="n">quantity</span> <span class="n">of</span> <span class="n">prime</span> <span class="n">numbers</span> <span class="n">due</span>
+  <span class="n">to</span> <span class="n">a</span> <span class="n">different</span> <span class="n">C</span> <span class="n">memory</span> <span class="n">allocation</span> <span class="n">method</span><span class="o">.</span> <span class="n">Tested</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">100</span><span class="n">M</span>
+  <span class="n">successfully</span><span class="o">.</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">the</span> <span class="n">esieve</span> <span class="n">method</span> <span class="n">has</span> <span class="n">been</span> <span class="n">updated</span> <span class="n">to</span>
+  <span class="n">be</span> <span class="n">more</span> <span class="n">memory</span> <span class="n">efficient</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">is_permutation</span><span class="p">:</span> <span class="n">A</span> <span class="n">new</span> <span class="n">function</span> <span class="n">to</span> <span class="n">determine</span> <span class="k">if</span> <span class="n">two</span> <span class="n">positive</span> <span class="n">integers</span>
+  <span class="n">are</span> <span class="n">permutations</span> <span class="n">of</span> <span class="n">each</span> <span class="n">other</span><span class="o">.</span>
+
+<span class="n">stats</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">A</span> <span class="n">CUSUM</span> <span class="n">calculation</span> <span class="n">method</span> <span class="n">has</span> <span class="n">been</span> <span class="n">added</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Stats</span> <span class="n">class</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">A</span> <span class="n">Gaussian</span> <span class="n">KDE</span> <span class="n">calculation</span> <span class="n">has</span> <span class="n">been</span> <span class="n">added</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Stats</span> <span class="n">class</span><span class="o">.</span>
+
+<span class="n">Bug</span> <span class="n">fixes</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">utils</span><span class="o">.</span><span class="n">clean_dataframe</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">BUG</span><span class="p">:</span> <span class="n">Integer</span> <span class="ow">and</span> <span class="nb">float</span> <span class="n">values</span> <span class="n">were</span> <span class="n">converted</span> <span class="n">to</span> <span class="n">NaN</span> <span class="n">during</span> <span class="n">cleaning</span>
+         <span class="k">if</span> <span class="n">a</span> <span class="n">string</span> <span class="n">was</span> <span class="n">present</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">field</span><span class="o">.</span>
+  <span class="o">-</span> <span class="n">FIX</span><span class="p">:</span> <span class="n">If</span> <span class="n">a</span> <span class="n">string</span> <span class="ow">is</span> <span class="n">present</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">field</span><span class="p">,</span> <span class="n">the</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span>
+         <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="n">however</span> <span class="n">the</span> <span class="n">integer</span> <span class="ow">and</span> <span class="nb">float</span> <span class="n">values</span> <span class="n">retain</span> <span class="n">their</span>
+         <span class="n">original</span> <span class="n">value</span><span class="o">.</span>
+
+<span class="n">Released</span><span class="p">:</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">25</span>
+</pre></div>
+</div>
+</li>
 <li><p><strong>1.4.0 - Addition of the dirsplit function to the filesys module.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2022-08-12 13:34:16</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filesys</span><span class="p">:</span>
 <span class="o">-</span> <span class="n">The</span> <span class="n">dirsplit</span> <span class="n">function</span> <span class="n">has</span> <span class="n">been</span> <span class="n">added</span> <span class="n">which</span> <span class="n">splits</span> <span class="n">the</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">given</span>
@@ -623,7 +653,7 @@ Released: 2020-10-08
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.4.0.</p>
+    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
   </div>
 
    

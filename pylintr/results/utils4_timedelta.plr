@@ -21,13 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    pandas (utils4.timedelta)
-
-
+114 lines have been analyzed
 
 Raw metrics
 -----------

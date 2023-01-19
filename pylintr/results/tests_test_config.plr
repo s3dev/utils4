@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-config (tests.test_config)
-
-
+97 lines have been analyzed
 
 Raw metrics
 -----------

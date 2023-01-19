@@ -4,7 +4,7 @@ setup.plr: 10.00/10
 testlibs_msgs.plr: 10.00/10
 testlibs_utilities.plr: 10.00/10
 tests_base.plr: 10.00/10
-tests_template.plr:
+tests_template.plr: 10.00/10
 tests_test_cmaps.plr: 10.00/10
 tests_test_config.plr: 10.00/10
 tests_test_convert.plr: 10.00/10
@@ -50,4 +50,4 @@ utils4_user_interface.plr: 10.00/10
 utils4_utils.plr: 10.00/10
 utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Mon 15 Aug 09:52:36 BST 2022
+Run date: Wed 25 Jan 13:21:41 GMT 2023

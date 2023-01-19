@@ -134,7 +134,7 @@ class TestDict2Obj(TestBase):
         dict_t = self._translate_keys(dict_=self.dataset_01_valid_dict)
         for idx, (k, v) in enumerate(dict_t.items()):
             with self.subTest(i=idx):
-                utilities.assert_true(expected=v, test=obj.__getattribute__(k), msg=self._MSG1)
+                utilities.assert_true(expected=v, test=getattr(obj, k), msg=self._MSG1)
 
     def test02__valid_json_file(self):
         """Test the logic for converting a JSON file's contents to an object.
@@ -154,7 +154,7 @@ class TestDict2Obj(TestBase):
         dict_t = self._translate_keys(dict_=self.dataset_01_valid_dict)
         for idx, (k, v) in enumerate(dict_t.items()):
             with self.subTest(i=idx):
-                utilities.assert_true(expected=v, test=obj.__getattribute__(k), msg=self._MSG1)
+                utilities.assert_true(expected=v, test=getattr(obj, k), msg=self._MSG1)
 
     def test03__nested_dict(self):
         """Test the logic for converting a nested ``dict`` to an object.
@@ -174,7 +174,7 @@ class TestDict2Obj(TestBase):
         dict_t = self._translate_keys(dict_=self.dataset_03_nested_dict)
         for idx, (k, v) in enumerate(dict_t.items()):
             with self.subTest(i=idx):
-                utilities.assert_true(expected=v, test=obj.__getattribute__(k), msg=self._MSG1)
+                utilities.assert_true(expected=v, test=getattr(obj, k), msg=self._MSG1)
 
     def test04__nested_json_file(self):
         """Test the logic for converting a nested JSON file's contents to an
@@ -195,7 +195,7 @@ class TestDict2Obj(TestBase):
         dict_t = self._translate_keys(dict_=self.dataset_03_nested_dict)
         for idx, (k, v) in enumerate(dict_t.items()):
             with self.subTest(i=idx):
-                utilities.assert_true(expected=v, test=obj.__getattribute__(k), msg=self._MSG1)
+                utilities.assert_true(expected=v, test=getattr(obj, k), msg=self._MSG1)
 
     def test05__json_no_filepath(self):
         """Test the library correctly detects a 'json' source with no filepath.

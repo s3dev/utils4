@@ -2,7 +2,7 @@
 
 Report
 ======
-64 statements analysed.
+67 statements analysed.
 
 Statistics by type
 ------------------
@@ -21,15 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-log (tests.test_reporterror)
-      \-reporterror (tests.test_reporterror)
-
-
+165 lines have been analyzed
 
 Raw metrics
 -----------
@@ -37,13 +29,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |74     |45.68 |74       |=          |
+|code      |77     |46.67 |77       |=          |
 +----------+-------+------+---------+-----------+
-|docstring |73     |45.06 |73       |=          |
+|docstring |73     |44.24 |73       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |3      |1.85  |3        |=          |
+|comment   |3      |1.82  |3        |=          |
 +----------+-------+------+---------+-----------+
-|empty     |12     |7.41  |12       |=          |
+|empty     |12     |7.27  |12       |=          |
 +----------+-------+------+---------+-----------+
 
 

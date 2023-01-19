@@ -91,7 +91,7 @@ class Utilities(TestBase):
                 values can be displayed.
 
         """
-        self.assertTrue((expected == test).all(), msg.format(expected, test))
+        self.assertTrue((expected == test).all(), msg.format(expected[:5], test[:5]))
 
     def assert_true_pyiter(self, expected: list, test: list, msg: str):
         """Generalised test runner for Python lists or iterable objects.

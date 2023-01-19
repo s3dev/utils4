@@ -3,39 +3,34 @@
 """
 :Purpose:   Testing module for the ``mathfunc`` module.
 
-            **Note:**
-            This test module tests the **installed** utils4.mathfunc module,
-            as this is a C implementation and therefore cannot be tested
-            directly. Preferably, there should be an *alpha release* of utils4
-            which can be installed locally where this module can be tested.
+:Note:
+            This test module tests the **installed** ``utils4.mathfunc``
+            module, as this is a C implementation and therefore cannot be
+            tested directly. Preferably, there should be an
+            *dev release* of utils4 which can be installed locally where
+            this module can be tested.
 
             Although some functions can be tested through ``ctypes`` the
             functions which return lists, such as ``esieve``, end in seg
-            faults. Therefore, the full test is carried out on the *installed*
-            library.
+            faults. Therefore, the full test is carried out on the
+            *installed* library.
 
-:Platform:  Linux/Windows | Python 3.6
+:Platform:  Linux/Windows | Python 3.6+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 
-Note:
-            Tests on this module are carried out against an *installed*
-            version of ``utils4``, as the C libraries must be compiled and
-            installed to be imported for test.
-
-:Comments:  Because this test module fiddles with (**destroys**) sys.path and
-            sys.modules, it's best to ensure this test runs **last**. Hence
-            the ``_x_`` in the test module name.
+:Comments:  Because this test module fiddles with (**destroys**)
+            ``sys.path`` and ``sys.modules``, it's best to ensure this
+            test runs **last**. Hence the ``_x_`` in the test module
+            name.
 
 """
 # Enable installed library testing.
 # pylint: disable=global-statement
 # pylint: disable=import-outside-toplevel
+# pylint: disable=invalid-name
 # pylint: disable=no-member
 # pylint: disable=no-name-in-module
-# --
-# pylint: disable=import-error
-# pylint: disable=invalid-name
 # pylint: disable=too-many-public-methods
 
 import ctypes
@@ -136,11 +131,11 @@ class TestMathfunc(TestBase):
         """Test the ``digits`` method.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test five inputs and compare the number of digits returned from
-              the func with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test five inputs and compare the number of digits returned
+              from the func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -190,8 +185,8 @@ class TestMathfunc(TestBase):
         """Test the ``esieve`` method.
 
         :Test:
-            - Test the prime index up to 100 is as expected, using only the
-              first 10 and last 10 indexes.
+            - Test the prime index up to 100 is as expected, using only
+              the first 10 and last 10 indexes.
 
         """
         exp_a = [0, 0, 1, 1, 0, 1, 0, 1, 0, 0]
@@ -207,8 +202,8 @@ class TestMathfunc(TestBase):
         """Test the ``esieve`` method.
 
         :Test:
-            - Test the primes up to 10K are as expected, using only the first
-              10 after the 1000th index and last 10.
+            - Test the primes up to 10K are as expected, using only the
+              first 10 after the 1000th index and last 10.
 
         """
         exp_a = [7927, 7933, 7937, 7949, 7951, 7963, 7993, 8009, 8011, 8017]
@@ -224,8 +219,8 @@ class TestMathfunc(TestBase):
         """Test the ``esieve`` method.
 
         :Test:
-            - Test the primes up to 10K are as expected, using only the first
-              10 after the 1000th index and last 10.
+            - Test the prime index up to 10K are as expected, using only
+              the first 10 after the 1000th index and last 10.
 
         """
         exp_a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
@@ -237,12 +232,48 @@ class TestMathfunc(TestBase):
             with self.subTest(msg=f'exp={e} test={t}'):
                 utilities.assert_true_pyiter(expected=e, test=t, msg=self._MSG1)
 
+    def test02__esieve_100m_true(self):
+        """Test the ``esieve`` method.
+
+        :Test:
+            - Test the primes up to 100M are as expected, using only the
+              first 10 after the 1,000,000th index and last 10.
+
+        """
+        exp_a = [15485867, 15485917, 15485927, 15485933, 15485941,
+                 15485959, 15485989, 15485993, 15486013, 15486041]
+        exp_b = [99999787, 99999821, 99999827, 99999839, 99999847,
+                 99999931, 99999941, 99999959, 99999971, 99999989]
+        test = mathfunc.esieve(int(1e8), True)
+        test_a = test[1_000_000:1_000_010]
+        test_b = test[-10:]
+        for e, t in zip([exp_a, exp_b], [test_a, test_b]):
+            with self.subTest(msg=f'exp={e} test={t}'):
+                utilities.assert_true_pyiter(expected=e, test=t, msg=self._MSG1)
+
+    def test02__esieve_100m_false(self):
+        """Test the ``esieve`` method.
+
+        :Test:
+            - Test the prime index up to 100M are as expected, using only
+              the first 10 after the 1,000,000th index and last 10.
+
+        """
+        exp_a = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+        exp_b = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        test = mathfunc.esieve(int(1e8), False)
+        test_a = test[1_000_000:1_000_010]
+        test_b = test[-10:]
+        for e, t in zip([exp_a, exp_b], [test_a, test_b]):
+            with self.subTest(msg=f'exp={e} test={t}'):
+                utilities.assert_true_pyiter(expected=e, test=t, msg=self._MSG1)
+
     def test06__fib(self):
         """Test the ``fib`` method.
 
         :Test:
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         inp = [1, 5, 7, 10, 25]
@@ -262,11 +293,11 @@ class TestMathfunc(TestBase):
         """Test the ``fib_index`` method.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 0, 'dtype': 'c_ulonglong'}
@@ -282,8 +313,8 @@ class TestMathfunc(TestBase):
         """Test the ``gcd`` method.
 
         :Test:
-            - Test five inputs and compare the GCD returned from the func with
-              the expected value.
+            - Test five inputs and compare the GCD returned from the func
+              with the expected value.
 
         """
         exp = [2, 10, 11, 13, 73]
@@ -297,8 +328,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_pandigital`` method.
 
         :Test:
-            - Test seven inputs and compare the result returned from the func
-              with the expected value.
+            - Test six inputs and compare the result returned from the
+              func with the expected value.
 
         """
         inp = [1, 3412, 562413, 635241, 7564231, 987123456]
@@ -311,8 +342,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_pandigital`` method.
 
         :Test:
-            - Test seven inputs and compare the result returned from the func
-              with the expected value.
+            - Test six inputs and compare the result returned from the
+              func with the expected value.
 
         """
         inp = [2, 124, 5412, 62413, 152437, 98745632]
@@ -325,8 +356,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_pentagonal`` method.
 
         :Test:
-            - Test seven inputs and compare the result returned from the func
-              with the expected value.
+            - Test six inputs and compare the result returned from the
+              func with the expected value.
 
         """
         inp = [1, 12, 22, 35, 210, 1335]
@@ -339,8 +370,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_pentagonal`` method.
 
         :Test:
-            - Test seven inputs and compare the result returned from the func
-              with the expected value.
+            - Test six inputs and compare the result returned from the
+              func with the expected value.
 
         """
         inp = [2, 15, 30, 45, 350, 2015]
@@ -353,11 +384,11 @@ class TestMathfunc(TestBase):
         """Test the ``is_prime`` method.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test seven inputs and compare the result returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test eight inputs and compare the result returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -372,11 +403,11 @@ class TestMathfunc(TestBase):
         """Test the ``is_prime`` method.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test seven inputs and compare the result returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test seven inputs and compare the result returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -391,8 +422,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_triangular`` method.
 
         :Test:
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         inp = [1, 21, 78, 136, 231, 325, 465, 630]
@@ -405,8 +436,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_triangular`` method.
 
         :Test:
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         inp = [2, 22, 73, 137, 250, 330, 470, 650]
@@ -419,8 +450,8 @@ class TestMathfunc(TestBase):
         """Test the ``lcm`` method.
 
         :Test:
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         exp = [4, 15, 65, 1400, 19416396]
@@ -430,17 +461,17 @@ class TestMathfunc(TestBase):
                 test = mathfunc.lcm(a, b)
                 utilities.assert_true(expected=e, test=test, msg=self._MSG1)
 
-    def test10__phi(self):
-        """Test the ``phi`` method.
+    def test10__phi_const(self):
+        """Test the ``PHI`` constant method.
 
         :Test:
-            - Test the ``phi`` method outputs the expected value, to 10 decimal
-              places.
+            - Test the ``PHI`` method outputs the expected value, to 10
+              decimal places.
 
         """
         exp = ( 1 + 5**0.5 ) / 2
         exp_s = f'{exp:.10f}'
-        test = mathfunc.phi()
+        test = mathfunc.PHI()
         test_s = f'{test:.10f}'
         utilities.assert_true(expected=exp_s, test=test_s, msg=self._MSG1)
 
@@ -448,11 +479,11 @@ class TestMathfunc(TestBase):
         """Test the ``reverse`` method for negative integers.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -468,11 +499,11 @@ class TestMathfunc(TestBase):
         """Test the ``reverse`` method for positive integers.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -488,11 +519,11 @@ class TestMathfunc(TestBase):
         """Test the ``rotate`` method for negative integers.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -508,11 +539,11 @@ class TestMathfunc(TestBase):
         """Test the ``rotate`` method for positive integers.
 
         :Test:
-            - The values in this test are filtered to remove test cases which
-              will be known to fail due to varying (platform-specific) data
-              type length.
-            - Test (n) inputs and compare the output returned from the func
-              with the expected value.
+            - The values in this test are filtered to remove test cases
+              which will be known to fail due to varying
+              (platform-specific) data type length.
+            - Test (n) inputs and compare the output returned from the
+              func with the expected value.
 
         """
         sig = {'signed': 1, 'dtype': 'c_long'}
@@ -528,8 +559,8 @@ class TestMathfunc(TestBase):
         """Test the ``prime_factors`` method.
 
         :Test:
-            - Test a series of input values and ensure the expected list of
-              primes factors is returned.
+            - Test a series of input values and ensure the expected list
+              of primes factors is returned.
 
         """
         inp = [7, 10, 13, 25, 123456, 98765431, 987654321]
@@ -563,8 +594,9 @@ class TestMathfunc(TestBase):
         """Test the ``int_nbits`` method.
 
         :Test:
-            - Using Python's built-in :func:`~int(n).bit_length` function,
-              verify the mathfunc is calculating the number of bits correctly.
+            - Using Python's built-in :func:`~int(n).bit_length`
+              function, verify the mathfunc is calculating the number of
+              bits correctly.
 
         """
         inp = [0, 1, 3, 7, 8, 15, 16, 255, 256, 123456789, 987654321]
@@ -578,8 +610,8 @@ class TestMathfunc(TestBase):
         """Test the ``is_perfect`` method.
 
         :Test:
-            - Verify the output for a list of numbers; four of which are the
-              only perfect numbers less than 1000000.
+            - Verify the output for a list of numbers; four of which are
+              the only perfect numbers less than 1000000.
 
         """
         inp = [(1, 0), (3, 0), (6, 1), (8, 0),              # 6
@@ -590,4 +622,59 @@ class TestMathfunc(TestBase):
         for i, e in inp:
             with self.subTest(msg=f'input={i} exp={e}'):
                 test = mathfunc.is_perfect(i)
+                utilities.assert_true(expected=e, test=test, msg=self._MSG1)
+
+    def test19__is_permutation_true(self):
+        """Test the ``is_permutation`` method.
+
+        :Test:
+            - Verify the provided integer pairs *are* a permutation of
+              each other.
+
+        """
+        inp = ((12, 21), (123, 231), (1234, 4231), (12345, 54231),
+               (123456, 645213), (1234567, 7564213),
+               (12345678, 84765213), (123456789, 125634879),
+               (1234567890, 1025364879))
+        for a, b in inp:
+            with self.subTest(msg=f'A={a} B={b}'):
+                test = mathfunc.is_permutation(a, b)
+                utilities.assert_true(expected=1, test=test, msg=self._MSG1)
+
+    def test19__is_permutation_false(self):
+        """Test the ``is_permutation`` method.
+
+        :Test:
+            - Verify the provided integer pairs are *not* a permutation
+              of each other.
+
+        """
+        inp = ((12, 210), (123, 23), (1234, 423), (12345, 5423),
+               (123456, 64521), (1234567, 756421),
+               (12345678, 8476521), (123456789, 12563487),
+               (1234567890, 102536487))
+        for a, b in inp:
+            with self.subTest(msg=f'A={a} B={b}'):
+                test = mathfunc.is_permutation(a, b)
+                utilities.assert_true(expected=0, test=test, msg=self._MSG1)
+
+    def test20__phi(self):
+        """Test the ``phi`` method.
+
+        :Test:
+            - Verify the ``phi`` function returns the expected number of
+              co-primes for each N.
+
+        """
+        inp = (9, 10, 123, 1234, 12345, 123456, 1234567, 12345678,
+               123456789, 1234567890,
+               98, 987, 9876, 98765, 987654, 9876543, 98765432,
+               987654321, 9876543210)
+        exp = (6, 4, 80, 616, 6576, 41088,
+               1224720, 4027392, 82260072, 329040288, 42, 552,
+               3288, 79008, 325632, 6554904, 48047904,
+               619703040, 2478812160)
+        for i, e in zip(inp, exp):
+            with self.subTest(msg=f'input={i}'):
+                test = mathfunc.phi(i)
                 utilities.assert_true(expected=e, test=test, msg=self._MSG1)

@@ -29,7 +29,7 @@ from _version import __version__
 # -- Project information -----------------------------------------------------
 
 project = 'utils4'
-copyright = f'2016-2022 | S3DEV | version {__version__}'
+copyright = f'2016-2023 | S3DEV | version {__version__}'
 author = 'S3DEV Development Team'
 version = __version__
 release = __version__
@@ -58,6 +58,7 @@ html_show_sourcelink = False
 html_show_sphinx = False
 html_title = f'{project} - v{__version__} Documentation'
 master_doc = 'index'
+mathjax_path = 'js/mathjax.js'
 numfig = True
 pygments_style = 'sphinx'
 source_suffix = '.rst'

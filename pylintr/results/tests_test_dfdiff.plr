@@ -21,16 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    numpy (tests.test_dfdiff)
-    pandas (tests.test_dfdiff)
-    utils4 
-      \-dfdiff (tests.test_dfdiff)
-
-
+193 lines have been analyzed
 
 Raw metrics
 -----------

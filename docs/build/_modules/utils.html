@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils &mdash; utils4 - v1.4.0 Documentation</title>
+  <title>utils &mdash; utils4 - v1.5.0.dev1 Documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -32,7 +32,7 @@
             <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.4.0
+                1.5.0.dev1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -159,16 +159,27 @@
 <span class="sd">            &gt;&gt;&gt; # Define a dirty testing dataset.</span>
 <span class="sd">            &gt;&gt;&gt; df = pd.DataFrame({&#39;Column #1&#39;: [&#39; Text field 1.&#39;,</span>
 <span class="sd">                                                 &#39;   Text field 2.&#39;,</span>
-<span class="sd">                                                 &#39; Text field 3.    &#39;],</span>
+<span class="sd">                                                 &#39; Text field 3.    &#39;,</span>
+<span class="sd">                                                 &#39;  Text field 4.  &#39;,</span>
+<span class="sd">                                                 &#39;  Text field 5. &#39;],</span>
 <span class="sd">                                   &#39;  COLUmn (2)&#39;: [1.0,</span>
 <span class="sd">                                                    2.0,</span>
-<span class="sd">                                                    3.0]})</span>
+<span class="sd">                                                    3.0,</span>
+<span class="sd">                                                    &#39;4&#39;,</span>
+<span class="sd">                                                    &#39;5.0&#39;],</span>
+<span class="sd">                                   &#39;COLUMN 3  &#39;: [1,</span>
+<span class="sd">                                                  2,</span>
+<span class="sd">                                                  3.0,</span>
+<span class="sd">                                                  4,</span>
+<span class="sd">                                                  5.0]})</span>
 <span class="sd">            &gt;&gt;&gt; utils.clean_dataframe(df)</span>
 <span class="sd">            &gt;&gt;&gt; df</span>
-<span class="sd">                    column_1  column_2</span>
-<span class="sd">            0  Text field 1.       1.0</span>
-<span class="sd">            1  Text field 2.       2.0</span>
-<span class="sd">            2  Text field 3.       3.0</span>
+<span class="sd">                    column_1 column_2  column_3</span>
+<span class="sd">            0  Text field 1.      1.0       1.0</span>
+<span class="sd">            1  Text field 2.      2.0       2.0</span>
+<span class="sd">            2  Text field 3.      3.0       3.0</span>
+<span class="sd">            3  Text field 4.        4       4.0</span>
+<span class="sd">            4  Text field 5.      5.0       5.0</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Define replacement/translation characters.</span>
@@ -180,7 +191,7 @@
     <span class="c1"># Strip whitespace from text values.</span>
     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
-            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="direxists"><a class="viewcode-back" href="../utils.html#utils.direxists">[docs]</a><span class="k">def</span> <span class="nf">direxists</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">create_path</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Test if a directory exists. If not, create it, if instructed.</span>
@@ -804,7 +815,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.4.0.</p>
+    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.5.0.dev1.</p>
   </div>
 
    

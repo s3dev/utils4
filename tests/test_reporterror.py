@@ -71,6 +71,7 @@ class TestReportError(TestBase):
             - Compare the output to the expected result to confirm they match.
 
         """
+        exp = ''
         buff = io.StringIO()
         with contextlib.redirect_stdout(buff):
             try:
@@ -90,10 +91,11 @@ class TestReportError(TestBase):
             - Compare the output to the expected result to confirm they match.
 
         """
+        exp = ''
         buff = io.StringIO()
         with contextlib.redirect_stdout(buff):
             try:
-                assert 1 == 0
+                assert False
             except Exception as err:
                 reporterror(error=err, logevent=False)
                 exp = self._build_error_message(error=err)
@@ -110,9 +112,10 @@ class TestReportError(TestBase):
             - Verify the log file contains the records as expected.
 
         """
+        exp = ''
         with contextlib.redirect_stdout(None):
             try:
-                assert 1 == 0
+                assert False
             except Exception as err:
                 reporterror(error=err, logevent=True, logfilepath=self._LOGPATH)
                 exp = self._build_log_entry(error=err)

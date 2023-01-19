@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-convert (tests.test_convert)
-
-
+396 lines have been analyzed
 
 Raw metrics
 -----------

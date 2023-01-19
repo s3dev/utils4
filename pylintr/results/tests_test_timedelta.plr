@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-timedelta (tests.test_timedelta)
-
-
+157 lines have been analyzed
 
 Raw metrics
 -----------

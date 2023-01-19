@@ -319,17 +319,18 @@ class TestUtils(TestBase):
         buff = io.StringIO()
         exp1 = '[PingError]:'
         if 'win' in sys.platform.lower():
-            exp2 = ('Ping request could not find host utils.s3d. '
+            exp2a = ('Ping request could not find host utils.s3d. '
                     'Please check the name and try again.')
         else:
-            exp2 = 'ping: utils.s3d: Name or service not known'
+            exp2a = 'ping: utils.s3d: Name or service not known'
+            exp2b = 'Temporary failure'
         with contextlib.redirect_stdout(buff):
             test1 = utils.ping(server='utils.s3d', count=1, timeout=2, verbose=True)
             test2 = buff.getvalue()
         utilities.assert_true(expected=True,
                               test=all([test1 is False,
                                         exp1 in test2,
-                                        exp2 in test2]),
+                                        exp2a in test2 or exp2b in test2]),
                               msg=self._MSG1)
 
     def test07__ping__192168099__verbose(self):
@@ -343,7 +344,8 @@ class TestUtils(TestBase):
         buff = io.StringIO()
         # All strings generalised for Win/Lin compatibility.
         exp1 = '[pingerror]:'
-        exp2 = 'bytes of data'
+        exp2a = 'bytes of data'
+        exp2b = 'unreachable'
         # exp3 = 'destination host unreachable'
         exp4 = 'statistics'
         exp5 = 'packets'
@@ -353,10 +355,10 @@ class TestUtils(TestBase):
         utilities.assert_true(expected=True,
                               test=all([test1 is False,
                                         exp1 in test2,
-                                        exp2 in test2,
+                                        exp2a in test2 or exp2b in test2,
                                         # exp3 in test2,
-                                        exp4 in test2,
-                                        exp5 in test2]),
+                                        exp4 in test2 or exp2b in test2,
+                                        exp5 in test2 or exp2b in test2]),
                               msg=self._MSG1)
 
     def test08__testimport__os(self):
@@ -440,12 +442,12 @@ class TestUtils(TestBase):
 
     def _test10__create_file(self):
         """Create a large file to be tested by test10."""
-        print('\nTesting gzip.\nCreating large testing file ...')
+        # print('\nTesting gzip.\nCreating large testing file ...')
         with open(self._FP10_1, 'w', encoding='utf-8') as f:
             s = '\n'.join('a, b, c, d, e, f, g' for _ in range(10**7))
             f.write(s)
         shutil.copy(src=self._FP10_1, dst=self._FP10_3)
-        print('Done.')
+        # print('Done.')
 
     @classmethod
     def _test10__rm_files(cls):

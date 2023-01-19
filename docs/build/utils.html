@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils - Collection of general utility-based functions &mdash; utils4 - v1.4.0 Documentation</title>
+  <title>utils - Collection of general utility-based functions &mdash; utils4 - v1.5.0.dev1 Documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -35,7 +35,7 @@
             <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.4.0
+                1.5.0.dev1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -54,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="filesys.html">filesys - Perform tests on files and the filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">filesys - General filesystem tests and utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="log.html">log - Providing easy logging to your project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
 <li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
@@ -182,16 +182,27 @@ trailing whitespace.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Define a dirty testing dataset.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Column #1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39; Text field 1.&#39;</span><span class="p">,</span>
 <span class="go">                                     &#39;   Text field 2.&#39;,</span>
-<span class="go">                                     &#39; Text field 3.    &#39;],</span>
+<span class="go">                                     &#39; Text field 3.    &#39;,</span>
+<span class="go">                                     &#39;  Text field 4.  &#39;,</span>
+<span class="go">                                     &#39;  Text field 5. &#39;],</span>
 <span class="go">                       &#39;  COLUmn (2)&#39;: [1.0,</span>
 <span class="go">                                        2.0,</span>
-<span class="go">                                        3.0]})</span>
+<span class="go">                                        3.0,</span>
+<span class="go">                                        &#39;4&#39;,</span>
+<span class="go">                                        &#39;5.0&#39;],</span>
+<span class="go">                       &#39;COLUMN 3  &#39;: [1,</span>
+<span class="go">                                      2,</span>
+<span class="go">                                      3.0,</span>
+<span class="go">                                      4,</span>
+<span class="go">                                      5.0]})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">clean_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
-<span class="go">        column_1  column_2</span>
-<span class="go">0  Text field 1.       1.0</span>
-<span class="go">1  Text field 2.       2.0</span>
-<span class="go">2  Text field 3.       3.0</span>
+<span class="go">        column_1 column_2  column_3</span>
+<span class="go">0  Text field 1.      1.0       1.0</span>
+<span class="go">1  Text field 2.      2.0       2.0</span>
+<span class="go">2  Text field 3.      3.0       3.0</span>
+<span class="go">3  Text field 4.        4       4.0</span>
+<span class="go">4  Text field 5.      5.0       5.0</span>
 </pre></div>
 </div>
 </dd>
@@ -790,7 +801,7 @@ returned, otherwise the original value is returned.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.4.0.</p>
+    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
   </div>
 
    

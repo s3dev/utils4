@@ -55,7 +55,7 @@ class TestPalette(TestBase):
         """
         for name in self._test_names:
             with self.subTest(msg=f'name={name}'):
-                test = palette.hexpalette.__getattribute__(name)
+                test = getattr(palette.hexpalette, name)
                 exp = self._hex.get(name)
                 utilities.assert_true_pyiter(expected=exp, test=test, msg=self._MSG1)
 
@@ -69,7 +69,7 @@ class TestPalette(TestBase):
         """
         for name in self._test_names:
             with self.subTest(msg=f'name={name}'):
-                test = palette.rgbpalette.__getattribute__(name)
+                test = getattr(palette.rgbpalette, name)
                 exp = self._rgb.get(name)
                 utilities.assert_true_pyiter(expected=exp, test=test, msg=self._MSG1)
 

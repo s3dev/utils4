@@ -17,7 +17,8 @@ const char _DOC_ESIEVE[] =
 { "Implementation of the Sieve of Eratosthenes.\n\n"
   "This method returns an indexed boolean array where 1 indicates the\n"
   "index of a prime number, and 0 indicates the index of a composite\n"
-  "number.\n\n"
+  "number. Alternatively, if the deindex parameter is True, the prime\n"
+  "numbers themselves are returned.\n\n"
   "Args:\n"
   "    n (int): Number to which the prime index is generated. This number\n"
   "        is *not* included in the results.\n"
@@ -84,6 +85,13 @@ const char _DOC_IS_PALINDROME_NUM[] =
   "Returns:\n"
   "    int: 1 if the number is palindromatic, otherwise 0."
 };
+const char _DOC_IS_PENTAGONAL[] = 
+{ "Test if a number is pentagonal.\n\n"
+  "Args:\n"
+  "    n (int): Number to be tested.\n\n"
+  "Returns:\n"
+  "    int: 1 if the number is pentagonal, otherwise 0."
+};
 const char _DOC_IS_PERFECT[] = 
 { "Test if a number is perfect.\n\n"
   "Note: The only perfect numbers less than 1000000 are:\n"
@@ -93,12 +101,13 @@ const char _DOC_IS_PERFECT[] =
   "Returns:\n"
   "    bool: True if the number is perfect, otherwise False."
 };
-const char _DOC_IS_PENTAGONAL[] = 
-{ "Test if a number is pentagonal.\n\n"
+const char _DOC_IS_PERMUTATION[] = 
+{ "Test if two positive integers are permutations of each other.\n\n"
   "Args:\n"
-  "    n (int): Number to be tested.\n\n"
+  "    a (int): Integer to be tested.\n"
+  "    b (int): Integer to be tested.\n\n"
   "Returns:\n"
-  "    int: 1 if the number is pentagonal, otherwise 0."
+  "    bool: True if the numbers are permutations, otherwise False."
 };
 const char _DOC_IS_PRIME[] = 
 { "Test if a number is prime.\n\n"
@@ -123,6 +132,16 @@ const char _DOC_LCM[] =
   "    int: The LCM of integers A and B."
 };
 const char _DOC_PHI[] = 
+{ "Calculate the result of the phi (or Euler's totient) function.\n\n"
+  "The phi function gives the count of positive integers less than N,\n"
+  "which are co-prime (or relatively prime) to N.\n\n"
+  "If N is prime, the result of the phi function is N-1.\n\n"
+  "Args:\n"
+  "    n (int): Integer for which phi is calculated.\n\n"
+  "Returns:\n"
+  "    int: The result of the phi function.\n"
+};
+const char _DOC_PHI_CONST[] = 
 { "Return the value of PHI.\n\n"
   "The Golden Ratio is calculated as:\n\n"
   "    (1 + sqrt(5)) / 2\n\n"
@@ -155,7 +174,8 @@ const char _DOC_SIZES[] =
   "Returns:\n"
   "    bool: 0 if successful, otherwise non-zero."
 };
-
+const char _DOC_VERSION[] =
+{ "Display the embedded mathfunc version.\n" };
 
 // Method definitions.
 static PyObject *mathfunc_digits(PyObject *self, PyObject *args) {
@@ -171,10 +191,16 @@ static PyObject *mathfunc_esieve(PyObject *self, PyObject *args) {
     if ( !PyArg_ParseTuple(args, "ib", &n, &deindex) ) {
         return NULL;
     }
-    int P[n];
-    int *ptr_P = P;
-    esieve(ptr_P, n);
     PyObject *list = PyList_New(0);
+    // malloc used as static array allocation runs out of
+    // stack memory with large allocations.
+    bool *ptr_P = (bool *)malloc(n * sizeof(bool));
+    bool *cptr_P = ptr_P;  // Copy of the pointer for free.
+    if ( ptr_P == NULL ) {
+        fprintf(stderr, "Array allocation failed.\n");
+        return list;
+    }
+    esieve(ptr_P, n);
     if ( deindex ) {
         // Return array of prime numbers.
         for ( int i = 0; i < n; ++i, ++ptr_P ) {
@@ -186,6 +212,7 @@ static PyObject *mathfunc_esieve(PyObject *self, PyObject *args) {
         for ( int i = 0 ; i < n; ++i, ++ptr_P )
             PyList_Append(list, PyLong_FromDouble(*ptr_P));
     }
+    free(cptr_P);
     return list;
 }
 
@@ -261,6 +288,13 @@ static PyObject *mathfunc_is_perfect(PyObject *self, PyObject *args) {
     return Py_BuildValue("i", is_perfect(i));
 }
 
+static PyObject *mathfunc_is_permutation(PyObject *self, PyObject *args) {
+    int a, b;
+    if ( !PyArg_ParseTuple(args, "ii", &a, &b) )
+        return NULL;
+    return Py_BuildValue("i", is_permutation(a, b));
+}
+
 static PyObject *mathfunc_is_prime(PyObject *self, PyObject *args) {
     unsigned long i;
     if ( !PyArg_ParseTuple(args, "k", &i) )
@@ -281,11 +315,15 @@ static PyObject *mathfunc_lcm(PyObject *self, PyObject *args) {
         return NULL;
     return Py_BuildValue("l", lcm(a, b));
 }
-
 static PyObject *mathfunc_phi(PyObject *self, PyObject *args) {
-    return Py_BuildValue("d", phi());
+    unsigned long n;
+    if ( !PyArg_ParseTuple(args, "k", &n) )
+        return NULL;
+    return Py_BuildValue("k", phi(n));
 }
-
+static PyObject *mathfunc_phi_const(PyObject *self, PyObject *args) {
+    return Py_BuildValue("d", PHI());
+}
 static PyObject *mathfunc_primefactors(PyObject *self, PyObject *args) {
     unsigned long n;
     if ( !PyArg_ParseTuple(args, "k", &n) ) {
@@ -323,7 +361,13 @@ static PyObject *mathfunc_sizes(PyObject *self, PyObject *args) {
     return Py_None;
 }
 
+static PyObject *mathfunc_version(PyObject *self, PyObject *args) {
+    const char *version = VERSION;
+    return Py_BuildValue("s", version);
+}
+
 static PyMethodDef mathfunc_methods[] = {
+    {"PHI", mathfunc_phi_const, METH_NOARGS, _DOC_PHI_CONST},
     {"digits", mathfunc_digits, METH_VARARGS, _DOC_DIGITS},
     {"esieve", mathfunc_esieve, METH_VARARGS, _DOC_ESIEVE},
     {"fib", mathfunc_fib, METH_VARARGS, _DOC_FIB},
@@ -335,14 +379,16 @@ static PyMethodDef mathfunc_methods[] = {
     {"is_pandigital", mathfunc_is_pandigital, METH_VARARGS, _DOC_IS_PANDIGITAL},
     {"is_pentagonal", mathfunc_is_pentagonal, METH_VARARGS, _DOC_IS_PENTAGONAL},
     {"is_perfect", mathfunc_is_perfect, METH_VARARGS, _DOC_IS_PERFECT},
+    {"is_permutation", mathfunc_is_permutation, METH_VARARGS, _DOC_IS_PERMUTATION},
     {"is_prime", mathfunc_is_prime, METH_VARARGS, _DOC_IS_PRIME},
     {"is_triangular", mathfunc_is_triangular, METH_VARARGS, _DOC_IS_TRIANGULAR},
     {"lcm", mathfunc_lcm, METH_VARARGS, _DOC_LCM},
-    {"phi", mathfunc_phi, METH_NOARGS, _DOC_PHI},
+    {"phi", mathfunc_phi, METH_VARARGS, _DOC_PHI},
     {"primefactors", mathfunc_primefactors, METH_VARARGS, _DOC_PRIMEFACTORS},
     {"reverse", mathfunc_reverse, METH_VARARGS, _DOC_REVERSE},
     {"rotate", mathfunc_rotate, METH_VARARGS, _DOC_ROTATE},
     {"sizes", mathfunc_sizes, METH_NOARGS, _DOC_SIZES},
+    {"version", mathfunc_version, METH_NOARGS, _DOC_VERSION},
     {NULL, NULL, 0, NULL}
 };
 

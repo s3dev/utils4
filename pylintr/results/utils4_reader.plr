@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    pandas (utils4.reader)
-    xlrd (utils4.reader)
-
-
+152 lines have been analyzed
 
 Raw metrics
 -----------

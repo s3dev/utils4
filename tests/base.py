@@ -50,7 +50,7 @@ class TestBase(unittest.TestCase):
         _DIR_TMP = 'c:/temp'
     else: _DIR_TMP = None
 
-    _DIR_RESRC = './resources'
+    _DIR_RESRC = os.path.realpath('./resources')
 
     @staticmethod
     def disable_terminal_output():

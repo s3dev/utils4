@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    numpy (utilities)
-    pandas (utilities)
-
-
+116 lines have been analyzed
 
 Raw metrics
 -----------

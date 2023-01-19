@@ -21,15 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    numpy (tests.test_cmaps)
-    utils4 
-      \-cmaps (tests.test_cmaps)
-
-
+148 lines have been analyzed
 
 Raw metrics
 -----------

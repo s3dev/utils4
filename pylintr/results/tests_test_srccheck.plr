@@ -21,14 +21,7 @@ Statistics by type
 
 
 
-External dependencies
----------------------
-::
-
-    utils4 
-      \-srccheck (tests.test_srccheck)
-
-
+195 lines have been analyzed
 
 Raw metrics
 -----------

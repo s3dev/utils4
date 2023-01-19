@@ -80,7 +80,7 @@ class TestConfig(TestBase):
         # Test each expected object key against the object read by the loadconfig method.
         for k in keys:
             utilities.assert_true_pyiter(expected=exp[k],
-                                         test=test.__getattribute__(k),
+                                         test=getattr(test, k),
                                          msg=self._MSG1)
 
     def test03__loadconfig__file_not_exist(self):
