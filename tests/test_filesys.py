@@ -11,6 +11,7 @@
 
 """
 # pylint: disable=invalid-name
+# pylint: disable=protected-access
 # pylint: disable=ungrouped-imports
 # pylint: disable=unspecified-encoding
 
@@ -237,6 +238,7 @@ class TestFileSys(TestBase):
             str: Full path to the created directory.
 
         """
+        # pylint: disable=multiple-statements
         path = os.path.join(self._DIR_TMP, os.urandom(8).hex())
         self._DIR = path
         if not os.path.exists(path):

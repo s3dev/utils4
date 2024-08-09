@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils - Collection of general utility-based functions &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>utils - Collection of general utility-based functions &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -68,7 +75,21 @@
 <li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">utils - Collection of general utility-based functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils - Collection of general utility-based functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utils.clean_dataframe"><code class="docutils literal notranslate"><span class="pre">clean_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.direxists"><code class="docutils literal notranslate"><span class="pre">direxists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.fileexists"><code class="docutils literal notranslate"><span class="pre">fileexists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.format_exif_date"><code class="docutils literal notranslate"><span class="pre">format_exif_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.get_os"><code class="docutils literal notranslate"><span class="pre">get_os()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.getdrivername"><code class="docutils literal notranslate"><span class="pre">getdrivername()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.getsitepackages"><code class="docutils literal notranslate"><span class="pre">getsitepackages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.gzip_compress"><code class="docutils literal notranslate"><span class="pre">gzip_compress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.gzip_decompress"><code class="docutils literal notranslate"><span class="pre">gzip_decompress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.ping"><code class="docutils literal notranslate"><span class="pre">ping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.testimport"><code class="docutils literal notranslate"><span class="pre">testimport()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.unidecode"><code class="docutils literal notranslate"><span class="pre">unidecode()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="validation.html">validation - A small collection of validation rules</a></li>
 </ul>
 </li>
@@ -89,9 +110,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>utils - Collection of general utility-based functions</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">utils - Collection of general utility-based functions</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,9 +122,9 @@
            <div itemprop="articleBody">
              
   <section id="module-utils">
-<span id="utils-collection-of-general-utility-based-functions"></span><h1>utils - Collection of general utility-based functions<a class="headerlink" href="#module-utils" title="Permalink to this headline"></a></h1>
+<span id="utils-collection-of-general-utility-based-functions"></span><h1>utils - Collection of general utility-based functions<a class="headerlink" href="#module-utils" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Central library for general utility-based methods.</p>
 <p>This <code class="docutils literal notranslate"><span class="pre">utils</span></code> module was the starting place of the original
 <code class="docutils literal notranslate"><span class="pre">utils</span></code> library. Therefore, it’s historically been a
@@ -117,13 +138,13 @@ been removed in an effort to clean the module’s code base.</p>
 <p>If you are looking for a function which used to be here, please
 refer to the last <code class="docutils literal notranslate"><span class="pre">utils3</span></code> release, which is v0.15.1.</p>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
 </dl>
@@ -134,19 +155,19 @@ the function which uses them is called.</p>
 <p>This helps to reduce the packages required by <code class="docutils literal notranslate"><span class="pre">utils4</span></code>.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>For usage examples, please refer to the docstring for each method.</p>
 </dd>
 </dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.clean_dataframe">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">clean_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#clean_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.clean_dataframe" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">clean_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#clean_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.clean_dataframe" title="Link to this definition"></a></dt>
 <dd><p>Clean a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> data structure.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame to be cleaned.</p>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame is cleaned <em>in-place</em>. An object is <em>not</em> returned by
 this function.</p>
 <p>The following cleaning tasks are performed:</p>
@@ -174,7 +195,7 @@ trailing whitespace.</p></li>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Example for cleaning a DataFrame:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># For demonstration only.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
@@ -211,17 +232,17 @@ trailing whitespace.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.direxists">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">direxists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#direxists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.direxists" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">direxists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#direxists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.direxists" title="Link to this definition"></a></dt>
 <dd><p>Test if a directory exists. If not, create it, if instructed.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – The directory path to be tested.</p></li>
 <li><p><strong>create_path</strong> (<em>bool</em><em>, </em><em>optional</em>) – Create the path if it doesn’t exist.
 Defaults to False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>Function designed to test if a directory path exists. If the
 path does <em>not</em> exist, the path can be created; as determined by
 the <code class="docutils literal notranslate"><span class="pre">create_path</span></code> parameter.</p>
@@ -233,7 +254,7 @@ called to test if the path exists, and will return <code class="docutils literal
 <p>If a filename is passed with the path, the filename is automatically
 stripped from the path before the test begins.</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Test if a directory exists, and create it if it does not exist:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -242,10 +263,10 @@ stripped from the path before the test begins.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the directory exists (or was created), otherwise False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -253,10 +274,10 @@ stripped from the path before the test begins.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.fileexists">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">fileexists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ignore'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#fileexists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.fileexists" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">fileexists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ignore'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#fileexists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.fileexists" title="Link to this definition"></a></dt>
 <dd><p>Test if a file exists. If not, notify the user or raise an error.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filepath</strong> (<em>str</em>) – Full file path to test.</p></li>
 <li><p><strong>error</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Action to be taken if the file does not exist.
@@ -273,14 +294,14 @@ all subsequent processing.</p></li>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>Function designed check if a file exists.  A boolean value is
 returned to the calling program.</p>
 <p>This function extends the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.isfile()</span></code> function
 in that the user can be notified if the path does not exist, or an
 error can be raised.</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Test if a file exists, using <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, the default action:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -315,14 +336,14 @@ error can be raised.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>FileNotFoundError</strong> – If the filepath does not exist and the <code class="docutils literal notranslate"><span class="pre">error</span></code>
     parameter is <code class="docutils literal notranslate"><span class="pre">'raise'</span></code>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if the file exists, otherwise False.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
@@ -330,7 +351,7 @@ error can be raised.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.format_exif_date">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">format_exif_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datestring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%Y:%m:%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%Y%m%d%H%M%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_datetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/utils.html#format_exif_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.format_exif_date" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">format_exif_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datestring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%Y:%m:%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%Y%m%d%H%M%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_datetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#format_exif_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.format_exif_date" title="Link to this definition"></a></dt>
 <dd><p>Format an exif timestamp.</p>
 <blockquote>
 <div><p>This function is useful for storing an exif date as a datetime string.
@@ -338,7 +359,7 @@ For example, extracting the exif data from an image to be stored into
 a database.</p>
 </div></blockquote>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>datestring</strong> (<em>str</em>) – The datetime string to be formatted.
 A typical exif date format is: yyyy:mm:dd hh:mi:ss</p></li>
@@ -350,13 +371,13 @@ if returned as a string. Defaults to ‘%Y%m%d%H%M%S’.</p></li>
 than a formatted string.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>Function designed to convert the exif date/timestamp from
 ‘2010:01:31 12:31:18’ (or a caller specified format) to a format
 specified by the caller.</p>
 <p>The default input mask is the standard exif capture datetime format.</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Convert the exif datetime to the default output string format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -375,12 +396,12 @@ specified by the caller.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A formatted datetime string, if the
 <code class="docutils literal notranslate"><span class="pre">return_datetime</span></code> parameter is <code class="docutils literal notranslate"><span class="pre">False</span></code>, otherwise a
 <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Union[str, datetime.datetime]</p>
 </dd>
 </dl>
@@ -388,12 +409,12 @@ specified by the caller.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.get_os">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">get_os</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#get_os"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.get_os" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">get_os</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#get_os"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.get_os" title="Link to this definition"></a></dt>
 <dd><p>Get the platform’s OS.</p>
 <p>This method is a very thin wrapper around the <code class="xref py py-func docutils literal notranslate"><span class="pre">platform.system()</span></code>
 function.</p>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">myos</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_os</span><span class="p">()</span>
@@ -402,10 +423,10 @@ function.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A string of the platform’s operating system, in lower case.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -413,10 +434,10 @@ function.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.getdrivername">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">getdrivername</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_all</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/utils.html#getdrivername"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.getdrivername" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">getdrivername</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_all</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/utils.html#getdrivername"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.getdrivername" title="Link to this definition"></a></dt>
 <dd><p>Return a list of ODBC driver names, matching the regex pattern.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>driver</strong> (<em>str</em>) – A <strong>regex pattern</strong> for the ODBC driver you’re searching.</p></li>
 <li><p><strong>return_all</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, <em>all</em> drivers matching the
@@ -424,7 +445,7 @@ pattern are returned. Defaults to False, which returns only the
 first driver name.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This is a helper function designed to get and return the names
 of ODBC drivers.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">driver</span></code> parameter should be formatted as a regex
@@ -437,19 +458,19 @@ the <a class="reference internal" href="#utils.testimport" title="utils.testimpo
 is imported. If the <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> library is not installed, the user is
 notified.</p>
 </dd>
-<dt class="field-odd">Dependencies</dt>
+<dt class="field-odd">Dependencies<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> library</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Get the driver name for the SQL Server ODBC driver:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">getdrivername</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="s1">&#39;SQL Server.*&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Troubleshooting</dt>
+<dt class="field-odd">Troubleshooting<span class="colon">:</span></dt>
 <dd class="field-odd"><ul>
 <li><p>On Unix-like systems, the following error message:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">libodbc</span><span class="o">.</span><span class="n">so</span><span class="mf">.2</span><span class="p">:</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="n">shared</span> <span class="nb">object</span> <span class="n">file</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
@@ -462,10 +483,10 @@ notified.</p>
 </li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of ODBC drivers, if any were found.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list</p>
 </dd>
 </dl>
@@ -473,10 +494,10 @@ notified.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.getsitepackages">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">getsitepackages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#getsitepackages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.getsitepackages" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">getsitepackages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#getsitepackages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.getsitepackages" title="Link to this definition"></a></dt>
 <dd><p>Return the Python installation’s site packages directory.</p>
 <dl class="field-list">
-<dt class="field-odd">Design</dt>
+<dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The function first uses the local <a class="reference internal" href="#utils.get_os" title="utils.get_os"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_os()</span></code></a>
 function to get the system’s OS. The OS is then tested and the
 site-packages location is returned using the OS-appropriate element
@@ -485,7 +506,7 @@ function.</p>
 <p>If the OS is not accounted for, or fails the test, a value of
 ‘unknown’ is returned.</p>
 </dd>
-<dt class="field-even">Rationale</dt>
+<dt class="field-even">Rationale<span class="colon">:</span></dt>
 <dd class="field-even"><p>The need for this function comes out of the observation there are many
 (many!) different ways on stackoverflow (and other sites) to get the
 location to which <code class="docutils literal notranslate"><span class="pre">pip</span></code> will install a package, and many of the
@@ -493,7 +514,7 @@ answers contradict each other. Also, the <code class="xref py py-func docutils l
 function returns a list of options (in all tested cases); and the
 Linux / Windows paths are in different locations in this list.</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Get the location of the <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 </pre></div>
@@ -503,10 +524,10 @@ Linux / Windows paths are in different locations in this list.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Full path to the <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> directory.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -514,10 +535,10 @@ Linux / Windows paths are in different locations in this list.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.gzip_compress">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">gzip_compress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#gzip_compress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.gzip_compress" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">gzip_compress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#gzip_compress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.gzip_compress" title="Link to this definition"></a></dt>
 <dd><p>Compress a file using <code class="docutils literal notranslate"><span class="pre">gzip</span></code>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>in_path</strong> (<em>str</em>) – Full path to the file to be compressed. If the file
 does not exist, a <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> is raised.</p></li>
@@ -529,7 +550,7 @@ parameter.</p></li>
 compression. Defaults to 10MiB.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Compress a text file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -545,10 +566,10 @@ compression. Defaults to 10MiB.</p></li>
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Full path to the output file.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
 </dd>
 </dl>
@@ -556,10 +577,10 @@ compression. Defaults to 10MiB.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.gzip_decompress">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">gzip_decompress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#gzip_decompress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.gzip_decompress" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">gzip_decompress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#gzip_decompress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.gzip_decompress" title="Link to this definition"></a></dt>
 <dd><p>Decompress a <code class="docutils literal notranslate"><span class="pre">.gz</span></code> file using <code class="docutils literal notranslate"><span class="pre">gzip</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – Full path to the file to be decompressed. If the file
 does not exist, a <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> is raised.</p></li>
@@ -590,7 +611,7 @@ decompressed file.</p>
 (unzipped) and decompressed file can be compared.</p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Decompress a text file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -599,10 +620,10 @@ decompressed file.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the decompression was successful, otherwise False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -610,10 +631,10 @@ decompressed file.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.ping">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.ping" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.ping" title="Link to this definition"></a></dt>
 <dd><p>Ping an IP address, server or web address.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>server</strong> (<em>str</em>) – IP address, server name or web address.</p></li>
 <li><p><strong>count</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of ping attempts. Defaults to 1.</p></li>
@@ -623,7 +644,7 @@ Defaults to 5.</p></li>
 the returned status code is non-zero. Defaults to False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>Using the platform’s native <code class="docutils literal notranslate"><span class="pre">ping</span></code> command (via a <code class="docutils literal notranslate"><span class="pre">subprocess</span></code>
 call) the host is pinged, and a boolean value is returned to the
 caller to indicate if the ping was successful.</p>
@@ -637,7 +658,7 @@ caller to indicate if the ping was successful.</p>
 <p>If the server name is preceeded by <code class="docutils literal notranslate"><span class="pre">\\</span></code> or <code class="docutils literal notranslate"><span class="pre">//</span></code>, these are
 stripped out using the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.basename()</span></code> function.</p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ping the local PC at 127.0.0.1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -672,10 +693,10 @@ stripped out using the built-in <code class="xref py py-func docutils literal no
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the ping was successful, otherwise False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -683,27 +704,27 @@ stripped out using the built-in <code class="xref py py-func docutils literal no
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.testimport">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">testimport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#testimport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.testimport" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">testimport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#testimport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.testimport" title="Link to this definition"></a></dt>
 <dd><p>Test if a Python library is installed.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>module_name</strong> (<em>str</em>) – Exact name of the module to be found.</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Notify if the library is not installed.
 Defaults to True.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This is a small helper function designed to test if a library is
 installed before trying to import it.</p>
 <p>If the library is not intalled the user is notified, if the <code class="docutils literal notranslate"><span class="pre">verbose</span></code>
 argument is True.</p>
 </dd>
-<dt class="field-odd">Internal Use</dt>
+<dt class="field-odd">Internal Use<span class="colon">:</span></dt>
 <dd class="field-odd"><p>For example, the <a class="reference internal" href="#utils.getdrivername" title="utils.getdrivername"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getdrivername()</span></code></a> function uses this
 function before attempting to import the <code class="docutils literal notranslate"><span class="pre">pyodbc</span></code> library.</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Execute a path only if <code class="docutils literal notranslate"><span class="pre">mymodule</span></code> is installed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -715,10 +736,10 @@ function before attempting to import the <code class="docutils literal notransla
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if the library is installed, otherwise False.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
@@ -726,17 +747,17 @@ function before attempting to import the <code class="docutils literal notransla
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.unidecode">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">unidecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#unidecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.unidecode" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">unidecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#unidecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.unidecode" title="Link to this definition"></a></dt>
 <dd><p>Attempt to convert a Unicode string object into a 7-bit ASCII string.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>string</strong> (<em>str</em>) – The string to be decoded.</p></li>
 <li><p><strong>**kwargs</strong> (<em>dict</em>) – Keyword arguments passed directly into the underlying
 <code class="xref py py-func docutils literal notranslate"><span class="pre">unidecode.unidecode()</span></code> function.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This function is a light wrapper around the <code class="xref py py-func docutils literal notranslate"><span class="pre">unidecode.unidecode()</span></code>
 function.</p>
 <p><strong>Per the</strong> <code class="docutils literal notranslate"><span class="pre">unicode</span></code> <strong>docstring:</strong></p>
@@ -754,12 +775,12 @@ characters, but slightly slower than
 <code class="xref py py-func docutils literal notranslate"><span class="pre">unidecode.unicode_expect_nonascii()</span></code> if non-ASCII characters are
 present.”</p>
 </dd>
-<dt class="field-odd">Dependencies</dt>
+<dt class="field-odd">Dependencies<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">unidecode</span></code> library</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Convert a Polish address into pure ASCII:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
@@ -777,12 +798,12 @@ present.”</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If the <code class="docutils literal notranslate"><span class="pre">unidecode</span></code> library is installed and the passed
 <code class="docutils literal notranslate"><span class="pre">string</span></code> value is a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type, the decoded string is
 returned, otherwise the original value is returned.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
 </dd>
 </dl>
@@ -801,7 +822,7 @@ returned, otherwise the original value is returned.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

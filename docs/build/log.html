@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>log - Providing easy logging to your project &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>log - Providing easy logging to your project &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -55,7 +62,15 @@
 <li class="toctree-l2"><a class="reference internal" href="dfdiff.html">dfdiff - A pandas.DataFrame differencing tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="filesys.html">filesys - General filesystem tests and utilities</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">log - Providing easy logging to your project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">log - Providing easy logging to your project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#log.Log"><code class="docutils literal notranslate"><span class="pre">Log</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log.Log.__init__"><code class="docutils literal notranslate"><span class="pre">Log.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log.Log.write"><code class="docutils literal notranslate"><span class="pre">Log.write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log.Log.write_blank_line"><code class="docutils literal notranslate"><span class="pre">Log.write_blank_line()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="palette.html">palette - Quick access to named CSS4 colours</a></li>
 <li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
@@ -89,9 +104,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>log - Providing easy logging to your project</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">log - Providing easy logging to your project</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,9 +116,9 @@
            <div itemprop="articleBody">
              
   <section id="module-log">
-<span id="log-providing-easy-logging-to-your-project"></span><h1>log - Providing easy logging to your project<a class="headerlink" href="#module-log" title="Permalink to this headline"></a></h1>
+<span id="log-providing-easy-logging-to-your-project"></span><h1>log - Providing easy logging to your project<a class="headerlink" href="#module-log" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This is a small class module designed as a central log file
 creator.</p>
 <p>The calling program is responsible for passing the proper
@@ -118,19 +133,19 @@ already exists, the header will not be re-created. However,
 if the log file does not exist, it will be created with a
 header, using the value of the <code class="docutils literal notranslate"><span class="pre">headertext</span></code> parameter.</p>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>n/a</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class in your project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
 
@@ -145,7 +160,7 @@ header, using the value of the <code class="docutils literal notranslate"><span 
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="log.Log">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">log.</span></span><span class="sig-name descname"><span class="pre">Log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printheader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headertext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">log.</span></span><span class="sig-name descname"><span class="pre">Log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printheader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headertext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log" title="Link to this definition"></a></dt>
 <dd><p>This is a small and simple log file creator/writer class.</p>
 <p>The calling program is responsible for passing the proper arguments
 to create the log file header. For example:</p>
@@ -158,7 +173,7 @@ required before writing to the log file. These parameters can be passed to
 the class on instantiation, and will be ignored if the log file already
 exists.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filepath</strong> (<em>str</em>) – Full path to the log file.</p></li>
 <li><p><strong>autofill</strong> (<em>bool</em><em>, </em><em>optional</em>) – Automatically populate <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code>,
@@ -178,7 +193,7 @@ separator is used when writing the autofill values.
 Defaults to ‘,’.</p></li>
 </ul>
 </dd>
-<dt class="field-even">File Validation</dt>
+<dt class="field-even">File Validation<span class="colon">:</span></dt>
 <dd class="field-even"><p>On class instantiation, tests are performed to ensure the log
 file is being populated in a logical way.</p>
 <blockquote>
@@ -192,7 +207,7 @@ exists, the header will not be written.</p></li>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>To use the <a class="reference internal" href="#log.Log" title="log.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a> class in your project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
 
@@ -208,16 +223,16 @@ exists, the header will not be written.</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="log.Log.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printheader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headertext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printheader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headertext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.__init__" title="Link to this definition"></a></dt>
 <dd><p>Log class initialiser.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="log.Log.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.write" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.write" title="Link to this definition"></a></dt>
 <dd><p>Write text to the log file defined at instantiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Delimited text string to be written to the log.</p>
 </dd>
 </dl>
@@ -228,14 +243,14 @@ values <strong>will be populated automatically</strong>; these do <em>not</em>
 need to be passed into the <code class="docutils literal notranslate"><span class="pre">text</span></code> argument.</p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Design</dt>
+<dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If the <code class="docutils literal notranslate"><span class="pre">autofill</span></code> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the current
 datetime, host and username values are written (in that
 order), ahead of the text string provided to the <code class="docutils literal notranslate"><span class="pre">text</span></code>
 argument. The <code class="docutils literal notranslate"><span class="pre">sep</span></code> parameter (defined at instantiation),
 is used to separate these auto-populated fields.</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>To write to the log file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
 
@@ -249,7 +264,7 @@ is used to separate these auto-populated fields.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="log.Log.write_blank_line">
-<span class="sig-name descname"><span class="pre">write_blank_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.write_blank_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.write_blank_line" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">write_blank_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/log.html#Log.write_blank_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#log.Log.write_blank_line" title="Link to this definition"></a></dt>
 <dd><p>Write a blank line to the log file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -258,7 +273,7 @@ true blank line, created by writing the system’s native line
 separator character(s)to the log.</p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>To write a blank line to the log file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.log</span> <span class="kn">import</span> <span class="n">Log</span>
 
@@ -285,7 +300,7 @@ separator character(s)to the log.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

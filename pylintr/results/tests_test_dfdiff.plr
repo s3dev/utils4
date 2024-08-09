@@ -21,7 +21,18 @@ Statistics by type
 
 
 
-193 lines have been analyzed
+External dependencies
+---------------------
+::
+
+    numpy (tests.test_dfdiff)
+    pandas (tests.test_dfdiff)
+    utils4 
+      \-dfdiff (tests.test_dfdiff)
+
+
+
+194 lines have been analyzed
 
 Raw metrics
 -----------
@@ -29,13 +40,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |67     |34.72 |67       |=          |
+|code      |67     |34.54 |67       |=          |
 +----------+-------+------+---------+-----------+
-|docstring |105    |54.40 |105      |=          |
+|docstring |105    |54.12 |105      |=          |
 +----------+-------+------+---------+-----------+
-|comment   |6      |3.11  |6        |=          |
+|comment   |7      |3.61  |7        |=          |
 +----------+-------+------+---------+-----------+
-|empty     |15     |7.77  |15       |=          |
+|empty     |15     |7.73  |15       |=          |
 +----------+-------+------+---------+-----------+
 
 

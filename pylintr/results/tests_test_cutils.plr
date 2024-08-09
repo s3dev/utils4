@@ -21,6 +21,15 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    utils4 
+      \-cutils (tests.test_cutils)
+
+
+
 83 lines have been analyzed
 
 Raw metrics

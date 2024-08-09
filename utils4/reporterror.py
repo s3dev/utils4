@@ -15,6 +15,7 @@
             docstring.
 
 """
+# pylint: disable=multiple-statements
 
 import sys
 import traceback

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>registry - A simple interface to the Windows registry &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>registry - A simple interface to the Windows registry &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,7 +67,28 @@
 <li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">registry - A simple interface to the Windows registry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">registry - A simple interface to the Windows registry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#registry.Key"><code class="docutils literal notranslate"><span class="pre">Key</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Key.__init__"><code class="docutils literal notranslate"><span class="pre">Key.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Key.get_value"><code class="docutils literal notranslate"><span class="pre">Key.get_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Key.set_data"><code class="docutils literal notranslate"><span class="pre">Key.set_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#registry.Registry"><code class="docutils literal notranslate"><span class="pre">Registry</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Registry.__init__"><code class="docutils literal notranslate"><span class="pre">Registry.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Registry._open_key"><code class="docutils literal notranslate"><span class="pre">Registry._open_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Registry.create_key"><code class="docutils literal notranslate"><span class="pre">Registry.create_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Registry.delete_key"><code class="docutils literal notranslate"><span class="pre">Registry.delete_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Registry.get_value"><code class="docutils literal notranslate"><span class="pre">Registry.get_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Registry.set_data"><code class="docutils literal notranslate"><span class="pre">Registry.set_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#registry.Value"><code class="docutils literal notranslate"><span class="pre">Value</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registry.Value.__init__"><code class="docutils literal notranslate"><span class="pre">Value.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="srccheck.html">srccheck - Checksum functionality for source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stats.html">stats - Statistics methods without the overhead</a></li>
@@ -89,9 +117,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>registry - A simple interface to the Windows registry</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">registry - A simple interface to the Windows registry</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,9 +129,9 @@
            <div itemprop="articleBody">
              
   <section id="module-registry">
-<span id="registry-a-simple-interface-to-the-windows-registry"></span><h1>registry - A simple interface to the Windows registry<a class="headerlink" href="#module-registry" title="Permalink to this headline"></a></h1>
+<span id="registry-a-simple-interface-to-the-windows-registry"></span><h1>registry - A simple interface to the Windows registry<a class="headerlink" href="#module-registry" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This module provides a simple interface to the Windows
 registry.  It contains a <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> class that can
 be used to interact with the registry; and is supported by
@@ -121,28 +149,28 @@ HKEY.</p>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>M Critchard</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>For a use example, refer to the <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> docstring.</p>
 </dd>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="registry.Key">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">registry.</span></span><span class="sig-name descname"><span class="pre">Key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">registry.</span></span><span class="sig-name descname"><span class="pre">Key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key" title="Link to this definition"></a></dt>
 <dd><p>This class encapsulates the Windows registry keys.</p>
 <p>It provides methods that can be used to interact with the values
 of the key.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Key.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key.__init__" title="Link to this definition"></a></dt>
 <dd><p>Initialise a private self._key attribute.</p>
 <p>This attribute is used throughout the class to provide a set
 of key specific functions.</p>
@@ -150,13 +178,13 @@ of key specific functions.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Key.get_value">
-<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key.get_value" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key.get_value" title="Link to this definition"></a></dt>
 <dd><p>Get the key value specified by name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>If the value exists, a value object is returned, otherwise
 <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 </dd>
@@ -165,10 +193,10 @@ of key specific functions.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Key.set_data">
-<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key.set_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key.set_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Key.set_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Key.set_data" title="Link to this definition"></a></dt>
 <dd><p>Set the data of the key value specified by name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p></li>
 <li><p><strong>data</strong> (<em>str</em>) – Data to store into the key.</p></li>
@@ -185,12 +213,12 @@ of key specific functions.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="registry.Registry">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">registry.</span></span><span class="sig-name descname"><span class="pre">Registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">registry.</span></span><span class="sig-name descname"><span class="pre">Registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry" title="Link to this definition"></a></dt>
 <dd><p>This class encapsulates the Windows registry.</p>
 <p>It provides methods that can be used to interact with the keys and
 values in the registry.</p>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Example of how to get the value of a registry key:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">registry</span>
 
@@ -203,7 +231,7 @@ values in the registry.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Registry.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.__init__" title="Link to this definition"></a></dt>
 <dd><p>Initialise a private self._hkey attribute.</p>
 <p>This attribute is used throughout the class to provide a set
 of hkey specific functions.</p>
@@ -211,20 +239,20 @@ of hkey specific functions.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Registry._open_key">
-<span class="sig-name descname"><span class="pre">_open_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry._open_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry._open_key" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_open_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry._open_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry._open_key" title="Link to this definition"></a></dt>
 <dd><p>Open and return the key specified by the path.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p></li>
 <li><p><strong>sam</strong> – The SAM privilege level used to open the key.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>The key is opened with privilege level defined by <code class="docutils literal notranslate"><span class="pre">sam</span></code>.
 The user is notified if an error occurs.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If opened successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.OpenKey</span></code> object is
 returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 </dd>
@@ -233,16 +261,16 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Registry.create_key">
-<span class="sig-name descname"><span class="pre">create_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.create_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.create_key" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.create_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.create_key" title="Link to this definition"></a></dt>
 <dd><p>Create the key specified by the path.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>If a creation error occurs, the user is notified.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If created successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.CreateKey</span></code> object is
 returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 </dd>
@@ -251,10 +279,10 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Registry.delete_key">
-<span class="sig-name descname"><span class="pre">delete_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.delete_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.delete_key" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">delete_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.delete_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.delete_key" title="Link to this definition"></a></dt>
 <dd><p>Delete the key specified by the path.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p>
 </dd>
 </dl>
@@ -265,7 +293,7 @@ subkeys cannot be deleted with this method. The user is
 notified if an error occurs.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If deleted successfully, a <code class="docutils literal notranslate"><span class="pre">winreg.DeleteKey</span></code> object is
 returned, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 </dd>
@@ -274,16 +302,16 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Registry.get_value">
-<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.get_value" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.get_value" title="Link to this definition"></a></dt>
 <dd><p>Get the key value specified by the path and name</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>If the value exists, a value object is returned, otherwise
 <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 </dd>
@@ -292,23 +320,23 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Registry.set_data">
-<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.set_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.set_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Registry.set_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Registry.set_data" title="Link to this definition"></a></dt>
 <dd><p>Set the data of the key value specified by the path and name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p></li>
 <li><p><strong>data</strong> (<em>str</em>) – Data to store into the key.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>If the value doesn’t exist, this method creates it and sets
 its type and data accordingly. A check is performed to
 determine if the operation has been completed successfully.
 If it hasn’t the user is notified.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The value of the registry key.</p>
 </dd>
 </dl>
@@ -318,7 +346,7 @@ If it hasn’t the user is notified.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="registry.Value">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">registry.</span></span><span class="sig-name descname"><span class="pre">Value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Value" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">registry.</span></span><span class="sig-name descname"><span class="pre">Value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Value" title="Link to this definition"></a></dt>
 <dd><p>This class encapsulates the Windows registry values.</p>
 <p>It provides the following attributes to mimic the attributes of a value
 in the registry:</p>
@@ -331,7 +359,7 @@ in the registry:</p>
 </div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="registry.Value.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Value.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Value.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/registry.html#Value.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#registry.Value.__init__" title="Link to this definition"></a></dt>
 <dd><p>Set the name, type and data attributes.</p>
 </dd></dl>
 
@@ -350,7 +378,7 @@ in the registry:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

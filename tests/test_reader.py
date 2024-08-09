@@ -55,8 +55,8 @@ class TestReader(TestBase):
                              skiprows=6,
                              skipcols=1,
                              chopcols=2,
-                             date_formats={'col5': '%Y-%m-%d',
-                                           'col6': '%Y-%m-%d',
+                             date_formats={'col5': '%Y-%m-%d %H:%M:%S',
+                                           'col6': '%Y-%m-%d %H:%M:%S',
                                            'col7': '%Y-%m-%d %H:%M:%S'})
         utilities.assert_equal_dataframe(df1=df_exp, df2=df_test)
 
@@ -84,11 +84,11 @@ class TestReader(TestBase):
                              skiprows=6,
                              skipcols=1,
                              chopcols=2,
-                             date_formats={'col5': '%Y-%m-%d',
-                                           'col6': '%Y-%m-%d',
+                             date_formats={'col5': '%Y-%m-%d %H:%M:%S',
+                                           'col6': '%Y-%m-%d %H:%M:%S',
                                            'col7': '%Y-%m-%d %H:%M:%S'},
-                                  errors='coerce',
-                                  fill_date_errors=True)
+                             errors='coerce',
+                             fill_date_errors=True)
         utilities.assert_equal_dataframe(df1=df_exp, df2=df_test)
 
     def test03__read_xls__not_xls(self):

@@ -167,6 +167,7 @@ def hex2int(hexstring: str, nbytes: int=1) -> int:
         list: A list of decimal values, as converted from the hex string.
 
     """
+    # pylint: disable=multiple-statements
     nbytes *= 2
     out = []
     # Split hex string into (n)-byte size chunks.

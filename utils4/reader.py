@@ -110,7 +110,8 @@ class Reader:
             for col, fmt in date_formats.items():
                 df[col] = pd.to_datetime(df[col], format=fmt, errors=errors)
                 if fill_date_errors:
-                    df[col].fillna(dt(1900,1,1), inplace=True)
+                    # Changed to remove inplace=True due to pandas v3.0 deprecation warnings.
+                    df[col] = df[col].fillna(dt(1900,1,1))
         stream.close()
         return df
 

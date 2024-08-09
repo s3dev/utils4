@@ -21,6 +21,15 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    cryptography 
+      \-fernet (utils4.srccheck)
+
+
+
 333 lines have been analyzed
 
 Raw metrics

@@ -21,6 +21,17 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    numpy (utils4.stats)
+    pandas (utils4.stats)
+    scipy 
+      \-stats (utils4.stats)
+
+
+
 403 lines have been analyzed
 
 Raw metrics

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["wheel", "setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "utils4"
+description = "A general utilities package for Python 3.6+."
+authors = [{name = "The Developers", email = "development@s3dev.uk"}]
+classifiers = [
+               "Development Status :: 5 - Production/Stable",
+               "Intended Audience :: Developers",
+               "License :: OSI Approved :: MIT License",
+               "Operating System :: POSIX :: Linux",
+               "Operating System :: Microsoft :: Windows",
+               "Programming Language :: C",
+               "Programming Language :: Python :: 3.6",
+               "Programming Language :: Python :: 3.7",
+               "Programming Language :: Python :: 3.8",
+               "Programming Language :: Python :: 3.9",
+               "Programming Language :: Python :: 3.10",
+               "Programming Language :: Python :: 3.11",
+               "Programming Language :: Python :: 3.12",
+               "Programming Language :: Python :: Implementation :: CPython",
+               "Topic :: Software Development",
+               "Topic :: Software Development :: Libraries",
+               "Topic :: Utilities",
+              ]
+# Intentionally left out libs from requirements for simplicity.
+dependencies = ["colorama"]
+dynamic = ["version"]
+keywords = ["utilities"]
+license = {text = "MIT"}
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.6"
+
+[project.urls]
+Documentation = "https://utils4.readthedocs.io"
+Homepage = "https://github.com/s3dev/utils4"
+Repository = "https://github.com/s3dev/utils4"
+
+[tool.setuptools.dynamic]
+version = {attr = "utils4.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["utils4"]
+exclude = []

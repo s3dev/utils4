@@ -119,8 +119,8 @@ def dirsplit(path: str,
         pattern (str, optional): A shell-style wildcard pattern used for
             collecting the source files. For example: ``*.csv``.
             Defaults to '*'.
-        pairs (bool, optional): Are the files in paris?. If True, the ``repl``
-            argument is used to replace a substring of the source file with
+        pairs (bool, optional): Are the files in pairs?. If True, the ``repl``
+            argument is used to replace a sub-string of the source file with
             that of the paired file, so each file pair is moved into the same
             directory. Defaults to False.
         repl (tuple, optional): A tuple containing the old and new replacement

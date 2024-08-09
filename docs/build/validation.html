@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>validation - A small collection of validation rules &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>validation - A small collection of validation rules &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -69,7 +76,23 @@
 <li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">validation - A small collection of validation rules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">validation - A small collection of validation rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#validation.RegEx"><code class="docutils literal notranslate"><span class="pre">RegEx</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#validation.RegEx.latitude"><code class="docutils literal notranslate"><span class="pre">RegEx.latitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation.RegEx.longitude"><code class="docutils literal notranslate"><span class="pre">RegEx.longitude</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#validation.Rules"><code class="docutils literal notranslate"><span class="pre">Rules</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#validation.Rules.__init__"><code class="docutils literal notranslate"><span class="pre">Rules.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation.Rules.is_coordinates"><code class="docutils literal notranslate"><span class="pre">Rules.is_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation.Rules.is_ip"><code class="docutils literal notranslate"><span class="pre">Rules.is_ip()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation.Rules.is_latitude"><code class="docutils literal notranslate"><span class="pre">Rules.is_latitude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation.Rules.is_list"><code class="docutils literal notranslate"><span class="pre">Rules.is_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation.Rules.is_longitude"><code class="docutils literal notranslate"><span class="pre">Rules.is_longitude()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
@@ -89,9 +112,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>validation - A small collection of validation rules</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">validation - A small collection of validation rules</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,9 +124,9 @@
            <div itemprop="articleBody">
              
   <section id="module-validation">
-<span id="validation-a-small-collection-of-validation-rules"></span><h1>validation - A small collection of validation rules<a class="headerlink" href="#module-validation" title="Permalink to this headline"></a></h1>
+<span id="validation-a-small-collection-of-validation-rules"></span><h1>validation - A small collection of validation rules<a class="headerlink" href="#module-validation" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This module serves as a general validation processor.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -112,19 +135,19 @@ validation rules which are commonly used by S3DEV projects.
 More functionality will be added as needed.</p>
 </div>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>n/a</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Test if an IP address is valid:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">validation</span>
 
@@ -150,19 +173,19 @@ More functionality will be added as needed.</p>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="validation.RegEx">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">validation.</span></span><span class="sig-name descname"><span class="pre">RegEx</span></span><a class="reference internal" href="_modules/validation.html#RegEx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.RegEx" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">validation.</span></span><span class="sig-name descname"><span class="pre">RegEx</span></span><a class="reference internal" href="_modules/validation.html#RegEx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.RegEx" title="Link to this definition"></a></dt>
 <dd><p>This class holds a variety of validation regex strings.</p>
 <p>Each property in this class returns a <em>compiled</em> regex pattern, of the
 type <code class="docutils literal notranslate"><span class="pre">re.Pattern</span></code>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="validation.RegEx.latitude">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latitude</span></span><a class="headerlink" href="#validation.RegEx.latitude" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latitude</span></span><a class="headerlink" href="#validation.RegEx.latitude" title="Link to this definition"></a></dt>
 <dd><p>Regex string for latitude.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A compiled regex pattern for latitude.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>re.Pattern</p>
 </dd>
 </dl>
@@ -170,13 +193,13 @@ type <code class="docutils literal notranslate"><span class="pre">re.Pattern</sp
 
 <dl class="py property">
 <dt class="sig sig-object py" id="validation.RegEx.longitude">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">longitude</span></span><a class="headerlink" href="#validation.RegEx.longitude" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">longitude</span></span><a class="headerlink" href="#validation.RegEx.longitude" title="Link to this definition"></a></dt>
 <dd><p>Regex string for longitude.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A compiled regex pattern for longitude.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>re.Pattern</p>
 </dd>
 </dl>
@@ -186,24 +209,24 @@ type <code class="docutils literal notranslate"><span class="pre">re.Pattern</sp
 
 <dl class="py class">
 <dt class="sig sig-object py" id="validation.Rules">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">validation.</span></span><span class="sig-name descname"><span class="pre">Rules</span></span><a class="reference internal" href="_modules/validation.html#Rules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">validation.</span></span><span class="sig-name descname"><span class="pre">Rules</span></span><a class="reference internal" href="_modules/validation.html#Rules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules" title="Link to this definition"></a></dt>
 <dd><p>A collection of validation rules.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="validation.Rules.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/validation.html#Rules.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/validation.html#Rules.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.__init__" title="Link to this definition"></a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="validation.Rules.is_coordinates">
-<span class="sig-name descname"><span class="pre">is_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_coordinates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_coordinates" title="Link to this definition"></a></dt>
 <dd><p>Test <code class="docutils literal notranslate"><span class="pre">value</span></code> is a valid set of geo coordinates.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – A list containing latitude and longitude as
 strings.</p>
 </dd>
-<dt class="field-even">Rules</dt>
+<dt class="field-even">Rules<span class="colon">:</span></dt>
 <dd class="field-even"><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code></p></li>
 <li><p>The index 0 is a valid latitude coordinate (-90, 90)</p></li>
@@ -215,11 +238,11 @@ strings.</p>
 </li>
 </ul>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a <em>valid</em> set of coordinates, otherwise
 False.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
@@ -227,19 +250,19 @@ False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="validation.Rules.is_ip">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_ip" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_ip" title="Link to this definition"></a></dt>
 <dd><p>Test if an IP address (IPv4 or IPv6) is valid.</p>
 <p>This function wraps the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">ipaddress.ip_address()</span></code> function
 to test whether an IP address is valid, or not.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The IP address to be tested.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a valid IPv4 or IPv6 address, otherwise
 False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -247,17 +270,17 @@ False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="validation.Rules.is_latitude">
-<span class="sig-name descname"><span class="pre">is_latitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_latitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_latitude" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_latitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_latitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_latitude" title="Link to this definition"></a></dt>
 <dd><p>Test <code class="docutils literal notranslate"><span class="pre">value</span></code> is a latitude coordinate (-90, 90).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The latitude coordinate to be tested.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a valid latitude coordinate, otherwise
 False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -265,21 +288,21 @@ False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="validation.Rules.is_list">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indexes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_list" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indexes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_list" title="Link to this definition"></a></dt>
 <dd><p>Validate if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code> with (n) number of indexes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>value</strong> (<em>list</em>) – The object to be tested.</p></li>
 <li><p><strong>indexes</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of expected indexes in the list.
 Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code> with (n) indexes, otherwise
 False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -287,17 +310,17 @@ False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="validation.Rules.is_longitude">
-<span class="sig-name descname"><span class="pre">is_longitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_longitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_longitude" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_longitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/validation.html#Rules.is_longitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#validation.Rules.is_longitude" title="Link to this definition"></a></dt>
 <dd><p>Test <code class="docutils literal notranslate"><span class="pre">value</span></code> is a longitude coordinate (-180, 180).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The longitude coordinate to be tested.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if <code class="docutils literal notranslate"><span class="pre">value</span></code> is a valid longitude coordinate, otherwise
 False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -318,7 +341,7 @@ False.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

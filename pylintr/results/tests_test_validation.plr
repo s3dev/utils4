@@ -21,6 +21,15 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    utils4 
+      \-validation (tests.test_validation)
+
+
+
 166 lines have been analyzed
 
 Raw metrics

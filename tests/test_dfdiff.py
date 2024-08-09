@@ -13,6 +13,7 @@
 # pylint: disable=line-too-long
 # pylint: disable=import-error
 # pylint: disable=invalid-name
+# pylint: disable=protected-access
 # pylint: disable=wrong-import-order
 
 import numpy as np

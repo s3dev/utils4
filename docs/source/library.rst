@@ -12,6 +12,7 @@ or more usage examples and access to the source code itself.
 
 .. toctree:: 
     :caption: Links to module-level documentation
+    :maxdepth: 1
 
     cmaps
     config

@@ -21,6 +21,14 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    natsort (utils4.filesys)
+
+
+
 245 lines have been analyzed
 
 Raw metrics

@@ -143,7 +143,7 @@ class CMaps():
         if (n < 1) | (n > 255):
             raise ValueError('The value of n must be: 1 <= n <= 255.')
         norm = matplotlib.colors.Normalize(vmin=-150, vmax=256)
-        cmap = matplotlib.cm.get_cmap(map_name)
+        cmap = matplotlib.colormaps.get_cmap(map_name)
         clrs = cmap(norm(range(256)))
         N = int(256//n)
         c = clrs[::N]

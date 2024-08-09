@@ -21,6 +21,15 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    utils4 
+      \-crypto (tests.test_crypto)
+
+
+
 225 lines have been analyzed
 
 Raw metrics

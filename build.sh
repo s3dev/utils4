@@ -12,17 +12,13 @@ for d in ${dirs}; do
     fi
 done
 
-# Add line between deletion and setup runner.
-printf "\n"
-
 # Update requirements file.
 printf "Updating the requirements file, ignoring './tests' ...\n"
-pipreqs . --force --ignore tests
+preqs . --replace --ignore_dirs tests
 
 # Create the package and wheel file.
 printf "\nCreating the source distribution ...\n"
-sleep 1
-python ./setup.py sdist
+python -m build --sdist
 
 # Notfication.
 printf "\nAll done.\n\n"

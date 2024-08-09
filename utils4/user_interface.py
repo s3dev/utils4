@@ -603,7 +603,8 @@ class UserInterface:
                 Defaults to 1.
 
         """
-        for _ in range(quantity): print('')
+        for _ in range(quantity):
+            print('')
 
     @staticmethod
     def print_error(error: object):
@@ -833,7 +834,8 @@ class UserInterface:
         _style = self._style[style.lower()]
         space = ' ' if add_space else ''
         # Reset colours before printing a new line char.
-        if ending_char == '\n': ending_char = os.linesep
+        if ending_char == '\n':
+            ending_char = os.linesep
         text_ = f'{_fore}{_back}{_style}{text}{Text.RESET}{space}'
         # Prompt user and return input to the caller.
         # print() and sys calls are used as the input() function does not

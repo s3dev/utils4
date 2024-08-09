@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cmaps - Provides easy access to the matplotlib’s colour maps &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>cmaps - Provides easy access to the matplotlib’s colour maps &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -47,7 +54,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cmaps - Provides easy access to the matplotlib’s colour maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cmaps.CMaps"><code class="docutils literal notranslate"><span class="pre">CMaps</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cmaps.CMaps.get_cmap"><code class="docutils literal notranslate"><span class="pre">CMaps.get_cmap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmaps.CMaps.get_named_colours"><code class="docutils literal notranslate"><span class="pre">CMaps.get_named_colours()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmaps.CMaps.view_cmaps"><code class="docutils literal notranslate"><span class="pre">CMaps.view_cmaps()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cmaps._Preview"><code class="docutils literal notranslate"><span class="pre">_Preview</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cmaps._Preview.__init__"><code class="docutils literal notranslate"><span class="pre">_Preview.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmaps._Preview._build_dataset"><code class="docutils literal notranslate"><span class="pre">_Preview._build_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmaps._Preview.plot"><code class="docutils literal notranslate"><span class="pre">_Preview.plot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
@@ -89,9 +110,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>cmaps - Provides easy access to the matplotlib’s colour maps</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">cmaps - Provides easy access to the matplotlib’s colour maps</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,26 +122,26 @@
            <div itemprop="articleBody">
              
   <section id="module-cmaps">
-<span id="cmaps-provides-easy-access-to-the-matplotlib-s-colour-maps"></span><h1>cmaps - Provides easy access to the matplotlib’s colour maps<a class="headerlink" href="#module-cmaps" title="Permalink to this headline"></a></h1>
+<span id="cmaps-provides-easy-access-to-the-matplotlib-s-colour-maps"></span><h1>cmaps - Provides easy access to the matplotlib’s colour maps<a class="headerlink" href="#module-cmaps" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This module provides an easy-access, light-weight wrapper,
 around <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s colour maps, and can be used for
 retrieving and previewing named colour maps.</p>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>n/a</p>
 </dd>
-<dt class="field-even">Examples</dt>
+<dt class="field-even">Examples<span class="colon">:</span></dt>
 <dd class="field-even"><p>Retrieve 5 colours from the ‘viridis’ colour map in hex format
 and preview the colours:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.cmaps</span> <span class="kn">import</span> <span class="n">cmaps</span>
@@ -134,9 +155,10 @@ and preview the colours:</p>
 </pre></div>
 </div>
 <figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="_images/cmaps_viridis15.png"><img alt="_images/cmaps_viridis15.png" src="_images/cmaps_viridis15.png" style="width: 468.0px; height: 341.25px;" /></a>
+<a class="reference internal image-reference" href="_images/cmaps_viridis15.png"><img alt="_images/cmaps_viridis15.png" src="_images/cmaps_viridis15.png" style="width: 468.0px; height: 341.25px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Preview of the requested ‘viridis’ colour map of 15 colours</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Preview of the requested ‘viridis’ colour map of 15 colours</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>List named colours from the matplotlib colour palette:</p>
@@ -171,11 +193,11 @@ and preview the colours:</p>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="cmaps.CMaps">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cmaps.</span></span><span class="sig-name descname"><span class="pre">CMaps</span></span><a class="reference internal" href="_modules/cmaps.html#CMaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cmaps.</span></span><span class="sig-name descname"><span class="pre">CMaps</span></span><a class="reference internal" href="_modules/cmaps.html#CMaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps" title="Link to this definition"></a></dt>
 <dd><p>Provides an easy-access layer to <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s colour maps.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cmaps.CMaps.get_cmap">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_cmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_hex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/cmaps.html#CMaps.get_cmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps.get_cmap" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_cmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_hex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">array</span></span></span><a class="reference internal" href="_modules/cmaps.html#CMaps.get_cmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps.get_cmap" title="Link to this definition"></a></dt>
 <dd><p>Get a list of (n) RGBA or Hex colours from a specified map.</p>
 <p>This colour wrapper is specialised to return (n) colours from
 a normalised colour map. Meaning, rather than returning the
@@ -184,7 +206,7 @@ lightest colours are removed (as often they are difficult to
 see in a graph) and the darkest colour is added. The intent
 is to provide (n) ‘usable’ colours for graphing.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>map_name</strong> (<em>str</em>) – Name of the matplotlib colourmap.</p></li>
 <li><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of colours to return. Must
@@ -195,13 +217,13 @@ Defaults to False, which returns colours as RGBA.</p></li>
 to False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> is not between 1 and 255.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Iterable of (n) colours.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Union[list, np.array]</p>
 </dd>
 </dl>
@@ -209,13 +231,13 @@ to False.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cmaps.CMaps.get_named_colours">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_named_colours</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cmaps.html#CMaps.get_named_colours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps.get_named_colours" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_named_colours</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cmaps.html#CMaps.get_named_colours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps.get_named_colours" title="Link to this definition"></a></dt>
 <dd><p>Return a dictionary of CSS name and hex value.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A dict of named colours as <code class="docutils literal notranslate"><span class="pre">{name:</span> <span class="pre">hex_code}</span></code> pairs.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>dict</p>
 </dd>
 </dl>
@@ -223,19 +245,19 @@ to False.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cmaps.CMaps.view_cmaps">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">view_cmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/cmaps.html#CMaps.view_cmaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps.view_cmaps" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">view_cmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cmaps.html#CMaps.view_cmaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps.CMaps.view_cmaps" title="Link to this definition"></a></dt>
 <dd><p>Show the available colour map names.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>view_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> the list will be
 printed and <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.  If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the list
 is returned and nothing is printed. Defaults to True.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of colour maps names if
 <code class="docutils literal notranslate"><span class="pre">view-only</span></code> is False, otherwise None.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Union[list, None]</p>
 </dd>
 </dl>
@@ -245,14 +267,14 @@ is returned and nothing is printed. Defaults to True.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cmaps._Preview">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cmaps.</span></span><span class="sig-name descname"><span class="pre">_Preview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cmaps.</span></span><span class="sig-name descname"><span class="pre">_Preview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview" title="Link to this definition"></a></dt>
 <dd><p>Provide a preview for a given colourmap.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cmaps._Preview.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview.__init__" title="Link to this definition"></a></dt>
 <dd><p>_Preview class initialiser.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>colours</strong> (<em>Union</em><em>[</em><em>list</em><em>, </em><em>np.array</em><em>]</em>) – Iterable of colours for
 preview.</p>
 </dd>
@@ -261,13 +283,13 @@ preview.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cmaps._Preview._build_dataset">
-<span class="sig-name descname"><span class="pre">_build_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview._build_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview._build_dataset" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_build_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview._build_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview._build_dataset" title="Link to this definition"></a></dt>
 <dd><p>Create a dataset to be plotted.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cmaps._Preview.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview.plot" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cmaps.html#_Preview.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cmaps._Preview.plot" title="Link to this definition"></a></dt>
 <dd><p>Plot to show colours.</p>
 </dd></dl>
 
@@ -286,7 +308,7 @@ preview.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

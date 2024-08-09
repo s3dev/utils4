@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>convert &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <title>convert &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -28,15 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> utils4
-            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            utils4
+              <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,9 +68,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Module code</a> &raquo;</li>
-      <li>convert</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">convert</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -91,8 +98,10 @@
 
 <span class="c1"># TODO: Move repeated messages into a central messaging class.</span>
 
-<div class="viewcode-block" id="ascii2bin"><a class="viewcode-back" href="../convert.html#convert.ascii2bin">[docs]</a><span class="k">def</span> <span class="nf">ascii2bin</span><span class="p">(</span><span class="n">asciistring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert an ASCII string into a binary string representation.</span>
+<div class="viewcode-block" id="ascii2bin">
+<a class="viewcode-back" href="../convert.html#convert.ascii2bin">[docs]</a>
+<span class="k">def</span> <span class="nf">ascii2bin</span><span class="p">(</span><span class="n">asciistring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an ASCII string into a binary string representation.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        asciistring (str): ASCII string to be converted.</span>
@@ -104,8 +113,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">int2bin</span><span class="p">,</span> <span class="n">ascii2int</span><span class="p">(</span><span class="n">asciistring</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="ascii2hex"><a class="viewcode-back" href="../convert.html#convert.ascii2hex">[docs]</a><span class="k">def</span> <span class="nf">ascii2hex</span><span class="p">(</span><span class="n">asciistring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert an ASCII string into a hexidecimal string.</span>
+
+<div class="viewcode-block" id="ascii2hex">
+<a class="viewcode-back" href="../convert.html#convert.ascii2hex">[docs]</a>
+<span class="k">def</span> <span class="nf">ascii2hex</span><span class="p">(</span><span class="n">asciistring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an ASCII string into a hexidecimal string.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        asciistring (str): ASCII string to be converted.</span>
@@ -117,8 +129,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">int2hex</span><span class="p">,</span> <span class="n">ascii2int</span><span class="p">(</span><span class="n">asciistring</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="ascii2int"><a class="viewcode-back" href="../convert.html#convert.ascii2int">[docs]</a><span class="k">def</span> <span class="nf">ascii2int</span><span class="p">(</span><span class="n">asciistring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert an ASCII string to a list of integers.</span>
+
+<div class="viewcode-block" id="ascii2int">
+<a class="viewcode-back" href="../convert.html#convert.ascii2int">[docs]</a>
+<span class="k">def</span> <span class="nf">ascii2int</span><span class="p">(</span><span class="n">asciistring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an ASCII string to a list of integers.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        asciistring (str): ASCII string to be converted.</span>
@@ -129,8 +144,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">asciistring</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="bin2ascii"><a class="viewcode-back" href="../convert.html#convert.bin2ascii">[docs]</a><span class="k">def</span> <span class="nf">bin2ascii</span><span class="p">(</span><span class="n">binstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a binary string representation into ASCII text.</span>
+
+<div class="viewcode-block" id="bin2ascii">
+<a class="viewcode-back" href="../convert.html#convert.bin2ascii">[docs]</a>
+<span class="k">def</span> <span class="nf">bin2ascii</span><span class="p">(</span><span class="n">binstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a binary string representation into ASCII text.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        binstring (str): Binary string to be converted.</span>
@@ -151,8 +169,11 @@
     <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">int2ascii</span><span class="p">,</span> <span class="n">ints</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">text</span></div>
 
-<div class="viewcode-block" id="bin2int"><a class="viewcode-back" href="../convert.html#convert.bin2int">[docs]</a><span class="k">def</span> <span class="nf">bin2int</span><span class="p">(</span><span class="n">binstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a binary string representation into an integer.</span>
+
+<div class="viewcode-block" id="bin2int">
+<a class="viewcode-back" href="../convert.html#convert.bin2int">[docs]</a>
+<span class="k">def</span> <span class="nf">bin2int</span><span class="p">(</span><span class="n">binstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a binary string representation into an integer.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        binstring (str): Binary string to be converted.</span>
@@ -177,8 +198,11 @@
         <span class="n">ints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">int_</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ints</span></div>
 
-<div class="viewcode-block" id="bin2hex"><a class="viewcode-back" href="../convert.html#convert.bin2hex">[docs]</a><span class="k">def</span> <span class="nf">bin2hex</span><span class="p">(</span><span class="n">binstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a binary string representation into a hex string.</span>
+
+<div class="viewcode-block" id="bin2hex">
+<a class="viewcode-back" href="../convert.html#convert.bin2hex">[docs]</a>
+<span class="k">def</span> <span class="nf">bin2hex</span><span class="p">(</span><span class="n">binstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a binary string representation into a hex string.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        binstring (str): Binary string to be converted.</span>
@@ -194,8 +218,11 @@
                          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bits</span><span class="si">}</span><span class="s1">-bit chunks.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">int2hex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bin2int</span><span class="p">(</span><span class="n">binstring</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">bits</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="hex2ascii"><a class="viewcode-back" href="../convert.html#convert.hex2ascii">[docs]</a><span class="k">def</span> <span class="nf">hex2ascii</span><span class="p">(</span><span class="n">hexstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a hexidecimal string to ASCII text.</span>
+
+<div class="viewcode-block" id="hex2ascii">
+<a class="viewcode-back" href="../convert.html#convert.hex2ascii">[docs]</a>
+<span class="k">def</span> <span class="nf">hex2ascii</span><span class="p">(</span><span class="n">hexstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a hexidecimal string to ASCII text.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        hexstring (str): Hex string to be converted.</span>
@@ -206,8 +233,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">int2ascii</span><span class="p">,</span> <span class="n">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="hex2bin"><a class="viewcode-back" href="../convert.html#convert.hex2bin">[docs]</a><span class="k">def</span> <span class="nf">hex2bin</span><span class="p">(</span><span class="n">hexstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a hexidecimal string into a binary string representation.</span>
+
+<div class="viewcode-block" id="hex2bin">
+<a class="viewcode-back" href="../convert.html#convert.hex2bin">[docs]</a>
+<span class="k">def</span> <span class="nf">hex2bin</span><span class="p">(</span><span class="n">hexstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a hexidecimal string into a binary string representation.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        hexstring (str): Hex string to be converted.</span>
@@ -218,8 +248,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">int2bin</span><span class="p">,</span> <span class="n">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="hex2int"><a class="viewcode-back" href="../convert.html#convert.hex2int">[docs]</a><span class="k">def</span> <span class="nf">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a hexidecimal string to an integer.</span>
+
+<div class="viewcode-block" id="hex2int">
+<a class="viewcode-back" href="../convert.html#convert.hex2int">[docs]</a>
+<span class="k">def</span> <span class="nf">hex2int</span><span class="p">(</span><span class="n">hexstring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a hexidecimal string to an integer.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        hexstring (str): Hex string to be converted.</span>
@@ -242,6 +275,7 @@
 <span class="sd">        list: A list of decimal values, as converted from the hex string.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pylint: disable=multiple-statements</span>
     <span class="n">nbytes</span> <span class="o">*=</span> <span class="mi">2</span>
     <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># Split hex string into (n)-byte size chunks.</span>
@@ -255,8 +289,11 @@
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span></div>
 
-<div class="viewcode-block" id="int2ascii"><a class="viewcode-back" href="../convert.html#convert.int2ascii">[docs]</a><span class="k">def</span> <span class="nf">int2ascii</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert an integer to an ASCII character.</span>
+
+<div class="viewcode-block" id="int2ascii">
+<a class="viewcode-back" href="../convert.html#convert.int2ascii">[docs]</a>
+<span class="k">def</span> <span class="nf">int2ascii</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an integer to an ASCII character.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        i (int): Integer value to be converted to ASCII text.</span>
@@ -275,8 +312,11 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The passed integer value must be &lt;= 127.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="int2bin"><a class="viewcode-back" href="../convert.html#convert.int2bin">[docs]</a><span class="k">def</span> <span class="nf">int2bin</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert an 8-bit integer to a binary string.</span>
+
+<div class="viewcode-block" id="int2bin">
+<a class="viewcode-back" href="../convert.html#convert.int2bin">[docs]</a>
+<span class="k">def</span> <span class="nf">int2bin</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an 8-bit integer to a binary string.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        i (int): Integer value to be converted.</span>
@@ -295,8 +335,11 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Passed value exceeds 1 byte: i=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="n">i</span> <span class="o">&gt;&gt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="int2hex"><a class="viewcode-back" href="../convert.html#convert.int2hex">[docs]</a><span class="k">def</span> <span class="nf">int2hex</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert an integer into a hexidecimal string.</span>
+
+<div class="viewcode-block" id="int2hex">
+<a class="viewcode-back" href="../convert.html#convert.int2hex">[docs]</a>
+<span class="k">def</span> <span class="nf">int2hex</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an integer into a hexidecimal string.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        i (int): Integer value to be converted.</span>
@@ -319,6 +362,7 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">out</span>
     <span class="k">return</span> <span class="n">out</span></div>
+
 </pre></div>
 
            </div>
@@ -328,7 +372,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

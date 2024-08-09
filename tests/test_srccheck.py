@@ -61,7 +61,7 @@ class TestSourceCheck(TestBase):
             - Verify the terminal output is as expected.
 
         """
-        files = glob(os.path.join(self._DIR_RESRC, 'lorem*'))
+        files = sorted(glob(os.path.join(self._DIR_RESRC, 'lorem*')))
         buff = io.StringIO()
         with redirect_stdout(buff):
             srccheck.generate(files, encrypt=False)
@@ -109,7 +109,7 @@ class TestSourceCheck(TestBase):
         buff = io.StringIO()
         with redirect_stdout(buff):
             tst1 = srccheck.check(os.path.join(self._DIR_DSK, 'srccheck.ref'))
-        exp = '\nChecksum verification has failed for the following:\n- lorem_med.txt\n\n'
+        exp = '\nChecksum verification has failed for the following:\n- lorem.txt\n\n'
         tst2 = buff.getvalue()
         utilities.assert_true(expected=[False, exp], test=[tst1, tst2], msg=self._MSG1)
 

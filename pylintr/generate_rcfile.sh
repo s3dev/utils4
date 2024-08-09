@@ -1,27 +1,28 @@
 #!/usr/bin/env bash 
 
 disables=''
-good_names=''
 disable=(
-    "fixme"
     "broad-except"
+    "fixme"
+    "invalid-name"
+    "not-callable"
     "too-few-public-methods"
     "too-many-arguments"
     "too-many-instance-attributes"
+    "too-many-lines"
+    "too-many-locals"
+    "too-many-public-methods"
+    "too-many-statements"
 )
-good_name=()
-argument_rgx="^[a-z_][a-z0-9_]{0,30}$"
-variable_rgx="^[a-z_][a-z0-9_]{0,30}$"
 
 # Build string of items to disable.
 for i in ${disable[@]}; do disables+="${i},"; done
-for i in ${good_name[@]}; do good_names+="${i},"; done
 
 # Generate a custom, project-specific config file.
-pylint --reports=yes \
-       --disable="${disables}" \
-       --good-names="${good_names}" \
-       --argument-rgx="${argument_rgx}" \
-       --variable-rgx="${variable_rgx}" \
-       --generate-rcfile > ../.pylintrc
+pylint --reports=yes --disable="${disables}" --generate-rcfile > ../.pylintrc
+
+# Removing lines.
+sed -E /use\-implicit\-booleaness\-not\-comparison[\-a-z\=]+/d -i ../.pylintrc
+sed -E /prefer\-stubs[\-a-z\=]+/d -i ../.pylintrc
+sed -E /suggest\-join[\-a-z\=]+/d -i ../.pylintrc
 

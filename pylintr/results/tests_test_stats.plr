@@ -2,7 +2,7 @@
 
 Report
 ======
-93 statements analysed.
+96 statements analysed.
 
 Statistics by type
 ------------------
@@ -21,7 +21,20 @@ Statistics by type
 
 
 
-265 lines have been analyzed
+External dependencies
+---------------------
+::
+
+    numpy (tests.test_stats)
+    pandas (tests.test_stats)
+    scipy 
+      \-stats (tests.test_stats)
+    utils4 
+      \-stats (tests.test_stats)
+
+
+
+274 lines have been analyzed
 
 Raw metrics
 -----------
@@ -29,13 +42,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |111    |41.89 |111      |=          |
+|code      |120    |43.80 |120      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |134    |50.57 |134      |=          |
+|docstring |134    |48.91 |134      |=          |
 +----------+-------+------+---------+-----------+
-|comment   |8      |3.02  |8        |=          |
+|comment   |8      |2.92  |8        |=          |
 +----------+-------+------+---------+-----------+
-|empty     |12     |4.53  |12       |=          |
+|empty     |12     |4.38  |12       |=          |
 +----------+-------+------+---------+-----------+
 
 

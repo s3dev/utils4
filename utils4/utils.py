@@ -31,6 +31,7 @@ Note:
     For usage examples, please refer to the docstring for each method.
 
 """
+# pylint: disable=import-error
 # pylint: disable=import-outside-toplevel  # Keep required dependencies to a minimum.
 # pylint: disable=wrong-import-order
 

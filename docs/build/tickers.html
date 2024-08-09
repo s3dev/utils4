@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tickers - Wait tickers for long-running processes &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>tickers - Wait tickers for long-running processes &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -65,7 +72,21 @@
 <li class="toctree-l2"><a class="reference internal" href="srccheck.html">srccheck - Checksum functionality for source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stats.html">stats - Statistics methods without the overhead</a></li>
 <li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">tickers - Wait tickers for long-running processes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tickers - Wait tickers for long-running processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tickers._GenericWait.stop"><code class="docutils literal notranslate"><span class="pre">_GenericWait.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tickers.Spinner"><code class="docutils literal notranslate"><span class="pre">Spinner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tickers.Spinner.__init__"><code class="docutils literal notranslate"><span class="pre">Spinner.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tickers.Spinner.start"><code class="docutils literal notranslate"><span class="pre">Spinner.start()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tickers.WaitTicker"><code class="docutils literal notranslate"><span class="pre">WaitTicker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.__annotations__"><code class="docutils literal notranslate"><span class="pre">WaitTicker.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.__init__"><code class="docutils literal notranslate"><span class="pre">WaitTicker.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.start"><code class="docutils literal notranslate"><span class="pre">WaitTicker.start()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_interface.html">user_interface - Format coloured text to the terminal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
@@ -89,9 +110,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>tickers - Wait tickers for long-running processes</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">tickers - Wait tickers for long-running processes</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,28 +122,28 @@
            <div itemprop="articleBody">
              
   <section id="module-tickers">
-<span id="tickers-wait-tickers-for-long-running-processes"></span><h1>tickers - Wait tickers for long-running processes<a class="headerlink" href="#module-tickers" title="Permalink to this headline"></a></h1>
+<span id="tickers-wait-tickers-for-long-running-processes"></span><h1>tickers - Wait tickers for long-running processes<a class="headerlink" href="#module-tickers" title="Link to this heading"></a></h1>
 <dl class="field-list simple">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This module provides a wait tickers for long-running
 processes in your program.</p>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The idea for this code was taken from:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://stackoverflow.com/a/39504463/6340496">https://stackoverflow.com/a/39504463/6340496</a></p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>For usage examples, refer to the following class docstrings:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#tickers.Spinner" title="tickers.Spinner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spinner</span></code></a></p></li>
@@ -133,10 +154,10 @@ processes in your program.</p>
 <p># pylint: disable=super-with-arguments  # For Py35 compatibility.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tickers._GenericWait.stop">
-<span class="sig-prename descclassname"><span class="pre">_GenericWait.</span></span><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#_GenericWait.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers._GenericWait.stop" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">_GenericWait.</span></span><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#_GenericWait.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers._GenericWait.stop" title="Link to this definition"></a></dt>
 <dd><p>Stop the ticker.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>err</strong> (<em>bool</em><em>, </em><em>optional</em>) – If the ticker’s processing is stopped under
 error, passing <code class="docutils literal notranslate"><span class="pre">True</span></code> will clear the output line rather than
 printing <code class="docutils literal notranslate"><span class="pre">Done.</span></code> to the console. Defaults to False.</p>
@@ -146,14 +167,14 @@ printing <code class="docutils literal notranslate"><span class="pre">Done.</spa
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tickers.Spinner">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tickers.</span></span><span class="sig-name descname"><span class="pre">Spinner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#Spinner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.Spinner" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tickers.</span></span><span class="sig-name descname"><span class="pre">Spinner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#Spinner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.Spinner" title="Link to this definition"></a></dt>
 <dd><p>This class provides a wait spinner for long-running processes.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>delay</strong> (<em>float</em><em>, </em><em>optional</em>) – The time delay between each spinner tick.
 Defaults to None.</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Implement a spinner into your program:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>  <span class="c1"># For demo only.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.tickers</span> <span class="kn">import</span> <span class="n">Spinner</span>
@@ -175,13 +196,13 @@ Defaults to None.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tickers.Spinner.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#Spinner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.Spinner.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#Spinner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.Spinner.__init__" title="Link to this definition"></a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tickers.Spinner.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#Spinner.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.Spinner.start" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#Spinner.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.Spinner.start" title="Link to this definition"></a></dt>
 <dd><p>Start the spinner in a new thread.</p>
 </dd></dl>
 
@@ -189,11 +210,11 @@ Defaults to None.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tickers.WaitTicker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tickers.</span></span><span class="sig-name descname"><span class="pre">WaitTicker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tickers.</span></span><span class="sig-name descname"><span class="pre">WaitTicker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker" title="Link to this definition"></a></dt>
 <dd><p>This class features a wait ticker for long-running processes
 within your program.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>charset</strong> (<em>str</em><em>, </em><em>optional</em>) – The character(s) to be used as the ticker.
 Defaults to <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p></li>
@@ -203,7 +224,7 @@ Defaults to 0.05.</p></li>
 Defaults to 25.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Implement a ticker into your program:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>  <span class="c1"># For demo only.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.tickers</span> <span class="kn">import</span> <span class="n">WaitTicker</span>
@@ -223,15 +244,20 @@ Defaults to 25.</p></li>
 </div>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tickers.WaitTicker.__annotations__">
+<span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#tickers.WaitTicker.__annotations__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="tickers.WaitTicker.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker.__init__" title="Link to this definition"></a></dt>
 <dd><p>Class initialiser.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tickers.WaitTicker.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker.start" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker.start" title="Link to this definition"></a></dt>
 <dd><p>Start the ticker in a new thread.</p>
 </dd></dl>
 
@@ -250,7 +276,7 @@ Defaults to 25.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

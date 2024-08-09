@@ -36,6 +36,7 @@ class TestProgressBar(TestBase):
             - Verify the method returns the expected escape sequence.
 
         """
+        # pylint: disable=protected-access
         clrs = {'r': 31, 'g': 32, 'y': 33, 'b': 34, 'm': 35, 'c': 36, 'w': 37}
         for k, v in clrs.items():
             with self.subTest(msg=f'k={k}, v={v}'):

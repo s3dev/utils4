@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
-        <script async="async" src="_static/js/mathjax.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script async="async" src="_static/js/mathjax.js?v=b96db627"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,15 +35,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -64,7 +71,22 @@
 <li class="toctree-l2"><a class="reference internal" href="registry.html">registry - A simple interface to the Windows registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="srccheck.html">srccheck - Checksum functionality for source code</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">stats - Statistics methods without the overhead</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">stats - Statistics methods without the overhead</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stats.LinearRegression"><code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.__init__"><code class="docutils literal notranslate"><span class="pre">LinearRegression.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.calculate"><code class="docutils literal notranslate"><span class="pre">LinearRegression.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.intercept"><code class="docutils literal notranslate"><span class="pre">LinearRegression.intercept</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.regression_line"><code class="docutils literal notranslate"><span class="pre">LinearRegression.regression_line</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.slope"><code class="docutils literal notranslate"><span class="pre">LinearRegression.slope</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stats.Stats"><code class="docutils literal notranslate"><span class="pre">Stats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stats.Stats.cusum"><code class="docutils literal notranslate"><span class="pre">Stats.cusum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.Stats.kde"><code class="docutils literal notranslate"><span class="pre">Stats.kde()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
@@ -90,9 +112,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>stats - Statistics methods without the overhead</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">stats - Statistics methods without the overhead</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -102,9 +124,9 @@
            <div itemprop="articleBody">
              
   <section id="module-stats">
-<span id="stats-statistics-methods-without-the-overhead"></span><h1>stats - Statistics methods without the overhead<a class="headerlink" href="#module-stats" title="Permalink to this headline"></a></h1>
+<span id="stats-statistics-methods-without-the-overhead"></span><h1>stats - Statistics methods without the overhead<a class="headerlink" href="#module-stats" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Provide access to various statistical calculations, namely:</p>
 <ul class="simple">
 <li><p><strong>CUSUM:</strong> <a class="reference internal" href="#stats.Stats.cusum" title="stats.Stats.cusum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cusum()</span></code></a></p></li>
@@ -112,19 +134,19 @@
 <li><p><strong>Linear Regression:</strong> <a class="reference internal" href="#stats.LinearRegression" title="stats.LinearRegression"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a></p></li>
 </ul>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>n/a</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Create a sample dataset for the stats methods:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -143,23 +165,23 @@
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="stats.LinearRegression">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">LinearRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">LinearRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression" title="Link to this definition"></a></dt>
 <dd><p>Calculate the linear regression of a dataset.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>np.array</em>) – Array of X-values.</p></li>
 <li><p><strong>y</strong> (<em>np.array</em>) – Array of Y-values.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Slope Calculation</dt>
+<dt class="field-even">Slope Calculation<span class="colon">:</span></dt>
 <dd class="field-even"><p>The calculation for the slope itself is borrowed from the
 <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.linregress()</span></code> function. Whose <a class="reference external" href="https://github.com/scipy/scipy/blob/v1.8.0/scipy/stats/_stats_mstats_common.py#L16-L203">source code</a> was
 obtained on GitHub.</p>
 </dd>
 </dl>
 <dl class="field-list">
-<dt class="field-odd">Example Use</dt>
+<dt class="field-odd">Example Use<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For a sample dataset and imports to go along with this
@@ -193,13 +215,13 @@ example, refer to the docstring for
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.LinearRegression.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.__init__" title="Link to this definition"></a></dt>
 <dd><p>LinearRegression class initialiser.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.LinearRegression.calculate">
-<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.calculate" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.calculate" title="Link to this definition"></a></dt>
 <dd><p>Calculate the linear regression for the X/Y data arrays.</p>
 <p>The result of the calculation is accessible via the
 <a class="reference internal" href="#stats.LinearRegression.regression_line" title="stats.LinearRegression.regression_line"><code class="xref py py-attr docutils literal notranslate"><span class="pre">regression_line</span></code></a> property.</p>
@@ -207,19 +229,19 @@ example, refer to the docstring for
 
 <dl class="py property">
 <dt class="sig sig-object py" id="stats.LinearRegression.intercept">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intercept</span></span><a class="headerlink" href="#stats.LinearRegression.intercept" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intercept</span></span><a class="headerlink" href="#stats.LinearRegression.intercept" title="Link to this definition"></a></dt>
 <dd><p>Accessor to the slope’s y-intercept.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="stats.LinearRegression.regression_line">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">regression_line</span></span><a class="headerlink" href="#stats.LinearRegression.regression_line" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">regression_line</span></span><a class="headerlink" href="#stats.LinearRegression.regression_line" title="Link to this definition"></a></dt>
 <dd><p>Accessor to the calculated regression line, as y-values.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="stats.LinearRegression.slope">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slope</span></span><a class="headerlink" href="#stats.LinearRegression.slope" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slope</span></span><a class="headerlink" href="#stats.LinearRegression.slope" title="Link to this definition"></a></dt>
 <dd><p>Accessor to the slope value.</p>
 </dd></dl>
 
@@ -227,11 +249,11 @@ example, refer to the docstring for
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stats.Stats">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">Stats</span></span><a class="reference internal" href="_modules/stats.html#Stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">Stats</span></span><a class="reference internal" href="_modules/stats.html#Stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats" title="Link to this definition"></a></dt>
 <dd><p>Wrapper class for various statistical calculations.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.Stats.cusum">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cusum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/stats.html#Stats.cusum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.cusum" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cusum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.cusum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.cusum" title="Link to this definition"></a></dt>
 <dd><p>Calculate a CUSUM on a set of data.</p>
 <p>A CUSUM is a generalised method for smoothing a noisy trend, or
 for detecting a change in the trend.</p>
@@ -244,7 +266,7 @@ delta of a single value relative to the rolling mean of all
 previous values.</p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the column(s) on
 which a CUSUM is to be calculated.</p></li>
@@ -274,7 +296,7 @@ DataFrame. Defaults to False.</p></li>
 and the calculated CUSUM results. Defaults to False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Calculation</dt>
+<dt class="field-even">Calculation<span class="colon">:</span></dt>
 <dd class="field-even"><p>The CUSUM is calculated by taking a rolling mean <span class="math notranslate nohighlight">\(RA\)</span>
 (optionally locked at the first value), and calculate the
 delta of the current value, relative to the rolling mean all
@@ -282,14 +304,14 @@ previous values. A cumulative sum is applied to the deltas.
 The cumulative sum for each data point is returned as the
 CUSUM value.</p>
 </dd>
-<dt class="field-odd">Equation</dt>
+<dt class="field-odd">Equation<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="math notranslate nohighlight">\(c_i = \sum_{i=1}^{n}(x_i - RA_i)\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(RA\)</span> (Rolling Mean) is defined as:</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(RA_{i+1} = \frac{1}{n}\sum_{j=1}^{n}x_j\)</span></p>
 </div></blockquote>
 </dd>
-<dt class="field-even">Example Use</dt>
+<dt class="field-even">Example Use<span class="colon">:</span></dt>
 <dd class="field-even"><p>Generate a <em>sample</em> trend dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -319,13 +341,13 @@ CUSUM value.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> argument is
 <code class="docutils literal notranslate"><span class="pre">False</span></code>, a <em>copy</em> of the original DataFrame with the new
 CUSUM columns appended is returned. Otherwise, the passed
 DataFrame is <em>updated</em>, and <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Union[pd.DataFrame, None]</p>
 </dd>
 </dl>
@@ -333,12 +355,12 @@ DataFrame is <em>updated</em>, and <code class="docutils literal notranslate"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.Stats.kde">
-<span class="sig-name descname"><span class="pre">kde</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.kde"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.kde" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">kde</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pandas.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.kde"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.kde" title="Link to this definition"></a></dt>
 <dd><p>Calculate the kernel density estimate (KDE) for an array X.</p>
 <p>This function returns the <em>probability density</em> (PDF) using
 Gaussian KDE.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>Union</em><em>[</em><em>list</em><em>, </em><em>np.array</em><em>, </em><em>pd.Series</em><em>]</em>) – An array-like object
 containing the data against which the Gaussian KDE is
@@ -348,7 +370,7 @@ Series.</p></li>
 arrays. Defaults to 500.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Example Use</dt>
+<dt class="field-even">Example Use<span class="colon">:</span></dt>
 <dd class="field-even"><div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For a sample dataset and imports to go along with this
@@ -370,18 +392,18 @@ example, refer to the docstring for
 </pre></div>
 </div>
 </dd>
-<dt class="field-odd">Max X</dt>
+<dt class="field-odd">Max X<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This function also returns the X value of the curve’s peak;
 where <code class="docutils literal notranslate"><span class="pre">max_x</span></code> is the <code class="docutils literal notranslate"><span class="pre">X</span></code> value corresponding to the max
 <code class="docutils literal notranslate"><span class="pre">Y</span></code> value on the curve. The result (<code class="docutils literal notranslate"><span class="pre">max_x</span></code>) is
 returned as the third tuple element.</p>
 </dd>
-<dt class="field-even">Further Detail</dt>
+<dt class="field-even">Further Detail<span class="colon">:</span></dt>
 <dd class="field-even"><p>This method uses the <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.gaussian_kde()</span></code> method
 for the KDE calculation. For further detail on the
 calculation itself, refer to that function’s docstring.</p>
 </dd>
-<dt class="field-odd">Background</dt>
+<dt class="field-odd">Background<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Originally, <code class="xref py py-func docutils literal notranslate"><span class="pre">plotly.figure_factory.dist_plot()</span></code> was used
 to calculate the KDE. However, to remove the <code class="docutils literal notranslate"><span class="pre">plotly</span></code>
 dependency from this library, their code was copied and
@@ -390,7 +412,7 @@ refactored (simplified) into this function. Both the
 method call <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.gaussian_kde()</span></code> for the
 calculation, which this function also calls.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>A tuple containing the X-array, Y-array
 (both of <code class="docutils literal notranslate"><span class="pre">n</span></code> size), as well a the X value at max Y, as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">curve_x</span><span class="p">,</span> <span class="n">curve_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">)</span>
@@ -398,7 +420,7 @@ calculation, which this function also calls.</p>
 </div>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
@@ -419,7 +441,7 @@ calculation, which this function also calls.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

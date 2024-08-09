@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>palette - Quick access to named CSS4 colours &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>palette - Quick access to named CSS4 colours &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -56,7 +63,21 @@
 <li class="toctree-l2"><a class="reference internal" href="dict2obj.html">dict2obj - Conversion tool for JSON structure to object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="filesys.html">filesys - General filesystem tests and utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="log.html">log - Providing easy logging to your project</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">palette - Quick access to named CSS4 colours</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">palette - Quick access to named CSS4 colours</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#palette.CSS4Colours"><code class="docutils literal notranslate"><span class="pre">CSS4Colours</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#palette.CSS4Colours.colours"><code class="docutils literal notranslate"><span class="pre">CSS4Colours.colours</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#palette.HexPalette"><code class="docutils literal notranslate"><span class="pre">HexPalette</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#palette.HexPalette.__init__"><code class="docutils literal notranslate"><span class="pre">HexPalette.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#palette.RGBPalette"><code class="docutils literal notranslate"><span class="pre">RGBPalette</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#palette.RGBPalette.__init__"><code class="docutils literal notranslate"><span class="pre">RGBPalette.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="progressbar.html">progressbar - A simple command line progess bar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pywarnings.html">pywarnings - Easy wrapper to ignore Python warnings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
@@ -89,9 +110,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>palette - Quick access to named CSS4 colours</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">palette - Quick access to named CSS4 colours</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,25 +122,25 @@
            <div itemprop="articleBody">
              
   <section id="module-palette">
-<span id="palette-quick-access-to-named-css4-colours"></span><h1>palette - Quick access to named CSS4 colours<a class="headerlink" href="#module-palette" title="Permalink to this headline"></a></h1>
+<span id="palette-quick-access-to-named-css4-colours"></span><h1>palette - Quick access to named CSS4 colours<a class="headerlink" href="#module-palette" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This class module provides quick-access to CSS-4 named colours in
 both RGB and hexidecimal formats.</p>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>n/a</p>
 </dd>
-<dt class="field-even">Example</dt>
+<dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p>Use the hex colour palette:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.palette</span> <span class="kn">import</span> <span class="n">hexpalette</span>
 
@@ -138,11 +159,11 @@ both RGB and hexidecimal formats.</p>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="palette.CSS4Colours">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palette.</span></span><span class="sig-name descname"><span class="pre">CSS4Colours</span></span><a class="reference internal" href="_modules/palette.html#CSS4Colours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.CSS4Colours" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palette.</span></span><span class="sig-name descname"><span class="pre">CSS4Colours</span></span><a class="reference internal" href="_modules/palette.html#CSS4Colours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.CSS4Colours" title="Link to this definition"></a></dt>
 <dd><p>Lazy class container to hold the raw CSS level 4 colour name lookup.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="palette.CSS4Colours.colours">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">colours</span></span><a class="headerlink" href="#palette.CSS4Colours.colours" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">colours</span></span><a class="headerlink" href="#palette.CSS4Colours.colours" title="Link to this definition"></a></dt>
 <dd><p>The 148 colour names from the CSS level 4 colour specification.</p>
 <p>For example:</p>
 <blockquote>
@@ -162,11 +183,11 @@ both RGB and hexidecimal formats.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="palette.HexPalette">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palette.</span></span><span class="sig-name descname"><span class="pre">HexPalette</span></span><a class="reference internal" href="_modules/palette.html#HexPalette"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.HexPalette" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palette.</span></span><span class="sig-name descname"><span class="pre">HexPalette</span></span><a class="reference internal" href="_modules/palette.html#HexPalette"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.HexPalette" title="Link to this definition"></a></dt>
 <dd><p>Complete CSS-4 colour palette (in hex format), as object attributes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="palette.HexPalette.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/palette.html#HexPalette.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.HexPalette.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/palette.html#HexPalette.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.HexPalette.__init__" title="Link to this definition"></a></dt>
 <dd><p>HexPalette class initialiser.</p>
 <p>This initialiser dynamically creates all named colours as class
 attributes using the <a class="reference internal" href="#palette.CSS4Colours" title="palette.CSS4Colours"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSS4Colours</span></code></a> class as its data source.</p>
@@ -176,11 +197,11 @@ attributes using the <a class="reference internal" href="#palette.CSS4Colours" t
 
 <dl class="py class">
 <dt class="sig sig-object py" id="palette.RGBPalette">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palette.</span></span><span class="sig-name descname"><span class="pre">RGBPalette</span></span><a class="reference internal" href="_modules/palette.html#RGBPalette"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.RGBPalette" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palette.</span></span><span class="sig-name descname"><span class="pre">RGBPalette</span></span><a class="reference internal" href="_modules/palette.html#RGBPalette"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.RGBPalette" title="Link to this definition"></a></dt>
 <dd><p>Complete CSS-4 colour palette (in RGB format), as object attributes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="palette.RGBPalette.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/palette.html#RGBPalette.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.RGBPalette.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/palette.html#RGBPalette.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#palette.RGBPalette.__init__" title="Link to this definition"></a></dt>
 <dd><p>RGBPalette class initialiser.</p>
 <p>This initialiser dynamically creates all named colours as class
 attributes using the <a class="reference internal" href="#palette.CSS4Colours" title="palette.CSS4Colours"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSS4Colours</span></code></a> class as its data source.</p>
@@ -201,7 +222,7 @@ attributes using the <a class="reference internal" href="#palette.CSS4Colours" t
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

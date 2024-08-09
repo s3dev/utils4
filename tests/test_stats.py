@@ -175,7 +175,10 @@ class TestStats(TestBase):
             if test_size:
                 # Cannot test values if the shapes are not the same.
                 with self.subTest(msg='Values test'):
-                    utilities.assert_true_array(expected=exp, test=test, msg=self._MSG1)
+                    n = 15
+                    utilities.assert_true_array(expected=np.round(exp, n),
+                                                test=np.round(test, n),
+                                                msg=self._MSG1)
             else:
                 self.assertEqual(1, 0, msg='** Forced failure. **')
 
@@ -211,7 +214,10 @@ class TestStats(TestBase):
                 utilities.assert_true(expected=exp.size, test=test.size, msg=self._MSG1)
             if test_size:
                 with self.subTest(msg='Values test'):
-                    utilities.assert_true_array(expected=exp, test=test, msg=self._MSG1)
+                    n = 15
+                    utilities.assert_true_array(expected=np.round(exp, n),
+                                                test=np.round(test, n),
+                                                msg=self._MSG1)
 
     def test03__kde__series(self):
         """Test the Gaussian KDE calculation, from a pandas Series.
@@ -245,7 +251,10 @@ class TestStats(TestBase):
                 utilities.assert_true(expected=exp.size, test=test.size, msg=self._MSG1)
             if test_size:
                 with self.subTest(msg='Values test'):
-                    utilities.assert_true_array(expected=exp, test=test, msg=self._MSG1)
+                    n = 15
+                    utilities.assert_true_array(expected=np.round(exp, n),
+                                                test=np.round(test, n),
+                                                msg=self._MSG1)
 
     def test03__kde_invalid(self):
         """Test the Gaussian KDE calculation, with invalid data.

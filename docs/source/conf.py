@@ -29,8 +29,8 @@ from _version import __version__
 # -- Project information -----------------------------------------------------
 
 project = 'utils4'
-copyright = f'2016-2023 | S3DEV | version {__version__}'
-author = 'S3DEV Development Team'
+copyright = f'2016-2024 | s3dev | version {__version__}'
+author = 'The Developers'
 version = __version__
 release = __version__
 
@@ -48,6 +48,16 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.viewcode',
               'sphinx_copybutton',
               'sphinx_git']
+autodoc_mock_imports = [
+                        'colorama',
+                        'cryptography',
+                        'matplotlib',
+                        'numpy',
+                        'pandas',
+                        'scipy',
+                        'unidecode',
+                        'xlrd',
+                       ]
 html_copy_source = False
 html_css_files = ['css/s5defs-rules.css']
 html_logo = '_static/img/s3dev_tri_white_sm.png'
@@ -61,7 +71,7 @@ master_doc = 'index'
 mathjax_path = 'js/mathjax.js'
 numfig = True
 pygments_style = 'sphinx'
-source_suffix = '.rst'
+source_suffix = {'.rst': 'restructuredtext' }
 templates_path = ['_templates']
 todo_include_todos = True
 

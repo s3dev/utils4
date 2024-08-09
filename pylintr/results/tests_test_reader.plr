@@ -21,6 +21,16 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    pandas (tests.test_reader)
+    utils4 
+      \-reader (tests.test_reader)
+
+
+
 119 lines have been analyzed
 
 Raw metrics

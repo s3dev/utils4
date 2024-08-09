@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>registry &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <title>registry &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -28,15 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> utils4
-            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            utils4
+              <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,9 +68,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Module code</a> &raquo;</li>
-      <li>registry</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">registry</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -120,8 +127,10 @@
     <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Your operating system (</span><span class="si">{</span><span class="n">_OS</span><span class="si">}</span><span class="s1">) is not compatible with this module.&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Value"><a class="viewcode-back" href="../registry.html#registry.Value">[docs]</a><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry values.</span>
+<div class="viewcode-block" id="Value">
+<a class="viewcode-back" href="../registry.html#registry.Value">[docs]</a>
+<span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry values.</span>
 
 <span class="sd">    It provides the following attributes to mimic the attributes of a value</span>
 <span class="sd">    in the registry:</span>
@@ -133,23 +142,31 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=too-few-public-methods</span>
 
-<div class="viewcode-block" id="Value.__init__"><a class="viewcode-back" href="../registry.html#registry.Value.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">regtype</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the name, type and data attributes.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Value.__init__">
+<a class="viewcode-back" href="../registry.html#registry.Value.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">regtype</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the name, type and data attributes.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">regtype</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Key"><a class="viewcode-back" href="../registry.html#registry.Key">[docs]</a><span class="k">class</span> <span class="nc">Key</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry keys.</span>
+
+<div class="viewcode-block" id="Key">
+<a class="viewcode-back" href="../registry.html#registry.Key">[docs]</a>
+<span class="k">class</span> <span class="nc">Key</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry keys.</span>
 
 <span class="sd">    It provides methods that can be used to interact with the values</span>
 <span class="sd">    of the key.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Key.__init__"><a class="viewcode-back" href="../registry.html#registry.Key.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialise a private self._key attribute.</span>
+<div class="viewcode-block" id="Key.__init__">
+<a class="viewcode-back" href="../registry.html#registry.Key.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise a private self._key attribute.</span>
 
 <span class="sd">        This attribute is used throughout the class to provide a set</span>
 <span class="sd">        of key specific functions.</span>
@@ -157,8 +174,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_key</span> <span class="o">=</span> <span class="n">key</span></div>
 
-<div class="viewcode-block" id="Key.get_value"><a class="viewcode-back" href="../registry.html#registry.Key.get_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the key value specified by name.</span>
+
+<div class="viewcode-block" id="Key.get_value">
+<a class="viewcode-back" href="../registry.html#registry.Key.get_value">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the key value specified by name.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            name (str): Name of the registry key.</span>
@@ -175,8 +195,11 @@
         <span class="k">except</span> <span class="ne">WindowsError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Key.set_data"><a class="viewcode-back" href="../registry.html#registry.Key.set_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the data of the key value specified by name.</span>
+
+<div class="viewcode-block" id="Key.set_data">
+<a class="viewcode-back" href="../registry.html#registry.Key.set_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the data of the key value specified by name.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            name (str): Name of the registry key.</span>
@@ -194,11 +217,15 @@
         <span class="k">except</span> <span class="ne">NotImplementedError</span> <span class="k">as</span> <span class="n">err1</span><span class="p">:</span>
             <span class="n">reporterror</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">WindowsError</span> <span class="k">as</span> <span class="n">err2</span><span class="p">:</span>
-            <span class="n">reporterror</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span></div></div>
+            <span class="n">reporterror</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Registry"><a class="viewcode-back" href="../registry.html#registry.Registry">[docs]</a><span class="k">class</span> <span class="nc">Registry</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry.</span>
+
+<div class="viewcode-block" id="Registry">
+<a class="viewcode-back" href="../registry.html#registry.Registry">[docs]</a>
+<span class="k">class</span> <span class="nc">Registry</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;This class encapsulates the Windows registry.</span>
 
 <span class="sd">    It provides methods that can be used to interact with the keys and</span>
 <span class="sd">    values in the registry.</span>
@@ -215,8 +242,10 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Registry.__init__"><a class="viewcode-back" href="../registry.html#registry.Registry.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hkey</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialise a private self._hkey attribute.</span>
+<div class="viewcode-block" id="Registry.__init__">
+<a class="viewcode-back" href="../registry.html#registry.Registry.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hkey</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise a private self._hkey attribute.</span>
 
 <span class="sd">        This attribute is used throughout the class to provide a set</span>
 <span class="sd">        of hkey specific functions.</span>
@@ -224,8 +253,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hkey</span> <span class="o">=</span> <span class="n">hkey</span></div>
 
-<div class="viewcode-block" id="Registry.get_value"><a class="viewcode-back" href="../registry.html#registry.Registry.get_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the key value specified by the path and name</span>
+
+<div class="viewcode-block" id="Registry.get_value">
+<a class="viewcode-back" href="../registry.html#registry.Registry.get_value">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the key value specified by the path and name</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            path (str): Path to the registry key.</span>
@@ -240,8 +272,11 @@
         <span class="n">value</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span></div>
 
-<div class="viewcode-block" id="Registry.set_data"><a class="viewcode-back" href="../registry.html#registry.Registry.set_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the data of the key value specified by the path and name.</span>
+
+<div class="viewcode-block" id="Registry.set_data">
+<a class="viewcode-back" href="../registry.html#registry.Registry.set_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the data of the key value specified by the path and name.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            path (str): Path to the registry key.</span>
@@ -266,8 +301,11 @@
             <span class="n">ui</span><span class="o">.</span><span class="n">print_error_unexpected</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">value</span></div>
 
-<div class="viewcode-block" id="Registry.create_key"><a class="viewcode-back" href="../registry.html#registry.Registry.create_key">[docs]</a>    <span class="k">def</span> <span class="nf">create_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create the key specified by the path.</span>
+
+<div class="viewcode-block" id="Registry.create_key">
+<a class="viewcode-back" href="../registry.html#registry.Registry.create_key">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the key specified by the path.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            path (str): Path to the registry key.</span>
@@ -286,8 +324,11 @@
             <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Registry.delete_key"><a class="viewcode-back" href="../registry.html#registry.Registry.delete_key">[docs]</a>    <span class="k">def</span> <span class="nf">delete_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete the key specified by the path.</span>
+
+<div class="viewcode-block" id="Registry.delete_key">
+<a class="viewcode-back" href="../registry.html#registry.Registry.delete_key">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the key specified by the path.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            path (str): Path to the registry key.</span>
@@ -308,8 +349,11 @@
             <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Registry._open_key"><a class="viewcode-back" href="../registry.html#registry.Registry._open_key">[docs]</a>    <span class="k">def</span> <span class="nf">_open_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sam</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Open and return the key specified by the path.</span>
+
+<div class="viewcode-block" id="Registry._open_key">
+<a class="viewcode-back" href="../registry.html#registry.Registry._open_key">[docs]</a>
+    <span class="k">def</span> <span class="nf">_open_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sam</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open and return the key specified by the path.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            path (str): Path to the registry key.</span>
@@ -330,7 +374,9 @@
             <span class="k">return</span> <span class="n">key</span>
         <span class="k">except</span> <span class="ne">WindowsError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">None</span></div></div>
+            <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
 
 <span class="c1"># Test IS before shortcutting.</span>
 <span class="k">if</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">_OS</span><span class="p">:</span>
@@ -349,7 +395,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

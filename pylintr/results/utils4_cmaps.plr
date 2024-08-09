@@ -21,6 +21,16 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    matplotlib (utils4.cmaps)
+      \-pyplot (utils4.cmaps)
+    numpy (utils4.cmaps)
+
+
+
 198 lines have been analyzed
 
 Raw metrics

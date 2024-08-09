@@ -17,7 +17,7 @@ features a streamlined code base, complete documentation and a full test
 suite as part of the source distribution.
 
 .. note:: 
-    Some out of date modules and methods have been *removed* from 
+    Some out-of-date modules and methods have been *removed* from 
     ``utils4``. If you find a method is missing, please continue to use 
     the latest release of ``utils3`` (v0.15.1) for this functionality.
         
@@ -31,10 +31,9 @@ to :ref:`contact us <contact-us>`.
 Using the Library
 =================
 This documentation suite contains detailed explanation and example usage 
-for each of the library's importable modules.
-
-For detailed documentation, usage examples and links the source code 
-itself, please refer to the :ref:`library-api` page.
+for each of the library's importable modules. For detailed documentation, 
+usage examples and links the source code itself, please refer to the 
+:ref:`library-api` page.
 
 If there is a specific module or method which you cannot find, a 
 **search** field is built into the navigation bar to the left.
@@ -42,37 +41,54 @@ If there is a specific module or method which you cannot find, a
 
 Installation
 ============
-The easiest way to install ``utils4`` into your local Python instance,
-is to :ref:`install the latest wheel file <installing-from-wheel>`. The 
-wheel files can be downloaded from the `S3DEV archive`_.
-
-Example for downloading the latest wheel::
+The easiest way to install ``utils4`` is using ``pip`` *after* activating
+your virtual environment::
     
-    $ wget https://s3dev.uk/downloads/utils4-latest-<architecture>.whl
+    pip install utils4
 
 
-.. _installing-from-wheel:
+.. _building-a-wheel:
 
-Installing from a Wheel File
-----------------------------
+Building a Wheel File
+---------------------
 
 .. important:: 
     If using a virtual environment, be sure to 
     *activate the environment first*.
 
-Install from a wheel file::
+As the library contains some C components, building on Windows may prove 
+tricky. To help address this, we've pre-compiled some of the more popular 
+wheels for you. These wheels are available in `GitHub Releases`_.
 
-    $ pip install utils4-x.x.x-<architecture>.whl
+If a wheel is not available for your architecture, a wheel can be built
+from source, *if* the appropriate C build tools are installed on your 
+system.
+
+#. Download the latest source distribution from `PyPI`_.
+#. Unpack the archive and navigate into the new unpacked directory.
+#. Run the following command from the terminal, after activating the 
+   appropriate virtual environment::
+
+       python -m build . --wheel
+
+This will build a wheel and place it in the local ``dist`` directory for 
+installation.
+
+.. note::
+    If you don't *need* a wheel file, you can build and install directly
+    from the source distribution as::
+
+        pip install utils4-<version>.tar.gz
 
 
 List of available wheel files
 +++++++++++++++++++++++++++++
-We will create a wheel file, with each release, for the platforms and 
-architectures listed below, which can be downloaded from the 
-`S3DEV archive`_. However, if you require something different, the source
-distributions can also be downloaded from the archive. Then, please refer 
-to the guidance on 
-:ref:`building and creating a wheel file from source <building-from-source>`.
+We will create *some* wheel files, with each release, for the platforms and 
+architectures listed below, which can be downloaded from `GitHub Releases`_. 
+If we've just released and you don't see a wheel file there, please check 
+back the following day as we may still be working through the builds. 
+However, if you require something different than what we provide, the 
+source distributions can also be downloaded from `PyPI`_.
 
 .. csv-table:: Available Wheels
     :file:  ./_static/tbl/avail-wheels.csv 
@@ -113,8 +129,11 @@ Indices and Tables
 
 .. rubric:: Footnotes
 
-.. _S3DEV archive: https://s3dev.uk/downloads/utils4
+.. _PyPI: https://pypi.org/project/utils4/#files
+.. _GitHub: https://github.com/s3dev/utils4/
+.. _GitHub Releases: https://github.com/s3dev/utils4/releases
 .. _winlibs: https://winlibs.com
+
 
 |lastupdated|
 

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>srccheck - Checksum functionality for source code &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>srccheck - Checksum functionality for source code &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,7 +69,14 @@
 <li class="toctree-l2"><a class="reference internal" href="reader.html">reader - Data readers for formats which are no-longer supported</a></li>
 <li class="toctree-l2"><a class="reference internal" href="registry.html">registry - A simple interface to the Windows registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reporterror.html">reporterror - Portable error reporting module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">srccheck - Checksum functionality for source code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">srccheck - Checksum functionality for source code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#srccheck.SourceCheck"><code class="docutils literal notranslate"><span class="pre">SourceCheck</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#srccheck.SourceCheck.check"><code class="docutils literal notranslate"><span class="pre">SourceCheck.check()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#srccheck.SourceCheck.generate"><code class="docutils literal notranslate"><span class="pre">SourceCheck.generate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="stats.html">stats - Statistics methods without the overhead</a></li>
 <li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
@@ -89,9 +103,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>srccheck - Checksum functionality for source code</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">srccheck - Checksum functionality for source code</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,9 +115,9 @@
            <div itemprop="articleBody">
              
   <section id="module-srccheck">
-<span id="srccheck-checksum-functionality-for-source-code"></span><h1>srccheck - Checksum functionality for source code<a class="headerlink" href="#module-srccheck" title="Permalink to this headline"></a></h1>
+<span id="srccheck-checksum-functionality-for-source-code"></span><h1>srccheck - Checksum functionality for source code<a class="headerlink" href="#module-srccheck" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This module is used to perform checksum calculations on a
 collection of files to verify if the checksum <em>calculated</em> on each
 file matches the <em>expected</em> checksum value.</p>
@@ -117,19 +131,19 @@ and are ‘safe’ for use. Otherwise, a value of <code class="docutils literal 
 returned to the caller the filenames of each failing file are
 printed to the terminal.</p>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Comments</dt>
+<dt class="field-odd">Comments<span class="colon">:</span></dt>
 <dd class="field-odd"><p>n/a</p>
 </dd>
-<dt class="field-even">Example usage</dt>
+<dt class="field-even">Example usage<span class="colon">:</span></dt>
 <dd class="field-even"><p>Generate an <em>un-encrypted</em> reference file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.srccheck</span> <span class="kn">import</span> <span class="n">srccheck</span>
 
@@ -192,16 +206,16 @@ appropriate time. For example:</p>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="srccheck.SourceCheck">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">srccheck.</span></span><span class="sig-name descname"><span class="pre">SourceCheck</span></span><a class="reference internal" href="_modules/srccheck.html#SourceCheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">srccheck.</span></span><span class="sig-name descname"><span class="pre">SourceCheck</span></span><a class="reference internal" href="_modules/srccheck.html#SourceCheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck" title="Link to this definition"></a></dt>
 <dd><p>Verify source code checksums values are as expected.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="srccheck.SourceCheck.check">
-<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/srccheck.html#SourceCheck.check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck.check" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/srccheck.html#SourceCheck.check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck.check" title="Link to this definition"></a></dt>
 <dd><p>Verify the provided source code file checksums are as expected.</p>
 <p>If any checksum do not match, the names of those files are reported
 to the terminal.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ref_file</strong> (<em>str</em>) – Full path to the reference file containing the
 full paths to the file(s) to be tested and the associated
@@ -222,15 +236,15 @@ attempted.</p>
 <code class="docutils literal notranslate"><span class="pre">ref_file</span></code> has been encrypted, and decryption is carried out.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>FileNotFoundError</strong> – If either the reference file, or key file do
     not exist.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if all file’s checksum values agree with the checksum
 listed in the reference file; otherwise False.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -238,11 +252,11 @@ listed in the reference file; otherwise False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="srccheck.SourceCheck.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepaths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/srccheck.html#SourceCheck.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck.generate" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepaths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/srccheck.html#SourceCheck.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#srccheck.SourceCheck.generate" title="Link to this definition"></a></dt>
 <dd><p>Generate the reference file containing the source file checksums,
 and the associated key file.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filepaths</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of full paths which are to be
 included in the reference file.</p></li>
@@ -250,7 +264,7 @@ included in the reference file.</p></li>
 a key file. Defaults to False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Reference File</dt>
+<dt class="field-even">Reference File<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>If unencrypted:</strong></p>
 <p>The reference file is a flat, plaintext CSV file with the file
 path as the first field and the checksum value as the second field.</p>
@@ -277,7 +291,7 @@ be provided to the <a class="reference internal" href="#srccheck.SourceCheck.che
 other file is useless.</p>
 </div>
 </dd>
-<dt class="field-odd">Layout</dt>
+<dt class="field-odd">Layout<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>If encrypted:</strong></p>
 <p>The layout of the <em>deserialised</em> and <em>decrypted</em> reference file is
 in basic JSON format, with the filename as the keys, and checksum
@@ -291,7 +305,7 @@ values as the values.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>FileNotFoundError</strong> – If any of the files provided to the
     <code class="docutils literal notranslate"><span class="pre">filepaths</span></code> argument do not exist.</p>
 </dd>
@@ -313,7 +327,7 @@ values as the values.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

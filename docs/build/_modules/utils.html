@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/s5defs-rules.css" type="text/css" />
+  <title>utils &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -28,15 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> utils4
-            <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            utils4
+              <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,9 +68,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Module code</a> &raquo;</li>
-      <li>utils</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">utils</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -106,6 +113,7 @@
 <span class="sd">    For usage examples, please refer to the docstring for each method.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=import-error</span>
 <span class="c1"># pylint: disable=import-outside-toplevel  # Keep required dependencies to a minimum.</span>
 <span class="c1"># pylint: disable=wrong-import-order</span>
 
@@ -124,8 +132,10 @@
 <span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
 
 
-<div class="viewcode-block" id="clean_dataframe"><a class="viewcode-back" href="../utils.html#utils.clean_dataframe">[docs]</a><span class="k">def</span> <span class="nf">clean_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Clean a ``pandas.DataFrame`` data structure.</span>
+<div class="viewcode-block" id="clean_dataframe">
+<a class="viewcode-back" href="../utils.html#utils.clean_dataframe">[docs]</a>
+<span class="k">def</span> <span class="nf">clean_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clean a ``pandas.DataFrame`` data structure.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (pd.DataFrame): DataFrame to be cleaned.</span>
@@ -193,8 +203,11 @@
         <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
             <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="direxists"><a class="viewcode-back" href="../utils.html#utils.direxists">[docs]</a><span class="k">def</span> <span class="nf">direxists</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">create_path</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Test if a directory exists. If not, create it, if instructed.</span>
+
+<div class="viewcode-block" id="direxists">
+<a class="viewcode-back" href="../utils.html#utils.direxists">[docs]</a>
+<span class="k">def</span> <span class="nf">direxists</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">create_path</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if a directory exists. If not, create it, if instructed.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        path (str): The directory path to be tested.</span>
@@ -240,8 +253,11 @@
             <span class="n">found</span> <span class="o">=</span> <span class="n">direxists</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">create_path</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">found</span></div>
 
-<div class="viewcode-block" id="fileexists"><a class="viewcode-back" href="../utils.html#utils.fileexists">[docs]</a><span class="k">def</span> <span class="nf">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Test if a file exists. If not, notify the user or raise an error.</span>
+
+<div class="viewcode-block" id="fileexists">
+<a class="viewcode-back" href="../utils.html#utils.fileexists">[docs]</a>
+<span class="k">def</span> <span class="nf">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if a file exists. If not, notify the user or raise an error.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        filepath (str): Full file path to test.</span>
@@ -318,11 +334,14 @@
     <span class="k">return</span> <span class="n">found</span></div>
 
 
-<div class="viewcode-block" id="format_exif_date"><a class="viewcode-back" href="../utils.html#utils.format_exif_date">[docs]</a><span class="k">def</span> <span class="nf">format_exif_date</span><span class="p">(</span><span class="n">datestring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+
+<div class="viewcode-block" id="format_exif_date">
+<a class="viewcode-back" href="../utils.html#utils.format_exif_date">[docs]</a>
+<span class="k">def</span> <span class="nf">format_exif_date</span><span class="p">(</span><span class="n">datestring</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                      <span class="n">input_format</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;%Y:%m:</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">,</span>
                      <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">%H%M%S&#39;</span><span class="p">,</span>
                      <span class="n">return_datetime</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Format an exif timestamp.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format an exif timestamp.</span>
 
 <span class="sd">        This function is useful for storing an exif date as a datetime string.</span>
 <span class="sd">        For example, extracting the exif data from an image to be stored into</span>
@@ -379,8 +398,11 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">output_format</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="get_os"><a class="viewcode-back" href="../utils.html#utils.get_os">[docs]</a><span class="k">def</span> <span class="nf">get_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Get the platform&#39;s OS.</span>
+
+<div class="viewcode-block" id="get_os">
+<a class="viewcode-back" href="../utils.html#utils.get_os">[docs]</a>
+<span class="k">def</span> <span class="nf">get_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the platform&#39;s OS.</span>
 
 <span class="sd">    This method is a very thin wrapper around the :func:`platform.system()`</span>
 <span class="sd">    function.</span>
@@ -400,8 +422,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="getdrivername"><a class="viewcode-back" href="../utils.html#utils.getdrivername">[docs]</a><span class="k">def</span> <span class="nf">getdrivername</span><span class="p">(</span><span class="n">driver</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_all</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
-    <span class="sd">&quot;&quot;&quot;Return a list of ODBC driver names, matching the regex pattern.</span>
+
+<div class="viewcode-block" id="getdrivername">
+<a class="viewcode-back" href="../utils.html#utils.getdrivername">[docs]</a>
+<span class="k">def</span> <span class="nf">getdrivername</span><span class="p">(</span><span class="n">driver</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_all</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of ODBC driver names, matching the regex pattern.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        driver (str): A **regex pattern** for the ODBC driver you&#39;re searching.</span>
@@ -456,8 +481,11 @@
             <span class="n">drivers</span> <span class="o">=</span> <span class="n">drivers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">drivers</span></div>
 
-<div class="viewcode-block" id="getsitepackages"><a class="viewcode-back" href="../utils.html#utils.getsitepackages">[docs]</a><span class="k">def</span> <span class="nf">getsitepackages</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return the Python installation&#39;s site packages directory.</span>
+
+<div class="viewcode-block" id="getsitepackages">
+<a class="viewcode-back" href="../utils.html#utils.getsitepackages">[docs]</a>
+<span class="k">def</span> <span class="nf">getsitepackages</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the Python installation&#39;s site packages directory.</span>
 
 <span class="sd">    :Design:</span>
 <span class="sd">        The function first uses the local :func:`~utils.get_os()`</span>
@@ -498,8 +526,11 @@
         <span class="n">pkgs</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">getsitepackages</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">pkgs</span></div>
 
-<div class="viewcode-block" id="gzip_compress"><a class="viewcode-back" href="../utils.html#utils.gzip_compress">[docs]</a><span class="k">def</span> <span class="nf">gzip_compress</span><span class="p">(</span><span class="n">in_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compress a file using ``gzip``.</span>
+
+<div class="viewcode-block" id="gzip_compress">
+<a class="viewcode-back" href="../utils.html#utils.gzip_compress">[docs]</a>
+<span class="k">def</span> <span class="nf">gzip_compress</span><span class="p">(</span><span class="n">in_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compress a file using ``gzip``.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        in_path (str): Full path to the file to be compressed. If the file</span>
@@ -544,8 +575,11 @@
                 <span class="n">chunk</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out_path</span></div>
 
-<div class="viewcode-block" id="gzip_decompress"><a class="viewcode-back" href="../utils.html#utils.gzip_decompress">[docs]</a><span class="k">def</span> <span class="nf">gzip_decompress</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Decompress a ``.gz`` file using ``gzip``.</span>
+
+<div class="viewcode-block" id="gzip_decompress">
+<a class="viewcode-back" href="../utils.html#utils.gzip_decompress">[docs]</a>
+<span class="k">def</span> <span class="nf">gzip_decompress</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decompress a ``.gz`` file using ``gzip``.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        path (str): Full path to the file to be decompressed. If the file</span>
@@ -605,8 +639,11 @@
         <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">success</span></div>
 
-<div class="viewcode-block" id="ping"><a class="viewcode-back" href="../utils.html#utils.ping">[docs]</a><span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">server</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Ping an IP address, server or web address.</span>
+
+<div class="viewcode-block" id="ping">
+<a class="viewcode-back" href="../utils.html#utils.ping">[docs]</a>
+<span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">server</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Ping an IP address, server or web address.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        server (str): IP address, server name or web address.</span>
@@ -698,8 +735,11 @@
             <span class="n">ui</span><span class="o">.</span><span class="n">print_alert</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="testimport"><a class="viewcode-back" href="../utils.html#utils.testimport">[docs]</a><span class="k">def</span> <span class="nf">testimport</span><span class="p">(</span><span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Test if a Python library is installed.</span>
+
+<div class="viewcode-block" id="testimport">
+<a class="viewcode-back" href="../utils.html#utils.testimport">[docs]</a>
+<span class="k">def</span> <span class="nf">testimport</span><span class="p">(</span><span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if a Python library is installed.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        module_name (str): Exact name of the module to be found.</span>
@@ -740,8 +780,11 @@
         <span class="n">ui</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Library/module not installed: </span><span class="si">{</span><span class="n">module_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">found</span></div>
 
-<div class="viewcode-block" id="unidecode"><a class="viewcode-back" href="../utils.html#utils.unidecode">[docs]</a><span class="k">def</span> <span class="nf">unidecode</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Attempt to convert a Unicode string object into a 7-bit ASCII string.</span>
+
+<div class="viewcode-block" id="unidecode">
+<a class="viewcode-back" href="../utils.html#utils.unidecode">[docs]</a>
+<span class="k">def</span> <span class="nf">unidecode</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attempt to convert a Unicode string object into a 7-bit ASCII string.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        string (str): The string to be decoded.</span>
@@ -806,6 +849,7 @@
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
         <span class="n">decoded</span> <span class="o">=</span> <span class="n">string</span>
     <span class="k">return</span> <span class="n">decoded</span></div>
+
 </pre></div>
 
            </div>
@@ -815,7 +859,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2022 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>user_interface - Format coloured text to the terminal &mdash; utils4 - v1.5.0.dev1 Documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/s5defs-rules.css" type="text/css" />
+  <title>user_interface - Format coloured text to the terminal &mdash; utils4 - v1.5.0rc1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/clipboard.min.js"></script>
-        <script src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c83ecde"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -31,15 +34,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> utils4
-            <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            utils4
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0.dev1
+                1.5.0rc1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -67,7 +74,38 @@
 <li class="toctree-l2"><a class="reference internal" href="termcolour.html">termcolour - Easily add colour to terminal output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tickers.html">tickers - Wait tickers for long-running processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timedelta.html">timedelta - Date and time delta calculator</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">user_interface - Format coloured text to the terminal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">user_interface - Format coloured text to the terminal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user_interface.PrintBanner"><code class="docutils literal notranslate"><span class="pre">PrintBanner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.PrintBanner.__init__"><code class="docutils literal notranslate"><span class="pre">PrintBanner.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user_interface.UserInterface"><code class="docutils literal notranslate"><span class="pre">UserInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.__init__"><code class="docutils literal notranslate"><span class="pre">UserInterface.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.get_input"><code class="docutils literal notranslate"><span class="pre">UserInterface.get_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_alert"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_alert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_blank_lines"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_blank_lines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_error"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_error_unexpected"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_error_unexpected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_heading_blue"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_heading_blue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_heading_cyan"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_heading_cyan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_heading_green"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_heading_green()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_heading_red"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_heading_red()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_heading_white"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_heading_white()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_heading_yellow"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_heading_yellow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_normal"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_normal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.print_warning"><code class="docutils literal notranslate"><span class="pre">UserInterface.print_warning()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.UserInterface.prompt"><code class="docutils literal notranslate"><span class="pre">UserInterface.prompt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user_interface._Config"><code class="docutils literal notranslate"><span class="pre">_Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.custom_string"><code class="docutils literal notranslate"><span class="pre">_Config.custom_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.default_string"><code class="docutils literal notranslate"><span class="pre">_Config.default_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.v_pad_sleep"><code class="docutils literal notranslate"><span class="pre">_Config.v_pad_sleep</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils - Collection of general utility-based functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="validation.html">validation - A small collection of validation rules</a></li>
 </ul>
@@ -89,9 +127,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library.html">Libary API Documentation</a> &raquo;</li>
-      <li>user_interface - Format coloured text to the terminal</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+      <li class="breadcrumb-item active">user_interface - Format coloured text to the terminal</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,9 +139,9 @@
            <div itemprop="articleBody">
              
   <section id="module-user_interface">
-<span id="user-interface-format-coloured-text-to-the-terminal"></span><h1>user_interface - Format coloured text to the terminal<a class="headerlink" href="#module-user_interface" title="Permalink to this headline"></a></h1>
+<span id="user-interface-format-coloured-text-to-the-terminal"></span><h1>user_interface - Format coloured text to the terminal<a class="headerlink" href="#module-user_interface" title="Link to this heading"></a></h1>
 <dl class="field-list">
-<dt class="field-odd">Purpose</dt>
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This class module provides an interface to the Windows/Linux
 command line interfaces (CLI), enabling the user to easily print
 text, headings and banners in a variety of pre-defined
@@ -140,16 +178,16 @@ background</p></li>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-even">Platform</dt>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
 <dd class="field-even"><p>Linux/Windows | Python 3.6+</p>
 </dd>
-<dt class="field-odd">Developer</dt>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
 <dd class="field-odd"><p>M Critchard, J Berendt</p>
 </dd>
-<dt class="field-even">Email</dt>
+<dt class="field-even">Email<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>For usage examples, please refer to the following class docstrings:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#user_interface.PrintBanner" title="user_interface.PrintBanner"><code class="xref py py-class docutils literal notranslate"><span class="pre">PrintBanner</span></code></a></p></li>
@@ -159,13 +197,13 @@ background</p></li>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="user_interface.PrintBanner">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">PrintBanner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ribbon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#PrintBanner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.PrintBanner" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">PrintBanner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ribbon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#PrintBanner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.PrintBanner" title="Link to this definition"></a></dt>
 <dd><p>This class is used to print an information banner to the terminal.</p>
 <p>Generally, this class is used in the startup routine of an application
 to display information about the application. For example, information such
 as the application title, version, security classification, etc.</p>
 <dl class="field-list">
-<dt class="field-odd">Design</dt>
+<dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This may be useful if you want to use a ‘standardised’ program
 header across all of your programs.  This class can be called in the
 program’s startup routine.</p>
@@ -180,7 +218,7 @@ name/location, and the resolution.</p>
 sections of the <a class="reference internal" href="#user_interface.PrintBanner.__init__" title="user_interface.PrintBanner.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code></a> method, as the banner
 is highly configurable.</p>
 <dl class="field-list">
-<dt class="field-odd">Example Banner</dt>
+<dt class="field-odd">Example Banner<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Below is a printed example of a program header banner:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------</span>
 <span class="n">Program</span>     <span class="p">:</span>    <span class="n">Spam</span> <span class="ow">and</span> <span class="n">Eggs</span>
@@ -191,7 +229,7 @@ is highly configurable.</p>
 </pre></div>
 </div>
 </dd>
-<dt class="field-even">Example Code</dt>
+<dt class="field-even">Example Code<span class="colon">:</span></dt>
 <dd class="field-even"><p>This code can be used to print the banner above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">PrintBanner</span>
 
@@ -204,10 +242,10 @@ is highly configurable.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.PrintBanner.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ribbon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#PrintBanner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.PrintBanner.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ribbon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#PrintBanner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.PrintBanner.__init__" title="Link to this definition"></a></dt>
 <dd><p>Display a configurable information banner to the terminal.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of your program. Defaults to None.</p></li>
 <li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – The program’s version number.
@@ -268,7 +306,7 @@ are accepted as strings. Defaults to ‘brightwhite’.</p></li>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Design</dt>
+<dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>In short, if the <code class="docutils literal notranslate"><span class="pre">info</span></code> parameter is left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, a
 default banner is generated using the values passed into
 the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code> and <code class="docutils literal notranslate"><span class="pre">desc</span></code> parameters.</p>
@@ -288,7 +326,7 @@ are met:</p>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The following code block:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">PrintBanner</span>
 
@@ -319,12 +357,12 @@ are met:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="user_interface.UserInterface">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">UserInterface</span></span><a class="reference internal" href="_modules/user_interface.html#UserInterface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">UserInterface</span></span><a class="reference internal" href="_modules/user_interface.html#UserInterface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface" title="Link to this definition"></a></dt>
 <dd><p>This class encapsulates the Linux/Windows command line interfaces and
 provides a standard way of reporting normal, alternative and abnormal
 behaviour.</p>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Below are a couple of examples showing how easy it is to print
 coloured text to the terminal.</p>
 <p>To print a green text to the console:</p>
@@ -349,7 +387,7 @@ coloured text to the terminal.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.__init__" title="Link to this definition"></a></dt>
 <dd><p>UserInterface class initialiser.</p>
 <ul>
 <li><p><strong>Purpose</strong>:</p>
@@ -393,7 +431,7 @@ in later versions of Python, possibly 3.6+.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.get_input">
-<span class="sig-name descname"><span class="pre">get_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ending_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.get_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.get_input" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ending_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.get_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.get_input" title="Link to this definition"></a></dt>
 <dd><p>Deprecated version of the new method: <a class="reference internal" href="#user_interface.UserInterface.prompt" title="user_interface.UserInterface.prompt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prompt()</span></code></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -403,10 +441,10 @@ in later versions of Python, possibly 3.6+.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_">
-<span class="sig-name descname"><span class="pre">print_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_pad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_pad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_pad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_pad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_" title="Link to this definition"></a></dt>
 <dd><p>Wrap the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code> function to provide colour customisation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – The text to be printed to the terminal.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – The text colour. Defaults to ‘brightwhite’.</p></li>
@@ -457,7 +495,7 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
 </ul>
 </div></blockquote>
 <dl class="field-list">
-<dt class="field-odd">Design</dt>
+<dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This method extends the functionality of the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>
 function by adding the options for text/background colouring and
 padding. The user can pass specific text/background colours along
@@ -481,10 +519,10 @@ section for each string parameter’s available options.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_alert">
-<span class="sig-name descname"><span class="pre">print_alert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_alert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_alert" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_alert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_alert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_alert" title="Link to this definition"></a></dt>
 <dd><p>Print red text on a black background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
@@ -495,10 +533,10 @@ section for each string parameter’s available options.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_blank_lines">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_blank_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_blank_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_blank_lines" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_blank_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_blank_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_blank_lines" title="Link to this definition"></a></dt>
 <dd><p>Print (n) blank lines.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>qualtity</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of blank lines to print.
 Defaults to 1.</p>
 </dd>
@@ -507,10 +545,10 @@ Defaults to 1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_error">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_error" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_error" title="Link to this definition"></a></dt>
 <dd><p>Print red error text on a black background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>error</strong> (<em>object</em>) – This is the <strong>error object</strong> generated by the
 Exception.</p>
 </dd>
@@ -518,7 +556,7 @@ Exception.</p>
 <p>This method calls the <a class="reference internal" href="reporterror.html#reporterror.reporterror" title="reporterror.reporterror"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reporterror()</span></code></a> method
 to generate the error message.</p>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>To print an error message:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
 
@@ -541,10 +579,10 @@ to generate the error message.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_error_unexpected">
-<span class="sig-name descname"><span class="pre">print_error_unexpected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_error_unexpected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_error_unexpected" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_error_unexpected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_error_unexpected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_error_unexpected" title="Link to this definition"></a></dt>
 <dd><p>Print red ‘unexpected error’ text on black background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Design</dt>
+<dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This method uses the call stack to print a message for
 ‘unexpected error’ errors.</p>
 </dd>
@@ -553,10 +591,10 @@ to generate the error message.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_heading_blue">
-<span class="sig-name descname"><span class="pre">print_heading_blue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_blue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_blue" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_heading_blue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_blue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_blue" title="Link to this definition"></a></dt>
 <dd><p>Print white text on a blue background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘brightwhite’.</p></li>
@@ -570,10 +608,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_heading_cyan">
-<span class="sig-name descname"><span class="pre">print_heading_cyan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_cyan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_cyan" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_heading_cyan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_cyan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_cyan" title="Link to this definition"></a></dt>
 <dd><p>Print black text on a cyan background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
@@ -587,10 +625,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_heading_green">
-<span class="sig-name descname"><span class="pre">print_heading_green</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_green"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_green" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_heading_green</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_green"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_green" title="Link to this definition"></a></dt>
 <dd><p>Print black text on a green background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
@@ -604,10 +642,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_heading_red">
-<span class="sig-name descname"><span class="pre">print_heading_red</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_red"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_red" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_heading_red</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_red"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_red" title="Link to this definition"></a></dt>
 <dd><p>Print black text on a red background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
@@ -621,10 +659,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_heading_white">
-<span class="sig-name descname"><span class="pre">print_heading_white</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_white"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_white" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_heading_white</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_white"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_white" title="Link to this definition"></a></dt>
 <dd><p>Print black text on a white background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
@@ -638,10 +676,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_heading_yellow">
-<span class="sig-name descname"><span class="pre">print_heading_yellow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_yellow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_yellow" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_heading_yellow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_heading_yellow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_heading_yellow" title="Link to this definition"></a></dt>
 <dd><p>Print black text on a yellow background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
@@ -655,10 +693,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_normal">
-<span class="sig-name descname"><span class="pre">print_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_normal" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_normal" title="Link to this definition"></a></dt>
 <dd><p>Print green text on a black background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
@@ -669,10 +707,10 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_warning">
-<span class="sig-name descname"><span class="pre">print_warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_warning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_warning" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_warning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_warning" title="Link to this definition"></a></dt>
 <dd><p>Print yellow text on a black background.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
 <li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
@@ -683,14 +721,14 @@ Defaults to 0.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.prompt">
-<span class="sig-name descname"><span class="pre">prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ending_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.prompt" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'brightwhite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ending_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.prompt" title="Link to this definition"></a></dt>
 <dd><p>Get user input via a CLI prompt formatted by the caller.</p>
 <p>This method extends the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code> function (although not
 used by this method) by adding appearance control and text colouring.
 Like the <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code> function, the user’s input is returned to the
 caller as a <code class="docutils literal notranslate"><span class="pre">str</span></code> type.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<em>str</em>) – The text to be displayed.</p></li>
 <li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘brightwhite’.</p></li>
@@ -725,7 +763,7 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
 </ul>
 </div></blockquote>
 <dl class="field-list">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>To use the prompt in its standard form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inp</span> <span class="o">=</span> <span class="n">ui</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="s1">&#39;Enter a number:&#39;</span><span class="p">)</span>
 
@@ -765,21 +803,21 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="user_interface._Config">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">_Config</span></span><a class="reference internal" href="_modules/user_interface.html#_Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface._Config" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">_Config</span></span><a class="reference internal" href="_modules/user_interface.html#_Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface._Config" title="Link to this definition"></a></dt>
 <dd><p>Storage class for the module’s config items.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="user_interface._Config.custom_string">
-<span class="sig-name descname"><span class="pre">custom_string</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">{key:{pad}}:{spaces}{val}'</span></em><a class="headerlink" href="#user_interface._Config.custom_string" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">custom_string</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">{key:{pad}}:{spaces}{val}'</span></em><a class="headerlink" href="#user_interface._Config.custom_string" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="user_interface._Config.default_string">
-<span class="sig-name descname"><span class="pre">default_string</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">{title:{pad}}:{spaces}{name}'</span></em><a class="headerlink" href="#user_interface._Config.default_string" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">default_string</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">{title:{pad}}:{spaces}{name}'</span></em><a class="headerlink" href="#user_interface._Config.default_string" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="user_interface._Config.v_pad_sleep">
-<span class="sig-name descname"><span class="pre">v_pad_sleep</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#user_interface._Config.v_pad_sleep" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">v_pad_sleep</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#user_interface._Config.v_pad_sleep" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -797,7 +835,7 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2023 | S3DEV | version 1.5.0.dev1.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc1.</p>
   </div>
 
    

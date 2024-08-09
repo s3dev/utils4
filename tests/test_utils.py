@@ -238,6 +238,8 @@ class TestUtils(TestBase):
             exp = site.getsitepackages()[0]
         elif 'win' in _os:
             exp = site.getsitepackages()[1]
+        else:
+            exp = None
         test = utils.getsitepackages()
         utilities.assert_true(expected=exp, test=test, msg=self._MSG1)
 
@@ -321,6 +323,7 @@ class TestUtils(TestBase):
         if 'win' in sys.platform.lower():
             exp2a = ('Ping request could not find host utils.s3d. '
                     'Please check the name and try again.')
+            exp2b = 'UNUSED'
         else:
             exp2a = 'ping: utils.s3d: Name or service not known'
             exp2b = 'Temporary failure'

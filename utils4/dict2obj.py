@@ -118,6 +118,7 @@ class Dict2Obj:
             bool: True if **all** tests pass, otherwise False.
 
         """
+        # pylint: disable=multiple-statements
         s = self._validate_source_value()
         if s: s = self._validate_source()
         if s: s = self._validate_is_dict()

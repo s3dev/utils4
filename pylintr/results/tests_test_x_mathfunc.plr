@@ -21,6 +21,14 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    utils4 (tests.test_x_mathfunc)
+
+
+
 682 lines have been analyzed
 
 Raw metrics

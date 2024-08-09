@@ -1,4 +1,3 @@
-# Changed.
 # -*- coding: utf-8 -*-
 """
 :Purpose:   Small helper module designed to load a program's JSON-based
@@ -87,6 +86,8 @@ def loadconfig(filename: str='config.json', return_as_obj: bool=False):
             to_return = Dict2Obj(source='json', filepath=fullpath)
         else:
             to_return = _fromjson(filepath=fullpath)
+    else:
+        return None
     return to_return
 
 def _file_exists(fullpath: str) -> bool:
