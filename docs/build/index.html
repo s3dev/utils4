@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils4 Library Documentation &mdash; utils4 - v1.5.0rc2 Documentation</title>
+  <title>utils4 Library Documentation &mdash; utils4 - v1.5.0rc3 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=31d39c12"></script>
+        <script src="_static/documentation_options.js?v=551c4c56"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -42,7 +42,7 @@
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.5.0rc2
+                1.5.0rc3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -146,21 +146,13 @@ system.</p>
 <li><p>Unpack the archive and navigate into the new unpacked directory.</p></li>
 <li><p>Run the following command from the terminal, after activating the
 appropriate virtual environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">build</span> <span class="o">.</span> <span class="o">--</span><span class="n">wheel</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">build</span> <span class="o">.</span> <span class="o">--</span><span class="n">wheel</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">isolation</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>This will build a wheel and place it in the local <code class="docutils literal notranslate"><span class="pre">dist</span></code> directory for
 installation.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you don’t <em>need</em> a wheel file, you can build and install directly
-from the source distribution as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">utils4</span><span class="o">-&lt;</span><span class="n">version</span><span class="o">&gt;.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-</pre></div>
-</div>
-</div>
 <section id="list-of-available-wheel-files">
 <h4>List of available wheel files<a class="headerlink" href="#list-of-available-wheel-files" title="Link to this heading"></a></h4>
 <p>We will create <em>some</em> wheel files, with each release, for the platforms and
@@ -255,7 +247,7 @@ to the <a class="reference internal" href="#troubleshooting"><span class="std st
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc2.</p>
+    <p>&#169; Copyright 2016-2024 | s3dev | version 1.5.0rc3.</p>
   </div>
 
    

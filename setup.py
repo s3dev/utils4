@@ -13,6 +13,7 @@
 
 """
 
+import sys
 from setuptools import setup, Extension
 
 # Add C extensions.
@@ -25,4 +26,15 @@ setup_args = {'ext_modules': [Extension('utils4.mathfunc',
                                         py_limited_api=True,
                                         language='c')]}
 
+# If on Windows, add a [build] table for the compiler (only once).
+if sys.platform == 'win32':
+    s = '\n\n[build]\ncompiler=mingw32\n\n'
+    with open('setup.cfg', 'a+') as f:
+        pos = f.tell()
+        f.seek(0)
+        if 'compile' not in f.read():
+            f.seek(pos)
+            f.write(s)
+
 setup(**setup_args)
+

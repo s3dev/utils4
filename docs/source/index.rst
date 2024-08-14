@@ -69,16 +69,10 @@ system.
 #. Run the following command from the terminal, after activating the 
    appropriate virtual environment::
 
-       python -m build . --wheel
+       python -m build . --wheel --no-isolation
 
 This will build a wheel and place it in the local ``dist`` directory for 
 installation.
-
-.. note::
-    If you don't *need* a wheel file, you can build and install directly
-    from the source distribution as::
-
-        pip install utils4-<version>.tar.gz
 
 
 List of available wheel files
