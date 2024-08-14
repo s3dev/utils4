@@ -11,7 +11,7 @@
             to control the display (or non-display) of warnings. Refer to the
             use cases below for an example.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

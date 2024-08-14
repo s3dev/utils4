@@ -4,7 +4,7 @@
             or JSON file into a object - where the dictionary's key/value
             pairs become object attribute/value pairs.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

@@ -10,7 +10,7 @@ Overview
 ========
 The ``utils4`` library is a CPython and C project which contains 
 generalised, utility-based functions, designed to be an underlying
-libary across your various Python 3.6+ projects.
+libary across your various Python 3.7+ projects.
 
 ``utils4`` is a complete overhaul of the ``utils3`` code base, which now
 features a streamlined code base, complete documentation and a full test 

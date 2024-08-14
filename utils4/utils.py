@@ -16,7 +16,7 @@
             If you are looking for a function which used to be here, please
             refer to the last ``utils3`` release, which is v0.15.1.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

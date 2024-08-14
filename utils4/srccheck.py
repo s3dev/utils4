@@ -15,7 +15,7 @@
             returned to the caller the filenames of each failing file are
             printed to the terminal.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

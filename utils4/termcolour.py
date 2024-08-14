@@ -5,7 +5,7 @@
             background ANSI colour codes for colouring Linux and Windows
             terminal output.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

@@ -4,7 +4,7 @@ r"""
 :Purpose:   This module provides easy-access wrappers for C-based
             utilities.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

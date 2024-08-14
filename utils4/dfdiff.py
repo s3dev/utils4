@@ -10,7 +10,7 @@
             mismatches is iterated with each value in the column being
             compared. All value mismatches are reported to the terminal.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

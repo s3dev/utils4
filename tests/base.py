@@ -4,7 +4,7 @@
 :Purpose:   This module provides the superclass which is to be inherited
             by the test-specific modules.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

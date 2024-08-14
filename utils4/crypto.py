@@ -5,7 +5,7 @@
             and ``hashlib`` libraries to provide some additional
             functionality.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

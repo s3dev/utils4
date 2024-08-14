@@ -3,7 +3,7 @@
 """
 :Purpose:   Testing module for the ``module`` module.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

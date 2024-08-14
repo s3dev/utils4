@@ -10,6 +10,9 @@ A checklist of things to remember for each release:
 
 #. Create a new branch and run all test cases.
 
+    - Python 3.7
+    - Python 3.12
+
 #. Rebase all commits.
 
 #. Create a new branch and update the docs, to capture the change log.
@@ -24,12 +27,16 @@ A checklist of things to remember for each release:
 
 #. Push to the remote repo.
 
+#. Upload to PyPI (test).
+
+#. Upload to PyPI.
+
 #. Copy the source distribution to NAS01 and RRDAPC50029 and create builds for:
 
     - Location 1: nas01/sharedfolders/Jez/S3D/Builds/  (storage / xfer)
-    - Location 2: dev01/var/devmt/builds               (building)
-    - Location 3: ltp02/var/devmt/builds               (building)
-    - Location 4: rrdapc50029/c/devmt/builds
+    - Location 2: dev02/var/devmt/builds               (Linux ARM builds)
+    - Location 3: ltp02/var/devmt/builds               (Linux x86_64 builds)
+    - Location 4: rrdapc50029/c/devmt/builds           (Windows builds)
 
     - Linux x86_64
     - Linux armv7l
@@ -37,20 +44,9 @@ A checklist of things to remember for each release:
 
 #. Run autobuild on:
 
-    - 73DEVDEV01   (armhf builds)
+    - 73DEVDEV02   (armhf builds)
     - 73DEVLTP02   (linux amd64 builds)
     - RRDAPC50029  (win amd64 builds)
-
-#. Copy the following files to the S3D archive:
-
-    - Source dist (tar.gz):
-        - latest / version numbered
-    - Linux x86_64 wheels:
-        - latest / version numbered
-    - Linux armv7l:
-        - latest / version numbered
-    - Windows x86_64:
-        - latest / version numbered
 
 #. Done
     

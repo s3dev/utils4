@@ -4,7 +4,7 @@
 :Purpose:   This module provides a wait tickers for long-running
             processes in your program.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

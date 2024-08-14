@@ -32,7 +32,7 @@
                 - **Abnormal or erroneous behaviour**: as red text on a black
                   background
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: M Critchard, J Berendt
 :Email:     support@s3dev.uk
 

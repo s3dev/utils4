@@ -4,7 +4,7 @@
 :Purpose:   This module contains tests and utilities relating to files and the
             filesystem.
 
-:Platform:  Linux/Windows | Python 3.6+
+:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 
