@@ -1,11 +1,8 @@
-************* Module utils4.utils
-/var/devmt/py/utils4_1.5.0rc1/utils4/utils.py:615:60: E0606: Possibly using variable 'stdout' before assignment (possibly-used-before-assignment)
-/var/devmt/py/utils4_1.5.0rc1/utils4/utils.py:623:11: E0606: Possibly using variable 'stderr' before assignment (possibly-used-before-assignment)
 
 
 Report
 ======
-128 statements analysed.
+130 statements analysed.
 
 Statistics by type
 ------------------
@@ -33,7 +30,7 @@ External dependencies
 
 
 
-736 lines have been analyzed
+738 lines have been analyzed
 
 Raw metrics
 -----------
@@ -41,13 +38,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |138    |18.75 |138      |=          |
+|code      |140    |18.97 |140      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |571    |77.58 |571      |=          |
+|docstring |571    |77.37 |571      |=          |
 +----------+-------+------+---------+-----------+
 |comment   |12     |1.63  |12       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |15     |2.04  |15       |=          |
+|empty     |15     |2.03  |15       |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -77,34 +74,21 @@ Messages by category
 +-----------+-------+---------+-----------+
 |warning    |0      |0        |0          |
 +-----------+-------+---------+-----------+
-|error      |2      |0        |0          |
+|error      |0      |0        |0          |
 +-----------+-------+---------+-----------+
-
-
-
-% errors / warnings by module
------------------------------
-
-+-------------+-------+--------+---------+-----------+
-|module       |error  |warning |refactor |convention |
-+=============+=======+========+=========+===========+
-|utils4.utils |100.00 |0.00    |0.00     |0.00       |
-+-------------+-------+--------+---------+-----------+
 
 
 
 Messages
 --------
 
-+--------------------------------+------------+
-|message id                      |occurrences |
-+================================+============+
-|possibly-used-before-assignment |2           |
-+--------------------------------+------------+
++-----------+------------+
+|message id |occurrences |
++===========+============+
 
 
 
 
--------------------------------------------------------------------
-Your code has been rated at 9.22/10 (previous run: 10.00/10, -0.78)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 

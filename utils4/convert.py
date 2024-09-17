@@ -173,6 +173,7 @@ def hex2int(hexstring: str, nbytes: int=1) -> int:
     # Split hex string into (n)-byte size chunks.
     for chunk in range(0, len(hexstring), nbytes):
         i = 0
+        nib = 0
         for char in hexstring[chunk:nbytes+chunk]:
             if (char >= '0') & (char <= '9'): nib = ord(char)
             if (char >= 'a') & (char <= 'f'): nib = ord(char) + 9

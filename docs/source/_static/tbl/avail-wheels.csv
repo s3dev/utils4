@@ -1,7 +1,7 @@
-,Linux armv7,Linux x86_64,Windows x86_64
-Python 3.7,Y,Y,Y
-Python 3.8,Y,Y,Y
-Python 3.9,Y,Y,Y
-Python 3.10,Y,Y,Y
-Python 3.11,Y,Y,Y
-Python 3.12,Y,Y,Y
+,Linux armv7,Linux aarch64,Linux x86_64,Windows x86_64
+Python 3.7,Y,Y,Y,Y
+Python 3.8,Y,Y,Y,Y
+Python 3.9,Y,Y,Y,Y
+Python 3.10,Y,Y,Y,Y
+Python 3.11,Y,Y,Y,Y
+Python 3.12,Y,Y,Y,Y

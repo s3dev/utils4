@@ -93,6 +93,7 @@ def timedelta(origin, unit, value):
         raise ValueError(f'Invalid unit. Valid units are: {", ".join(units)}\n'
                          'Seconds through years, respectively.')
     try:
+        new = None
         if unit == 'S':
             new = origin + pd.DateOffset(seconds=value)
         elif unit == 'M':

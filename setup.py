@@ -29,7 +29,7 @@ setup_args = {'ext_modules': [Extension('utils4.mathfunc',
 # If on Windows, add a [build] table for the compiler (only once).
 if sys.platform == 'win32':
     s = '\n\n[build]\ncompiler=mingw32\n\n'
-    with open('setup.cfg', 'a+') as f:
+    with open('setup.cfg', 'a+', encoding='utf-8') as f:
         pos = f.tell()
         f.seek(0)
         if 'compile' not in f.read():
@@ -37,4 +37,3 @@ if sys.platform == 'win32':
             f.write(s)
 
 setup(**setup_args)
-

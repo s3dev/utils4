@@ -83,12 +83,9 @@ def loadconfig(filename: str='config.json', return_as_obj: bool=False):
         fullpath = filename
     if _file_exists(fullpath=fullpath):
         if return_as_obj:
-            to_return = Dict2Obj(source='json', filepath=fullpath)
-        else:
-            to_return = _fromjson(filepath=fullpath)
-    else:
-        return None
-    return to_return
+            return Dict2Obj(source='json', filepath=fullpath)
+        return _fromjson(filepath=fullpath)
+    return None  # pragma: nocover  (unreachable due to raised IOError)
 
 def _file_exists(fullpath: str) -> bool:
     """Test if the requested config file exists.

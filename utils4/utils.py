@@ -599,6 +599,8 @@ def ping(server: str, count: int=1, timeout: int=5, verbose: bool=False) -> bool
     cmd = []
     server = os.path.basename(server)
     status = 1
+    stdout = None
+    stderr = None
     _os = get_os()
     if 'win' in _os:  # pragma: nocover  # utils4 will *rarely* ever be tested on Windows.
         timeout *= 1000  # Windows timeout (-w) is in milliseconds.

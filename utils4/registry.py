@@ -23,8 +23,9 @@
 
 """
 # For Linux linting:
-# pylint: disable=undefined-variable    # WindowsError
-# pylint: disable=import-error          # import winreg
+# pylint: disable=import-error                      # import winreg
+# pylint: disable=possibly-used-before-assignment   # import winreg
+# pylint: disable=undefined-variable                # WindowsError
 # --
 
 try:

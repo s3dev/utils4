@@ -372,6 +372,7 @@ class PrintBanner:
             ``name`` and ``version`` arguments are passed.
 
         """
+        # pylint: disable=possibly-used-before-assignment  # Referring to windll
         is_win = 'win' in self._get_os()
         if all([self._name is not None, self._version is not None, is_win]):
             # Change cmd window title.

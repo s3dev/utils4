@@ -21,14 +21,14 @@ tests_test_reporterror.plr: 10.00/10
 tests_test_srccheck.plr: 10.00/10
 tests_test_stats.plr: 10.00/10
 tests_test_timedelta.plr: 10.00/10
-tests_test_utils.plr: 9.74/10
+tests_test_utils.plr: 10.00/10
 tests_test_validation.plr: 10.00/10
 tests_testwarnings.py.plr: 10.00/10
 tests_test_x_mathfunc.plr: 10.00/10
 utils4_changelog.plr:
 utils4_cmaps.plr: 10.00/10
 utils4_config.plr: 10.00/10
-utils4_convert.plr: 9.30/10
+utils4_convert.plr: 10.00/10
 utils4_crypto.plr: 10.00/10
 utils4_cutils.plr: 10.00/10
 utils4_dfdiff.plr: 10.00/10
@@ -39,15 +39,15 @@ utils4_palette.plr: 10.00/10
 utils4_progressbar.plr: 10.00/10
 utils4_pywarnings.plr: 10.00/10
 utils4_reader.plr: 10.00/10
-utils4_registry.plr: 9.35/10
+utils4_registry.plr: 10.00/10
 utils4_reporterror.plr: 10.00/10
 utils4_srccheck.plr: 10.00/10
 utils4_stats.plr: 10.00/10
 utils4_termcolour.plr: 10.00/10
-utils4_tickers.plr: 9.87/10
-utils4_timedelta.plr: 8.15/10
-utils4_user_interface.plr: 9.66/10
-utils4_utils.plr: 9.22/10
+utils4_tickers.plr: 10.00/10
+utils4_timedelta.plr: 10.00/10
+utils4_user_interface.plr: 10.00/10
+utils4_utils.plr: 10.00/10
 utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Mon 12 Aug 16:28:36 BST 2024
+Run date: Tue 17 Sep 15:45:43 BST 2024

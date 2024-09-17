@@ -68,6 +68,7 @@ class _GenericWait():
 
     def _generator(self):
         """Generate the character set."""
+        # pylint: disable=use-yield-from  # Kept for backwards compatibliity.
         while True:
             for i in self._charset:
                 yield i
