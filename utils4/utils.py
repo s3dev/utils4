@@ -4,25 +4,27 @@
 
             This ``utils`` module was the starting place of the original
             ``utils`` library. Therefore, it's historically been a
-            'dumping-ground' for general S3DEV utilities and function wrappers
-            specialised to the needs of S3DEV projects, which did not seem to
-            fit in anywhere else. So we'll be honest, it's a bit of a melting
-            pot of functions.
+            'dumping-ground' for general S3DEV utilities and function
+            wrappers specialised to the needs of S3DEV projects, which
+            did not seem to fit in anywhere else. So we'll be honest,
+            it's a bit of a melting pot of functions.
 
-            With the overhaul of the ``utils3`` library into ``utils4``, *many*
-            of the original functions, which were no longer being used, have
-            been removed in an effort to clean the module's code base.
+            With the overhaul of the ``utils3`` library into ``utils4``,
+            *many* of the original functions, which were no longer being
+            used, have been removed in an effort to clean the module's
+            code base.
 
-            If you are looking for a function which used to be here, please
-            refer to the last ``utils3`` release, which is v0.15.1.
+            If you are looking for a function which used to be here,
+            please refer to the last ``utils3`` release, which is
+            v0.15.1.
 
 :Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 
 Note:
-            Any libraries which are not built-in, are imported *only* if/when
-            the function which uses them is called.
+            Any libraries which are not built-in, are imported *only*
+            if/when the function which uses them is called.
 
             This helps to reduce the packages required by ``utils4``.
 
@@ -37,6 +39,7 @@ Note:
 
 import gzip
 import importlib
+import io
 import os
 import pandas as pd
 import platform
@@ -45,9 +48,16 @@ import site
 import string
 import subprocess
 from datetime import datetime
-from typing import Union
+from typing import Generator, Union
 from utils4.reporterror import reporterror
 from utils4.user_interface import ui
+
+# OS-dependent imports
+try:  # pragma: nocover
+    import win32api
+    import win32file
+except ImportError:
+    pass
 
 
 def clean_dataframe(df: pd.DataFrame):
@@ -316,8 +326,7 @@ def get_os() -> str:
 
             >>> from utils4 import utils
 
-            >>> myos = utils.get_os()
-            >>> myos
+            >>> utils.get_os()
             'linux'
 
     Returns:
@@ -325,6 +334,45 @@ def get_os() -> str:
 
     """
     return platform.system().lower()
+
+def get_removable_drives() -> Generator[str, str, str]:
+    """Return a generator of removable drives.
+
+    .. important::
+
+        This is a Windows-only function.
+
+    Note:
+        A removable drive is identified by the constant 2, which is the
+        value of the enum ``win32con.DRIVE_REMOVABLE``.
+
+        This code uses the integer 2 to:
+
+            1) Save the extra import.
+            2) Help keep the code compact, concise and clear.
+
+    :Example:
+
+        To obtain a list of removable drives from a Windows system::
+
+            >>> from utils4 import utils
+
+            >>> list(utils.get_removable_drives())
+            ['E:', 'H:']
+
+    Raises:
+        NotImplementedError: Raised if the OS is not Windows.
+
+    Yields:
+        Generator[str]: Each removable drive letter as a
+        string. For example: ``'E:'``
+
+    """
+    if get_os() == 'windows':  # pragma: nocover
+        yield from filter(lambda x: win32file.GetDriveType(x) == 2,
+                          win32api.GetLogicalDriveStrings().split('\\\x00'))
+    else:
+        raise NotImplementedError('This function is Windows-only.')
 
 def getdrivername(driver: str, return_all: bool=False) -> list:  # pragma: nocover
     """Return a list of ODBC driver names, matching the regex pattern.
@@ -625,6 +673,45 @@ def ping(server: str, count: int=1, timeout: int=5, verbose: bool=False) -> bool
         if stderr:
             ui.print_alert(text=stderr.decode().strip())
     return status == 0
+
+def strip_ansi_colour(text: str):
+    r"""Strip ANSI colour sequences from a string.
+
+    Args:
+        text (str): Text string to be cleaned.
+
+    Note:
+        This method is *very* basic and only caters to colour sequences.
+
+        It is designed to yield all characters that are not part of the
+        ``\x1b`` sequence start, and the ``m`` sequence end. In other
+        words, all text before and after each ``\x1b[M;Nm`` sequence.
+
+    :Example:
+
+        Strip the colouring sequence from terminal text and return a
+        single string::
+
+            clean = ''.join(strip_ansi_colour(text))
+
+        Strip the colouring sequence from terminal text and return a list
+        of lines, with empty lines removed::
+
+            lines = list(filter(None, ''.join(strip_ansi_colour(text)).split('\n')))
+
+    Yields:
+        str: Each character which not part of the ANSI escape sequence
+        is yielded to the caller. Essentially, this is a generator
+        method.
+
+    """
+    # pylint: disable=multiple-statements
+    buff = io.StringIO(text)
+    while (b := buff.read(1)):
+        if b == '\x1b':
+            while ( b := buff.read(1) ) != 'm': continue  # Fast-forward from \x1b to m.
+        else:
+            yield b
 
 def testimport(module_name: str, verbose: bool=True) -> bool:
     """Test if a Python library is installed.

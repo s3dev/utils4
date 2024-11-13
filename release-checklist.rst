@@ -35,16 +35,19 @@ A checklist of things to remember for each release:
 
     - Location 1: nas01/sharedfolders/Jez/S3D/Builds/  (storage / xfer)
     - Location 2: dev02/var/devmt/builds               (Linux ARM builds)
-    - Location 3: ltp02/var/devmt/builds               (Linux x86_64 builds)
-    - Location 4: rrdapc50029/c/devmt/builds           (Windows builds)
+    - Location 3: adm02/var/devmt/builds               (Linux aarch64 builds)
+    - Location 4: ltp02/var/devmt/builds               (Linux x86_64 builds)
+    - Location 5: rrdapc50029/c/devmt/builds           (Windows builds)
 
     - Linux x86_64
     - Linux armv7l
+    - Linux aarch64
     - Windows x86_64
 
 #. Run autobuild on:
 
     - 73DEVDEV02   (armhf builds)
+    - 73DEVADM02   (aarch64 builds)
     - 73DEVLTP02   (linux amd64 builds)
     - RRDAPC50029  (win amd64 builds)
 

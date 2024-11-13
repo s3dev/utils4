@@ -36,6 +36,7 @@ except ImportError:
 # The imports for utils4 must be after TestBase.
 from utils4 import utils
 from utils4.crypto import crypto
+from utils4.termcolour import Text
 
 
 class TestUtils(TestBase):
@@ -435,6 +436,59 @@ class TestUtils(TestBase):
         string = 'ul. Bałtów 8a 27-423 Bałtów, woj. świętokrzyskie'
         test = utils.unidecode(string=string)
         utilities.assert_true(expected=exp, test=test, msg=self._MSG1)
+
+    def test10a__strip_ansi__string(self):
+        """Test the ``strip_ansi_colour`` method, for a single string.
+
+        :Test:
+            - Verify the ANSI escape sequences are stripped as expected,
+              and a single string is returned.
+
+        """
+        inp = (f'{Text.RED}This is red text.{Text.RESET}\n'
+               f'{Text.BLUE}This is blue text.{Text.RESET}\n\n')
+        exp = 'This is red text.\nThis is blue text.\n\n'
+        tst = ''.join(utils.strip_ansi_colour(inp))
+        self.assertEqual(exp, tst, msg=self._MSG1.format(exp, tst))
+
+    def test10b__strip_ansi__list(self):
+        """Test the ``strip_ansi_colour`` method, returning a list.
+
+        :Test:
+            - Verify the ANSI escape sequences are stripped as expected,
+              and a list of stripped, non-empty strings is returned.
+
+        """
+        inp = (f'{Text.RED}This is red text.{Text.RESET}\n'
+               f'{Text.BLUE}This is blue text.{Text.RESET}\n\n')
+        exp = ['This is red text.', 'This is blue text.']
+        tst = list(filter(None, ''.join(utils.strip_ansi_colour(inp)).split('\n')))
+        self.assertEqual(exp, tst, msg=self._MSG1.format(exp, tst))
+
+    def test11a__removable_drives__lin(self):
+        """Test the ``get_removable_drives`` method, for Linux.
+
+        :Test:
+            - Verify a ``NotImplementedError`` is raised.
+
+        """
+        if utils.get_os() == 'linux':
+            with self.assertRaises(NotImplementedError):
+                list(utils.get_removable_drives())
+
+    def test11b__removable_drives__win(self):
+        """Test the ``get_removable_drives`` method, for Windows.
+
+        :Test:
+            - None, due to the fiddly nature of testing removable drives
+              in an automated / flexible way.
+
+        """
+        if utils.get_os() == 'windows':
+            pass
+
+
+# %% Helper methods
 
     @classmethod
     def _test02__rmdir(cls):
