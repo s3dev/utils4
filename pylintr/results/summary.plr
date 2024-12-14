@@ -24,6 +24,7 @@ tests_test_timedelta.plr: 10.00/10
 tests_test_utils.plr: 10.00/10
 tests_test_validation.plr: 10.00/10
 tests_testwarnings.py.plr: 10.00/10
+tests_test_x_futils.plr: 10.00/10
 tests_test_x_mathfunc.plr: 10.00/10
 utils4_changelog.plr:
 utils4_cmaps.plr: 10.00/10
@@ -50,4 +51,4 @@ utils4_user_interface.plr: 10.00/10
 utils4_utils.plr: 10.00/10
 utils4_validation.plr: 10.00/10
 ------------------------
-Run date: Wed 13 Nov 10:03:22 GMT 2024
+Run date: Sat 21 Dec 20:13:45 GMT 2024

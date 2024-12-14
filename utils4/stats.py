@@ -177,6 +177,7 @@ class Stats:
     @staticmethod
     def cusum(df: pd.DataFrame,
               cols: Union[list, str],
+              *,
               window: int=None,
               min_periods: int=1,
               inplace=False,

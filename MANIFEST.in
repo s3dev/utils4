@@ -1,4 +1,5 @@
 # Include C libs.
+recursive-include utils4/libs/ _futils.*
 recursive-include utils4/libs/ _mathfunc*
 exclude utils4/libs/test*
 

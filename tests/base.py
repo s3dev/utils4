@@ -42,6 +42,7 @@ class TestBase(unittest.TestCase):
 
     """
 
+    _DIR_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     if 'linux' in sys.platform.lower():
         _DIR_DSK = os.path.join(os.environ.get('HOME'), 'Desktop')
         _DIR_TMP = '/tmp'

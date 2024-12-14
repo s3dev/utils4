@@ -40,6 +40,7 @@ class Reader:
 
     def read_xls(self,
                  filepath: str,
+                 *,
                  encoding: str=None,
                  sheet_index: int=0,
                  skiprows: int=0,

@@ -1,28 +1,26 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.6.0 Documentation</title>
+  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.7.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=cfbabd6b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="_static/copybutton.js?v=f281be69"></script>
-        <script async="async" src="_static/js/mathjax.js?v=b96db627"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script async="async" src="_static/js/mathjax.js?v=b96db627"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -42,9 +40,6 @@
             utils4
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                1.6.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -74,10 +69,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">stats - Statistics methods without the overhead</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#stats.LinearRegression"><code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.__init__"><code class="docutils literal notranslate"><span class="pre">LinearRegression.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.calculate"><code class="docutils literal notranslate"><span class="pre">LinearRegression.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.slope"><code class="docutils literal notranslate"><span class="pre">LinearRegression.slope</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.intercept"><code class="docutils literal notranslate"><span class="pre">LinearRegression.intercept</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.regression_line"><code class="docutils literal notranslate"><span class="pre">LinearRegression.regression_line</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.slope"><code class="docutils literal notranslate"><span class="pre">LinearRegression.slope</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stats.LinearRegression.calculate"><code class="docutils literal notranslate"><span class="pre">LinearRegression.calculate()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stats.Stats"><code class="docutils literal notranslate"><span class="pre">Stats</span></code></a><ul>
@@ -165,7 +160,7 @@
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="stats.LinearRegression">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">LinearRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stats.</span></span><span class="sig-name descname"><span class="pre">LinearRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression" title="Link to this definition"></a></dt>
 <dd><p>Calculate the linear regression of a dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -215,16 +210,14 @@ example, refer to the docstring for
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.LinearRegression.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.__init__" title="Link to this definition"></a></dt>
 <dd><p>LinearRegression class initialiser.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="stats.LinearRegression.calculate">
-<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.calculate" title="Link to this definition"></a></dt>
-<dd><p>Calculate the linear regression for the X/Y data arrays.</p>
-<p>The result of the calculation is accessible via the
-<a class="reference internal" href="#stats.LinearRegression.regression_line" title="stats.LinearRegression.regression_line"><code class="xref py py-attr docutils literal notranslate"><span class="pre">regression_line</span></code></a> property.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="stats.LinearRegression.slope">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slope</span></span><a class="headerlink" href="#stats.LinearRegression.slope" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the slope value.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -239,10 +232,12 @@ example, refer to the docstring for
 <dd><p>Accessor to the calculated regression line, as y-values.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="stats.LinearRegression.slope">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slope</span></span><a class="headerlink" href="#stats.LinearRegression.slope" title="Link to this definition"></a></dt>
-<dd><p>Accessor to the slope value.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="stats.LinearRegression.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stats.html#LinearRegression.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.LinearRegression.calculate" title="Link to this definition"></a></dt>
+<dd><p>Calculate the linear regression for the X/Y data arrays.</p>
+<p>The result of the calculation is accessible via the
+<a class="reference internal" href="#stats.LinearRegression.regression_line" title="stats.LinearRegression.regression_line"><code class="xref py py-attr docutils literal notranslate"><span class="pre">regression_line</span></code></a> property.</p>
 </dd></dl>
 
 </dd></dl>
@@ -253,7 +248,7 @@ example, refer to the docstring for
 <dd><p>Wrapper class for various statistical calculations.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.Stats.cusum">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cusum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.cusum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.cusum" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cusum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_plot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.cusum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.cusum" title="Link to this definition"></a></dt>
 <dd><p>Calculate a CUSUM on a set of data.</p>
 <p>A CUSUM is a generalised method for smoothing a noisy trend, or
 for detecting a change in the trend.</p>
@@ -355,7 +350,7 @@ DataFrame is <em>updated</em>, and <code class="docutils literal notranslate"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="stats.Stats.kde">
-<span class="sig-name descname"><span class="pre">kde</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pandas.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.kde"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.kde" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">kde</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pandas.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/stats.html#Stats.kde"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stats.Stats.kde" title="Link to this definition"></a></dt>
 <dd><p>Calculate the kernel density estimate (KDE) for an array X.</p>
 <p>This function returns the <em>probability density</em> (PDF) using
 Gaussian KDE.</p>
@@ -441,7 +436,7 @@ calculation, which this function also calls.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.6.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
   </div>
 
    

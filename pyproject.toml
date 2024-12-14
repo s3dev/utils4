@@ -1,5 +1,5 @@
 [build-system]
-requires = ["wheel", "setuptools", "setuptools-scm"]
+requires = ["colorama", "wheel", "setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]

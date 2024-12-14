@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>termcolour - Easily add colour to terminal output &mdash; utils4 - v1.6.0 Documentation</title>
+  <title>termcolour - Easily add colour to terminal output &mdash; utils4 - v1.7.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=cfbabd6b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             utils4
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                1.6.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -72,57 +67,57 @@
 <li class="toctree-l2"><a class="reference internal" href="srccheck.html">srccheck - Checksum functionality for source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stats.html">stats - Statistics methods without the overhead</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">termcolour - Easily add colour to terminal output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#termcolour._AnsiBase"><code class="docutils literal notranslate"><span class="pre">_AnsiBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour._AnsiBase.RESET"><code class="docutils literal notranslate"><span class="pre">_AnsiBase.RESET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour._AnsiBase.__init__"><code class="docutils literal notranslate"><span class="pre">_AnsiBase.__init__()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#termcolour.AnsiBack"><code class="docutils literal notranslate"><span class="pre">AnsiBack</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BLACK"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BLACK</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BLUE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BLUE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTBLACK"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTBLACK</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTBLUE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTBLUE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTCYAN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTCYAN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTGREEN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTGREEN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTMAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTMAGENTA</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTRED"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTRED</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTWHITE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTWHITE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTYELLOW"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTYELLOW</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.CYAN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.CYAN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.GREEN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.GREEN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.MAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiBack.MAGENTA</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.RED"><code class="docutils literal notranslate"><span class="pre">AnsiBack.RED</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.WHITE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.WHITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.GREEN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.GREEN</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.YELLOW"><code class="docutils literal notranslate"><span class="pre">AnsiBack.YELLOW</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BLUE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.MAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiBack.MAGENTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.CYAN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.CYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.WHITE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.WHITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTBLACK"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTBLACK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTRED"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTRED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTGREEN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTGREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTYELLOW"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTYELLOW</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTBLUE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTBLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTMAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTMAGENTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTCYAN"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTCYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.BRIGHTWHITE"><code class="docutils literal notranslate"><span class="pre">AnsiBack.BRIGHTWHITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiBack.__annotations__"><code class="docutils literal notranslate"><span class="pre">AnsiBack.__annotations__</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#termcolour.AnsiStyle"><code class="docutils literal notranslate"><span class="pre">AnsiStyle</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiStyle.BOLD"><code class="docutils literal notranslate"><span class="pre">AnsiStyle.BOLD</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiStyle.DIM"><code class="docutils literal notranslate"><span class="pre">AnsiStyle.DIM</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiStyle.NORMAL"><code class="docutils literal notranslate"><span class="pre">AnsiStyle.NORMAL</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiStyle.UNDERLINE"><code class="docutils literal notranslate"><span class="pre">AnsiStyle.UNDERLINE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiStyle.NORMAL"><code class="docutils literal notranslate"><span class="pre">AnsiStyle.NORMAL</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiStyle.__annotations__"><code class="docutils literal notranslate"><span class="pre">AnsiStyle.__annotations__</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#termcolour.AnsiText"><code class="docutils literal notranslate"><span class="pre">AnsiText</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BLACK"><code class="docutils literal notranslate"><span class="pre">AnsiText.BLACK</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BLUE"><code class="docutils literal notranslate"><span class="pre">AnsiText.BLUE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTBLACK"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTBLACK</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTBLUE"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTBLUE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTCYAN"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTCYAN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTGREEN"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTGREEN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTMAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTMAGENTA</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTRED"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTRED</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTWHITE"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTWHITE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTYELLOW"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTYELLOW</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.CYAN"><code class="docutils literal notranslate"><span class="pre">AnsiText.CYAN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.GREEN"><code class="docutils literal notranslate"><span class="pre">AnsiText.GREEN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.MAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiText.MAGENTA</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.RED"><code class="docutils literal notranslate"><span class="pre">AnsiText.RED</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.WHITE"><code class="docutils literal notranslate"><span class="pre">AnsiText.WHITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.GREEN"><code class="docutils literal notranslate"><span class="pre">AnsiText.GREEN</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.YELLOW"><code class="docutils literal notranslate"><span class="pre">AnsiText.YELLOW</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BLUE"><code class="docutils literal notranslate"><span class="pre">AnsiText.BLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.MAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiText.MAGENTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.CYAN"><code class="docutils literal notranslate"><span class="pre">AnsiText.CYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.WHITE"><code class="docutils literal notranslate"><span class="pre">AnsiText.WHITE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTBLACK"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTBLACK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTRED"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTRED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTGREEN"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTGREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTYELLOW"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTYELLOW</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTBLUE"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTBLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTMAGENTA"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTMAGENTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTCYAN"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTCYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.BRIGHTWHITE"><code class="docutils literal notranslate"><span class="pre">AnsiText.BRIGHTWHITE</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#termcolour.AnsiText.__annotations__"><code class="docutils literal notranslate"><span class="pre">AnsiText.__annotations__</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#termcolour._AnsiBase"><code class="docutils literal notranslate"><span class="pre">_AnsiBase</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour._AnsiBase.RESET"><code class="docutils literal notranslate"><span class="pre">_AnsiBase.RESET</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour._AnsiBase.__annotations__"><code class="docutils literal notranslate"><span class="pre">_AnsiBase.__annotations__</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#termcolour._AnsiBase.__init__"><code class="docutils literal notranslate"><span class="pre">_AnsiBase.__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -209,6 +204,25 @@ to handle CLI colouring.</p>
 </dd>
 </dl>
 <dl class="py class">
+<dt class="sig sig-object py" id="termcolour._AnsiBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">termcolour.</span></span><span class="sig-name descname"><span class="pre">_AnsiBase</span></span><a class="reference internal" href="_modules/termcolour.html#_AnsiBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#termcolour._AnsiBase" title="Link to this definition"></a></dt>
+<dd><p>Generic base ANSI colours class.</p>
+<p>The colours for each class are dynamically created as class attributes
+by the initialiser of this base class.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour._AnsiBase.RESET">
+<span class="sig-name descname"><span class="pre">RESET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#termcolour._AnsiBase.RESET" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="termcolour._AnsiBase.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/termcolour.html#_AnsiBase.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#termcolour._AnsiBase.__init__" title="Link to this definition"></a></dt>
+<dd><p>ANSI generic base class initialiser.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="termcolour.AnsiBack">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">termcolour.</span></span><span class="sig-name descname"><span class="pre">AnsiBack</span></span><a class="reference internal" href="_modules/termcolour.html#AnsiBack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#termcolour.AnsiBack" title="Link to this definition"></a></dt>
 <dd><p>ANSI background colour codes.</p>
@@ -222,53 +236,8 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BLUE">
-<span class="sig-name descname"><span class="pre">BLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">44</span></em><a class="headerlink" href="#termcolour.AnsiBack.BLUE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTBLACK">
-<span class="sig-name descname"><span class="pre">BRIGHTBLACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTBLACK" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTBLUE">
-<span class="sig-name descname"><span class="pre">BRIGHTBLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">104</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTBLUE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTCYAN">
-<span class="sig-name descname"><span class="pre">BRIGHTCYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">106</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTCYAN" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTGREEN">
-<span class="sig-name descname"><span class="pre">BRIGHTGREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">102</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTGREEN" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTMAGENTA">
-<span class="sig-name descname"><span class="pre">BRIGHTMAGENTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">105</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTMAGENTA" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTRED">
-<span class="sig-name descname"><span class="pre">BRIGHTRED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">101</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTRED" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTWHITE">
-<span class="sig-name descname"><span class="pre">BRIGHTWHITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">107</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTWHITE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTYELLOW">
-<span class="sig-name descname"><span class="pre">BRIGHTYELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">103</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTYELLOW" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.CYAN">
-<span class="sig-name descname"><span class="pre">CYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">46</span></em><a class="headerlink" href="#termcolour.AnsiBack.CYAN" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiBack.RED">
+<span class="sig-name descname"><span class="pre">RED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">41</span></em><a class="headerlink" href="#termcolour.AnsiBack.RED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -277,13 +246,23 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.YELLOW">
+<span class="sig-name descname"><span class="pre">YELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">43</span></em><a class="headerlink" href="#termcolour.AnsiBack.YELLOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BLUE">
+<span class="sig-name descname"><span class="pre">BLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">44</span></em><a class="headerlink" href="#termcolour.AnsiBack.BLUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="termcolour.AnsiBack.MAGENTA">
 <span class="sig-name descname"><span class="pre">MAGENTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">45</span></em><a class="headerlink" href="#termcolour.AnsiBack.MAGENTA" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.RED">
-<span class="sig-name descname"><span class="pre">RED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">41</span></em><a class="headerlink" href="#termcolour.AnsiBack.RED" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiBack.CYAN">
+<span class="sig-name descname"><span class="pre">CYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">46</span></em><a class="headerlink" href="#termcolour.AnsiBack.CYAN" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -292,8 +271,48 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiBack.YELLOW">
-<span class="sig-name descname"><span class="pre">YELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">43</span></em><a class="headerlink" href="#termcolour.AnsiBack.YELLOW" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTBLACK">
+<span class="sig-name descname"><span class="pre">BRIGHTBLACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTBLACK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTRED">
+<span class="sig-name descname"><span class="pre">BRIGHTRED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">101</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTRED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTGREEN">
+<span class="sig-name descname"><span class="pre">BRIGHTGREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">102</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTGREEN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTYELLOW">
+<span class="sig-name descname"><span class="pre">BRIGHTYELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">103</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTYELLOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTBLUE">
+<span class="sig-name descname"><span class="pre">BRIGHTBLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">104</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTBLUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTMAGENTA">
+<span class="sig-name descname"><span class="pre">BRIGHTMAGENTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">105</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTMAGENTA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTCYAN">
+<span class="sig-name descname"><span class="pre">BRIGHTCYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">106</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTCYAN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.BRIGHTWHITE">
+<span class="sig-name descname"><span class="pre">BRIGHTWHITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">107</span></em><a class="headerlink" href="#termcolour.AnsiBack.BRIGHTWHITE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiBack.__annotations__">
+<span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#termcolour.AnsiBack.__annotations__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -313,13 +332,13 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiStyle.NORMAL">
-<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">22</span></em><a class="headerlink" href="#termcolour.AnsiStyle.NORMAL" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiStyle.UNDERLINE">
+<span class="sig-name descname"><span class="pre">UNDERLINE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#termcolour.AnsiStyle.UNDERLINE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiStyle.UNDERLINE">
-<span class="sig-name descname"><span class="pre">UNDERLINE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#termcolour.AnsiStyle.UNDERLINE" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiStyle.NORMAL">
+<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">22</span></em><a class="headerlink" href="#termcolour.AnsiStyle.NORMAL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -343,53 +362,8 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BLUE">
-<span class="sig-name descname"><span class="pre">BLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">34</span></em><a class="headerlink" href="#termcolour.AnsiText.BLUE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTBLACK">
-<span class="sig-name descname"><span class="pre">BRIGHTBLACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">90</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTBLACK" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTBLUE">
-<span class="sig-name descname"><span class="pre">BRIGHTBLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">94</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTBLUE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTCYAN">
-<span class="sig-name descname"><span class="pre">BRIGHTCYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">96</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTCYAN" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTGREEN">
-<span class="sig-name descname"><span class="pre">BRIGHTGREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">92</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTGREEN" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTMAGENTA">
-<span class="sig-name descname"><span class="pre">BRIGHTMAGENTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">95</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTMAGENTA" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTRED">
-<span class="sig-name descname"><span class="pre">BRIGHTRED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">91</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTRED" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTWHITE">
-<span class="sig-name descname"><span class="pre">BRIGHTWHITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">97</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTWHITE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTYELLOW">
-<span class="sig-name descname"><span class="pre">BRIGHTYELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">93</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTYELLOW" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.CYAN">
-<span class="sig-name descname"><span class="pre">CYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">36</span></em><a class="headerlink" href="#termcolour.AnsiText.CYAN" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiText.RED">
+<span class="sig-name descname"><span class="pre">RED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">31</span></em><a class="headerlink" href="#termcolour.AnsiText.RED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -398,13 +372,23 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.YELLOW">
+<span class="sig-name descname"><span class="pre">YELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></em><a class="headerlink" href="#termcolour.AnsiText.YELLOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BLUE">
+<span class="sig-name descname"><span class="pre">BLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">34</span></em><a class="headerlink" href="#termcolour.AnsiText.BLUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="termcolour.AnsiText.MAGENTA">
 <span class="sig-name descname"><span class="pre">MAGENTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">35</span></em><a class="headerlink" href="#termcolour.AnsiText.MAGENTA" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.RED">
-<span class="sig-name descname"><span class="pre">RED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">31</span></em><a class="headerlink" href="#termcolour.AnsiText.RED" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiText.CYAN">
+<span class="sig-name descname"><span class="pre">CYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">36</span></em><a class="headerlink" href="#termcolour.AnsiText.CYAN" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -413,38 +397,49 @@ to handle CLI colouring.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour.AnsiText.YELLOW">
-<span class="sig-name descname"><span class="pre">YELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></em><a class="headerlink" href="#termcolour.AnsiText.YELLOW" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTBLACK">
+<span class="sig-name descname"><span class="pre">BRIGHTBLACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">90</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTBLACK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTRED">
+<span class="sig-name descname"><span class="pre">BRIGHTRED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">91</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTRED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTGREEN">
+<span class="sig-name descname"><span class="pre">BRIGHTGREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">92</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTGREEN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTYELLOW">
+<span class="sig-name descname"><span class="pre">BRIGHTYELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">93</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTYELLOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTBLUE">
+<span class="sig-name descname"><span class="pre">BRIGHTBLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">94</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTBLUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTMAGENTA">
+<span class="sig-name descname"><span class="pre">BRIGHTMAGENTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">95</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTMAGENTA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTCYAN">
+<span class="sig-name descname"><span class="pre">BRIGHTCYAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">96</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTCYAN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="termcolour.AnsiText.BRIGHTWHITE">
+<span class="sig-name descname"><span class="pre">BRIGHTWHITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">97</span></em><a class="headerlink" href="#termcolour.AnsiText.BRIGHTWHITE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="termcolour.AnsiText.__annotations__">
 <span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#termcolour.AnsiText.__annotations__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="termcolour._AnsiBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">termcolour.</span></span><span class="sig-name descname"><span class="pre">_AnsiBase</span></span><a class="reference internal" href="_modules/termcolour.html#_AnsiBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#termcolour._AnsiBase" title="Link to this definition"></a></dt>
-<dd><p>Generic base ANSI colours class.</p>
-<p>The colours for each class are dynamically created as class attributes
-by the initialiser of this base class.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour._AnsiBase.RESET">
-<span class="sig-name descname"><span class="pre">RESET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#termcolour._AnsiBase.RESET" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="termcolour._AnsiBase.__annotations__">
-<span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#termcolour._AnsiBase.__annotations__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="termcolour._AnsiBase.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/termcolour.html#_AnsiBase.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#termcolour._AnsiBase.__init__" title="Link to this definition"></a></dt>
-<dd><p>ANSI generic base class initialiser.</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -461,7 +456,7 @@ by the initialiser of this base class.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.6.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
   </div>
 
    

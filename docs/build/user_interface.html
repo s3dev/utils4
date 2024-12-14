@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>user_interface - Format coloured text to the terminal &mdash; utils4 - v1.6.0 Documentation</title>
+  <title>user_interface - Format coloured text to the terminal &mdash; utils4 - v1.7.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=cfbabd6b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             utils4
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                1.6.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -99,9 +94,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#user_interface._Config"><code class="docutils literal notranslate"><span class="pre">_Config</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.custom_string"><code class="docutils literal notranslate"><span class="pre">_Config.custom_string</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.default_string"><code class="docutils literal notranslate"><span class="pre">_Config.default_string</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.v_pad_sleep"><code class="docutils literal notranslate"><span class="pre">_Config.v_pad_sleep</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.default_string"><code class="docutils literal notranslate"><span class="pre">_Config.default_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface._Config.custom_string"><code class="docutils literal notranslate"><span class="pre">_Config.custom_string</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -806,8 +801,8 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">_Config</span></span><a class="reference internal" href="_modules/user_interface.html#_Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface._Config" title="Link to this definition"></a></dt>
 <dd><p>Storage class for the module’s config items.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="user_interface._Config.custom_string">
-<span class="sig-name descname"><span class="pre">custom_string</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">{key:{pad}}:{spaces}{val}'</span></em><a class="headerlink" href="#user_interface._Config.custom_string" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="user_interface._Config.v_pad_sleep">
+<span class="sig-name descname"><span class="pre">v_pad_sleep</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#user_interface._Config.v_pad_sleep" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -816,8 +811,8 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="user_interface._Config.v_pad_sleep">
-<span class="sig-name descname"><span class="pre">v_pad_sleep</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#user_interface._Config.v_pad_sleep" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="user_interface._Config.custom_string">
+<span class="sig-name descname"><span class="pre">custom_string</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">{key:{pad}}:{spaces}{val}'</span></em><a class="headerlink" href="#user_interface._Config.custom_string" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -835,7 +830,7 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.6.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
   </div>
 
    

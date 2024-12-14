@@ -113,6 +113,8 @@ class PrintBanner:
                             desc='The complete spam and eggs recipe guide.')
 
     """
+    # pylint: disable=too-many-positional-arguments
+
     def __init__(self,
                  name: str=None,
                  version: str=None,
@@ -410,6 +412,7 @@ class UserInterface:
             >>> ui.print_heading_green(text='Header for a section of output')
 
     """
+    # pylint: disable=too-many-positional-arguments
 
     def __init__(self):
         """UserInterface class initialiser.

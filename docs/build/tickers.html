@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tickers - Wait tickers for long-running processes &mdash; utils4 - v1.6.0 Documentation</title>
+  <title>tickers - Wait tickers for long-running processes &mdash; utils4 - v1.7.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=cfbabd6b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             utils4
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                1.6.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -80,9 +75,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tickers.WaitTicker"><code class="docutils literal notranslate"><span class="pre">WaitTicker</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.__annotations__"><code class="docutils literal notranslate"><span class="pre">WaitTicker.__annotations__</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.__init__"><code class="docutils literal notranslate"><span class="pre">WaitTicker.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.start"><code class="docutils literal notranslate"><span class="pre">WaitTicker.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tickers.WaitTicker.__annotations__"><code class="docutils literal notranslate"><span class="pre">WaitTicker.__annotations__</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -244,11 +239,6 @@ Defaults to 25.</p></li>
 </div>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tickers.WaitTicker.__annotations__">
-<span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#tickers.WaitTicker.__annotations__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="tickers.WaitTicker.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker.__init__" title="Link to this definition"></a></dt>
@@ -260,6 +250,11 @@ Defaults to 25.</p></li>
 <span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tickers.html#WaitTicker.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tickers.WaitTicker.start" title="Link to this definition"></a></dt>
 <dd><p>Start the ticker in a new thread.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tickers.WaitTicker.__annotations__">
+<span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#tickers.WaitTicker.__annotations__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -276,7 +271,7 @@ Defaults to 25.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.6.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
   </div>
 
    

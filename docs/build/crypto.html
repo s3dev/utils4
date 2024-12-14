@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>crypto - Extended functionality from the base64 and hashlib libraries &mdash; utils4 - v1.6.0 Documentation</title>
+  <title>crypto - Extended functionality from the base64 and hashlib libraries &mdash; utils4 - v1.7.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=cfbabd6b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             utils4
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                1.6.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -59,7 +54,6 @@
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">crypto - Extended functionality from the base64 and hashlib libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#crypto.Crypto"><code class="docutils literal notranslate"><span class="pre">Crypto</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto._encode"><code class="docutils literal notranslate"><span class="pre">Crypto._encode()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto.b64"><code class="docutils literal notranslate"><span class="pre">Crypto.b64()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto.b64md5"><code class="docutils literal notranslate"><span class="pre">Crypto.b64md5()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto.checksum_crc32"><code class="docutils literal notranslate"><span class="pre">Crypto.checksum_crc32()</span></code></a></li>
@@ -68,6 +62,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto.checksum_sha256"><code class="docutils literal notranslate"><span class="pre">Crypto.checksum_sha256()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto.checksum_sha512"><code class="docutils literal notranslate"><span class="pre">Crypto.checksum_sha512()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto.md5"><code class="docutils literal notranslate"><span class="pre">Crypto.md5()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#crypto.Crypto._encode"><code class="docutils literal notranslate"><span class="pre">Crypto._encode()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -180,32 +175,6 @@ functionality.</p>
 <dd><p>Main class used for hashing and encoding.</p>
 <p>This class acts as a simple wrapper around the <code class="docutils literal notranslate"><span class="pre">base64</span></code> and
 <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries, providing additional functionality.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="crypto.Crypto._encode">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto._encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto._encode" title="Link to this definition"></a></dt>
-<dd><p>Test if a string is <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before processing.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Union</em><em>[</em><em>bytes</em><em>, </em><em>str</em><em>]</em>) – String value to be encoded.</p>
-</dd>
-</dl>
-<p>If the received <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter is a <code class="docutils literal notranslate"><span class="pre">str</span></code> type, it is converted
-to a <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type and returned. If the string is already a <code class="docutils literal notranslate"><span class="pre">bytes</span></code>
-type, it is returned, unmodified.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the <code class="docutils literal notranslate"><span class="pre">data</span></code> object is neither a <code class="docutils literal notranslate"><span class="pre">str</span></code> or
-    <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">bytes</span></code> encoded string.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bytes</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="crypto.Crypto.b64">
 <span class="sig-name descname"><span class="pre">b64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto.b64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto.b64" title="Link to this definition"></a></dt>
@@ -469,6 +438,32 @@ to the <code class="docutils literal notranslate"><span class="pre">decode</span
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="crypto.Crypto._encode">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/crypto.html#Crypto._encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#crypto.Crypto._encode" title="Link to this definition"></a></dt>
+<dd><p>Test if a string is <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Union</em><em>[</em><em>bytes</em><em>, </em><em>str</em><em>]</em>) – String value to be encoded.</p>
+</dd>
+</dl>
+<p>If the received <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter is a <code class="docutils literal notranslate"><span class="pre">str</span></code> type, it is converted
+to a <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type and returned. If the string is already a <code class="docutils literal notranslate"><span class="pre">bytes</span></code>
+type, it is returned, unmodified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the <code class="docutils literal notranslate"><span class="pre">data</span></code> object is neither a <code class="docutils literal notranslate"><span class="pre">str</span></code> or
+    <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">bytes</span></code> encoded string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -484,7 +479,7 @@ to the <code class="docutils literal notranslate"><span class="pre">decode</span
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.6.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
   </div>
 
    

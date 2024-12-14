@@ -1,26 +1,24 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils &mdash; utils4 - v1.6.0 Documentation</title>
+  <title>utils &mdash; utils4 - v1.7.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../_static/css/s5defs-rules.css?v=0345028d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=cfbabd6b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -38,9 +36,6 @@
             utils4
               <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                1.6.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -119,11 +114,11 @@
 <span class="c1"># pylint: disable=import-outside-toplevel  # Keep required dependencies to a minimum.</span>
 <span class="c1"># pylint: disable=wrong-import-order</span>
 
-<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">site</span>
@@ -131,8 +126,14 @@
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Union</span>
+<span class="c1"># locals</span>
 <span class="kn">from</span> <span class="nn">utils4.reporterror</span> <span class="kn">import</span> <span class="n">reporterror</span>
 <span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># The C library is only available if installed.</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">futils</span>  <span class="c1"># pylint: disable=no-name-in-module</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">pass</span>
 
 <span class="c1"># OS-dependent imports</span>
 <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
@@ -144,7 +145,7 @@
 
 <div class="viewcode-block" id="clean_dataframe">
 <a class="viewcode-back" href="../utils.html#utils.clean_dataframe">[docs]</a>
-<span class="k">def</span> <span class="nf">clean_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">clean_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>  <span class="c1"># noqa  # pylint: disable=undefined-variable</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Clean a ``pandas.DataFrame`` data structure.</span>
 
 <span class="sd">    Args:</span>
@@ -262,6 +263,37 @@
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
             <span class="n">found</span> <span class="o">=</span> <span class="n">direxists</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">create_path</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">found</span></div>
+
+
+<div class="viewcode-block" id="excludedirs">
+<a class="viewcode-back" href="../utils.html#utils.excludedirs">[docs]</a>
+<span class="k">def</span> <span class="nf">excludedirs</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">exclude</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exclude the listed directories from the source.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        source (list[str]): List of source paths.</span>
+<span class="sd">        exclude (list[str]): List of directories to be excluded from</span>
+<span class="sd">            ``source``.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        The paths in ``exclude`` are expanded to their realpath, with</span>
+<span class="sd">        a trailing path separator explicitly added to ensure only</span>
+<span class="sd">        directory paths are matched.</span>
+
+<span class="sd">        For example, if the trailing path separator was not added,</span>
+<span class="sd">        ``.gitignore`` would be excluded if ``./.git`` was in</span>
+<span class="sd">        ``exclude`` paths. Adding the trailing path separator</span>
+<span class="sd">        prevents this.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[str]: A new list of paths where any ``source`` path</span>
+<span class="sd">        sharing a common base path with any ``exclude`` path has</span>
+<span class="sd">        been removed.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Cannot be a generator as it&#39;s iterated multiple times.</span>
+    <span class="n">exclude</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s1">/&#39;</span><span class="p">,</span> <span class="n">exclude</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">source</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">)]</span></div>
 
 
 <div class="viewcode-block" id="fileexists">
@@ -614,6 +646,7 @@
 <span class="sd">        str: Full path to the output file.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">gzip</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">10</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>  <span class="c1"># Default to 10MiB.</span>
     <span class="k">if</span> <span class="n">fileexists</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">in_path</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">out_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -674,6 +707,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=line-too-long</span>
+    <span class="kn">import</span> <span class="nn">gzip</span>
     <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">10</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>  <span class="c1"># Default to 1 MiB.</span>
     <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">try</span><span class="p">:</span>
@@ -689,6 +723,153 @@
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="n">reporterror</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">success</span></div>
+
+
+<span class="c1"># Tested by the test_x_futils module.</span>
+<div class="viewcode-block" id="isascii">
+<a class="viewcode-back" href="../utils.html#utils.isascii">[docs]</a>
+<span class="k">def</span> <span class="nf">isascii</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine if a file is plain-text (ASCII only).</span>
+
+<span class="sd">    A file is deemed non-binary if *all* of the characters in the file</span>
+<span class="sd">    are within ASCII&#39;s printable range.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be tested.</span>
+<span class="sd">        size (int, optional): Number of bytes to read in a chunk.</span>
+<span class="sd">            Defaults to 2048 (2 MiB).</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file is a plain-text (ASCII-only) file::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.isascii(&#39;/usr/local/bin/python3.12-config&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This function simply inverts the return value of the</span>
+<span class="sd">        :func:`isbinary` function. For design detail, refer to the</span>
+<span class="sd">        :meth:`isbinary` documentation.</span>
+
+<span class="sd">        This method calls the :func:`futils.isascii` function with the</span>
+<span class="sd">        given arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if *all* characters in the file are plain-text</span>
+<span class="sd">        (ASCII only), otherwise False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">futils</span><span class="o">.</span><span class="n">isascii</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span></div>
+
+
+<span class="c1"># Tested by the test_x_futils module.</span>
+<div class="viewcode-block" id="isbinary">
+<a class="viewcode-back" href="../utils.html#utils.isbinary">[docs]</a>
+<span class="k">def</span> <span class="nf">isbinary</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine if a file is binary.</span>
+
+<span class="sd">    A file is deemed non-binary if *all* of the characters in the file</span>
+<span class="sd">    are within ASCII&#39;s printable range. Refer to the **References**</span>
+<span class="sd">    section for further definition.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be tested.</span>
+<span class="sd">        size (int, optional): Number of bytes to read in a chunk.</span>
+<span class="sd">            Defaults to 1024 (1 MiB).</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file is a binary file or executable::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.isbinary(&#39;/usr/bin/python3&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        For each chunk of size ``size``, read each character; if the</span>
+<span class="sd">        character is outside the ASCII printable range, True is returned</span>
+<span class="sd">        immediately as the file is not plain-text. Otherwise, if a file</span>
+<span class="sd">        is read to the end, with all characters being within ASCII&#39;s</span>
+<span class="sd">        printable range, False is returned as the file is plain-text</span>
+<span class="sd">        (ASCII only).</span>
+
+<span class="sd">        This method calls the :func:`futils.isbinary` function with the</span>
+<span class="sd">        given arguments.</span>
+
+<span class="sd">    :References:</span>
+
+<span class="sd">        - `How to detect if a file is binary &lt;so_ref1_&gt;`_</span>
+<span class="sd">        - `ASCII printable character reference &lt;so_ref2_&gt;`_</span>
+
+<span class="sd">        .. _so_ref1: https://stackoverflow.com/a/7392391/6340496</span>
+<span class="sd">        .. _so_ref2: https://stackoverflow.com/a/32184831/6340496</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if *any* of the characters in the file are outside</span>
+<span class="sd">        ASCII&#39;s printable range. Otherwise, False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">futils</span><span class="o">.</span><span class="n">isbinary</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span></div>
+
+
+<span class="c1"># Tested by the test_x_futils module.</span>
+<div class="viewcode-block" id="iszip">
+<a class="viewcode-back" href="../utils.html#utils.iszip">[docs]</a>
+<span class="k">def</span> <span class="nf">iszip</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Determine if a file is a ``ZIP`` archive.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be tested.</span>
+
+<span class="sd">    Tip:</span>
+<span class="sd">        As Python wheel files are `ZIP-format archives &lt;zip-wheel_&gt;`_</span>
+<span class="sd">        (per PEP-491), this function can be used to test wheel files as</span>
+<span class="sd">        well.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file is a ZIP archive::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.iszip(&#39;/path/to/file.zip&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">        Test if a file is a true Python wheel::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.iszip(&#39;/path/to/sphinx-8.1.3-py3-none-any.whl&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        A file is tested to be a ``ZIP`` archive by checking the</span>
+<span class="sd">        `first four bytes &lt;zip-format_&gt;`_ of the file itself, *not*</span>
+<span class="sd">        using the file extension.</span>
+
+<span class="sd">        It is up to the caller to handle empty or spanned ZIP</span>
+<span class="sd">        archives appropriately.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This method calls the :func:`futils.iszip` function with the</span>
+<span class="sd">        given arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the first four bytes of the file match any of</span>
+<span class="sd">        the below. Otherwise, False.</span>
+
+<span class="sd">        - ``\x50\x4b\x03\x04``: &#39;Standard&#39; archive</span>
+<span class="sd">        - ``\x50\x4b\x05\x06``: Empty archive</span>
+<span class="sd">        - ``\x50\x4b\x07\x08``: Spanned archive</span>
+
+<span class="sd">    .. _zip-format: https://en.wikipedia.org/wiki/ZIP_(file_format)#Local_file_header</span>
+<span class="sd">    .. _zip-wheel: https://peps.python.org/pep-0491/#abstract</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">futils</span><span class="o">.</span><span class="n">iszip</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="ping">
@@ -954,7 +1135,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2024 | s3dev | version 1.6.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
   </div>
 
    

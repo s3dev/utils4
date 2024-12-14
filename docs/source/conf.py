@@ -29,7 +29,7 @@ from _version import __version__
 # -- Project information -----------------------------------------------------
 
 project = 'utils4'
-copyright = f'2016-2024 | s3dev | version {__version__}'
+copyright = f'2016-{dt.now().year} | s3dev | version {__version__}'
 author = 'The Developers'
 version = __version__
 release = __version__
@@ -38,6 +38,10 @@ release = __version__
 # -- General configuration ---------------------------------------------------
 
 html_theme = 'sphinx_rtd_theme'
+autodoc_default_options = {
+                           'members': True,
+                           'member-order': 'bysource',
+                          }
 #exclude_patterns = ['htg__*.rst', 'auth.rst']
 extensions = ['sphinx.ext.autodoc', 
               'sphinx.ext.ifconfig', 

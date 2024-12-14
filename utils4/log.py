@@ -97,7 +97,7 @@ class Log:
 
     """
 
-    def __init__(self, filepath, autofill=True, printheader=False, headertext='', sep=','):
+    def __init__(self, filepath, *, autofill=True, printheader=False, headertext='', sep=','):
         """Log class initialiser."""
         self._filepath = filepath
         self._autofill = autofill

@@ -5,9 +5,9 @@
 [![PyPI - Implementation](https://img.shields.io/pypi/implementation/utils4?style=flat-square)](https://pypi.org/project/utils4)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/utils4?style=flat-square)](https://pypi.org/project/utils4)
 [![PyPI - Status](https://img.shields.io/pypi/status/utils4?style=flat-square)](https://pypi.org/project/utils4)
-[![Static Badge](https://img.shields.io/badge/tests-passing-brightgreen?style=flat-square)](https://pypi.org/project/preqs)
-[![Static Badge](https://img.shields.io/badge/code_coverage-100%25-brightgreen?style=flat-square)](https://pypi.org/project/preqs)
-[![Static Badge](https://img.shields.io/badge/pylint_analysis-100%25-brightgreen?style=flat-square)](https://pypi.org/project/preqs)
+[![Static Badge](https://img.shields.io/badge/tests-passing-brightgreen?style=flat-square)](https://pypi.org/project/utils4)
+[![Static Badge](https://img.shields.io/badge/code_coverage-100%25-brightgreen?style=flat-square)](https://pypi.org/project/utils4)
+[![Static Badge](https://img.shields.io/badge/pylint_analysis-100%25-brightgreen?style=flat-square)](https://pypi.org/project/utils4)
 [![Documentation Status](https://readthedocs.org/projects/utils4/badge/?version=latest&style=flat-square)](https://utils4.readthedocs.io/en/latest/)
 [![PyPI - License](https://img.shields.io/pypi/l/utils4?style=flat-square)](https://opensource.org/licenses/MIT)
 [![PyPI - Wheel](https://img.shields.io/pypi/wheel/utils4?style=flat-square)](https://pypi.org/project/utils4)
@@ -29,7 +29,8 @@ Listed below are *some* of the project's commonly used tools and utilities. Some
 - Converters (e.g. binary, hexadecimal, ASCII and integer)
 - Cryptographic and hashing functions
 - Error reporting
-- General maths-based functionality (for solving [Project Euler](https://projecteuler.net/) problems)
+- General maths-based functionality (e.g. for solving [Project Euler](https://projecteuler.net/) problems)
+- General utility functions
 - Logging
 - Progress bar
 - Terminal colour handling

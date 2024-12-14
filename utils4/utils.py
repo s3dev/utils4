@@ -37,11 +37,11 @@ Note:
 # pylint: disable=import-outside-toplevel  # Keep required dependencies to a minimum.
 # pylint: disable=wrong-import-order
 
-import gzip
+from __future__ import annotations
+
 import importlib
 import io
 import os
-import pandas as pd
 import platform
 import re
 import site
@@ -49,8 +49,14 @@ import string
 import subprocess
 from datetime import datetime
 from typing import Generator, Union
+# locals
 from utils4.reporterror import reporterror
 from utils4.user_interface import ui
+try:
+    # The C library is only available if installed.
+    from . import futils  # pylint: disable=no-name-in-module
+except ImportError:
+    pass
 
 # OS-dependent imports
 try:  # pragma: nocover
@@ -60,7 +66,7 @@ except ImportError:
     pass
 
 
-def clean_dataframe(df: pd.DataFrame):
+def clean_dataframe(df: pd.DataFrame):  # noqa  # pylint: disable=undefined-variable
     """Clean a ``pandas.DataFrame`` data structure.
 
     Args:
@@ -175,6 +181,34 @@ def direxists(path: str, create_path: bool=False) -> bool:
             os.makedirs(name=path)
             found = direxists(path=path, create_path=False)
     return found
+
+def excludedirs(source: list[str], exclude: list[str]) -> list[str]:
+    """Exclude the listed directories from the source.
+
+    Args:
+        source (list[str]): List of source paths.
+        exclude (list[str]): List of directories to be excluded from
+            ``source``.
+
+    :Design:
+        The paths in ``exclude`` are expanded to their realpath, with
+        a trailing path separator explicitly added to ensure only
+        directory paths are matched.
+
+        For example, if the trailing path separator was not added,
+        ``.gitignore`` would be excluded if ``./.git`` was in
+        ``exclude`` paths. Adding the trailing path separator
+        prevents this.
+
+    Returns:
+        list[str]: A new list of paths where any ``source`` path
+        sharing a common base path with any ``exclude`` path has
+        been removed.
+
+    """
+    # Cannot be a generator as it's iterated multiple times.
+    exclude = tuple(map(lambda x: f'{os.path.realpath(x)}/', exclude))
+    return [s for s in source if all(e not in s for e in exclude)]
 
 def fileexists(filepath: str, error: str='ignore') -> bool:
     """Test if a file exists. If not, notify the user or raise an error.
@@ -506,6 +540,7 @@ def gzip_compress(in_path: str, out_path: str=None, size: int=None) -> str:
         str: Full path to the output file.
 
     """
+    import gzip
     size = 1024*1024*10 if size is None else size  # Default to 10MiB.
     if fileexists(filepath=in_path, error='raise'):
         if out_path is None:
@@ -563,6 +598,7 @@ def gzip_decompress(path: str, encoding: str='utf-8', size: int=None) -> bool:
 
     """
     # pylint: disable=line-too-long
+    import gzip
     size = (1<<2)**10 if size is None else size  # Default to 1 MiB.
     success = False
     try:
@@ -578,6 +614,144 @@ def gzip_decompress(path: str, encoding: str='utf-8', size: int=None) -> bool:
     except Exception as err:
         reporterror(err)
     return success
+
+# Tested by the test_x_futils module.
+def isascii(path: str, size: int=2048) -> bool:  # pragma: nocover
+    """Determine if a file is plain-text (ASCII only).
+
+    A file is deemed non-binary if *all* of the characters in the file
+    are within ASCII's printable range.
+
+    Args:
+        path (str): Full path to the file to be tested.
+        size (int, optional): Number of bytes to read in a chunk.
+            Defaults to 2048 (2 MiB).
+
+    :Example:
+
+        Test if a file is a plain-text (ASCII-only) file::
+
+            >>> from utils4 import utils
+
+            >>> utils.isascii('/usr/local/bin/python3.12-config')
+            True
+
+    :Design:
+        This function simply inverts the return value of the
+        :func:`isbinary` function. For design detail, refer to the
+        :meth:`isbinary` documentation.
+
+        This method calls the :func:`futils.isascii` function with the
+        given arguments.
+
+    Returns:
+        bool: True if *all* characters in the file are plain-text
+        (ASCII only), otherwise False.
+
+    """
+    return bool(futils.isascii(path, size))
+
+# Tested by the test_x_futils module.
+def isbinary(path: str, size: int=1024) -> bool:  # pragma: nocover
+    """Determine if a file is binary.
+
+    A file is deemed non-binary if *all* of the characters in the file
+    are within ASCII's printable range. Refer to the **References**
+    section for further definition.
+
+    Args:
+        path (str): Full path to the file to be tested.
+        size (int, optional): Number of bytes to read in a chunk.
+            Defaults to 1024 (1 MiB).
+
+    :Example:
+
+        Test if a file is a binary file or executable::
+
+            >>> from utils4 import utils
+
+            >>> utils.isbinary('/usr/bin/python3')
+            True
+
+    :Design:
+        For each chunk of size ``size``, read each character; if the
+        character is outside the ASCII printable range, True is returned
+        immediately as the file is not plain-text. Otherwise, if a file
+        is read to the end, with all characters being within ASCII's
+        printable range, False is returned as the file is plain-text
+        (ASCII only).
+
+        This method calls the :func:`futils.isbinary` function with the
+        given arguments.
+
+    :References:
+
+        - `How to detect if a file is binary <so_ref1_>`_
+        - `ASCII printable character reference <so_ref2_>`_
+
+        .. _so_ref1: https://stackoverflow.com/a/7392391/6340496
+        .. _so_ref2: https://stackoverflow.com/a/32184831/6340496
+
+    Returns:
+        bool: True if *any* of the characters in the file are outside
+        ASCII's printable range. Otherwise, False.
+
+    """
+    return bool(futils.isbinary(path, size))
+
+# Tested by the test_x_futils module.
+def iszip(path: str) -> bool:  # pragma: nocover
+    r"""Determine if a file is a ``ZIP`` archive.
+
+    Args:
+        path (str): Full path to the file to be tested.
+
+    Tip:
+        As Python wheel files are `ZIP-format archives <zip-wheel_>`_
+        (per PEP-491), this function can be used to test wheel files as
+        well.
+
+    :Example:
+
+        Test if a file is a ZIP archive::
+
+            >>> from utils4 import utils
+
+            >>> utils.iszip('/path/to/file.zip')
+            True
+
+        Test if a file is a true Python wheel::
+
+            >>> from utils4 import utils
+
+            >>> utils.iszip('/path/to/sphinx-8.1.3-py3-none-any.whl')
+            True
+
+    Note:
+        A file is tested to be a ``ZIP`` archive by checking the
+        `first four bytes <zip-format_>`_ of the file itself, *not*
+        using the file extension.
+
+        It is up to the caller to handle empty or spanned ZIP
+        archives appropriately.
+
+    :Design:
+        This method calls the :func:`futils.iszip` function with the
+        given arguments.
+
+    Returns:
+        bool: True if the first four bytes of the file match any of
+        the below. Otherwise, False.
+
+        - ``\x50\x4b\x03\x04``: 'Standard' archive
+        - ``\x50\x4b\x05\x06``: Empty archive
+        - ``\x50\x4b\x07\x08``: Spanned archive
+
+    .. _zip-format: https://en.wikipedia.org/wiki/ZIP_(file_format)#Local_file_header
+    .. _zip-wheel: https://peps.python.org/pep-0491/#abstract
+
+    """
+    return bool(futils.iszip(path))
 
 def ping(server: str, count: int=1, timeout: int=5, verbose: bool=False) -> bool:
     r"""Ping an IP address, server or web address.

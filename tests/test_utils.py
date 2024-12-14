@@ -487,6 +487,25 @@ class TestUtils(TestBase):
         if utils.get_os() == 'windows':
             pass
 
+    def test12a__excludedirs(self):
+        """Test the ``excludedirs`` method.
+
+        :Test:
+            - Collect a list of test directories from this path.
+            - Remove any __pycache__, testlibs and htmlcov directories.
+            - Verify the *files* from the listed directories have been
+              removed.
+
+        """
+        path = os.path.dirname(os.path.realpath(__file__))
+        src = glob(os.path.join(path, '**'), recursive=True)
+        exc = [os.path.join(path, '__pycache__'),
+               os.path.join(path, 'testlibs'),
+               os.path.join(path, 'htmlcov')]
+        files = utils.excludedirs(source=src, exclude=exc)
+        for dir_ in ('__pycache__/', 'testlibs/', 'htmlcov/'):
+            with self.subTest(msg=f'subdir: {dir_}'):
+                self.assertTrue(all('htmlcov/' not in f for f in files))
 
 # %% Helper methods
 
