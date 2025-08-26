@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "utils4"
-description = "A general utilities package for Python 3.7+."
+description = "A general utilities package for Python 3.10+."
 authors = [{name = "The Developers", email = "development@s3dev.uk"}]
 classifiers = [
                "Development Status :: 5 - Production/Stable",
@@ -13,12 +13,10 @@ classifiers = [
                "Operating System :: POSIX :: Linux",
                "Operating System :: Microsoft :: Windows",
                "Programming Language :: C",
-               "Programming Language :: Python :: 3.7",
-               "Programming Language :: Python :: 3.8",
-               "Programming Language :: Python :: 3.9",
                "Programming Language :: Python :: 3.10",
                "Programming Language :: Python :: 3.11",
                "Programming Language :: Python :: 3.12",
+               "Programming Language :: Python :: 3.13",
                "Programming Language :: Python :: Implementation :: CPython",
                "Topic :: Software Development",
                "Topic :: Software Development :: Libraries",
@@ -30,7 +28,7 @@ dynamic = ["version"]
 keywords = ["library", "utility", "utilities"]
 license = {text = "MIT"}
 readme = {file = "README.md", content-type = "text/markdown"}
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 
 [project.urls]
 Documentation = "https://utils4.readthedocs.io"
@@ -44,4 +42,3 @@ version = {attr = "utils4.__version__"}
 where = ["."]
 include = ["utils4"]
 exclude = []
-

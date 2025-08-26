@@ -4,7 +4,6 @@
 :Purpose:   This module provides shared utilities, which are dedicated
             to unit testing.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cutils - C-based utility functions &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>cutils - C-based utility functions &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">cutils - C-based utility functions</a><ul>
@@ -95,7 +95,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">cutils - C-based utility functions</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -112,20 +112,17 @@
 <dd class="field-odd"><p>This module provides easy-access wrappers for C-based
 utilities.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+<dt class="field-even">Comments<span class="colon">:</span></dt>
+<dd class="field-even"><p>n/a</p>
 </dd>
-<dt class="field-odd">Comments<span class="colon">:</span></dt>
-<dd class="field-odd"><p>n/a</p>
-</dd>
-<dt class="field-even">Example<span class="colon">:</span></dt>
-<dd class="field-even"><p>Example for wiping a password from memory:</p>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Example for wiping a password from memory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">cutils</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pwd</span> <span class="o">=</span> <span class="s1">&#39;B0bsP@$$word&amp;&#39;</span>
@@ -143,18 +140,18 @@ utilities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<em>object</em>) – Object to be overwritten, usually a string, can be an
+<li><p><strong>obj</strong> (<em>object</em>) -- Object to be overwritten, usually a string, can be an
 int. <em>Not</em> to be used with complex objects, such as lists, dicts,
 etc.</p></li>
-<li><p><strong>fill</strong> (<em>int</em><em>, </em><em>optional</em>) – Value to be filled. Defaults to 0.</p></li>
+<li><p><strong>fill</strong> (<em>int</em><em>, </em><em>optional</em>) -- Value to be filled. Defaults to 0.</p></li>
 </ul>
 </dd>
 </dl>
 <p>Per the <code class="docutils literal notranslate"><span class="pre">ctypes.memset</span></code> documentation:</p>
 <blockquote>
-<div><p>“Same as the standard C memset library function: fills the memory
+<div><p>&quot;Same as the standard C memset library function: fills the memory
 block at address dst with count bytes of value c. dst must be an
-integer specifying an address, or a ctypes instance.”</p>
+integer specifying an address, or a ctypes instance.&quot;</p>
 </div></blockquote>
 <p>This function is a soft wrapper around the <code class="docutils literal notranslate"><span class="pre">ctypes.memset</span></code> function and
 provides a boolean return value, enabling the caller to test the success
@@ -186,7 +183,7 @@ equal to the original memory address of <code class="docutils literal notranslat
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

@@ -4,7 +4,6 @@
 :Purpose:   This class module provides quick-access to CSS-4 named colours in
             both RGB and hexidecimal formats.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

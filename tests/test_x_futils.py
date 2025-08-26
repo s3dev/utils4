@@ -10,7 +10,6 @@
             *dev release* of utils4 which can be installed locally where
             this module can be tested.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 
@@ -39,6 +38,7 @@ class TestFutils(TestBase):
     """Testing class used to test the ``futils`` module."""
 
     _MSG1 = msgs.templates.not_as_expected.general
+    _DIR_DATA = os.path.join(TestBase._DIR_RESRC, __name__)
 
     @classmethod
     def setUpClass(cls):
@@ -174,3 +174,143 @@ class TestFutils(TestBase):
         for f in files:
             with self.subTest(msg=f'File: {f}'):
                 self.assertTrue(utils.iszip(f))
+
+    def test04a__ispdf__plaintext(self):
+        """Test the ``ispdf`` method with plain-text files.
+
+        :Test:
+            - Collect all Python modules from the ``utils4`` directory.
+            - Verify each file (except utils.py) is a plain-text ASCII
+              file.
+
+        Note:
+            The ``utils.py`` module is excluded as it contains Polish,
+            Greek and Chinese characters in docstring for ``unidecode``.
+
+        """
+        files = glob(os.path.join(self._DIR_ROOT, 'utils4', '*.py'))
+        for f in files:
+            if 'utils.py' not in f:
+                with self.subTest(msg=f'File: {f}'):
+                    self.assertFalse(utils.ispdf(f))
+
+    def test04b__ispdf__binary(self):
+        """Test the ``ispdf`` method with binary files.
+
+        :Test:
+            - Collect known binary files from the ``utils4/__pycache__``
+              directory.
+            - Verify each file is a binary file as expected.
+
+        """
+        files = glob(os.path.join(self._DIR_ROOT, 'utils4', '__pycache__', '*.pyc'))
+        for f in files:
+            with self.subTest(msg=f'File: {f}'):
+                self.assertFalse(utils.ispdf(f))
+
+    def test04c__ispdf__pdf(self):
+        """Test the ``ispdf`` method with true PDF files.
+
+        :Test:
+            - For each true PDF file in the resources directory, verify
+              the function under test returns True.
+
+        """
+        files = glob(os.path.join(self._DIR_DATA, '*.pdf'))
+        for f in files:
+            with self.subTest(msg=f'File: {f}'):
+                self.assertTrue(utils.ispdf(f))
+
+    def test05a__is7zip__plaintext(self):
+        """Test the ``is7zip`` method with plain-text files.
+
+        :Test:
+            - Collect all Python modules from the ``utils4`` directory.
+            - Verify each file (except utils.py) is a plain-text ASCII
+              file.
+
+        Note:
+            The ``utils.py`` module is excluded as it contains Polish,
+            Greek and Chinese characters in docstring for ``unidecode``.
+
+        """
+        files = glob(os.path.join(self._DIR_ROOT, 'utils4', '*.py'))
+        for f in files:
+            if 'utils.py' not in f:
+                with self.subTest(msg=f'File: {f}'):
+                    self.assertFalse(utils.is7zip(f))
+
+    def test05b__is7zip__binary(self):
+        """Test the ``is7zip`` method with binary files.
+
+        :Test:
+            - Collect known binary files from the ``utils4/__pycache__``
+              directory.
+            - Verify each file is a binary file as expected.
+
+        """
+        files = glob(os.path.join(self._DIR_ROOT, 'utils4', '__pycache__', '*.pyc'))
+        for f in files:
+            with self.subTest(msg=f'File: {f}'):
+                self.assertFalse(utils.is7zip(f))
+
+    def test05c__is7zip__7zip(self):
+        """Test the ``is7zip`` method with true 7-zip files.
+
+        :Test:
+            - For each true 7-zip file in the resources directory, verify
+              the function under test returns True.
+
+        """
+        files = glob(os.path.join(self._DIR_DATA, '*.7z'))
+        for f in files:
+            with self.subTest(msg=f'File: {f}'):
+                self.assertTrue(utils.is7zip(f))
+
+    def test06a__isgzip__plaintext(self):
+        """Test the ``isgzip`` method with plain-text files.
+
+        :Test:
+            - Collect all Python modules from the ``utils4`` directory.
+            - Verify each file (except utils.py) is a plain-text ASCII
+              file.
+
+        Note:
+            The ``utils.py`` module is excluded as it contains Polish,
+            Greek and Chinese characters in docstring for ``unidecode``.
+
+        """
+        files = glob(os.path.join(self._DIR_ROOT, 'utils4', '*.py'))
+        for f in files:
+            if 'utils.py' not in f:
+                with self.subTest(msg=f'File: {f}'):
+                    self.assertFalse(utils.isgzip(f))
+
+    def test06b__isgzip__binary(self):
+        """Test the ``isgzip`` method with binary files.
+
+        :Test:
+            - Collect known binary files from the ``utils4/__pycache__``
+              directory.
+            - Verify each file is a binary file as expected.
+
+        """
+        files = glob(os.path.join(self._DIR_ROOT, 'utils4', '__pycache__', '*.pyc'))
+        for f in files:
+            with self.subTest(msg=f'File: {f}'):
+                self.assertFalse(utils.isgzip(f))
+
+    def test06c__isgzip__gzip(self):
+        """Test the ``isgzip`` method with true GZIP compressed files.
+
+        This test also includes ``.tar.gz`` archives.
+
+        :Test:
+            - For each true GZIP compressed file in the resources
+              directory, verify the function under test returns True.
+
+        """
+        files = glob(os.path.join(self._DIR_DATA, '*.gz'))
+        for f in files:
+            with self.subTest(msg=f'File: {f}'):
+                self.assertTrue(utils.isgzip(f))

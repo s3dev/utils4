@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils - Collection of general utility-based functions &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>utils - Collection of general utility-based functions &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -82,8 +82,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#utils.getsitepackages"><code class="docutils literal notranslate"><span class="pre">getsitepackages()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.gzip_compress"><code class="docutils literal notranslate"><span class="pre">gzip_compress()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.gzip_decompress"><code class="docutils literal notranslate"><span class="pre">gzip_decompress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.is7zip"><code class="docutils literal notranslate"><span class="pre">is7zip()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.isascii"><code class="docutils literal notranslate"><span class="pre">isascii()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.isbinary"><code class="docutils literal notranslate"><span class="pre">isbinary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.isgzip"><code class="docutils literal notranslate"><span class="pre">isgzip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.ispdf"><code class="docutils literal notranslate"><span class="pre">ispdf()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.iszip"><code class="docutils literal notranslate"><span class="pre">iszip()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.ping"><code class="docutils literal notranslate"><span class="pre">ping()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utils.strip_ansi_colour"><code class="docutils literal notranslate"><span class="pre">strip_ansi_colour()</span></code></a></li>
@@ -112,7 +115,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">utils - Collection of general utility-based functions</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -128,27 +131,24 @@
 <dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Central library for general utility-based methods.</p>
 <p>This <code class="docutils literal notranslate"><span class="pre">utils</span></code> module was the starting place of the original
-<code class="docutils literal notranslate"><span class="pre">utils</span></code> library. Therefore, it’s historically been a
-‘dumping-ground’ for general S3DEV utilities and function
+<code class="docutils literal notranslate"><span class="pre">utils</span></code> library. Therefore, it's historically been a
+'dumping-ground' for general S3DEV utilities and function
 wrappers specialised to the needs of S3DEV projects, which
-did not seem to fit in anywhere else. So we’ll be honest,
-it’s a bit of a melting pot of functions.</p>
+did not seem to fit in anywhere else. So we'll be honest,
+it's a bit of a melting pot of functions.</p>
 <p>With the overhaul of the <code class="docutils literal notranslate"><span class="pre">utils3</span></code> library into <code class="docutils literal notranslate"><span class="pre">utils4</span></code>,
 <em>many</em> of the original functions, which were no longer being
-used, have been removed in an effort to clean the module’s
+used, have been removed in an effort to clean the module's
 code base.</p>
 <p>If you are looking for a function which used to be here,
 please refer to the last <code class="docutils literal notranslate"><span class="pre">utils3</span></code> release, which is
 v0.15.1.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
-</dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -168,7 +168,7 @@ if/when the function which uses them is called.</p>
 <dd><p>Clean a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> data structure.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame to be cleaned.</p>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) -- DataFrame to be cleaned.</p>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>The DataFrame is cleaned <em>in-place</em>. An object is <em>not</em> returned by
@@ -240,8 +240,8 @@ trailing whitespace.</p></li>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – The directory path to be tested.</p></li>
-<li><p><strong>create_path</strong> (<em>bool</em><em>, </em><em>optional</em>) – Create the path if it doesn’t exist.
+<li><p><strong>path</strong> (<em>str</em>) -- The directory path to be tested.</p></li>
+<li><p><strong>create_path</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Create the path if it doesn't exist.
 Defaults to False.</p></li>
 </ul>
 </dd>
@@ -250,7 +250,7 @@ Defaults to False.</p></li>
 path does <em>not</em> exist, the path can be created; as determined by
 the <code class="docutils literal notranslate"><span class="pre">create_path</span></code> parameter.</p>
 <p>This function extends the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.exists()</span></code> function
-in that the path can be created if it doesn’t already exist, by
+in that the path can be created if it doesn't already exist, by
 passing the <code class="docutils literal notranslate"><span class="pre">create_path</span></code> parameter as <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <p>If the path is created by this function, the function is recursively
 called to test if the path exists, and will return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
@@ -282,8 +282,8 @@ stripped from the path before the test begins.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>source</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of source paths.</p></li>
-<li><p><strong>exclude</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of directories to be excluded from
+<li><p><strong>source</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) -- List of source paths.</p></li>
+<li><p><strong>exclude</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) -- List of directories to be excluded from
 <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></li>
 </ul>
 </dd>
@@ -314,9 +314,9 @@ been removed.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<em>str</em>) – Full file path to test.</p></li>
-<li><p><strong>error</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Action to be taken if the file does not exist.
-Defaults to ‘ignore’. Options:</p>
+<li><p><strong>filepath</strong> (<em>str</em>) -- Full file path to test.</p></li>
+<li><p><strong>error</strong> (<em>bool</em><em>, </em><em>optional</em>) -- <p>Action to be taken if the file does not exist.
+Defaults to 'ignore'. Options:</p>
 <blockquote>
 <div><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>: Take no action.</p></li>
@@ -372,7 +372,7 @@ error can be raised.</p>
 </div>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the filepath does not exist and the <code class="docutils literal notranslate"><span class="pre">error</span></code>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> -- If the filepath does not exist and the <code class="docutils literal notranslate"><span class="pre">error</span></code>
     parameter is <code class="docutils literal notranslate"><span class="pre">'raise'</span></code>.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -396,19 +396,19 @@ a database.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>datestring</strong> (<em>str</em>) – The datetime string to be formatted.
+<li><p><strong>datestring</strong> (<em>str</em>) -- The datetime string to be formatted.
 A typical exif date format is: yyyy:mm:dd hh:mi:ss</p></li>
-<li><p><strong>input_format</strong> (<em>str</em><em>, </em><em>optional</em>) – Format mask for the input datetime value.
-Defaults to ‘%Y:%m:%d %H:%M:%S’.</p></li>
-<li><p><strong>output_format</strong> (<em>str</em><em>, </em><em>optional</em>) – Format mask for the output datetime,
-if returned as a string. Defaults to ‘%Y%m%d%H%M%S’.</p></li>
-<li><p><strong>return_datetime</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object, rather
+<li><p><strong>input_format</strong> (<em>str</em><em>, </em><em>optional</em>) -- Format mask for the input datetime value.
+Defaults to '%Y:%m:%d %H:%M:%S'.</p></li>
+<li><p><strong>output_format</strong> (<em>str</em><em>, </em><em>optional</em>) -- Format mask for the output datetime,
+if returned as a string. Defaults to '%Y%m%d%H%M%S'.</p></li>
+<li><p><strong>return_datetime</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Return a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object, rather
 than a formatted string.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>Function designed to convert the exif date/timestamp from
-‘2010:01:31 12:31:18’ (or a caller specified format) to a format
+'2010:01:31 12:31:18' (or a caller specified format) to a format
 specified by the caller.</p>
 <p>The default input mask is the standard exif capture datetime format.</p>
 </dd>
@@ -445,7 +445,7 @@ specified by the caller.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.get_os">
 <span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">get_os</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#get_os"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.get_os" title="Link to this definition"></a></dt>
-<dd><p>Get the platform’s OS.</p>
+<dd><p>Get the platform's OS.</p>
 <p>This method is a very thin wrapper around the <code class="xref py py-func docutils literal notranslate"><span class="pre">platform.system()</span></code>
 function.</p>
 <dl class="field-list">
@@ -458,7 +458,7 @@ function.</p>
 </div>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A string of the platform’s operating system, in lower case.</p>
+<dd class="field-even"><p>A string of the platform's operating system, in lower case.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
@@ -497,10 +497,10 @@ value of the enum <code class="docutils literal notranslate"><span class="pre">w
 </div>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>NotImplementedError</strong> – Raised if the OS is not Windows.</p>
+<dd class="field-even"><p><strong>NotImplementedError</strong> -- Raised if the OS is not Windows.</p>
 </dd>
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>Generator[str]</em> – Each removable drive letter as a
+<dd class="field-odd"><p><em>Generator[str]</em> -- Each removable drive letter as a
 string. For example: <code class="docutils literal notranslate"><span class="pre">'E:'</span></code></p>
 </dd>
 </dl>
@@ -513,8 +513,8 @@ string. For example: <code class="docutils literal notranslate"><span class="pre
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>driver</strong> (<em>str</em>) – A <strong>regex pattern</strong> for the ODBC driver you’re searching.</p></li>
-<li><p><strong>return_all</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, <em>all</em> drivers matching the
+<li><p><strong>driver</strong> (<em>str</em>) -- A <strong>regex pattern</strong> for the ODBC driver you're searching.</p></li>
+<li><p><strong>return_all</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, <em>all</em> drivers matching the
 pattern are returned. Defaults to False, which returns only the
 first driver name.</p></li>
 </ul>
@@ -569,16 +569,16 @@ notified.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.getsitepackages">
 <span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">getsitepackages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/utils.html#getsitepackages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.getsitepackages" title="Link to this definition"></a></dt>
-<dd><p>Return the Python installation’s site packages directory.</p>
+<dd><p>Return the Python installation's site packages directory.</p>
 <dl class="field-list">
 <dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The function first uses the local <a class="reference internal" href="#utils.get_os" title="utils.get_os"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_os()</span></code></a>
-function to get the system’s OS. The OS is then tested and the
+function to get the system's OS. The OS is then tested and the
 site-packages location is returned using the OS-appropriate element
 from the list returned by the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">site.getsitepackages()</span></code>
 function.</p>
 <p>If the OS is not accounted for, or fails the test, a value of
-‘unknown’ is returned.</p>
+'unknown' is returned.</p>
 </dd>
 <dt class="field-even">Rationale<span class="colon">:</span></dt>
 <dd class="field-even"><p>The need for this function comes out of the observation there are many
@@ -614,13 +614,13 @@ Linux / Windows paths are in different locations in this list.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>in_path</strong> (<em>str</em>) – Full path to the file to be compressed. If the file
+<li><p><strong>in_path</strong> (<em>str</em>) -- Full path to the file to be compressed. If the file
 does not exist, a <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> is raised.</p></li>
-<li><p><strong>out_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Full path to the compressed output file.
+<li><p><strong>out_path</strong> (<em>str</em><em>, </em><em>optional</em>) -- Full path to the compressed output file.
 Defaults to None. If this value is <code class="docutils literal notranslate"><span class="pre">None</span></code> a <code class="docutils literal notranslate"><span class="pre">'.gz'</span></code> file
 extension is appended to the path provided to the <code class="docutils literal notranslate"><span class="pre">in_path</span></code>
 parameter.</p></li>
-<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of the chunk to be read / written during
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) -- Size of the chunk to be read / written during
 compression. Defaults to 10MiB.</p></li>
 </ul>
 </dd>
@@ -656,11 +656,11 @@ compression. Defaults to 10MiB.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Full path to the file to be decompressed. If the file
+<li><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be decompressed. If the file
 does not exist, a <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> is raised.</p></li>
-<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>optional</em>) – Encoding to be used to decode the
-decompressed binary data. Defaults to ‘utf-8’.</p></li>
-<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of the chunk to be read / written during
+<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>optional</em>) -- Encoding to be used to decode the
+decompressed binary data. Defaults to 'utf-8'.</p></li>
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) -- Size of the chunk to be read / written during
 decompression. Defaults to 1MiB.</p></li>
 </ul>
 </dd>
@@ -677,8 +677,8 @@ For example: <code class="docutils literal notranslate"><span class="pre">data.t
 <p class="admonition-title">Note</p>
 <p><strong>Newline Characters:</strong></p>
 <p>When the decompressed file is written, the <code class="docutils literal notranslate"><span class="pre">newline</span></code> character is
-specified as <code class="docutils literal notranslate"><span class="pre">''</span></code>, which enables ‘universal newline mode’, whereby
-the system’s newline character is used. However, the <em>original</em> line
+specified as <code class="docutils literal notranslate"><span class="pre">''</span></code>, which enables 'universal newline mode', whereby
+the system's newline character is used. However, the <em>original</em> line
 endings - those used in the compressed file - are written back to the
 decompressed file.</p>
 <p>This method is used to ensure the checksum hash on the original
@@ -704,16 +704,60 @@ decompressed file.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="utils.is7zip">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">is7zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#is7zip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.is7zip" title="Link to this definition"></a></dt>
+<dd><p>Determine if a file is a 7-zip archive.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be tested.</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>Test if a file is a 7-zip archive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">is7zip</span><span class="p">(</span><span class="s1">&#39;/path/to/file.7z&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A file is tested to be a 7-zip archive by checking the
+first six bytes of the file itself, <em>not</em> using the file
+extension.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Design<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This method calls the <code class="xref py py-func docutils literal notranslate"><span class="pre">futils.is7zip()</span></code> function with the
+given arguments.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>True if the first six bytes of the file matches the
+expected file signature for a 7-zip archive (shown below).
+Otherwise, False.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0x37</span> <span class="pre">0x7a</span> <span class="pre">0xbc</span> <span class="pre">0xaf</span> <span class="pre">0x27</span> <span class="pre">0x1c</span></code></p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="utils.isascii">
 <span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">isascii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2048</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#isascii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.isascii" title="Link to this definition"></a></dt>
 <dd><p>Determine if a file is plain-text (ASCII only).</p>
 <p>A file is deemed non-binary if <em>all</em> of the characters in the file
-are within ASCII’s printable range.</p>
+are within ASCII's printable range.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Full path to the file to be tested.</p></li>
-<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of bytes to read in a chunk.
+<li><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be tested.</p></li>
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of bytes to read in a chunk.
 Defaults to 2048 (2 MiB).</p></li>
 </ul>
 </dd>
@@ -748,13 +792,13 @@ given arguments.</p>
 <span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">isbinary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1024</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#isbinary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.isbinary" title="Link to this definition"></a></dt>
 <dd><p>Determine if a file is binary.</p>
 <p>A file is deemed non-binary if <em>all</em> of the characters in the file
-are within ASCII’s printable range. Refer to the <strong>References</strong>
+are within ASCII's printable range. Refer to the <strong>References</strong>
 section for further definition.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Full path to the file to be tested.</p></li>
-<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of bytes to read in a chunk.
+<li><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be tested.</p></li>
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of bytes to read in a chunk.
 Defaults to 1024 (1 MiB).</p></li>
 </ul>
 </dd>
@@ -771,7 +815,7 @@ Defaults to 1024 (1 MiB).</p></li>
 <dd class="field-odd"><p>For each chunk of size <code class="docutils literal notranslate"><span class="pre">size</span></code>, read each character; if the
 character is outside the ASCII printable range, True is returned
 immediately as the file is not plain-text. Otherwise, if a file
-is read to the end, with all characters being within ASCII’s
+is read to the end, with all characters being within ASCII's
 printable range, False is returned as the file is plain-text
 (ASCII only).</p>
 <p>This method calls the <code class="xref py py-func docutils literal notranslate"><span class="pre">futils.isbinary()</span></code> function with the
@@ -785,10 +829,106 @@ given arguments.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if <em>any</em> of the characters in the file are outside
-ASCII’s printable range. Otherwise, False.</p>
+ASCII's printable range. Otherwise, False.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.isgzip">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">isgzip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#isgzip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.isgzip" title="Link to this definition"></a></dt>
+<dd><p>Determine if a file is a GZIP compressed file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be tested.</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>Test if a file is a GZIP compressed file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">isgzip</span><span class="p">(</span><span class="s1">&#39;/path/to/file.gz&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Test if a file is a GZIP archive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">isgzip</span><span class="p">(</span><span class="s1">&#39;/path/to/file.tar.gz&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A file is tested to be a GZIP compressed file by checking the
+first two bytes of the file itself, <em>not</em> using the file
+extension.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Design<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This method calls the <code class="xref py py-func docutils literal notranslate"><span class="pre">futils.isgzip()</span></code> function with the
+given arguments.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>True if the first two bytes of the file matches the
+expected file signature for a GZIP compressed file (shown below).
+Otherwise, False.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0x1f</span> <span class="pre">0x8b</span></code></p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.ispdf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">ispdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utils.html#ispdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.ispdf" title="Link to this definition"></a></dt>
+<dd><p>Determine if a file is a <code class="docutils literal notranslate"><span class="pre">PDF</span></code> file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be tested.</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>Test if a file is a PDF file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">ispdf</span><span class="p">(</span><span class="s1">&#39;/path/to/document.pdf&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A file is tested to be a <code class="docutils literal notranslate"><span class="pre">PDF</span></code> file by checking the first five
+bytes of the file itself, <em>not</em> using the file extension.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Design<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This method calls the <code class="xref py py-func docutils literal notranslate"><span class="pre">futils.ispdf()</span></code> function with the
+given arguments.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>True if the first five bytes of the file matches the
+expected file signature for a PDF file (shown below), which
+corresponds to <code class="docutils literal notranslate"><span class="pre">%PDF-</span></code>. Otherwise, False.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0x25</span> <span class="pre">0x50</span> <span class="pre">0x44</span> <span class="pre">0x46</span> <span class="pre">0x2d</span></code></p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -799,7 +939,7 @@ ASCII’s printable range. Otherwise, False.</p>
 <dd><p>Determine if a file is a <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> archive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file to be tested.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file to be tested.</p>
 </dd>
 </dl>
 <div class="admonition tip">
@@ -840,12 +980,13 @@ archives appropriately.</p>
 given arguments.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><p>True if the first four bytes of the file match any of
-the below. Otherwise, False.</p>
+<dd class="field-even"><p><p>True if the first four bytes of the file matches any of the
+expected file signatures for a ZIP archive (shown below).
+Otherwise, False.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\x50\x4b\x03\x04</span></code>: ‘Standard’ archive</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\x50\x4b\x05\x06</span></code>: Empty archive</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\x50\x4b\x07\x08</span></code>: Spanned archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x50</span> <span class="pre">0x4b</span> <span class="pre">0x03</span> <span class="pre">0x04</span></code>: 'Standard' archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x50</span> <span class="pre">0x4b</span> <span class="pre">0x05</span> <span class="pre">0x06</span></code>: Empty archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x50</span> <span class="pre">0x4b</span> <span class="pre">0x07</span> <span class="pre">0x08</span></code>: Spanned archive</p></li>
 </ul>
 </p>
 </dd>
@@ -862,16 +1003,16 @@ the below. Otherwise, False.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>server</strong> (<em>str</em>) – IP address, server name or web address.</p></li>
-<li><p><strong>count</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of ping attempts. Defaults to 1.</p></li>
-<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of seconds to wait for response.
+<li><p><strong>server</strong> (<em>str</em>) -- IP address, server name or web address.</p></li>
+<li><p><strong>count</strong> (<em>int</em><em>, </em><em>optional</em>) -- The number of ping attempts. Defaults to 1.</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of seconds to wait for response.
 Defaults to 5.</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display all stdout and/or stderr output, if
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Display all stdout and/or stderr output, if
 the returned status code is non-zero. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
-<dd class="field-even"><p>Using the platform’s native <code class="docutils literal notranslate"><span class="pre">ping</span></code> command (via a <code class="docutils literal notranslate"><span class="pre">subprocess</span></code>
+<dd class="field-even"><p>Using the platform's native <code class="docutils literal notranslate"><span class="pre">ping</span></code> command (via a <code class="docutils literal notranslate"><span class="pre">subprocess</span></code>
 call) the host is pinged, and a boolean value is returned to the
 caller to indicate if the ping was successful.</p>
 <p>A ping status:</p>
@@ -934,7 +1075,7 @@ stripped out using the built-in <code class="xref py py-func docutils literal no
 <dd><p>Strip ANSI colour sequences from a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text string to be cleaned.</p>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) -- Text string to be cleaned.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -958,7 +1099,7 @@ of lines, with empty lines removed:</p>
 </div>
 </dd>
 <dt class="field-even">Yields<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>str</em> – Each character which not part of the ANSI escape sequence
+<dd class="field-even"><p><em>str</em> -- Each character which not part of the ANSI escape sequence
 is yielded to the caller. Essentially, this is a generator
 method.</p>
 </dd>
@@ -972,8 +1113,8 @@ method.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>module_name</strong> (<em>str</em>) – Exact name of the module to be found.</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Notify if the library is not installed.
+<li><p><strong>module_name</strong> (<em>str</em>) -- Exact name of the module to be found.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Notify if the library is not installed.
 Defaults to True.</p></li>
 </ul>
 </dd>
@@ -1015,8 +1156,8 @@ function before attempting to import the <code class="docutils literal notransla
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<em>str</em>) – The string to be decoded.</p></li>
-<li><p><strong>**kwargs</strong> (<em>dict</em>) – Keyword arguments passed directly into the underlying
+<li><p><strong>string</strong> (<em>str</em>) -- The string to be decoded.</p></li>
+<li><p><strong>**kwargs</strong> (<em>dict</em>) -- Keyword arguments passed directly into the underlying
 <code class="xref py py-func docutils literal notranslate"><span class="pre">unidecode.unidecode()</span></code> function.</p></li>
 </ul>
 </dd>
@@ -1024,19 +1165,19 @@ function before attempting to import the <code class="docutils literal notransla
 <dd class="field-even"><p>This function is a light wrapper around the <code class="xref py py-func docutils literal notranslate"><span class="pre">unidecode.unidecode()</span></code>
 function.</p>
 <p><strong>Per the</strong> <code class="docutils literal notranslate"><span class="pre">unicode</span></code> <strong>docstring:</strong></p>
-<p>“Transliterate an Unicode object into an ASCII string.”</p>
+<p>&quot;Transliterate an Unicode object into an ASCII string.&quot;</p>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unidecode</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;北亰&quot;</span><span class="p">)</span>
 <span class="go">&quot;Bei Jing &quot;</span>
 </pre></div>
 </div>
-<p>“This function first tries to convert the string using ASCII codec.
+<p>&quot;This function first tries to convert the string using ASCII codec.
 If it fails (because of non-ASCII characters), it falls back to
-transliteration using the character tables.”</p>
-<p>“This is approx. five times faster if the string only contains ASCII
+transliteration using the character tables.&quot;</p>
+<p>&quot;This is approx. five times faster if the string only contains ASCII
 characters, but slightly slower than
 <code class="xref py py-func docutils literal notranslate"><span class="pre">unidecode.unicode_expect_nonascii()</span></code> if non-ASCII characters are
-present.”</p>
+present.&quot;</p>
 </dd>
 <dt class="field-odd">Dependencies<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1052,7 +1193,7 @@ present.”</p>
 <span class="go">&#39;ul. Baltow 8a 27-423 Baltow, woj. swietokrzyskie&#39;</span>
 </pre></div>
 </div>
-<p>Convert the first line of ‘The Seventh Letter’, by Plato:</p>
+<p>Convert the first line of 'The Seventh Letter', by Plato:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">utils</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Πλάτων τοῖς Δίωνος οἰκείοις τε καὶ ἑταίροις εὖ πράττειν.&#39;</span>
@@ -1085,7 +1226,7 @@ returned, otherwise the original value is returned.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

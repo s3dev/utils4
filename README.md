@@ -1,5 +1,5 @@
 
-# A general utilities package for Python 3.7+
+# A general utilities package for Python 3.10+
 
 [![PyPI - Version](https://img.shields.io/pypi/v/utils4?style=flat-square)](https://pypi.org/project/utils4)
 [![PyPI - Implementation](https://img.shields.io/pypi/implementation/utils4?style=flat-square)](https://pypi.org/project/utils4)
@@ -12,7 +12,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/utils4?style=flat-square)](https://opensource.org/licenses/MIT)
 [![PyPI - Wheel](https://img.shields.io/pypi/wheel/utils4?style=flat-square)](https://pypi.org/project/utils4)
 
-The ``utils4`` project is a CPython and C library which contains generalised, utility-based functions, designed to be an underlying library across your various Python 3.7+ projects.
+The ``utils4`` project is a CPython and C library which contains generalised, utility-based functions, designed to be an underlying library across your various Python 3.10+ projects.
 
 
 ## Installation

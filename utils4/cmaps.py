@@ -5,7 +5,6 @@
             around ``matplotlib``'s colour maps, and can be used for
             retrieving and previewing named colour maps.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

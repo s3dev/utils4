@@ -23,10 +23,55 @@
 #include <stdlib.h>
 
 /* Prototypes */
+bool is7zip_(const char *path);
 bool isascii_(const char *path, size_t sz);
 bool isbinary_(const char *path, size_t sz);
+bool isgzip_(const char *path);
+bool ispdf_(const char *path);
 bool iszip_(const char *path);
 static bool _inasciirange(char c);
+
+/**
+    Determine if a file is a 7-zip archive.
+
+    Notes:
+        A file is tested to be a 7-zip archive by checking the first six
+        bytes of the file itself, *not* using the file extension.
+
+    @param path Pointer to the full path of the file to be tested.
+    @return Returns True if the first six bytes of the file match the
+            expected file signature for a 7-zip archive (shown below).
+            Otherwise False.
+
+            -  0x37 0x7a 0xbc 0xaf 0x27 0x1c
+*/
+bool
+is7zip_(const char *path) {
+
+    size_t bytes;
+    unsigned char buf[6];
+    FILE *fp;
+
+    if ( (fp = fopen(path, "rb")) == NULL ) {
+        perror("Error opening file");
+        return false;
+    }
+    if ( (bytes = fread(buf, 1, 6, fp)) != 6 ) {
+        fprintf(stderr, "[ERROR]: Expecting a 6-byte read, got %ld\n", bytes);
+        fclose(fp);
+        return false;
+    }
+    fclose(fp);
+    if ( !(   buf[0] == 0x37
+           && buf[1] == 0x7a
+           && buf[2] == 0xbc
+           && buf[3] == 0xaf
+           && buf[4] == 0x27
+           && buf[5] == 0x1c) ) {
+        return false;
+    }
+    return true;
+}
 
 /**
     Determine if a file is plain-text (ASCII only).
@@ -92,6 +137,85 @@ isbinary_(const char *path, size_t sz) {
 }
 
 /**
+    Determine if a file is a GZIP compressed file.
+
+    Notes:
+        A file is tested to be a GZIP compressed file by checking the
+        first two bytes of the file itself, *not* using the file 
+        extension.
+
+    @param path Pointer to the full path of the file to be tested.
+    @return Returns True if the first two bytes of the file match the
+            expected file signature for a GZIP compressed file (shown 
+            below). Otherwise False.
+
+            -  0x1f 0x8b
+*/
+bool
+isgzip_(const char *path) {
+
+    size_t bytes;
+    unsigned char buf[2];
+    FILE *fp;
+
+    if ( (fp = fopen(path, "rb")) == NULL ) {
+        perror("Error opening file");
+        return false;
+    }
+    if ( (bytes = fread(buf, 1, 2, fp)) != 2 ) {
+        fprintf(stderr, "[ERROR]: Expecting a 2-byte read, got %ld\n", bytes);
+        fclose(fp);
+        return false;
+    }
+    fclose(fp);
+    if ( !(buf[0] == 0x1f && buf[1] == 0x8b) ) {
+        return false;
+    }
+    return true;
+}
+
+/**
+    Determine if a file is a PDF file.
+
+    Notes:
+        A file is tested to be a PDF file by checking the first five
+        bytes of the file itself, *not* using the file extension.
+
+    @param path Pointer to the full path of the file to be tested.
+    @return Returns True if the first five bytes of the file match the
+            expected file signature for a PDF file (shown below), which 
+            corresponds to "%PDF-". Otherwise False.
+
+            -  0x25 0x50 0x44 0x46 0x2d
+*/
+bool
+ispdf_(const char *path) {
+
+    size_t bytes;
+    unsigned char buf[5];
+    FILE *fp;
+
+    if ( (fp = fopen(path, "rb")) == NULL ) {
+        perror("Error opening file");
+        return false;
+    }
+    if ( (bytes = fread(buf, 1, 5, fp)) != 5 ) {
+        fprintf(stderr, "[ERROR]: Expecting a 5-byte read, got %ld\n", bytes);
+        fclose(fp);
+        return false;
+    }
+    fclose(fp);
+    if ( !(   buf[0] == 0x25
+           && buf[1] == 0x50
+           && buf[2] == 0x44
+           && buf[3] == 0x46
+           && buf[4] == 0x2d) ) {
+        return false;
+    }
+    return true;
+}
+
+/**
     Determine if a file is a ZIP archive.
 
     Notes:
@@ -103,11 +227,12 @@ isbinary_(const char *path, size_t sz) {
     
     @param path Pointer to the full path of the file to be tested.
     @return Returns True if the first four bytes of the file match any of
-            the below. Otherwise, False.
+            the expected file signatures for a ZIP archive (shown below).
+            Otherwise, False.
     
-            - ``\x50\x4b\x03\x04``: A 'standard' archive
-            - ``\x50\x4b\x05\x06``: Empty archive
-            - ``\x50\x4b\x07\x08``: Spanned archive
+            - 0x50 0x4b 0x03 0x04: A 'standard' archive
+            - 0x50 0x4b 0x05 0x06: Empty archive
+            - 0x50 0x4b 0x07 0x08: Spanned archive
 */
 bool
 iszip_(const char *path) {

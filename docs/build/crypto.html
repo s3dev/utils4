@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>crypto - Extended functionality from the base64 and hashlib libraries &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>crypto - Extended functionality from the base64 and hashlib libraries &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">crypto - Extended functionality from the base64 and hashlib libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#crypto.Crypto"><code class="docutils literal notranslate"><span class="pre">Crypto</span></code></a><ul>
@@ -106,7 +106,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">crypto - Extended functionality from the base64 and hashlib libraries</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -124,20 +124,17 @@
 and <code class="docutils literal notranslate"><span class="pre">hashlib</span></code> libraries to provide some additional
 functionality.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+<dt class="field-even">Comments<span class="colon">:</span></dt>
+<dd class="field-even"><p>n/a</p>
 </dd>
-<dt class="field-odd">Comments<span class="colon">:</span></dt>
-<dd class="field-odd"><p>n/a</p>
-</dd>
-<dt class="field-even">Example<span class="colon">:</span></dt>
-<dd class="field-even"><p>Example code use:</p>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Example code use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4.crypto</span> <span class="kn">import</span> <span class="n">crypto</span>
 </pre></div>
 </div>
@@ -182,9 +179,9 @@ functionality.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>str</em>) – String to be encoded. If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type is
+<li><p><strong>data</strong> (<em>str</em>) -- String to be encoded. If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type is
 received, it is encoded to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before encoding.</p></li>
-<li><p><strong>decode</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return a decoded string. Defaults to True.</p></li>
+<li><p><strong>decode</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Return a decoded string. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -204,9 +201,9 @@ string or array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>iter</em><em>, </em><em>str</em><em>]</em>) – A string or an iterable object containing
+<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>iter</em><em>, </em><em>str</em><em>]</em>) -- A string or an iterable object containing
 strings to be encoded.</p></li>
-<li><p><strong>trunc</strong> (<em>int</em><em>, </em><em>optional</em>) – Truncate the Base64 string to (n)
+<li><p><strong>trunc</strong> (<em>int</em><em>, </em><em>optional</em>) -- Truncate the Base64 string to (n)
 characters. As string slicing is used, values such as <code class="docutils literal notranslate"><span class="pre">-1</span></code>
 are also valid. Defaults to None.</p></li>
 </ul>
@@ -228,8 +225,8 @@ passed string or iterable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p></li>
-<li><p><strong>return_integer</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return the original unsigned
+<li><p><strong>path</strong> (<em>str</em>) -- Full path to the file.</p></li>
+<li><p><strong>return_integer</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Return the original unsigned
 32-bit integer, rather than the hex string. Defaults to False.</p></li>
 </ul>
 </dd>
@@ -239,7 +236,7 @@ passed string or iterable.</p>
 <p>This algorithm is <em>not</em> cryptographically strong and should not be
 used for authentication or digital signatures; nor is it suitable
 for use as a general hash algorithm.</p>
-<p>– zlib.crc32 <a class="reference external" href="https://docs.python.org/3/library/zlib.html#zlib.crc32">Documentation</a></p>
+<p>-- zlib.crc32 <a class="reference external" href="https://docs.python.org/3/library/zlib.html#zlib.crc32">Documentation</a></p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">Design<span class="colon">:</span></dt>
@@ -268,7 +265,7 @@ an integer:</p>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If the <code class="docutils literal notranslate"><span class="pre">return_integer</span></code> value is <code class="docutils literal notranslate"><span class="pre">False</span></code>
 (default action), a CRC32 32-bit hex string (checksum string) of
-the file’s contents is returned. Otherwise, an unsigned 32-bit
+the file's contents is returned. Otherwise, an unsigned 32-bit
 integer is returned.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -283,7 +280,7 @@ integer is returned.</p>
 <dd><p>Generate a 128-bit MD5 checksum for the given file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file.</p>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This method breaks the file into 32768-byte chunks
@@ -302,7 +299,7 @@ blocks. Meaning this method has a maximum memory use overhead of
 </div>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A 128-bit MD5 hex digest (checksum string) of the file’s
+<dd class="field-even"><p>A 128-bit MD5 hex digest (checksum string) of the file's
 contents.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -317,7 +314,7 @@ contents.</p>
 <dd><p>Generate a 160-bit SHA1 checksum for the given file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file.</p>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This method breaks the file into 32768-byte chunks
@@ -336,7 +333,7 @@ overhead of ~32K.</p>
 </div>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A 160-bit SHA1 hex digest (checksum string) of the file’s
+<dd class="field-even"><p>A 160-bit SHA1 hex digest (checksum string) of the file's
 contents.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -351,7 +348,7 @@ contents.</p>
 <dd><p>Generate a 256-bit SHA256 checksum for the given file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file.</p>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This method breaks the file into 32768-byte chunks
@@ -370,7 +367,7 @@ overhead of ~32K.</p>
 </div>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A 256-bit SHA256 hex digest (checksum string) of the file’s
+<dd class="field-even"><p>A 256-bit SHA256 hex digest (checksum string) of the file's
 contents.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -385,7 +382,7 @@ contents.</p>
 <dd><p>Generate a 512-bit SHA512 checksum for the given file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Full path to the file.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Full path to the file.</p>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>This method breaks the file into 32768-byte chunks
@@ -407,7 +404,7 @@ overhead of ~32K.</p>
 </div>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A 512-bit SHA512 hex digest (checksum string) of the file’s
+<dd class="field-even"><p>A 512-bit SHA512 hex digest (checksum string) of the file's
 contents.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -423,9 +420,9 @@ contents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>str</em>) – String to be hashed. If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type
+<li><p><strong>data</strong> (<em>str</em>) -- String to be hashed. If a <code class="docutils literal notranslate"><span class="pre">str</span></code> data type
 is passed, it is encoded to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before hashing.</p></li>
-<li><p><strong>decode</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return a decoded string. Defaults to True.</p></li>
+<li><p><strong>decode</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Return a decoded string. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -444,7 +441,7 @@ to the <code class="docutils literal notranslate"><span class="pre">decode</span
 <dd><p>Test if a string is <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code> before processing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Union</em><em>[</em><em>bytes</em><em>, </em><em>str</em><em>]</em>) – String value to be encoded.</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>Union</em><em>[</em><em>bytes</em><em>, </em><em>str</em><em>]</em>) -- String value to be encoded.</p>
 </dd>
 </dl>
 <p>If the received <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter is a <code class="docutils literal notranslate"><span class="pre">str</span></code> type, it is converted
@@ -452,7 +449,7 @@ to a <code class="docutils literal notranslate"><span class="pre">bytes</span></
 type, it is returned, unmodified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the <code class="docutils literal notranslate"><span class="pre">data</span></code> object is neither a <code class="docutils literal notranslate"><span class="pre">str</span></code> or
+<dd class="field-odd"><p><strong>ValueError</strong> -- If the <code class="docutils literal notranslate"><span class="pre">data</span></code> object is neither a <code class="docutils literal notranslate"><span class="pre">str</span></code> or
     <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -479,7 +476,7 @@ type, it is returned, unmodified.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

@@ -25,7 +25,8 @@ preqs . --replace --ignore_dirs tests
 
 # Create the package and wheel file.
 printf "Creating the source distribution ...\n"
-python -m build --sdist
+#python -m build --sdist
+python -m build --sdist --no-isolation
 
 # Notfication.
 printf "\nAll done.\n\n"

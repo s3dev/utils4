@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dict2obj - Conversion tool for JSON structure to object &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>dict2obj - Conversion tool for JSON structure to object &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -106,7 +106,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">dict2obj - Conversion tool for JSON structure to object</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -121,20 +121,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This class module is used to convert a Python dictionary (<code class="docutils literal notranslate"><span class="pre">dict</span></code>)
-or JSON file into a object - where the dictionary’s key/value
+or JSON file into a object - where the dictionary's key/value
 pairs become object attribute/value pairs.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
-</dd>
-<dt class="field-odd">Comments<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Basic concept <a class="reference external" href="https://stackoverflow.com/a/1639197/6340496">attribution</a>.</p>
+<dt class="field-even">Comments<span class="colon">:</span></dt>
+<dd class="field-even"><p>Basic concept <a class="reference external" href="https://stackoverflow.com/a/1639197/6340496">attribution</a>.</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -144,21 +141,21 @@ pairs become object attribute/value pairs.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dictionary</strong> (<em>dict</em><em>, </em><em>optional</em>) – A standard Python dictionary where all
+<li><p><strong>dictionary</strong> (<em>dict</em><em>, </em><em>optional</em>) -- A standard Python dictionary where all
 key/value pairs will be converted into an object. Defaults to None.</p></li>
-<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Source for the conversion. Defaults to ‘dict’.</p>
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) -- <p>Source for the conversion. Defaults to 'dict'.</p>
 <ul>
-<li><p>’dict’: a standard Python dictionary</p></li>
-<li><p>’json’: uses content from a JSON file</p></li>
+<li><p>'dict': a standard Python dictionary</p></li>
+<li><p>'json': uses content from a JSON file</p></li>
 </ul>
 </p></li>
-<li><p><strong>filepath</strong> (<em>str</em><em>, </em><em>optional</em>) – Full file path to the JSON file to be used.
+<li><p><strong>filepath</strong> (<em>str</em><em>, </em><em>optional</em>) -- Full file path to the JSON file to be used.
 Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>A Python object is created from the passed dictionary (or JSON
-file), where each of the dictionary’s key/value pairs is turned
+file), where each of the dictionary's key/value pairs is turned
 into an object attribute/value pair.</p>
 </dd>
 <dt class="field-odd">Note<span class="colon">:</span></dt>
@@ -201,7 +198,7 @@ dictionary.</p></li>
 <dd><p>Validate and create the object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>TypeError</strong> – If a key is not a string, or is a string yet begins
+<dd class="field-odd"><p><strong>TypeError</strong> -- If a key is not a string, or is a string yet begins
     with any type other than a string..</p>
 </dd>
 </dl>
@@ -228,8 +225,8 @@ dictionary.</p></li>
 <blockquote>
 <div><ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">source</span></code> value is valid.</p></li>
-<li><p>If ‘json’ source, a file path is provided.</p></li>
-<li><p>If ‘json’ source, the provided file path exists.</p></li>
+<li><p>If 'json' source, a file path is provided.</p></li>
+<li><p>If 'json' source, the provided file path exists.</p></li>
 </ul>
 </div></blockquote>
 <dl class="field-list simple">
@@ -245,16 +242,16 @@ dictionary.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="dict2obj.Dict2Obj._validate_fileexists">
 <span class="sig-name descname"><span class="pre">_validate_fileexists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/dict2obj.html#Dict2Obj._validate_fileexists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dict2obj.Dict2Obj._validate_fileexists" title="Link to this definition"></a></dt>
-<dd><p>Validation test: If a ‘json’ source, test the file path exists.</p>
+<dd><p>Validation test: If a 'json' source, test the file path exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ValueError</strong> – If the passed filepath is not a ‘.json’ extension.</p></li>
-<li><p><strong>ValueError</strong> – If the passed filepath does not exist.</p></li>
+<li><p><strong>ValueError</strong> -- If the passed filepath is not a '.json' extension.</p></li>
+<li><p><strong>ValueError</strong> -- If the passed filepath does not exist.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the source is ‘dict’; or if source is ‘json’ and
+<dd class="field-even"><p>True if the source is 'dict'; or if source is 'json' and
 the file exists, otherwise False.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -269,7 +266,7 @@ the file exists, otherwise False.</p>
 <dd><p>Validation test: Verify the object is a <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>TypeError</strong> – If the passed object is not a <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
+<dd class="field-odd"><p><strong>TypeError</strong> -- If the passed object is not a <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the passed object is a <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
@@ -283,13 +280,13 @@ the file exists, otherwise False.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dict2obj.Dict2Obj._validate_source">
 <span class="sig-name descname"><span class="pre">_validate_source</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/dict2obj.html#Dict2Obj._validate_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dict2obj.Dict2Obj._validate_source" title="Link to this definition"></a></dt>
-<dd><p>Validation test: If a ‘json’ source, test a file path is provided.</p>
+<dd><p>Validation test: If a 'json' source, test a file path is provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the source is ‘json’ and a filepath is not provided.</p>
+<dd class="field-odd"><p><strong>ValueError</strong> -- If the source is 'json' and a filepath is not provided.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the source is ‘dict’; or if source is ‘json’ and a
+<dd class="field-even"><p>True if the source is 'dict'; or if source is 'json' and a
 file path is provided.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -304,7 +301,7 @@ file path is provided.</p>
 <dd><p>Validation test: The value of the <code class="docutils literal notranslate"><span class="pre">source</span></code> parameter is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the source string is invalid.</p>
+<dd class="field-odd"><p><strong>ValueError</strong> -- If the source string is invalid.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if a valid source.</p>
@@ -330,7 +327,7 @@ file path is provided.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

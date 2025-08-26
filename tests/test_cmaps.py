@@ -3,7 +3,6 @@
 """
 :Purpose:   Testing module for the ``cmaps`` module.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     development@s3dev.uk
 

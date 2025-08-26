@@ -6,7 +6,6 @@ r"""
             :func:`pandas.DateOffset` class, which handles the time delta
             calculations.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

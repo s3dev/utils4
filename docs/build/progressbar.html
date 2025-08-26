@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>progressbar - A simple command line progess bar &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>progressbar - A simple command line progess bar &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -99,7 +99,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">progressbar - A simple command line progess bar</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -116,20 +116,17 @@
 <dd class="field-odd"><p>This is a small class module which provides access to a
 simple console progress bar.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+<dt class="field-even">Comments<span class="colon">:</span></dt>
+<dd class="field-even"><p>n/a</p>
 </dd>
-<dt class="field-odd">Comments<span class="colon">:</span></dt>
-<dd class="field-odd"><p>n/a</p>
-</dd>
-<dt class="field-even">Example<span class="colon">:</span></dt>
-<dd class="field-even"><p>For a simple usage example, refer to the <a class="reference internal" href="#progressbar.ProgressBar" title="progressbar.ProgressBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressBar</span></code></a>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>For a simple usage example, refer to the <a class="reference internal" href="#progressbar.ProgressBar" title="progressbar.ProgressBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressBar</span></code></a>
 class docstring.</p>
 </dd>
 </dl>
@@ -140,16 +137,16 @@ class docstring.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>total_values</strong> (<em>int</em><em>, </em><em>optional</em>) – Total number of iterations.
+<li><p><strong>total_values</strong> (<em>int</em><em>, </em><em>optional</em>) -- Total number of iterations.
 Defaults to 25.</p></li>
-<li><p><strong>bar_len</strong> (<em>int</em><em>, </em><em>optional</em>) – Complete length of the progress bar, in chars.
+<li><p><strong>bar_len</strong> (<em>int</em><em>, </em><em>optional</em>) -- Complete length of the progress bar, in chars.
 Defaults to 25</p></li>
-<li><p><strong>symbol</strong> (<em>str</em><em>, </em><em>optional</em>) – The symbol which is used to track progress.
+<li><p><strong>symbol</strong> (<em>str</em><em>, </em><em>optional</em>) -- The symbol which is used to track progress.
 Defaults to <code class="docutils literal notranslate"><span class="pre">'.'</span></code>.</p></li>
-<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) – Colour of the progress bar; where only the first
+<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) -- Colour of the progress bar; where only the first
 letter of the colour is required.
 Options are: red, green, yellow, blue, magenta, cyan, white.
-Defaults to ‘w’ (white).</p></li>
+Defaults to 'w' (white).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
@@ -195,7 +192,7 @@ little bit.</p>
 <dd><p>Incrementally update the progress bar.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>current</strong> (<em>int</em>) – Index value for the current iteration.
+<dd class="field-odd"><p><strong>current</strong> (<em>int</em>) -- Index value for the current iteration.
 This value is compared against the initialised <code class="docutils literal notranslate"><span class="pre">total_values</span></code>
 parameter to determine the current position in the overall
 progress.</p>
@@ -221,7 +218,7 @@ progress.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

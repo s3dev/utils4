@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>registry - A simple interface to the Windows registry &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>registry - A simple interface to the Windows registry &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -113,7 +113,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">registry - A simple interface to the Windows registry</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -144,17 +144,14 @@ HKEY.</p>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>M Critchard</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>M Critchard</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
-</dd>
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For a use example, refer to the <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> docstring.</p>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>For a use example, refer to the <a class="reference internal" href="#registry.Registry" title="registry.Registry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Registry</span></code></a> docstring.</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -198,7 +195,7 @@ of key specific functions.</p>
 <dd><p>Get the key value specified by name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) -- Name of the registry key.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>If the value exists, a value object is returned, otherwise
@@ -214,8 +211,8 @@ of key specific functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p></li>
-<li><p><strong>data</strong> (<em>str</em>) – Data to store into the key.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) -- Name of the registry key.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) -- Data to store into the key.</p></li>
 </ul>
 </dd>
 </dl>
@@ -260,8 +257,8 @@ of hkey specific functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) -- Path to the registry key.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) -- Name of the registry key.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -278,16 +275,16 @@ of hkey specific functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – Name of the registry key.</p></li>
-<li><p><strong>data</strong> (<em>str</em>) – Data to store into the key.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) -- Path to the registry key.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) -- Name of the registry key.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) -- Data to store into the key.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
-<dd class="field-even"><p>If the value doesn’t exist, this method creates it and sets
+<dd class="field-even"><p>If the value doesn't exist, this method creates it and sets
 its type and data accordingly. A check is performed to
 determine if the operation has been completed successfully.
-If it hasn’t the user is notified.</p>
+If it hasn't the user is notified.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The value of the registry key.</p>
@@ -301,7 +298,7 @@ If it hasn’t the user is notified.</p>
 <dd><p>Create the key specified by the path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Path to the registry key.</p>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
 <dd class="field-even"><p>If a creation error occurs, the user is notified.</p>
@@ -319,7 +316,7 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 <dd><p>Delete the key specified by the path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) -- Path to the registry key.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -343,8 +340,8 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Path to the registry key.</p></li>
-<li><p><strong>sam</strong> – The SAM privilege level used to open the key.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) -- Path to the registry key.</p></li>
+<li><p><strong>sam</strong> -- The SAM privilege level used to open the key.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
@@ -373,7 +370,7 @@ returned, otherwise <code class="docutils literal notranslate"><span class="pre"
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

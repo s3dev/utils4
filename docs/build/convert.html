@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>convert - Functions to convert between low-level types (binary, hex, ascii and int) &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>convert - Functions to convert between low-level types (binary, hex, ascii and int) &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="crypto - Extended functionality from the base64 and hashlib libraries" href="crypto.html" />
-    <link rel="prev" title="config - Adds support for automatically reading an application’s config file" href="config.html" /> 
+    <link rel="prev" title="config - Adds support for automatically reading an application&#39;s config file" href="config.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#convert.ascii2bin"><code class="docutils literal notranslate"><span class="pre">ascii2bin()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#convert.ascii2hex"><code class="docutils literal notranslate"><span class="pre">ascii2hex()</span></code></a></li>
@@ -106,7 +106,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">convert - Functions to convert between low-level types (binary, hex, ascii and int)</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -134,17 +134,14 @@
 <dt class="field-odd">Purpose<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This module contains various low-level conversion functions.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
-</dd>
-<dt class="field-odd">Comments<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Often, these types of conversions are called from a high-iteration
+<dt class="field-even">Comments<span class="colon">:</span></dt>
+<dd class="field-even"><p>Often, these types of conversions are called from a high-iteration
 loop. Therefore, the implementation of these functions has been
 written as close to core Python as possible, or in a C style, for
 efficiency purposes.</p>
@@ -156,7 +153,7 @@ efficiency purposes.</p>
 <dd><p>Convert an ASCII string into a binary string representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) – ASCII string to be converted.</p>
+<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) -- ASCII string to be converted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A binary string representation for the passed ASCII text, where
@@ -174,7 +171,7 @@ each ASCII character is represented by an 8-bit binary string.</p>
 <dd><p>Convert an ASCII string into a hexidecimal string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) – ASCII string to be converted.</p>
+<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) -- ASCII string to be converted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A hexidecimal string representation of the passed ASCII
@@ -192,7 +189,7 @@ text.</p>
 <dd><p>Convert an ASCII string to a list of integers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) – ASCII string to be converted.</p>
+<dd class="field-odd"><p><strong>asciistring</strong> (<em>str</em>) -- ASCII string to be converted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of integers, as converted from he ASCII string.</p>
@@ -210,8 +207,8 @@ text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>binstring</strong> (<em>str</em>) – Binary string to be converted.</p></li>
-<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit chunks into which the binary string is
+<li><p><strong>binstring</strong> (<em>str</em>) -- Binary string to be converted.</p></li>
+<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) -- Bit chunks into which the binary string is
 broken for conversion. Defaults to 8.</p></li>
 </ul>
 </dd>
@@ -231,8 +228,8 @@ broken for conversion. Defaults to 8.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>binstring</strong> (<em>str</em>) – Binary string to be converted.</p></li>
-<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit chunks into which the binary string is
+<li><p><strong>binstring</strong> (<em>str</em>) -- Binary string to be converted.</p></li>
+<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) -- Bit chunks into which the binary string is
 broken for conversion. Defaults to 8.</p></li>
 </ul>
 </dd>
@@ -252,8 +249,8 @@ broken for conversion. Defaults to 8.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>binstring</strong> (<em>str</em>) – Binary string to be converted.</p></li>
-<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Bit chunks into which the binary string is
+<li><p><strong>binstring</strong> (<em>str</em>) -- Binary string to be converted.</p></li>
+<li><p><strong>bits</strong> (<em>int</em><em>, </em><em>optional</em>) -- Bit chunks into which the binary string is
 broken for conversion. Defaults to 8.</p></li>
 </ul>
 </dd>
@@ -269,7 +266,7 @@ broken for conversion. Defaults to 8.</p></li>
 <dd><p>Convert a hexidecimal string to ASCII text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>hexstring</strong> (<em>str</em>) – Hex string to be converted.</p>
+<dd class="field-odd"><p><strong>hexstring</strong> (<em>str</em>) -- Hex string to be converted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An ASCII string representation for the passed hex string.</p>
@@ -286,7 +283,7 @@ broken for conversion. Defaults to 8.</p></li>
 <dd><p>Convert a hexidecimal string into a binary string representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>hexstring</strong> (<em>str</em>) – Hex string to be converted.</p>
+<dd class="field-odd"><p><strong>hexstring</strong> (<em>str</em>) -- Hex string to be converted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A binary string representation of the passed hex string.</p>
@@ -304,8 +301,8 @@ broken for conversion. Defaults to 8.</p></li>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>hexstring</strong> (<em>str</em>) – Hex string to be converted.</p></li>
-<li><p><strong>nbytes</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of bytes to consider for each
+<li><p><strong>hexstring</strong> (<em>str</em>) -- Hex string to be converted.</p></li>
+<li><p><strong>nbytes</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of bytes to consider for each
 decimal value. Defaults to 1.</p></li>
 </ul>
 </dd>
@@ -337,7 +334,7 @@ decimal value. Defaults to 1.</p></li>
 <dd><p>Convert an integer to an ASCII character.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Integer value to be converted to ASCII text.</p>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) -- Integer value to be converted to ASCII text.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -346,7 +343,7 @@ decimal value. Defaults to 1.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the passed integer is &gt; 127.</p>
+<dd class="field-odd"><p><strong>ValueError</strong> -- If the passed integer is &gt; 127.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The ASCII character associated to the passed integer.</p>
@@ -363,7 +360,7 @@ decimal value. Defaults to 1.</p></li>
 <dd><p>Convert an 8-bit integer to a binary string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Integer value to be converted.</p>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) -- Integer value to be converted.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -372,7 +369,7 @@ decimal value. Defaults to 1.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the passed integer is &gt; 255.</p>
+<dd class="field-odd"><p><strong>ValueError</strong> -- If the passed integer is &gt; 255.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A binary string representation of the passed integer.</p>
@@ -389,7 +386,7 @@ decimal value. Defaults to 1.</p></li>
 <dd><p>Convert an integer into a hexidecimal string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Integer value to be converted.</p>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) -- Integer value to be converted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A two character hexidecimal string for the passed integer
@@ -407,14 +404,14 @@ value.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="config.html" class="btn btn-neutral float-left" title="config - Adds support for automatically reading an application’s config file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config.html" class="btn btn-neutral float-left" title="config - Adds support for automatically reading an application&#39;s config file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="crypto.html" class="btn btn-neutral float-right" title="crypto - Extended functionality from the base64 and hashlib libraries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

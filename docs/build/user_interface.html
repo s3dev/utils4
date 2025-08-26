@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>user_interface - Format coloured text to the terminal &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>user_interface - Format coloured text to the terminal &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -123,7 +123,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">user_interface - Format coloured text to the terminal</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -160,7 +160,7 @@ abnormal behaviour. The following formats are built-in:</p>
 <li><p>black text on a white background</p></li>
 <li><p>black text on a yellow background</p></li>
 <li><p>white text on a blue background</p></li>
-<li><p>etc …</p></li>
+<li><p>etc ...</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -173,17 +173,14 @@ background</p></li>
 </ul>
 </div></blockquote>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>M Critchard, J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>M Critchard, J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
-</dd>
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For usage examples, please refer to the following class docstrings:</p>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>For usage examples, please refer to the following class docstrings:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#user_interface.PrintBanner" title="user_interface.PrintBanner"><code class="xref py py-class docutils literal notranslate"><span class="pre">PrintBanner</span></code></a></p></li>
 <li><p><a class="reference internal" href="#user_interface.UserInterface" title="user_interface.UserInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserInterface</span></code></a></p></li>
@@ -199,9 +196,9 @@ to display information about the application. For example, information such
 as the application title, version, security classification, etc.</p>
 <dl class="field-list">
 <dt class="field-odd">Design<span class="colon">:</span></dt>
-<dd class="field-odd"><p>This may be useful if you want to use a ‘standardised’ program
+<dd class="field-odd"><p>This may be useful if you want to use a 'standardised' program
 header across all of your programs.  This class can be called in the
-program’s startup routine.</p>
+program's startup routine.</p>
 <p>The banner can also be used to display and report expected error
 information.  For example, if a certain validation type of
 error is expected, a customised version of this banner can wrap
@@ -242,12 +239,12 @@ is highly configurable.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of your program. Defaults to None.</p></li>
-<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – The program’s version number.
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) -- Name of your program. Defaults to None.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) -- The program's version number.
 Defaults to None.</p></li>
-<li><p><strong>desc</strong> (<em>str</em><em>, </em><em>optional</em>) – Description of what your program is all
+<li><p><strong>desc</strong> (<em>str</em><em>, </em><em>optional</em>) -- Description of what your program is all
 about. Defaults to None.</p></li>
-<li><p><strong>info</strong> (<em>list</em><em>, </em><em>optional</em>) – <p>A list of dictionaries containing the fields
+<li><p><strong>info</strong> (<em>list</em><em>, </em><em>optional</em>) -- <p>A list of dictionaries containing the fields
 to be used. Defaults to None.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">info</span></code> parameter is used to generate a completely
 customised banner.  Essentially, whatever key/value pairs you
@@ -264,7 +261,7 @@ pass in, are what will be printed in the banner.</p>
 &gt;&gt;&gt; PrintBanner(info=info)
 </pre></div>
 </div>
-<p>… will print the banner:</p>
+<p>... will print the banner:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------------------</span>
  <span class="n">Program</span>        <span class="p">:</span>    <span class="n">Spam</span> <span class="ow">and</span> <span class="n">Eggs</span>
  <span class="n">Version</span>        <span class="p">:</span>    <span class="mf">2.0.3</span>
@@ -276,19 +273,19 @@ pass in, are what will be printed in the banner.</p>
 </div>
 </div>
 </p></li>
-<li><p><strong>chars</strong> (<em>int</em><em>, </em><em>optional</em>) – In the number of characters, the size of the
+<li><p><strong>chars</strong> (<em>int</em><em>, </em><em>optional</em>) -- In the number of characters, the size of the
 buffer used for the background colour, and the length of the
 ribbon. Defaults to 72.</p></li>
-<li><p><strong>ribbon</strong> (<em>str</em><em>, </em><em>optional</em>) – The character(s) to use for the ribbon.
+<li><p><strong>ribbon</strong> (<em>str</em><em>, </em><em>optional</em>) -- The character(s) to use for the ribbon.
 If multiple characters are passed into this parameter, these
 characters will be repeated until the length of the <code class="docutils literal notranslate"><span class="pre">chars</span></code>
 parameter is met. Defaults to <code class="docutils literal notranslate"><span class="pre">'-'</span></code>.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour.  The eight <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit">basic colour names</a>
-are accepted as strings. Defaults to ‘brightwhite’.</p></li>
-<li><p><strong>back</strong> (<em>str</em><em>, </em><em>optional</em>) – Background colour. The eight
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour.  The eight <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit">basic colour names</a>
+are accepted as strings. Defaults to 'brightwhite'.</p></li>
+<li><p><strong>back</strong> (<em>str</em><em>, </em><em>optional</em>) -- Background colour. The eight
 <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit">basic colour names</a> are accepted as strings. Defaults to
-‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Style of the text. Defaults to ‘normal’.</p>
+'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- <p>Style of the text. Defaults to 'normal'.</p>
 <dl class="simple">
 <dt>Options:</dt><dd><ul>
 <li><p>dim</p></li>
@@ -306,12 +303,12 @@ are accepted as strings. Defaults to ‘brightwhite’.</p></li>
 default banner is generated using the values passed into
 the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code> and <code class="docutils literal notranslate"><span class="pre">desc</span></code> parameters.</p>
 <p>The string templates used for the banner layout may be
-configured in this module’s private <a class="reference internal" href="#user_interface._Config" title="user_interface._Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Config</span></code></a> class.</p>
+configured in this module's private <a class="reference internal" href="#user_interface._Config" title="user_interface._Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Config</span></code></a> class.</p>
 <p>Additional configuration is available through the other
 parameters, which are all defined in the <strong>Parameters</strong>
 section above.</p>
 <p>Also, the title of the console window is updated to show the
-program’s name and version, if <em>all</em> of the following criteria
+program's name and version, if <em>all</em> of the following criteria
 are met:</p>
 <blockquote>
 <div><ul class="simple">
@@ -335,7 +332,7 @@ are met:</p>
 <span class="go">                style=&#39;normal&#39;)</span>
 </pre></div>
 </div>
-<p>… will print this banner in yellow text on a black background:</p>
+<p>... will print this banner in yellow text on a black background:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</span>
  <span class="n">Program</span>        <span class="p">:</span>    <span class="n">Spam</span> <span class="ow">and</span> <span class="n">Eggs</span>
  <span class="n">Version</span>        <span class="p">:</span>    <span class="mf">2.0.3</span>
@@ -387,7 +384,7 @@ coloured text to the terminal.</p>
 <ul>
 <li><p><strong>Purpose</strong>:</p>
 <blockquote>
-<div><p>If Windows is detected as the system’s OS, the <code class="docutils literal notranslate"><span class="pre">utils4.__init__</span></code>
+<div><p>If Windows is detected as the system's OS, the <code class="docutils literal notranslate"><span class="pre">utils4.__init__</span></code>
 module initialises the <code class="docutils literal notranslate"><span class="pre">colorama</span></code> library, which enables the
 user to print coloured text to the Windows terminal.</p>
 </div></blockquote>
@@ -404,8 +401,8 @@ terminal, rather than <strong>setting</strong> colours.</p>
 <blockquote>
 <div><p>The <code class="docutils literal notranslate"><span class="pre">colorama</span></code> library is initialised to:</p>
 <blockquote>
-<div><p>‘strip ANSI characters from stdout and convert them into the
-equivalent win32 calls.’</p>
+<div><p>'strip ANSI characters from stdout and convert them into the
+equivalent win32 calls.'</p>
 <p class="attribution">—Jonathan Hartley, creator of colorama.</p>
 </div></blockquote>
 <p>The Win32 console (excluding <em>some</em> later versions of Win10) does
@@ -441,11 +438,11 @@ in later versions of Python, possibly 3.6+.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – The text to be printed to the terminal.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – The text colour. Defaults to ‘brightwhite’.</p></li>
-<li><p><strong>back</strong> (<em>str</em><em>, </em><em>optional</em>) – Background colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – ANSI style selector. Defaults to ‘normal.’</p></li>
-<li><p><strong>h_pad</strong> (<em>int</em><em>, </em><em>optional</em>) – <p>The amount of horizontal padding, in
+<li><p><strong>text</strong> (<em>str</em>) -- The text to be printed to the terminal.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- The text colour. Defaults to 'brightwhite'.</p></li>
+<li><p><strong>back</strong> (<em>str</em><em>, </em><em>optional</em>) -- Background colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- ANSI style selector. Defaults to 'normal.'</p></li>
+<li><p><strong>h_pad</strong> (<em>int</em><em>, </em><em>optional</em>) -- <p>The amount of horizontal padding, in
 characters. This option will increase the field size to the
 value of <code class="docutils literal notranslate"><span class="pre">h_pad</span></code> and add (n) blank characters of background
 colour after the text string. If greater than the number of
@@ -457,17 +454,17 @@ Defaults to 0.</p>
 number of spaces past the end of the text string.</p>
 </div>
 </p></li>
-<li><p><strong>v_pad</strong> (<em>int</em><em>, </em><em>optional</em>) – The amount of vertical padding, in lines.
+<li><p><strong>v_pad</strong> (<em>int</em><em>, </em><em>optional</em>) -- The amount of vertical padding, in lines.
 This option will add (n) blank lines of backgound colour above
 and below the text string, acting like a banner. The banner
 will extend to the number of spaces specified in the <code class="docutils literal notranslate"><span class="pre">h_pad</span></code>
 parameter. Defaults to 0.</p></li>
-<li><p><strong>sleep</strong> (<em>float</em><em>, </em><em>optional</em>) – Number of seconds to pause the program
+<li><p><strong>sleep</strong> (<em>float</em><em>, </em><em>optional</em>) -- Number of seconds to pause the program
 after a message or banner is printed. Although the default
 sleep value is 0 seconds, the default changes to (n) second,
 if the <code class="docutils literal notranslate"><span class="pre">v_pad</span></code> parameter is &gt; 0. This provides a default
 pause for the user to read the banner. The default <code class="docutils literal notranslate"><span class="pre">v_pad</span></code>
-sleep time can be updated in this module’s private
+sleep time can be updated in this module's private
 <a class="reference internal" href="#user_interface._Config" title="user_interface._Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Config</span></code></a> class. Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -503,11 +500,11 @@ available.</p>
 called to pause the program for (n) seconds, for the user to read
 the message or banner. If the <code class="docutils literal notranslate"><span class="pre">v_pad</span></code> value is &gt; 0, and the
 sleep value is 0, the sleep timer value is overridden with the
-value defined in this module’s private <a class="reference internal" href="#user_interface._Config" title="user_interface._Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Config</span></code></a> class,
+value defined in this module's private <a class="reference internal" href="#user_interface._Config" title="user_interface._Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Config</span></code></a> class,
 under the <code class="docutils literal notranslate"><span class="pre">v_pad_sleep</span></code> key.</p>
 <p>For further detail, refer to the <strong>Parameters</strong> section
 of this docstring, and refer to the <strong>Colour and Style Options</strong>
-section for each string parameter’s available options.</p>
+section for each string parameter's available options.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -519,8 +516,8 @@ section for each string parameter’s available options.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
 </ul>
 </dd>
 </dl>
@@ -532,7 +529,7 @@ section for each string parameter’s available options.</p>
 <dd><p>Print (n) blank lines.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>qualtity</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of blank lines to print.
+<dd class="field-odd"><p><strong>qualtity</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of blank lines to print.
 Defaults to 1.</p>
 </dd>
 </dl>
@@ -544,7 +541,7 @@ Defaults to 1.</p>
 <dd><p>Print red error text on a black background.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>error</strong> (<em>object</em>) – This is the <strong>error object</strong> generated by the
+<dd class="field-odd"><p><strong>error</strong> (<em>object</em>) -- This is the <strong>error object</strong> generated by the
 Exception.</p>
 </dd>
 </dl>
@@ -575,11 +572,11 @@ to generate the error message.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="user_interface.UserInterface.print_error_unexpected">
 <span class="sig-name descname"><span class="pre">print_error_unexpected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/user_interface.html#UserInterface.print_error_unexpected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface.UserInterface.print_error_unexpected" title="Link to this definition"></a></dt>
-<dd><p>Print red ‘unexpected error’ text on black background.</p>
+<dd><p>Print red 'unexpected error' text on black background.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Design<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This method uses the call stack to print a message for
-‘unexpected error’ errors.</p>
+'unexpected error' errors.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -591,10 +588,10 @@ to generate the error message.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘brightwhite’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
-<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) – Padding width, as number of characters.
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'brightwhite'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
+<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) -- Padding width, as number of characters.
 Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -608,10 +605,10 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
-<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) – Padding width, as number of characters.
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
+<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) -- Padding width, as number of characters.
 Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -625,10 +622,10 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
-<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) – Padding width, as number of characters.
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
+<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) -- Padding width, as number of characters.
 Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -642,10 +639,10 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
-<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) – Padding width, as number of characters.
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
+<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) -- Padding width, as number of characters.
 Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -659,10 +656,10 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
-<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) – Padding width, as number of characters.
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
+<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) -- Padding width, as number of characters.
 Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -676,10 +673,10 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
-<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) – Padding width, as number of characters.
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
+<li><p><strong>padto</strong> (<em>int</em><em>, </em><em>optional</em>) -- Padding width, as number of characters.
 Defaults to 0.</p></li>
 </ul>
 </dd>
@@ -693,8 +690,8 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
 </ul>
 </dd>
 </dl>
@@ -707,8 +704,8 @@ Defaults to 0.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – Text to be printed.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Style to be used. Defaults to ‘normal’.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) -- Text to be printed.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- Style to be used. Defaults to 'normal'.</p></li>
 </ul>
 </dd>
 </dl>
@@ -720,23 +717,23 @@ Defaults to 0.</p></li>
 <dd><p>Get user input via a CLI prompt formatted by the caller.</p>
 <p>This method extends the built-in <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code> function (although not
 used by this method) by adding appearance control and text colouring.
-Like the <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code> function, the user’s input is returned to the
+Like the <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code> function, the user's input is returned to the
 caller as a <code class="docutils literal notranslate"><span class="pre">str</span></code> type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<em>str</em>) – The text to be displayed.</p></li>
-<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) – Text colour. Defaults to ‘brightwhite’.</p></li>
-<li><p><strong>back</strong> (<em>str</em><em>, </em><em>optional</em>) – Background colour. Defaults to ‘black’.</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – The ‘normal’ style selects the 8 original
-foreground colours (SGR 30-37). The ‘bright’ style provides
+<li><p><strong>text</strong> (<em>str</em>) -- The text to be displayed.</p></li>
+<li><p><strong>fore</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text colour. Defaults to 'brightwhite'.</p></li>
+<li><p><strong>back</strong> (<em>str</em><em>, </em><em>optional</em>) -- Background colour. Defaults to 'black'.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) -- The 'normal' style selects the 8 original
+foreground colours (SGR 30-37). The 'bright' style provides
 access to the 8 additional foreground colours (SGR 90-97).
-Defaults to ‘normal’.</p></li>
-<li><p><strong>ending_char</strong> (<em>str</em><em>, </em><em>optional</em>) – Character to be added to the end of
-the prompt. If the user’s input should be on a new line,
+Defaults to 'normal'.</p></li>
+<li><p><strong>ending_char</strong> (<em>str</em><em>, </em><em>optional</em>) -- Character to be added to the end of
+the prompt. If the user's input should be on a new line,
 pass <code class="docutils literal notranslate"><span class="pre">\n</span></code> into this parameter. Defaults to <code class="docutils literal notranslate"><span class="pre">''</span></code>.</p></li>
-<li><p><strong>add_space</strong> (<em>bool</em><em>, </em><em>optional</em>) – Add a space separator between the
-prompt and the user’s input. Defaults to True.</p></li>
+<li><p><strong>add_space</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Add a space separator between the
+prompt and the user's input. Defaults to True.</p></li>
 </ul>
 </dd>
 </dl>
@@ -799,7 +796,7 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="user_interface._Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">_Config</span></span><a class="reference internal" href="_modules/user_interface.html#_Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_interface._Config" title="Link to this definition"></a></dt>
-<dd><p>Storage class for the module’s config items.</p>
+<dd><p>Storage class for the module's config items.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="user_interface._Config.v_pad_sleep">
 <span class="sig-name descname"><span class="pre">v_pad_sleep</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#user_interface._Config.v_pad_sleep" title="Link to this definition"></a></dt>
@@ -830,7 +827,7 @@ brightmagenta, brightred, brightwhite, brightyellow</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

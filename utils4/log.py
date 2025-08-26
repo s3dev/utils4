@@ -15,7 +15,6 @@
             if the log file does not exist, it will be created with a
             header, using the value of the ``headertext`` parameter.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

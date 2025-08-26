@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>utils &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="../_static/documentation_options.js?v=371fd5e7"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -45,7 +45,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../library.html">Libary API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Library API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
 </ul>
@@ -95,7 +95,6 @@
 <span class="sd">            please refer to the last ``utils3`` release, which is</span>
 <span class="sd">            v0.15.1.</span>
 
-<span class="sd">:Platform:  Linux/Windows | Python 3.7+</span>
 <span class="sd">:Developer: J Berendt</span>
 <span class="sd">:Email:     support@s3dev.uk</span>
 
@@ -726,6 +725,44 @@
 
 
 <span class="c1"># Tested by the test_x_futils module.</span>
+<div class="viewcode-block" id="is7zip">
+<a class="viewcode-back" href="../utils.html#utils.is7zip">[docs]</a>
+<span class="k">def</span> <span class="nf">is7zip</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Determine if a file is a 7-zip archive.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be tested.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file is a 7-zip archive::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.is7zip(&#39;/path/to/file.7z&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        A file is tested to be a 7-zip archive by checking the</span>
+<span class="sd">        first six bytes of the file itself, *not* using the file</span>
+<span class="sd">        extension.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This method calls the :func:`futils.is7zip` function with the</span>
+<span class="sd">        given arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the first six bytes of the file matches the</span>
+<span class="sd">        expected file signature for a 7-zip archive (shown below).</span>
+<span class="sd">        Otherwise, False.</span>
+
+<span class="sd">        -  ``0x37 0x7a 0xbc 0xaf 0x27 0x1c``</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">futils</span><span class="o">.</span><span class="n">is7zip</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
+
+
+<span class="c1"># Tested by the test_x_futils module.</span>
 <div class="viewcode-block" id="isascii">
 <a class="viewcode-back" href="../utils.html#utils.isascii">[docs]</a>
 <span class="k">def</span> <span class="nf">isascii</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
@@ -816,6 +853,89 @@
 
 
 <span class="c1"># Tested by the test_x_futils module.</span>
+<div class="viewcode-block" id="isgzip">
+<a class="viewcode-back" href="../utils.html#utils.isgzip">[docs]</a>
+<span class="k">def</span> <span class="nf">isgzip</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Determine if a file is a GZIP compressed file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be tested.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file is a GZIP compressed file::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.isgzip(&#39;/path/to/file.gz&#39;)</span>
+<span class="sd">            True</span>
+
+
+<span class="sd">        Test if a file is a GZIP archive::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.isgzip(&#39;/path/to/file.tar.gz&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        A file is tested to be a GZIP compressed file by checking the</span>
+<span class="sd">        first two bytes of the file itself, *not* using the file</span>
+<span class="sd">        extension.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This method calls the :func:`futils.isgzip` function with the</span>
+<span class="sd">        given arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the first two bytes of the file matches the</span>
+<span class="sd">        expected file signature for a GZIP compressed file (shown below).</span>
+<span class="sd">        Otherwise, False.</span>
+
+<span class="sd">        -  ``0x1f 0x8b``</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">futils</span><span class="o">.</span><span class="n">isgzip</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
+
+
+<span class="c1"># Tested by the test_x_futils module.</span>
+<div class="viewcode-block" id="ispdf">
+<a class="viewcode-back" href="../utils.html#utils.ispdf">[docs]</a>
+<span class="k">def</span> <span class="nf">ispdf</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Determine if a file is a ``PDF`` file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): Full path to the file to be tested.</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">        Test if a file is a PDF file::</span>
+
+<span class="sd">            &gt;&gt;&gt; from utils4 import utils</span>
+
+<span class="sd">            &gt;&gt;&gt; utils.ispdf(&#39;/path/to/document.pdf&#39;)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        A file is tested to be a ``PDF`` file by checking the first five</span>
+<span class="sd">        bytes of the file itself, *not* using the file extension.</span>
+
+<span class="sd">    :Design:</span>
+<span class="sd">        This method calls the :func:`futils.ispdf` function with the</span>
+<span class="sd">        given arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the first five bytes of the file matches the</span>
+<span class="sd">        expected file signature for a PDF file (shown below), which</span>
+<span class="sd">        corresponds to ``%PDF-``. Otherwise, False.</span>
+
+<span class="sd">            - ``0x25 0x50 0x44 0x46 0x2d``</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">futils</span><span class="o">.</span><span class="n">ispdf</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
+
+
+<span class="c1"># Tested by the test_x_futils module.</span>
 <div class="viewcode-block" id="iszip">
 <a class="viewcode-back" href="../utils.html#utils.iszip">[docs]</a>
 <span class="k">def</span> <span class="nf">iszip</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># pragma: nocover</span>
@@ -858,12 +978,13 @@
 <span class="sd">        given arguments.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        bool: True if the first four bytes of the file match any of</span>
-<span class="sd">        the below. Otherwise, False.</span>
+<span class="sd">        bool: True if the first four bytes of the file matches any of the</span>
+<span class="sd">        expected file signatures for a ZIP archive (shown below).</span>
+<span class="sd">        Otherwise, False.</span>
 
-<span class="sd">        - ``\x50\x4b\x03\x04``: &#39;Standard&#39; archive</span>
-<span class="sd">        - ``\x50\x4b\x05\x06``: Empty archive</span>
-<span class="sd">        - ``\x50\x4b\x07\x08``: Spanned archive</span>
+<span class="sd">        - ``0x50 0x4b 0x03 0x04``: &#39;Standard&#39; archive</span>
+<span class="sd">        - ``0x50 0x4b 0x05 0x06``: Empty archive</span>
+<span class="sd">        - ``0x50 0x4b 0x07 0x08``: Spanned archive</span>
 
 <span class="sd">    .. _zip-format: https://en.wikipedia.org/wiki/ZIP_(file_format)#Local_file_header</span>
 <span class="sd">    .. _zip-wheel: https://peps.python.org/pep-0491/#abstract</span>
@@ -1135,7 +1256,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

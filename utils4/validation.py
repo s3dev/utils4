@@ -7,7 +7,6 @@ r"""
                 validation rules which are commonly used by S3DEV projects.
                 More functionality will be added as needed.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 

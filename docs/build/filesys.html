@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>filesys - General filesystem tests and utilities &mdash; utils4 - v1.7.0 Documentation</title>
+  <title>filesys - General filesystem tests and utilities &mdash; utils4 - v1.8.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dd7c8171"></script>
+      <script src="_static/documentation_options.js?v=371fd5e7"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,9 +48,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libary API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -96,7 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="library.html">Libary API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
       <li class="breadcrumb-item active">filesys - General filesystem tests and utilities</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -113,20 +113,17 @@
 <dd class="field-odd"><p>This module contains tests and utilities relating to files and the
 filesystem.</p>
 </dd>
-<dt class="field-even">Platform<span class="colon">:</span></dt>
-<dd class="field-even"><p>Linux/Windows | Python 3.7+</p>
+<dt class="field-even">Developer<span class="colon">:</span></dt>
+<dd class="field-even"><p>J Berendt</p>
 </dd>
-<dt class="field-odd">Developer<span class="colon">:</span></dt>
-<dd class="field-odd"><p>J Berendt</p>
+<dt class="field-odd">Email<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
 </dd>
-<dt class="field-even">Email<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:development&#37;&#52;&#48;s3dev&#46;uk">development<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+<dt class="field-even">Comments<span class="colon">:</span></dt>
+<dd class="field-even"><p>n/a</p>
 </dd>
-<dt class="field-odd">Comments<span class="colon">:</span></dt>
-<dd class="field-odd"><p>n/a</p>
-</dd>
-<dt class="field-even">Example<span class="colon">:</span></dt>
-<dd class="field-even"><p>Example for comparing two files:</p>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Example for comparing two files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">filesys</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">filesys</span><span class="o">.</span><span class="n">compare_files</span><span class="p">(</span><span class="n">file1</span><span class="o">=</span><span class="s1">&#39;/path/to/file1.txt&#39;</span><span class="p">,</span>
@@ -158,16 +155,16 @@ endings, a result of True is returned.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>file1</strong> (<em>str</em>) – Full path to a file to be tested.</p></li>
-<li><p><strong>file2</strong> (<em>str</em>) – Full path to a file to be tested.</p></li>
-<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>optional</em>) – Encoding to be used when reading the files.
-Defaults to ‘utf-8’.</p></li>
-<li><p><strong>contents_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – Only compare the file contents, do not
+<li><p><strong>file1</strong> (<em>str</em>) -- Full path to a file to be tested.</p></li>
+<li><p><strong>file2</strong> (<em>str</em>) -- Full path to a file to be tested.</p></li>
+<li><p><strong>encoding</strong> (<em>str</em><em>, </em><em>optional</em>) -- Encoding to be used when reading the files.
+Defaults to 'utf-8'.</p></li>
+<li><p><strong>contents_only</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Only compare the file contents, do not
 test the signatures. This is useful if the line endings are
 expected to be different, as a file with DOS line endings will be
 marginally larger than a file with UNIX line endings; meaning
 the file signature test will <em>fail</em>. Defaults to False.</p></li>
-<li><p><strong>sig_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – Only compare the file signatures. The files’
+<li><p><strong>sig_only</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Only compare the file signatures. The files'
 contents are <em>not</em> compared. Defaults to False.</p></li>
 </ul>
 </dd>
@@ -176,7 +173,7 @@ contents are <em>not</em> compared. Defaults to False.</p></li>
 immediately, and no further tests are conducted.</p>
 <p>The following tests are conducted, given default function parameters:</p>
 <ul class="simple">
-<li><p>Test both files are ‘regular’ files.</p></li>
+<li><p>Test both files are 'regular' files.</p></li>
 <li><p>Test the files have the same size (in bytes), they are both regular
 files and their inode mode is the same.</p></li>
 <li><p>Test the contents are the same; ignoring line endings.</p></li>
@@ -199,17 +196,17 @@ otherwise False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – Full path to the source files. Additionally, all files
+<li><p><strong>path</strong> (<em>str</em>) -- Full path to the source files. Additionally, all files
 will be moved into sub-directories in this path.</p></li>
-<li><p><strong>nfiles</strong> (<em>int</em>) – Number of source files to be moved into each directory.</p></li>
-<li><p><strong>pattern</strong> (<em>str</em><em>, </em><em>optional</em>) – A shell-style wildcard pattern used for
+<li><p><strong>nfiles</strong> (<em>int</em>) -- Number of source files to be moved into each directory.</p></li>
+<li><p><strong>pattern</strong> (<em>str</em><em>, </em><em>optional</em>) -- A shell-style wildcard pattern used for
 collecting the source files. For example: <code class="docutils literal notranslate"><span class="pre">*.csv</span></code>.
-Defaults to ‘*’.</p></li>
-<li><p><strong>pairs</strong> (<em>bool</em><em>, </em><em>optional</em>) – Are the files in pairs?. If True, the <code class="docutils literal notranslate"><span class="pre">repl</span></code>
+Defaults to '*'.</p></li>
+<li><p><strong>pairs</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Are the files in pairs?. If True, the <code class="docutils literal notranslate"><span class="pre">repl</span></code>
 argument is used to replace a sub-string of the source file with
 that of the paired file, so each file pair is moved into the same
 directory. Defaults to False.</p></li>
-<li><p><strong>repl</strong> (<em>tuple</em><em>, </em><em>optional</em>) – <p>A tuple containing the old and new replacement
+<li><p><strong>repl</strong> (<em>tuple</em><em>, </em><em>optional</em>) -- <p>A tuple containing the old and new replacement
 strings. This argument is only in effect if the <code class="docutils literal notranslate"><span class="pre">pairs</span></code> argument
 is True. Defaults to (None,).</p>
 <p>For example:</p>
@@ -220,7 +217,7 @@ is True. Defaults to (None,).</p>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the input file path does not exist.</p>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> -- If the input file path does not exist.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if the operation completes, otherwise False.</p>
@@ -244,7 +241,7 @@ is True. Defaults to (None,).</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.7.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
   </div>
 
    

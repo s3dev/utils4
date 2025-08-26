@@ -1,9 +1,9 @@
 
 .. _library-api:
 
-========================
-Libary API Documentation
-========================
+=========================
+Library API Documentation
+=========================
 The page contains the low-level documentation for each of the importable
 modules in ``utils4``.
 

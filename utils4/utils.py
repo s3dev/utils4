@@ -18,7 +18,6 @@
             please refer to the last ``utils3`` release, which is
             v0.15.1.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 
@@ -616,6 +615,41 @@ def gzip_decompress(path: str, encoding: str='utf-8', size: int=None) -> bool:
     return success
 
 # Tested by the test_x_futils module.
+def is7zip(path: str) -> bool:  # pragma: nocover
+    r"""Determine if a file is a 7-zip archive.
+
+    Args:
+        path (str): Full path to the file to be tested.
+
+    :Example:
+
+        Test if a file is a 7-zip archive::
+
+            >>> from utils4 import utils
+
+            >>> utils.is7zip('/path/to/file.7z')
+            True
+
+    Note:
+        A file is tested to be a 7-zip archive by checking the
+        first six bytes of the file itself, *not* using the file
+        extension.
+
+    :Design:
+        This method calls the :func:`futils.is7zip` function with the
+        given arguments.
+
+    Returns:
+        bool: True if the first six bytes of the file matches the
+        expected file signature for a 7-zip archive (shown below).
+        Otherwise, False.
+
+        -  ``0x37 0x7a 0xbc 0xaf 0x27 0x1c``
+
+    """
+    return bool(futils.is7zip(path))
+
+# Tested by the test_x_futils module.
 def isascii(path: str, size: int=2048) -> bool:  # pragma: nocover
     """Determine if a file is plain-text (ASCII only).
 
@@ -700,6 +734,83 @@ def isbinary(path: str, size: int=1024) -> bool:  # pragma: nocover
     return bool(futils.isbinary(path, size))
 
 # Tested by the test_x_futils module.
+def isgzip(path: str) -> bool:  # pragma: nocover
+    r"""Determine if a file is a GZIP compressed file.
+
+    Args:
+        path (str): Full path to the file to be tested.
+
+    :Example:
+
+        Test if a file is a GZIP compressed file::
+
+            >>> from utils4 import utils
+
+            >>> utils.isgzip('/path/to/file.gz')
+            True
+
+
+        Test if a file is a GZIP archive::
+
+            >>> from utils4 import utils
+
+            >>> utils.isgzip('/path/to/file.tar.gz')
+            True
+
+    Note:
+        A file is tested to be a GZIP compressed file by checking the
+        first two bytes of the file itself, *not* using the file
+        extension.
+
+    :Design:
+        This method calls the :func:`futils.isgzip` function with the
+        given arguments.
+
+    Returns:
+        bool: True if the first two bytes of the file matches the
+        expected file signature for a GZIP compressed file (shown below).
+        Otherwise, False.
+
+        -  ``0x1f 0x8b``
+
+    """
+    return bool(futils.isgzip(path))
+
+# Tested by the test_x_futils module.
+def ispdf(path: str) -> bool:  # pragma: nocover
+    r"""Determine if a file is a ``PDF`` file.
+
+    Args:
+        path (str): Full path to the file to be tested.
+
+    :Example:
+
+        Test if a file is a PDF file::
+
+            >>> from utils4 import utils
+
+            >>> utils.ispdf('/path/to/document.pdf')
+            True
+
+    Note:
+        A file is tested to be a ``PDF`` file by checking the first five
+        bytes of the file itself, *not* using the file extension.
+
+    :Design:
+        This method calls the :func:`futils.ispdf` function with the
+        given arguments.
+
+    Returns:
+        bool: True if the first five bytes of the file matches the
+        expected file signature for a PDF file (shown below), which
+        corresponds to ``%PDF-``. Otherwise, False.
+
+            - ``0x25 0x50 0x44 0x46 0x2d``
+
+    """
+    return bool(futils.ispdf(path))
+
+# Tested by the test_x_futils module.
 def iszip(path: str) -> bool:  # pragma: nocover
     r"""Determine if a file is a ``ZIP`` archive.
 
@@ -740,12 +851,13 @@ def iszip(path: str) -> bool:  # pragma: nocover
         given arguments.
 
     Returns:
-        bool: True if the first four bytes of the file match any of
-        the below. Otherwise, False.
+        bool: True if the first four bytes of the file matches any of the
+        expected file signatures for a ZIP archive (shown below).
+        Otherwise, False.
 
-        - ``\x50\x4b\x03\x04``: 'Standard' archive
-        - ``\x50\x4b\x05\x06``: Empty archive
-        - ``\x50\x4b\x07\x08``: Spanned archive
+        - ``0x50 0x4b 0x03 0x04``: 'Standard' archive
+        - ``0x50 0x4b 0x05 0x06``: Empty archive
+        - ``0x50 0x4b 0x07 0x08``: Spanned archive
 
     .. _zip-format: https://en.wikipedia.org/wiki/ZIP_(file_format)#Local_file_header
     .. _zip-wheel: https://peps.python.org/pep-0491/#abstract

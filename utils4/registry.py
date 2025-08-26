@@ -15,7 +15,6 @@
                 - hkus = HKEY_USERS
                 - hkcc = HKEY_CURRENT_CONFIG
 
-:Platform:  Windows | Python 3.7+
 :Developer: M Critchard
 :Email:     support@s3dev.uk
 

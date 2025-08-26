@@ -10,8 +10,8 @@ A checklist of things to remember for each release:
 
 #. Create a new branch and run all test cases.
 
-    - Python 3.7
-    - Python 3.12
+    - Python 3.10
+    - Python 3.13
 
 #. Rebase all commits.
 
@@ -20,16 +20,6 @@ A checklist of things to remember for each release:
 #. Commit and rebase again.
 
 #. Create a source distribution on a new branch.
-
-#. Commit and rebase again.
-
-#. Add version tag to latest commit.
-
-#. Push to the remote repo.
-
-#. Upload to PyPI (test).
-
-#. Upload to PyPI.
 
 #. Copy the source distribution to 73DEVNAS01 and 73DEVVMW01 and create builds for:
 
@@ -50,6 +40,18 @@ A checklist of things to remember for each release:
     - 73DEVADM02   (aarch64 builds)
     - 73DEVLTP03   (linux amd64 builds)
     - 73DEVVMW01   (win amd64 builds)
+
+#. Copy all new wheels into the local ./dist directory.
+
+#. Commit and rebase again.
+
+#. Add version tag to latest commit.
+
+#. Push to GitHub.
+
+#. Upload to PyPI (test).
+
+#. Upload to PyPI.
 
 #. Done
     

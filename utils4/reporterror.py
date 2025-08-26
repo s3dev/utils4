@@ -5,7 +5,6 @@
             console and/or a log file, using the :class:`~log.Log`
             class.
 
-:Platform:  Linux/Windows | Python 3.7+
 :Developer: J Berendt
 :Email:     support@s3dev.uk
 
