@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>log - Providing easy logging to your project &mdash; utils4 - v1.8.0 Documentation</title>
+  <title>log - Providing easy logging to your project &mdash; utils4 - v1.8.1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=371fd5e7"></script>
+      <script src="_static/documentation_options.js?v=53d005a3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,8 +49,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -167,10 +167,10 @@ exists.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<em>str</em>) -- Full path to the log file.</p></li>
-<li><p><strong>autofill</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Automatically populate <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code>,
+<li><p><strong>filepath</strong> (<em>str</em>) – Full path to the log file.</p></li>
+<li><p><strong>autofill</strong> (<em>bool</em><em>, </em><em>optional</em>) – Automatically populate <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code>,
 host and username values, to each log entry. Defaults to True.</p></li>
-<li><p><strong>printheader</strong> (<em>bool</em><em>, </em><em>optional</em>) -- <p>Print a log file header using the text
+<li><p><strong>printheader</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Print a log file header using the text
 passed into the <code class="docutils literal notranslate"><span class="pre">headertext</span></code> parameter. Defaults to False.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -178,11 +178,11 @@ passed into the <code class="docutils literal notranslate"><span class="pre">hea
 exist.</p>
 </div>
 </p></li>
-<li><p><strong>headertext</strong> (<em>str</em><em>, </em><em>optional</em>) -- String of delimited column labels to be
-written as the header. Defaults to ''.</p></li>
-<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>optional</em>) -- Separator to be used in the log file. This
+<li><p><strong>headertext</strong> (<em>str</em><em>, </em><em>optional</em>) – String of delimited column labels to be
+written as the header. Defaults to ‘’.</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>optional</em>) – Separator to be used in the log file. This
 separator is used when writing the autofill values.
-Defaults to ','.</p></li>
+Defaults to ‘,’.</p></li>
 </ul>
 </dd>
 <dt class="field-even">File Validation<span class="colon">:</span></dt>
@@ -225,7 +225,7 @@ exists, the header will not be written.</p></li>
 <dd><p>Write text to the log file defined at instantiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) -- Delimited text string to be written to the log.</p>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Delimited text string to be written to the log.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -261,7 +261,7 @@ is used to separate these auto-populated fields.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">autofill</span></code> information is <strong>not</strong> written. This is a
-true blank line, created by writing the system's native line
+true blank line, created by writing the system’s native line
 separator character(s)to the log.</p>
 </div>
 <dl class="field-list">
@@ -292,7 +292,7 @@ separator character(s)to the log.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.1.</p>
   </div>
 
    

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>config - Adds support for automatically reading an application&#39;s config file &mdash; utils4 - v1.8.0 Documentation</title>
+  <title>config - Adds support for automatically reading an application’s config file &mdash; utils4 - v1.8.1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=371fd5e7"></script>
+      <script src="_static/documentation_options.js?v=53d005a3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="convert - Functions to convert between low-level types (binary, hex, ascii and int)" href="convert.html" />
-    <link rel="prev" title="cmaps - Provides easy access to the matplotlib&#39;s colour maps" href="cmaps.html" /> 
+    <link rel="prev" title="cmaps - Provides easy access to the matplotlib’s colour maps" href="cmaps.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,8 +49,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">config - Adds support for automatically reading an application's config file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">config - Adds support for automatically reading an application’s config file</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#config.loadconfig"><code class="docutils literal notranslate"><span class="pre">loadconfig()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#config._file_exists"><code class="docutils literal notranslate"><span class="pre">_file_exists()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#config._fromjson"><code class="docutils literal notranslate"><span class="pre">_fromjson()</span></code></a></li>
@@ -98,7 +98,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
-      <li class="breadcrumb-item active">config - Adds support for automatically reading an application's config file</li>
+      <li class="breadcrumb-item active">config - Adds support for automatically reading an application’s config file</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -108,11 +108,11 @@
            <div itemprop="articleBody">
              
   <section id="config-adds-support-for-automatically-reading-an-application-s-config-file">
-<h1>config - Adds support for automatically reading an application's config file<a class="headerlink" href="#config-adds-support-for-automatically-reading-an-application-s-config-file" title="Link to this heading"></a></h1>
+<h1>config - Adds support for automatically reading an application’s config file<a class="headerlink" href="#config-adds-support-for-automatically-reading-an-application-s-config-file" title="Link to this heading"></a></h1>
 <p>Library providing JSON-based config file loading functionality.</p>
 <dl class="field-list" id="module-config">
 <dt class="field-odd">Purpose<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Small helper module designed to load a program's JSON-based
+<dd class="field-odd"><p>Small helper module designed to load a program’s JSON-based
 config file.</p>
 </dd>
 <dt class="field-even">Developer<span class="colon">:</span></dt>
@@ -125,7 +125,7 @@ config file.</p>
 <dd class="field-even"><p>n/a</p>
 </dd>
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>To load a program's JSON-based config file:</p>
+<dd class="field-odd"><p>To load a program’s JSON-based config file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">loadconfig</span><span class="p">()</span>
@@ -137,22 +137,22 @@ config file.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="config.loadconfig">
 <span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">loadconfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'config.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_as_obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/config.html#loadconfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.loadconfig" title="Link to this definition"></a></dt>
-<dd><p>Load a program's JSON config file and return it as a dict or object.</p>
+<dd><p>Load a program’s JSON config file and return it as a dict or object.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) -- File name or (preferably) the
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – File name or (preferably) the
 <strong>explicit</strong> full file path path of the JSON config file to
-be loaded. Defaults to 'config.json'.</p></li>
-<li><p><strong>return_as_object</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, the dictionary is
+be loaded. Defaults to ‘config.json’.</p></li>
+<li><p><strong>return_as_object</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the dictionary is
 converted into an object, where the dictionary key/values
 are object attribute/values. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Design<span class="colon">:</span></dt>
-<dd class="field-even"><p>By default, this function will search the program's directory
+<dd class="field-even"><p>By default, this function will search the program’s directory
 for a file named <code class="docutils literal notranslate"><span class="pre">config.json</span></code>.  If the config file lives
-somewhere else, or you're using an IDE to develop, the safest
+somewhere else, or you’re using an IDE to develop, the safest
 option is to <strong>explicitly define the path to the config file</strong>.</p>
 <p>If a path is found in the passed parameter, this path is used,
 and the function does not have to try and work out where the
@@ -193,10 +193,10 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
 <dd><p>Test if the requested config file exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fullpath</strong> (<em>str</em>) -- Full path to the file being tested.</p>
+<dd class="field-odd"><p><strong>fullpath</strong> (<em>str</em>) – Full path to the file being tested.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>IOError</strong> -- If the file does not exist.</p>
+<dd class="field-even"><p><strong>IOError</strong> – If the file does not exist.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True of the file exists, otherwise False.</p>
@@ -213,7 +213,7 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
 <dd><p>Extract values from the JSON file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) -- Full path to the file to be read.</p>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – Full path to the file to be read.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>JSON file content as a dictionary.</p>
@@ -230,14 +230,14 @@ attributes, rather than from dictionary keys.  See use option 2.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cmaps.html" class="btn btn-neutral float-left" title="cmaps - Provides easy access to the matplotlib&#39;s colour maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmaps.html" class="btn btn-neutral float-left" title="cmaps - Provides easy access to the matplotlib’s colour maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="convert.html" class="btn btn-neutral float-right" title="convert - Functions to convert between low-level types (binary, hex, ascii and int)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.1.</p>
   </div>
 
    

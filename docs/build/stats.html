@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.8.0 Documentation</title>
+  <title>stats - Statistics methods without the overhead &mdash; utils4 - v1.8.1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=371fd5e7"></script>
+      <script src="_static/documentation_options.js?v=53d005a3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -50,8 +50,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -162,8 +162,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>np.array</em>) -- Array of X-values.</p></li>
-<li><p><strong>y</strong> (<em>np.array</em>) -- Array of Y-values.</p></li>
+<li><p><strong>x</strong> (<em>np.array</em>) – Array of X-values.</p></li>
+<li><p><strong>y</strong> (<em>np.array</em>) – Array of Y-values.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Slope Calculation<span class="colon">:</span></dt>
@@ -220,7 +220,7 @@ example, refer to the docstring for
 <dl class="py property">
 <dt class="sig sig-object py" id="stats.LinearRegression.intercept">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intercept</span></span><a class="headerlink" href="#stats.LinearRegression.intercept" title="Link to this definition"></a></dt>
-<dd><p>Accessor to the slope's y-intercept.</p>
+<dd><p>Accessor to the slope’s y-intercept.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -260,11 +260,11 @@ previous values.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) -- The DataFrame containing the column(s) on
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the column(s) on
 which a CUSUM is to be calculated.</p></li>
-<li><p><strong>cols</strong> (<em>Union</em><em>[</em><em>list</em><em>, </em><em>str</em><em>]</em>) -- The column (or list of columns) on
+<li><p><strong>cols</strong> (<em>Union</em><em>[</em><em>list</em><em>, </em><em>str</em><em>]</em>) – The column (or list of columns) on
 which the CUSUM is to be calculated.</p></li>
-<li><p><strong>window</strong> (<em>int</em><em>, </em><em>optional</em>) -- <p>Size of the window on which the
+<li><p><strong>window</strong> (<em>int</em><em>, </em><em>optional</em>) – <p>Size of the window on which the
 rolling mean is to be calculated. This corresponds to the
 <code class="docutils literal notranslate"><span class="pre">pandas.df.rolling(window)</span></code> parameter.
 Defaults to None.</p>
@@ -279,12 +279,12 @@ the current value. For this method, pass
 <code class="docutils literal notranslate"><span class="pre">window=len(df)</span></code>.</p></li>
 </ul>
 </p></li>
-<li><p><strong>min_periods</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of periods to wait before
+<li><p><strong>min_periods</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of periods to wait before
 calculating the rolling average. Defaults to 1.</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Update the passed DataFrame
+<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – Update the passed DataFrame
 (in-place), rather returning a <em>copy</em> of the passed
 DataFrame. Defaults to False.</p></li>
-<li><p><strong>show_plot</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Display a graph of the raw value,
+<li><p><strong>show_plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display a graph of the raw value,
 and the calculated CUSUM results. Defaults to False.</p></li>
 </ul>
 </dd>
@@ -354,11 +354,11 @@ Gaussian KDE.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>list</em><em>, </em><em>np.array</em><em>, </em><em>pd.Series</em><em>]</em>) -- An array-like object
+<li><p><strong>data</strong> (<em>Union</em><em>[</em><em>list</em><em>, </em><em>np.array</em><em>, </em><em>pd.Series</em><em>]</em>) – An array-like object
 containing the data against which the Gaussian KDE is
 calculated. This can be a list, numpy array, or pandas
 Series.</p></li>
-<li><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) -- Number of values returned in the X, Y
+<li><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of values returned in the X, Y
 arrays. Defaults to 500.</p></li>
 </ul>
 </dd>
@@ -385,7 +385,7 @@ example, refer to the docstring for
 </div>
 </dd>
 <dt class="field-odd">Max X<span class="colon">:</span></dt>
-<dd class="field-odd"><p>This function also returns the X value of the curve's peak;
+<dd class="field-odd"><p>This function also returns the X value of the curve’s peak;
 where <code class="docutils literal notranslate"><span class="pre">max_x</span></code> is the <code class="docutils literal notranslate"><span class="pre">X</span></code> value corresponding to the max
 <code class="docutils literal notranslate"><span class="pre">Y</span></code> value on the curve. The result (<code class="docutils literal notranslate"><span class="pre">max_x</span></code>) is
 returned as the third tuple element.</p>
@@ -393,7 +393,7 @@ returned as the third tuple element.</p>
 <dt class="field-even">Further Detail<span class="colon">:</span></dt>
 <dd class="field-even"><p>This method uses the <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.gaussian_kde()</span></code> method
 for the KDE calculation. For further detail on the
-calculation itself, refer to that function's docstring.</p>
+calculation itself, refer to that function’s docstring.</p>
 </dd>
 <dt class="field-odd">Background<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Originally, <code class="xref py py-func docutils literal notranslate"><span class="pre">plotly.figure_factory.dist_plot()</span></code> was used
@@ -433,7 +433,7 @@ calculation, which this function also calls.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.1.</p>
   </div>
 
    

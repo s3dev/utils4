@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pywarnings - Easy wrapper to ignore Python warnings &mdash; utils4 - v1.8.0 Documentation</title>
+  <title>pywarnings - Easy wrapper to ignore Python warnings &mdash; utils4 - v1.8.1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=371fd5e7"></script>
+      <script src="_static/documentation_options.js?v=53d005a3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,8 +49,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -115,12 +115,12 @@
 <span id="pywarnings-easy-wrapper-to-ignore-python-warnings"></span><h1>pywarnings - Easy wrapper to ignore Python warnings<a class="headerlink" href="#module-pywarnings" title="Link to this heading"></a></h1>
 <dl class="field-list">
 <dt class="field-odd">Purpose<span class="colon">:</span></dt>
-<dd class="field-odd"><p>This module provides a simple wrapper around Python's built-in
+<dd class="field-odd"><p>This module provides a simple wrapper around Python’s built-in
 <code class="docutils literal notranslate"><span class="pre">warnings</span></code> library, and enables easy access to ignore a single
 or set of Python warnings.</p>
 <p>While this module can be used to ignore a single warning, the true
-purpose of this module is to enable 'passive' warning control by
-having the ability to use a <code class="docutils literal notranslate"><span class="pre">dict</span></code> from your app's config file
+purpose of this module is to enable ‘passive’ warning control by
+having the ability to use a <code class="docutils literal notranslate"><span class="pre">dict</span></code> from your app’s config file
 to control the display (or non-display) of warnings. Refer to the
 use cases below for an example.</p>
 </dd>
@@ -181,7 +181,7 @@ use cases below for an example.</p>
 <span class="go">  warnings.warn(&#39;&#39;, w)</span>
 </pre></div>
 </div>
-<p>Ignore a list of warnings manually using a <code class="docutils literal notranslate"><span class="pre">dict</span></code> from your app's config
+<p>Ignore a list of warnings manually using a <code class="docutils literal notranslate"><span class="pre">dict</span></code> from your app’s config
 file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">warnings</span>  <span class="c1"># Imported for test demo only.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils4</span> <span class="kn">import</span> <span class="n">pywarnings</span>
@@ -220,9 +220,9 @@ file:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pywarnings.PyWarnings">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pywarnings.</span></span><span class="sig-name descname"><span class="pre">PyWarnings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pywarnings.html#PyWarnings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pywarnings.PyWarnings" title="Link to this definition"></a></dt>
-<dd><p>A simple wrapper around Python's built-in <code class="docutils literal notranslate"><span class="pre">warnings</span></code> library.</p>
+<dd><p>A simple wrapper around Python’s built-in <code class="docutils literal notranslate"><span class="pre">warnings</span></code> library.</p>
 <p>This class provides easy access to ignore a single, or set of Python
-warnings using your program's config file.</p>
+warnings using your program’s config file.</p>
 <p>An example of your <code class="docutils literal notranslate"><span class="pre">py_warnings</span></code> config file key is shown below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;py_warnings&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;ignore&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                  <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PendingDeprecationWarning&quot;</span><span class="p">,</span>
@@ -237,12 +237,12 @@ to disable.  This list <strong>is not</strong> case sensitive.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ignore</strong> (<em>bool</em>) -- <code class="docutils literal notranslate"><span class="pre">True</span></code> will cause warnings to be ignored. This
+<li><p><strong>ignore</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> will cause warnings to be ignored. This
 argument enables the ignoring/not ignoring of warnings, without
 needing to change your source code.</p></li>
-<li><p><strong>categories</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em>) -- A single category to ignore, or a list
+<li><p><strong>categories</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em>) – A single category to ignore, or a list
 of categories.</p></li>
-<li><p><strong>config</strong> (<em>dict</em>) -- <p>A dictionary <em>containing</em> the following:</p>
+<li><p><strong>config</strong> (<em>dict</em>) – <p>A dictionary <em>containing</em> the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;py_warnings&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;ignore&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
                  <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PendingDeprecationWarning&quot;</span><span class="p">,</span>
                                 <span class="s2">&quot;FutureWarning&quot;</span><span class="p">]}}</span>
@@ -317,7 +317,7 @@ found <a class="reference external" href="https://docs.python.org/3.5/library/wa
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.1.</p>
   </div>
 
    

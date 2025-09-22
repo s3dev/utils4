@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>srccheck - Checksum functionality for source code &mdash; utils4 - v1.8.0 Documentation</title>
+  <title>srccheck - Checksum functionality for source code &mdash; utils4 - v1.8.1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=371fd5e7"></script>
+      <script src="_static/documentation_options.js?v=53d005a3"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,8 +49,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib's colour maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application's config file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaps.html">cmaps - Provides easy access to the matplotlib’s colour maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config - Adds support for automatically reading an application’s config file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">convert - Functions to convert between low-level types (binary, hex, ascii and int)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="crypto.html">crypto - Extended functionality from the base64 and hashlib libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutils.html">cutils - C-based utility functions</a></li>
@@ -122,7 +122,7 @@ to be checksummed, along with a reference file (containing the
 expected checksums). If the checksum values match the reference
 file, a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> is returned to the caller application,
 signaling the inspected source code files have <em>not</em> been modified
-and are 'safe' for use. Otherwise, a value of <code class="docutils literal notranslate"><span class="pre">False</span></code> is
+and are ‘safe’ for use. Otherwise, a value of <code class="docutils literal notranslate"><span class="pre">False</span></code> is
 returned to the caller the filenames of each failing file are
 printed to the terminal.</p>
 </dd>
@@ -209,13 +209,13 @@ to the terminal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ref_file</strong> (<em>str</em>) -- Full path to the reference file containing the
+<li><p><strong>ref_file</strong> (<em>str</em>) – Full path to the reference file containing the
 full paths to the file(s) to be tested and the associated
 checksum value(s).</p></li>
-<li><p><strong>key_file</strong> (<em>str</em><em>, </em><em>optional</em>) -- Full path to the key file. If a key file
+<li><p><strong>key_file</strong> (<em>str</em><em>, </em><em>optional</em>) – Full path to the key file. If a key file
 is not provided, the method assumes the reference file is in
 plaintext CSV and does not attempt to decrypt.
-Defaults to ''.</p></li>
+Defaults to ‘’.</p></li>
 </ul>
 </dd>
 </dl>
@@ -229,11 +229,11 @@ attempted.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> -- If either the reference file, or key file do
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – If either the reference file, or key file do
     not exist.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if all file's checksum values agree with the checksum
+<dd class="field-even"><p>True if all file’s checksum values agree with the checksum
 listed in the reference file; otherwise False.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -250,9 +250,9 @@ and the associated key file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepaths</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) -- A list of full paths which are to be
+<li><p><strong>filepaths</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of full paths which are to be
 included in the reference file.</p></li>
-<li><p><strong>encrypt</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Encrypt the reference file and generate
+<li><p><strong>encrypt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Encrypt the reference file and generate
 a key file. Defaults to False.</p></li>
 </ul>
 </dd>
@@ -298,7 +298,7 @@ values as the values.</p>
 </div>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>FileNotFoundError</strong> -- If any of the files provided to the
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If any of the files provided to the
     <code class="docutils literal notranslate"><span class="pre">filepaths</span></code> argument do not exist.</p>
 </dd>
 </dl>
@@ -319,7 +319,7 @@ values as the values.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.0.</p>
+    <p>&#169; Copyright 2016-2025 | s3dev | version 1.8.1.</p>
   </div>
 
    
