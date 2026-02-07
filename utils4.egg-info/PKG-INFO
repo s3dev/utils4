@@ -1,16 +1,15 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: utils4
-Version: 1.8.1
+Version: 1.8.2
 Summary: A general utilities package for Python 3.10+.
 Author-email: The Developers <development@s3dev.uk>
-License: MIT
+License-Expression: MIT
 Project-URL: Documentation, https://utils4.readthedocs.io
 Project-URL: Homepage, https://github.com/s3dev/utils4
 Project-URL: Repository, https://github.com/s3dev/utils4
 Keywords: library,utility,utilities
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
-Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: POSIX :: Linux
 Classifier: Operating System :: Microsoft :: Windows
 Classifier: Programming Language :: C
@@ -18,6 +17,7 @@ Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
 Classifier: Programming Language :: Python :: 3.12
 Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: 3.14
 Classifier: Programming Language :: Python :: Implementation :: CPython
 Classifier: Topic :: Software Development
 Classifier: Topic :: Software Development :: Libraries
@@ -26,6 +26,7 @@ Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: colorama
+Dynamic: license-file
 
 
 # A general utilities package for Python 3.10+

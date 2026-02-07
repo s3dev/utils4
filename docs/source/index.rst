@@ -90,6 +90,8 @@ source distributions can also be downloaded from `PyPI`_.
     :stub-columns: 1
     :width: 100%
 
+**Note:** The Linux wheels are available in the ``manylinux`` tagged formats.
+
 
 Questions or Issues
 -------------------

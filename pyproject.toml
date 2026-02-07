@@ -9,7 +9,6 @@ authors = [{name = "The Developers", email = "development@s3dev.uk"}]
 classifiers = [
                "Development Status :: 5 - Production/Stable",
                "Intended Audience :: Developers",
-               "License :: OSI Approved :: MIT License",
                "Operating System :: POSIX :: Linux",
                "Operating System :: Microsoft :: Windows",
                "Programming Language :: C",
@@ -17,6 +16,7 @@ classifiers = [
                "Programming Language :: Python :: 3.11",
                "Programming Language :: Python :: 3.12",
                "Programming Language :: Python :: 3.13",
+               "Programming Language :: Python :: 3.14",
                "Programming Language :: Python :: Implementation :: CPython",
                "Topic :: Software Development",
                "Topic :: Software Development :: Libraries",
@@ -26,7 +26,8 @@ classifiers = [
 dependencies = ["colorama"]
 dynamic = ["version"]
 keywords = ["library", "utility", "utilities"]
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE*"]
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.10"
 
@@ -42,3 +43,5 @@ version = {attr = "utils4.__version__"}
 where = ["."]
 include = ["utils4"]
 exclude = []
+
+
